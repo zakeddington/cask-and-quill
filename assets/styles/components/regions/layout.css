@@ -1,0 +1,37 @@
+/* Regions layout */
+.regions-container {
+	padding-top: 2rem;
+	width: 100%;
+}
+
+.region-section {
+	@media (min-width: 768px) {
+		margin-bottom: 4rem;
+	}
+}
+
+.region-section:last-child {
+	margin-bottom: 0;
+}
+
+.region-panel {
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	transition: grid-template-rows 0.35s ease, opacity 0.25s ease;
+}
+
+.region-section.is-open .region-panel {
+	grid-template-rows: 1fr;
+	opacity: 1;
+}
+
+.region-panel-inner {
+	min-height: 0;
+	overflow: hidden;
+}
+
+.region-main {
+	display: flex;
+	flex-direction: column;
+}

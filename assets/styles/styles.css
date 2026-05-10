@@ -7,7 +7,7 @@
 @import "base/typography.css";
 @import "layout.css" layer(layout);
 @import "components/hero.css" layer(components);
-@import "components/lexicon.css" layer(components);
-@import "components/regions.css" layer(components);
+@import "components/lexicon/index.css" layer(components);
+@import "components/regions/index.css" layer(components);
 @import "utilities.css" layer(utilities);
 @import "themes/theme-accent.css" layer(themes);

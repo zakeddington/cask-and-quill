@@ -1,0 +1,39 @@
+/* Lexicon alphabet nav */
+.alphabet-nav {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.alphabet-nav {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		height: calc(100vh - var(--layout-nav-offset));
+		position: sticky;
+		top: var(--layout-nav-offset);
+	}
+}
+
+.alphabet-list {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	overflow-y: auto;
+	padding: 0.25rem;
+}
+
+.alphabet-link {
+	display: block;
+	font-family: var(--font-sans-serif);
+	font-weight: var(--font-weight-bold);
+	height: 1.5em;
+	text-align: center;
+	text-decoration: none;
+	width: 1.5em;
+}
+
+.alphabet-link:not(.active) {
+	color: var(--color-text-disabled);
+	pointer-events: none;
+}

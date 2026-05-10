@@ -1,0 +1,74 @@
+/* Regions header and accordion */
+.region-heading {
+	margin-bottom: 0;
+}
+
+.region-header {
+	border-top: 2px solid var(--color-border-accent);
+	padding: 2rem 0;
+
+	:last-child {
+		margin-bottom: 0;
+	}
+
+	@media (min-width: 768px) {
+		border-bottom: 2px solid var(--color-border-accent);
+		border-top: 0;
+		padding-top: 0;
+	}
+}
+
+.region-accordion-trigger {
+	align-items: center;
+	background-color: var(--color-button-background-default);
+	border: 0;
+	color: var(--color-text-primary);
+	cursor: pointer;
+	display: flex;
+	gap: var(--grid-gap);
+	justify-content: space-between;
+	padding: 0;
+	text-align: left;
+	width: 100%;
+}
+
+.region-header-copy {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.region-title-text {
+	font-family: var(--font-body);
+	font-size: var(--font-size-heading-xl);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+}
+
+.region-regulator {
+	color: var(--color-text-secondary);
+}
+
+.region-accordion-icon {
+	align-items: center;
+	color: var(--color-text-accent);
+	display: flex;
+	flex: 0 0 auto;
+	font-size: var(--font-size-heading-sm);
+	height: 2rem;
+	justify-content: center;
+	line-height: 1;
+	transition: transform 0.25s ease;
+	width: 2rem;
+}
+
+.region-section.is-open .region-accordion-icon {
+	transform: rotateX(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.region-panel,
+	.region-accordion-icon {
+		transition: none;
+	}
+}

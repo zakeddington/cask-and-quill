@@ -1,0 +1,28 @@
+/* Lexicon sections */
+.lexicon-section {
+	position: relative;
+}
+
+.lexicon-section-title {
+	color: var(--color-text-disabled);
+}
+
+.lexicon-section-title.is-category {
+	color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+	.lexicon-section-title {
+		height: fit-content;
+		position: sticky;
+		top: var(--layout-nav-offset);
+	}
+}
+
+.term-item {
+	margin-bottom: 0;
+}
+
+.term-description {
+	color: var(--color-text-secondary);
+}

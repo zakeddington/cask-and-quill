@@ -1,0 +1,52 @@
+/* Regions varieties */
+.region-varieties {
+	margin-top: 2rem;
+}
+
+.varieties-title {
+	border-bottom: 1px solid var(--color-border-primary);
+	margin-bottom: 0;
+	padding-bottom: 1rem;
+}
+
+.varieties-list > :nth-child(odd) {
+	background-color: var(--color-background-secondary);
+}
+
+.variety-item {
+	border-bottom: 1px solid var(--color-border-primary);
+	padding: 2.5rem 1rem;
+}
+
+.variety-item:last-child {
+	border-bottom: none;
+}
+
+@media (min-width: 768px) {
+	.variety-info {
+		border-right: 1px solid var(--color-border-primary);
+	}
+}
+
+.variety-name {
+	color: var(--color-text-secondary);
+	margin-bottom: 0;
+}
+
+.variety-description,
+.variety-description p {
+	color: var(--color-text-secondary);
+}
+
+.variety-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.tag {
+	background-color: var(--color-background-tag);
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
+}
