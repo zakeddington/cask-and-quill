@@ -306,7 +306,8 @@ export const LEXICON_TERMS = [
 		name: 'Distillation',
 		category: 'Distillation',
 		letter: 'D',
-		description: 'The process of physically separating alcohol from water using heat. Alcohol has a lower vaporization temperature than water, so liquid alcohol turns to vapor at a lower temperature. The alcohol vapor is then recondensed to a liquid as it is cooled.'
+		description: 'The process of physically separating alcohol from water using heat. Alcohol has a lower vaporization temperature than water, so liquid alcohol turns to vapor at a lower temperature. The alcohol vapor is then recondensed to a liquid as it is cooled.',
+		seeAlso: ['Fermentation', 'Pot Still', 'Column Still']
 	},
 	{
 		id: 'distiller-s-beer',
@@ -393,7 +394,8 @@ export const LEXICON_TERMS = [
 		name: 'Fermentation',
 		category: 'Fermentation & Chemistry',
 		letter: 'F',
-		description: 'The process by which yeast converts sugars (from the grain mash) into alcohol and CO₂. Produces a beer-like "wash" or "distiller\'s beer" typically at 6–10% ABV before distillation. A metabolic process where yeast feeds on sugar, creating acids, gases, and/or alcohol as byproducts. All whisky-making includes a fermentation process before distillation.'
+		description: 'The process by which yeast converts sugars (from the grain mash) into alcohol and CO₂. Produces a beer-like "wash" or "distiller\'s beer" typically at 6–10% ABV before distillation. A metabolic process where yeast feeds on sugar, creating acids, gases, and/or alcohol as byproducts. All whisky-making includes a fermentation process before distillation.',
+		seeAlso: ['Yeast', 'Wort', 'Wash']
 	},
 	{
 		id: 'fermenter',
@@ -609,7 +611,8 @@ export const LEXICON_TERMS = [
 		name: 'Malt',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'Grain (typically barley) that has been steeped in water, allowed to germinate, then kiln-dried to halt germination. Germination develops enzymes (amylases) that convert starches to fermentable sugars. Germinated grain (usually barley) that has been heated to stop growth. Also a term to describe whisky made from malted barley.'
+		description: 'Grain (typically barley) that has been steeped in water, allowed to germinate, then kiln-dried to halt germination. Germination develops enzymes (amylases) that convert starches to fermentable sugars. Germinated grain (usually barley) that has been heated to stop growth. Also a term to describe whisky made from malted barley.',
+		seeAlso: ['Malting', 'Saccharification']
 	},
 	{
 		id: 'malt-whisky',
@@ -630,7 +633,8 @@ export const LEXICON_TERMS = [
 		name: 'Malting',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'The process of steeping, germinating, and kilning grain. Can be done in traditional floor maltings or industrial drum maltings. Peat smoke during kilning creates peated malt.'
+		description: 'The process of steeping, germinating, and kilning grain. Can be done in traditional floor maltings or industrial drum maltings. Peat smoke during kilning creates peated malt.',
+		seeAlso: ['Malt', 'Steep', 'Kiln']
 	},
 	{
 		id: 'marrying',
@@ -645,28 +649,39 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'M',
 		description: 'A mixture of ground grain, or grist, and hot water that converts starches into fermentable sugars. Once strained, the sweet liquid is wort and is sent to fermentation.',
-		seeAlso: ['Grist', 'Wort']
+		seeAlso: ['Grist', 'Wort', 'Mashing']
+	},
+	{
+		id: 'mashing',
+		name: 'Mashing',
+		category: 'Malting & Mashing',
+		letter: 'M',
+		description: 'The production step where milled grain is mixed with hot water so enzymes can convert starches into fermentable sugars. In whisky-making, mashing produces wort for fermentation.',
+		seeAlso: ['Mash', 'Wort', 'Saccharification']
 	},
 	{
 		id: 'mash-bill',
 		name: 'Mash Bill',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'The recipe or ratio of grains used in a whiskey\'s production. In bourbon, always includes at least 51% corn plus secondary grains (rye, wheat, malted barley).'
+		description: 'The recipe or ratio of grains used in a whiskey\'s production. In bourbon, always includes at least 51% corn plus secondary grains (rye, wheat, malted barley).',
+		seeAlso: ['Mash', 'Bourbon', 'Rye']
 	},
 	{
 		id: 'mash-tub-tun',
 		name: 'Mash Tub/Tun',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'The vessel where grist is combined with hot water to convert the starches into fermentable sugars.'
+		description: 'The vessel where grist is combined with hot water to convert the starches into fermentable sugars.',
+		seeAlso: ['Mash', 'Wort']
 	},
 	{
 		id: 'mashbill',
 		name: 'Mashbill',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'Alternative spelling of mash bill. The grain recipe used in American whiskey production. In the United States, the recipe of different grains used to make whiskey.'
+		description: 'Alternative spelling of mash bill. The grain recipe used in American whiskey production. In the United States, the recipe of different grains used to make whiskey.',
+		seeAlso: ['Mash Bill']
 	},
 	{
 		id: 'master-blender',
@@ -874,7 +889,8 @@ export const LEXICON_TERMS = [
 		name: 'Proof',
 		category: 'Measurements & Labeling',
 		letter: 'P',
-		description: 'In the US, proof equals twice the ABV (e.g., 100 proof = 50% ABV). In the UK, historically measured on a different scale, but now largely harmonized with ABV internationally. In the U.S., the ethanol content of a spirit at 60 degrees Fahrenheit. The number is equal to double the spirit\'s ABV.'
+		description: 'In the US, proof equals twice the ABV (e.g., 100 proof = 50% ABV). In the UK, historically measured on a different scale, but now largely harmonized with ABV internationally. In the U.S., the ethanol content of a spirit at 60 degrees Fahrenheit. The number is equal to double the spirit\'s ABV.',
+		seeAlso: ['ABV']
 	},
 	{
 		id: 'quaich',
@@ -1258,14 +1274,15 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'W',
 		description: 'The alcoholic liquid produced by fermenting wort with yeast, usually around 5% to 10% ABV. It is essentially an unhopped beer and is ready for distillation.',
-		seeAlso: ['Distiller\'s Beer']
+		seeAlso: ['Distiller\'s Beer', 'Fermentation']
 	},
 	{
 		id: 'wash-still',
 		name: 'Wash Still',
 		category: 'Distillation',
 		letter: 'W',
-		description: 'The first still in a Scottish double-distillation setup. The fermented wash is distilled here to produce low wines. Typically the larger of the two stills. In pot distillation, the first still that distills the wash.'
+		description: 'The first still in a Scottish double-distillation setup. The fermented wash is distilled here to produce low wines. Typically the larger of the two stills. In pot distillation, the first still that distills the wash.',
+		seeAlso: ['Wash', 'Low Wines']
 	},
 	{
 		id: 'washback',
@@ -1273,7 +1290,7 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'W',
 		description: 'The vessel in which wort or mash ferments with yeast before distillation.',
-		seeAlso: ['Fermenter']
+		seeAlso: ['Fermenter', 'Fermentation']
 	},
 	{
 		id: 'wheat-whiskey',
@@ -1340,14 +1357,15 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'W',
 		description: 'The sweet liquid produced during mashing after hot water extracts fermentable sugars from grist. Once separated from grain solids, the wort is cooled and sent to fermentation.',
-		seeAlso: ['Mash', 'Grist']
+		seeAlso: ['Mash', 'Grist', 'Fermentation']
 	},
 	{
 		id: 'yeast',
 		name: 'Yeast',
 		category: 'Ingredients & Grain',
 		letter: 'Y',
-		description: 'The microorganism responsible for fermentation. Yeast consumes sugars and produces ethanol, CO2, and flavor-active compounds; different strains can meaningfully affect a whisky\'s character.'
+		description: 'The microorganism responsible for fermentation. Yeast consumes sugars and produces ethanol, CO2, and flavor-active compounds; different strains can meaningfully affect a whisky\'s character.',
+		seeAlso: ['Fermentation', 'Wort']
 	},
 	{
 		id: 'yield',
