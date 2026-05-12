@@ -1,4 +1,7 @@
-/* Lexicon sections */
+.lexicon-entries {
+	scroll-margin-top: var(--layout-scroll-header-lexcion-controls-offset);
+}
+
 .lexicon-section {
 	position: relative;
 }
@@ -21,6 +24,7 @@
 
 .term-item {
 	margin-bottom: 0;
+	scroll-margin-top: var(--layout-scroll-header-lexcion-controls-offset);
 }
 
 .term-pronunciation,
