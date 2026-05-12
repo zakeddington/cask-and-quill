@@ -82,7 +82,10 @@ export class Lexicon {
 
 	getTermByName(name) {
 		const normalizedName = normalizeTermName(name);
-		return this.terms.find(term => normalizeTermName(term.name) === normalizedName);
+		return this.terms.find(term =>
+			normalizeTermName(term.name) === normalizedName ||
+			term.aliases?.some(alias => normalizeTermName(alias) === normalizedName)
+		);
 	}
 
 	getCategoryOrder(category) {
@@ -108,11 +111,31 @@ export class Lexicon {
 		return `<p class="text-body-sm">See also: ${links}</p>`;
 	}
 
+	renderPronunciation(term) {
+		if (!term.pronunciation) return '';
+
+		return `<p class="term-pronunciation text-body-sm">Pronounced: ${escapeHtml(term.pronunciation)}</p>`;
+	}
+
+	renderAliases(term) {
+		if (!term.aliases?.length) return '';
+
+		const labels = term.aliases.map(alias => {
+			const pronunciation = term.aliasPronunciations?.[alias];
+			return pronunciation
+				? `${escapeHtml(alias)} (${escapeHtml(pronunciation)})`
+				: escapeHtml(alias);
+		});
+
+		return `<p class="term-aliases text-body-sm">Also listed as: ${labels.join(', ')}</p>`;
+	}
+
 	getFilteredTerms() {
 		return this.terms.filter(term =>
 			(!this.selectedCategory || term.category === this.selectedCategory) &&
 			(
 				term.name.toLowerCase().includes(this.searchQuery) ||
+				term.aliases?.some(alias => alias.toLowerCase().includes(this.searchQuery)) ||
 				term.category.toLowerCase().includes(this.searchQuery) ||
 				term.description.toLowerCase().includes(this.searchQuery)
 			)
@@ -168,6 +191,8 @@ export class Lexicon {
 				<div class="term-heading">
 					<p class="text-label">${escapeHtml(term.category)}</p>
 					<h3>${escapeHtml(term.name)}</h3>
+					${this.renderPronunciation(term)}
+					${this.renderAliases(term)}
 				</div>
 				<p class="term-description">${escapeHtml(term.description)}</p>
 				${this.renderSeeAlso(term)}

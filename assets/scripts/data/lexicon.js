@@ -6,7 +6,7 @@ export const LEXICON_TERMS = [
 		category: 'Measurements & Labeling',
 		letter: 'A',
 		description: 'Alcohol by volume: the standard measure of ethanol in a spirit, expressed as a percentage of total liquid volume. Most whiskies are bottled between 40% and 63% ABV.',
-		seeAlso: ['Ethanol', 'Proof']
+		seeAlso: ['Ethanol', 'Proof', 'Whisky']
 	},
 	{
 		id: 'aftershots',
@@ -33,12 +33,26 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Cask', 'Maturation', 'Warehouse', 'Whisky']
 	},
 	{
+		id: 'aqua-vitae',
+		name: 'Aqua Vitae',
+		category: 'Tasting & Service',
+		letter: 'A',
+		description: 'Latin for "water of life," a historical term for distilled alcohol and the umbrella concept behind the Irish Gaelic form uisce beatha and the Scottish Gaelic form uisge beatha that ultimately gave rise to whisky and whiskey.',
+		pronunciation: 'AH-kwuh VEE-tee',
+		seeAlso: ['Whisky'],
+		aliases: ['Uisce Beatha', 'Uisge Beatha'],
+		aliasPronunciations: {
+			'Uisce Beatha': 'ISH-kuh BAH-huh',
+			'Uisge Beatha': 'OOSH-kuh BEH-huh'
+		}
+	},
+	{
 		id: 'backset',
 		name: 'Backset',
 		category: 'Malting & Mashing',
 		letter: 'B',
 		description: 'In American whiskey, the acidic liquid strained from the mash after primary distillation. It is added to a new mash or fermenter to support fermentation and discourage bacterial contamination.',
-		seeAlso: ['Distillation', 'Fermentation', 'Fermenter', 'Mash', 'Sour Mash', 'Whiskey']
+		seeAlso: ['Distillation', 'Fermentation', 'Fermenter', 'Mash', 'Sour Mash', 'Whisky']
 	},
 	{
 		id: 'barley',
@@ -62,7 +76,7 @@ export const LEXICON_TERMS = [
 		category: 'Measurements & Labeling',
 		letter: 'B',
 		description: 'Whisky bottled at, or very near, the strength it had when removed from the barrel, without dilution by added water. In the U.S., TTB rules allow barrel proof whiskey to be no more than two proof degrees below the strength recorded for tax determination; bourbon labeled this way still has to meet all bourbon requirements.',
-		seeAlso: ['Barrel', 'Bourbon', 'Cask Strength', 'Proof', 'Still', 'TTB', 'Whiskey', 'Whisky']
+		seeAlso: ['Barrel', 'Bourbon', 'Cask Strength', 'Proof', 'Still', 'TTB', 'Whisky']
 	},
 	{
 		id: 'beer-still',
@@ -86,7 +100,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'B',
 		description: 'A combination of two or more spirits. In the United States, a blended whiskey must contain at least 20% straight whiskey or a blend of straight whiskeys, while the remainder can consist of non-straight whiskey, neutral spirits, or both. In Ireland, a blended whiskey is a mixture of any two or more of the styles of malt, pot still, and grain whiskey. In Scotland, blended whisky is a mixture of whiskies from different distilleries, typically using both malt and grain whiskies. Blended malt whisky mixes single malts from a number of distilleries, while blended grain whisky mixes single grains from a number of distilleries.',
-		seeAlso: ['Blended Malt', 'Grain Whisky', 'Malt', 'Malt Whisky', 'Pot Still', 'Still', 'Straight Whiskey', 'Whiskey', 'Whisky']
+		seeAlso: ['Blended Malt', 'Grain Whisky', 'Malt', 'Malt Whisky', 'Pot Still', 'Single Malt', 'Still', 'Straight Whiskey', 'Whisky']
 	},
 	{
 		id: 'blended-malt',
@@ -94,14 +108,15 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'B',
 		description: 'In Scotland, a blend of malt whiskies from at least two distilleries; previously referred to as a vatted malt.',
-		seeAlso: ['Blend', 'Malt']
+		seeAlso: ['Blend', 'Malt', 'Malt Whisky', 'Whisky']
 	},
 	{
 		id: 'blending',
 		name: 'Blending',
 		category: 'People & Producers',
 		letter: 'B',
-		description: 'The process of combining whiskies of different ages, casks, distilleries, or types to achieve a desired flavor profile. Can be done with malts, grains, or a combination.'
+		description: 'The process of combining whiskies of different ages, casks, distilleries, or types to achieve a desired flavor profile. Can be done with malts, grains, or a combination.',
+		seeAlso: ['Cask', 'Malt', 'Whisky']
 	},
 	{
 		id: 'bonded-warehouse',
@@ -109,7 +124,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'B',
 		description: 'A government-supervised warehouse where spirits are stored without payment of excise tax until they are released for sale. In the US, Bottled-in-Bond whiskey must be aged here.',
-		seeAlso: ['Bottled-in-Bond', 'Warehouse', 'Whiskey']
+		seeAlso: ['Bottled-in-Bond', 'Warehouse', 'Whisky']
 	},
 	{
 		id: 'bottled-in-bond',
@@ -117,7 +132,7 @@ export const LEXICON_TERMS = [
 		category: 'Measurements & Labeling',
 		letter: 'B',
 		description: 'A U.S. designation from the Bottled-in-Bond Act of 1897. The whiskey must be made by one distiller at one distillery in a single distillation season, aged at least four years in a federally bonded warehouse, and bottled at exactly 100 proof, or 50% ABV.',
-		seeAlso: ['ABV', 'Bonded Warehouse', 'Distillation', 'Proof', 'Warehouse', 'Whiskey']
+		seeAlso: ['ABV', 'Bonded Warehouse', 'Distillation', 'Proof', 'Warehouse', 'Whisky']
 	},
 	{
 		id: 'bourbon',
@@ -125,7 +140,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'B',
 		description: 'American whiskey made from a mash of at least 51% corn, with the remaining grain commonly including rye, wheat, and malted barley. It must be distilled to no more than 80% ABV, entered into new charred oak at no more than 62.5% ABV, and bottled at no less than 40% ABV.',
-		seeAlso: ['ABV', 'Barley', 'Corn', 'Malted', 'Mash', 'Oak', 'Rye', 'Whiskey']
+		seeAlso: ['ABV', 'Barley', 'Corn', 'Malted', 'Mash', 'Oak', 'Rye', 'Whisky']
 	},
 	{
 		id: 'bung',
@@ -165,7 +180,7 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'C',
 		description: 'A flavorless, odorless sugar-derived colorant used to standardize whisky color. It is permitted in Scotch, Irish, Canadian, and many other whiskies, but not in bourbon or straight American whiskey.',
-		seeAlso: ['Bourbon', 'Scotch', 'Whiskey', 'Whisky']
+		seeAlso: ['Bourbon', 'Scotch', 'Whisky']
 	},
 	{
 		id: 'cask',
@@ -189,7 +204,7 @@ export const LEXICON_TERMS = [
 		category: 'Measurements & Labeling',
 		letter: 'C',
 		description: 'Whisky bottled at the natural strength it had when drawn from the cask, without significant dilution before bottling. As a bourbon designation it is non-legal and usually indicates whiskey bottled directly from the barrel with no or minimal dilution, often around 110–140° proof, while still meeting all bourbon requirements.',
-		seeAlso: ['Barrel', 'Barrel Proof', 'Bourbon', 'Cask', 'Proof', 'Still', 'Whiskey', 'Whisky']
+		seeAlso: ['Barrel', 'Barrel Proof', 'Bourbon', 'Cask', 'Proof', 'Still', 'Whisky']
 	},
 	{
 		id: 'charcoal-mellowing',
@@ -197,7 +212,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'C',
 		description: 'The filtration of new whiskey through sugar maple charcoal before or during barrel aging. This step is required for Tennessee whiskey classification.',
-		seeAlso: ['Barrel', 'Lincoln County Process', 'Tennessee Whiskey', 'Whiskey']
+		seeAlso: ['Barrel', 'Lincoln County Process', 'Tennessee Whiskey', 'Whisky']
 	},
 	{
 		id: 'charring',
@@ -205,7 +220,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'C',
 		description: 'The process of burning the inside of a new oak barrel before use. Char creates a filtering layer, shapes color and flavor, removes some sulfurous compounds, and contributes vanilla, caramel, and smoky notes. Bourbon and Tennessee whiskey must age in new charred oak.',
-		seeAlso: ['Barrel', 'Bourbon', 'Oak', 'Tennessee Whiskey', 'Whiskey']
+		seeAlso: ['Barrel', 'Bourbon', 'Oak', 'Tennessee Whiskey', 'Whisky']
 	},
 	{
 		id: 'chill-filtered',
@@ -229,7 +244,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'C',
 		description: 'A column still design patented by Aeneas Coffey in 1830. It enables continuous distillation, uses heated perforated plates to separate alcohol vapor, and can produce lighter, higher-proof spirit more efficiently than batch pot stills.',
-		seeAlso: ['Column Still', 'Continuous Still', 'Distillation', 'Proof', 'Still']
+		seeAlso: ['Column Still', 'Continuous Still', 'Distillation', 'Pot Still', 'Proof', 'Still']
 	},
 	{
 		id: 'column-still',
@@ -253,7 +268,7 @@ export const LEXICON_TERMS = [
 		category: 'Fermentation & Chemistry',
 		letter: 'C',
 		description: 'Flavor-active compounds other than ethanol that arise during fermentation, distillation, and maturation. They include esters, aldehydes, acids, fusel oils, phenols, and other compounds that influence aroma, texture, and taste.',
-		seeAlso: ['Distillation', 'Ethanol', 'Fermentation', 'Maturation']
+		seeAlso: ['Distillation', 'Ester', 'Ethanol', 'Fermentation', 'Maturation']
 	},
 	{
 		id: 'continuous-still',
@@ -269,7 +284,7 @@ export const LEXICON_TERMS = [
 		category: 'People & Producers',
 		letter: 'C',
 		description: 'One who makes barrels or casks. Also refers to the process of making the barrels/casks, as in "coopering a barrel."',
-		seeAlso: ['Barrel']
+		seeAlso: ['Barrel', 'Cask']
 	},
 	{
 		id: 'cooperage',
@@ -277,7 +292,7 @@ export const LEXICON_TERMS = [
 		category: 'People & Producers',
 		letter: 'C',
 		description: 'The craft of making and repairing wooden barrels and casks. A cooper is the skilled tradesperson. The quality and preparation of the cask is one of the most significant influences on final whisky flavor. A business or premises that produces barrels or casks. Also sometimes used to refer to casks or barrels, e.g., "aged in new cooperage."',
-		seeAlso: ['Cask', 'Cooper', 'Whisky']
+		seeAlso: ['Barrel', 'Cask', 'Cooper', 'Whisky']
 	},
 	{
 		id: 'copper',
@@ -293,7 +308,7 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'C',
 		description: 'A grain used in spirits production. Corn is the primary grain in bourbon whiskey, required to represent at least 51% of the mashbill.',
-		seeAlso: ['Bourbon', 'Mashbill', 'Whiskey']
+		seeAlso: ['Bourbon', 'Mash Bill', 'Whisky']
 	},
 	{
 		id: 'corn-whiskey',
@@ -301,7 +316,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'C',
 		description: 'American whiskey made from a mash of at least 80% corn and distilled to no more than 80% ABV. If aged, it must use used or uncharred new oak rather than new charred oak; straight corn whiskey is aged this way for at least two years.',
-		seeAlso: ['ABV', 'Corn', 'Mash', 'Oak', 'Whiskey']
+		seeAlso: ['ABV', 'Corn', 'Mash', 'Oak', 'Whisky']
 	},
 	{
 		id: 'cut',
@@ -357,7 +372,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'D',
 		description: 'In American whiskey distilling, a type of pot still used for the second round of distillation. A doubler receives spirit that has already been cooled into a liquid, whereas a thumper receives vapor.',
-		seeAlso: ['Distillation', 'Pot Still', 'Still', 'Thumper', 'Whiskey']
+		seeAlso: ['Distillation', 'Pot Still', 'Still', 'Thumper', 'Whisky']
 	},
 	{
 		id: 'draff',
@@ -384,6 +399,14 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Cask', 'Maturation', 'Warehouse']
 	},
 	{
+		id: 'exogenous-enzymes',
+		name: 'Enzymes (Exogenous Enzymes)',
+		category: 'Malting & Mashing',
+		letter: 'E',
+		description: 'Commercial enzyme preparations added during mashing to break starches into fermentable sugars when natural malt enzyme content is insufficient, such as in high-adjunct or unmalted grain recipes. Their use is restricted or prohibited in some whisky categories, including Scotch single malt.',
+		seeAlso: ['Malt', 'Mashing', 'Saccharification', 'Scotch', 'Single Malt', 'Unmalted', 'Whisky']
+	},
+	{
 		id: 'ester',
 		name: 'Ester',
 		category: 'Fermentation & Chemistry',
@@ -406,14 +429,6 @@ export const LEXICON_TERMS = [
 		letter: 'E',
 		description: 'A specific bottling or variant of a whisky from a given distillery. Different expressions from the same distillery may vary by age, cask type, strength, or release series.',
 		seeAlso: ['Cask', 'Whisky']
-	},
-	{
-		id: 'exogenous-enzymes',
-		name: 'Enzymes (Exogenous Enzymes)',
-		category: 'Malting & Mashing',
-		letter: 'E',
-		description: 'Commercial enzyme preparations added during mashing to break starches into fermentable sugars when natural malt enzyme content is insufficient, such as in high-adjunct or unmalted grain recipes. Their use is restricted or prohibited in some whisky categories, including Scotch single malt.',
-		seeAlso: ['Malt', 'Mashing', 'Saccharification', 'Scotch', 'Single Malt', 'Unmalted', 'Whisky']
 	},
 	{
 		id: 'feints',
@@ -565,7 +580,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'H',
 		description: 'A common Scotch maturation cask size holding approximately 250L (66 US gallons). Made by dismantling bourbon barrels and reassembling with additional staves. In Scotch whisky, a cask with a volume capacity between 250 and 305 liters.',
-		seeAlso: ['Bourbon', 'Cask', 'Maturation', 'Scotch', 'Whisky']
+		seeAlso: ['Barrel', 'Bourbon', 'Cask', 'Maturation', 'Scotch', 'Whisky']
 	},
 	{
 		id: 'independent-bottler',
@@ -581,7 +596,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'I',
 		description: 'In triple-distillation using pot stills, the still used after spirit emerges from the wash still and before it goes into the spirit still.',
-		seeAlso: ['Distillation', 'Spirit Still', 'Still', 'Triple Distillation', 'Wash', 'Wash Still']
+		seeAlso: ['Distillation', 'Pot Still', 'Spirit Still', 'Still', 'Triple Distillation', 'Wash', 'Wash Still']
 	},
 	{
 		id: 'irish-whiskey',
@@ -589,7 +604,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'I',
 		description: 'Whiskey made and matured on the island of Ireland. It must include malted barley, may include other cereal grains, be distilled to no more than 94.8% ABV, mature in wooden casks no larger than 700 liters, and be bottled at no less than 40% ABV. Irish whiskey may be double or triple distilled and can be made in pot or column stills.',
-		seeAlso: ['ABV', 'Barley', 'Malted', 'Whiskey']
+		seeAlso: ['ABV', 'Barley', 'Cask', 'Column Still', 'Malted', 'Still', 'Whisky']
 	},
 	{
 		id: 'islands',
@@ -636,7 +651,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'L',
 		description: 'The sugar maple charcoal filtration step used in Tennessee whiskey production. New spirit is filtered through charcoal before or during barrel aging.',
-		seeAlso: ['Barrel', 'Charcoal Mellowing', 'Tennessee Whiskey', 'Whiskey']
+		seeAlso: ['Barrel', 'Charcoal Mellowing', 'Tennessee Whiskey', 'Whisky']
 	},
 	{
 		id: 'low-wines',
@@ -676,7 +691,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'M',
 		description: 'Whisky made from malted barley. In the United States, a malt whiskey must be made from a mashbill of at least 51% malted barley. In Scotland and Ireland, malt whisky must be made from 100% malted barley and be distilled in a pot still.',
-		seeAlso: ['Barley', 'Malt', 'Malted', 'Mashbill', 'Pot Still', 'Still', 'Whiskey', 'Whisky']
+		seeAlso: ['Barley', 'Malt', 'Malted', 'Mash Bill', 'Pot Still', 'Still', 'Whisky']
 	},
 	{
 		id: 'malted',
@@ -692,7 +707,7 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'M',
 		description: 'The process of steeping, germinating, and kilning grain. Can be done in traditional floor maltings or industrial drum maltings. Peat smoke during kilning creates peated malt.',
-		seeAlso: ['Kiln', 'Malt', 'Peat', 'Steep']
+		seeAlso: ['Floor Malting', 'Kiln', 'Malt', 'Peat', 'Steep']
 	},
 	{
 		id: 'marrying',
@@ -711,20 +726,13 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Fermentation', 'Grist', 'Mashing', 'Wort']
 	},
 	{
-		id: 'mashing',
-		name: 'Mashing',
-		category: 'Malting & Mashing',
-		letter: 'M',
-		description: 'The production step where milled grain is mixed with hot water so enzymes can convert starches into fermentable sugars. In whisky-making, mashing produces wort for fermentation.',
-		seeAlso: ['Fermentation', 'Mash', 'Saccharification', 'Whisky', 'Wort']
-	},
-	{
 		id: 'mash-bill',
 		name: 'Mash Bill',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'The recipe or ratio of grains used in a whiskey\'s production. In bourbon, always includes at least 51% corn plus secondary grains (rye, wheat, malted barley).',
-		seeAlso: ['Barley', 'Bourbon', 'Corn', 'Malted', 'Mash', 'Rye', 'Whiskey']
+		description: 'The recipe or ratio of grains used in a whiskey\'s production. In bourbon, it always includes at least 51% corn plus secondary grains such as rye, wheat, or malted barley. Also commonly written as mashbill.',
+		seeAlso: ['Barley', 'Bourbon', 'Corn', 'Malted', 'Mash', 'Rye', 'Whisky'],
+		aliases: ['Mashbill']
 	},
 	{
 		id: 'mash-tub-tun',
@@ -735,19 +743,20 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Grist', 'Mash', 'Wort']
 	},
 	{
-		id: 'mashbill',
-		name: 'Mashbill',
+		id: 'mashing',
+		name: 'Mashing',
 		category: 'Malting & Mashing',
 		letter: 'M',
-		description: 'Alternative spelling of mash bill. The grain recipe used in American whiskey production. In the United States, the recipe of different grains used to make whiskey.',
-		seeAlso: ['Mash', 'Mash Bill', 'Whiskey']
+		description: 'The production step where milled grain is mixed with hot water so enzymes can convert starches into fermentable sugars. In whisky-making, mashing produces wort for fermentation.',
+		seeAlso: ['Fermentation', 'Mash', 'Saccharification', 'Whisky', 'Wort']
 	},
 	{
 		id: 'master-blender',
 		name: 'Master Blender',
 		category: 'People & Producers',
 		letter: 'M',
-		description: 'The person responsible for deciding which casks or other lots of spirits go into a batch to achieve a specific flavor profile. Not a regulated term.'
+		description: 'The person responsible for deciding which casks or other lots of spirits go into a batch to achieve a specific flavor profile. Not a regulated term.',
+		seeAlso: ['Cask']
 	},
 	{
 		id: 'master-distiller',
@@ -795,15 +804,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'M',
 		description: 'Historically, illegally produced distilled spirit made without payment of excise tax, often high-proof and unaged. Modern legal products may use the name for unaged corn whiskey or white whiskey inspired by that tradition.',
-		seeAlso: ['Corn', 'Corn Whiskey', 'Proof', 'Whiskey']
-	},
-	{
-		id: 'mothballed',
-		name: 'Mothballed',
-		category: 'People & Producers',
-		letter: 'M',
-		description: 'A distillery that exists intact but is no longer in operation, also referred to as "silent."',
-		seeAlso: ['Silent']
+		seeAlso: ['Corn', 'Corn Whiskey', 'Proof', 'Whisky']
 	},
 	{
 		id: 'mouthfeel',
@@ -872,7 +873,7 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'O',
 		description: 'The wood species almost universally used for whisky maturation casks. American white oak (Quercus alba) dominates bourbon production; European oak (Quercus robur, Quercus petraea) is common in Scotch; Japanese oak (Mizunara) is a specialty option.',
-		seeAlso: ['Bourbon', 'Maturation', 'Mizunara', 'Scotch', 'Whisky']
+		seeAlso: ['Bourbon', 'Cask', 'Maturation', 'Mizunara', 'Scotch', 'Whisky']
 	},
 	{
 		id: 'ofc-old-fashioned-copper',
@@ -958,7 +959,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'P',
 		description: 'A traditional copper still used for batch distillation. Pot stills produce a heavier, more characterful spirit than column stills and are required for Single Malt Scotch, Single Pot Still Irish Whiskey, and many malt whisky styles.',
-		seeAlso: ['Column Still', 'Copper', 'Distillation', 'Irish Whiskey', 'Malt', 'Malt Whisky', 'Scotch', 'Single Malt', 'Single Pot Still', 'Still', 'Whiskey', 'Whisky']
+		seeAlso: ['Column Still', 'Copper', 'Distillation', 'Irish Whiskey', 'Malt', 'Malt Whisky', 'Scotch', 'Single Malt', 'Single Pot Still', 'Still', 'Whisky']
 	},
 	{
 		id: 'proof',
@@ -988,15 +989,17 @@ export const LEXICON_TERMS = [
 		name: 'Rackhouse',
 		category: 'Maturation & Wood',
 		letter: 'R',
-		description: 'An American barrel warehouse where aging whiskey is stored on ricks stacked several levels high. Temperature variation by floor and location can affect maturation speed and flavor development.',
-		seeAlso: ['Barrel', 'Maturation', 'Rick', 'Rickhouse', 'Warehouse', 'Whiskey']
+		description: 'An American barrel warehouse where aging whiskey is stored on ricks stacked several levels high. Temperature variation by floor and location can affect maturation speed and flavor development. Also called a rickhouse or, less commonly, a rick house.',
+		seeAlso: ['Barrel', 'Maturation', 'Rick', 'Warehouse', 'Whisky'],
+		aliases: ['Rick House', 'Rickhouse']
 	},
 	{
 		id: 'rectifier',
 		name: 'Rectifier',
 		category: 'People & Producers',
 		letter: 'R',
-		description: 'A distillery or producer that purchases base spirit and processes or blends it, rather than producing spirit from grain. The distinction between rectifier and distiller matters legally for labeling.'
+		description: 'A distillery or producer that purchases base spirit and processes or blends it, rather than producing spirit from grain. The distinction between rectifier and distiller matters legally for labeling.',
+		seeAlso: ['Blend']
 	},
 	{
 		id: 'refill',
@@ -1020,23 +1023,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'R',
 		description: 'The structures that barrels sit on in a rickhouse/rackhouse.',
-		seeAlso: ['Rackhouse', 'Rickhouse']
-	},
-	{
-		id: 'rick-house',
-		name: 'Rick House',
-		category: 'Maturation & Wood',
-		letter: 'R',
-		description: 'Alternative spelling of rackhouse. Traditional wooden barrel warehouses common in Kentucky bourbon production.',
-		seeAlso: ['Barrel', 'Bourbon', 'Rackhouse']
-	},
-	{
-		id: 'rickhouse',
-		name: 'Rickhouse',
-		category: 'Maturation & Wood',
-		letter: 'R',
-		description: 'Alternative spelling of rackhouse: an American warehouse used to mature barrels on stacked wooden ricks.',
-		seeAlso: ['Rackhouse', 'Rick', 'Warehouse']
+		seeAlso: ['Barrel', 'Rackhouse']
 	},
 	{
 		id: 'rye',
@@ -1044,15 +1031,7 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'R',
 		description: 'A grain used in whisky production that often contributes spicy flavors. In the U.S., rye whiskey must be made from at least 51% rye, distilled to no more than 80% ABV, aged in new charred oak at a maximum entry strength of 62.5% ABV, and bottled at no less than 40% ABV. In Canada, rye is sometimes used as a general synonym for Canadian whisky even when rye is not the dominant grain.',
-		seeAlso: ['ABV', 'Canadian Whisky', 'Oak', 'Whiskey', 'Whisky']
-	},
-	{
-		id: 'saladin-box',
-		name: 'Saladin Box',
-		category: 'Malting & Mashing',
-		letter: 'S',
-		description: 'A vessel in which barley is germinated before malting that uses a system of turning screws to agitate the grain. Invented in the late 19th century, it offered a mechanical alternative to hand turning.',
-		seeAlso: ['Barley', 'Malting']
+		seeAlso: ['ABV', 'Canadian Whisky', 'Oak', 'Whisky']
 	},
 	{
 		id: 'saccharification',
@@ -1063,12 +1042,20 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Enzymes (Exogenous Enzymes)', 'Malted', 'Mashing', 'Wort', 'Yeast']
 	},
 	{
+		id: 'saladin-box',
+		name: 'Saladin Box',
+		category: 'Malting & Mashing',
+		letter: 'S',
+		description: 'A vessel in which barley is germinated before malting that uses a system of turning screws to agitate the grain. Invented in the late 19th century, it offered a mechanical alternative to hand turning.',
+		seeAlso: ['Barley', 'Malting']
+	},
+	{
 		id: 'scotch',
 		name: 'Scotch',
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'Whisky made in Scotland under the Scotch Whisky Regulations. It must be mashed, fermented, distilled to no more than 94.8% ABV, matured in oak casks in Scotland for at least three years, bottled at no less than 40% ABV, and contain no additives other than water and caramel coloring. Legal categories include Single Malt, Single Grain, Blended Malt, Blended Grain, and Blended Scotch Whisky.',
-		seeAlso: ['ABV', 'Blended Malt', 'Malt', 'Oak', 'Single Malt', 'Whisky']
+		seeAlso: ['ABV', 'Blended Malt', 'Cask', 'Malt', 'Oak', 'Single Malt', 'Whisky']
 	},
 	{
 		id: 'shell-and-tube-condenser',
@@ -1084,15 +1071,15 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'S',
 		description: 'A type of fortified wine from the region of Jerez in southern Spain; can also refer to the region itself (Sherry is the anglicized version of Jerez). Sherry casks are often used for whisky maturation, imparting characteristics of the wine into the final spirit.',
-		seeAlso: ['Maturation', 'Whisky']
+		seeAlso: ['Cask', 'Maturation', 'Whisky']
 	},
 	{
 		id: 'silent',
 		name: 'Silent',
 		category: 'People & Producers',
 		letter: 'S',
-		description: 'A distillery that exists intact but is no longer in operation, also referred to as "mothballed."',
-		seeAlso: ['Mothballed']
+		description: 'A distillery that exists intact but is no longer in operation, also referred to as mothballed.',
+		aliases: ['Mothballed']
 	},
 	{
 		id: 'silent-season',
@@ -1123,7 +1110,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'Grain whisky from a single distillery; a regulated term in Scotland and Ireland. These lighter-bodied spirits are most often combined with malt whiskies to create blended whisky, although some are offered as bottlings on their own. Single grain whisky is primarily made from cereal grains other than malted barley, such as wheat or corn, and is typically made in a column still.',
-		seeAlso: ['Barley', 'Column Still', 'Corn', 'Grain Whisky', 'Malt', 'Malted', 'Still', 'Whisky']
+		seeAlso: ['Barley', 'Column Still', 'Corn', 'Grain Whisky', 'Malt', 'Malt Whisky', 'Malted', 'Still', 'Whisky']
 	},
 	{
 		id: 'single-malt',
@@ -1131,7 +1118,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'Whisky made at a single distillery from malted barley and typically distilled in pot stills. The term is most closely associated with Scotch but also applies to Irish, Japanese, American, Indian, and other world whiskies, depending on local rules.',
-		seeAlso: ['Barley', 'Malted', 'Scotch', 'Whisky']
+		seeAlso: ['Barley', 'Malted', 'Pot Still', 'Scotch', 'Still', 'Whisky']
 	},
 	{
 		id: 'single-malt-canadian',
@@ -1147,7 +1134,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'An Irish whiskey style made at one distillery from a mash containing at least 30% malted barley and 30% unmalted barley, with up to 5% other cereals allowed, and distilled in pot stills.',
-		seeAlso: ['Barley', 'Irish Whiskey', 'Malted', 'Mash', 'Pot Still', 'Unmalted', 'Whiskey']
+		seeAlso: ['Barley', 'Irish Whiskey', 'Malted', 'Mash', 'Pot Still', 'Still', 'Unmalted', 'Whisky']
 	},
 	{
 		id: 'slainte',
@@ -1170,7 +1157,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'A non-legally defined marketing term suggesting whisky was made from a limited number of barrels or in lesser quantities than a producer\'s standard release. In bourbon, it often implies a blend of roughly 10–200 barrels, but no legal minimum or maximum exists.',
-		seeAlso: ['Blend', 'Bourbon', 'Whisky']
+		seeAlso: ['Barrel', 'Blend', 'Bourbon', 'Whisky']
 	},
 	{
 		id: 'solera',
@@ -1186,7 +1173,7 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'S',
 		description: 'An American whiskey process that uses acidic backset from a previous batch to help start fermentation in a new mash and stabilize pH.',
-		seeAlso: ['Backset', 'Fermentation', 'Mash', 'Whiskey']
+		seeAlso: ['Backset', 'Fermentation', 'Mash', 'Whisky']
 	},
 	{
 		id: 'sourced',
@@ -1218,7 +1205,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'S',
 		description: 'The second still used in Scotch malt whisky double distillation. The low wines from the wash still are redistilled here to produce the final new make spirit. In double-distillation using pot stills, the still that distills the low wines.',
-		seeAlso: ['Distillation', 'Double Distillation', 'Low Wines', 'Malt', 'Malt Whisky', 'New Make Spirit', 'Scotch', 'Still', 'Wash', 'Wash Still', 'Whisky']
+		seeAlso: ['Distillation', 'Double Distillation', 'Low Wines', 'Malt', 'Malt Whisky', 'New Make Spirit', 'Pot Still', 'Scotch', 'Still', 'Wash', 'Wash Still', 'Whisky']
 	},
 	{
 		id: 'steep',
@@ -1242,7 +1229,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'S',
 		description: 'A U.S. legal designation for whiskey made from a qualifying grain mash, distilled to no more than 80% ABV, entered into new charred oak at no more than 62.5% ABV, and aged for at least two years. Only water and mingling whiskey from the same state may be added; flavoring and colorants are not allowed.',
-		seeAlso: ['ABV', 'Mash', 'Oak', 'Whiskey']
+		seeAlso: ['ABV', 'Mash', 'Oak', 'Whisky']
 	},
 	{
 		id: 'sweet-mash',
@@ -1274,7 +1261,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'T',
 		description: 'A style of American whiskey produced in Tennessee meeting all bourbon requirements and additionally filtered through sugar maple charcoal (Lincoln County Process). Jack Daniel\'s is the global market leader. A whiskey made in Tennessee, meeting the same legal requirements as a bourbon, with the added requirement of filtration through sugar maple charcoal, referred to as the Lincoln County Process (with the exception of one distillery, Prichard\'s).',
-		seeAlso: ['Bourbon', 'Lincoln County Process', 'Whiskey']
+		seeAlso: ['Bourbon', 'Lincoln County Process', 'Whisky']
 	},
 	{
 		id: 'terroir',
@@ -1290,7 +1277,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'T',
 		description: 'In American whiskey distilling, a type of pot still used for the second round of distillation. A thumper receives alcohol vapor, whereas a doubler receives spirit that has already been cooled into a liquid.',
-		seeAlso: ['Distillation', 'Doubler', 'Pot Still', 'Still', 'Whiskey']
+		seeAlso: ['Distillation', 'Doubler', 'Pot Still', 'Still', 'Whisky']
 	},
 	{
 		id: 'triple-distillation',
@@ -1298,7 +1285,7 @@ export const LEXICON_TERMS = [
 		category: 'Distillation',
 		letter: 'T',
 		description: 'The practice of distilling whisky through three stills rather than two. Associated with Irish whiskey (notably Midleton) and Lowland Scotch. Generally produces a lighter, more refined spirit. A spirit that has been distilled three times in a pot still. Often used in Irish whiskey and some Lowlands Scotch whisky. The additional distillation results in a lighter spirit.',
-		seeAlso: ['Distillation', 'Irish Whiskey', 'Lowlands', 'Pot Still', 'Scotch', 'Still', 'Whiskey', 'Whisky']
+		seeAlso: ['Distillation', 'Irish Whiskey', 'Lowlands', 'Pot Still', 'Scotch', 'Still', 'Whisky']
 	},
 	{
 		id: 'ttb',
@@ -1306,22 +1293,6 @@ export const LEXICON_TERMS = [
 		category: 'Measurements & Labeling',
 		letter: 'T',
 		description: 'Alcohol and Tobacco Tax and Trade Bureau. The US regulatory body responsible for enforcing whiskey classifications, labeling requirements, and production standards.',
-		seeAlso: ['Whiskey']
-	},
-	{
-		id: 'uisce-beatha',
-		name: 'Uisce Beatha',
-		category: 'Tasting & Service',
-		letter: 'U',
-		description: 'Gaelic for "water of life" — the etymological origin of the word "whisky/whiskey." Irish: uisce beatha; Scottish Gaelic: uisge beatha.',
-		seeAlso: ['Uisge Beatha', 'Whiskey', 'Whisky']
-	},
-	{
-		id: 'uisge-beatha',
-		name: 'Uisge Beatha',
-		category: 'Tasting & Service',
-		letter: 'U',
-		description: 'The Gaelic term for "water of life," and the origin of the word whisky.',
 		seeAlso: ['Whisky']
 	},
 	{
@@ -1330,7 +1301,7 @@ export const LEXICON_TERMS = [
 		category: 'Malting & Mashing',
 		letter: 'U',
 		description: 'A vessel used to store wort after it has drained from the mash tun and before transferring it to the washbacks for fermentation. A distillery may use the same mash multiple times, mixing it with water of increasing temperatures to extract as much sugar as possible, draining the wort from each batch into the underback in between mashes.',
-		seeAlso: ['Fermentation', 'Mash', 'Wort']
+		seeAlso: ['Fermentation', 'Mash', 'Washback', 'Wort']
 	},
 	{
 		id: 'unmalted',
@@ -1338,7 +1309,7 @@ export const LEXICON_TERMS = [
 		category: 'Ingredients & Grain',
 		letter: 'U',
 		description: 'Grain, often referring to barley specifically, that has not undergone the malting process. Irish whiskeys sometimes use a combination of malted and unmalted barley.',
-		seeAlso: ['Barley', 'Malted', 'Malting']
+		seeAlso: ['Barley', 'Irish Whiskey', 'Malted', 'Malting', 'Whisky']
 	},
 	{
 		id: 'valinch',
@@ -1362,7 +1333,7 @@ export const LEXICON_TERMS = [
 		category: 'People & Producers',
 		letter: 'V',
 		description: 'The process of combining (vatting) multiple whiskies together in a large vessel (vat) before bottling. Synonymous with blending in some contexts; specifically associated with Blended Malt Scotch.',
-		seeAlso: ['Blended Malt', 'Blending', 'Malt', 'Scotch']
+		seeAlso: ['Blended Malt', 'Blending', 'Malt', 'Scotch', 'Whisky']
 	},
 	{
 		id: 'warehouse',
@@ -1370,7 +1341,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'W',
 		description: 'A building used for storing barrels of aging whisky. The materials that the building is constructed from, as well as the location of the barrel in the building, can affect the maturation process. In the U.S., warehouses are often called rickhouses or rackhouses. In Scotland and Ireland, dunnage warehouses are common.',
-		seeAlso: ['Barrel', 'Maturation', 'Whisky']
+		seeAlso: ['Barrel', 'Dunnage Warehouse', 'Maturation', 'Rackhouse', 'Whisky']
 	},
 	{
 		id: 'warehouse-rotation',
@@ -1378,7 +1349,7 @@ export const LEXICON_TERMS = [
 		category: 'Maturation & Wood',
 		letter: 'W',
 		description: 'Moving barrels to different locations within or between warehouses during maturation to ensure consistent aging across a large production batch. Common in bourbon (e.g., Buffalo Trace practice).',
-		seeAlso: ['Bourbon', 'Maturation']
+		seeAlso: ['Barrel', 'Bourbon', 'Maturation', 'Warehouse']
 	},
 	{
 		id: 'wash',
@@ -1410,7 +1381,7 @@ export const LEXICON_TERMS = [
 		category: 'Styles & Regulations',
 		letter: 'W',
 		description: 'In the U.S., whiskey made from a mash of at least 51% wheat, distilled to no more than 80% ABV, aged in new charred oak at an entry proof of no more than 62.5% ABV, and bottled at no less than 40% ABV.',
-		seeAlso: ['ABV', 'Mash', 'Oak', 'Proof', 'Whiskey']
+		seeAlso: ['ABV', 'Mash', 'Oak', 'Proof', 'Whisky']
 	},
 	{
 		id: 'wheated-bourbon',
@@ -1421,20 +1392,12 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Bourbon', 'Rye', 'Wheat Whiskey']
 	},
 	{
-		id: 'whiskey',
-		name: 'Whiskey',
-		category: 'Styles & Regulations',
-		letter: 'W',
-		description: 'A distilled spirit made from fermented grain and typically matured in wooden containers for some period of time. Whisky can be made anywhere in the world. Certain countries—like Scotland, Ireland, the United States, and Canada—have regulations that govern its production. Also spelled "whisky."',
-		seeAlso: ['Whisky']
-	},
-	{
 		id: 'whisky',
 		name: 'Whisky',
 		category: 'Styles & Regulations',
 		letter: 'W',
-		description: 'A distilled spirit made from fermented grain and typically matured in wooden containers for some period of time. Whisky can be made anywhere in the world. Certain countries—like Scotland, Ireland, the United States, and Canada—have regulations that govern its production. Also spelled "whiskey."',
-		seeAlso: ['Whiskey']
+		description: 'A distilled spirit made from fermented grain and typically matured in wooden containers for some period of time. Whisky can be made anywhere in the world. Certain countries, like Scotland, Ireland, the United States, and Canada, have regulations that govern its production. Whisky is the usual spelling in Scotland, Canada, and Japan, while whiskey is the usual spelling in Ireland and the United States.',
+		aliases: ['Whiskey']
 	},
 	{
 		id: 'whisky-thief',
