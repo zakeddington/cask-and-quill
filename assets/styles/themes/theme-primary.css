@@ -1,0 +1,9 @@
+/* Primary theme — dark brown-900 background */
+.theme-primary {
+	--color-background-primary: var(--color-palette-brown-900);
+	--color-border-primary: var(--color-palette-cream-50-alpha-50);
+	--color-text-primary: var(--color-palette-cream-50);
+	--color-text-secondary: var(--color-palette-cream-50-alpha-80);
+	background-color: var(--color-background-primary);
+	color: var(--color-text-secondary);
+}

@@ -12,3 +12,4 @@
 @import "components/regions/index.css" layer(components);
 @import "utilities.css" layer(utilities);
 @import "themes/theme-accent.css" layer(themes);
+@import "themes/theme-primary.css" layer(themes);

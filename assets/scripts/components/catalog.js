@@ -297,7 +297,7 @@ export class Catalog {
 				<div class="catalog-group-heading">
 					<h2>${html(group)}</h2>
 				</div>
-				<div class="catalog-column-headings theme-accent" aria-hidden="true">
+				<div class="catalog-column-headings theme-primary" aria-hidden="true">
 					<span>Fill</span>
 					<span>Category/Type</span>
 					<span>Brand/Bottle</span>
