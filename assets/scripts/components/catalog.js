@@ -207,8 +207,27 @@ export class Catalog {
 	}
 
 	toggleBottle(id) {
-		this.expandedId = this.expandedId === id ? null : id;
-		this.render();
+		const previousId = this.expandedId;
+		this.expandedId = previousId === id ? null : id;
+
+		if (previousId) {
+			this.setBottleExpanded(previousId, false);
+		}
+		if (this.expandedId) {
+			this.setBottleExpanded(this.expandedId, true);
+		}
+	}
+
+	setBottleExpanded(id, expanded) {
+		const trigger = this.catalogList.querySelector(`.catalog-accordion-trigger[data-bottle-id="${CSS.escape(id)}"]`);
+		if (!trigger) return;
+
+		const article = trigger.closest('.catalog-bottle');
+		const panel = article?.querySelector('.catalog-panel');
+
+		article?.classList.toggle('is-open', expanded);
+		trigger.setAttribute('aria-expanded', String(expanded));
+		panel?.setAttribute('aria-hidden', String(!expanded));
 	}
 
 	openModal(id) {
@@ -278,7 +297,7 @@ export class Catalog {
 				<div class="catalog-group-heading">
 					<h2>${html(group)}</h2>
 				</div>
-				<div class="catalog-column-headings" aria-hidden="true">
+				<div class="catalog-column-headings theme-accent" aria-hidden="true">
 					<span>Fill</span>
 					<span>Category/Type</span>
 					<span>Brand/Bottle</span>
@@ -423,7 +442,7 @@ export class Catalog {
 				${TASTING_NOTE_FIELDS.map(field => `
 					<div>
 						<h5>${html(field.label)}</h5>
-						<p class="text-body-sm">${html(notes?.[field.name])}</p>
+						<p>${html(notes?.[field.name])}</p>
 					</div>
 				`).join('')}
 			</div>
