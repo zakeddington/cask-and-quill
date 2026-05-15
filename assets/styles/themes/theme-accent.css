@@ -4,6 +4,7 @@
 	--color-border-primary: var(--color-palette-cream-50-alpha-50);
 	--color-text-primary: var(--color-palette-cream-50-alpha-80);
 	--color-text-secondary: var(--color-palette-white);
+	--color-text-accent: var(--color-palette-white);
 	background-color: var(--color-background-primary);
 	color: var(--color-text-primary);
 }

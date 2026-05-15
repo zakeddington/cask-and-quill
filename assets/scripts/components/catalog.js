@@ -224,8 +224,10 @@ export class Catalog {
 
 		const article = trigger.closest('.catalog-bottle');
 		const panel = article?.querySelector('.catalog-panel');
+		const heading = article?.querySelector('.catalog-bottle-heading');
 
 		article?.classList.toggle('is-open', expanded);
+		heading?.classList.toggle('theme-accent', expanded);
 		trigger.setAttribute('aria-expanded', String(expanded));
 		panel?.setAttribute('aria-hidden', String(!expanded));
 	}
@@ -319,7 +321,7 @@ export class Catalog {
 
 		return `
 			<article class="catalog-bottle${isOpen ? ' is-open' : ''}">
-				<h3 class="catalog-bottle-heading">
+				<h3 class="catalog-bottle-heading${isOpen ? ' theme-accent' : ''}">
 					<button
 						aria-controls="${html(panelId)}"
 						aria-expanded="${isOpen}"
@@ -328,21 +330,21 @@ export class Catalog {
 						id="${html(triggerId)}"
 						type="button"
 					>
-						<span class="catalog-fill catalog-fill-${html(bottle.fill)}">${html(getFillLabel(bottle.fill))}</span>
-						<span class="catalog-category-type">
-							<span>${html(bottle.category)}</span>
-							<span>${html(bottle.type)}</span>
+						<span class="catalog-bottle-heading-col catalog-fill-${html(bottle.fill)}">${html(getFillLabel(bottle.fill))}</span>
+						<span class="catalog-bottle-heading-col">
+							<span class="text-heading-sm">${html(bottle.category)}</span>
+							<span class="text-body-md text-color-secondary">${html(bottle.type)}</span>
 						</span>
-						<span class="catalog-title-block">
-							<span class="catalog-brand">${html(bottle.brand)}</span>
-							<span class="catalog-bottle-name">${html(bottle.bottle)}</span>
+						<span class="catalog-bottle-heading-col">
+							<span class="text-heading-md">${html(bottle.brand)}</span>
+							<span class="text-heading-sm text-color-accent">${html(bottle.bottle)}</span>
 						</span>
-						<span class="catalog-specs">
+						<span class="catalog-bottle-heading-col text-body-xs">
 							<span>${html(bottle.age)}</span>
 							<span>${html(bottle.abv)} ABV</span>
 							<span>${html(bottle.proof)} Proof</span>
 						</span>
-						<span class="catalog-cask-summary">${html(bottle.cask)}</span>
+						<span class="catalog-bottle-heading-col text-body-sm text-color-secondary">${html(bottle.cask)}</span>
 						<span class="catalog-journal-status">
 							${this.renderJournalIcon(bottle)}
 							<span class="catalog-accordion-icon" aria-hidden="true">▼</span>

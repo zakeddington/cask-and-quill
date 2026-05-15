@@ -1,5 +1,6 @@
 .catalog-detail-grid {
 	background: var(--color-palette-brown-700-alpha-10);
+	border-top: 2px solid var(--color-border-accent);
 	display: grid;
 	gap: 2rem;
 	padding: 0 1rem 1.5rem;
