@@ -100,7 +100,7 @@ export const CATALOG_BOTTLES = [
 		distillery: 'Ardbeg',
 		corpOwner: 'LVMH',
 		origin: 'Islay, Scotland',
-		char: '#4',
+		char: 'N/A',
 		mashBill: {
 			corn: 0,
 			barley: 100,

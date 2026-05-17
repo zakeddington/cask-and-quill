@@ -394,9 +394,6 @@ export class Catalog {
 			{ label: 'Distillery', value: bottle.distillery },
 			{ label: 'Corp. Owner', value: bottle.corpOwner },
 			{ label: 'Origin', value: bottle.origin },
-			// { label: 'Category', value: bottle.category },
-			// { label: 'Type', value: bottle.type },
-			{ label: 'Char', value: bottle.char }
 		];
 
 		return `
@@ -405,7 +402,7 @@ export class Catalog {
 					<h4 class="text-body-md text-color-secondary">Brand Details</h4>
 					<dl class="catalog-detail-list">
 						${details.map(item => `
-							<div>
+							<div class="catalog-detail-list-item">
 								<dt>${html(item.label)}</dt>
 								<dd>${html(item.value)}</dd>
 							</div>
@@ -415,7 +412,7 @@ export class Catalog {
 				</section>
 				<section class="catalog-detail-block">
 					<h4 class="text-body-md text-color-secondary">Mash Bill</h4>
-					${this.renderMashBill(bottle.mashBill)}
+					${this.renderMashBill(bottle.mashBill, bottle.char)}
 				</section>
 				<section class="catalog-detail-block catalog-tasting-block">
 					<h4 class="text-label">Journal</h4>
@@ -425,15 +422,19 @@ export class Catalog {
 		`;
 	}
 
-	renderMashBill(mashBill) {
+	renderMashBill(mashBill, char) {
 		return `
-			<dl class="catalog-mash-list">
+			<dl class="catalog-detail-list is-horizontal">
 				${MASH_BILL_FIELDS.map(field => `
-					<div class="${Number(mashBill?.[field.name]) === 0 ? 'is-muted' : ''}">
+					<div class="catalog-detail-list-item ${Number(mashBill?.[field.name]) === 0 ? 'is-muted' : ''}">
 						<dt>${html(field.label)}</dt>
 						<dd>${html(mashBill?.[field.name] ?? 0)}%</dd>
 					</div>
 				`).join('')}
+				<div class="catalog-detail-list-item ${char === 'N/A' ? 'is-muted' : ''}">
+					<dt>Char Level</dt>
+					<dd>${html(char)}</dd>
+				</div>
 			</dl>
 		`;
 	}
