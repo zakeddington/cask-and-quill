@@ -22,11 +22,11 @@ const FILL_OPTIONS = [
 ];
 
 const FILL_ICON_CONFIG = {
-	'plenty': { icon: 'water-drop', colorClass: 'catalog-fill-plenty' },
-	'average': { icon: 'water-drop', colorClass: 'catalog-fill-average' },
-	'low': { icon: 'water-drop', colorClass: 'catalog-fill-low' },
-	'extremely-low': { icon: 'exclamation-mark', colorClass: 'catalog-fill-extremely-low' },
-	'bottle-kill': { icon: 'drop-slash', colorClass: 'catalog-fill-bottle-kill' }
+	'plenty': { icon: 'icon-water-drop', colorClass: 'catalog-fill-plenty' },
+	'average': { icon: 'icon-water-drop', colorClass: 'catalog-fill-average' },
+	'low': { icon: 'icon-water-drop', colorClass: 'catalog-fill-low' },
+	'extremely-low': { icon: 'icon-exclamation-mark', colorClass: 'catalog-fill-extremely-low' },
+	'bottle-kill': { icon: 'icon-drop-slash', colorClass: 'catalog-fill-bottle-kill' }
 };
 
 const SPEC_FIELDS = [
@@ -34,25 +34,25 @@ const SPEC_FIELDS = [
 	{ name: 'age', label: 'Age' },
 	{ name: 'abv', label: 'ABV' },
 	{ name: 'proof', label: 'Proof' },
-	{ name: 'char', label: 'Char Level', icon: 'barrel' },
+	{ name: 'char', label: 'Char Level', icon: 'icon-barrel' },
 	{ name: 'cask', label: 'Cask / Finish / Notes', multiline: true }
 ];
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
 const MASH_BILL_FIELDS = [
-	{ name: 'corn', label: 'Corn', icon: 'corn' },
-	{ name: 'barley', label: 'Barley', icon: 'barley' },
-	{ name: 'maltedBarley', label: 'Malted Barley', icon: 'barley' },
-	{ name: 'rye', label: 'Rye', icon: 'rye' },
-	{ name: 'maltedRye', label: 'Malted Rye', icon: 'rye' },
-	{ name: 'wheat', label: 'Wheat', icon: 'wheat' }
+	{ name: 'corn', label: 'Corn', icon: 'icon-corn' },
+	{ name: 'barley', label: 'Barley', icon: 'icon-barley' },
+	{ name: 'maltedBarley', label: 'Malted Barley', icon: 'icon-barley' },
+	{ name: 'rye', label: 'Rye', icon: 'icon-rye' },
+	{ name: 'maltedRye', label: 'Malted Rye', icon: 'icon-rye' },
+	{ name: 'wheat', label: 'Wheat', icon: 'icon-wheat' }
 ];
 
 const TASTING_NOTE_FIELDS = [
-	{ name: 'nose', label: 'Nose' },
-	{ name: 'palate', label: 'Palate' },
-	{ name: 'finish', label: 'Finish' }
+	{ name: 'nose', label: 'Nose', icon: 'icon-wind' },
+	{ name: 'palate', label: 'Palate', icon: 'icon-wine' },
+	{ name: 'finish', label: 'Finish', icon: 'icon-clock-countdown' }
 ];
 
 function cloneBottles(bottles) {
@@ -388,7 +388,7 @@ export class Catalog {
 		if (!icon) return `<span>${html(label)}</span>`;
 		return `
 			<span class="catalog-fill-icon ${html(colorClass)}" aria-label="${html(label)}" role="img">
-				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-${html(icon)}"></use></svg>
+				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${html(icon)}"></use></svg>
 			</span>
 		`;
 	}
@@ -429,7 +429,7 @@ export class Catalog {
 					${this.renderMashBill(bottle.mashBill, bottle.char)}
 				</section>
 				<section class="catalog-detail-block catalog-tasting-block">
-					<h4 class="text-label">Journal</h4>
+					<h4 class="text-body-md text-color-secondary">Journal</h4>
 					${this.renderTastingNotes(bottle.tastingNotes)}
 				</section>
 				<div class="catalog-detail-actions">
@@ -444,7 +444,7 @@ export class Catalog {
 			<dl class="catalog-detail-list is-horizontal">
 				${MASH_BILL_FIELDS.map(field => `
 					<div class="catalog-detail-list-item ${Number(mashBill?.[field.name]) === 0 ? 'is-muted' : ''}">
-						<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-${field.icon}"></use></svg>
+						<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
 						<dt>${html(field.label)}</dt>
 						<dd>${html(mashBill?.[field.name] ?? 0)}%</dd>
 					</div>
@@ -463,7 +463,10 @@ export class Catalog {
 			<div class="catalog-tasting-notes">
 				${TASTING_NOTE_FIELDS.map(field => `
 					<div>
-						<h5>${html(field.label)}</h5>
+						<h5>
+							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
+							${html(field.label)}
+						</h5>
 						<p>${html(notes?.[field.name])}</p>
 					</div>
 				`).join('')}
