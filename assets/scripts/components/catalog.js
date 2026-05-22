@@ -497,8 +497,14 @@ export class Catalog {
 					</div>
 
 					<footer class="catalog-modal-footer">
-						<button class="button-secondary" type="button" data-close-modal>Cancel</button>
-						<button class="button-primary" type="submit">Save Changes</button>
+						<div>
+							<button class="button-tertiary" type="button" data-close-modal>Delete Bottle</button>
+						</div>
+						<div>
+							<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>
+							<button class="button-secondary" type="button" data-close-modal>Cancel</button>
+							<button class="button-primary" type="submit">Save Changes</button>
+						</div>
 					</footer>
 				</form>
 			</div>

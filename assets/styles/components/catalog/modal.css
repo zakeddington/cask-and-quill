@@ -171,5 +171,5 @@
 .catalog-modal-footer {
 	align-items: center;
 	border-top: 1px solid var(--color-border-primary);
-	justify-content: end;
+	justify-content: space-between;
 }
