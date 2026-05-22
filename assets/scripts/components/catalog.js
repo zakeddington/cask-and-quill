@@ -28,6 +28,12 @@ function hasJournalContent(bottle) {
 	return TASTING_NOTE_FIELDS.some(field => String(bottle.tastingNotes?.[field.name] ?? '').trim());
 }
 
+function parseAge(age) {
+	const first = String(age ?? '').replace(/[()]/g, '').split('-')[0].trim();
+	const n = parseFloat(first);
+	return Number.isFinite(n) ? n : 0;
+}
+
 export class Catalog {
 	constructor() {
 		this.catalogList = document.getElementById('catalog-list');
@@ -230,12 +236,13 @@ export class Catalog {
 
 	renderGroup(group, bottles) {
 		const sortedBottles = [...bottles].sort((a, b) => {
-			if (this.abvSort) {
-				const abvA = parseFloat(a.abv) || 0;
-				const abvB = parseFloat(b.abv) || 0;
-				return this.abvSort === 'abv-asc' ? abvA - abvB : abvB - abvA;
+			switch (this.abvSort) {
+				case 'abv-asc': return (parseFloat(a.abv) || 0) - (parseFloat(b.abv) || 0);
+				case 'abv-desc': return (parseFloat(b.abv) || 0) - (parseFloat(a.abv) || 0);
+				case 'age-asc': return parseAge(a.age) - parseAge(b.age);
+				case 'age-desc': return parseAge(b.age) - parseAge(a.age);
+				default: return `${a.brand} ${a.bottle}`.localeCompare(`${b.brand} ${b.bottle}`);
 			}
-			return `${a.brand} ${a.bottle}`.localeCompare(`${b.brand} ${b.bottle}`);
 		});
 
 		return `
