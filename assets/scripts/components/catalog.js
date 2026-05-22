@@ -34,7 +34,7 @@ export class Catalog {
 		this.catalogCount = document.getElementById('catalog-count');
 		const modalRoot = document.getElementById('catalog-modal-root');
 		this.bottles = this.loadBottles();
-		this.expandedId = this.bottles[0]?.id || null;
+		this.expandedId = null;
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
