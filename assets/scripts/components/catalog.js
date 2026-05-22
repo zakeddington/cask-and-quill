@@ -192,8 +192,8 @@ export class Catalog {
 				</div>
 				<div class="catalog-column-headings theme-primary" aria-hidden="true">
 					<span>Fill</span>
-					<span>Category/Type</span>
 					<span>Brand/Bottle</span>
+					<span>Category/Type</span>
 					<span>Specs</span>
 					<span>Cask/Finish/Notes</span>
 					<span>Journal</span>
@@ -223,12 +223,12 @@ export class Catalog {
 					>
 						<span class="catalog-bottle-heading-col">${this.renderFillIcon(bottle.fill)}</span>
 						<span class="catalog-bottle-heading-col">
-							<span class="text-heading-sm text-color-accent">${html(bottle.category)}</span>
-							<span class="text-body-md">${html(bottle.type)}</span>
-						</span>
-						<span class="catalog-bottle-heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
 							<span class="text-body-md">${html(bottle.bottle)}</span>
+						</span>
+						<span class="catalog-bottle-heading-col">
+							<span class="text-heading-sm text-color-accent">${html(bottle.category)}</span>
+							<span class="text-body-md">${html(bottle.type)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col text-color-accent text-body-xs">
 							<span>${html(bottle.age)}</span>
@@ -320,13 +320,19 @@ export class Catalog {
 	renderMashBill(mashBill, char) {
 		return `
 			<dl class="catalog-detail-list is-horizontal">
-				${MASH_BILL_FIELDS.map(field => `
-					<div class="catalog-detail-list-item ${Number(mashBill?.[field.name]) === 0 ? 'is-muted' : ''}">
+				${MASH_BILL_FIELDS.map(field => {
+					const raw = String(mashBill?.[field.name] ?? '');
+					const estimated = raw.startsWith('(') && raw.endsWith(')');
+					const display = estimated ? raw.slice(1, -1) : raw;
+					const muted = !display || display === '0';
+					const classes = [muted ? 'is-muted' : '', estimated ? 'is-estimated' : ''].filter(Boolean).join(' ');
+					return `
+					<div class="catalog-detail-list-item ${classes}">
 						<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
 						<dt>${html(field.label)}</dt>
-						<dd>${html(mashBill?.[field.name] ?? 0)}%</dd>
-					</div>
-				`).join('')}
+						<dd>${html(display || '0')}%</dd>
+					</div>`;
+				}).join('')}
 				<div class="catalog-detail-list-item ${char === 'N/A' ? 'is-muted' : ''}">
 					<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-barrel"></use></svg>
 					<dt>Char Level</dt>

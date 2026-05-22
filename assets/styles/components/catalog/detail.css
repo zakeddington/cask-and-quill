@@ -56,6 +56,16 @@
 		color: var(--color-text-muted);
 	}
 
+	&.is-estimated dd {
+		&::before {
+			content: '(';
+		}
+
+		&::after {
+			content: ')';
+		}
+	}
+
 	.is-horizontal & {
 		align-items: center;
 		border-top: 0;

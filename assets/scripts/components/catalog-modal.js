@@ -15,10 +15,6 @@ function getFormValue(formData, key) {
 	return String(formData.get(key) ?? '').trim();
 }
 
-function getMashBillValue(formData, key) {
-	const value = Number(formData.get(`mashBill.${key}`));
-	return Number.isFinite(value) ? value : 0;
-}
 
 export class CatalogModal {
 	constructor(modalRoot, { onSave }) {
@@ -83,7 +79,7 @@ export class CatalogModal {
 			origin: getFormValue(formData, 'origin'),
 			char: getFormValue(formData, 'char'),
 			mashBill: MASH_BILL_FIELDS.reduce((mashBill, field) => {
-				mashBill[field.name] = getMashBillValue(formData, field.name);
+				mashBill[field.name] = getFormValue(formData, `mashBill.${field.name}`);
 				return mashBill;
 			}, {}),
 			tastingNotes: TASTING_NOTE_FIELDS.reduce((notes, field) => {
@@ -154,9 +150,8 @@ export class CatalogModal {
 				<div class="catalog-form-grid catalog-form-grid-compact">
 					${MASH_BILL_FIELDS.map(field => this.renderField({
 						...field,
-						name: `mashBill.${field.name}`,
-						type: 'number'
-					}, bottle.mashBill?.[field.name] ?? 0)).join('')}
+						name: `mashBill.${field.name}`
+					}, bottle.mashBill?.[field.name] ?? '')).join('')}
 				</div>
 			</fieldset>
 		`;

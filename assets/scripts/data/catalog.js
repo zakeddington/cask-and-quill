@@ -15,12 +15,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -44,12 +44,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Leather, apricot, purple grapes, oreo creme, graham cracker',
@@ -73,12 +73,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -102,12 +102,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -131,12 +131,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -160,12 +160,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -189,12 +189,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -218,12 +218,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Hot baked cherry pie with vanilla ice cream on top,',
@@ -247,12 +247,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -276,12 +276,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -305,12 +305,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -334,12 +334,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Floral, honey, vanilla, hot cocoa powder, apricot,',
@@ -363,12 +363,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -392,12 +392,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -421,12 +421,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Flowers, citrus, marshmallow fluff, honey, light wood, red licorice',
@@ -450,12 +450,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Orkney)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Band-aid peat surrounded by red fruit, strawberry shortcake, dried cranberry',
@@ -479,12 +479,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Island)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -508,12 +508,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(40)',
+			barley: '',
+			maltedBarley: '(60)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -537,12 +537,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(40)',
+			barley: '',
+			maltedBarley: '(60)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -566,12 +566,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -595,12 +595,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -624,12 +624,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -653,12 +653,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -682,12 +682,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cooked apples, like a sherry finish but it\'s not, hot cocoa powder,',
@@ -711,12 +711,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -740,12 +740,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Islay)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -769,12 +769,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Island)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -798,12 +798,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -827,12 +827,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -856,12 +856,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -885,12 +885,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -914,12 +914,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -943,12 +943,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Orange peanuts candy all day, soft lumber, hints of leather, tropical fruit',
@@ -972,12 +972,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(40)',
+			barley: '',
+			maltedBarley: '(60)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1001,12 +1001,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1030,12 +1030,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Highland)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1059,12 +1059,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Scotland (Speyside)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1088,12 +1088,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Antrim)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(40)',
+			barley: '',
+			maltedBarley: '(60)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1117,12 +1117,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Cork)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Honey, pear, flaky pastry, vanilla cream,',
@@ -1146,12 +1146,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Cork)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(20)',
+			barley: '(30)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1175,12 +1175,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Cork)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '(50)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Sweet red fruit, peach cobbler, cream soda',
@@ -1204,12 +1204,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Meath)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1233,12 +1233,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Cork)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '(50)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1262,12 +1262,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (Dublin)',
 		char: 'N/A',
 		mashBill: {
-			corn: 95,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '95',
+			barley: '',
+			maltedBarley: '5',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1291,12 +1291,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (Dublin)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1320,12 +1320,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Butterscotch, caramel, mild rubbing alcohol, peanut brittle',
@@ -1349,12 +1349,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Offaly)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Caramel, buttered toast, grape jelly,',
@@ -1378,12 +1378,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Ireland (County Offaly)',
 		char: 'N/A',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '(20)',
+			maltedBarley: '(50)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1407,12 +1407,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Japan',
 		char: 'N/A',
 		mashBill: {
-			corn: 95,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '95',
+			barley: '',
+			maltedBarley: '5',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1436,12 +1436,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Washington',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Grapefruit, apricot, sweet bread, floral',
@@ -1465,12 +1465,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Colorado',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1494,12 +1494,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Virginia',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1523,12 +1523,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky, Indiana',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '(100)',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1552,12 +1552,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Washington',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1581,12 +1581,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Washington',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1610,12 +1610,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Oregon',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 100,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '100',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1639,12 +1639,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky, Indiana, Tennessee, Canada',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '',
+			maltedBarley: '(13)',
+			rye: '(57)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1668,12 +1668,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '(#4)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '(35)',
+			rye: '(65)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1697,12 +1697,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 35,
-			barley: 0,
-			maltedBarley: 14,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '35',
+			barley: '',
+			maltedBarley: '14',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Grass, mint, root beer,',
@@ -1726,12 +1726,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 35,
-			barley: 0,
-			maltedBarley: 14,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '35',
+			barley: '',
+			maltedBarley: '14',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1755,12 +1755,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 18,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 70,
-			maltedRye: 0,
-			wheat: 0
+			corn: '18',
+			barley: '',
+			maltedBarley: '12',
+			rye: '70',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cherry sour straws, toasted marshmallow, burnt caramel,',
@@ -1784,12 +1784,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 18,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 70,
-			maltedRye: 0,
-			wheat: 0
+			corn: '18',
+			barley: '',
+			maltedBarley: '12',
+			rye: '70',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1813,12 +1813,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 35,
-			barley: 0,
-			maltedBarley: 14,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '35',
+			barley: '',
+			maltedBarley: '14',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Light grassy/mint, vanilla, marshmallow. Mild rye',
@@ -1842,12 +1842,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(33)',
+			barley: '',
+			maltedBarley: '(14)',
+			rye: '(53)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1871,12 +1871,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 95,
-			maltedRye: 5,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '95',
+			maltedRye: '5',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1900,12 +1900,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 15,
-			barley: 0,
-			maltedBarley: 20,
-			rye: 64,
-			maltedRye: 0,
-			wheat: 0
+			corn: '15',
+			barley: '',
+			maltedBarley: '20',
+			rye: '64',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cherry cola, mint, grass, brown sugar, graham cracker. After a sip I get carpet',
@@ -1929,12 +1929,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 15,
-			barley: 0,
-			maltedBarley: 20,
-			rye: 64,
-			maltedRye: 0,
-			wheat: 0
+			corn: '15',
+			barley: '',
+			maltedBarley: '20',
+			rye: '64',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cut grass, lemon, sandlewood soap, cinnamon',
@@ -1958,12 +1958,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '#2',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 95,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '5',
+			rye: '95',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -1987,12 +1987,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 37,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '37',
+			barley: '',
+			maltedBarley: '12',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2016,12 +2016,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'California, Indiana, Kentucky',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(30)',
+			barley: '',
+			maltedBarley: '(13)',
+			rye: '(57)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cut grass, spearmint, sandlewood, bar soap, cinnamon, black licorice and some kind of flower, herbal tea',
@@ -2045,12 +2045,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 37,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '37',
+			barley: '',
+			maltedBarley: '12',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2074,12 +2074,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 37,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '37',
+			barley: '',
+			maltedBarley: '12',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2103,12 +2103,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Maryland',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '0/45',
+			barley: '',
+			maltedBarley: '5/4',
+			rye: '95/51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cut grass, bar soap, green apple, spearmint, cream soda, honey',
@@ -2132,12 +2132,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Texas',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 20,
-			rye: 80,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '20',
+			rye: '80',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2161,12 +2161,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 37,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 51,
-			maltedRye: 0,
-			wheat: 0
+			corn: '37',
+			barley: '',
+			maltedBarley: '12',
+			rye: '51',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Spearmint, green apple, brown sugar, cinnamon, black licorice. After a sip I get sandlewood.',
@@ -2190,12 +2190,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Washington',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 100,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '100',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Lemongrass mint explosion, black cherry gummies, sweet blackberry jam, fruit leather',
@@ -2219,12 +2219,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 37,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 51
+			corn: '37',
+			barley: '',
+			maltedBarley: '12',
+			rye: '',
+			maltedRye: '',
+			wheat: '51'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2248,12 +2248,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 70,
-			barley: 0,
-			maltedBarley: 14,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 16
+			corn: '70',
+			barley: '',
+			maltedBarley: '14',
+			rye: '',
+			maltedRye: '',
+			wheat: '16'
 		},
 		tastingNotes: {
 			nose: 'Strawberry nail polish, sweet oak, sugar donut, hazelnut',
@@ -2277,12 +2277,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 70,
-			barley: 0,
-			maltedBarley: 14,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 16
+			corn: '70',
+			barley: '',
+			maltedBarley: '14',
+			rye: '',
+			maltedRye: '',
+			wheat: '16'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2306,12 +2306,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 68,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 20
+			corn: '68',
+			barley: '',
+			maltedBarley: '12',
+			rye: '',
+			maltedRye: '',
+			wheat: '20'
 		},
 		tastingNotes: {
 			nose: 'Gingerbread, sweet, red fruit, slight cinnamon, vanilla, caramel corn',
@@ -2335,12 +2335,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(76)',
+			barley: '',
+			maltedBarley: '(4)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2364,12 +2364,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(68)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2393,12 +2393,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(68)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2422,12 +2422,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 68,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 20
+			corn: '68',
+			barley: '',
+			maltedBarley: '12',
+			rye: '',
+			maltedRye: '',
+			wheat: '20'
 		},
 		tastingNotes: {
 			nose: 'Musty, grain forward, peanut butter (Evan Williams White Label clone?)',
@@ -2451,12 +2451,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(76)',
+			barley: '',
+			maltedBarley: '(4)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2480,12 +2480,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(76)',
+			barley: '',
+			maltedBarley: '(4)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: 'Grain, skunk (in a good way), cantelope, marshmallow cream, fruit stripe gum',
@@ -2509,12 +2509,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 20,
-			barley: 0,
-			maltedBarley: 20,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 52
+			corn: '20',
+			barley: '',
+			maltedBarley: '20',
+			rye: '18',
+			maltedRye: '',
+			wheat: '52'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2538,12 +2538,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(74)',
+			barley: '',
+			maltedBarley: '(8)',
+			rye: '(18)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2567,12 +2567,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2596,12 +2596,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 77,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '77',
+			barley: '',
+			maltedBarley: '10',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2625,12 +2625,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee, Indiana, Kentucky',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(74)',
+			barley: '',
+			maltedBarley: '(10)',
+			rye: '(16)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2654,12 +2654,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '(13)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2683,12 +2683,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(60)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(25)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2712,12 +2712,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2741,12 +2741,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cherry fruit pie, hint of apple cider vinegar, cedar chest. After tasting vanilla, cream.',
@@ -2770,12 +2770,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Marshmallow, cherry, red berries, cherry wood, fruit punch. After tasting grape big league chew, sandlewood',
@@ -2799,12 +2799,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Marshmallow, vanilla, gingerbread, cinnamon candy, brown sugar, mossy oak, sandlewood, grape bubble gum',
@@ -2828,12 +2828,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2857,12 +2857,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Red berries, grape bubble gum, bar soap, fresh cut fruit wood,',
@@ -2886,12 +2886,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(15)',
+			rye: '(10)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2915,12 +2915,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Washington',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '',
+			barley: '',
+			maltedBarley: '(90)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(10)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -2944,12 +2944,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '(#3)',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 4,
-			rye: 21,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '4',
+			rye: '21',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -2973,12 +2973,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '(#3)',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 4,
-			rye: 21,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '4',
+			rye: '21',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3002,12 +3002,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(74)',
+			barley: '',
+			maltedBarley: '(8)',
+			rye: '(18)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3031,12 +3031,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Marshmallow, cherry. After tasting sandlewood and musty wood is predominant',
@@ -3060,12 +3060,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Marshmallow, cherry, butterscotch, caramel candy, opening an unfinished old wooden jewelry box',
@@ -3089,12 +3089,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3118,12 +3118,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3147,12 +3147,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3176,12 +3176,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3205,12 +3205,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana, Maryland',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(74)',
+			barley: '',
+			maltedBarley: '(10)',
+			rye: '(16)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3234,12 +3234,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(68)',
+			barley: '',
+			maltedBarley: '(5)',
+			rye: '(27)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3263,12 +3263,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(68)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -3292,12 +3292,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(68)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '',
+			maltedRye: '',
+			wheat: '(20)'
 		},
 		tastingNotes: {
 			nose: '',
@@ -3321,12 +3321,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Grain funk in a good way, marshmallow, cherry, sugar cone, dark chocolate, bar soap',
@@ -3350,12 +3350,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '#3',
 		mashBill: {
-			corn: 70,
-			barley: 0,
-			maltedBarley: 8,
-			rye: 22,
-			maltedRye: 0,
-			wheat: 0
+			corn: '70',
+			barley: '',
+			maltedBarley: '8',
+			rye: '22',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3379,12 +3379,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3408,12 +3408,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Utah, Indiana, Kentucky, Scotland',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(45)',
+			barley: '',
+			maltedBarley: '(25)',
+			rye: '(30)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3437,12 +3437,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3466,12 +3466,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3495,12 +3495,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3524,12 +3524,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Banana cream, toasted marshmallow, cherry cough drop, graham cracker',
@@ -3553,12 +3553,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '#3',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Banana cream, vanilla oreo cookies, marshmallow, cherry cough drop',
@@ -3582,12 +3582,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 78,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 10,
-			maltedRye: 0,
-			wheat: 0
+			corn: '78',
+			barley: '',
+			maltedBarley: '12',
+			rye: '10',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3611,12 +3611,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3640,12 +3640,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3669,12 +3669,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Peanuts, vanilla, oak, hint of berries, something sweet and musty, caramel',
@@ -3698,12 +3698,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Oak, leather, caramel, vanilla, dried red fruit',
@@ -3727,12 +3727,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Oak, Caramel, roses and marshmallow when backing nose away, peanut when putting nose in deep, cherry',
@@ -3756,12 +3756,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(56)',
+			barley: '',
+			maltedBarley: '(10)',
+			rye: '(34)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Caramel, butterscotch, butter, marshmallow, lemon, cantelope',
@@ -3785,12 +3785,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 79,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 11,
-			maltedRye: 0,
-			wheat: 0
+			corn: '79',
+			barley: '',
+			maltedBarley: '10',
+			rye: '11',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -3814,12 +3814,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 79,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 11,
-			maltedRye: 0,
-			wheat: 0
+			corn: '79',
+			barley: '',
+			maltedBarley: '10',
+			rye: '11',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Peach, floral, laffy taffy. After tasting mild clove, bar soap, vanilla, cut grass',
@@ -3843,12 +3843,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(79)',
+			barley: '',
+			maltedBarley: '(10)',
+			rye: '(11)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Apricot, floral, sandlewood, light cinnamon, grassy, earthy',
@@ -3872,12 +3872,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#2',
 		mashBill: {
-			corn: 80,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 8,
-			maltedRye: 0,
-			wheat: 0
+			corn: '80',
+			barley: '',
+			maltedBarley: '12',
+			rye: '8',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Rubbing alcohol overwhelms on first sniff then turns into grape bubble gum, toasted marshmallow, vanilla Oreos. After tasting, graham crackers, grain dust',
@@ -3901,12 +3901,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 65,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 30,
-			maltedRye: 0,
-			wheat: 0
+			corn: '65',
+			barley: '',
+			maltedBarley: '5',
+			rye: '30',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Orange zest, rye grass spice, toffee, leather briefcase, sweet caramel,',
@@ -3930,12 +3930,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Black cherry cola, leatherbound book, tobacco. After tasting spicy grass',
@@ -3959,12 +3959,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cherry cola/cough syrup, dusty barn/grain, black pepper, leather, brown sugar, chocolate covered coffee beans',
@@ -3988,12 +3988,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4017,12 +4017,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4046,12 +4046,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cherry cola, spearmint citrus, leather. After tasting brownie, vanilla, marshmallow',
@@ -4075,12 +4075,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4104,12 +4104,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4133,12 +4133,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 63,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 27,
-			maltedRye: 0,
-			wheat: 0
+			corn: '63',
+			barley: '',
+			maltedBarley: '10',
+			rye: '27',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4162,12 +4162,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '#1',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 4,
-			rye: 21,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '4',
+			rye: '21',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4191,12 +4191,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4220,12 +4220,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4249,12 +4249,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Colorado',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(70)',
+			barley: '',
+			maltedBarley: '(10)',
+			rye: '(20)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Raisin, corn dust, molasses, vanilla,',
@@ -4278,12 +4278,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Texas',
 		char: '#3',
 		mashBill: {
-			corn: 70,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 25,
-			maltedRye: 0,
-			wheat: 0
+			corn: '70',
+			barley: '',
+			maltedBarley: '5',
+			rye: '25',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4307,12 +4307,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Texas',
 		char: '#3',
 		mashBill: {
-			corn: 70,
-			barley: 0,
-			maltedBarley: 5,
-			rye: 25,
-			maltedRye: 0,
-			wheat: 0
+			corn: '70',
+			barley: '',
+			maltedBarley: '5',
+			rye: '25',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4336,12 +4336,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Tennessee',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(80)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '(8)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Nail polish, marker, green apple, colored marshmallows, sugar, nutty',
@@ -4365,12 +4365,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '(#4)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '(75)',
+			barley: '',
+			maltedBarley: '(12)',
+			rye: '(13)',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4394,12 +4394,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Texas',
 		char: '(#3)',
 		mashBill: {
-			corn: 0,
-			barley: 0,
-			maltedBarley: 0,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 0
+			corn: '74 / 0',
+			barley: '',
+			maltedBarley: '12 / 0',
+			rye: '14 / 85',
+			maltedRye: '0 / 15',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Green apple, butterscotch, caramel/brown sugar, slight coconut, slight grassy rye,',
@@ -4423,12 +4423,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 15,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '10',
+			rye: '15',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4452,12 +4452,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#3',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 15,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '10',
+			rye: '15',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4481,12 +4481,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4510,12 +4510,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4539,12 +4539,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 75,
-			barley: 0,
-			maltedBarley: 12,
-			rye: 13,
-			maltedRye: 0,
-			wheat: 0
+			corn: '75',
+			barley: '',
+			maltedBarley: '12',
+			rye: '13',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: 'Cornbread, peach pie, tobacco, lemon zest, cinnamon, wintergreen mint',
@@ -4568,12 +4568,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4597,12 +4597,12 @@ export const CATALOG_BOTTLES = [
 		origin: 'Kentucky',
 		char: '#4',
 		mashBill: {
-			corn: 72,
-			barley: 0,
-			maltedBarley: 10,
-			rye: 18,
-			maltedRye: 0,
-			wheat: 0
+			corn: '72',
+			barley: '',
+			maltedBarley: '10',
+			rye: '18',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
@@ -4626,12 +4626,128 @@ export const CATALOG_BOTTLES = [
 		origin: 'Indiana',
 		char: '(#3)',
 		mashBill: {
-			corn: 51,
-			barley: 0,
-			maltedBarley: 4,
-			rye: 0,
-			maltedRye: 0,
-			wheat: 45
+			corn: '51',
+			barley: '',
+			maltedBarley: '4',
+			rye: '',
+			maltedRye: '',
+			wheat: '45'
+		},
+		tastingNotes: {
+			nose: '',
+			palate: '',
+			finish: ''
+		}
+	},
+	{
+		id: '0161',
+		fill: 'plenty',
+		category: '',
+		type: '',
+		brand: 'Plenty',
+		bottle: '',
+		age: 'XX official age',
+		abv: '',
+		proof: '',
+		cask: '',
+		distillery: '',
+		corpOwner: '',
+		origin: '',
+		char: '',
+		mashBill: {
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
+		},
+		tastingNotes: {
+			nose: '',
+			palate: '',
+			finish: ''
+		}
+	},
+	{
+		id: '0162',
+		fill: 'average',
+		category: '',
+		type: '',
+		brand: 'Average',
+		bottle: '',
+		age: 'XX-XX range',
+		abv: '',
+		proof: '',
+		cask: '',
+		distillery: '',
+		corpOwner: '',
+		origin: '',
+		char: '',
+		mashBill: {
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
+		},
+		tastingNotes: {
+			nose: '',
+			palate: '',
+			finish: ''
+		}
+	},
+	{
+		id: '0163',
+		fill: 'low',
+		category: '',
+		type: '',
+		brand: 'Low',
+		bottle: '',
+		age: 'XX.XX yrs.mos',
+		abv: '',
+		proof: '',
+		cask: '',
+		distillery: '',
+		corpOwner: '',
+		origin: '',
+		char: '',
+		mashBill: {
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
+		},
+		tastingNotes: {
+			nose: '',
+			palate: '',
+			finish: ''
+		}
+	},
+	{
+		id: '0164',
+		fill: 'extremely-low',
+		category: '',
+		type: '',
+		brand: 'Extremely Low',
+		bottle: '',
+		age: '(XX) assumed age',
+		abv: '',
+		proof: '',
+		cask: '',
+		distillery: '',
+		corpOwner: '',
+		origin: '',
+		char: '',
+		mashBill: {
+			corn: '',
+			barley: '',
+			maltedBarley: '',
+			rye: '',
+			maltedRye: '',
+			wheat: ''
 		},
 		tastingNotes: {
 			nose: '',
