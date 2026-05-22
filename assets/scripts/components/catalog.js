@@ -33,10 +33,12 @@ export class Catalog {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
 		this.searchInput = document.getElementById('catalog-search');
+		this.filterSelect = document.getElementById('catalog-filter');
 		const modalRoot = document.getElementById('catalog-modal-root');
 		this.bottles = this.loadBottles();
 		this.expandedId = null;
 		this.searchQuery = '';
+		this.fillFilter = '';
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
@@ -46,6 +48,7 @@ export class Catalog {
 		if (!this.catalogList) return;
 
 		this.setupEventListeners();
+		this.populateFilterSelect();
 		this.render();
 	}
 
@@ -53,6 +56,17 @@ export class Catalog {
 		this.catalogList.addEventListener('click', event => this.handleCatalogClick(event));
 		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
 		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
+		this.filterSelect?.addEventListener('change', event => this.handleFilterChange(event));
+	}
+
+	populateFilterSelect() {
+		if (!this.filterSelect) return;
+		FILL_OPTIONS.forEach(option => {
+			const el = document.createElement('option');
+			el.value = option.value;
+			el.textContent = option.label;
+			this.filterSelect.appendChild(el);
+		});
 	}
 
 	loadBottles() {
@@ -120,6 +134,11 @@ export class Catalog {
 		this.render();
 	}
 
+	handleFilterChange(event) {
+		this.fillFilter = event.target.value;
+		this.render();
+	}
+
 	handleSave(updatedBottle) {
 		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
 		this.saveBottles();
@@ -157,10 +176,12 @@ export class Catalog {
 	}
 
 	getFilteredBottles() {
-		if (!this.searchQuery) return this.bottles;
-		return this.bottles.filter(bottle =>
-			`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.searchQuery)
-		);
+		return this.bottles.filter(bottle => {
+			const matchesSearch = !this.searchQuery ||
+				`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.searchQuery);
+			const matchesFill = !this.fillFilter || bottle.fill === this.fillFilter;
+			return matchesSearch && matchesFill;
+		});
 	}
 
 	groupBottles(bottles) {
@@ -188,13 +209,14 @@ export class Catalog {
 
 		const total = this.bottles.length;
 		const count = filteredCount ?? total;
-		const suffix = this.searchQuery && count !== total ? ` of ${total}` : '';
+		const isFiltered = this.searchQuery || this.fillFilter;
+		const suffix = isFiltered && count !== total ? ` of ${total}` : '';
 		this.catalogCount.textContent = `${count}${suffix} bottle${total === 1 ? '' : 's'}`;
 	}
 
 	renderEmptyState() {
-		return this.searchQuery
-			? `<div class="catalog-empty-state"><h2>No bottles match your search.</h2></div>`
+		return (this.searchQuery || this.fillFilter)
+			? `<div class="catalog-empty-state"><h2>No bottles match your filters.</h2></div>`
 			: `<div class="catalog-empty-state"><h2>No bottles logged yet.</h2></div>`;
 	}
 
