@@ -34,6 +34,10 @@
 				<div class="hero-heading grid-col-md-12 grid-col-lg-7">
 					<h1 class="hero-title">Catalog</h1>
 					<p>A working ledger of bottles, production notes, mash bills, and tasting impressions from the private collection.</p>
+					<button class="button-primary">
+						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-plus"></use></svg>
+						Add Bottle
+					</button>
 				</div>
 			</section>
 
@@ -48,7 +52,9 @@
 						</select>
 					</div>
 				</div>
-				<p id="catalog-count" class="catalog-count text-body-sm">0 bottles</p>
+				<div class="catalog-controls-row">
+					<p id="catalog-count" class="catalog-count text-heading-md">0 bottles</p>
+				</div>
 			</section>
 
 			<div id="catalog-list" class="catalog-list">

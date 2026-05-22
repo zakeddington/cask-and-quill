@@ -11,12 +11,14 @@
 .catalog-heading {
 	border-bottom: 2px solid var(--color-border-accent);
 	display: grid;
+	gap: 1rem;
 	margin-bottom: 3rem;
 	padding-bottom: 0;
 }
 
 .catalog-controls-row {
 	align-items: center;
+	border-bottom: 1px solid var(--color-border-primary);
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: 1fr;
@@ -80,13 +82,7 @@
 }
 
 .catalog-count {
-	border-top: 1px solid var(--color-border-primary);
-	color: var(--color-text-secondary);
-	font-family: var(--font-sans-serif);
-	font-weight: var(--font-weight-semibold);
 	margin: 0;
-	padding: 0.75rem 0;
-	white-space: nowrap;
 }
 
 .catalog-empty-state {
