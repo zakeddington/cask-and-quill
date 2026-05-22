@@ -32,9 +32,11 @@ export class Catalog {
 	constructor() {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
+		this.searchInput = document.getElementById('catalog-search');
 		const modalRoot = document.getElementById('catalog-modal-root');
 		this.bottles = this.loadBottles();
 		this.expandedId = null;
+		this.searchQuery = '';
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
@@ -50,6 +52,7 @@ export class Catalog {
 	setupEventListeners() {
 		this.catalogList.addEventListener('click', event => this.handleCatalogClick(event));
 		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
+		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
 	}
 
 	loadBottles() {
@@ -112,6 +115,11 @@ export class Catalog {
 		triggers[nextIndex].focus();
 	}
 
+	handleSearch(event) {
+		this.searchQuery = event.target.value.trim().toLowerCase();
+		this.render();
+	}
+
 	handleSave(updatedBottle) {
 		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
 		this.saveBottles();
@@ -148,8 +156,15 @@ export class Catalog {
 		return this.bottles.find(bottle => bottle.id === id);
 	}
 
-	groupBottles() {
-		return this.bottles.reduce((groups, bottle) => {
+	getFilteredBottles() {
+		if (!this.searchQuery) return this.bottles;
+		return this.bottles.filter(bottle =>
+			`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.searchQuery)
+		);
+	}
+
+	groupBottles(bottles) {
+		return bottles.reduce((groups, bottle) => {
 			const key = bottle.category || 'Uncategorized';
 			if (!groups[key]) groups[key] = [];
 			groups[key].push(bottle);
@@ -158,28 +173,29 @@ export class Catalog {
 	}
 
 	render() {
-		const groupedBottles = this.groupBottles();
+		const filtered = this.getFilteredBottles();
+		const groupedBottles = this.groupBottles(filtered);
 		const groupNames = Object.keys(groupedBottles).sort((a, b) => a.localeCompare(b));
 
-		this.renderCount();
+		this.renderCount(filtered.length);
 		this.catalogList.innerHTML = groupNames.length
 			? groupNames.map(group => this.renderGroup(group, groupedBottles[group])).join('')
 			: this.renderEmptyState();
 	}
 
-	renderCount() {
+	renderCount(filteredCount) {
 		if (!this.catalogCount) return;
 
-		const count = this.bottles.length;
-		this.catalogCount.textContent = `${count} bottle${count === 1 ? '' : 's'}`;
+		const total = this.bottles.length;
+		const count = filteredCount ?? total;
+		const suffix = this.searchQuery && count !== total ? ` of ${total}` : '';
+		this.catalogCount.textContent = `${count}${suffix} bottle${total === 1 ? '' : 's'}`;
 	}
 
 	renderEmptyState() {
-		return `
-			<div class="catalog-empty-state">
-				<h2>No bottles logged yet.</h2>
-			</div>
-		`;
+		return this.searchQuery
+			? `<div class="catalog-empty-state"><h2>No bottles match your search.</h2></div>`
+			: `<div class="catalog-empty-state"><h2>No bottles logged yet.</h2></div>`;
 	}
 
 	renderGroup(group, bottles) {
