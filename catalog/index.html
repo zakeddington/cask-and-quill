@@ -47,8 +47,13 @@
 						<input type="search" id="catalog-search" placeholder="Search bottles..." class="catalog-search-input" aria-label="Search bottles">
 					</div>
 					<div class="catalog-filter-controls">
-						<select id="catalog-filter" class="catalog-filter-select" aria-label="Filter catalog">
-							<option value="">Filter</option>
+						<select id="catalog-filter" class="catalog-filter-select" aria-label="Filter by fill level">
+							<option value="">Fill Level</option>
+						</select>
+						<select id="catalog-sort" class="catalog-filter-select" aria-label="Sort by ABV">
+							<option value="">ABV</option>
+							<option value="abv-asc">ABV: Low to High</option>
+							<option value="abv-desc">ABV: High to Low</option>
 						</select>
 					</div>
 				</div>

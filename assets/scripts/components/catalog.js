@@ -34,11 +34,13 @@ export class Catalog {
 		this.catalogCount = document.getElementById('catalog-count');
 		this.searchInput = document.getElementById('catalog-search');
 		this.filterSelect = document.getElementById('catalog-filter');
+		this.sortSelect = document.getElementById('catalog-sort');
 		const modalRoot = document.getElementById('catalog-modal-root');
 		this.bottles = this.loadBottles();
 		this.expandedId = null;
 		this.searchQuery = '';
 		this.fillFilter = '';
+		this.abvSort = '';
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
@@ -57,6 +59,7 @@ export class Catalog {
 		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
 		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
 		this.filterSelect?.addEventListener('change', event => this.handleFilterChange(event));
+		this.sortSelect?.addEventListener('change', event => this.handleSortChange(event));
 	}
 
 	populateFilterSelect() {
@@ -136,6 +139,11 @@ export class Catalog {
 
 	handleFilterChange(event) {
 		this.fillFilter = event.target.value;
+		this.render();
+	}
+
+	handleSortChange(event) {
+		this.abvSort = event.target.value;
 		this.render();
 	}
 
@@ -221,7 +229,14 @@ export class Catalog {
 	}
 
 	renderGroup(group, bottles) {
-		const sortedBottles = [...bottles].sort((a, b) => `${a.brand} ${a.bottle}`.localeCompare(`${b.brand} ${b.bottle}`));
+		const sortedBottles = [...bottles].sort((a, b) => {
+			if (this.abvSort) {
+				const abvA = parseFloat(a.abv) || 0;
+				const abvB = parseFloat(b.abv) || 0;
+				return this.abvSort === 'abv-asc' ? abvA - abvB : abvB - abvA;
+			}
+			return `${a.brand} ${a.bottle}`.localeCompare(`${b.brand} ${b.bottle}`);
+		});
 
 		return `
 			<section class="catalog-group">
