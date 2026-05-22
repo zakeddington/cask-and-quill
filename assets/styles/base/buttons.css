@@ -21,11 +21,6 @@
 		text-transform: uppercase;
 		transition: all 0.3s ease;
 
-		.svg-icon {
-			height: 1.25em;
-			width: 1.25em;
-		}
-
 		&:hover {
 			background-color: var(--color-button-primary-background-hover);
 			border-color: var(--color-button-primary-border-hover);
@@ -37,6 +32,11 @@
 			background-color: var(--color-button-primary-background-active);
 			border-color: var(--color-button-primary-border-active);
 			color: var(--color-button-primary-text-active);
+		}
+
+		.svg-icon {
+			height: 1.25em;
+			width: 1.25em;
 		}
 	}
 
@@ -74,6 +74,11 @@
 			background-color: var(--color-button-tertiary-background);
 			border-bottom: 2px solid var(--color-button-tertiary-border-active);
 			color: var(--color-button-tertiary-text-active);
+		}
+
+		.svg-icon {
+			height: 1.5em;
+			width: 1.5em;
 		}
 	}
 }

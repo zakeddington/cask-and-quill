@@ -1,59 +1,15 @@
 import { CATALOG_BOTTLES } from '../data/catalog.js';
 import { escapeHtml } from '../utils.js';
+import {
+	FILL_OPTIONS,
+	FILL_ICON_CONFIG,
+	MASH_BILL_FIELDS,
+	TASTING_NOTE_FIELDS,
+	SPRITE_URL
+} from './catalog-constants.js';
+import { CatalogModal } from './catalog-modal.js';
 
 const STORAGE_KEY = 'caskAndQuill.catalogDrafts.v1';
-
-const IDENTITY_FIELDS = [
-	{ name: 'brand', label: 'Brand' },
-	{ name: 'bottle', label: 'Bottle' },
-	{ name: 'category', label: 'Category' },
-	{ name: 'type', label: 'Type' },
-	{ name: 'distillery', label: 'Distillery' },
-	{ name: 'corpOwner', label: 'Corp. Owner' },
-	{ name: 'origin', label: 'Origin' },
-];
-
-const FILL_OPTIONS = [
-	{ value: 'plenty', label: 'Plenty' },
-	{ value: 'average', label: 'Average' },
-	{ value: 'low', label: 'Low' },
-	{ value: 'extremely-low', label: 'Extremely Low' },
-	{ value: 'bottle-kill', label: 'Bottle Kill' }
-];
-
-const FILL_ICON_CONFIG = {
-	'plenty': { icon: 'icon-water-drop', colorClass: 'catalog-fill-plenty' },
-	'average': { icon: 'icon-water-drop', colorClass: 'catalog-fill-average' },
-	'low': { icon: 'icon-water-drop', colorClass: 'catalog-fill-low' },
-	'extremely-low': { icon: 'icon-exclamation-mark', colorClass: 'catalog-fill-extremely-low' },
-	'bottle-kill': { icon: 'icon-drop-slash', colorClass: 'catalog-fill-bottle-kill' }
-};
-
-const SPEC_FIELDS = [
-	{ name: 'fill', label: 'Fill', options: FILL_OPTIONS },
-	{ name: 'age', label: 'Age' },
-	{ name: 'abv', label: 'ABV' },
-	{ name: 'proof', label: 'Proof' },
-	{ name: 'char', label: 'Char Level', icon: 'icon-barrel' },
-	{ name: 'cask', label: 'Cask / Finish / Notes', multiline: true }
-];
-
-const SPRITE_URL = '/assets/images/icon-sprite.svg';
-
-const MASH_BILL_FIELDS = [
-	{ name: 'corn', label: 'Corn', icon: 'icon-corn' },
-	{ name: 'barley', label: 'Barley', icon: 'icon-barley' },
-	{ name: 'maltedBarley', label: 'Malted Barley', icon: 'icon-barley' },
-	{ name: 'rye', label: 'Rye', icon: 'icon-rye' },
-	{ name: 'maltedRye', label: 'Malted Rye', icon: 'icon-rye' },
-	{ name: 'wheat', label: 'Wheat', icon: 'icon-wheat' }
-];
-
-const TASTING_NOTE_FIELDS = [
-	{ name: 'nose', label: 'Nose', icon: 'icon-wind' },
-	{ name: 'palate', label: 'Palate', icon: 'icon-wine' },
-	{ name: 'finish', label: 'Finish', icon: 'icon-clock-countdown' }
-];
 
 function cloneBottles(bottles) {
 	return JSON.parse(JSON.stringify(bottles));
@@ -61,15 +17,6 @@ function cloneBottles(bottles) {
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
-}
-
-function getFormValue(formData, key) {
-	return String(formData.get(key) ?? '').trim();
-}
-
-function getMashBillValue(formData, key) {
-	const value = Number(formData.get(`mashBill.${key}`));
-	return Number.isFinite(value) ? value : 0;
 }
 
 function getFillLabel(fill) {
@@ -85,11 +32,12 @@ export class Catalog {
 	constructor() {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
-		this.modalRoot = document.getElementById('catalog-modal-root');
+		const modalRoot = document.getElementById('catalog-modal-root');
 		this.bottles = this.loadBottles();
 		this.expandedId = this.bottles[0]?.id || null;
-		this.editingId = null;
-		this.previousFocus = null;
+		this.modal = modalRoot ? new CatalogModal(modalRoot, {
+			onSave: (bottle) => this.handleSave(bottle)
+		}) : null;
 	}
 
 	init() {
@@ -102,17 +50,6 @@ export class Catalog {
 	setupEventListeners() {
 		this.catalogList.addEventListener('click', event => this.handleCatalogClick(event));
 		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
-
-		if (this.modalRoot) {
-			this.modalRoot.addEventListener('click', event => this.handleModalClick(event));
-			this.modalRoot.addEventListener('submit', event => this.handleModalSubmit(event));
-		}
-
-		document.addEventListener('keydown', event => {
-			if (event.key === 'Escape' && this.editingId) {
-				this.closeModal();
-			}
-		});
 	}
 
 	loadBottles() {
@@ -141,7 +78,8 @@ export class Catalog {
 	handleCatalogClick(event) {
 		const editButton = event.target.closest('[data-catalog-action="edit"]');
 		if (editButton) {
-			this.openModal(editButton.dataset.bottleId);
+			const bottle = this.getBottleById(editButton.dataset.bottleId);
+			if (bottle) this.modal?.open(bottle);
 			return;
 		}
 
@@ -174,48 +112,9 @@ export class Catalog {
 		triggers[nextIndex].focus();
 	}
 
-	handleModalClick(event) {
-		if (event.target.closest('[data-close-modal]')) {
-			this.closeModal();
-		}
-	}
-
-	handleModalSubmit(event) {
-		event.preventDefault();
-
-		const form = event.target;
-		const formData = new FormData(form);
-		const bottle = this.getBottleById(this.editingId);
-		if (!bottle) return;
-
-		const updatedBottle = {
-			...bottle,
-			fill: getFormValue(formData, 'fill'),
-			category: getFormValue(formData, 'category'),
-			type: getFormValue(formData, 'type'),
-			brand: getFormValue(formData, 'brand'),
-			bottle: getFormValue(formData, 'bottle'),
-			age: getFormValue(formData, 'age'),
-			abv: getFormValue(formData, 'abv'),
-			proof: getFormValue(formData, 'proof'),
-			cask: getFormValue(formData, 'cask'),
-			distillery: getFormValue(formData, 'distillery'),
-			corpOwner: getFormValue(formData, 'corpOwner'),
-			origin: getFormValue(formData, 'origin'),
-			char: getFormValue(formData, 'char'),
-			mashBill: MASH_BILL_FIELDS.reduce((mashBill, field) => {
-				mashBill[field.name] = getMashBillValue(formData, field.name);
-				return mashBill;
-			}, {}),
-			tastingNotes: TASTING_NOTE_FIELDS.reduce((notes, field) => {
-				notes[field.name] = getFormValue(formData, `tastingNotes.${field.name}`);
-				return notes;
-			}, {})
-		};
-
+	handleSave(updatedBottle) {
 		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
 		this.saveBottles();
-		this.closeModal();
 		this.render();
 	}
 
@@ -243,27 +142,6 @@ export class Catalog {
 		heading?.classList.toggle('theme-accent', expanded);
 		trigger.setAttribute('aria-expanded', String(expanded));
 		panel?.setAttribute('aria-hidden', String(!expanded));
-	}
-
-	openModal(id) {
-		const bottle = this.getBottleById(id);
-		if (!bottle || !this.modalRoot) return;
-
-		this.editingId = id;
-		this.previousFocus = document.activeElement;
-		this.modalRoot.innerHTML = this.renderModal(bottle);
-		document.body.classList.add('catalog-modal-is-open');
-		this.modalRoot.querySelector('.catalog-modal-close')?.focus();
-	}
-
-	closeModal() {
-		if (!this.modalRoot) return;
-
-		this.modalRoot.innerHTML = '';
-		this.editingId = null;
-		document.body.classList.remove('catalog-modal-is-open');
-		this.previousFocus?.focus?.();
-		this.previousFocus = null;
 	}
 
 	getBottleById(id) {
@@ -470,119 +348,6 @@ export class Catalog {
 						<p>${html(notes?.[field.name])}</p>
 					</div>
 				`).join('')}
-			</div>
-		`;
-	}
-
-	renderModal(bottle) {
-		return `
-			<div class="catalog-modal" role="dialog" aria-modal="true" aria-labelledby="catalog-modal-title">
-				<button class="catalog-modal-overlay" type="button" data-close-modal aria-label="Close edit modal"></button>
-				<form class="catalog-modal-panel" data-catalog-edit-form>
-					<header class="catalog-modal-header">
-						<div>
-							<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>
-							<h2 id="catalog-modal-title">Edit Bottle Entry</h2>
-						</div>
-						<button class="catalog-modal-close" type="button" data-close-modal aria-label="Close edit modal">
-							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
-						</button>
-					</header>
-
-					<div class="catalog-modal-body">
-						${this.renderFieldset('Bottle Identity', IDENTITY_FIELDS, bottle)}
-						${this.renderFieldset('Technical Specs', SPEC_FIELDS, bottle)}
-						${this.renderMashBillFieldset(bottle)}
-						${this.renderTastingFieldset(bottle)}
-					</div>
-
-					<footer class="catalog-modal-footer">
-						<div>
-							<button class="button-tertiary" type="button" data-close-modal>Delete Bottle</button>
-						</div>
-						<div>
-							<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>
-							<button class="button-secondary" type="button" data-close-modal>Cancel</button>
-							<button class="button-primary" type="submit">Save Changes</button>
-						</div>
-					</footer>
-				</form>
-			</div>
-		`;
-	}
-
-	renderFieldset(title, fields, bottle) {
-		return `
-			<fieldset class="catalog-fieldset">
-				<legend>${html(title)}</legend>
-				<div class="catalog-form-grid">
-					${fields.map(field => this.renderField(field, bottle[field.name])).join('')}
-				</div>
-			</fieldset>
-		`;
-	}
-
-	renderMashBillFieldset(bottle) {
-		return `
-			<fieldset class="catalog-fieldset">
-				<legend>Mash Bill</legend>
-				<div class="catalog-form-grid catalog-form-grid-compact">
-					${MASH_BILL_FIELDS.map(field => this.renderField({
-						...field,
-						name: `mashBill.${field.name}`,
-						type: 'number'
-					}, bottle.mashBill?.[field.name] ?? 0)).join('')}
-				</div>
-			</fieldset>
-		`;
-	}
-
-	renderTastingFieldset(bottle) {
-		return `
-			<fieldset class="catalog-fieldset">
-				<legend>Tasting Journal</legend>
-				<div class="catalog-form-stack">
-					${TASTING_NOTE_FIELDS.map(field => this.renderField({
-						...field,
-						name: `tastingNotes.${field.name}`,
-						multiline: true
-					}, bottle.tastingNotes?.[field.name])).join('')}
-				</div>
-			</fieldset>
-		`;
-	}
-
-	renderField(field, value) {
-		if (field.options) {
-			return this.renderRadioField(field, value);
-		}
-
-		const fieldId = `catalog-field-${field.name.replace(/\./g, '-')}`;
-		const input = field.multiline
-			? `<textarea id="${html(fieldId)}" name="${html(field.name)}" rows="4">${html(value)}</textarea>`
-			: `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">`;
-
-		return `
-			<label class="catalog-field ${html(fieldId)}" for="${html(fieldId)}">
-				<span>${html(field.label)}</span>
-				${input}
-			</label>
-		`;
-	}
-
-	renderRadioField(field, value) {
-		const labelId = `catalog-field-${field.name.replace(/\./g, '-')}-label`;
-		return `
-			<div class="catalog-field catalog-field-radio" role="group" aria-labelledby="${html(labelId)}">
-				<span id="${html(labelId)}">${html(field.label)}</span>
-				<div class="catalog-radio-group">
-					${field.options.map(option => `
-						<label class="catalog-radio-option">
-							<input type="radio" name="${html(field.name)}" value="${html(option.value)}"${value === option.value ? ' checked' : ''}>
-							<span>${html(option.label)}</span>
-						</label>
-					`).join('')}
-				</div>
 			</div>
 		`;
 	}
