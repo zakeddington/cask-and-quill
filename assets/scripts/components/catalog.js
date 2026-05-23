@@ -1,4 +1,3 @@
-import { CATALOG_BOTTLES } from '../data/catalog.js';
 import { escapeHtml } from '../utils.js';
 import {
 	FILL_OPTIONS,
@@ -8,12 +7,8 @@ import {
 	SPRITE_URL
 } from './catalog-constants.js';
 import { CatalogModal } from './catalog-modal.js';
-
-const STORAGE_KEY = 'caskAndQuill.catalogDrafts.v1';
-
-function cloneBottles(bottles) {
-	return JSON.parse(JSON.stringify(bottles));
-}
+import { CatalogAuth } from './catalog-auth.js';
+import { fetchBottles, updateBottle } from '../supabase.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -42,21 +37,40 @@ export class Catalog {
 		this.filterSelect = document.getElementById('catalog-filter');
 		this.sortSelect = document.getElementById('catalog-sort');
 		const modalRoot = document.getElementById('catalog-modal-root');
-		this.bottles = this.loadBottles();
+		const authRoot = document.getElementById('catalog-auth-root');
+		this.bottles = [];
 		this.expandedId = null;
 		this.searchQuery = '';
 		this.fillFilter = '';
 		this.abvSort = '';
+		this.isAdmin = false;
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
+		this.auth = authRoot ? new CatalogAuth(authRoot, {
+			onAuthChange: (isAdmin) => {
+				this.isAdmin = isAdmin;
+				this.render();
+			}
+		}) : null;
 	}
 
-	init() {
+	async init() {
 		if (!this.catalogList) return;
 
 		this.setupEventListeners();
 		this.populateFilterSelect();
+
+		const [isAdmin, bottles] = await Promise.all([
+			this.auth?.init() ?? Promise.resolve(false),
+			fetchBottles().catch(err => {
+				window.console.warn('Failed to load bottles from database.', err);
+				return [];
+			})
+		]);
+
+		this.isAdmin = isAdmin;
+		this.bottles = bottles;
 		this.render();
 	}
 
@@ -78,26 +92,11 @@ export class Catalog {
 		});
 	}
 
-	loadBottles() {
+	async saveBottle(bottle) {
 		try {
-			const saved = window.localStorage.getItem(STORAGE_KEY);
-			const parsed = saved ? JSON.parse(saved) : null;
-
-			if (Array.isArray(parsed) && parsed.every(bottle => bottle?.id)) {
-				return parsed;
-			}
+			await updateBottle(bottle);
 		} catch (error) {
-			window.console.warn('Unable to load catalog drafts.', error);
-		}
-
-		return cloneBottles(CATALOG_BOTTLES);
-	}
-
-	saveBottles() {
-		try {
-			window.localStorage.setItem(STORAGE_KEY, JSON.stringify(this.bottles));
-		} catch (error) {
-			window.console.warn('Unable to save catalog drafts.', error);
+			window.console.warn('Failed to save bottle.', error);
 		}
 	}
 
@@ -155,8 +154,8 @@ export class Catalog {
 
 	handleSave(updatedBottle) {
 		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
-		this.saveBottles();
 		this.render();
+		this.saveBottle(updatedBottle);
 	}
 
 	toggleBottle(id) {
@@ -370,9 +369,10 @@ export class Catalog {
 					<h4 class="text-body-md text-color-secondary">Journal</h4>
 					${this.renderTastingNotes(bottle.tastingNotes)}
 				</section>
+				${this.isAdmin ? `
 				<div class="catalog-detail-actions">
 					<button class="catalog-edit-button button-primary" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">Edit Entry</button>
-				</div>
+				</div>` : ''}
 			</div>
 		`;
 	}
