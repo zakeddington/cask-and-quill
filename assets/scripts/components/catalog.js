@@ -7,7 +7,7 @@ import {
 	SPRITE_URL
 } from './catalog-constants.js';
 import { CatalogModal } from './catalog-modal.js';
-import { fetchBottles, updateBottle, deleteBottle } from '../supabase.js';
+import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -36,6 +36,7 @@ export class Catalog {
 		this.filterSelect = document.getElementById('catalog-filter');
 		this.sortSelect = document.getElementById('catalog-sort');
 		const modalRoot = document.getElementById('catalog-modal-root');
+		this.addBtn = document.getElementById('catalog-add-btn');
 		this.bottles = [];
 		this.expandedId = null;
 		this.searchQuery = '';
@@ -74,6 +75,7 @@ export class Catalog {
 		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
 		this.filterSelect?.addEventListener('change', event => this.handleFilterChange(event));
 		this.sortSelect?.addEventListener('change', event => this.handleSortChange(event));
+		this.addBtn?.addEventListener('click', () => this.openAddModal());
 	}
 
 	populateFilterSelect() {
@@ -147,9 +149,38 @@ export class Catalog {
 	}
 
 	handleSave(updatedBottle) {
-		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
+		if (!updatedBottle.id) {
+			const maxId = Math.max(0, ...this.bottles.map(b => parseInt(b.id, 10) || 0));
+			updatedBottle = { ...updatedBottle, id: String(maxId + 1).padStart(4, '0') };
+			this.bottles = [...this.bottles, updatedBottle];
+			insertBottle(updatedBottle).catch(err => window.console.warn('Failed to insert bottle.', err));
+		} else {
+			this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
+			this.saveBottle(updatedBottle);
+		}
 		this.render();
-		this.saveBottle(updatedBottle);
+	}
+
+	openAddModal() {
+		const newBottle = {
+			id: '',
+			fill: '',
+			category: '',
+			type: '',
+			brand: '',
+			bottle: '',
+			age: '',
+			abv: '',
+			proof: '',
+			cask: '',
+			distillery: '',
+			corpOwner: '',
+			origin: '',
+			char: '',
+			mashBill: { corn: '', barley: '', maltedBarley: '', rye: '', maltedRye: '', wheat: '' },
+			tastingNotes: { nose: '', palate: '', finish: '' }
+		};
+		this.modal?.open(newBottle, { isNew: true });
 	}
 
 	handleDelete(id) {
@@ -218,6 +249,7 @@ export class Catalog {
 		const groupedBottles = this.groupBottles(filtered);
 		const groupNames = Object.keys(groupedBottles).sort((a, b) => a.localeCompare(b));
 
+		if (this.addBtn) this.addBtn.hidden = !this.isAdmin;
 		this.renderCount(filtered.length);
 		this.catalogList.innerHTML = groupNames.length
 			? groupNames.map(group => this.renderGroup(group, groupedBottles[group])).join('')

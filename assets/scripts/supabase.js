@@ -1,4 +1,4 @@
-import { createClient } from 'https://esm.run/@supabase/supabase-js@2';
+import { createClient } from '/assets/scripts/vendor/supabase.js';
 
 const SUPABASE_URL = 'https://ksaeybovkdrlbqkfsdqg.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzYWV5Ym92a2RybGJxa2ZzZHFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0OTg3NzcsImV4cCI6MjA5NTA3NDc3N30.OJymkyxqezO8z7BkaHjp9_xeC4K6NVslybCIpruUtxQ';
@@ -61,6 +61,13 @@ export async function updateBottle(bottle) {
 		.from('bottles')
 		.update(toRow(bottle))
 		.eq('id', bottle.id);
+	if (error) throw error;
+}
+
+export async function insertBottle(bottle) {
+	const { error } = await supabase
+		.from('bottles')
+		.insert(toRow(bottle));
 	if (error) throw error;
 }
 

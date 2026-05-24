@@ -36,6 +36,12 @@ export class Regions {
 		trigger.setAttribute('aria-expanded', String(!isExpanded));
 		panel.setAttribute('aria-hidden', String(isExpanded));
 		section.classList.toggle('is-open', !isExpanded);
+
+		if (!isExpanded) {
+			setTimeout(() => {
+				section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}, 350);
+		}
 	}
 
 	handleAccordionKeydown(event, triggers) {

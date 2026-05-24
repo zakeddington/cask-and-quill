@@ -37,8 +37,9 @@ export class CatalogModal {
 		});
 	}
 
-	open(bottle) {
+	open(bottle, { isNew = false } = {}) {
 		this.currentBottle = bottle;
+		this.isNew = isNew;
 		this.previousFocus = document.activeElement;
 		this.modalRoot.innerHTML = this.renderModal(bottle);
 		document.body.classList.add('catalog-modal-is-open');
@@ -89,16 +90,17 @@ export class CatalogModal {
 
 	renderFooter() {
 		return `
+			${this.isNew ? '<div></div>' : `
 			<div>
 				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Bottle
 				</button>
-			</div>
+			</div>`}
 			<div>
-				<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>
+				${this.isNew ? '' : '<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>'}
 				<button class="button-secondary" type="button" data-close-modal>Cancel</button>
-				<button class="button-primary" type="submit">Save Changes</button>
+				<button class="button-primary" type="submit">${this.isNew ? 'Add Bottle' : 'Save Changes'}</button>
 			</div>
 		`;
 	}
@@ -144,8 +146,8 @@ export class CatalogModal {
 				<form class="catalog-modal-panel" data-catalog-edit-form>
 					<header class="catalog-modal-header">
 						<div>
-							<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>
-							<h2 id="catalog-modal-title">Edit Bottle Entry</h2>
+							${this.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
+							<h2 id="catalog-modal-title">${this.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
 						</div>
 						<button class="catalog-modal-close" type="button" data-close-modal aria-label="Close edit modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>

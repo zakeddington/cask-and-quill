@@ -1,0 +1,13 @@
+{
+  "name": "cask-and-quill",
+  "private": true,
+  "scripts": {
+    "build:vendor": "esbuild ./node_modules/@supabase/supabase-js --bundle --format=esm --outfile=assets/scripts/vendor/supabase.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28"
+  }
+}

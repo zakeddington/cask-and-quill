@@ -5,6 +5,8 @@
 }
 
 .region-section {
+	scroll-margin-top: var(--layout-scroll-header-offset);
+
 	@media (min-width: 768px) {
 		margin-bottom: 4rem;
 	}
