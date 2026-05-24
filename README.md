@@ -26,3 +26,7 @@ To modify styles, edit `assets/styles/styles.css`.
 ## Data
 
 Whiskey terms and region data are included directly in `assets/scripts/scripts.js` as JavaScript constants.
+
+## Manual DB Backup
+
+`export PATH="/opt/homebrew/opt/libpq/bin:$PATH" && source .env && npm run backup`
