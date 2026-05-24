@@ -7,6 +7,7 @@ export class CatalogAuth {
 		this.root = root;
 		this.onAuthChange = onAuthChange;
 		this.session = null;
+		this._handleOutsideClick = this._handleOutsideClick.bind(this);
 	}
 
 	async init() {
@@ -20,12 +21,17 @@ export class CatalogAuth {
 	render() {
 		this.root.innerHTML = this.session
 			? `
-				<button class="catalog-auth-button is-signed-in" data-auth-action="logout" aria-label="Sign out (admin)">
-					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
-				</button>`
+				<div class="catalog-auth-user">
+					<button class="catalog-auth-button is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle-fill"></use></svg>
+					</button>
+					<div class="catalog-auth-menu" hidden>
+						<button class="catalog-auth-signout" data-auth-action="logout" type="button">Sign Out</button>
+					</div>
+				</div>`
 			: `
 				<button class="catalog-auth-button" data-auth-action="open-login" aria-label="Admin login">
-					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle"></use></svg>
 				</button>
 				<dialog class="catalog-auth-dialog" id="catalog-auth-dialog" aria-labelledby="catalog-auth-title">
 					<form class="catalog-auth-form" data-auth-form>
@@ -52,6 +58,30 @@ export class CatalogAuth {
 				</dialog>`;
 	}
 
+	_handleOutsideClick(event) {
+		if (!this.root.querySelector('.catalog-auth-user')?.contains(event.target)) {
+			this._closeMenu();
+		}
+	}
+
+	_openMenu() {
+		const menu = this.root.querySelector('.catalog-auth-menu');
+		const button = this.root.querySelector('[data-auth-action="toggle-menu"]');
+		if (!menu || !button) return;
+		menu.hidden = false;
+		button.setAttribute('aria-expanded', 'true');
+		document.addEventListener('click', this._handleOutsideClick);
+	}
+
+	_closeMenu() {
+		const menu = this.root.querySelector('.catalog-auth-menu');
+		const button = this.root.querySelector('[data-auth-action="toggle-menu"]');
+		if (!menu || !button) return;
+		menu.hidden = true;
+		button.setAttribute('aria-expanded', 'false');
+		document.removeEventListener('click', this._handleOutsideClick);
+	}
+
 	async handleClick(event) {
 		const action = event.target.closest('[data-auth-action]')?.dataset.authAction;
 		if (!action) return;
@@ -60,7 +90,15 @@ export class CatalogAuth {
 			document.getElementById('catalog-auth-dialog')?.showModal();
 		} else if (action === 'close-login') {
 			document.getElementById('catalog-auth-dialog')?.close();
+		} else if (action === 'toggle-menu') {
+			const menu = this.root.querySelector('.catalog-auth-menu');
+			if (menu?.hidden) {
+				this._openMenu();
+			} else {
+				this._closeMenu();
+			}
 		} else if (action === 'logout') {
+			this._closeMenu();
 			await signOut();
 			this.session = null;
 			this.render();

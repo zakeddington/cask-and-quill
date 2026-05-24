@@ -14,11 +14,15 @@
 .nav {
 	align-items: center;
 	display: flex;
-	justify-content: space-between;
+	gap: 0.5rem;
 	margin: 0 auto;
 	max-width: var(--layout-max-width);
 	padding: 0.5rem var(--layout-inline-padding);
 	width: 100%;
+
+	@media (min-width: 768px) {
+		gap: 2rem;
+	}
 }
 
 .nav-logo {
@@ -38,6 +42,7 @@
 	align-items: center;
 	display: flex;
 	gap: 0.5rem;
+	margin-left: auto;
 
 	@media (min-width: 768px) {
 		gap: 2rem;

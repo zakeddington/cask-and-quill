@@ -1,4 +1,18 @@
 async function initApp() {
+	let isAdmin = false;
+
+	if (document.getElementById('catalog-auth-root')) {
+		const { CatalogAuth } = await import('./components/catalog-auth.js');
+		const authRoot = document.getElementById('catalog-auth-root');
+		const auth = new CatalogAuth(authRoot, {
+			onAuthChange: (adminStatus) => {
+				isAdmin = adminStatus;
+				window.dispatchEvent(new CustomEvent('auth-change', { detail: { isAdmin: adminStatus } }));
+			}
+		});
+		isAdmin = await auth.init();
+	}
+
 	if (document.getElementById('lexicon-entries')) {
 		const { Lexicon } = await import('./components/lexicon.js');
 
@@ -14,7 +28,7 @@ async function initApp() {
 	if (document.getElementById('catalog-list')) {
 		const { Catalog } = await import('./components/catalog.js');
 
-		new Catalog().init();
+		new Catalog(isAdmin).init();
 	}
 }
 

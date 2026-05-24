@@ -7,7 +7,6 @@ import {
 	SPRITE_URL
 } from './catalog-constants.js';
 import { CatalogModal } from './catalog-modal.js';
-import { CatalogAuth } from './catalog-auth.js';
 import { fetchBottles, updateBottle } from '../supabase.js';
 
 function html(value) {
@@ -30,29 +29,27 @@ function parseAge(age) {
 }
 
 export class Catalog {
-	constructor() {
+	constructor(isAdmin = false) {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
 		this.searchInput = document.getElementById('catalog-search');
 		this.filterSelect = document.getElementById('catalog-filter');
 		this.sortSelect = document.getElementById('catalog-sort');
 		const modalRoot = document.getElementById('catalog-modal-root');
-		const authRoot = document.getElementById('catalog-auth-root');
 		this.bottles = [];
 		this.expandedId = null;
 		this.searchQuery = '';
 		this.fillFilter = '';
 		this.abvSort = '';
-		this.isAdmin = false;
+		this.isAdmin = isAdmin;
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle)
 		}) : null;
-		this.auth = authRoot ? new CatalogAuth(authRoot, {
-			onAuthChange: (isAdmin) => {
-				this.isAdmin = isAdmin;
-				this.render();
-			}
-		}) : null;
+
+		window.addEventListener('auth-change', event => {
+			this.isAdmin = event.detail.isAdmin;
+			this.render();
+		});
 	}
 
 	async init() {
@@ -61,15 +58,11 @@ export class Catalog {
 		this.setupEventListeners();
 		this.populateFilterSelect();
 
-		const [isAdmin, bottles] = await Promise.all([
-			this.auth?.init() ?? Promise.resolve(false),
-			fetchBottles().catch(err => {
-				window.console.warn('Failed to load bottles from database.', err);
-				return [];
-			})
-		]);
+		const bottles = await fetchBottles().catch(err => {
+			window.console.warn('Failed to load bottles from database.', err);
+			return [];
+		});
 
-		this.isAdmin = isAdmin;
 		this.bottles = bottles;
 		this.render();
 	}
