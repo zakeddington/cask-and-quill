@@ -17,9 +17,10 @@ function getFormValue(formData, key) {
 
 
 export class CatalogModal {
-	constructor(modalRoot, { onSave }) {
+	constructor(modalRoot, { onSave, onDelete }) {
 		this.modalRoot = modalRoot;
 		this.onSave = onSave;
+		this.onDelete = onDelete;
 		this.currentBottle = null;
 		this.previousFocus = null;
 		this.setupEventListeners();
@@ -53,9 +54,53 @@ export class CatalogModal {
 	}
 
 	handleClick(event) {
-		if (event.target.closest('[data-close-modal]')) {
+		const action = event.target.closest('[data-modal-action]')?.dataset.modalAction;
+
+		if (action === 'delete-prompt') {
+			this.showDeleteConfirm();
+		} else if (action === 'delete-cancel') {
+			this.hideDeleteConfirm();
+		} else if (action === 'delete-execute') {
+			this.onDelete(this.currentBottle.id);
+			this.close();
+		} else if (event.target.closest('[data-close-modal]')) {
 			this.close();
 		}
+	}
+
+	showDeleteConfirm() {
+		const footer = this.modalRoot.querySelector('.catalog-modal-footer');
+		if (!footer) return;
+		footer.innerHTML = `
+			<p class="catalog-modal-confirm-text">Delete <strong>${html(this.currentBottle.brand)} ${html(this.currentBottle.bottle)}</strong>? This cannot be undone.</p>
+			<div>
+				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
+				<button class="button-danger" type="button" data-modal-action="delete-execute">Delete</button>
+			</div>
+		`;
+		footer.querySelector('[data-modal-action="delete-execute"]')?.focus();
+	}
+
+	hideDeleteConfirm() {
+		const footer = this.modalRoot.querySelector('.catalog-modal-footer');
+		if (!footer) return;
+		footer.innerHTML = this.renderFooter();
+	}
+
+	renderFooter() {
+		return `
+			<div>
+				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
+					Delete Bottle
+				</button>
+			</div>
+			<div>
+				<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>
+				<button class="button-secondary" type="button" data-close-modal>Cancel</button>
+				<button class="button-primary" type="submit">Save Changes</button>
+			</div>
+		`;
 	}
 
 	handleSubmit(event) {
@@ -115,17 +160,7 @@ export class CatalogModal {
 					</div>
 
 					<footer class="catalog-modal-footer">
-						<div>
-							<button class="button-tertiary" type="button" data-close-modal>
-								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
-								Delete Bottle
-							</button>
-						</div>
-						<div>
-							<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>
-							<button class="button-secondary" type="button" data-close-modal>Cancel</button>
-							<button class="button-primary" type="submit">Save Changes</button>
-						</div>
+						${this.renderFooter()}
 					</footer>
 				</form>
 			</div>

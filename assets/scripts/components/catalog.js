@@ -7,7 +7,7 @@ import {
 	SPRITE_URL
 } from './catalog-constants.js';
 import { CatalogModal } from './catalog-modal.js';
-import { fetchBottles, updateBottle } from '../supabase.js';
+import { fetchBottles, updateBottle, deleteBottle } from '../supabase.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -43,7 +43,8 @@ export class Catalog {
 		this.abvSort = '';
 		this.isAdmin = isAdmin;
 		this.modal = modalRoot ? new CatalogModal(modalRoot, {
-			onSave: (bottle) => this.handleSave(bottle)
+			onSave: (bottle) => this.handleSave(bottle),
+			onDelete: (id) => this.handleDelete(id)
 		}) : null;
 
 		window.addEventListener('auth-change', event => {
@@ -149,6 +150,13 @@ export class Catalog {
 		this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
 		this.render();
 		this.saveBottle(updatedBottle);
+	}
+
+	handleDelete(id) {
+		this.bottles = this.bottles.filter(bottle => bottle.id !== id);
+		this.expandedId = this.expandedId === id ? null : this.expandedId;
+		this.render();
+		deleteBottle(id).catch(err => window.console.warn('Failed to delete bottle.', err));
 	}
 
 	toggleBottle(id) {
