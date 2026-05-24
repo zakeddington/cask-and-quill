@@ -183,6 +183,12 @@ export class Catalog {
 		heading?.classList.toggle('theme-accent', expanded);
 		trigger.setAttribute('aria-expanded', String(expanded));
 		panel?.setAttribute('aria-hidden', String(!expanded));
+
+		if (expanded) {
+			setTimeout(() => {
+				article.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+			}, 350);
+		}
 	}
 
 	getBottleById(id) {
