@@ -10,8 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install PostgreSQL 17 client
+        run: |
+          sudo apt-get install -y gnupg curl
+          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+          echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-17
+
       - name: Dump database
-        run: pg_dump "${{ secrets.DATABASE_URL }}" -Fc -f backup.dump
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: pg_dump -Fc -f backup.dump -d "$DATABASE_URL"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
