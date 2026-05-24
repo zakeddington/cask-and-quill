@@ -1,4 +1,7 @@
 async function initApp() {
+	const { NavDrawer } = await import('./components/nav-drawer.js');
+	new NavDrawer().init();
+
 	let isAdmin = false;
 
 	if (document.getElementById('catalog-auth-root')) {

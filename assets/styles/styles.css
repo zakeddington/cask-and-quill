@@ -8,6 +8,7 @@
 @import "base/typography.css";
 @import "base/buttons.css";
 @import "layout.css" layer(layout);
+@import "components/nav-drawer.css" layer(components);
 @import "components/hero.css" layer(components);
 @import "components/lexicon/index.css" layer(components);
 @import "components/catalog/index.css" layer(components);

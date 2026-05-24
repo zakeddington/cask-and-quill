@@ -26,8 +26,25 @@
 				<a id="catalog-btn" class="button button-tertiary" href="/catalog/">Catalog</a>
 			</div>
 			<div id="catalog-auth-root" class="catalog-auth-root"></div>
+			<button id="nav-menu-btn" class="nav-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-list"></use></svg>
+			</button>
 		</nav>
 	</header>
+
+	<div id="nav-drawer-overlay" class="nav-drawer-overlay"></div>
+	<nav id="nav-drawer" class="nav-drawer" aria-label="Site navigation" aria-hidden="true">
+		<div class="nav-drawer-header">
+			<button class="nav-drawer-close" type="button" aria-label="Close menu">
+				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+			</button>
+		</div>
+		<div class="nav-drawer-links">
+			<a class="button button-tertiary active" href="/">Regions</a>
+			<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
+			<a class="button button-tertiary" href="/catalog/">Catalog</a>
+		</div>
+	</nav>
 
 	<main class="main-content">
 		<div class="regions-container">
