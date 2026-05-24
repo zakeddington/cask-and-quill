@@ -350,7 +350,7 @@ export class Catalog {
 							<span class="text-body-md">${html(bottle.type)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col text-color-accent text-body-xs">
-							<span>${html(bottle.age)}</span>
+							<span>${html(bottle.age)} Years</span>
 							<span>${html(bottle.abv)} ABV</span>
 							<span>${html(bottle.proof)} Proof</span>
 						</span>
@@ -384,7 +384,7 @@ export class Catalog {
 		const label = getFillLabel(fill);
 		if (!icon) return `<span>${html(label)}</span>`;
 		return `
-			<span class="catalog-fill-icon ${html(colorClass)}" aria-label="${html(label)}" role="img">
+			<span class="catalog-fill-icon ${html(colorClass)}" title="${html(label)}" role="img">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${html(icon)}"></use></svg>
 			</span>
 		`;
@@ -395,7 +395,7 @@ export class Catalog {
 		const label = hasContent ? 'Journal notes entered' : 'No journal notes entered';
 
 		return `
-			<span class="catalog-journal-icon${hasContent ? ' has-content' : ' is-empty'}" aria-label="${label}" role="img">
+			<span class="catalog-journal-icon${hasContent ? ' has-content' : ' is-empty'}" title="${label}" role="img">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${hasContent ? 'icon-file-text' : 'icon-file'}"></use></svg>
 			</span>
 		`;

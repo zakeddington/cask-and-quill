@@ -89,6 +89,14 @@
 	margin: 0;
 }
 
+.catalog-legend {
+	transform: translateY(-2rem);
+
+	@media (min-width: 1024px) {
+		text-align: right;
+	}
+}
+
 .catalog-empty-state {
 	border-top: 2px solid var(--color-border-accent);
 	padding-top: 2rem;
