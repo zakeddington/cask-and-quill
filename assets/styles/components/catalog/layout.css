@@ -24,7 +24,7 @@
 	grid-template-columns: 1fr;
 	padding-bottom: 1rem;
 
-	@media (min-width: 768px) {
+	@media (min-width: 1024px) {
 		grid-template-columns: minmax(0, 1fr) auto;
 	}
 }
@@ -32,14 +32,14 @@
 .catalog-search-container {
 	width: 100%;
 
-	@media (min-width: 768px) {
+	@media (min-width: 1024px) {
 		max-width: 32rem;
 	}
 }
 
-.catalog-search-input,
 .catalog-filter-select {
-	width: 100%;
+	flex: 1;
+	width: auto;
 }
 
 .catalog-filter-controls {

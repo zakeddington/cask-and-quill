@@ -33,6 +33,7 @@ export class Catalog {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
 		this.searchInput = document.getElementById('catalog-search');
+		this.categorySelect = document.getElementById('catalog-category');
 		this.filterSelect = document.getElementById('catalog-filter');
 		this.sortSelect = document.getElementById('catalog-sort');
 		const modalRoot = document.getElementById('catalog-modal-root');
@@ -40,6 +41,7 @@ export class Catalog {
 		this.bottles = [];
 		this.expandedId = null;
 		this.searchQuery = '';
+		this.categoryFilter = '';
 		this.fillFilter = '';
 		this.abvSort = '';
 		this.isAdmin = isAdmin;
@@ -66,6 +68,7 @@ export class Catalog {
 		});
 
 		this.bottles = bottles;
+		this.populateCategorySelect();
 		this.render();
 	}
 
@@ -73,6 +76,7 @@ export class Catalog {
 		this.catalogList.addEventListener('click', event => this.handleCatalogClick(event));
 		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
 		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
+		this.categorySelect?.addEventListener('change', event => this.handleCategoryChange(event));
 		this.filterSelect?.addEventListener('change', event => this.handleFilterChange(event));
 		this.sortSelect?.addEventListener('change', event => this.handleSortChange(event));
 		this.addBtn?.addEventListener('click', () => this.openAddModal());
@@ -85,6 +89,17 @@ export class Catalog {
 			el.value = option.value;
 			el.textContent = option.label;
 			this.filterSelect.appendChild(el);
+		});
+	}
+
+	populateCategorySelect() {
+		if (!this.categorySelect) return;
+		const categories = [...new Set(this.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+		categories.forEach(category => {
+			const el = document.createElement('option');
+			el.value = category;
+			el.textContent = category;
+			this.categorySelect.appendChild(el);
 		});
 	}
 
@@ -135,6 +150,11 @@ export class Catalog {
 
 	handleSearch(event) {
 		this.searchQuery = event.target.value.trim().toLowerCase();
+		this.render();
+	}
+
+	handleCategoryChange(event) {
+		this.categoryFilter = event.target.value;
 		this.render();
 	}
 
@@ -230,8 +250,9 @@ export class Catalog {
 		return this.bottles.filter(bottle => {
 			const matchesSearch = !this.searchQuery ||
 				`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.searchQuery);
+			const matchesCategory = !this.categoryFilter || bottle.category === this.categoryFilter;
 			const matchesFill = !this.fillFilter || bottle.fill === this.fillFilter;
-			return matchesSearch && matchesFill;
+			return matchesSearch && matchesCategory && matchesFill;
 		});
 	}
 
@@ -261,7 +282,7 @@ export class Catalog {
 
 		const total = this.bottles.length;
 		const count = filteredCount ?? total;
-		const isFiltered = this.searchQuery || this.fillFilter;
+		const isFiltered = this.searchQuery || this.categoryFilter || this.fillFilter;
 		const suffix = isFiltered && count !== total ? ` of ${total}` : '';
 		this.catalogCount.textContent = `${count}${suffix} bottle${total === 1 ? '' : 's'}`;
 	}
