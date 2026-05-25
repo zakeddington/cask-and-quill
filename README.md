@@ -188,3 +188,50 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export DATABASE_URL="postgresql://postgres.xxxx:password@aws-0-us-east-1.pooler.supabase.com:6543/postgres"
 pg_restore --clean --no-owner -d "$DATABASE_URL" backup.dump
 ```
+
+---
+
+### Google Sheets sync (redundant snapshot)
+
+A Google Apps Script inside a dedicated spreadsheet fetches all bottles from the Supabase REST API and writes them as rows on a schedule. This provides a human-readable snapshot as a secondary backup alongside the `pg_dump` files.
+
+> This is a snapshot sync, not a restorable archive. It reflects the current state of the table and is meant for quick reference, not database restoration.
+
+#### Setup (one-time)
+
+1. Create a new Google Sheet
+2. Open **Extensions → Apps Script**
+3. Name the project (click "Untitled project" top-left) and paste the script below
+4. Fill in `SUPABASE_URL` and `SUPABASE_ANON_KEY` from `assets/scripts/supabase.js`
+5. Click **Run** → grant permissions (click **Advanced → Go to [project name] (unsafe)** when prompted — this is expected for personal scripts)
+6. Set a trigger: **Triggers (clock icon) → Add Trigger → `syncBottlesToSheet` → Time-driven → Week timer**
+
+```javascript
+function syncBottlesToSheet() {
+  const SUPABASE_URL = 'https://your-project.supabase.co';
+  const SUPABASE_ANON_KEY = 'your-anon-key';
+
+  const response = UrlFetchApp.fetch(
+    `${SUPABASE_URL}/rest/v1/bottles?select=*&order=id`,
+    {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+      }
+    }
+  );
+
+  const bottles = JSON.parse(response.getContentText());
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  sheet.clearContents();
+
+  if (bottles.length === 0) return;
+
+  const headers = Object.keys(bottles[0]);
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+
+  const rows = bottles.map(b => headers.map(h => b[h] ?? ''));
+  sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
+}
+```
