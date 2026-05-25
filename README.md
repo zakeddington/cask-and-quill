@@ -51,6 +51,46 @@ Open any `index.html` in a local HTTP server (e.g. `npx http-server .` or the VS
 
 ---
 
+## Deployment
+
+The site auto-deploys to DreamHost on every push to `main` via the `.github/workflows/deploy.yml` workflow. It builds the vendor bundle, then rsyncs all files to the server over SSH.
+
+### Setup (one-time)
+
+#### 1. Generate a deploy SSH key
+
+```bash
+ssh-keygen -t ed25519 -C "github-actions-deploy" -f ~/.ssh/dreamhost_deploy
+```
+
+#### 2. Add the public key to DreamHost
+
+```bash
+cat ~/.ssh/dreamhost_deploy.pub | ssh your-username@your-server.dreamhost.com \
+  "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+```
+
+Verify it works without a password prompt:
+
+```bash
+ssh -i ~/.ssh/dreamhost_deploy your-username@your-server.dreamhost.com
+```
+
+#### 3. Add secrets to GitHub
+
+Go to **Settings → Secrets and variables → Actions** and add:
+
+| Secret | Value |
+|---|---|
+| `SSH_PRIVATE_KEY` | Full contents of `~/.ssh/dreamhost_deploy` (including the `-----BEGIN/END-----` lines) |
+| `SSH_HOST` | DreamHost server hostname (e.g. `pdx1-shared-a1-23.dreamhost.com`) |
+| `SSH_USERNAME` | Your DreamHost username |
+| `DEPLOY_PATH` | Absolute path to the subdomain root on the server (e.g. `/home/username/sub.yourdomain.com`) |
+
+Paste the private key exactly as output by `cat ~/.ssh/dreamhost_deploy` — newlines must be preserved.
+
+---
+
 ## Database Backups
 
 Supabase free plans do not include managed backups. The following two approaches cover manual local backups and automated weekly backups via GitHub Actions.
