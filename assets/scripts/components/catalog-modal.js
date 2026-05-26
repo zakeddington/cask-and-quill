@@ -91,13 +91,13 @@ export class CatalogModal {
 	renderFooter() {
 		return `
 			${this.isNew ? '<div></div>' : `
-			<div>
+			<div class="catalog-modal-footer-col">
 				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Bottle
 				</button>
 			</div>`}
-			<div>
+			<div class="catalog-modal-footer-col">
 				${this.isNew ? '' : '<button class="button-secondary" type="button" data-close-modal>Bottle Kill</button>'}
 				<button class="button-secondary" type="button" data-close-modal>Cancel</button>
 				<button class="button-primary" type="submit">${this.isNew ? 'Add Bottle' : 'Save Changes'}</button>

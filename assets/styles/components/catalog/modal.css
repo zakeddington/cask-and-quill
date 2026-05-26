@@ -171,7 +171,28 @@
 .catalog-modal-footer {
 	align-items: center;
 	border-top: 1px solid var(--color-border-primary);
+	flex-direction: column;
 	justify-content: space-between;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+	}
+}
+
+.catalog-modal-footer-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		width: auto;
+	}
+
+	button {
+		justify-content: center;
+	}
 }
 
 .catalog-modal-confirm-text {
