@@ -130,6 +130,16 @@ source .env && npm run backup
 
 Dumps are saved to `backups/backup-YYYYMMDD-HHMMSS.dump` in custom format (`-Fc`). The `backups/` directory is gitignored.
 
+If you get `sh: pg_dump: command not found` error make sure to install libpq first.
+
+Then add it to your PATH (libpq intentionally doesn't symlink to avoid conflicts):
+
+```bash
+echo 'export PATH="/opt/homebrew/opt/libpq/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+
+After that, `source .env && npm run backup` should work. If you're on an Intel Mac, the path is `/usr/local/opt/libpq/bin` instead of `/opt/homebrew/opt/libpq/bin`.
+
 #### Restore from a local dump
 
 ```bash
