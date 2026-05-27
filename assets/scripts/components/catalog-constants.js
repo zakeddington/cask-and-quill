@@ -47,5 +47,16 @@ export const MASH_BILL_FIELDS = [
 export const TASTING_NOTE_FIELDS = [
 	{ name: 'nose', label: 'Nose', icon: 'icon-wind' },
 	{ name: 'palate', label: 'Palate', icon: 'icon-wine' },
-	{ name: 'finish', label: 'Finish', icon: 'icon-clock-countdown' }
+	{
+		name: 'finish',
+		label: 'Finish',
+		icon: 'icon-clock-countdown',
+		options: [
+			{ value: 'Short', label: 'Short' },
+			{ value: 'Short to Medium', label: 'Short to Medium' },
+			{ value: 'Medium', label: 'Medium' },
+			{ value: 'Medium to Long', label: 'Medium to Long' },
+			{ value: 'Long', label: 'Long' }
+		]
+	}
 ];
