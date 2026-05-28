@@ -1,0 +1,2 @@
+[functions.enrich-bottle]
+verify_jwt = false

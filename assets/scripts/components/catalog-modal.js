@@ -6,6 +6,7 @@ import {
 	TASTING_NOTE_FIELDS,
 	SPRITE_URL
 } from './catalog-constants.js';
+import { enrichBottle } from '../services/enrich.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -29,6 +30,7 @@ export class CatalogModal {
 	setupEventListeners() {
 		this.modalRoot.addEventListener('click', event => this.handleClick(event));
 		this.modalRoot.addEventListener('submit', event => this.handleSubmit(event));
+		this.modalRoot.addEventListener('input', () => this.updateEnrichButton());
 
 		document.addEventListener('keydown', event => {
 			if (event.key === 'Escape' && this.currentBottle) {
@@ -64,8 +66,67 @@ export class CatalogModal {
 		} else if (action === 'delete-execute') {
 			this.onDelete(this.currentBottle.id);
 			this.close();
+		} else if (action === 'enrich') {
+			this.handleEnrich();
 		} else if (event.target.closest('[data-close-modal]')) {
 			this.close();
+		}
+	}
+
+	updateEnrichButton() {
+		const btn = this.modalRoot.querySelector('[data-modal-action="enrich"]');
+		if (!btn) return;
+		const brand = this.modalRoot.querySelector('input[name="brand"]')?.value.trim();
+		const bottle = this.modalRoot.querySelector('input[name="bottle"]')?.value.trim();
+		btn.disabled = !(brand && bottle);
+	}
+
+	async handleEnrich() {
+		const btn = this.modalRoot.querySelector('[data-modal-action="enrich"]');
+		const brand = this.modalRoot.querySelector('input[name="brand"]')?.value.trim();
+		const bottle = this.modalRoot.querySelector('input[name="bottle"]')?.value.trim();
+		if (!brand || !bottle || !btn) return;
+
+		const errorEl = this.modalRoot.querySelector('.catalog-enrich-error');
+		if (errorEl) errorEl.textContent = '';
+
+		btn.disabled = true;
+		btn.textContent = 'Auto-filling…';
+
+		try {
+			const data = await enrichBottle(brand, bottle);
+			this.populateEnrichedFields(data);
+		} catch (err) {
+			window.console.warn('Auto-fill failed', err);
+			if (errorEl) errorEl.textContent = 'Auto-fill failed. Fill in the fields manually.';
+		} finally {
+			btn.textContent = 'Auto-fill Details';
+			this.updateEnrichButton();
+		}
+	}
+
+	populateEnrichedFields(data) {
+		const set = (name, value) => {
+			if (!value) return;
+			const el = this.modalRoot.querySelector(`input[name="${name}"], textarea[name="${name}"]`);
+			if (el) el.value = value;
+		};
+
+		set('category', data.category);
+		set('type', data.type);
+		set('distillery', data.distillery);
+		set('corpOwner', data.corpOwner);
+		set('origin', data.origin);
+		set('age', data.age);
+		set('abv', data.abv);
+		set('proof', data.proof);
+		set('char', data.char);
+		set('cask', data.cask);
+
+		if (data.mashBill) {
+			['corn', 'barley', 'maltedBarley', 'rye', 'maltedRye', 'wheat'].forEach(f => {
+				set(`mashBill.${f}`, data.mashBill[f]);
+			});
 		}
 	}
 
@@ -155,7 +216,20 @@ export class CatalogModal {
 					</header>
 
 					<div class="catalog-modal-body">
-						${this.renderFieldset('Bottle Identity', IDENTITY_FIELDS, bottle)}
+						<fieldset class="catalog-fieldset">
+							<legend>Bottle Identity</legend>
+							<div class="catalog-form-grid">
+								${IDENTITY_FIELDS.map(field => this.renderField(field, bottle[field.name])).join('')}
+							</div>
+							${this.isNew ? `
+							<div class="catalog-enrich-bar">
+								<p class="catalog-enrich-hint">Enter brand and bottle name above to auto-fill the remaining fields.</p>
+								<div class="catalog-enrich-actions">
+									<button class="button-secondary" type="button" data-modal-action="enrich" disabled>Auto-fill Details</button>
+									<p class="catalog-enrich-error" aria-live="polite"></p>
+								</div>
+							</div>` : ''}
+						</fieldset>
 						${this.renderFieldset('Technical Specs', SPEC_FIELDS, bottle)}
 						${this.renderMashBillFieldset(bottle)}
 						${this.renderTastingFieldset(bottle)}
