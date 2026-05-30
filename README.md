@@ -8,7 +8,6 @@ A personal whiskey catalog and reference app — track your bottle collection, e
 - **Regions**: Whiskey-producing regions and their legal frameworks
 - **Lexicon**: Searchable whiskey terminology with alphabetical navigation
 - **Admin CRUD**: Add, edit, and delete bottles (authenticated users only)
-- **Auto-fill**: When adding a bottle, enter the brand and bottle name to auto-populate the remaining fields via Claude AI
 - **Auth**: Supabase email/password login with persistent session
 - **Mobile nav**: Responsive drawer menu with focus trap
 
@@ -17,7 +16,6 @@ A personal whiskey catalog and reference app — track your bottle collection, e
 - Vanilla HTML, CSS (cascade layers), and ES Modules — no framework or build step required to run
 - [Supabase](https://supabase.com) for Postgres database, auth, and PostgREST API
 - Supabase JS client vendored locally (`assets/scripts/vendor/supabase.js`) via esbuild
-- [Anthropic Claude API](https://www.anthropic.com) (Haiku) for bottle detail auto-fill via a Supabase Edge Function
 
 ## Setup
 
@@ -46,43 +44,6 @@ export DATABASE_URL=postgresql://postgres.xxxx:password@aws-0-us-east-1.pooler.s
 ```
 
 `.env` is gitignored. The `DATABASE_URL` is only needed for local backups.
-
-### Edge Functions (auto-fill)
-
-The auto-fill feature runs on a Supabase Edge Function that proxies requests to the Claude API, keeping the API key server-side.
-
-#### Prerequisites
-
-Install the Supabase CLI:
-
-```bash
-brew install supabase/tap/supabase
-```
-
-#### Deploy the function (one-time)
-
-```bash
-supabase functions deploy enrich-bottle
-```
-
-#### Set the API key secret (one-time)
-
-Get an API key from [console.anthropic.com](https://console.anthropic.com), then:
-
-```bash
-supabase secrets set ANTHROPIC_API_KEY=your-api-key
-```
-
-#### Disable JWT verification (one-time)
-
-Supabase's built-in JWT verification blocks CORS preflight requests. The function handles auth in code, so the infrastructure-level check should be disabled:
-
-1. Go to your Supabase dashboard → **Edge Functions** → `enrich-bottle`
-2. Disable the **JWT Verification** toggle
-
-This is also tracked in `supabase/config.toml` and applied automatically on redeploy.
-
----
 
 ### Running locally
 
