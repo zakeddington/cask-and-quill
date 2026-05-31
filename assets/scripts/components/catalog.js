@@ -13,6 +13,10 @@ function html(value) {
 	return escapeHtml(String(value ?? ''));
 }
 
+function stripHtml(value) {
+	return String(value ?? '').replace(/<[^>]*>/g, '');
+}
+
 function getFillLabel(fill) {
 	const option = FILL_OPTIONS.find(o => o.value === fill);
 	return option ? option.label : fill || 'Unlisted';
@@ -354,7 +358,7 @@ export class Catalog {
 							<span>${html(bottle.abv)} ABV</span>
 							<span>${html(bottle.proof)} Proof</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-body-sm">${html(bottle.cask)}</span>
+						<span class="catalog-bottle-heading-col text-body-sm">${html(stripHtml(bottle.cask))}</span>
 						<span class="catalog-journal-status">
 							${this.renderJournalIcon(bottle)}
 							<span class="catalog-accordion-icon" aria-hidden="true">
@@ -471,7 +475,10 @@ export class Catalog {
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
 							${html(field.label)}
 						</h5>
-						<p>${html(notes?.[field.name])}</p>
+						${field.options
+							? `<p>${html(notes?.[field.name])}</p>`
+							: `<div class="catalog-rich-content">${notes?.[field.name] ?? ''}</div>`
+						}
 					</div>
 				`).join('')}
 			</div>
