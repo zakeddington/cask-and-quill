@@ -36,3 +36,20 @@ CREATE POLICY "public_read" ON bottles
 -- ============================================================
 CREATE POLICY "auth_write" ON bottles
 	FOR ALL USING (auth.role() = 'authenticated');
+
+-- ============================================================
+-- 5. Global settings (key/value store for app-wide content)
+-- ============================================================
+CREATE TABLE global_settings (
+	key        text PRIMARY KEY,
+	value      text NOT NULL DEFAULT '',
+	updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE global_settings ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "public_read" ON global_settings
+	FOR SELECT USING (true);
+
+CREATE POLICY "auth_write" ON global_settings
+	FOR ALL USING (auth.role() = 'authenticated');

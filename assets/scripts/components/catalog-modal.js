@@ -64,6 +64,8 @@ export class CatalogModal {
 		} else if (action === 'delete-execute') {
 			this.onDelete(this.currentBottle.id);
 			this.close();
+		} else if (action === 'open-journal') {
+			window.dispatchEvent(new CustomEvent('open-journal-drawer'));
 		} else if (event.target.closest('[data-close-modal]')) {
 			this.close();
 		}
@@ -196,8 +198,11 @@ export class CatalogModal {
 
 	renderTastingFieldset(bottle) {
 		return `
-			<fieldset class="catalog-fieldset">
+			<fieldset class="catalog-fieldset catalog-fieldset-journal">
 				<legend>Tasting Journal</legend>
+				<button class="button-tertiary catalog-journal-btn" type="button" data-modal-action="open-journal" aria-label="Open journal notes">
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
+				</button>
 				<div class="catalog-form-stack">
 					${TASTING_NOTE_FIELDS.map(field => this.renderField({
 						...field,

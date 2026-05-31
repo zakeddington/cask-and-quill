@@ -79,6 +79,23 @@ export async function deleteBottle(id) {
 	if (error) throw error;
 }
 
+export async function getGlobalNotes() {
+	const { data, error } = await supabase
+		.from('global_settings')
+		.select('value')
+		.eq('key', 'journal_notes')
+		.maybeSingle();
+	if (error) throw error;
+	return data?.value ?? '';
+}
+
+export async function updateGlobalNotes(value) {
+	const { error } = await supabase
+		.from('global_settings')
+		.upsert({ key: 'journal_notes', value, updated_at: new Date().toISOString() });
+	if (error) throw error;
+}
+
 export async function getSession() {
 	const { data } = await supabase.auth.getSession();
 	return data.session;

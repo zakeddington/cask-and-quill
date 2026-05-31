@@ -33,6 +33,16 @@ async function initApp() {
 
 		new Catalog(isAdmin).init();
 	}
+
+	if (document.getElementById('journal-drawer')) {
+		const { JournalDrawer } = await import('./components/journal-drawer.js');
+
+		new JournalDrawer(
+			document.getElementById('journal-drawer'),
+			document.getElementById('journal-drawer-overlay'),
+			isAdmin
+		);
+	}
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
