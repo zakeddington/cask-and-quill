@@ -435,7 +435,10 @@ export class Catalog {
 				</section>
 				${this.isAdmin ? `
 				<div class="catalog-detail-actions">
-					<button class="catalog-edit-button button-primary" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">Edit Entry</button>
+					<button class="catalog-edit-button button-primary" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">
+						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
+						Edit Entry
+					</button>
 				</div>` : ''}
 			</div>
 		`;
