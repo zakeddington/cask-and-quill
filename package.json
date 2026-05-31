@@ -3,10 +3,12 @@
   "private": true,
   "scripts": {
     "build:vendor": "esbuild ./node_modules/@supabase/supabase-js --bundle --format=esm --outfile=assets/scripts/vendor/supabase.js",
+    "build:pell": "esbuild ./node_modules/pell/src/pell.js --bundle --format=esm --outfile=assets/scripts/vendor/pell.js",
     "backup": "mkdir -p backups && pg_dump \"$DATABASE_URL\" -Fc -f \"backups/backup-$(date +%Y%m%d-%H%M%S).dump\" && echo \"Backup saved.\""
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2"
+    "@supabase/supabase-js": "^2",
+    "pell": "^1.0.6"
   },
   "devDependencies": {
     "esbuild": "^0.28"

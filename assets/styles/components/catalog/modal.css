@@ -201,6 +201,10 @@
 	font-size: var(--font-size-body-sm);
 }
 
+.catalog-rich-editor {
+	background-color: var(--color-background-primary);
+}
+
 .catalog-fieldset-journal {
 	position: relative;
 }

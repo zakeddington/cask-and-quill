@@ -1,4 +1,5 @@
 import { escapeHtml } from '../utils.js';
+import { init as pellInit } from '../vendor/pell.js';
 import { getGlobalNotes, updateGlobalNotes } from '../supabase.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
@@ -79,8 +80,7 @@ export class JournalDrawer {
 	}
 
 	async handleSave() {
-		const textarea = this.bodyEl.querySelector('textarea');
-		if (!textarea) return;
+		const newContent = this.pellEditor?.content.innerHTML ?? '';
 
 		const saveBtn = this.footerEl.querySelector('[data-journal-action="save"]');
 		if (saveBtn) {
@@ -89,7 +89,6 @@ export class JournalDrawer {
 		}
 
 		try {
-			const newContent = textarea.value;
 			await updateGlobalNotes(newContent);
 			this.content = newContent;
 			this.isEditing = false;
@@ -106,9 +105,16 @@ export class JournalDrawer {
 
 	renderBody() {
 		if (this.isEditing) {
-			this.bodyEl.innerHTML = `<textarea class="journal-drawer-textarea">${escapeHtml(this.content)}</textarea>`;
+			this.bodyEl.innerHTML = `<div class="journal-rich-editor"></div>`;
+			this.pellEditor = pellInit({
+				element: this.bodyEl.querySelector('.journal-rich-editor'),
+				onChange: () => {},
+				actions: ['bold', 'italic', 'underline', 'olist', 'ulist'],
+				defaultParagraphSeparator: 'p',
+			});
+			this.pellEditor.content.innerHTML = this.content;
 		} else if (this.content) {
-			this.bodyEl.innerHTML = `<p class="journal-drawer-text">${escapeHtml(this.content)}</p>`;
+			this.bodyEl.innerHTML = `<div class="journal-drawer-text">${this.content}</div>`;
 		} else {
 			this.bodyEl.innerHTML = `<p class="journal-drawer-empty">No notes yet.</p>`;
 		}

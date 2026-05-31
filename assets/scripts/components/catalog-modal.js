@@ -1,4 +1,5 @@
 import { escapeHtml } from '../utils.js';
+import { init as pellInit } from '../vendor/pell.js';
 import {
 	IDENTITY_FIELDS,
 	SPEC_FIELDS,
@@ -42,8 +43,23 @@ export class CatalogModal {
 		this.isNew = isNew;
 		this.previousFocus = document.activeElement;
 		this.modalRoot.innerHTML = this.renderModal(bottle);
+		this.initRichTextEditors();
 		document.body.classList.add('catalog-modal-is-open');
 		this.modalRoot.querySelector('.catalog-modal-close')?.focus();
+	}
+
+	initRichTextEditors() {
+		this.modalRoot.querySelectorAll('[data-rich-editor]').forEach(container => {
+			const name = container.dataset.richEditor;
+			const hidden = this.modalRoot.querySelector(`input[type="hidden"][name="${CSS.escape(name)}"]`);
+			const editor = pellInit({
+				element: container,
+				onChange: html => { if (hidden) hidden.value = html; },
+				actions: ['bold', 'italic', 'underline', 'olist', 'ulist'],
+				defaultParagraphSeparator: 'p',
+			});
+			editor.content.innerHTML = hidden?.value ?? '';
+		});
 	}
 
 	close() {
@@ -220,14 +236,21 @@ export class CatalogModal {
 		}
 
 		const fieldId = `catalog-field-${field.name.replace(/\./g, '-')}`;
-		const input = field.multiline
-			? `<textarea id="${html(fieldId)}" name="${html(field.name)}" rows="4">${html(value)}</textarea>`
-			: `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">`;
+
+		if (field.multiline) {
+			return `
+				<div class="catalog-field ${html(fieldId)}">
+					<span>${html(field.label)}</span>
+					<div class="catalog-rich-editor" data-rich-editor="${html(field.name)}"></div>
+					<input type="hidden" name="${html(field.name)}" value="${html(value)}">
+				</div>
+			`;
+		}
 
 		return `
 			<label class="catalog-field ${html(fieldId)}" for="${html(fieldId)}">
 				<span>${html(field.label)}</span>
-				${input}
+				<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">
 			</label>
 		`;
 	}
