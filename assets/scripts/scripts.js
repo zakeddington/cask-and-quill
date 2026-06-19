@@ -34,6 +34,11 @@ async function initApp() {
 		new Catalog(isAdmin).init();
 	}
 
+	if (document.getElementById('tasting-wheel')) {
+		const { TastingWheel } = await import('./components/tasting.js');
+		new TastingWheel(document.getElementById('tasting-wheel')).init();
+	}
+
 	if (document.getElementById('journal-drawer')) {
 		const { JournalDrawer } = await import('./components/journal-drawer.js');
 
