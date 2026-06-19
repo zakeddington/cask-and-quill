@@ -1,47 +1,13 @@
 /* ============================================================
-   Tasting Wheel — component styles
+   Tasting Wheel — Family Tree layout
    Uses Playfair Display, Spectral, Archivo (loaded on /tasting/)
    ============================================================ */
 
-/* Page background override */
 .tasting-page {
 	background: #e7e5df;
 }
 
-/* ——— Wrapper & Tabs ——— */
-
-.tw-wrapper {
-	/* inherits main-content max-width and padding */
-}
-
-.tw-tabs {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-bottom: 28px;
-}
-
-.tw-tab {
-	cursor: pointer;
-	font-family: Archivo, sans-serif;
-	font-size: 12px;
-	letter-spacing: .06em;
-	font-weight: 600;
-	padding: 9px 16px;
-	border-radius: 2px;
-	border: 1px solid #d8cfbd;
-	background: transparent;
-	color: #5a5142;
-	transition: background .15s, color .15s, border-color .15s;
-}
-
-.tw-tab--active {
-	border-color: #1c1c16;
-	background: #1c1c16;
-	color: #f3ecd9;
-}
-
-/* ——— Pane (each view) ——— */
+/* ——— Pane ——— */
 
 .tw-pane {
 	background: #fdf9ef;
@@ -121,12 +87,6 @@
 	padding: 8px 56px 0;
 }
 
-.tw-controls--B {
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 16px;
-}
-
 .tw-search {
 	width: 330px;
 	max-width: 100%;
@@ -203,16 +163,9 @@
 	color: #8a7f6d;
 }
 
-/* ——— Content area ——— */
+/* ——— Content / empty state ——— */
 
 .tw-content {
-	padding: 30px 56px 80px;
-}
-
-.tw-content--has-rail {
-	display: grid;
-	grid-template-columns: 168px 1fr;
-	gap: 46px;
 	padding: 30px 56px 80px;
 }
 
@@ -224,37 +177,8 @@
 	font-style: italic;
 }
 
-/* ——— Pills (B view) ——— */
-
-.tw-pills {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-}
-
-.tw-pill {
-	cursor: pointer;
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .08em;
-	text-transform: uppercase;
-	font-weight: 600;
-	padding: 7px 13px;
-	border-radius: 2px;
-	border: 1px solid #d8cfbd;
-	background: transparent;
-	color: #5a5142;
-	transition: background .15s, color .15s, border-color .15s;
-}
-
-.tw-pill--active {
-	border-color: #9c3d24;
-	background: #9c3d24;
-	color: #fdf9ef;
-}
-
 /* ============================================================
-   Direction D — Family Tree
+   Family Tree
    ============================================================ */
 
 .tw-d-family {
@@ -360,305 +284,6 @@
 	line-height: 1.25;
 }
 
-/* ============================================================
-   Direction A — Indexed Reference
-   ============================================================ */
-
-.tw-a-rail {
-	position: sticky;
-	top: calc(var(--layout-header-height) + 1rem);
-	align-self: start;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.tw-a-rail-heading {
-	font-family: Archivo, sans-serif;
-	font-size: 10px;
-	letter-spacing: .16em;
-	text-transform: uppercase;
-	color: #a89b84;
-	font-weight: 600;
-	margin-bottom: 2px;
-}
-
-.tw-a-rail-item {
-	cursor: pointer;
-	font-family: Spectral, serif;
-	font-size: 15px;
-	line-height: 1.25;
-	color: #8a7f6d;
-	border-left: 2px solid transparent;
-	padding-left: 10px;
-	transition: color .15s, border-color .15s, font-weight .15s;
-}
-
-.tw-a-rail-item--active {
-	color: #9c3d24;
-	font-weight: 600;
-	border-left-color: #9c3d24;
-}
-
-.tw-a-families {
-	/* content fills right column */
-}
-
-.tw-a-family {
-	margin-bottom: 44px;
-}
-
-.tw-a-family-header {
-	display: flex;
-	align-items: baseline;
-	gap: 14px;
-}
-
-.tw-a-num {
-	font-family: Archivo, sans-serif;
-	font-size: 12px;
-	letter-spacing: .1em;
-	color: #9c3d24;
-	font-weight: 600;
-}
-
-.tw-a-name {
-	font-family: 'Playfair Display', serif;
-	font-weight: 700;
-	font-size: 33px;
-	color: #1c1c16;
-	margin: 0;
-}
-
-.tw-a-count {
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .08em;
-	color: #a89b84;
-	font-weight: 600;
-}
-
-.tw-a-desc {
-	font-family: Spectral, serif;
-	font-size: 15px;
-	color: #6a6253;
-	margin: 9px 0 16px;
-	max-width: 600px;
-	line-height: 1.5;
-}
-
-.tw-a-subs {
-	display: flex;
-	flex-direction: column;
-}
-
-.tw-a-sub-row {
-	display: grid;
-	grid-template-columns: 188px 1fr;
-	gap: 26px;
-	padding: 13px 0;
-	border-top: 1px solid #e7dfcc;
-}
-
-.tw-a-sub-name {
-	font-family: Spectral, serif;
-	font-weight: 600;
-	font-size: 16px;
-	color: #2a251d;
-}
-
-.tw-a-sub-list {
-	font-family: Spectral, serif;
-	font-size: 15px;
-	color: #6a6253;
-	line-height: 1.75;
-}
-
-/* ============================================================
-   Direction B — Family Cards
-   ============================================================ */
-
-.tw-b-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 22px;
-	align-items: start;
-}
-
-.tw-b-card {
-	background: #fffdf6;
-	border: 1px solid #e4dcc8;
-	border-radius: 2px;
-	padding: 24px 26px 26px;
-}
-
-.tw-b-card-header {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-}
-
-.tw-b-card-title-group {
-	display: flex;
-	align-items: baseline;
-	gap: 11px;
-}
-
-.tw-b-num {
-	font-family: Archivo, sans-serif;
-	font-size: 12px;
-	letter-spacing: .1em;
-	color: #9c3d24;
-	font-weight: 600;
-}
-
-.tw-b-name {
-	font-family: 'Playfair Display', serif;
-	font-weight: 700;
-	font-size: 24px;
-	color: #1c1c16;
-	margin: 0;
-}
-
-.tw-b-count {
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .08em;
-	color: #a89b84;
-	font-weight: 600;
-}
-
-.tw-b-desc {
-	font-family: Spectral, serif;
-	font-size: 14px;
-	color: #6a6253;
-	margin: 8px 0 16px;
-	line-height: 1.5;
-}
-
-.tw-b-subs {
-	display: flex;
-	flex-direction: column;
-	gap: 14px;
-	margin-top: 14px;
-}
-
-.tw-b-sub-name {
-	font-family: Archivo, sans-serif;
-	font-size: 10px;
-	letter-spacing: .13em;
-	text-transform: uppercase;
-	color: #9c3d24;
-	font-weight: 600;
-	margin-bottom: 7px;
-}
-
-.tw-b-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 6px;
-}
-
-.tw-b-tag {
-	font-family: Spectral, serif;
-	font-size: 13px;
-	color: #5a5142;
-	background: #efe9da;
-	padding: 4px 10px;
-	border-radius: 2px;
-}
-
-/* ============================================================
-   Direction C — Catalog Table
-   ============================================================ */
-
-.tw-c-table {
-	border: 1px solid #e0d8c4;
-	border-radius: 2px;
-	overflow: hidden;
-}
-
-.tw-c-head {
-	display: grid;
-	grid-template-columns: 230px 210px 1fr;
-	background: #1c1c16;
-}
-
-.tw-c-head > div {
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .12em;
-	text-transform: uppercase;
-	color: #cdbf9f;
-	font-weight: 600;
-	padding: 12px 16px;
-}
-
-.tw-c-family-band {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	background: #efe7d4;
-	padding: 10px 16px;
-	border-top: 1px solid #e0d8c4;
-}
-
-.tw-c-family-id {
-	font-family: 'Playfair Display', serif;
-	font-weight: 700;
-	font-size: 18px;
-	color: #1c1c16;
-}
-
-.tw-c-num {
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .1em;
-	color: #9c3d24;
-	font-weight: 600;
-	margin-right: 9px;
-}
-
-.tw-c-count {
-	font-family: Archivo, sans-serif;
-	font-size: 11px;
-	letter-spacing: .08em;
-	text-transform: uppercase;
-	color: #8a7f6d;
-	font-weight: 600;
-}
-
-.tw-c-row {
-	display: grid;
-	grid-template-columns: 230px 210px 1fr;
-	border-top: 1px solid #ece4d2;
-}
-
-.tw-c-row--alt {
-	background: #f6f1e6;
-}
-
-.tw-c-row > div:first-child {
-	border-right: 1px solid #ece4d2;
-}
-
-.tw-c-sub-name {
-	font-family: Spectral, serif;
-	font-weight: 600;
-	font-size: 15px;
-	color: #2a251d;
-	padding: 11px 16px;
-	border-right: 1px solid #ece4d2;
-}
-
-.tw-c-sub-list {
-	font-family: Spectral, serif;
-	font-size: 14.5px;
-	color: #6a6253;
-	padding: 11px 16px;
-	line-height: 1.65;
-}
-
 /* ——— Responsive ——— */
 
 @media (max-width: 900px) {
@@ -680,51 +305,12 @@
 		gap: 12px;
 	}
 
-	.tw-controls--B {
-		padding: 8px 32px 0;
-	}
-
 	.tw-count-bar-wrap {
 		padding: 16px 32px 0;
 	}
 
 	.tw-content {
 		padding: 24px 32px 60px;
-	}
-
-	.tw-content--has-rail {
-		grid-template-columns: 1fr;
-		padding: 24px 32px 60px;
-	}
-
-	.tw-a-rail {
-		position: static;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 6px;
-	}
-
-	.tw-a-rail-heading {
-		width: 100%;
-	}
-
-	.tw-b-grid {
-		grid-template-columns: 1fr;
-	}
-
-	.tw-c-head,
-	.tw-c-row {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	.tw-c-head > div:first-child,
-	.tw-c-row > div:first-child {
-		display: none;
-	}
-
-	.tw-a-sub-row {
-		grid-template-columns: 1fr;
-		gap: 4px;
 	}
 }
 
@@ -733,8 +319,7 @@
 		padding: 24px 20px 16px;
 	}
 
-	.tw-controls,
-	.tw-controls--B {
+	.tw-controls {
 		padding: 8px 20px 0;
 	}
 
@@ -742,26 +327,11 @@
 		padding: 16px 20px 0;
 	}
 
-	.tw-content,
-	.tw-content--has-rail {
+	.tw-content {
 		padding: 20px 20px 48px;
 	}
 
 	.tw-search {
 		width: 100%;
-	}
-
-	.tw-c-head,
-	.tw-c-row {
-		grid-template-columns: 1fr;
-	}
-
-	.tw-c-head > div:nth-child(2),
-	.tw-c-row .tw-c-sub-name {
-		display: none;
-	}
-
-	.tw-c-sub-list {
-		border-right: none;
 	}
 }
