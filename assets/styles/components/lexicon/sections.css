@@ -3,11 +3,6 @@
 	scroll-margin-top: var(--layout-scroll-header-lexcion-controls-offset);
 }
 
-.lexicon-empty-state {
-	border-top: 1px solid var(--color-border-primary);
-	padding-top: 2rem;
-}
-
 .lexicon-section {
 	position: relative;
 }

@@ -161,7 +161,7 @@ export class TastingWheel {
 		const content = this.el;
 
 		if (fams.length === 0) {
-			content.innerHTML = `<div class="tw-empty">No flavours match "${q}".</div>`;
+			content.innerHTML = `<div class="empty-state">No flavours match "${q}".</div>`;
 			return;
 		}
 

@@ -293,8 +293,8 @@ export class Catalog {
 
 	renderEmptyState() {
 		return (this.searchQuery || this.fillFilter)
-			? `<div class="catalog-empty-state"><h2>No bottles match your filters.</h2></div>`
-			: `<div class="catalog-empty-state"><h2>No bottles logged yet.</h2></div>`;
+			? `<div class="empty-state"><h2>No bottles match your filters.</h2></div>`
+			: `<div class="empty-state"><h2>No bottles logged yet.</h2></div>`;
 	}
 
 	renderGroup(group, bottles) {

@@ -119,7 +119,7 @@ export class Lexicon {
 			: 'No entries found for the current filters.';
 
 		return `
-			<div class="lexicon-empty-state grid-col-full">
+			<div class="empty-state grid-col-full">
 				<h2 class="text-heading-lg">${message}</h2>
 			</div>
 		`;
