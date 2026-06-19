@@ -14,7 +14,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,500;1,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
-<body class="tasting-page">
+<body>
 	<header class="header">
 		<nav class="nav">
 			<a class="nav-logo" href="/">
@@ -49,7 +49,30 @@
 	</nav>
 
 	<main class="main-content">
-		<div id="tasting-wheel"></div>
+		<div class="tasting-container">
+			<section class="hero grid">
+				<div class="hero-heading grid-col-md-12 grid-col-lg-7">
+					<h1 class="hero-title">Tasting Wheel</h1>
+					<p>A sensory map of whisky — eleven families of aroma and flavour, each branching down into its sub-families and individual notes.</p>
+				</div>
+			</section>
+
+			<section class="catalog-heading">
+				<div class="catalog-controls-row">
+					<div class="catalog-search-container">
+						<input type="search" id="tasting-search" placeholder="Search flavours…" class="catalog-search-input" aria-label="Search flavours">
+					</div>
+					<div class="catalog-filter-controls">
+						<select id="tasting-family" class="catalog-filter-select" aria-label="Filter by family"></select>
+					</div>
+				</div>
+				<div class="catalog-controls-row">
+					<p id="tasting-count" class="catalog-count text-heading-md"></p>
+				</div>
+			</section>
+
+			<div id="tasting-wheel"></div>
+		</div>
 	</main>
 
 	<script src="/assets/scripts/scripts.js" type="module"></script>

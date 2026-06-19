@@ -130,47 +130,19 @@ export class TastingWheel {
 	}
 
 	init() {
-		this._mount();
-	}
+		const familySelect = document.getElementById('tasting-family');
+		if (familySelect) {
+			familySelect.innerHTML = this.famOptions
+				.map(o => `<option value="${o}">${o}</option>`)
+				.join('');
+		}
 
-	_mount() {
-		const famOptionsHtml = this.famOptions
-			.map(o => `<option value="${o}">${o}</option>`)
-			.join('');
-
-		this.el.innerHTML = `
-			<div class="tw-pane">
-				<div class="tw-hero">
-					<div>
-						<div class="tw-eyebrow">The language of flavour</div>
-						<h1 class="tw-title">Tasting<span class="tw-title-italic"> wheel</span></h1>
-						<p class="tw-subtitle">A sensory map of whisky — eleven families of aroma and flavour, each branching down into its sub-families and individual notes.</p>
-					</div>
-					<div class="tw-engraving-placeholder">engraving · tasting wheel</div>
-				</div>
-				<div class="tw-controls">
-					<input id="tw-search" class="tw-search" placeholder="Search flavours…" autocomplete="off">
-					<div class="tw-filter-group">
-						<span class="tw-filter-label">Family</span>
-						<select id="tw-family" class="tw-select">${famOptionsHtml}</select>
-					</div>
-				</div>
-				<div class="tw-count-bar-wrap">
-					<div class="tw-count-bar">
-						<span id="tw-count" class="tw-count-shown"></span>
-						<span class="tw-count-note">Eleven families, each its own colour</span>
-					</div>
-				</div>
-				<div id="tw-content" class="tw-content"></div>
-			</div>
-		`;
-
-		this.el.querySelector('#tw-search').addEventListener('input', e => {
+		document.getElementById('tasting-search')?.addEventListener('input', e => {
 			this.state.q = e.target.value;
 			this._render();
 		});
 
-		this.el.querySelector('#tw-family').addEventListener('change', e => {
+		document.getElementById('tasting-family')?.addEventListener('change', e => {
 			this.state.family = e.target.value;
 			this._render();
 		});
@@ -183,9 +155,10 @@ export class TastingWheel {
 		const fams = this.filter(q, family);
 		const shown = fams.reduce((a, f) => a + f.count, 0);
 
-		this.el.querySelector('#tw-count').textContent = `${shown} of ${this.total} tasting notes`;
+		const countEl = document.getElementById('tasting-count');
+		if (countEl) countEl.textContent = `${shown} of ${this.total} tasting notes`;
 
-		const content = this.el.querySelector('#tw-content');
+		const content = this.el;
 
 		if (fams.length === 0) {
 			content.innerHTML = `<div class="tw-empty">No flavours match "${q}".</div>`;
