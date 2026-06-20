@@ -1,4 +1,4 @@
-export class TastingWheel {
+export class Flavors {
 	constructor(el) {
 		this.el = el;
 		this.state = { q: '', family: 'All Families' };
@@ -130,19 +130,19 @@ export class TastingWheel {
 	}
 
 	init() {
-		const familySelect = document.getElementById('tasting-family');
+		const familySelect = document.getElementById('flavors-family');
 		if (familySelect) {
 			familySelect.innerHTML = this.famOptions
 				.map(o => `<option value="${o}">${o}</option>`)
 				.join('');
 		}
 
-		document.getElementById('tasting-search')?.addEventListener('input', e => {
+		document.getElementById('flavors-search')?.addEventListener('input', e => {
 			this.state.q = e.target.value;
 			this._render();
 		});
 
-		document.getElementById('tasting-family')?.addEventListener('change', e => {
+		document.getElementById('flavors-family')?.addEventListener('change', e => {
 			this.state.family = e.target.value;
 			this._render();
 		});
@@ -155,17 +155,15 @@ export class TastingWheel {
 		const fams = this.filter(q, family);
 		const shown = fams.reduce((a, f) => a + f.count, 0);
 
-		const countEl = document.getElementById('tasting-count');
+		const countEl = document.getElementById('flavors-count');
 		if (countEl) countEl.textContent = `${shown} of ${this.total} tasting notes`;
 
-		const content = this.el;
-
 		if (fams.length === 0) {
-			content.innerHTML = `<div class="empty-state">No flavours match "${q}".</div>`;
+			this.el.innerHTML = `<div class="empty-state">No flavors match "${q}".</div>`;
 			return;
 		}
 
-		content.innerHTML = fams.map(f => {
+		this.el.innerHTML = fams.map(f => {
 			const { h, c } = this.themeFor(f.idx);
 			const ok = (l, cm) => this.ok(l, c * cm, h);
 			const n = f.subs.length;
@@ -178,29 +176,29 @@ export class TastingWheel {
 				const border  = ok(.80  - tt * 0.04 - (j % 2) * 0.04,  0.9);
 
 				const termsHtml = s.terms.map(t => `
-					<div class="tw-d-term-spine" style="background:${border};"></div>
-					<div class="tw-d-node" style="background:${nodeBg};border-color:${border};">${t}</div>
+					<div class="flavor-term-spine" style="background:${border};"></div>
+					<div class="flavor-node" style="background:${nodeBg};border-color:${border};">${t}</div>
 				`).join('');
 
 				return `
-					<div class="tw-d-col">
-						<div class="tw-d-col-spine" style="background:${spine};"></div>
-						<div class="tw-d-sublabel" style="background:${labelBg};">${s.name}</div>
+					<div class="flavor-col">
+						<div class="flavor-col-spine" style="background:${spine};"></div>
+						<div class="flavor-sublabel" style="background:${labelBg};">${s.name}</div>
 						${termsHtml}
 					</div>
 				`;
 			}).join('');
 
 			return `
-				<div class="tw-d-family">
-					<div class="tw-d-family-header" style="background:${ok(.40, 1.9)};">
-						<span class="tw-d-family-num" style="color:${ok(.86, 0.55)};">${f.numStr}</span>
-						<span class="tw-d-family-name" style="color:#fdf9ef;">${f.name}</span>
-						<span class="tw-d-family-count" style="color:${ok(.86, 0.55)};">${f.count} notes</span>
+				<div class="flavor-family">
+					<div class="flavor-family-header" style="background:${ok(.40, 1.9)};">
+						<span class="flavor-family-num" style="color:${ok(.86, 0.55)};">${f.numStr}</span>
+						<span class="flavor-family-name" style="color:#fdf9ef;">${f.name}</span>
+						<span class="flavor-family-count" style="color:${ok(.86, 0.55)};">${f.count} notes</span>
 					</div>
-					<p class="tw-d-family-desc">${f.desc}</p>
-					<div class="tw-d-v-spine" style="background:${spine};"></div>
-					<div class="tw-d-tree" style="border-top-color:${spine};">
+					<p class="flavor-family-desc">${f.desc}</p>
+					<div class="flavor-v-spine" style="background:${spine};"></div>
+					<div class="flavor-tree" style="border-top-color:${spine};">
 						${subsHtml}
 					</div>
 				</div>

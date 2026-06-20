@@ -15,7 +15,7 @@
 @import "components/lexicon/index.css" layer(components);
 @import "components/catalog/index.css" layer(components);
 @import "components/regions/index.css" layer(components);
-@import "components/tasting/index.css" layer(components);
+@import "components/flavors/index.css" layer(components);
 @import "utilities.css" layer(utilities);
 @import "themes/theme-accent.css" layer(themes);
 @import "themes/theme-primary.css" layer(themes);

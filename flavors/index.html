@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Tasting Wheel | Cask & Quill</title>
+	<title>Flavors | Cask & Quill</title>
 	<link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
 	<link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
@@ -24,7 +24,7 @@
 				<a id="regions-btn" class="button button-tertiary" href="/">Regions</a>
 				<a id="lexicon-btn" class="button button-tertiary" href="/lexicon/">Lexicon</a>
 				<a id="catalog-btn" class="button button-tertiary" href="/catalog/">Catalog</a>
-				<a id="tasting-btn" class="button button-tertiary active" href="/tasting/">Tasting</a>
+				<a id="flavors-btn" class="button button-tertiary active" href="/flavors/">Flavors</a>
 			</div>
 			<div id="catalog-auth-root" class="catalog-auth-root"></div>
 			<button id="nav-menu-btn" class="nav-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
@@ -44,15 +44,15 @@
 			<a class="button button-tertiary" href="/">Regions</a>
 			<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
 			<a class="button button-tertiary" href="/catalog/">Catalog</a>
-			<a class="button button-tertiary active" href="/tasting/">Tasting</a>
+			<a class="button button-tertiary active" href="/flavors/">Flavors</a>
 		</div>
 	</nav>
 
 	<main class="main-content">
-		<div class="tasting-container">
+		<div class="flavors-container">
 			<section class="hero grid">
 				<div class="hero-heading grid-col-md-12 grid-col-lg-7">
-					<h1 class="hero-title">Tasting Wheel</h1>
+					<h1 class="hero-title">Flavors</h1>
 					<p>A sensory map of whisky — eleven families of aroma and flavour, each branching down into its sub-families and individual notes.</p>
 				</div>
 			</section>
@@ -60,18 +60,18 @@
 			<section class="page-controls">
 				<div class="controls-row">
 					<div class="search-container">
-						<input type="search" id="tasting-search" placeholder="Search flavours…" class="search-input" aria-label="Search flavours">
+						<input type="search" id="flavors-search" placeholder="Search flavors…" class="search-input" aria-label="Search flavors">
 					</div>
 					<div class="filter-controls">
-						<select id="tasting-family" class="filter-select" aria-label="Filter by family"></select>
+						<select id="flavors-family" class="filter-select" aria-label="Filter by family"></select>
 					</div>
 				</div>
 				<div class="controls-row">
-					<p id="tasting-count" class="results-count text-heading-md"></p>
+					<p id="flavors-count" class="results-count text-heading-md"></p>
 				</div>
 			</section>
 
-			<div id="tasting-wheel"></div>
+			<div id="flavors-list"></div>
 		</div>
 	</main>
 
