@@ -24,6 +24,53 @@
 	/* Neutral scale */
 	--color-palette-white: #ffffff; /* accent theme text */
 	--color-palette-transparent: transparent;
+
+	/* Flavor structural variables — all tunable shades for the family tree */
+	/* Family header bar */
+	--flavor-header-l:            0.40;
+	--flavor-header-c-scale:      1.9;
+	/* Header accent text (number, count) */
+	--flavor-accent-l:            0.86;
+	--flavor-accent-c-scale:      0.55;
+	/* Connecting spines and tree border */
+	--flavor-spine-l:             0.52;
+	--flavor-spine-c-scale:       1.6;
+	/* Sub-family label fill */
+	--flavor-label-c-scale:       1.8;
+	/* Term node fill */
+	--flavor-node-c-scale:        0.55;
+	/* Term node border */
+	--flavor-border-c-scale:      0.9;
+
+	/* Per-column label lightness (positions 1–8, left to right) */
+	--flavor-col-1-label-l:       0.4;
+	--flavor-col-2-label-l:       0.45;
+	--flavor-col-3-label-l:       0.5;
+	--flavor-col-4-label-l:       0.55;
+	--flavor-col-5-label-l:       0.4;
+	--flavor-col-6-label-l:       0.45;
+	--flavor-col-7-label-l:       0.5;
+	--flavor-col-8-label-l:       0.55;
+
+	/* Per-column node fill lightness */
+	--flavor-col-1-node-l:       0.8;
+	--flavor-col-2-node-l:       0.85;
+	--flavor-col-3-node-l:       0.9;
+	--flavor-col-4-node-l:       0.95;
+	--flavor-col-5-node-l:       0.8;
+	--flavor-col-6-node-l:       0.85;
+	--flavor-col-7-node-l:       0.9;
+	--flavor-col-8-node-l:       0.95;
+
+	/* Per-column border lightness */
+	--flavor-col-1-border-l:      0.800;
+	--flavor-col-2-border-l:      0.754;
+	--flavor-col-3-border-l:      0.789;
+	--flavor-col-4-border-l:      0.743;
+	--flavor-col-5-border-l:      0.777;
+	--flavor-col-6-border-l:      0.731;
+	--flavor-col-7-border-l:      0.766;
+	--flavor-col-8-border-l:      0.720;
 }
 
 /* Color Tokens */

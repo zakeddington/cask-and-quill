@@ -3,20 +3,6 @@ export class Flavors {
 		this.el = el;
 		this.state = { q: '', family: 'All Families' };
 
-		this.THEME = [
-			{ h: 25,  c: .115 }, // Fruity
-			{ h: 350, c: .105 }, // Floral
-			{ h: 150, c: .095 }, // Herbal
-			{ h: 135, c: .092 }, // Vegetal
-			{ h: 70,  c: .105 }, // Sweet
-			{ h: 90,  c: .092 }, // Cereal / Grainy
-			{ h: 50,  c: .108 }, // Woody
-			{ h: 115, c: .078 }, // Earthy
-			{ h: 245, c: .07  }, // Smoky / Peaty
-			{ h: 35,  c: .12  }, // Spicy
-			{ h: 215, c: .062 }, // Sulphury / Feinty
-		];
-
 		this.data = [
 			{ name: 'Fruity', desc: 'Orchard, citrus and tropical notes — the bright, juicy side of the spirit.', subs: [
 				{ name: 'Fresh fruit', terms: ['Apple','Pear','Banana','Peach','Apricot','Melon','Grape'] },
@@ -102,12 +88,8 @@ export class Flavors {
 		return ['All Families', ...this.data.map(f => f.name)];
 	}
 
-	ok(l, c, h) {
-		return `oklch(${l} ${Math.max(0, c).toFixed(3)} ${h})`;
-	}
-
-	themeFor(i) {
-		return this.THEME[i] || { h: 40, c: .06 };
+	slug(name) {
+		return name.toLowerCase().replace(/[\s/]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 	}
 
 	filter(q, family) {
@@ -164,41 +146,31 @@ export class Flavors {
 		}
 
 		this.el.innerHTML = fams.map(f => {
-			const { h, c } = this.themeFor(f.idx);
-			const ok = (l, cm) => this.ok(l, c * cm, h);
-			const n = f.subs.length;
-			const spine = ok(.52, 1.6);
-
-			const subsHtml = f.subs.map((s, j) => {
-				const tt = n > 1 ? j / (n - 1) : 0;
-				const labelBg = ok(.50 + tt * 0.12 - (j % 2) * 0.07, 1.8);
-				const nodeBg  = ok(.955 - tt * 0.04 - (j % 2) * 0.045, 0.55);
-				const border  = ok(.80  - tt * 0.04 - (j % 2) * 0.04,  0.9);
-
+			const subsHtml = f.subs.map(s => {
 				const termsHtml = s.terms.map(t => `
-					<div class="flavor-term-spine" style="background:${border};"></div>
-					<div class="flavor-node" style="background:${nodeBg};border-color:${border};">${t}</div>
+					<div class="flavor-term-spine"></div>
+					<div class="flavor-node">${t}</div>
 				`).join('');
 
 				return `
 					<div class="flavor-col">
-						<div class="flavor-col-spine" style="background:${spine};"></div>
-						<div class="flavor-sublabel" style="background:${labelBg};">${s.name}</div>
+						<div class="flavor-col-spine"></div>
+						<div class="flavor-sublabel">${s.name}</div>
 						${termsHtml}
 					</div>
 				`;
 			}).join('');
 
 			return `
-				<div class="flavor-family">
-					<div class="flavor-family-header" style="background:${ok(.40, 1.9)};">
-						<span class="flavor-family-num" style="color:${ok(.86, 0.55)};">${f.numStr}</span>
-						<span class="flavor-family-name" style="color:#fdf9ef;">${f.name}</span>
-						<span class="flavor-family-count" style="color:${ok(.86, 0.55)};">${f.count} notes</span>
+				<div class="flavor-family flavor-theme-${this.slug(f.name)}">
+					<div class="flavor-family-header">
+						<span class="flavor-family-num">${f.numStr}</span>
+						<span class="flavor-family-name">${f.name}</span>
+						<span class="flavor-family-count">${f.count} notes</span>
 					</div>
 					<p class="flavor-family-desc">${f.desc}</p>
-					<div class="flavor-v-spine" style="background:${spine};"></div>
-					<div class="flavor-tree" style="border-top-color:${spine};">
+					<div class="flavor-v-spine"></div>
+					<div class="flavor-tree">
 						${subsHtml}
 					</div>
 				</div>
