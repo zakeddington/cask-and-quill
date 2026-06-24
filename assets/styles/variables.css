@@ -25,52 +25,22 @@
 	--color-palette-white: #ffffff; /* accent theme text */
 	--color-palette-transparent: transparent;
 
-	/* Flavor structural variables — all tunable shades for the family tree */
-	/* Family header bar */
-	--flavor-header-l:            0.40;
-	--flavor-header-c-scale:      1.9;
-	/* Header accent text (number, count) */
-	--flavor-accent-l:            0.86;
-	--flavor-accent-c-scale:      0.55;
-	/* Connecting spines and tree border */
-	--flavor-spine-l:             0.52;
-	--flavor-spine-c-scale:       1.6;
-	/* Sub-family label fill */
-	--flavor-label-c-scale:       1.8;
-	/* Term node fill */
-	--flavor-node-c-scale:        0.55;
-	/* Term node border */
-	--flavor-border-c-scale:      0.9;
+	/* Flavor Colors */
+	--color-theme-fruity: #a5011e;
+	--color-theme-floral: #c57798;
+	--color-theme-herbal: #038e75;
+	--color-theme-vegetal: #6b6d00;
+	--color-theme-sweet: #f39a00;
+	--color-theme-cereal-grain: #996e1d;
+	--color-theme-woody: #3d2a12;
+	--color-theme-earthy: #ac9327;
+	--color-theme-smoky-peaty: #333333;
+	--color-theme-spicy: #d03f22;
+	--color-theme-sulphury-feinty: #3088a5;
 
-	/* Per-column label lightness (positions 1–8, left to right) */
-	--flavor-col-1-label-l:       0.4;
-	--flavor-col-2-label-l:       0.45;
-	--flavor-col-3-label-l:       0.5;
-	--flavor-col-4-label-l:       0.55;
-	--flavor-col-5-label-l:       0.4;
-	--flavor-col-6-label-l:       0.45;
-	--flavor-col-7-label-l:       0.5;
-	--flavor-col-8-label-l:       0.55;
+	--flavor-color-base: #cc0000;
 
-	/* Per-column node fill lightness */
-	--flavor-col-1-node-l:       0.8;
-	--flavor-col-2-node-l:       0.85;
-	--flavor-col-3-node-l:       0.9;
-	--flavor-col-4-node-l:       0.95;
-	--flavor-col-5-node-l:       0.8;
-	--flavor-col-6-node-l:       0.85;
-	--flavor-col-7-node-l:       0.9;
-	--flavor-col-8-node-l:       0.95;
 
-	/* Per-column border lightness */
-	--flavor-col-1-border-l:      0.800;
-	--flavor-col-2-border-l:      0.754;
-	--flavor-col-3-border-l:      0.789;
-	--flavor-col-4-border-l:      0.743;
-	--flavor-col-5-border-l:      0.777;
-	--flavor-col-6-border-l:      0.731;
-	--flavor-col-7-border-l:      0.766;
-	--flavor-col-8-border-l:      0.720;
 }
 
 /* Color Tokens */

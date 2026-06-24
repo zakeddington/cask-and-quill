@@ -1,14 +1,17 @@
-@layer variables, base, layout, components, utilities, themes;
+@layer variables, base, layout, themes, components, utilities;
 
 /* Import all CSS layers */
 @import "variables.css" layer(variables);
 @import "base/base.css" layer(base);
 @import "base/grid.css" layer(base);
 @import "base/icons.css" layer(base);
-@import "base/typography.css";
-@import "base/buttons.css";
-@import "base/rich-text.css";
+@import "base/typography.css" layer(base);
+@import "base/buttons.css" layer(base);
+@import "base/rich-text.css" layer(base);
 @import "layout.css" layer(layout);
+@import "themes/theme-accent.css" layer(themes);
+@import "themes/theme-primary.css" layer(themes);
+@import "themes/flavor-themes.css" layer(themes);
 @import "components/nav-drawer.css" layer(components);
 @import "components/hero.css" layer(components);
 @import "components/controls.css" layer(components);
@@ -17,6 +20,3 @@
 @import "components/regions/index.css" layer(components);
 @import "components/flavors/index.css" layer(components);
 @import "utilities.css" layer(utilities);
-@import "themes/theme-accent.css" layer(themes);
-@import "themes/theme-primary.css" layer(themes);
-@import "themes/flavor-themes.css" layer(themes);

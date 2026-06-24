@@ -1,18 +1,51 @@
 /*
  * Flavor family color themes.
- * Set --flavor-color to any valid CSS color — hex, rgb, oklch, etc.
+ * Set --flavor-color-base to any valid CSS color — hex, rgb, oklch, etc.
  * All shades in the family tree are derived from this single value.
  * Structural scales (lightness, chroma multipliers) live in variables.css.
  */
 
-.flavor-theme-fruity          { --flavor-color: #c55e2a; }
-.flavor-theme-floral          { --flavor-color: #b84e74; }
-.flavor-theme-herbal          { --flavor-color: #3d8a5a; }
-.flavor-theme-vegetal         { --flavor-color: #568438; }
-.flavor-theme-sweet           { --flavor-color: #c08818; }
-.flavor-theme-cereal-grainy   { --flavor-color: #8c8820; }
-.flavor-theme-woody           { --flavor-color: #9c5a1c; }
-.flavor-theme-earthy          { --flavor-color: #4c7438; }
-.flavor-theme-smoky-peaty     { --flavor-color: #405ca8; }
-.flavor-theme-spicy           { --flavor-color: #bf4218; }
-.flavor-theme-sulphury-feinty { --flavor-color: #4a62a8; }
+.flavor-theme-fruity {
+	--flavor-color-base: var(--color-theme-fruity);
+}
+
+.flavor-theme-floral {
+	--flavor-color-base: var(--color-theme-floral);
+}
+
+.flavor-theme-herbal {
+	--flavor-color-base: var(--color-theme-herbal);
+}
+
+.flavor-theme-vegetal {
+	--flavor-color-base: var(--color-theme-vegetal);
+}
+
+.flavor-theme-sweet {
+	--flavor-color-base: var(--color-theme-sweet);
+}
+
+.flavor-theme-cereal-grainy {
+	--flavor-color-base: var(--color-theme-cereal-grain);
+}
+
+.flavor-theme-woody {
+	--flavor-color-base: var(--color-theme-woody);
+}
+
+.flavor-theme-earthy {
+	--flavor-color-base: var(--color-theme-earthy);
+}
+
+.flavor-theme-smoky-peaty {
+	--flavor-color-base: var(--color-theme-smoky-peaty);
+}
+
+.flavor-theme-spicy {
+	--flavor-color-base: var(--color-theme-spicy);
+}
+
+.flavor-theme-sulphury-feinty {
+	--flavor-color-base: var(--color-theme-sulphury-feinty);
+}
+
