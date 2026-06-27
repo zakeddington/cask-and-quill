@@ -15,51 +15,30 @@
 	--flavor-header-accent: var(--color-palette-white);
 	--flavor-spine: var(--flavor-color-base);
 	--col-border: var(--flavor-color-base);
+	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 80%, black);
+	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 40%, white);
 
 	margin-bottom: 42px;
 }
 
-/* ——— Per-column color (alternating depth) ——— */
-.flavor-col:nth-child(1) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 60%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 40%, white);
+/* ——— Per-column shade progression (light → saturated) ——— */
+/* .flavor-col:nth-child(1) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 25%, white); }
+.flavor-col:nth-child(2) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 35%, white); }
+.flavor-col:nth-child(3) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 45%, white); }
+.flavor-col:nth-child(4) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 55%, white); }
+.flavor-col:nth-child(5) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 65%, white); }
+.flavor-col:nth-child(6) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 70%, white); }
+.flavor-col:nth-child(7) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 75%, white); }
+.flavor-col:nth-child(8) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 80%, white); } */
 
-}
-
-.flavor-col:nth-child(2) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 65%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 35%, white);
-}
-
-.flavor-col:nth-child(3) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 70%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 30%, white);
-}
-
-.flavor-col:nth-child(4) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 75%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 25%, white);
-}
-
-.flavor-col:nth-child(5) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 80%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 20%, white);
-}
-
-.flavor-col:nth-child(6) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 85%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 15%, white);
-}
-
-.flavor-col:nth-child(7) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 90%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 10%, white);
-}
-
-.flavor-col:nth-child(8) {
-	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 95%, black);
-	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 5%, white);
-}
+.flavor-col:nth-child(1) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 25%, white); }
+.flavor-col:nth-child(5) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 35%, white); }
+.flavor-col:nth-child(3) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 45%, white); }
+.flavor-col:nth-child(7) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 55%, white); }
+.flavor-col:nth-child(2) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 65%, white); }
+.flavor-col:nth-child(8) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 70%, white); }
+.flavor-col:nth-child(6) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 75%, white); }
+.flavor-col:nth-child(4) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 80%, white); }
 
 .flavor-family-header {
 	align-items: baseline;
