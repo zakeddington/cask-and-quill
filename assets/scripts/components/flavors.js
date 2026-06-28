@@ -106,7 +106,7 @@ export class Flavors {
 				});
 				if (q) subs = subs.filter(s => s.terms.length > 0);
 				const count = subs.reduce((a, s) => a + s.terms.length, 0);
-				return { name: f.name, desc: f.desc, idx: i, numStr: String(i + 1).padStart(2, '0'), subs, count };
+				return { name: f.name, desc: f.desc, idx: i, subs, count };
 			})
 			.filter(f => !q || f.count > 0);
 	}
@@ -164,14 +164,22 @@ export class Flavors {
 			return `
 				<div class="flavor-family flavor-theme-${this.slug(f.name)}">
 					<div class="flavor-family-header">
-						<span class="flavor-family-num">${f.numStr}</span>
-						<span class="flavor-family-name">${f.name}</span>
-						<span class="flavor-family-count">${f.count} notes</span>
+						<div class="flavor-family-header-inner">
+							<span class="flavor-family-name">${f.name}</span>
+							<span class="flavor-family-desc">${f.desc}</span>
+							<span class="flavor-family-count">${f.count} notes</span>
+						</div>
 					</div>
-					<p class="flavor-family-desc">${f.desc}</p>
-					<div class="flavor-v-spine"></div>
-					<div class="flavor-tree">
-						${subsHtml}
+					<div class="flavor-family-content">
+						<div class="flavor-family-aside">
+							<img class="flavor-family-img" src="/assets/images/flavor-${this.slug(f.name)}.jpg" alt="${f.name}">
+						</div>
+						<div class="flavor-family-main">
+							<div class="flavor-v-spine"></div>
+							<div class="flavor-tree">
+								${subsHtml}
+							</div>
+						</div>
 					</div>
 				</div>
 			`;
