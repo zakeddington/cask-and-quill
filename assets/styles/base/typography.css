@@ -117,6 +117,7 @@ select {
 	font-size: var(--font-size-body-md);
 	font-weight: var(--font-weight-semibold);
 	line-height: var(--line-height-relaxed);
+	min-height: 2.875rem;
 	padding: 0.625rem 1rem;
 	transition: box-shadow 0.2s;
 	width: 100%;

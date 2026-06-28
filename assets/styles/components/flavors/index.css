@@ -44,17 +44,22 @@
 
 .flavor-family-header {
 	background: var(--flavor-header-bg);
-	padding: 1rem 1.5rem;
 }
 
 .flavor-family-header-inner {
 	align-items: baseline;
 	display: flex;
-	gap: 1rem;
+	flex-direction: column;
+	gap: 0.5rem;
 	margin: 0 auto;
 	max-width: var(--layout-max-width);
-	padding: 0 var(--layout-inline-padding);
+	padding: 1rem var(--layout-inline-padding);
 	width: 100%;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		gap: 1rem;
+	}
 }
 
 .flavor-family-name {
@@ -85,13 +90,23 @@
 .flavor-family-content {
 	align-items: flex-start;
 	display: flex;
+	flex-direction: column;
 	gap: 1.5rem;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+	}
 }
 
 .flavor-family-aside {
 	flex-shrink: 0;
+	margin: auto;
 	max-width: 400px;
-	width: 20%;
+	width: 50%;
+
+	@media (min-width: 768px) {
+		width: 20%;
+	}
 }
 
 .flavor-family-img {
@@ -104,6 +119,11 @@
 .flavor-family-main {
 	flex: 1;
 	min-width: 0;
+	padding: 0 var(--layout-inline-padding);
+
+	@media (min-width: 768px) {
+		padding: 0;
+	}
 }
 
 /* ——— Tree structure ——— */
