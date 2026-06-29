@@ -111,3 +111,12 @@ export async function signOut() {
 	const { error } = await supabase.auth.signOut();
 	if (error) throw error;
 }
+
+export async function fetchFlavorFamilies() {
+	const { data, error } = await supabase
+		.from('flavor_families')
+		.select('name, description, subs')
+		.order('sort_order');
+	if (error) throw error;
+	return data.map(row => ({ name: row.name, desc: row.description, subs: row.subs }));
+}
