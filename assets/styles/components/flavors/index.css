@@ -88,12 +88,12 @@
 /* ——— Content layout (aside + tree) ——— */
 
 .flavor-family-content {
-	align-items: flex-start;
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
 
 	@media (min-width: 768px) {
+		align-items: flex-start;
 		flex-direction: row;
 	}
 }
@@ -119,6 +119,7 @@
 .flavor-family-main {
 	flex: 1;
 	min-width: 0;
+	overflow-x: clip;
 	padding: 0 var(--layout-inline-padding);
 
 	@media (min-width: 768px) {
