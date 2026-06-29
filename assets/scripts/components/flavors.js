@@ -171,6 +171,7 @@ export class Flavors {
 						</div>
 					</div>
 					<div class="flavor-family-content">
+						<div class="flavor-h-spine"></div>
 						<div class="flavor-family-aside">
 							<img class="flavor-family-img" src="/assets/images/flavor-${this.slug(f.name)}.jpg" alt="${f.name}">
 						</div>

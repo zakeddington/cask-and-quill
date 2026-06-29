@@ -90,6 +90,7 @@
 .flavor-family-content {
 	display: flex;
 	flex-direction: column-reverse;
+	position: relative;
 
 	@media (min-width: 768px) {
 		align-items: flex-start;
@@ -134,6 +135,15 @@
 	height: 1rem;
 	margin-left: 2rem;
 	width: 2px;
+}
+
+.flavor-h-spine {
+	background: var(--flavor-color-base);
+	height: 2px;
+	left: 0;
+	position: absolute;
+	top: 1rem;
+	width: 100dvw;
 }
 
 .flavor-tree {
