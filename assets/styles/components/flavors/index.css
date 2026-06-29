@@ -89,12 +89,12 @@
 
 .flavor-family-content {
 	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
+	flex-direction: column-reverse;
 
 	@media (min-width: 768px) {
 		align-items: flex-start;
 		flex-direction: row;
+		gap: 1.5rem;
 	}
 }
 
