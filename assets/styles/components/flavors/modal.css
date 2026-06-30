@@ -315,5 +315,9 @@
 .flavor-edit-btn {
 	flex-shrink: 0;
 	line-height: var(--line-height-tight);
-	margin-left: auto;
+	margin: 0 0 0 auto;
+
+	@media (min-width: 768px) {
+		margin: 0;
+	}
 }
