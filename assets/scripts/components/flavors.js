@@ -1,10 +1,15 @@
-import { fetchFlavorFamilies } from '../supabase.js';
+import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../supabase.js';
+import { FlavorModal } from './flavor-modal.js';
+
+const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
 export class Flavors {
-	constructor(el) {
+	constructor(el, isAdmin = false) {
 		this.el = el;
 		this.state = { q: '', family: 'All Families' };
 		this.data = [];
+		this.isAdmin = isAdmin;
+		this.modal = null;
 	}
 
 	get total() {
@@ -49,6 +54,27 @@ export class Flavors {
 			return;
 		}
 
+		const modalRoot = document.getElementById('flavor-modal-root');
+		if (modalRoot) {
+			this.modal = new FlavorModal(modalRoot, {
+				onSave: family => this.handleSave(family),
+				onDelete: id => this.handleDelete(id)
+			});
+		}
+
+		window.addEventListener('auth-change', e => {
+			this.isAdmin = e.detail.isAdmin;
+			this._render();
+		});
+
+		this.el.addEventListener('click', e => {
+			const editBtn = e.target.closest('[data-edit-family-idx]');
+			if (editBtn && this.modal) {
+				const idx = parseInt(editBtn.dataset.editFamilyIdx);
+				this.modal.open(this.data[idx]);
+			}
+		});
+
 		const familySelect = document.getElementById('flavors-family');
 		if (familySelect) {
 			familySelect.innerHTML = this.famOptions
@@ -67,6 +93,40 @@ export class Flavors {
 		});
 
 		this._render();
+	}
+
+	async handleSave(family) {
+		const idx = this.data.findIndex(f => f.id === family.id);
+		if (idx !== -1) this.data[idx] = family;
+		this._updateFamilySelect();
+		this._render();
+
+		try {
+			await updateFlavorFamily(family.id, { name: family.name, description: family.desc, subs: family.subs });
+		} catch (err) {
+			console.error('Failed to save flavor family:', err);
+		}
+	}
+
+	async handleDelete(id) {
+		this.data = this.data.filter(f => f.id !== id);
+		this._updateFamilySelect();
+		this._render();
+
+		try {
+			await deleteFlavorFamily(id);
+		} catch (err) {
+			console.error('Failed to delete flavor family:', err);
+		}
+	}
+
+	_updateFamilySelect() {
+		const familySelect = document.getElementById('flavors-family');
+		if (familySelect) {
+			familySelect.innerHTML = this.famOptions
+				.map(o => `<option value="${o}">${o}</option>`)
+				.join('');
+		}
 	}
 
 	_render() {
@@ -105,6 +165,12 @@ export class Flavors {
 							<span class="flavor-family-name">${f.name}</span>
 							<span class="flavor-family-desc">${f.desc}</span>
 							<span class="flavor-family-count">${f.count} notes</span>
+							${this.isAdmin ? `
+								<button class="flavor-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
+									<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
+									Edit
+								</button>
+							` : ''}
 						</div>
 					</div>
 					<div class="flavor-family-content">

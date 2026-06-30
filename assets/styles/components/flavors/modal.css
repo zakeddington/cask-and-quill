@@ -1,0 +1,318 @@
+/* ============================================================
+   Flavor Family Edit Modal
+   ============================================================ */
+
+.flavor-modal-is-open {
+	overflow: hidden;
+}
+
+.flavor-modal {
+	align-items: center;
+	display: flex;
+	inset: 0;
+	justify-content: center;
+	padding: 1rem;
+	position: fixed;
+	z-index: 100;
+
+	@media (min-width: 768px) {
+		padding: 2rem;
+	}
+}
+
+.flavor-modal-overlay {
+	background-color: rgba(28, 28, 22, 0.78);
+	border: 0;
+	inset: 0;
+	position: absolute;
+}
+
+.flavor-modal-panel {
+	background-color: var(--color-background-primary);
+	border: 2px solid var(--color-border-accent);
+	box-shadow: 0 1.5rem 4rem rgba(28, 28, 22, 0.25);
+	display: flex;
+	flex-direction: column;
+	max-height: 90dvh;
+	max-width: 720px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+/* ——— Header & Footer ——— */
+
+.flavor-modal-header,
+.flavor-modal-footer {
+	background-color: var(--color-background-header);
+	display: flex;
+	gap: 1rem;
+	padding: 1.25rem;
+
+	@media (min-width: 768px) {
+		padding: 1.5rem 2rem;
+	}
+}
+
+.flavor-modal-header {
+	align-items: center;
+	border-bottom: 1px solid var(--color-border-primary);
+	justify-content: space-between;
+}
+
+.flavor-modal-header h2 {
+	margin: 0;
+}
+
+.flavor-modal-close {
+	background-color: transparent;
+	border: none;
+	color: var(--color-text-accent);
+	flex-shrink: 0;
+	font-size: var(--font-size-heading-md);
+	line-height: 1;
+	min-height: 2rem;
+	min-width: 2rem;
+}
+
+.flavor-modal-footer {
+	align-items: center;
+	border-top: 1px solid var(--color-border-primary);
+	flex-direction: column;
+	justify-content: space-between;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+	}
+}
+
+.flavor-modal-footer-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		width: auto;
+	}
+
+	button {
+		justify-content: center;
+	}
+}
+
+.flavor-modal-confirm-text {
+	color: var(--color-text-primary);
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+}
+
+/* ——— Body ——— */
+
+.flavor-modal-body {
+	display: grid;
+	gap: 2rem;
+	overflow-y: auto;
+	padding: 1.25rem;
+
+	@media (min-width: 768px) {
+		padding: 2rem;
+	}
+}
+
+/* ——— Fieldsets ——— */
+
+.flavor-modal-fieldset {
+	border: 0;
+	margin: 0;
+	min-width: 0;
+	padding: 0;
+}
+
+.flavor-modal-fieldset legend {
+	border-bottom: 1px solid var(--color-border-primary);
+	color: var(--color-text-primary);
+	font-family: var(--font-body);
+	font-size: var(--font-size-heading-md);
+	font-weight: var(--font-weight-bold);
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	width: 100%;
+}
+
+/* ——— Detail fields (Name + Description) ——— */
+
+.flavor-detail-fields {
+	display: grid;
+	gap: 1rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 2fr;
+	}
+}
+
+.flavor-field-full {
+	@media (min-width: 768px) {
+		grid-column: 1 / -1;
+	}
+}
+
+.flavor-modal-field {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.flavor-modal-field span {
+	color: var(--color-text-secondary);
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-xs);
+	font-weight: var(--font-weight-bold);
+	letter-spacing: var(--letter-spacing-wide);
+	text-transform: uppercase;
+}
+
+/* ——— Sub-categories list ——— */
+
+.flavor-subs-list {
+	display: grid;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.flavor-sub-item {
+	border: 1px solid var(--color-border-primary);
+	padding: 0.75rem;
+}
+
+.flavor-sub-header {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.flavor-sub-name {
+	color: var(--color-text-primary);
+	flex: 1;
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+	font-weight: var(--font-weight-semibold);
+	min-width: 0;
+}
+
+/* ——— Terms list ——— */
+
+.flavor-terms-list {
+	display: grid;
+	gap: 0.35rem;
+	margin-bottom: 0.5rem;
+	padding-left: 2.5rem;
+}
+
+.flavor-term-row {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.flavor-term-input {
+	color: var(--color-text-primary);
+	flex: 1;
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+	min-width: 0;
+}
+
+/* ——— Reorder buttons ——— */
+
+.flavor-reorder-btns {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.flavor-reorder-btn {
+	background: transparent;
+	border: none;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	display: flex;
+	line-height: 1;
+	padding: 0.1rem;
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.2;
+	}
+
+	&:not(:disabled):hover {
+		color: var(--color-text-primary);
+	}
+}
+
+.flavor-caret-up {
+	transform: rotate(180deg);
+}
+
+/* ——— Remove buttons ——— */
+
+.flavor-remove-btn {
+	background: transparent;
+	border: none;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
+	padding: 0.25rem;
+
+	&:hover {
+		color: var(--color-text-accent);
+	}
+}
+
+/* ——— Add buttons ——— */
+
+.flavor-add-btn {
+	align-items: center;
+	background: transparent;
+	border: 1px dashed var(--color-border-primary);
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	display: inline-flex;
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+	gap: 0.4rem;
+	padding: 0.5rem 0.75rem;
+	width: 100%;
+
+	&:hover {
+		border-color: var(--color-border-accent);
+		color: var(--color-text-primary);
+	}
+}
+
+.flavor-add-term-btn {
+	align-items: center;
+	background: transparent;
+	border: none;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	display: inline-flex;
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+	gap: 0.4rem;
+	margin-left: 2.5rem;
+	padding: 0.25rem 0;
+
+	&:hover {
+		color: var(--color-text-primary);
+	}
+}
+
+/* ——— Edit button on family header ——— */
+
+.flavor-edit-btn {
+	flex-shrink: 0;
+	margin-left: auto;
+}

@@ -36,7 +36,7 @@ async function initApp() {
 
 	if (document.getElementById('flavors-list')) {
 		const { Flavors } = await import('./components/flavors.js');
-		new Flavors(document.getElementById('flavors-list')).init();
+		new Flavors(document.getElementById('flavors-list'), isAdmin).init();
 	}
 
 	if (document.getElementById('journal-drawer')) {

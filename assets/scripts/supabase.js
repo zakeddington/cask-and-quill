@@ -115,8 +115,24 @@ export async function signOut() {
 export async function fetchFlavorFamilies() {
 	const { data, error } = await supabase
 		.from('flavor_families')
-		.select('name, description, subs')
+		.select('id, name, description, subs, sort_order')
 		.order('sort_order');
 	if (error) throw error;
-	return data.map(row => ({ name: row.name, desc: row.description, subs: row.subs }));
+	return data.map(row => ({ id: row.id, name: row.name, desc: row.description, subs: row.subs, sortOrder: row.sort_order }));
+}
+
+export async function updateFlavorFamily(id, { name, description, subs }) {
+	const { error } = await supabase
+		.from('flavor_families')
+		.update({ name, description, subs })
+		.eq('id', id);
+	if (error) throw error;
+}
+
+export async function deleteFlavorFamily(id) {
+	const { error } = await supabase
+		.from('flavor_families')
+		.delete()
+		.eq('id', id);
+	if (error) throw error;
 }

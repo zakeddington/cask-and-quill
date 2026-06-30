@@ -23,6 +23,7 @@
 @import "components/catalog/index.css" layer(components);
 @import "components/regions/index.css" layer(components);
 @import "components/flavors/index.css" layer(components);
+@import "components/flavors/modal.css" layer(components);
 
 @import "utilities.css" layer(utilities);
 
