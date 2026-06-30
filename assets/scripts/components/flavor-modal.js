@@ -6,6 +6,12 @@ function html(value) {
 	return escapeHtml(String(value ?? ''));
 }
 
+function createEl(htmlString) {
+	const div = document.createElement('div');
+	div.innerHTML = htmlString.trim();
+	return div.firstElementChild;
+}
+
 export class FlavorModal {
 	constructor(modalRoot, { onSave, onDelete }) {
 		this.modalRoot = modalRoot;
@@ -28,7 +34,7 @@ export class FlavorModal {
 		this.currentFamily = family;
 		this.editState = this.cloneFamily(family);
 		this.previousFocus = document.activeElement;
-		this.render();
+		this.modalRoot.innerHTML = this.renderModal();
 		document.body.classList.add('flavor-modal-is-open');
 		this.modalRoot.querySelector('.flavor-modal-close')?.focus();
 	}
@@ -54,6 +60,7 @@ export class FlavorModal {
 		this.previousFocus = null;
 	}
 
+	// Read all current input values from the DOM into editState.
 	syncFromDom() {
 		const nameInput = this.modalRoot.querySelector('[data-field="name"]');
 		const descInput = this.modalRoot.querySelector('[data-field="desc"]');
@@ -66,8 +73,32 @@ export class FlavorModal {
 		}));
 	}
 
-	render() {
-		this.modalRoot.innerHTML = this.renderModal();
+	// Update data-sub-idx on all buttons/inputs inside every sub-item and refresh disabled states.
+	reindexSubs() {
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const totalSubs = subItems.length;
+		subItems.forEach((subEl, si) => {
+			subEl.querySelectorAll('[data-sub-idx]').forEach(el => { el.dataset.subIdx = si; });
+			const upBtn = subEl.querySelector('[data-modal-action="sub-up"]');
+			const downBtn = subEl.querySelector('[data-modal-action="sub-down"]');
+			if (upBtn) upBtn.disabled = si === 0;
+			if (downBtn) downBtn.disabled = si === totalSubs - 1;
+			this.reindexTerms(subEl, si);
+		});
+	}
+
+	// Update data-term-idx / data-sub-idx on all term rows within a sub and refresh disabled states.
+	reindexTerms(subEl, si) {
+		const termRows = [...subEl.querySelectorAll('.flavor-term-row')];
+		const totalTerms = termRows.length;
+		termRows.forEach((termRow, ti) => {
+			termRow.querySelectorAll('[data-sub-idx]').forEach(el => { el.dataset.subIdx = si; });
+			termRow.querySelectorAll('[data-term-idx]').forEach(el => { el.dataset.termIdx = ti; });
+			const upBtn = termRow.querySelector('[data-modal-action="term-up"]');
+			const downBtn = termRow.querySelector('[data-modal-action="term-down"]');
+			if (upBtn) upBtn.disabled = ti === 0;
+			if (downBtn) downBtn.disabled = ti === totalTerms - 1;
+		});
 	}
 
 	handleClick(e) {
@@ -108,54 +139,107 @@ export class FlavorModal {
 		}
 	}
 
+	// ——— Sub-category mutations ———
+
 	moveSub(idx, dir) {
 		this.syncFromDom();
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const target = subItems[idx];
+		const sibling = subItems[idx + dir];
+		if (!target || !sibling) return;
+
 		const arr = this.editState.subs;
-		const newIdx = idx + dir;
-		if (newIdx < 0 || newIdx >= arr.length) return;
-		[arr[idx], arr[newIdx]] = [arr[newIdx], arr[idx]];
-		this.render();
+		[arr[idx], arr[idx + dir]] = [arr[idx + dir], arr[idx]];
+
+		if (dir === -1) {
+			sibling.before(target);
+		} else {
+			sibling.after(target);
+		}
+
+		this.reindexSubs();
+		target.querySelector(`[data-modal-action="sub-${dir === -1 ? 'up' : 'down'}"]`)?.focus();
 	}
 
 	removeSub(idx) {
 		this.syncFromDom();
 		this.editState.subs.splice(idx, 1);
-		this.render();
+
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		subItems[idx]?.remove();
+		this.reindexSubs();
 	}
 
 	addSub() {
 		this.syncFromDom();
-		this.editState.subs.push({ name: '', terms: [''] });
-		this.render();
-		const subItems = this.modalRoot.querySelectorAll('[data-sub-item]');
-		subItems[subItems.length - 1]?.querySelector('[data-sub-name]')?.focus();
+		const newSub = { name: '', terms: [''] };
+		this.editState.subs.push(newSub);
+
+		const si = this.editState.subs.length - 1;
+		const total = this.editState.subs.length;
+		const subEl = createEl(this.renderSub(newSub, si, total));
+
+		this.modalRoot.querySelector('.flavor-subs-list')?.appendChild(subEl);
+		this.reindexSubs();
+		subEl.querySelector('[data-sub-name]')?.focus();
 	}
+
+	// ——— Term mutations ———
 
 	moveTerm(subIdx, termIdx, dir) {
 		this.syncFromDom();
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subEl = subItems[subIdx];
+		if (!subEl) return;
+
+		const termRows = [...subEl.querySelectorAll('.flavor-term-row')];
+		const target = termRows[termIdx];
+		const sibling = termRows[termIdx + dir];
+		if (!target || !sibling) return;
+
 		const terms = this.editState.subs[subIdx]?.terms;
-		if (!terms) return;
-		const newIdx = termIdx + dir;
-		if (newIdx < 0 || newIdx >= terms.length) return;
-		[terms[termIdx], terms[newIdx]] = [terms[newIdx], terms[termIdx]];
-		this.render();
+		if (terms) [terms[termIdx], terms[termIdx + dir]] = [terms[termIdx + dir], terms[termIdx]];
+
+		if (dir === -1) {
+			sibling.before(target);
+		} else {
+			sibling.after(target);
+		}
+
+		this.reindexTerms(subEl, subIdx);
+		target.querySelector(`[data-modal-action="term-${dir === -1 ? 'up' : 'down'}"]`)?.focus();
 	}
 
 	removeTerm(subIdx, termIdx) {
 		this.syncFromDom();
 		this.editState.subs[subIdx]?.terms.splice(termIdx, 1);
-		this.render();
+
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subEl = subItems[subIdx];
+		if (!subEl) return;
+
+		subEl.querySelectorAll('.flavor-term-row')[termIdx]?.remove();
+		this.reindexTerms(subEl, subIdx);
 	}
 
 	addTerm(subIdx) {
 		this.syncFromDom();
 		this.editState.subs[subIdx]?.terms.push('');
-		this.render();
-		const subItems = this.modalRoot.querySelectorAll('[data-sub-item]');
+
+		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
 		const subEl = subItems[subIdx];
-		const termInputs = subEl?.querySelectorAll('[data-term-input]');
-		termInputs?.[termInputs.length - 1]?.focus();
+		if (!subEl) return;
+
+		const ti = subEl.querySelectorAll('.flavor-term-row').length;
+		const total = ti + 1;
+		const termEl = createEl(this.renderTerm('', subIdx, ti, total));
+
+		subEl.querySelector('.flavor-terms-list')?.appendChild(termEl);
+		this.reindexTerms(subEl, subIdx);
+		termEl.querySelector('[data-term-input]')?.focus();
 	}
+
+	// ——— Save / Delete ———
 
 	handleSave() {
 		this.syncFromDom();
@@ -189,6 +273,8 @@ export class FlavorModal {
 		if (!footer) return;
 		footer.innerHTML = this.renderFooter();
 	}
+
+	// ——— Templates ———
 
 	renderFooter() {
 		return `
