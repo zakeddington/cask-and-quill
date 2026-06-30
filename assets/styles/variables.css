@@ -7,7 +7,8 @@
 	--color-palette-brown-700-alpha-10: rgba(97, 63, 40, 0.1);
 	--color-palette-brown-700-alpha-05: rgba(97, 63, 40, 0.05);
 	--color-palette-brown-400: #712B13;  /* reddish */
-	--color-palette-brown-400-alpha-10: #7f4d031a;
+	--color-palette-brown-400-alpha-50: rgba(113, 43, 19, 0.5);
+	--color-palette-brown-400-alpha-10: rgba(113, 43, 19, 0.1);
 
 	/* Cream scale */
 	--color-palette-cream-50: #fdf9ef;   /* lightest */
@@ -39,8 +40,6 @@
 	--color-theme-sulphury-feinty: #3088a5;
 
 	--flavor-color-base: #cc0000;
-
-
 }
 
 /* Color Tokens */
@@ -96,7 +95,7 @@
 	--color-button-tertiary-background-hover: var(--color-palette-transparent);
 	--color-button-tertiary-background-active: var(--color-palette-transparent);
 	--color-button-tertiary-border: var(--color-palette-transparent);
-	--color-button-tertiary-border-hover: var(--color-palette-transparent);
+	--color-button-tertiary-border-hover: var(--color-palette-brown-400-alpha-50);
 	--color-button-tertiary-border-active: var(--color-palette-brown-400);
 	--color-button-tertiary-text: var(--color-palette-brown-700);
 	--color-button-tertiary-text-hover: var(--color-palette-brown-400);

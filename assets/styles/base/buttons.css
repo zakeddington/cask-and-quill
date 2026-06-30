@@ -61,12 +61,13 @@ button,
 .button-tertiary {
 	background-color: var(--color-button-tertiary-background);
 	border: 0;
+	border-bottom: 2px solid var(--color-button-tertiary-border);
 	color: var(--color-button-tertiary-text);
 	padding: 0.25rem;
 
 	&:hover {
 		background-color: var(--color-button-tertiary-background);
-		border-color: var(--color-button-tertiary-border-hover);
+		border-bottom: 2px solid var(--color-button-tertiary-border-hover);
 		color: var(--color-button-tertiary-text-hover);
 	}
 

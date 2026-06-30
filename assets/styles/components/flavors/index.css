@@ -20,6 +20,13 @@
 	--flavor-header-accent: var(--color-palette-white);
 	--col-label-bg: color-mix(in oklch, var(--flavor-color-base) 80%, black);
 	--col-node-bg: color-mix(in oklch, var(--flavor-color-base) 40%, white);
+
+	--color-border-focus-visible: var(--flavor-header-accent);
+	--color-button-tertiary-border-hover: var(--flavor-header-accent);
+	--color-button-tertiary-border-active: var(--flavor-header-accent);
+	--color-button-tertiary-text: var(--flavor-header-accent);
+	--color-button-tertiary-text-hover: var(--flavor-header-accent);
+	--color-button-tertiary-text-active: var(--flavor-header-accent);
 	margin-bottom: 3rem;
 }
 
