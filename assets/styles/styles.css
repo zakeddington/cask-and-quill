@@ -21,6 +21,7 @@
 @import "components/common/controls.css" layer(components);
 @import "components/common/custom-dropdown.css" layer(components);
 @import "components/common/auth.css" layer(components);
+@import "components/common/modal.css" layer(components);
 @import "components/lexicon/index.css" layer(components);
 @import "components/catalog/index.css" layer(components);
 @import "components/regions/index.css" layer(components);

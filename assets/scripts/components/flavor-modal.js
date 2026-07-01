@@ -1,4 +1,5 @@
 import { escapeHtml } from '../utils.js';
+import { BaseModal } from './modal.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
@@ -12,31 +13,28 @@ function createEl(htmlString) {
 	return div.firstElementChild;
 }
 
-export class FlavorModal {
-	constructor(modalRoot, { onSave, onDelete }) {
-		this.modalRoot = modalRoot;
-		this.onSave = onSave;
-		this.onDelete = onDelete;
+export class FlavorModal extends BaseModal {
+	constructor(modalRoot, callbacks) {
+		super(modalRoot, callbacks);
 		this.currentFamily = null;
 		this.editState = null;
-		this.previousFocus = null;
 		this.setupEventListeners();
 	}
 
-	setupEventListeners() {
-		this.modalRoot.addEventListener('click', e => this.handleClick(e));
-		document.addEventListener('keydown', e => {
-			if (e.key === 'Escape' && this.currentFamily) this.close();
-		});
-	}
+	get isOpen() { return this.currentFamily !== null; }
+	getDeleteTarget() { return this.currentFamily.id; }
 
 	open(family) {
 		this.currentFamily = family;
 		this.editState = this.cloneFamily(family);
-		this.previousFocus = document.activeElement;
 		this.modalRoot.innerHTML = this.renderModal();
-		document.body.classList.add('flavor-modal-is-open');
-		this.modalRoot.querySelector('.flavor-modal-close')?.focus();
+		super.open();
+	}
+
+	close() {
+		this.currentFamily = null;
+		this.editState = null;
+		super.close();
 	}
 
 	cloneFamily(family) {
@@ -49,15 +47,6 @@ export class FlavorModal {
 				terms: [...(s.terms || [])]
 			}))
 		};
-	}
-
-	close() {
-		this.modalRoot.innerHTML = '';
-		this.currentFamily = null;
-		this.editState = null;
-		document.body.classList.remove('flavor-modal-is-open');
-		this.previousFocus?.focus?.();
-		this.previousFocus = null;
 	}
 
 	// Read all current input values from the DOM into editState.
@@ -101,25 +90,12 @@ export class FlavorModal {
 		});
 	}
 
-	handleClick(e) {
-		const btn = e.target.closest('[data-modal-action]');
-		if (!btn) return;
+	onAction(event, action, btn) {
+		const subIdx = btn?.dataset.subIdx !== undefined ? parseInt(btn.dataset.subIdx) : null;
+		const termIdx = btn?.dataset.termIdx !== undefined ? parseInt(btn.dataset.termIdx) : null;
 
-		const action = btn.dataset.modalAction;
-		const subIdx = btn.dataset.subIdx !== undefined ? parseInt(btn.dataset.subIdx) : null;
-		const termIdx = btn.dataset.termIdx !== undefined ? parseInt(btn.dataset.termIdx) : null;
-
-		if (action === 'close') {
-			this.close();
-		} else if (action === 'save') {
+		if (action === 'save') {
 			this.handleSave();
-		} else if (action === 'delete-prompt') {
-			this.showDeleteConfirm();
-		} else if (action === 'delete-cancel') {
-			this.hideDeleteConfirm();
-		} else if (action === 'delete-execute') {
-			this.onDelete(this.currentFamily.id);
-			this.close();
 		} else if (action === 'sub-up' && subIdx !== null) {
 			this.moveSub(subIdx, -1);
 		} else if (action === 'sub-down' && subIdx !== null) {
@@ -239,7 +215,7 @@ export class FlavorModal {
 		termEl.querySelector('[data-term-input]')?.focus();
 	}
 
-	// ——— Save / Delete ———
+	// ——— Save ———
 
 	handleSave() {
 		this.syncFromDom();
@@ -255,36 +231,27 @@ export class FlavorModal {
 		this.close();
 	}
 
-	showDeleteConfirm() {
-		const footer = this.modalRoot.querySelector('.flavor-modal-footer');
-		if (!footer) return;
-		footer.innerHTML = `
-			<p class="flavor-modal-confirm-text">Delete <strong>${html(this.currentFamily.name)}</strong>? This cannot be undone.</p>
-			<div class="flavor-modal-footer-col">
+	// ——— Templates ———
+
+	renderDeleteConfirm() {
+		return `
+			<p class="modal-confirm-text">Delete <strong>${html(this.currentFamily.name)}</strong>? This cannot be undone.</p>
+			<div class="modal-footer-col">
 				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
 				<button class="button-danger" type="button" data-modal-action="delete-execute">Delete</button>
 			</div>
 		`;
-		footer.querySelector('[data-modal-action="delete-execute"]')?.focus();
 	}
-
-	hideDeleteConfirm() {
-		const footer = this.modalRoot.querySelector('.flavor-modal-footer');
-		if (!footer) return;
-		footer.innerHTML = this.renderFooter();
-	}
-
-	// ——— Templates ———
 
 	renderFooter() {
 		return `
-			<div class="flavor-modal-footer-col">
+			<div class="modal-footer-col">
 				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Family
 				</button>
 			</div>
-			<div class="flavor-modal-footer-col">
+			<div class="modal-footer-col">
 				<button class="button-secondary" type="button" data-modal-action="close">Cancel</button>
 				<button class="button-primary" type="button" data-modal-action="save">Save Changes</button>
 			</div>
@@ -294,32 +261,32 @@ export class FlavorModal {
 	renderModal() {
 		const s = this.editState;
 		return `
-			<div class="flavor-modal" role="dialog" aria-modal="true" aria-labelledby="flavor-modal-title">
-				<button class="flavor-modal-overlay" type="button" data-modal-action="close" aria-label="Close modal"></button>
-				<div class="flavor-modal-panel">
-					<header class="flavor-modal-header">
+			<div class="modal flavor-modal" role="dialog" aria-modal="true" aria-labelledby="flavor-modal-title">
+				<button class="modal-overlay" type="button" data-modal-action="close" aria-label="Close modal"></button>
+				<div class="modal-panel">
+					<header class="modal-header">
 						<h2 id="flavor-modal-title">Edit Flavor Family</h2>
-						<button class="flavor-modal-close" type="button" data-modal-action="close" aria-label="Close modal">
+						<button class="modal-close" type="button" data-modal-action="close" aria-label="Close modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
 
-					<div class="flavor-modal-body">
-						<fieldset class="flavor-modal-fieldset">
+					<div class="modal-body">
+						<fieldset class="modal-fieldset">
 							<legend>Family Details</legend>
 							<div class="flavor-detail-fields">
-								<label class="flavor-modal-field">
+								<label class="modal-field">
 									<span>Name</span>
 									<input type="text" data-field="name" value="${html(s.name)}" placeholder="Family name">
 								</label>
-								<label class="flavor-modal-field flavor-field-full">
+								<label class="modal-field flavor-field-full">
 									<span>Description</span>
 									<input type="text" data-field="desc" value="${html(s.desc)}" placeholder="Short description">
 								</label>
 							</div>
 						</fieldset>
 
-						<fieldset class="flavor-modal-fieldset">
+						<fieldset class="modal-fieldset">
 							<legend>Sub-categories</legend>
 							<div class="flavor-subs-list">
 								${s.subs.map((sub, si) => this.renderSub(sub, si, s.subs.length)).join('')}
@@ -331,7 +298,7 @@ export class FlavorModal {
 						</fieldset>
 					</div>
 
-					<footer class="flavor-modal-footer">
+					<footer class="modal-footer">
 						${this.renderFooter()}
 					</footer>
 				</div>
@@ -345,7 +312,7 @@ export class FlavorModal {
 				<div class="flavor-sub-header">
 					<div class="flavor-reorder-btns">
 						<button class="flavor-reorder-btn" type="button" data-modal-action="sub-up" data-sub-idx="${si}" aria-label="Move sub-category up"${si === 0 ? ' disabled' : ''}>
-							<svg class="svg-icon flavor-caret-up" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
+							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-up"></use></svg>
 						</button>
 						<button class="flavor-reorder-btn" type="button" data-modal-action="sub-down" data-sub-idx="${si}" aria-label="Move sub-category down"${si === total - 1 ? ' disabled' : ''}>
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
@@ -372,7 +339,7 @@ export class FlavorModal {
 			<div class="flavor-term-row">
 				<div class="flavor-reorder-btns">
 					<button class="flavor-reorder-btn" type="button" data-modal-action="term-up" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term up"${ti === 0 ? ' disabled' : ''}>
-						<svg class="svg-icon flavor-caret-up" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
+						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-up"></use></svg>
 					</button>
 					<button class="flavor-reorder-btn" type="button" data-modal-action="term-down" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term down"${ti === total - 1 ? ' disabled' : ''}>
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
