@@ -2,7 +2,7 @@ import { getSession, signIn, signOut } from '../supabase.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
-export class CatalogAuth {
+export class Auth {
 	constructor(root, { onAuthChange }) {
 		this.root = root;
 		this.onAuthChange = onAuthChange;
@@ -21,36 +21,36 @@ export class CatalogAuth {
 	render() {
 		this.root.innerHTML = this.session
 			? `
-				<div class="catalog-auth-user">
-					<button class="catalog-auth-button is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+				<div class="auth-user">
+					<button class="auth-button is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle-fill"></use></svg>
 					</button>
-					<div class="catalog-auth-menu" hidden>
-						<button class="catalog-auth-signout" data-auth-action="logout" type="button">Sign Out</button>
+					<div class="auth-menu" hidden>
+						<button class="auth-signout" data-auth-action="logout" type="button">Sign Out</button>
 					</div>
 				</div>`
 			: `
-				<button class="catalog-auth-button" data-auth-action="open-login" aria-label="Admin login">
+				<button class="auth-button" data-auth-action="open-login" aria-label="Admin login">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle"></use></svg>
 				</button>
-				<dialog class="catalog-auth-dialog" id="catalog-auth-dialog" aria-labelledby="catalog-auth-title">
-					<form class="catalog-auth-form" data-auth-form>
-						<header class="catalog-auth-header">
-							<h2 id="catalog-auth-title" class="text-heading-sm">Admin Login</h2>
-							<button class="catalog-auth-close" type="button" data-auth-action="close-login" aria-label="Close">
+				<dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
+					<form class="auth-form" data-auth-form>
+						<header class="auth-header">
+							<h2 id="auth-title" class="text-heading-sm">Admin Login</h2>
+							<button class="auth-close" type="button" data-auth-action="close-login" aria-label="Close">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 							</button>
 						</header>
-						<label class="catalog-auth-field">
+						<label class="auth-field">
 							<span>Email</span>
 							<input type="email" name="email" required autocomplete="email">
 						</label>
-						<label class="catalog-auth-field">
+						<label class="auth-field">
 							<span>Password</span>
 							<input type="password" name="password" required autocomplete="current-password">
 						</label>
-						<p class="catalog-auth-error" data-auth-error hidden></p>
-						<div class="catalog-auth-actions">
+						<p class="auth-error" data-auth-error hidden></p>
+						<div class="auth-actions">
 							<button class="button-secondary" type="button" data-auth-action="close-login">Cancel</button>
 							<button class="button-primary" type="submit">Sign In</button>
 						</div>
@@ -59,13 +59,13 @@ export class CatalogAuth {
 	}
 
 	_handleOutsideClick(event) {
-		if (!this.root.querySelector('.catalog-auth-user')?.contains(event.target)) {
+		if (!this.root.querySelector('.auth-user')?.contains(event.target)) {
 			this._closeMenu();
 		}
 	}
 
 	_openMenu() {
-		const menu = this.root.querySelector('.catalog-auth-menu');
+		const menu = this.root.querySelector('.auth-menu');
 		const button = this.root.querySelector('[data-auth-action="toggle-menu"]');
 		if (!menu || !button) return;
 		menu.hidden = false;
@@ -74,7 +74,7 @@ export class CatalogAuth {
 	}
 
 	_closeMenu() {
-		const menu = this.root.querySelector('.catalog-auth-menu');
+		const menu = this.root.querySelector('.auth-menu');
 		const button = this.root.querySelector('[data-auth-action="toggle-menu"]');
 		if (!menu || !button) return;
 		menu.hidden = true;
@@ -87,11 +87,11 @@ export class CatalogAuth {
 		if (!action) return;
 
 		if (action === 'open-login') {
-			document.getElementById('catalog-auth-dialog')?.showModal();
+			document.getElementById('auth-dialog')?.showModal();
 		} else if (action === 'close-login') {
-			document.getElementById('catalog-auth-dialog')?.close();
+			document.getElementById('auth-dialog')?.close();
 		} else if (action === 'toggle-menu') {
-			const menu = this.root.querySelector('.catalog-auth-menu');
+			const menu = this.root.querySelector('.auth-menu');
 			if (menu?.hidden) {
 				this._openMenu();
 			} else {
@@ -119,7 +119,7 @@ export class CatalogAuth {
 				formData.get('email'),
 				formData.get('password')
 			);
-			document.getElementById('catalog-auth-dialog')?.close();
+			document.getElementById('auth-dialog')?.close();
 			this.render();
 			this.onAuthChange(true);
 		} catch {

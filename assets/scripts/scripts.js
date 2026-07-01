@@ -4,10 +4,10 @@ async function initApp() {
 
 	let isAdmin = false;
 
-	if (document.getElementById('catalog-auth-root')) {
-		const { CatalogAuth } = await import('./components/catalog-auth.js');
-		const authRoot = document.getElementById('catalog-auth-root');
-		const auth = new CatalogAuth(authRoot, {
+	if (document.getElementById('auth-root')) {
+		const { Auth } = await import('./components/auth.js');
+		const authRoot = document.getElementById('auth-root');
+		const auth = new Auth(authRoot, {
 			onAuthChange: (adminStatus) => {
 				isAdmin = adminStatus;
 				window.dispatchEvent(new CustomEvent('auth-change', { detail: { isAdmin: adminStatus } }));
