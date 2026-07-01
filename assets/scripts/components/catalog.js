@@ -8,6 +8,7 @@ import {
 } from './catalog-constants.js';
 import { CatalogModal } from './catalog-modal.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
+import { CustomDropdown } from './custom-dropdown.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -63,6 +64,10 @@ export class Catalog {
 	async init() {
 		if (!this.catalogList) return;
 
+		if (this.categorySelect) this.categoryDropdown = new CustomDropdown(this.categorySelect);
+		if (this.filterSelect) this.filterDropdown = new CustomDropdown(this.filterSelect);
+		if (this.sortSelect) this.sortDropdown = new CustomDropdown(this.sortSelect);
+
 		this.setupEventListeners();
 		this.populateFilterSelect();
 
@@ -87,24 +92,20 @@ export class Catalog {
 	}
 
 	populateFilterSelect() {
-		if (!this.filterSelect) return;
-		FILL_OPTIONS.forEach(option => {
-			const el = document.createElement('option');
-			el.value = option.value;
-			el.textContent = option.label;
-			this.filterSelect.appendChild(el);
-		});
+		if (!this.filterDropdown) return;
+		this.filterDropdown.setOptions([
+			{ value: '', label: 'Fill Level' },
+			...FILL_OPTIONS
+		]);
 	}
 
 	populateCategorySelect() {
-		if (!this.categorySelect) return;
+		if (!this.categoryDropdown) return;
 		const categories = [...new Set(this.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-		categories.forEach(category => {
-			const el = document.createElement('option');
-			el.value = category;
-			el.textContent = category;
-			this.categorySelect.appendChild(el);
-		});
+		this.categoryDropdown.setOptions([
+			{ value: '', label: 'Category' },
+			...categories.map(c => ({ value: c, label: c }))
+		]);
 	}
 
 	async saveBottle(bottle) {

@@ -1,5 +1,6 @@
 import { LEXICON_TERMS } from '../data/lexicon.js';
 import { escapeHtml, normalizeTermName } from '../utils.js';
+import { CustomDropdown } from './custom-dropdown.js';
 
 const CATEGORY_ORDER = [
 	'Measurements & Labeling',
@@ -31,6 +32,8 @@ export class Lexicon {
 
 	init() {
 		if (!this.lexiconEntries) return;
+
+		if (this.categorySelect) this.categoryDropdown = new CustomDropdown(this.categorySelect);
 
 		this.setupCategorySelect();
 		this.setupEventListeners();
@@ -65,7 +68,7 @@ export class Lexicon {
 		this.sortMode = mode;
 		if (mode === 'alphabetical') {
 			this.selectedCategory = '';
-			if (this.categorySelect) this.categorySelect.value = '';
+			this.categoryDropdown?.setValue('');
 		}
 
 		this.sortAlphaBtn.classList.toggle('active', mode === 'alphabetical');
@@ -73,12 +76,12 @@ export class Lexicon {
 	}
 
 	setupCategorySelect() {
-		if (!this.categorySelect) return;
+		if (!this.categoryDropdown) return;
 
-		this.categorySelect.innerHTML = `
-			<option value="">Categories</option>
-			${CATEGORY_ORDER.map(category => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join('')}
-		`;
+		this.categoryDropdown.setOptions([
+			{ value: '', label: 'Categories' },
+			...CATEGORY_ORDER.map(c => ({ value: c, label: c }))
+		]);
 	}
 
 	handleCategoryChange(event) {

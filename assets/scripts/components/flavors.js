@@ -1,5 +1,6 @@
 import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../supabase.js';
 import { FlavorModal } from './flavor-modal.js';
+import { CustomDropdown } from './custom-dropdown.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
@@ -75,20 +76,18 @@ export class Flavors {
 			}
 		});
 
-		const familySelect = document.getElementById('flavors-family');
-		if (familySelect) {
-			familySelect.innerHTML = this.famOptions
-				.map(o => `<option value="${o}">${o}</option>`)
-				.join('');
+		const familySelectEl = document.getElementById('flavors-family');
+		if (familySelectEl) {
+			this.familyDropdown = new CustomDropdown(familySelectEl);
+			this.familyDropdown.setOptions(this.famOptions.map(o => ({ value: o, label: o })));
+			familySelectEl.addEventListener('change', e => {
+				this.state.family = e.target.value;
+				this._render();
+			});
 		}
 
 		document.getElementById('flavors-search')?.addEventListener('input', e => {
 			this.state.q = e.target.value;
-			this._render();
-		});
-
-		document.getElementById('flavors-family')?.addEventListener('change', e => {
-			this.state.family = e.target.value;
 			this._render();
 		});
 
@@ -121,12 +120,7 @@ export class Flavors {
 	}
 
 	_updateFamilySelect() {
-		const familySelect = document.getElementById('flavors-family');
-		if (familySelect) {
-			familySelect.innerHTML = this.famOptions
-				.map(o => `<option value="${o}">${o}</option>`)
-				.join('');
-		}
+		this.familyDropdown?.setOptions(this.famOptions.map(o => ({ value: o, label: o })));
 	}
 
 	_render() {
