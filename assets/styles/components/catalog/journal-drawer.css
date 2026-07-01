@@ -55,25 +55,6 @@
 	font-weight: var(--font-weight-bold);
 }
 
-.journal-drawer-close {
-	align-items: center;
-	background: transparent;
-	border: 0;
-	color: var(--color-button-tertiary-text);
-	cursor: pointer;
-	display: inline-flex;
-	padding: 0.25rem;
-
-	.svg-icon {
-		height: 1.5rem;
-		width: 1.5rem;
-	}
-
-	&:hover {
-		color: var(--color-button-tertiary-text-hover);
-	}
-}
-
 .journal-drawer-body {
 	flex: 1;
 	overflow-y: auto;

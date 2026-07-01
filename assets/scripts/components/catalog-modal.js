@@ -106,7 +106,7 @@ export class CatalogModal extends BaseModal {
 			<p class="modal-confirm-text">Delete <strong>${html(this.currentBottle.brand)} ${html(this.currentBottle.bottle)}</strong>? This cannot be undone.</p>
 			<div>
 				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
-				<button class="button-danger" type="button" data-modal-action="delete-execute">Delete</button>
+				<button class="button-destructive" type="button" data-modal-action="delete-execute">Delete</button>
 			</div>
 		`;
 	}
@@ -138,7 +138,7 @@ export class CatalogModal extends BaseModal {
 							${this.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
 							<h2 id="catalog-modal-title">${this.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
 						</div>
-						<button class="modal-close" type="button" data-modal-action="close" aria-label="Close edit modal">
+						<button class="modal-close button-icon-only" type="button" data-modal-action="close" aria-label="Close edit modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
@@ -187,7 +187,7 @@ export class CatalogModal extends BaseModal {
 		return `
 			<fieldset class="modal-fieldset catalog-fieldset-journal">
 				<legend>Tasting Journal</legend>
-				<button class="button-tertiary catalog-journal-btn" type="button" data-modal-action="open-journal" aria-label="Open journal notes">
+				<button class="catalog-journal-btn button-icon-only" type="button" data-modal-action="open-journal" aria-label="Open journal notes">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
 				</button>
 				<div class="catalog-form-stack">

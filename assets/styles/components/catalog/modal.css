@@ -79,18 +79,7 @@
 }
 
 .catalog-journal-btn {
-	font-size: var(--font-size-body-md);
 	position: absolute;
 	right: 0;
 	top: -4rem;
-}
-
-.button-danger {
-	background-color: var(--color-text-accent);
-	border-color: var(--color-text-accent);
-	color: var(--color-palette-cream-50);
-
-	&:hover {
-		opacity: 0.85;
-	}
 }

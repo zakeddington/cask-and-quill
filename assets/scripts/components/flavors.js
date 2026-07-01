@@ -160,7 +160,7 @@ export class Flavors {
 							<span class="flavor-family-desc">${f.desc}</span>
 							<span class="flavor-family-count">${f.count} notes</span>
 							${this.isAdmin ? `
-								<button class="flavor-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
+								<button class="flavor-family-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
 									<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 									Edit
 								</button>

@@ -65,12 +65,8 @@
 }
 
 .modal-close {
-	background-color: transparent;
-	border: none;
-	color: var(--color-text-accent);
 	flex-shrink: 0;
 	font-size: var(--font-size-heading-md);
-	line-height: 1;
 	min-height: 2rem;
 	min-width: 2rem;
 }

@@ -22,7 +22,7 @@ export class Auth {
 		this.root.innerHTML = this.session
 			? `
 				<div class="auth-user">
-					<button class="auth-button is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+					<button class="button-icon-only is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle-fill"></use></svg>
 					</button>
 					<div class="auth-menu" hidden>
@@ -30,14 +30,14 @@ export class Auth {
 					</div>
 				</div>`
 			: `
-				<button class="auth-button" data-auth-action="open-login" aria-label="Admin login">
+				<button class="button-icon-only" data-auth-action="open-login" aria-label="Admin login">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle"></use></svg>
 				</button>
 				<dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
 					<form class="auth-form" data-auth-form>
 						<header class="auth-header">
 							<h2 id="auth-title" class="text-heading-sm">Admin Login</h2>
-							<button class="auth-close" type="button" data-auth-action="close-login" aria-label="Close">
+							<button class="button-icon-only" type="button" data-auth-action="close-login" aria-label="Close">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 							</button>
 						</header>

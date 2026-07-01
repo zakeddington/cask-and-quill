@@ -21,7 +21,8 @@ button,
 	text-transform: uppercase;
 	transition: all 0.3s ease;
 
-	&:hover {
+	&:not(:disabled):hover,
+	&:not(:disabled):focus {
 		background-color: var(--color-button-primary-background-hover);
 		border-color: var(--color-button-primary-border-hover);
 		color: var(--color-button-primary-text-hover);
@@ -32,6 +33,11 @@ button,
 		background-color: var(--color-button-primary-background-active);
 		border-color: var(--color-button-primary-border-active);
 		color: var(--color-button-primary-text-active);
+	}
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.2;
 	}
 
 	.svg-icon {
@@ -45,7 +51,8 @@ button,
 	border-color: var(--color-button-secondary-border);
 	color: var(--color-button-secondary-text);
 
-	&:hover {
+	&:not(:disabled):hover,
+	&:not(:disabled):focus {
 		background-color: var(--color-button-secondary-background-hover);
 		border-color: var(--color-button-secondary-border-hover);
 		color: var(--color-button-secondary-text-hover);
@@ -65,14 +72,15 @@ button,
 	color: var(--color-button-tertiary-text);
 	padding: 0.25rem;
 
-	&:hover {
-		background-color: var(--color-button-tertiary-background);
+	&:not(:disabled):hover,
+	&:not(:disabled):focus {
+		background-color: var(--color-button-tertiary-background-hover);
 		border-bottom: 2px solid var(--color-button-tertiary-border-hover);
 		color: var(--color-button-tertiary-text-hover);
 	}
 
 	&.active {
-		background-color: var(--color-button-tertiary-background);
+		background-color: var(--color-button-tertiary-background-active);
 		border-bottom: 2px solid var(--color-button-tertiary-border-active);
 		color: var(--color-button-tertiary-text-active);
 	}
@@ -80,5 +88,50 @@ button,
 	.svg-icon {
 		height: 1.5em;
 		width: 1.5em;
+	}
+}
+
+.button-destructive {
+	background-color: var(--color-button-destructive-background);
+	border-color: var(--color-button-destructive-border);
+	color: var(--color-button-destructive-text);
+
+	&:not(:disabled):hover,
+	&:not(:disabled):focus {
+		background-color: var(--color-button-destructive-background-hover);
+		border-color: var(--color-button-destructive-border-hover);
+		color: var(--color-button-destructive-text-hover);
+	}
+
+	&.active {
+		background-color: var(--color-button-destructive-background-active);
+		border-color: var(--color-button-destructive-border-active);
+		color: var(--color-button-destructive-text-active);
+	}
+}
+
+.button-icon-only {
+	background-color: var(--color-button-icon-only-background);
+	border-color: var(--color-button-icon-only-border);
+	color: var(--color-button-icon-only-text);
+	line-height: var(--line-height-tight);
+	padding: 0.25rem;
+
+	&:not(:disabled):hover,
+	&:not(:disabled):focus {
+		background-color: var(--color-button-icon-only-background-hover);
+		border-color: var(--color-button-icon-only-border-hover);
+		color: var(--color-button-icon-only-text-hover);
+	}
+
+	&.active {
+		background-color: var(--color-button-icon-only-background);
+		border-color: var(--color-button-icon-only-border-active);
+		color: var(--color-button-icon-only-text-active);
+	}
+
+	.svg-icon {
+		height: 1.5rem;
+		width: 1.5rem;
 	}
 }

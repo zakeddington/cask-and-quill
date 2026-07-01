@@ -1,21 +1,6 @@
 /* Menu toggle button — visible only below 1024px */
 .nav-menu-btn {
-	align-items: center;
-	background: transparent;
-	border: 0;
-	color: var(--color-button-tertiary-text);
-	cursor: pointer;
 	display: none;
-	padding: 0.25rem;
-
-	.svg-icon {
-		height: 1.5rem;
-		width: 1.5rem;
-	}
-
-	&:hover {
-		color: var(--color-button-tertiary-text-hover);
-	}
 }
 
 @media (max-width: 1023px) {
@@ -86,25 +71,6 @@
 
 	@media (min-width: 768px) {
 		height: 4.625rem;
-	}
-}
-
-.nav-drawer-close {
-	align-items: center;
-	background: transparent;
-	border: 0;
-	color: var(--color-button-tertiary-text);
-	cursor: pointer;
-	display: inline-flex;
-	padding: 0.25rem;
-
-	.svg-icon {
-		height: 1.5rem;
-		width: 1.5rem;
-	}
-
-	&:hover {
-		color: var(--color-button-tertiary-text-hover);
 	}
 }
 

@@ -9,6 +9,8 @@
 	--color-palette-brown-400: #712B13;  /* reddish */
 	--color-palette-brown-400-alpha-50: rgba(113, 43, 19, 0.5);
 	--color-palette-brown-400-alpha-10: rgba(113, 43, 19, 0.1);
+	--color-palette-brown-200: #ac2e03;
+	--color-palette-brown-100: #cb3603;
 
 	/* Cream scale */
 	--color-palette-cream-50: #fdf9ef;   /* lightest */
@@ -100,6 +102,28 @@
 	--color-button-tertiary-text: var(--color-palette-brown-700);
 	--color-button-tertiary-text-hover: var(--color-palette-brown-400);
 	--color-button-tertiary-text-active: var(--color-palette-brown-400);
+
+	/* Buttons - Destuctive */
+	--color-button-destructive-background: var(--color-palette-brown-200);
+	--color-button-destructive-background-hover: var(--color-palette-brown-100);
+	--color-button-destructive-background-active: var(--color-palette-brown-200);
+	--color-button-destructive-border: var(--color-palette-brown-200);
+	--color-button-destructive-border-hover: var(--color-palette-brown-100);
+	--color-button-destructive-border-active: var(--color-palette-brown-200);
+	--color-button-destructive-text: var(--color-palette-white);
+	--color-button-destructive-text-hover: var(--color-palette-white);
+	--color-button-destructive-text-active: var(--color-palette-white);
+
+	/* Buttons - Icon Only */
+	--color-button-icon-only-background: var(--color-palette-transparent);
+	--color-button-icon-only-background-hover: var(--color-palette-brown-700);
+	--color-button-icon-only-background-active: var(--color-palette-transparent);
+	--color-button-icon-only-border: var(--color-palette-transparent);
+	--color-button-icon-only-border-hover: var(--color-palette-transparent);
+	--color-button-icon-only-border-active: var(--color-palette-transparent);
+	--color-button-icon-only-text: var(--color-palette-brown-700);
+	--color-button-icon-only-text-hover: var(--color-palette-white);
+	--color-button-icon-only-text-active: var(--color-palette-brown-400);
 
 	/* Forms */
 	--color-form-input-background: var(--color-palette-brown-700-alpha-10);
