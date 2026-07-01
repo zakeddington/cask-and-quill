@@ -20,14 +20,14 @@
 
 .map-base-image {
 	opacity: 1;
-	z-index: 1;
+	z-index: var(--z-default);
 }
 
 .map-all-highlight-image {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.22s ease;
-	z-index: 2;
+	z-index: var(--z-above-default);
 }
 
 .map-all-highlight-image.is-visible {
@@ -38,7 +38,7 @@
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.22s ease;
-	z-index: 3;
+	z-index: var(--z-elevated);
 }
 
 .map-region-image.is-visible {

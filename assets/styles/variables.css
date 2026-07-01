@@ -182,3 +182,16 @@
 	--letter-spacing-wide: 0.1em;
 	--letter-spacing-wider: 0.25em;
 }
+
+/* Layers */
+:root {
+	--z-default: 1;
+	--z-above-default: 2;
+	--z-elevated: 3;
+	--z-sticky: 4;
+	--z-dropdown: 5;
+	--z-header: 6;
+	--z-modal: 7;
+	--z-drawer-overlay: 8;
+	--z-drawer-content: 9;
+}

@@ -40,7 +40,7 @@
 	pointer-events: none;
 	position: fixed;
 	transition: opacity 0.3s ease;
-	z-index: 70;
+	z-index: var(--z-drawer-overlay);
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
@@ -67,7 +67,7 @@
 	transform: translateX(100%);
 	transition: transform 0.3s ease;
 	width: 18rem;
-	z-index: 80;
+	z-index: var(--z-drawer-content);
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
