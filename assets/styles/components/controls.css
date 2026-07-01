@@ -41,6 +41,10 @@
 	gap: 1rem;
 	grid-template-columns: 1fr;
 	padding-bottom: 1rem;
+
+	&:last-child {
+		border-bottom: 0;
+	}
 }
 
 @media (min-width: 1024px) {
