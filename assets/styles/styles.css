@@ -1,8 +1,11 @@
-@layer variables, base, themes, components, utilities;
+@layer variables, base, themes, components, views, utilities;
 
-/* Import all CSS layers */
+/* Variables */
+/* --------------------------------------------------------------- */
 @import "variables.css" layer(variables);
 
+/* Base */
+/* --------------------------------------------------------------- */
 @import "base/base.css" layer(base);
 @import "base/grid.css" layer(base);
 @import "base/icons.css" layer(base);
@@ -11,21 +14,47 @@
 @import "base/rich-text.css" layer(base);
 @import "base/layout.css" layer(base);
 
+/* Themes */
+/* --------------------------------------------------------------- */
 @import "themes/theme-accent.css" layer(themes);
 @import "themes/theme-primary.css" layer(themes);
 @import "themes/flavor-themes.css" layer(themes);
 
+/* Components */
+/* --------------------------------------------------------------- */
 @import "components/header.css" layer(components);
 @import "components/drawer.css" layer(components);
+@import "components/drawer-journal.css" layer(components);
 @import "components/drawer-nav.css" layer(components);
 @import "components/hero.css" layer(components);
 @import "components/controls.css" layer(components);
 @import "components/custom-dropdown.css" layer(components);
 @import "components/auth.css" layer(components);
 @import "components/modal.css" layer(components);
-@import "views/lexicon/index.css" layer(components);
-@import "views/catalog/index.css" layer(components);
-@import "views/regions/index.css" layer(components);
-@import "views/flavors/index.css" layer(components);
+@import "components/modal-edit-catalog.css" layer(components);
+@import "components/modal-edit-flavor.css" layer(components);
 
+/* Views */
+/* --------------------------------------------------------------- */
+/* Regions */
+@import "views/regions/region-accordion.css" layer(views);
+@import "views/regions/region-sidebar.css" layer(views);
+@import "views/regions/region-varieties.css" layer(views);
+@import "views/regions/region-map.css" layer(views);
+
+/* Lexicon */
+@import "views/lexicon/lexicon-layout.css" layer(views);
+@import "views/lexicon/lexicon-nav.css" layer(views);
+@import "views/lexicon/lexicon-content.css" layer(views);
+
+/* Catalog */
+@import "views/catalog/catalog-list.css" layer(views);
+@import "views/catalog/catalog-accordion.css" layer(views);
+@import "views/catalog/catalog-accordion-detail.css" layer(views);
+
+/* Flavors */
+@import "views/flavors/flavor-family.css" layer(views);
+
+/* Utilities */
+/* --------------------------------------------------------------- */
 @import "utilities.css" layer(utilities);
