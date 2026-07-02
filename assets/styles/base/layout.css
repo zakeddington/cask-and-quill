@@ -1,0 +1,9 @@
+/* Main content */
+.main-content {
+	margin: 0 auto;
+	max-width: var(--layout-max-width);
+	padding-bottom: 6rem;
+	padding-left: var(--layout-inline-padding);
+	padding-right: var(--layout-inline-padding);
+	padding-top: var(--layout-scroll-header-offset);
+}

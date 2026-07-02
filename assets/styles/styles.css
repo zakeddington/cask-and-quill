@@ -1,4 +1,4 @@
-@layer variables, base, layout, themes, components, utilities;
+@layer variables, base, themes, components, utilities;
 
 /* Import all CSS layers */
 @import "variables.css" layer(variables);
@@ -9,13 +9,13 @@
 @import "base/typography.css" layer(base);
 @import "base/buttons.css" layer(base);
 @import "base/rich-text.css" layer(base);
-
-@import "layout.css" layer(layout);
+@import "base/layout.css" layer(base);
 
 @import "themes/theme-accent.css" layer(themes);
 @import "themes/theme-primary.css" layer(themes);
 @import "themes/flavor-themes.css" layer(themes);
 
+@import "components/header.css" layer(components);
 @import "components/drawer.css" layer(components);
 @import "components/drawer-nav.css" layer(components);
 @import "components/hero.css" layer(components);
