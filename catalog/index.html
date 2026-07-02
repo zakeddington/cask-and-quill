@@ -55,48 +55,46 @@
 	</nav>
 
 	<main class="main-content">
-		<div class="catalog-container">
-			<section class="hero grid">
-				<div class="hero-heading grid-col-md-12 grid-col-lg-7">
-					<h1 class="hero-title">Catalog</h1>
-					<p>A working ledger of bottles, production notes, mash bills, and tasting impressions from the private collection.</p>
-				</div>
-				<div class="hero-image-col grid-col-md-12 grid-col-lg-5">
-					<img class="hero-image" src="/assets/images/hero-catalog.jpg" alt="illustration of bottles" />
-				</div>
-			</section>
-
-			<section class="page-controls">
-				<div class="controls-row">
-					<div class="search-container">
-						<input type="search" id="catalog-search" placeholder="Search bottles..." class="search-input" aria-label="Search bottles">
-					</div>
-					<div class="filter-controls">
-						<select id="catalog-category" class="filter-select" aria-label="Filter by category">
-							<option value="">Category</option>
-						</select>
-						<select id="catalog-filter" class="filter-select" aria-label="Filter by fill level">
-							<option value="">Fill Level</option>
-						</select>
-						<select id="catalog-sort" class="filter-select" aria-label="Sort bottles">
-							<option value="">Sort</option>
-							<option value="abv-asc">ABV: Low to High</option>
-							<option value="abv-desc">ABV: High to Low</option>
-							<option value="age-asc">Age: Youngest First</option>
-							<option value="age-desc">Age: Oldest First</option>
-						</select>
-					</div>
-				</div>
-				<div class="controls-row">
-					<p id="catalog-count" class="results-count text-heading-md">0 bottles</p>
-				</div>
-			</section>
-
-			<p class="page-legend text-body-sm">(Values) represent estimates when official information is not disclosed.</p>
-
-			<div id="catalog-list" class="catalog-list">
-				<!-- Bottles will be populated by JavaScript -->
+		<section class="hero grid">
+			<div class="hero-heading grid-col-md-12 grid-col-lg-7">
+				<h1 class="hero-title">Catalog</h1>
+				<p>A working ledger of bottles, production notes, mash bills, and tasting impressions from the private collection.</p>
 			</div>
+			<div class="hero-image-col grid-col-md-12 grid-col-lg-5">
+				<img class="hero-image" src="/assets/images/hero-catalog.jpg" alt="illustration of bottles" />
+			</div>
+		</section>
+
+		<section class="page-controls">
+			<div class="controls-row">
+				<div class="search-container">
+					<input type="search" id="catalog-search" placeholder="Search bottles..." class="search-input" aria-label="Search bottles">
+				</div>
+				<div class="filter-controls">
+					<select id="catalog-category" class="filter-select" aria-label="Filter by category">
+						<option value="">Category</option>
+					</select>
+					<select id="catalog-filter" class="filter-select" aria-label="Filter by fill level">
+						<option value="">Fill Level</option>
+					</select>
+					<select id="catalog-sort" class="filter-select" aria-label="Sort bottles">
+						<option value="">Sort</option>
+						<option value="abv-asc">ABV: Low to High</option>
+						<option value="abv-desc">ABV: High to Low</option>
+						<option value="age-asc">Age: Youngest First</option>
+						<option value="age-desc">Age: Oldest First</option>
+					</select>
+				</div>
+			</div>
+			<div class="controls-row">
+				<p id="catalog-count" class="results-count text-heading-md">0 bottles</p>
+			</div>
+		</section>
+
+		<p class="page-legend text-body-sm">(Values) represent estimates when official information is not disclosed.</p>
+
+		<div id="catalog-list" class="catalog-list">
+			<!-- Bottles will be populated by JavaScript -->
 		</div>
 	</main>
 

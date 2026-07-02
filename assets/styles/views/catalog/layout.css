@@ -1,13 +1,3 @@
-.catalog-container {
-	padding-top: 2rem;
-	width: 100%;
-	--catalog-column-grid: 1fr auto;
-
-	@media (min-width: 1024px) {
-		--catalog-column-grid: 5rem minmax(8rem, 0.8fr) minmax(8rem, 1fr) minmax(4rem, 0.4fr) minmax(14rem, 1.4fr) 6rem;
-	}
-}
-
 .catalog-list {
 	display: flex;
 	flex-direction: column;
@@ -32,7 +22,7 @@
 		font-size: var(--font-size-body-xs);
 		font-weight: var(--font-weight-bold);
 		gap: 1rem;
-		grid-template-columns: var(--catalog-column-grid);
+		grid-template-columns: var(--layout-catalog-column-grid);
 		letter-spacing: var(--letter-spacing-wide);
 		padding: 1rem 2rem;
 		text-transform: uppercase;
