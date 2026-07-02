@@ -1,4 +1,4 @@
-import { escapeHtml } from '../utils.js';
+import { html, getFormValue } from '../utils.js';
 import { init as pellInit } from '../vendor/pell.js';
 import { BaseModal } from './modal.js';
 import {
@@ -8,15 +8,6 @@ import {
 	CATALOG_TASTING_NOTE_FIELDS,
 	SPRITE_URL
 } from '../config/constants.js';
-
-function html(value) {
-	return escapeHtml(String(value ?? ''));
-}
-
-function getFormValue(formData, key) {
-	return String(formData.get(key) ?? '').trim();
-}
-
 
 export class ModalEditCatalog extends BaseModal {
 	constructor(modalRoot, callbacks) {

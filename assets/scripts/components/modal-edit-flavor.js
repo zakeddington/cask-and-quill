@@ -1,16 +1,6 @@
-import { escapeHtml } from '../utils.js';
+import { html, createEl } from '../utils.js';
 import { BaseModal } from './modal.js';
 import { SPRITE_URL } from '../config/constants.js';
-
-function html(value) {
-	return escapeHtml(String(value ?? ''));
-}
-
-function createEl(htmlString) {
-	const div = document.createElement('div');
-	div.innerHTML = htmlString.trim();
-	return div.firstElementChild;
-}
 
 export class ModalEditFlavor extends BaseModal {
 	constructor(modalRoot, callbacks) {

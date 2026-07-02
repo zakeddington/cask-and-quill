@@ -6,7 +6,8 @@
       "Bash(set -e)",
       "Bash(mv assets/styles/components/common/*.css assets/styles/components/)",
       "Bash(git mv *)",
-      "Bash(perl -pi -e ' *)"
+      "Bash(perl -pi -e ' *)",
+      "Bash(node --check components/custom-dropdown.js)"
     ]
   }
 }

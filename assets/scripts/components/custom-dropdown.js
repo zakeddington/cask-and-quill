@@ -1,3 +1,4 @@
+import { html } from '../utils.js';
 import { SPRITE_URL } from '../config/constants.js';
 
 export class CustomDropdown {
@@ -27,7 +28,7 @@ export class CustomDropdown {
 		const stillExists = options.some(o => o.value === prev);
 		this._value = stillExists ? prev : (options[0]?.value ?? '');
 		this._select.innerHTML = options.map(o =>
-			`<option value="${this._esc(o.value)}">${this._esc(o.label)}</option>`
+			`<option value="${html(o.value)}">${html(o.label)}</option>`
 		).join('');
 		this._select.value = this._value;
 		this._rebuildList();
@@ -39,14 +40,6 @@ export class CustomDropdown {
 			value: o.value,
 			label: o.textContent.trim()
 		}));
-	}
-
-	_esc(str) {
-		return String(str)
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;');
 	}
 
 	_getCurrentLabel() {

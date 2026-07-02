@@ -7,6 +7,24 @@ export function escapeHtml(value) {
 		.replace(/'/g, '&#039;');
 }
 
+export function html(value) {
+	return escapeHtml(String(value ?? ''));
+}
+
+export function stripHtml(value) {
+	return String(value ?? '').replace(/<[^>]*>/g, '');
+}
+
+export function createEl(htmlString) {
+	const div = document.createElement('div');
+	div.innerHTML = htmlString.trim();
+	return div.firstElementChild;
+}
+
+export function getFormValue(formData, key) {
+	return String(formData.get(key) ?? '').trim();
+}
+
 export function normalizeTermName(value) {
 	return value
 		.toLowerCase()

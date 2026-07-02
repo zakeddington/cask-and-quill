@@ -1,4 +1,4 @@
-import { escapeHtml } from '../utils.js';
+import { html, stripHtml } from '../utils.js';
 import {
 	CATALOG_FILL_OPTIONS,
 	CATALOG_FILL_ICON_CONFIG,
@@ -9,29 +9,6 @@ import {
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
-
-function html(value) {
-	return escapeHtml(String(value ?? ''));
-}
-
-function stripHtml(value) {
-	return String(value ?? '').replace(/<[^>]*>/g, '');
-}
-
-function getFillLabel(fill) {
-	const option = CATALOG_FILL_OPTIONS.find(o => o.value === fill);
-	return option ? option.label : fill || 'Unlisted';
-}
-
-function hasJournalContent(bottle) {
-	return CATALOG_TASTING_NOTE_FIELDS.some(field => String(bottle.tastingNotes?.[field.name] ?? '').trim());
-}
-
-function parseAge(age) {
-	const first = String(age ?? '').replace(/[()]/g, '').split('-')[0].trim();
-	const n = parseFloat(first);
-	return Number.isFinite(n) ? n : 0;
-}
 
 export class Catalog {
 	constructor(isAdmin = false) {
@@ -303,8 +280,8 @@ export class Catalog {
 			switch (this.abvSort) {
 				case 'abv-asc': return (parseFloat(a.abv) || 0) - (parseFloat(b.abv) || 0);
 				case 'abv-desc': return (parseFloat(b.abv) || 0) - (parseFloat(a.abv) || 0);
-				case 'age-asc': return parseAge(a.age) - parseAge(b.age);
-				case 'age-desc': return parseAge(b.age) - parseAge(a.age);
+				case 'age-asc': return this.parseAge(a.age) - this.parseAge(b.age);
+				case 'age-desc': return this.parseAge(b.age) - this.parseAge(a.age);
 				default: return `${a.brand} ${a.bottle}`.localeCompare(`${b.brand} ${b.bottle}`);
 			}
 		});
@@ -386,7 +363,7 @@ export class Catalog {
 
 	renderFillIcon(fill) {
 		const { icon, colorClass } = CATALOG_FILL_ICON_CONFIG[fill] || {};
-		const label = getFillLabel(fill);
+		const label = this.getFillLabel(fill);
 		if (!icon) return `<span>${html(label)}</span>`;
 		return `
 			<span class="catalog-fill-icon ${html(colorClass)}" title="${html(label)}" role="img">
@@ -395,8 +372,13 @@ export class Catalog {
 		`;
 	}
 
+	getFillLabel(fill) {
+		const option = CATALOG_FILL_OPTIONS.find(o => o.value === fill);
+		return option ? option.label : fill || 'Unlisted';
+	}
+
 	renderJournalIcon(bottle) {
-		const hasContent = hasJournalContent(bottle);
+		const hasContent = this.hasJournalContent(bottle);
 		const label = hasContent ? 'Journal notes entered' : 'No journal notes entered';
 
 		return `
@@ -404,6 +386,16 @@ export class Catalog {
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${hasContent ? 'icon-file-text' : 'icon-file'}"></use></svg>
 			</span>
 		`;
+	}
+
+	hasJournalContent(bottle) {
+		return CATALOG_TASTING_NOTE_FIELDS.some(field => String(bottle.tastingNotes?.[field.name] ?? '').trim());
+	}
+
+	parseAge(age) {
+		const first = String(age ?? '').replace(/[()]/g, '').split('-')[0].trim();
+		const n = parseFloat(first);
+		return Number.isFinite(n) ? n : 0;
 	}
 
 	renderDetails(bottle) {
