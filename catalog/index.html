@@ -37,18 +37,20 @@
 		</nav>
 	</header>
 
-	<div id="nav-drawer-overlay" class="nav-drawer-overlay"></div>
-	<nav id="nav-drawer" class="nav-drawer" aria-label="Site navigation" aria-hidden="true">
-		<div class="nav-drawer-header">
-			<button class="nav-drawer-close button-icon-only" type="button" aria-label="Close menu">
+	<div id="nav-drawer-overlay" class="drawer-overlay"></div>
+	<nav id="nav-drawer" class="drawer drawer-nav" aria-label="Site navigation" aria-hidden="true">
+		<div class="drawer-header drawer-nav-header">
+			<button class="drawer-close button-icon-only" type="button" aria-label="Close menu">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 			</button>
 		</div>
-		<div class="nav-drawer-links">
-			<a class="button button-tertiary" href="/">Regions</a>
-			<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
-			<a class="button button-tertiary active" href="/catalog/">Catalog</a>
-			<a class="button button-tertiary" href="/flavors/">Flavors</a>
+		<div class="drawer-body">
+			<div class="drawer-nav-links">
+				<a class="button button-tertiary" href="/">Regions</a>
+				<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
+				<a class="button button-tertiary active" href="/catalog/">Catalog</a>
+				<a class="button button-tertiary" href="/flavors/">Flavors</a>
+			</div>
 		</div>
 	</nav>
 
@@ -100,16 +102,16 @@
 
 	<div id="catalog-modal-root" class="catalog-modal-root" aria-live="polite"></div>
 
-	<div id="journal-drawer-overlay" class="journal-drawer-overlay"></div>
-	<aside id="journal-drawer" class="journal-drawer" aria-hidden="true" aria-label="Journal Notes">
-		<div class="journal-drawer-header">
-			<h2 class="journal-drawer-title">Journal Notes</h2>
-			<button class="journal-drawer-close button-icon-only" type="button" aria-label="Close journal notes">
+	<div id="journal-drawer-overlay" class="drawer-overlay"></div>
+	<aside id="journal-drawer" class="drawer drawer-journal" aria-hidden="true" aria-label="Journal Notes">
+		<div class="drawer-header drawer-journal-header">
+			<h2 class="text-heading-md">Journal Notes</h2>
+			<button class="drawer-close button-icon-only" type="button" aria-label="Close journal notes">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 			</button>
 		</div>
-		<div class="journal-drawer-body"></div>
-		<footer class="journal-drawer-footer"></footer>
+		<div class="drawer-body"></div>
+		<footer class="drawer-footer"></footer>
 	</aside>
 
 	<script type="module" src="/assets/scripts/scripts.js"></script>

@@ -7,7 +7,26 @@
       "Bash(mv assets/styles/components/common/*.css assets/styles/components/)",
       "Bash(git mv *)",
       "Bash(perl -pi -e ' *)",
-      "Bash(node --check components/custom-dropdown.js)"
+      "Bash(node --check components/custom-dropdown.js)",
+      "Bash(git -C /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill mv assets/styles/components/nav-drawer.css assets/styles/components/drawer-nav.css)",
+      "Bash(git -C /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill mv assets/styles/views/catalog/journal-drawer.css assets/styles/views/catalog/drawer-journal.css)",
+      "Bash(node --check assets/scripts/components/drawer.js)",
+      "Bash(node --check assets/scripts/components/nav-drawer.js)",
+      "Bash(node --check assets/scripts/components/journal-drawer.js)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npm ls *)",
+      "Bash(command -v npx)",
+      "Bash(npx --yes chromium-cli --help)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(python3 -c \"import playwright\")",
+      "Bash(pkill -f \"http.server 8791\")",
+      "Bash(git -C /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill mv assets/scripts/components/nav-drawer.js assets/scripts/components/drawer-nav.js)",
+      "Bash(git -C /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill mv assets/scripts/components/journal-drawer.js assets/scripts/components/drawer-journal.js)",
+      "Bash(node --check /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill/assets/scripts/components/drawer-nav.js)",
+      "Bash(node --check /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill/assets/scripts/components/drawer-journal.js)",
+      "Bash(node --check /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill/assets/scripts/scripts.js)",
+      "Bash(git -C /Users/zake/Documents/Projects/_zak/cask-and-quill/cask-and-quill status --short)"
     ]
   }
 }

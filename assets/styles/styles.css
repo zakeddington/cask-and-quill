@@ -16,7 +16,8 @@
 @import "themes/theme-primary.css" layer(themes);
 @import "themes/flavor-themes.css" layer(themes);
 
-@import "components/nav-drawer.css" layer(components);
+@import "components/drawer.css" layer(components);
+@import "components/drawer-nav.css" layer(components);
 @import "components/hero.css" layer(components);
 @import "components/controls.css" layer(components);
 @import "components/custom-dropdown.css" layer(components);

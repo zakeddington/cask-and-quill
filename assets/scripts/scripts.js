@@ -1,5 +1,5 @@
 async function initApp() {
-	const { NavDrawer } = await import('./components/nav-drawer.js');
+	const { NavDrawer } = await import('./components/drawer-nav.js');
 	new NavDrawer().init();
 
 	let isAdmin = false;
@@ -40,7 +40,7 @@ async function initApp() {
 	}
 
 	if (document.getElementById('journal-drawer')) {
-		const { JournalDrawer } = await import('./components/journal-drawer.js');
+		const { JournalDrawer } = await import('./components/drawer-journal.js');
 
 		new JournalDrawer(
 			document.getElementById('journal-drawer'),
