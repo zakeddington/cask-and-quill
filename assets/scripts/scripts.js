@@ -40,7 +40,7 @@ async function initApp() {
 	}
 
 	if (document.getElementById('journal-drawer')) {
-		const { JournalDrawer } = await import('./views/journal-drawer.js');
+		const { JournalDrawer } = await import('./components/journal-drawer.js');
 
 		new JournalDrawer(
 			document.getElementById('journal-drawer'),

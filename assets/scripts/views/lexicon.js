@@ -2,21 +2,6 @@ import { LEXICON_TERMS } from '../data/lexicon.js';
 import { escapeHtml, normalizeTermName } from '../utils.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
-const CATEGORY_ORDER = [
-	'Measurements & Labeling',
-	'Ingredients & Grain',
-	'Malting & Mashing',
-	'Fermentation & Chemistry',
-	'Distillation',
-	'Maturation & Wood',
-	'Styles & Regulations',
-	'People & Producers',
-	'Regions & Terroir',
-	'Tasting & Service'
-];
-
-const SEARCH_DEBOUNCE_DELAY = 250;
-
 export class Lexicon {
 	constructor() {
 		this.terms = LEXICON_TERMS;
@@ -28,6 +13,19 @@ export class Lexicon {
 		this.searchDebounceTimer = null;
 		this.sortMode = 'alphabetical';
 		this.selectedCategory = '';
+		this.categoryOrder = [
+			'Measurements & Labeling',
+			'Ingredients & Grain',
+			'Malting & Mashing',
+			'Fermentation & Chemistry',
+			'Distillation',
+			'Maturation & Wood',
+			'Styles & Regulations',
+			'People & Producers',
+			'Regions & Terroir',
+			'Tasting & Service'
+		];
+		this.searchDebounceDelay = 250;
 	}
 
 	init() {
@@ -61,7 +59,7 @@ export class Lexicon {
 		this.searchDebounceTimer = window.setTimeout(() => {
 			this.searchQuery = nextQuery;
 			this.render(true);
-		}, SEARCH_DEBOUNCE_DELAY);
+		}, this.searchDebounceDelay);
 	}
 
 	setSortMode(mode) {
@@ -80,7 +78,7 @@ export class Lexicon {
 
 		this.categoryDropdown.setOptions([
 			{ value: '', label: 'Categories' },
-			...CATEGORY_ORDER.map(c => ({ value: c, label: c }))
+			...this.categoryOrder.map(c => ({ value: c, label: c }))
 		]);
 	}
 
@@ -107,8 +105,8 @@ export class Lexicon {
 	}
 
 	getCategoryOrder(category) {
-		const index = CATEGORY_ORDER.indexOf(category);
-		return index === -1 ? CATEGORY_ORDER.length : index;
+		const index = this.categoryOrder.indexOf(category);
+		return index === -1 ? this.categoryOrder.length : index;
 	}
 
 	getCategoryId(category) {

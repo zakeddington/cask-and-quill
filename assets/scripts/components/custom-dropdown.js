@@ -1,4 +1,4 @@
-const SPRITE_URL = '/assets/images/icon-sprite.svg';
+import { SPRITE_URL } from '../config/constants.js';
 
 export class CustomDropdown {
 	constructor(selectEl) {

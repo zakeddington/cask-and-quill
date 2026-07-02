@@ -1,7 +1,6 @@
 import { escapeHtml } from '../utils.js';
 import { BaseModal } from './modal.js';
-
-const SPRITE_URL = '/assets/images/icon-sprite.svg';
+import { SPRITE_URL } from '../config/constants.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));

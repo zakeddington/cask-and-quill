@@ -1,8 +1,7 @@
 import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../supabase.js';
 import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
-
-const SPRITE_URL = '/assets/images/icon-sprite.svg';
+import { SPRITE_URL } from '../config/constants.js';
 
 export class Flavors {
 	constructor(el, isAdmin = false) {

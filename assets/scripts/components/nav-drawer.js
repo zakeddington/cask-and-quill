@@ -1,5 +1,3 @@
-const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
-
 export class NavDrawer {
 	constructor() {
 		this.drawer = document.getElementById('nav-drawer');
@@ -7,6 +5,8 @@ export class NavDrawer {
 		this.menuBtn = document.getElementById('nav-menu-btn');
 		this.closeBtn = this.drawer?.querySelector('.nav-drawer-close');
 		this.isOpen = false;
+
+		this.focusableSelectors = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
 
 		this._handleKeydown = this._handleKeydown.bind(this);
 	}
@@ -41,7 +41,7 @@ export class NavDrawer {
 	}
 
 	_focusableElements() {
-		return Array.from(this.drawer.querySelectorAll(FOCUSABLE)).filter(
+		return Array.from(this.drawer.querySelectorAll(this.focusableSelectors)).filter(
 			el => !el.closest('[hidden]') && getComputedStyle(el).display !== 'none'
 		);
 	}

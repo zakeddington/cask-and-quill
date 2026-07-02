@@ -1,11 +1,11 @@
 import { escapeHtml } from '../utils.js';
 import {
-	FILL_OPTIONS,
-	FILL_ICON_CONFIG,
-	MASH_BILL_FIELDS,
-	TASTING_NOTE_FIELDS,
+	CATALOG_FILL_OPTIONS,
+	CATALOG_FILL_ICON_CONFIG,
+	CATALOG_MASH_BILL_FIELDS,
+	CATALOG_TASTING_NOTE_FIELDS,
 	SPRITE_URL
-} from '../config/catalog-constants.js';
+} from '../config/constants.js';
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
@@ -19,12 +19,12 @@ function stripHtml(value) {
 }
 
 function getFillLabel(fill) {
-	const option = FILL_OPTIONS.find(o => o.value === fill);
+	const option = CATALOG_FILL_OPTIONS.find(o => o.value === fill);
 	return option ? option.label : fill || 'Unlisted';
 }
 
 function hasJournalContent(bottle) {
-	return TASTING_NOTE_FIELDS.some(field => String(bottle.tastingNotes?.[field.name] ?? '').trim());
+	return CATALOG_TASTING_NOTE_FIELDS.some(field => String(bottle.tastingNotes?.[field.name] ?? '').trim());
 }
 
 function parseAge(age) {
@@ -95,7 +95,7 @@ export class Catalog {
 		if (!this.filterDropdown) return;
 		this.filterDropdown.setOptions([
 			{ value: '', label: 'Fill Level' },
-			...FILL_OPTIONS
+			...CATALOG_FILL_OPTIONS
 		]);
 	}
 
@@ -385,7 +385,7 @@ export class Catalog {
 	}
 
 	renderFillIcon(fill) {
-		const { icon, colorClass } = FILL_ICON_CONFIG[fill] || {};
+		const { icon, colorClass } = CATALOG_FILL_ICON_CONFIG[fill] || {};
 		const label = getFillLabel(fill);
 		if (!icon) return `<span>${html(label)}</span>`;
 		return `
@@ -448,7 +448,7 @@ export class Catalog {
 	renderMashBill(mashBill, char) {
 		return `
 			<dl class="catalog-detail-list is-horizontal">
-				${MASH_BILL_FIELDS.map(field => {
+				${CATALOG_MASH_BILL_FIELDS.map(field => {
 					const raw = String(mashBill?.[field.name] ?? '');
 					const estimated = raw.startsWith('(') && raw.endsWith(')');
 					const display = estimated ? raw.slice(1, -1) : raw;
@@ -473,7 +473,7 @@ export class Catalog {
 	renderTastingNotes(notes) {
 		return `
 			<div class="catalog-tasting-notes">
-				${TASTING_NOTE_FIELDS.map(field => `
+				${CATALOG_TASTING_NOTE_FIELDS.map(field => `
 					<div>
 						<h5>
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>

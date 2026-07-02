@@ -1,4 +1,6 @@
-export const IDENTITY_FIELDS = [
+export const SPRITE_URL = '/assets/images/icon-sprite.svg';
+
+export const CATALOG_IDENTITY_FIELDS = [
 	{ name: 'brand', label: 'Brand' },
 	{ name: 'bottle', label: 'Bottle' },
 	{ name: 'category', label: 'Category' },
@@ -8,7 +10,7 @@ export const IDENTITY_FIELDS = [
 	{ name: 'origin', label: 'Origin' },
 ];
 
-export const FILL_OPTIONS = [
+export const CATALOG_FILL_OPTIONS = [
 	{ value: 'plenty', label: 'Plenty' },
 	{ value: 'average', label: 'Average' },
 	{ value: 'low', label: 'Low' },
@@ -16,7 +18,7 @@ export const FILL_OPTIONS = [
 	{ value: 'bottle-kill', label: 'Bottle Kill' }
 ];
 
-export const FILL_ICON_CONFIG = {
+export const CATALOG_FILL_ICON_CONFIG = {
 	'plenty': { icon: 'icon-water-drop', colorClass: 'catalog-fill-plenty' },
 	'average': { icon: 'icon-water-drop', colorClass: 'catalog-fill-average' },
 	'low': { icon: 'icon-water-drop', colorClass: 'catalog-fill-low' },
@@ -24,8 +26,8 @@ export const FILL_ICON_CONFIG = {
 	'bottle-kill': { icon: 'icon-drop-slash', colorClass: 'catalog-fill-bottle-kill' }
 };
 
-export const SPEC_FIELDS = [
-	{ name: 'fill', label: 'Fill', options: FILL_OPTIONS },
+export const CATALOG_SPEC_FIELDS = [
+	{ name: 'fill', label: 'Fill', options: CATALOG_FILL_OPTIONS },
 	{ name: 'age', label: 'Age' },
 	{ name: 'abv', label: 'ABV' },
 	{ name: 'proof', label: 'Proof' },
@@ -33,9 +35,7 @@ export const SPEC_FIELDS = [
 	{ name: 'cask', label: 'Cask / Finish / Notes', multiline: true }
 ];
 
-export const SPRITE_URL = '/assets/images/icon-sprite.svg';
-
-export const MASH_BILL_FIELDS = [
+export const CATALOG_MASH_BILL_FIELDS = [
 	{ name: 'corn', label: 'Corn', icon: 'icon-corn' },
 	{ name: 'barley', label: 'Barley', icon: 'icon-barley' },
 	{ name: 'maltedBarley', label: 'Malted Barley', icon: 'icon-barley' },
@@ -44,7 +44,7 @@ export const MASH_BILL_FIELDS = [
 	{ name: 'wheat', label: 'Wheat', icon: 'icon-wheat' }
 ];
 
-export const TASTING_NOTE_FIELDS = [
+export const CATALOG_TASTING_NOTE_FIELDS = [
 	{ name: 'nose', label: 'Nose', icon: 'icon-wind' },
 	{ name: 'palate', label: 'Palate', icon: 'icon-wine' },
 	{

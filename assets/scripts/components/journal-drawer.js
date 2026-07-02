@@ -1,8 +1,7 @@
 import { escapeHtml } from '../utils.js';
 import { init as pellInit } from '../vendor/pell.js';
 import { getGlobalNotes, updateGlobalNotes } from '../supabase.js';
-
-const SPRITE_URL = '/assets/images/icon-sprite.svg';
+import { SPRITE_URL } from '../config/constants.js';
 
 export class JournalDrawer {
 	constructor(drawerEl, overlayEl, isAdmin = false) {

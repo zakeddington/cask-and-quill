@@ -2,12 +2,12 @@ import { escapeHtml } from '../utils.js';
 import { init as pellInit } from '../vendor/pell.js';
 import { BaseModal } from './modal.js';
 import {
-	IDENTITY_FIELDS,
-	SPEC_FIELDS,
-	MASH_BILL_FIELDS,
-	TASTING_NOTE_FIELDS,
+	CATALOG_IDENTITY_FIELDS,
+	CATALOG_SPEC_FIELDS,
+	CATALOG_MASH_BILL_FIELDS,
+	CATALOG_TASTING_NOTE_FIELDS,
 	SPRITE_URL
-} from '../config/catalog-constants.js';
+} from '../config/constants.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));
@@ -87,11 +87,11 @@ export class ModalEditCatalog extends BaseModal {
 			corpOwner: getFormValue(formData, 'corpOwner'),
 			origin: getFormValue(formData, 'origin'),
 			char: getFormValue(formData, 'char'),
-			mashBill: MASH_BILL_FIELDS.reduce((mashBill, field) => {
+			mashBill: CATALOG_MASH_BILL_FIELDS.reduce((mashBill, field) => {
 				mashBill[field.name] = getFormValue(formData, `mashBill.${field.name}`);
 				return mashBill;
 			}, {}),
-			tastingNotes: TASTING_NOTE_FIELDS.reduce((notes, field) => {
+			tastingNotes: CATALOG_TASTING_NOTE_FIELDS.reduce((notes, field) => {
 				notes[field.name] = getFormValue(formData, `tastingNotes.${field.name}`);
 				return notes;
 			}, {})
@@ -144,8 +144,8 @@ export class ModalEditCatalog extends BaseModal {
 					</header>
 
 					<div class="modal-body">
-						${this.renderFieldset('Bottle Identity', IDENTITY_FIELDS, bottle)}
-						${this.renderFieldset('Technical Specs', SPEC_FIELDS, bottle)}
+						${this.renderFieldset('Bottle Identity', CATALOG_IDENTITY_FIELDS, bottle)}
+						${this.renderFieldset('Technical Specs', CATALOG_SPEC_FIELDS, bottle)}
 						${this.renderMashBillFieldset(bottle)}
 						${this.renderTastingFieldset(bottle)}
 					</div>
@@ -174,7 +174,7 @@ export class ModalEditCatalog extends BaseModal {
 			<fieldset class="modal-fieldset">
 				<legend>Mash Bill</legend>
 				<div class="catalog-form-grid catalog-form-grid-compact">
-					${MASH_BILL_FIELDS.map(field => this.renderField({
+					${CATALOG_MASH_BILL_FIELDS.map(field => this.renderField({
 						...field,
 						name: `mashBill.${field.name}`
 					}, bottle.mashBill?.[field.name] ?? '')).join('')}
@@ -191,7 +191,7 @@ export class ModalEditCatalog extends BaseModal {
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
 				</button>
 				<div class="catalog-form-stack">
-					${TASTING_NOTE_FIELDS.map(field => this.renderField({
+					${CATALOG_TASTING_NOTE_FIELDS.map(field => this.renderField({
 						...field,
 						name: `tastingNotes.${field.name}`,
 						multiline: true
