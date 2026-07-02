@@ -1,6 +1,6 @@
 import { REGIONS } from '../data/regions.js';
 import { escapeHtml } from '../utils.js';
-import { SubRegionMapSwitcher } from './sub-region-map-switcher.js';
+import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
 

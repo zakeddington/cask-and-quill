@@ -7,7 +7,7 @@ import {
 	MASH_BILL_FIELDS,
 	TASTING_NOTE_FIELDS,
 	SPRITE_URL
-} from './catalog-constants.js';
+} from '../config/catalog-constants.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));

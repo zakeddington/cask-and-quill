@@ -5,10 +5,10 @@ import {
 	MASH_BILL_FIELDS,
 	TASTING_NOTE_FIELDS,
 	SPRITE_URL
-} from './catalog-constants.js';
-import { ModalEditCatalog } from './modal-edit-catalog.js';
+} from '../config/catalog-constants.js';
+import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
-import { CustomDropdown } from './custom-dropdown.js';
+import { CustomDropdown } from '../components/custom-dropdown.js';
 
 function html(value) {
 	return escapeHtml(String(value ?? ''));

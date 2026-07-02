@@ -16,16 +16,15 @@
 @import "themes/theme-primary.css" layer(themes);
 @import "themes/flavor-themes.css" layer(themes);
 
-@import "components/common/nav-drawer.css" layer(components);
-@import "components/common/hero.css" layer(components);
-@import "components/common/controls.css" layer(components);
-@import "components/common/custom-dropdown.css" layer(components);
-@import "components/common/auth.css" layer(components);
-@import "components/common/modal.css" layer(components);
-@import "components/lexicon/index.css" layer(components);
-@import "components/catalog/index.css" layer(components);
-@import "components/regions/index.css" layer(components);
-@import "components/flavors/index.css" layer(components);
+@import "components/nav-drawer.css" layer(components);
+@import "components/hero.css" layer(components);
+@import "components/controls.css" layer(components);
+@import "components/custom-dropdown.css" layer(components);
+@import "components/auth.css" layer(components);
+@import "components/modal.css" layer(components);
+@import "views/lexicon/index.css" layer(components);
+@import "views/catalog/index.css" layer(components);
+@import "views/regions/index.css" layer(components);
+@import "views/flavors/index.css" layer(components);
 
 @import "utilities.css" layer(utilities);
-

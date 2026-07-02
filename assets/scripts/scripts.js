@@ -17,30 +17,30 @@ async function initApp() {
 	}
 
 	if (document.getElementById('lexicon-entries')) {
-		const { Lexicon } = await import('./components/lexicon.js');
+		const { Lexicon } = await import('./views/lexicon.js');
 
 		new Lexicon().init();
 	}
 
 	if (document.getElementById('regions-list')) {
-		const { Regions } = await import('./components/regions.js');
+		const { Regions } = await import('./views/regions.js');
 
 		new Regions().init();
 	}
 
 	if (document.getElementById('catalog-list')) {
-		const { Catalog } = await import('./components/catalog.js');
+		const { Catalog } = await import('./views/catalog.js');
 
 		new Catalog(isAdmin).init();
 	}
 
 	if (document.getElementById('flavors-list')) {
-		const { Flavors } = await import('./components/flavors.js');
+		const { Flavors } = await import('./views/flavors.js');
 		new Flavors(document.getElementById('flavors-list'), isAdmin).init();
 	}
 
 	if (document.getElementById('journal-drawer')) {
-		const { JournalDrawer } = await import('./components/journal-drawer.js');
+		const { JournalDrawer } = await import('./views/journal-drawer.js');
 
 		new JournalDrawer(
 			document.getElementById('journal-drawer'),

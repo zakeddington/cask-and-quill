@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(node --input-type=module --check)",
-      "Bash(grep -E \"\\\\.css$\")"
+      "Bash(grep -E \"\\\\.css$\")",
+      "Bash(set -e)",
+      "Bash(mv assets/styles/components/common/*.css assets/styles/components/)",
+      "Bash(git mv *)"
     ]
   }
 }

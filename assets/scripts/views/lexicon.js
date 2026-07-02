@@ -1,6 +1,6 @@
 import { LEXICON_TERMS } from '../data/lexicon.js';
 import { escapeHtml, normalizeTermName } from '../utils.js';
-import { CustomDropdown } from './custom-dropdown.js';
+import { CustomDropdown } from '../components/custom-dropdown.js';
 
 const CATEGORY_ORDER = [
 	'Measurements & Labeling',

@@ -1,15 +1,3 @@
-@import "./modal-edit-flavor.css";
-
-/* ============================================================
-   Flavors — Family Tree
-   Per-family color: set --flavor-color-base in flavor-themes.css.
-   All shades derived via color-mix() — no extra variables needed.
-   ============================================================ */
-
-.flavors-container {
-	padding-top: 2rem;
-	width: 100%;
-}
 
 .flavors-list {
 	margin-top: -6rem;
