@@ -18,7 +18,7 @@ function getFormValue(formData, key) {
 }
 
 
-export class CatalogModal extends BaseModal {
+export class ModalEditCatalog extends BaseModal {
 	constructor(modalRoot, callbacks) {
 		super(modalRoot, callbacks);
 		this.currentBottle = null;

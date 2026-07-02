@@ -6,7 +6,7 @@ import {
 	TASTING_NOTE_FIELDS,
 	SPRITE_URL
 } from './catalog-constants.js';
-import { CatalogModal } from './catalog-modal.js';
+import { ModalEditCatalog } from './modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 import { CustomDropdown } from './custom-dropdown.js';
 
@@ -50,7 +50,7 @@ export class Catalog {
 		this.fillFilter = '';
 		this.abvSort = '';
 		this.isAdmin = isAdmin;
-		this.modal = modalRoot ? new CatalogModal(modalRoot, {
+		this.modal = modalRoot ? new ModalEditCatalog(modalRoot, {
 			onSave: (bottle) => this.handleSave(bottle),
 			onDelete: (id) => this.handleDelete(id)
 		}) : null;

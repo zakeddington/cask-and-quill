@@ -13,7 +13,7 @@ function createEl(htmlString) {
 	return div.firstElementChild;
 }
 
-export class FlavorModal extends BaseModal {
+export class ModalEditFlavor extends BaseModal {
 	constructor(modalRoot, callbacks) {
 		super(modalRoot, callbacks);
 		this.currentFamily = null;

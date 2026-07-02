@@ -1,5 +1,5 @@
 import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../supabase.js';
-import { FlavorModal } from './flavor-modal.js';
+import { ModalEditFlavor } from './modal-edit-flavor.js';
 import { CustomDropdown } from './custom-dropdown.js';
 
 const SPRITE_URL = '/assets/images/icon-sprite.svg';
@@ -57,7 +57,7 @@ export class Flavors {
 
 		const modalRoot = document.getElementById('flavor-modal-root');
 		if (modalRoot) {
-			this.modal = new FlavorModal(modalRoot, {
+			this.modal = new ModalEditFlavor(modalRoot, {
 				onSave: family => this.handleSave(family),
 				onDelete: id => this.handleDelete(id)
 			});
