@@ -1,0 +1,18 @@
+<IfModule mod_headers.c>
+	# Always revalidate HTML, CSS, and JS so browsers (esp. iOS Safari) pick up new deploys immediately
+	<FilesMatch "\.(html|css|js)$">
+		Header set Cache-Control "no-cache, must-revalidate"
+	</FilesMatch>
+
+	# Images/fonts/etc. can be cached long-term since filenames rarely change
+	<FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico|woff2?|ttf)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/html "access plus 0 seconds"
+	ExpiresByType text/css "access plus 0 seconds"
+	ExpiresByType application/javascript "access plus 0 seconds"
+</IfModule>
