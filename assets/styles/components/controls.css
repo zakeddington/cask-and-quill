@@ -8,7 +8,7 @@
 	border-bottom: 2px solid var(--color-border-accent);
 	display: grid;
 	gap: 1rem;
-	margin-bottom: 3rem;
+	margin-bottom: var(--layout-page-controls-margin-bottom);
 	padding-bottom: 0;
 }
 

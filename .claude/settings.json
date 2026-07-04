@@ -40,7 +40,11 @@
       "Skill(run:*)",
       "Bash(command -v npx)",
       "Bash(python3 -c \"import playwright\")",
-      "Bash(pkill -f \"http.server 8791\")"
+      "Bash(pkill -f \"http.server 8791\")",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(python3 -c \"import selenium\")",
+      "Bash(npx --no-install playwright install chromium)"
     ]
   }
 }

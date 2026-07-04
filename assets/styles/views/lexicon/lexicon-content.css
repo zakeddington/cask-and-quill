@@ -1,10 +1,10 @@
 .lexicon-entries {
-	min-height: calc(100dvh - var(--layout-scroll-header-lexcion-controls-offset));
-	scroll-margin-top: var(--layout-scroll-header-lexcion-controls-offset);
+	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
 .lexicon-section {
 	position: relative;
+	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
 .lexicon-section-title {
@@ -19,13 +19,13 @@
 	.lexicon-section-title {
 		height: fit-content;
 		position: sticky;
-		top: var(--layout-scroll-header-lexcion-controls-offset);
+		top: var(--layout-scroll-header-lexicon-controls-offset);
 	}
 }
 
 .term-item {
 	margin-bottom: 0;
-	scroll-margin-top: var(--layout-scroll-header-lexcion-controls-offset);
+	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
 .term-pronunciation,

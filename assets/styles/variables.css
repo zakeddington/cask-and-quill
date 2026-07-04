@@ -146,8 +146,9 @@
 	--layout-header-height: 3.625rem;
 	--layout-header-offset: 4rem;
 	--layout-lexicon-controls-height: 8.5rem;
+	--layout-page-controls-margin-bottom: 3rem;
 	--layout-scroll-header-offset: calc(var(--layout-header-height) + var(--layout-header-offset));
-	--layout-scroll-header-lexcion-controls-offset: calc(var(--layout-header-height) + var(--layout-header-offset) + var(--layout-lexicon-controls-height));
+	--layout-scroll-header-lexicon-controls-offset: calc(var(--layout-header-height) + var(--layout-lexicon-controls-height) + var(--layout-page-controls-margin-bottom));
 	--layout-catalog-column-grid: 1fr auto;
 	--grid-column-count: 12;
 	--grid-template-columns: repeat(var(--grid-column-count), minmax(0, 1fr));

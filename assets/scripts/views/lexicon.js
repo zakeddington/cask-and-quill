@@ -26,6 +26,9 @@ export class Lexicon {
 			'Tasting & Service'
 		];
 		this.searchDebounceDelay = 250;
+		this.resizeDebounceTimer = null;
+		this.resizeDebounceDelay = 150;
+		this.stickyOffsetProperty = '--layout-scroll-header-lexicon-controls-offset';
 	}
 
 	init() {
@@ -36,6 +39,8 @@ export class Lexicon {
 		this.setupCategorySelect();
 		this.setupEventListeners();
 		this.render();
+		this.updateStickyOffset();
+		this.scrollToHash();
 	}
 
 	setupEventListeners() {
@@ -50,6 +55,29 @@ export class Lexicon {
 		if (this.categorySelect) {
 			this.categorySelect.addEventListener('change', event => this.handleCategoryChange(event));
 		}
+
+		window.addEventListener('resize', () => {
+			window.clearTimeout(this.resizeDebounceTimer);
+			this.resizeDebounceTimer = window.setTimeout(() => this.updateStickyOffset(), this.resizeDebounceDelay);
+		});
+	}
+
+	updateStickyOffset() {
+		const header = document.querySelector('.header');
+		const pageControls = document.querySelector('.page-controls');
+		if (!header || !pageControls) return;
+
+		const marginBottom = parseFloat(getComputedStyle(pageControls).marginBottom) || 0;
+		const offset = header.getBoundingClientRect().height + pageControls.getBoundingClientRect().height + marginBottom;
+
+		document.documentElement.style.setProperty(this.stickyOffsetProperty, `${offset}px`);
+	}
+
+	scrollToHash() {
+		if (!location.hash) return;
+
+		const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+		if (target) target.scrollIntoView({ block: 'start' });
 	}
 
 	handleSearch(event) {
