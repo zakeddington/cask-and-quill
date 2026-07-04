@@ -40,7 +40,7 @@
       "Skill(run:*)",
       "Bash(command -v npx)",
       "Bash(python3 -c \"import playwright\")",
-      "Bash(pkill -f \"http.server 8791\")",
+      "Bash(pkill -f \"http.server 8791\")"
     ]
   }
 }
