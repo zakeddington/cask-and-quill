@@ -1,9 +1,19 @@
 export const SPRITE_URL = '/assets/images/icon-sprite.svg';
 
+export const CATALOG_CATEGORY_OPTIONS = [
+	{ value: 'American & Bourbon', label: 'American & Bourbon' },
+	{ value: 'American Rye', label: 'American Rye' },
+	{ value: 'American Single Malt', label: 'American Single Malt' },
+	{ value: 'American Wheat', label: 'American Wheat' },
+	{ value: 'Irish', label: 'Irish' },
+	{ value: 'Japanese', label: 'Japanese' },
+	{ value: 'Scotch', label: 'Scotch' }
+];
+
 export const CATALOG_IDENTITY_FIELDS = [
 	{ name: 'brand', label: 'Brand' },
 	{ name: 'bottle', label: 'Bottle' },
-	{ name: 'category', label: 'Category' },
+	{ name: 'category', label: 'Category', type: 'select', options: CATALOG_CATEGORY_OPTIONS },
 	{ name: 'type', label: 'Type' },
 	{ name: 'distillery', label: 'Distillery' },
 	{ name: 'corpOwner', label: 'Corp. Owner' },

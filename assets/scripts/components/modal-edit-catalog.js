@@ -1,6 +1,7 @@
 import { html, getFormValue } from '../utils.js';
 import { init as pellInit } from '../vendor/pell.js';
 import { BaseModal } from './modal.js';
+import { CustomDropdown } from './custom-dropdown.js';
 import {
 	CATALOG_IDENTITY_FIELDS,
 	CATALOG_SPEC_FIELDS,
@@ -30,6 +31,7 @@ export class ModalEditCatalog extends BaseModal {
 		this.isNew = isNew;
 		this.modalRoot.innerHTML = this.renderModal(bottle);
 		this.initRichTextEditors();
+		this.initDropdowns();
 		super.open();
 	}
 
@@ -50,6 +52,10 @@ export class ModalEditCatalog extends BaseModal {
 			});
 			editor.content.innerHTML = hidden?.value ?? '';
 		});
+	}
+
+	initDropdowns() {
+		this.modalRoot.querySelectorAll('[data-catalog-dropdown]').forEach(select => new CustomDropdown(select));
 	}
 
 	onAction(event, action, btn) {
@@ -193,6 +199,10 @@ export class ModalEditCatalog extends BaseModal {
 	}
 
 	renderField(field, value) {
+		if (field.type === 'select') {
+			return this.renderSelectField(field, value);
+		}
+
 		if (field.options) {
 			return this.renderRadioField(field, value);
 		}
@@ -214,6 +224,22 @@ export class ModalEditCatalog extends BaseModal {
 				<span>${html(field.label)}</span>
 				<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">
 			</label>
+		`;
+	}
+
+	renderSelectField(field, value) {
+		const fieldId = `catalog-field-${field.name.replace(/\./g, '-')}`;
+		const hasMatch = field.options.some(option => option.value === value);
+		return `
+			<div class="modal-field catalog-field ${html(fieldId)}">
+				<span>${html(field.label)}</span>
+				<select id="${html(fieldId)}" name="${html(field.name)}" aria-label="${html(field.label)}" data-catalog-dropdown>
+					<option value=""${hasMatch ? '' : ' selected'}>Select ${html(field.label)}</option>
+					${field.options.map(option => `
+						<option value="${html(option.value)}"${value === option.value ? ' selected' : ''}>${html(option.label)}</option>
+					`).join('')}
+				</select>
+			</div>
 		`;
 	}
 
