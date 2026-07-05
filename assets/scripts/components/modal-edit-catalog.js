@@ -219,10 +219,16 @@ export class ModalEditCatalog extends BaseModal {
 			`;
 		}
 
+		const input = `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">`;
+
 		return `
 			<label class="modal-field catalog-field ${html(fieldId)}" for="${html(fieldId)}">
 				<span>${html(field.label)}</span>
-				<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">
+				${field.unit ? `
+				<div class="catalog-field-unit-wrap">
+					${input}
+					<span class="catalog-field-unit" aria-hidden="true">${html(field.unit)}</span>
+				</div>` : input}
 			</label>
 		`;
 	}

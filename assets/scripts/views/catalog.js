@@ -333,8 +333,8 @@ export class Catalog {
 						</span>
 						<span class="catalog-bottle-heading-col text-color-accent text-body-xs">
 							<span>${html(bottle.age)} Years</span>
-							<span>${html(bottle.abv)} ABV</span>
-							<span>${html(bottle.proof)} Proof</span>
+							<span>${html(bottle.abv)}% ABV</span>
+							<span>${html(bottle.proof)}° Proof</span>
 						</span>
 						<span class="catalog-bottle-heading-col text-body-sm">${html(stripHtml(bottle.cask))}</span>
 						<span class="catalog-journal-status">

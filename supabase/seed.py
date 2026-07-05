@@ -36,14 +36,14 @@ def fmt_abv(v):
     if v is None: return ''
     try:
         f = float(v)
-        return f'{int(f)}%' if f == int(f) else f'{f:.1f}%'
+        return str(int(f)) if f == int(f) else f'{f:.1f}'
     except: return ''
 
 def fmt_proof(v):
     if v is None: return ''
     try:
         f = float(v)
-        return f'{int(f)}°' if f == int(f) else f'{f:.1f}°'
+        return str(int(f)) if f == int(f) else f'{f:.1f}'
     except: return ''
 
 wb = openpyxl.load_workbook(EXCEL, data_only=True)

@@ -39,8 +39,8 @@ export const CATALOG_FILL_ICON_CONFIG = {
 export const CATALOG_SPEC_FIELDS = [
 	{ name: 'fill', label: 'Fill', options: CATALOG_FILL_OPTIONS },
 	{ name: 'age', label: 'Age' },
-	{ name: 'abv', label: 'ABV' },
-	{ name: 'proof', label: 'Proof' },
+	{ name: 'abv', label: 'ABV', unit: '%' },
+	{ name: 'proof', label: 'Proof', unit: '°' },
 	{ name: 'char', label: 'Char Level', icon: 'icon-barrel' },
 	{ name: 'cask', label: 'Cask / Finish / Notes', multiline: true }
 ];
