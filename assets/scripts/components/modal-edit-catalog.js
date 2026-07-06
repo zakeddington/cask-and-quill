@@ -118,7 +118,6 @@ export class ModalEditCatalog extends BaseModal {
 				</button>
 			</div>`}
 			<div class="modal-footer-col">
-				${this.isNew ? '' : '<button class="button-secondary" type="button" data-modal-action="close">Bottle Kill</button>'}
 				<button class="button-secondary" type="button" data-modal-action="close">Cancel</button>
 				<button class="button-primary" type="submit">${this.isNew ? 'Add Bottle' : 'Save Changes'}</button>
 			</div>
