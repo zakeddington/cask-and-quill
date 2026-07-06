@@ -249,24 +249,34 @@ export class Catalog {
 
 	render() {
 		const filtered = this.getFilteredBottles();
-		const groupedBottles = this.groupBottles(filtered);
+		const activeBottles = filtered.filter(bottle => bottle.fill !== 'bottle-kill');
+		const killedBottles = filtered.filter(bottle => bottle.fill === 'bottle-kill');
+		const groupedBottles = this.groupBottles(activeBottles);
 		const groupNames = Object.keys(groupedBottles).sort((a, b) => a.localeCompare(b));
 
 		if (this.addBtn) this.addBtn.hidden = !this.isAdmin;
-		this.renderCount(filtered.length);
-		this.catalogList.innerHTML = groupNames.length
-			? groupNames.map(group => this.renderGroup(group, groupedBottles[group])).join('')
+		this.renderCount(activeBottles.length, killedBottles.length);
+
+		const groupSections = groupNames.map(group => this.renderGroup(group, groupedBottles[group]));
+		if (killedBottles.length) {
+			groupSections.push(this.renderGroup('Bottle Kills', killedBottles, { isBottleKills: true }));
+		}
+
+		this.catalogList.innerHTML = groupSections.length
+			? groupSections.join('')
 			: this.renderEmptyState();
 	}
 
-	renderCount(filteredCount) {
+	renderCount(activeCount, killedCount) {
 		if (!this.catalogCount) return;
 
-		const total = this.bottles.length;
-		const count = filteredCount ?? total;
+		const totalActive = this.bottles.filter(bottle => bottle.fill !== 'bottle-kill').length;
 		const isFiltered = this.searchQuery || this.categoryFilter || this.fillFilter;
-		const suffix = isFiltered && count !== total ? ` of ${total}` : '';
-		this.catalogCount.textContent = `${count}${suffix} bottle${total === 1 ? '' : 's'}`;
+		const suffix = isFiltered && activeCount !== totalActive ? ` of ${totalActive}` : '';
+		const killedNote = killedCount
+			? ` <span class="text-heading-sm font-regular">(${killedCount} killed)</span>`
+			: '';
+		this.catalogCount.innerHTML = `${activeCount}${suffix} bottle${totalActive === 1 ? '' : 's'}${killedNote}`;
 	}
 
 	renderEmptyState() {
@@ -275,7 +285,7 @@ export class Catalog {
 			: `<div class="empty-state"><h2>No bottles logged yet.</h2></div>`;
 	}
 
-	renderGroup(group, bottles) {
+	renderGroup(group, bottles, { isBottleKills = false } = {}) {
 		const sortedBottles = [...bottles].sort((a, b) => {
 			switch (this.abvSort) {
 				case 'abv-asc': return (parseFloat(a.abv) || 0) - (parseFloat(b.abv) || 0);
@@ -287,7 +297,7 @@ export class Catalog {
 		});
 
 		return `
-			<section class="catalog-group">
+			<section class="catalog-group${isBottleKills ? ' catalog-group-bottle-kills' : ''}">
 				<div class="catalog-group-heading">
 					<h2>${html(group)}</h2>
 				</div>
