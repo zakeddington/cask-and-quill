@@ -339,18 +339,18 @@ export class Catalog {
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col">
-							<span class="text-heading-sm text-color-accent">${html(bottle.category)}</span>
+							<span class="text-heading-sm">${html(bottle.category)}</span>
 							<span class="text-body-md">${html(bottle.type)}</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-color-accent text-body-xs font-medium">
+						<span class="catalog-bottle-heading-col text-body-sm font-medium text-color-secondary">
 							<span>${html(bottle.age)} Years</span>
 							<span>${html(bottle.abv)}%</span>
 							<span>${html(bottle.proof)}°</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-body-xs font-medium">
+						<span class="catalog-bottle-heading-col text-body-sm font-medium">
 							${this.renderMashBillSummary(bottle.mashBill)}
 						</span>
-						<span class="catalog-bottle-heading-col text-body-sm">${html(stripHtml(bottle.cask))}</span>
+						<span class="catalog-bottle-heading-col text-body-sm font-medium">${html(stripHtml(bottle.cask))}</span>
 						<span class="catalog-journal-status">
 							${this.renderJournalIcon(bottle)}
 							<span class="catalog-accordion-icon" aria-hidden="true">
@@ -464,7 +464,7 @@ export class Catalog {
 
 		if (!active.length) return '<span>—</span>';
 
-		return active.map(({ label, formatted }) => `<span class="catalog-mash-bill-summary"><span>${html(formatted)}</span> ${html(label)}</span>`).join('');
+		return active.map(({ label, formatted }) => `<span class="catalog-mash-bill-summary"><span>${html(formatted)}</span> <span>${html(label)}</span></span>`).join('');
 	}
 
 	renderMashBill(mashBill, char) {
