@@ -141,7 +141,7 @@
 
 /* Layout Grid */
 :root {
-	--layout-max-width: 1600px;
+	--layout-max-width: 1920px;
 	--layout-inline-padding: clamp(1.5rem, 2vw, 2rem);
 	--layout-header-height: 3.625rem;
 	--layout-header-offset: 4rem;
@@ -160,7 +160,7 @@
 	}
 
 	@media (min-width: 1024px) {
-		--layout-catalog-column-grid: 5rem minmax(8rem, 0.8fr) minmax(8rem, 1fr) minmax(4rem, 0.4fr) minmax(14rem, 1.4fr) 6rem;
+		--layout-catalog-column-grid: 0.25fr 1.25fr 1.25fr 0.5fr 0.75fr 2fr 0.25fr;
 	}
 }
 

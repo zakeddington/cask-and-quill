@@ -306,6 +306,7 @@ export class Catalog {
 					<span>Brand/Bottle</span>
 					<span>Category/Type</span>
 					<span>Specs</span>
+					<span>Mash Bill</span>
 					<span>Cask/Finish/Notes</span>
 					<span>Journal</span>
 				</div>
@@ -335,16 +336,19 @@ export class Catalog {
 						<span class="catalog-bottle-heading-col">${this.renderFillIcon(bottle.fill)}</span>
 						<span class="catalog-bottle-heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
-							<span class="text-body-md">${html(bottle.bottle)}</span>
+							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.category)}</span>
 							<span class="text-body-md">${html(bottle.type)}</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-color-accent text-body-xs">
+						<span class="catalog-bottle-heading-col text-color-accent text-body-xs font-medium">
 							<span>${html(bottle.age)} Years</span>
-							<span>${html(bottle.abv)}% ABV</span>
-							<span>${html(bottle.proof)}° Proof</span>
+							<span>${html(bottle.abv)}%</span>
+							<span>${html(bottle.proof)}°</span>
+						</span>
+						<span class="catalog-bottle-heading-col text-body-xs font-medium">
+							${this.renderMashBillSummary(bottle.mashBill)}
 						</span>
 						<span class="catalog-bottle-heading-col text-body-sm">${html(stripHtml(bottle.cask))}</span>
 						<span class="catalog-journal-status">
@@ -445,6 +449,22 @@ export class Catalog {
 				</div>` : ''}
 			</div>
 		`;
+	}
+
+	renderMashBillSummary(mashBill) {
+		const active = CATALOG_MASH_BILL_FIELDS
+			.map(field => {
+				const raw = String(mashBill?.[field.name] ?? '');
+				const estimated = raw.startsWith('(') && raw.endsWith(')');
+				const value = estimated ? raw.slice(1, -1) : raw;
+				const formatted = estimated ? `(${value}%)` : `${value}%`;
+				return { label: field.label, value, formatted };
+			})
+			.filter(({ value }) => value && value !== '0');
+
+		if (!active.length) return '<span>—</span>';
+
+		return active.map(({ label, formatted }) => `<span class="catalog-mash-bill-summary"><span>${html(formatted)}</span> ${html(label)}</span>`).join('');
 	}
 
 	renderMashBill(mashBill, char) {
