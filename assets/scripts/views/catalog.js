@@ -460,7 +460,8 @@ export class Catalog {
 				const formatted = estimated ? `(${value}%)` : `${value}%`;
 				return { label: field.label, value, formatted };
 			})
-			.filter(({ value }) => value && value !== '0');
+			.filter(({ value }) => value && value !== '0')
+			.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
 
 		if (!active.length) return '<span>—</span>';
 
@@ -468,12 +469,18 @@ export class Catalog {
 	}
 
 	renderMashBill(mashBill, char) {
+		const fields = CATALOG_MASH_BILL_FIELDS
+			.map(field => {
+				const raw = String(mashBill?.[field.name] ?? '');
+				const estimated = raw.startsWith('(') && raw.endsWith(')');
+				const display = estimated ? raw.slice(1, -1) : raw;
+				return { field, estimated, display };
+			})
+			.sort((a, b) => (parseFloat(b.display) || 0) - (parseFloat(a.display) || 0));
+
 		return `
 			<dl class="catalog-detail-list is-horizontal">
-				${CATALOG_MASH_BILL_FIELDS.map(field => {
-					const raw = String(mashBill?.[field.name] ?? '');
-					const estimated = raw.startsWith('(') && raw.endsWith(')');
-					const display = estimated ? raw.slice(1, -1) : raw;
+				${fields.map(({ field, estimated, display }) => {
 					const muted = !display || display === '0';
 					const classes = [muted ? 'is-muted' : '', estimated ? 'is-estimated' : ''].filter(Boolean).join(' ');
 					return `
