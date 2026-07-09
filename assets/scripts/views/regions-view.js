@@ -1,11 +1,11 @@
-import { REGIONS } from '../data/regions.js';
+import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
 import { SPRITE_URL } from '../config/constants.js';
 
-export class Regions {
+export class RegionsView {
 	constructor() {
-		this.regions = REGIONS;
+		this.regionsData = REGIONS_DATA;
 		this.regionsList = document.getElementById('regions-list');
 		this.subRegionMapSwitcher = new SubRegionMapSwitcher();
 	}
@@ -64,7 +64,7 @@ export class Regions {
 	}
 
 	render() {
-		this.regionsList.innerHTML = this.regions.map(region => this.renderRegion(region)).join('');
+		this.regionsList.innerHTML = this.regionsData.map(region => this.renderRegion(region)).join('');
 	}
 
 	renderRegion(region) {

@@ -1,5 +1,5 @@
 // Region data
-export const REGIONS = [
+export const REGIONS_DATA = [
 	{
 		id: 'scotland',
 		name: 'Scotland',

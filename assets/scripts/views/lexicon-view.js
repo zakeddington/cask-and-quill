@@ -1,8 +1,8 @@
-import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon.js';
+import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon-data.js';
 import { escapeHtml, normalizeTermName } from '../utils.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
-export class Lexicon {
+export class LexiconView {
 	constructor() {
 		this.terms = LEXICON_TERMS;
 		this.searchInput = document.getElementById('search-input');

@@ -3,7 +3,7 @@ import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
 
-export class Flavors {
+export class FlavorsView {
 	constructor(el, isAdmin = false) {
 		this.el = el;
 		this.state = { q: '', family: 'All Families' };

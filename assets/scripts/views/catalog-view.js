@@ -10,7 +10,7 @@ import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
-export class Catalog {
+export class CatalogView {
 	constructor(isAdmin = false) {
 		this.catalogList = document.getElementById('catalog-list');
 		this.catalogCount = document.getElementById('catalog-count');
