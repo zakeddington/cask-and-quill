@@ -304,7 +304,7 @@ export class Catalog {
 				<div class="catalog-column-headings theme-primary" aria-hidden="true">
 					<span>Fill</span>
 					<span>Brand/Bottle</span>
-					<span>Category/Type</span>
+					<span>Type/Category</span>
 					<span>Specs</span>
 					<span>Mash Bill</span>
 					<span>Cask/Finish/Notes</span>
@@ -339,8 +339,8 @@ export class Catalog {
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col">
-							<span class="text-heading-sm">${html(bottle.category)}</span>
-							<span class="text-body-md">${html(bottle.type)}</span>
+							<span class="text-heading-sm font-medium text-color-secondary">${html(bottle.type)}</span>
+							<span class="text-body-md">${html(bottle.category)}</span>
 						</span>
 						<span class="catalog-bottle-heading-col text-body-sm font-medium text-color-secondary">
 							<span>${html(bottle.age)} Years</span>

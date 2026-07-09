@@ -149,7 +149,7 @@
 	--layout-page-controls-margin-bottom: 3rem;
 	--layout-scroll-header-offset: calc(var(--layout-header-height) + var(--layout-header-offset));
 	--layout-scroll-header-lexicon-controls-offset: calc(var(--layout-header-height) + var(--layout-lexicon-controls-height) + var(--layout-page-controls-margin-bottom));
-	--layout-catalog-column-grid: 1fr auto;
+	--layout-catalog-column-grid: 1fr 1fr auto;
 	--grid-column-count: 12;
 	--grid-template-columns: repeat(var(--grid-column-count), minmax(0, 1fr));
 	--grid-gap: clamp(1.5rem, 3vw, 3rem);
@@ -157,6 +157,7 @@
 	@media (min-width: 768px) {
 		--layout-header-height: 4.625rem;
 		--layout-lexicon-controls-height: 5rem;
+		--layout-catalog-column-grid: 0.25fr 1fr 1fr auto;
 	}
 
 	@media (min-width: 1024px) {
@@ -181,7 +182,7 @@
 	--font-size-heading-xl: clamp(2.25rem, 5vw, 3.125rem); /* 36px - 50px */
 	--font-size-heading-lg: clamp(1.875rem, 4vw, 2.5rem); /* 30px - 40px */
 	--font-size-heading-md: clamp(1.25rem, 2.5vw, 1.5rem); /* 20px - 24px */
-	--font-size-heading-sm: clamp(1rem, 2vw, 1.125rem); /* 16px - 18px */
+	--font-size-heading-sm: clamp(1.125rem, 2vw, 1.25rem); /* 18px - 20px */
 
 	/* Body sizes */
 	--font-size-body-lg: clamp(1.125rem, 1.5vw, 1.25rem); /* 18px - 20px */
