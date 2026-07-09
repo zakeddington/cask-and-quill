@@ -1,4 +1,4 @@
-import { LEXICON_TERMS } from '../data/lexicon.js';
+import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon.js';
 import { escapeHtml, normalizeTermName } from '../utils.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
@@ -11,18 +11,6 @@ export class Lexicon {
 		this.searchQuery = '';
 		this.searchDebounceTimer = null;
 		this.selectedCategory = '';
-		this.categoryOrder = [
-			'Measurements & Labeling',
-			'Ingredients & Grain',
-			'Malting & Mashing',
-			'Fermentation & Chemistry',
-			'Distillation',
-			'Maturation & Wood',
-			'Styles & Regulations',
-			'People & Producers',
-			'Regions & Terroir',
-			'Tasting & Service'
-		];
 		this.searchDebounceDelay = 250;
 		this.resizeDebounceTimer = null;
 		this.resizeDebounceDelay = 150;
@@ -87,10 +75,7 @@ export class Lexicon {
 	setupCategorySelect() {
 		if (!this.categoryDropdown) return;
 
-		this.categoryDropdown.setOptions([
-			{ value: '', label: 'Categories' },
-			...this.categoryOrder.map(c => ({ value: c, label: c }))
-		]);
+		this.categoryDropdown.setOptions(getLexiconCategoryOptions());
 	}
 
 	handleCategoryChange(event) {
@@ -114,8 +99,8 @@ export class Lexicon {
 	}
 
 	getCategoryOrder(category) {
-		const index = this.categoryOrder.indexOf(category);
-		return index === -1 ? this.categoryOrder.length : index;
+		const index = LEXICON_CATEGORIES.indexOf(category);
+		return index === -1 ? LEXICON_CATEGORIES.length : index;
 	}
 
 	getCategoryId(category) {
