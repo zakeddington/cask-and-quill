@@ -4,67 +4,74 @@ import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
 import { SPRITE_URL, KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_HOME, KEY_END } from '../config/constants.js';
 
 export class RegionsView {
-	constructor() {
-		this.regionsData = REGIONS_DATA;
-		this.regionsList = document.getElementById('regions-list');
-		this.subRegionMapSwitcher = new SubRegionMapSwitcher();
+	constructor(elContainer) {
+
+		this.data = REGIONS_DATA;
+
+		this.el = {
+			container: elContainer,
+		}
+
+		this.init();
 	}
 
 	init() {
-		if (!this.regionsList) return;
-
 		this.render();
-		this.setupAccordions();
-		this.subRegionMapSwitcher.init(this.regionsList);
+		this.initAccordions();
+		new SubRegionMapSwitcher().init(this.el.container);
 	}
 
-	setupAccordions() {
-		const triggers = document.querySelectorAll('.region-accordion-trigger');
-
-		triggers.forEach(trigger => {
-			trigger.addEventListener('click', () => this.toggleAccordion(trigger));
-			trigger.addEventListener('keydown', event => this.handleAccordionKeydown(event, triggers));
+	initAccordions() {
+		const elTriggers = this.el.container.querySelectorAll('.region-accordion-trigger');
+		elTriggers.forEach(elTrigger => {
+			elTrigger.addEventListener('click', () => this.toggleAccordion(elTrigger));
+			elTrigger.addEventListener('keydown', event => this.onAccordionKeydown(event, elTriggers));
 		});
 	}
 
-	toggleAccordion(trigger) {
-		const section = trigger.closest('.region-section');
-		const panel = document.getElementById(trigger.getAttribute('aria-controls'));
-		const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+	toggleAccordion(elTrigger) {
+		const elSection = elTrigger.closest('.region-section');
+		const elPanel = document.getElementById(elTrigger.getAttribute('aria-controls'));
+		const isExpanded = elTrigger.getAttribute('aria-expanded') === 'true';
 
-		trigger.setAttribute('aria-expanded', String(!isExpanded));
-		panel.setAttribute('aria-hidden', String(isExpanded));
-		section.classList.toggle('is-open', !isExpanded);
+		elTrigger.setAttribute('aria-expanded', String(!isExpanded));
+		elPanel.setAttribute('aria-hidden', String(isExpanded));
+		elSection.classList.toggle('is-open', !isExpanded);
 
 		if (!isExpanded) {
 			setTimeout(() => {
-				section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				elSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			}, 350);
 		}
 	}
 
-	handleAccordionKeydown(event, triggers) {
-		const currentIndex = Array.from(triggers).indexOf(event.currentTarget);
+	onAccordionKeydown(event, elTriggers) {
+		const currentIndex = Array.from(elTriggers).indexOf(event.currentTarget);
 		let nextIndex = currentIndex;
 
-		if (event.key === KEY_ARROW_DOWN) {
-			nextIndex = (currentIndex + 1) % triggers.length;
-		} else if (event.key === KEY_ARROW_UP) {
-			nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
-		} else if (event.key === KEY_HOME) {
-			nextIndex = 0;
-		} else if (event.key === KEY_END) {
-			nextIndex = triggers.length - 1;
-		} else {
-			return;
+		switch (event.key) {
+			case KEY_ARROW_DOWN:
+				nextIndex = (currentIndex + 1) % elTriggers.length;
+				break;
+			case KEY_ARROW_UP:
+				nextIndex = (currentIndex - 1 + elTriggers.length) % elTriggers.length;
+				break;
+			case KEY_HOME:
+				nextIndex = 0;
+				break;
+			case KEY_END:
+				nextIndex = elTriggers.length - 1;
+				break;
+			default:
+				return;
 		}
 
 		event.preventDefault();
-		triggers[nextIndex].focus();
+		elTriggers[nextIndex].focus();
 	}
 
 	render() {
-		this.regionsList.innerHTML = this.regionsData.map(region => this.renderRegion(region)).join('');
+		this.el.container.innerHTML = this.data.map(region => this.renderRegion(region)).join('');
 	}
 
 	renderRegion(region) {

@@ -22,10 +22,10 @@ async function initApp() {
 		new LexiconView().init();
 	}
 
-	if (document.getElementById('regions-list')) {
+	const elRegionsList = document.getElementById('regions-list');
+	if (elRegionsList) {
 		const { RegionsView } = await import('./views/regions-view.js');
-
-		new RegionsView().init();
+		new RegionsView(elRegionsList);
 	}
 
 	if (document.getElementById('catalog-list')) {
