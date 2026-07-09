@@ -6,12 +6,10 @@ export class Lexicon {
 	constructor() {
 		this.terms = LEXICON_TERMS;
 		this.searchInput = document.getElementById('search-input');
-		this.sortAlphaBtn = document.getElementById('sort-alpha');
 		this.categorySelect = document.getElementById('category-select');
 		this.lexiconEntries = document.getElementById('lexicon-entries');
 		this.searchQuery = '';
 		this.searchDebounceTimer = null;
-		this.sortMode = 'alphabetical';
 		this.selectedCategory = '';
 		this.categoryOrder = [
 			'Measurements & Labeling',
@@ -46,10 +44,6 @@ export class Lexicon {
 	setupEventListeners() {
 		if (this.searchInput) {
 			this.searchInput.addEventListener('input', event => this.handleSearch(event));
-		}
-
-		if (this.sortAlphaBtn) {
-			this.sortAlphaBtn.addEventListener('click', () => this.setSortMode('alphabetical'));
 		}
 
 		if (this.categorySelect) {
@@ -90,17 +84,6 @@ export class Lexicon {
 		}, this.searchDebounceDelay);
 	}
 
-	setSortMode(mode) {
-		this.sortMode = mode;
-		if (mode === 'alphabetical') {
-			this.selectedCategory = '';
-			this.categoryDropdown?.setValue('');
-		}
-
-		this.sortAlphaBtn.classList.toggle('active', mode === 'alphabetical');
-		this.render(true);
-	}
-
 	setupCategorySelect() {
 		if (!this.categoryDropdown) return;
 
@@ -112,8 +95,6 @@ export class Lexicon {
 
 	handleCategoryChange(event) {
 		this.selectedCategory = event.target.value;
-		this.sortMode = this.selectedCategory ? 'category' : 'alphabetical';
-		this.sortAlphaBtn.classList.toggle('active', this.sortMode === 'alphabetical');
 		this.render(true);
 	}
 
@@ -201,7 +182,7 @@ export class Lexicon {
 
 	groupTerms(filteredTerms) {
 		return filteredTerms.reduce((groups, term) => {
-			const key = this.sortMode === 'category' ? term.category : term.letter;
+			const key = this.selectedCategory ? term.category : term.letter;
 			if (!groups[key]) groups[key] = [];
 			groups[key].push(term);
 			return groups;
@@ -210,7 +191,7 @@ export class Lexicon {
 
 	getSortedGroups(groupedTerms) {
 		return Object.keys(groupedTerms).sort((a, b) => {
-			if (this.sortMode !== 'category') return a.localeCompare(b);
+			if (!this.selectedCategory) return a.localeCompare(b);
 
 			return this.getCategoryOrder(a) - this.getCategoryOrder(b) || a.localeCompare(b);
 		});
@@ -224,7 +205,7 @@ export class Lexicon {
 		this.lexiconEntries.innerHTML = filteredTerms.length
 			? sortedGroups.map(group => this.renderGroup(group, groupedTerms[group])).join('')
 			: this.renderNoResults();
-		this.updateAlphabetNav(this.sortMode === 'alphabetical' ? filteredTerms : []);
+		this.updateAlphabetNav(this.selectedCategory ? [] : filteredTerms);
 
 		if (scrollToTop) {
 			this.scrollResultsToTop();
@@ -233,8 +214,8 @@ export class Lexicon {
 
 	renderGroup(group, terms) {
 		const groupedItems = terms.sort((a, b) => a.name.localeCompare(b.name));
-		const sectionId = this.sortMode === 'category' ? this.getCategoryId(group) : group;
-		const headingClass = this.sortMode === 'category'
+		const sectionId = this.selectedCategory ? this.getCategoryId(group) : group;
+		const headingClass = this.selectedCategory
 			? 'lexicon-section-title is-category text-heading-md grid-col-md-2'
 			: 'lexicon-section-title text-display-md grid-col-md-2';
 
