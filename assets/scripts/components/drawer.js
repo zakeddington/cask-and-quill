@@ -1,3 +1,5 @@
+import { KEY_ESCAPE, KEY_TAB } from '../config/constants.js';
+
 export class BaseDrawer {
 	constructor(drawerEl, overlayEl, { triggerEl, closeSelector = '.drawer-close', bodyClass = 'drawer-is-open', trapFocus = true } = {}) {
 		this.drawerEl = drawerEl;
@@ -52,12 +54,12 @@ export class BaseDrawer {
 	}
 
 	_handleKeydown(event) {
-		if (event.key === 'Escape') {
+		if (event.key === KEY_ESCAPE) {
 			this.close();
 			return;
 		}
 
-		if (!this.trapFocus || event.key !== 'Tab') return;
+		if (!this.trapFocus || event.key !== KEY_TAB) return;
 
 		const focusable = this._focusableElements();
 		if (!focusable.length) return;

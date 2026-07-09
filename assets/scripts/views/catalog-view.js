@@ -4,7 +4,11 @@ import {
 	CATALOG_FILL_ICON_CONFIG,
 	CATALOG_MASH_BILL_FIELDS,
 	CATALOG_TASTING_NOTE_FIELDS,
-	SPRITE_URL
+	SPRITE_URL,
+	KEY_ARROW_DOWN,
+	KEY_ARROW_UP,
+	KEY_HOME,
+	KEY_END
 } from '../config/constants.js';
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
@@ -114,13 +118,13 @@ export class CatalogView {
 		const currentIndex = triggers.indexOf(event.target);
 		let nextIndex = currentIndex;
 
-		if (event.key === 'ArrowDown') {
+		if (event.key === KEY_ARROW_DOWN) {
 			nextIndex = (currentIndex + 1) % triggers.length;
-		} else if (event.key === 'ArrowUp') {
+		} else if (event.key === KEY_ARROW_UP) {
 			nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
-		} else if (event.key === 'Home') {
+		} else if (event.key === KEY_HOME) {
 			nextIndex = 0;
-		} else if (event.key === 'End') {
+		} else if (event.key === KEY_END) {
 			nextIndex = triggers.length - 1;
 		} else {
 			return;

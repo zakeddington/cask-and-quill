@@ -1,5 +1,15 @@
 import { html } from '../utils.js';
-import { SPRITE_URL } from '../config/constants.js';
+import {
+	SPRITE_URL,
+	KEY_ESCAPE,
+	KEY_TAB,
+	KEY_ENTER,
+	KEY_SPACE,
+	KEY_ARROW_DOWN,
+	KEY_ARROW_UP,
+	KEY_HOME,
+	KEY_END
+} from '../config/constants.js';
 
 export class CustomDropdown {
 	constructor(selectEl) {
@@ -163,7 +173,7 @@ export class CustomDropdown {
 		});
 
 		this._trigger.addEventListener('keydown', e => {
-			if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+			if (e.key === KEY_ARROW_DOWN || e.key === KEY_ARROW_UP || e.key === KEY_ENTER || e.key === KEY_SPACE) {
 				e.preventDefault();
 				if (!this._isOpen) this._open();
 			}
@@ -175,31 +185,31 @@ export class CustomDropdown {
 			const idx = options.indexOf(focused);
 
 			switch (e.key) {
-				case 'ArrowDown':
+				case KEY_ARROW_DOWN:
 					e.preventDefault();
 					options[(idx + 1) % options.length]?.focus();
 					break;
-				case 'ArrowUp':
+				case KEY_ARROW_UP:
 					e.preventDefault();
 					options[(idx - 1 + options.length) % options.length]?.focus();
 					break;
-				case 'Home':
+				case KEY_HOME:
 					e.preventDefault();
 					options[0]?.focus();
 					break;
-				case 'End':
+				case KEY_END:
 					e.preventDefault();
 					options[options.length - 1]?.focus();
 					break;
-				case 'Enter':
-				case ' ':
+				case KEY_ENTER:
+				case KEY_SPACE:
 					e.preventDefault();
 					if (focused?.matches('.custom-dropdown-option')) {
 						this._selectOption(focused.dataset.value);
 					}
 					break;
-				case 'Escape':
-				case 'Tab':
+				case KEY_ESCAPE:
+				case KEY_TAB:
 					this._close();
 					break;
 			}

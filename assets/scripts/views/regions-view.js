@@ -1,7 +1,7 @@
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
-import { SPRITE_URL } from '../config/constants.js';
+import { SPRITE_URL, KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_HOME, KEY_END } from '../config/constants.js';
 
 export class RegionsView {
 	constructor() {
@@ -47,13 +47,13 @@ export class RegionsView {
 		const currentIndex = Array.from(triggers).indexOf(event.currentTarget);
 		let nextIndex = currentIndex;
 
-		if (event.key === 'ArrowDown') {
+		if (event.key === KEY_ARROW_DOWN) {
 			nextIndex = (currentIndex + 1) % triggers.length;
-		} else if (event.key === 'ArrowUp') {
+		} else if (event.key === KEY_ARROW_UP) {
 			nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
-		} else if (event.key === 'Home') {
+		} else if (event.key === KEY_HOME) {
 			nextIndex = 0;
-		} else if (event.key === 'End') {
+		} else if (event.key === KEY_END) {
 			nextIndex = triggers.length - 1;
 		} else {
 			return;

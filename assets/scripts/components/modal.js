@@ -1,3 +1,5 @@
+import { KEY_ESCAPE } from '../config/constants.js';
+
 export class BaseModal {
 	constructor(modalRoot, { onSave, onDelete } = {}) {
 		this.modalRoot = modalRoot;
@@ -12,7 +14,7 @@ export class BaseModal {
 	setupEventListeners() {
 		this.modalRoot.addEventListener('click', e => this.handleClick(e));
 		document.addEventListener('keydown', e => {
-			if (e.key === 'Escape' && this.isOpen) this.close();
+			if (e.key === KEY_ESCAPE && this.isOpen) this.close();
 		});
 	}
 
