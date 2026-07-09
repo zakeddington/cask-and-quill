@@ -3,56 +3,55 @@ import { escapeHtml, normalizeTermName } from '../utils.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
 export class LexiconView {
-	constructor() {
-		this.terms = LEXICON_TERMS;
-		this.searchInput = document.getElementById('search-input');
-		this.categorySelect = document.getElementById('category-select');
-		this.lexiconEntries = document.getElementById('lexicon-entries');
-		this.searchQuery = '';
-		this.searchDebounceTimer = null;
-		this.selectedCategory = '';
-		this.searchDebounceDelay = 250;
-		this.resizeDebounceTimer = null;
-		this.resizeDebounceDelay = 150;
-		this.stickyOffsetProperty = '--layout-scroll-header-lexicon-controls-offset';
+	constructor(elContainer) {
+		this.data = LEXICON_TERMS;
+
+		this.el = {
+			header: document.querySelector('.header'),
+			container: elContainer,
+			alphabetLinks: elContainer.querySelectorAll('.alphabet-link'),
+			pageControls: elContainer.querySelector('.page-controls'),
+			searchInput: elContainer.querySelector('#search-input'),
+			categorySelect: elContainer.querySelector('#category-select'),
+			results: elContainer.querySelector('#lexicon-entries'),
+		};
+
+		this.state = {
+			searchQuery: '',
+			selectedCategory: '',
+		};
+
+		this.config = {
+			searchDebounceDelay: 250,
+			resizeDebounceDelay: 150,
+			stickyOffsetProperty: '--layout-scroll-header-lexicon-controls-offset',
+		};
+
+		this.timer = {
+			search: null,
+			resize: null,
+		};
+
+		this.components = {
+			categoryDropdown: null,
+		};
+
+		this.init();
 	}
 
 	init() {
-		if (!this.lexiconEntries) return;
-
-		if (this.categorySelect) this.categoryDropdown = new CustomDropdown(this.categorySelect);
-
-		this.setupCategorySelect();
-		this.setupEventListeners();
+		this.initCategorySelect();
+		this.addEventListeners();
 		this.render();
 		this.updateStickyOffset();
 		this.scrollToHash();
 	}
 
-	setupEventListeners() {
-		if (this.searchInput) {
-			this.searchInput.addEventListener('input', event => this.handleSearch(event));
+	initCategorySelect() {
+		if (this.el.categorySelect) {
+			this.components.categoryDropdown = new CustomDropdown(this.el.categorySelect);
+			this.components.categoryDropdown.setOptions(getLexiconCategoryOptions());
 		}
-
-		if (this.categorySelect) {
-			this.categorySelect.addEventListener('change', event => this.handleCategoryChange(event));
-		}
-
-		window.addEventListener('resize', () => {
-			window.clearTimeout(this.resizeDebounceTimer);
-			this.resizeDebounceTimer = window.setTimeout(() => this.updateStickyOffset(), this.resizeDebounceDelay);
-		});
-	}
-
-	updateStickyOffset() {
-		const header = document.querySelector('.header');
-		const pageControls = document.querySelector('.page-controls');
-		if (!header || !pageControls) return;
-
-		const marginBottom = parseFloat(getComputedStyle(pageControls).marginBottom) || 0;
-		const offset = header.getBoundingClientRect().height + pageControls.getBoundingClientRect().height + marginBottom;
-
-		document.documentElement.style.setProperty(this.stickyOffsetProperty, `${offset}px`);
 	}
 
 	scrollToHash() {
@@ -62,29 +61,58 @@ export class LexiconView {
 		if (target) target.scrollIntoView({ block: 'start' });
 	}
 
-	handleSearch(event) {
+	updateStickyOffset() {
+		if (!this.el.header || !this.el.pageControls) return;
+
+		const marginBottom = parseFloat(getComputedStyle(this.el.pageControls).marginBottom) || 0;
+		const offset = this.el.header.getBoundingClientRect().height + this.el.pageControls.getBoundingClientRect().height + marginBottom;
+
+		document.documentElement.style.setProperty(this.config.stickyOffsetProperty, `${offset}px`);
+	}
+
+	updateAlphabetNav(filteredTerms) {
+		const activeLetters = new Set(filteredTerms.map(t => t.letter));
+
+		this.el.alphabetLinks.forEach(link => {
+			const letter = link.textContent.trim();
+			link.classList.toggle('active', activeLetters.has(letter));
+		});
+	}
+
+	addEventListeners() {
+		if (this.el.searchInput) {
+			this.el.searchInput.addEventListener('input', event => this.onSearchInput(event));
+		}
+
+		if (this.el.categorySelect) {
+			this.el.categorySelect.addEventListener('change', event => this.onCategoryChange(event));
+		}
+
+		window.addEventListener('resize', () => this.onResize());
+	}
+
+	onResize() {
+		window.clearTimeout(this.timer.resize);
+		this.timer.resize = window.setTimeout(() => this.updateStickyOffset(), this.config.resizeDebounceDelay);
+	}
+
+	onSearchInput(event) {
 		const nextQuery = event.target.value.toLowerCase();
 
-		window.clearTimeout(this.searchDebounceTimer);
-		this.searchDebounceTimer = window.setTimeout(() => {
-			this.searchQuery = nextQuery;
+		window.clearTimeout(this.timer.search);
+		this.timer.search = window.setTimeout(() => {
+			this.state.searchQuery = nextQuery;
 			this.render(true);
-		}, this.searchDebounceDelay);
+		}, this.config.searchDebounceDelay);
 	}
 
-	setupCategorySelect() {
-		if (!this.categoryDropdown) return;
-
-		this.categoryDropdown.setOptions(getLexiconCategoryOptions());
-	}
-
-	handleCategoryChange(event) {
-		this.selectedCategory = event.target.value;
+	onCategoryChange(event) {
+		this.state.selectedCategory = event.target.value;
 		this.render(true);
 	}
 
 	scrollResultsToTop() {
-		this.lexiconEntries.scrollIntoView({
+		this.el.results.scrollIntoView({
 			behavior: 'smooth',
 			block: 'start'
 		});
@@ -92,7 +120,7 @@ export class LexiconView {
 
 	getTermByName(name) {
 		const normalizedName = normalizeTermName(name);
-		return this.terms.find(term =>
+		return this.data.find(term =>
 			normalizeTermName(term.name) === normalizedName ||
 			term.aliases?.some(alias => normalizeTermName(alias) === normalizedName)
 		);
@@ -107,8 +135,37 @@ export class LexiconView {
 		return `category-${normalizeTermName(category).replace(/\s+/g, '-')}`;
 	}
 
+	getFilteredTerms() {
+		return this.data.filter(term =>
+			(!this.state.selectedCategory || term.category === this.state.selectedCategory) &&
+			(
+				term.name.toLowerCase().includes(this.state.searchQuery) ||
+				term.aliases?.some(alias => alias.toLowerCase().includes(this.state.searchQuery)) ||
+				term.category.toLowerCase().includes(this.state.searchQuery)/* ||
+				term.description.toLowerCase().includes(this.state.searchQuery)*/
+			)
+		);
+	}
+
+	getGroupedTerms(filteredTerms) {
+		return filteredTerms.reduce((groups, term) => {
+			const key = this.state.selectedCategory ? term.category : term.letter;
+			if (!groups[key]) groups[key] = [];
+			groups[key].push(term);
+			return groups;
+		}, {});
+	}
+
+	getSortedGroups(groupedTerms) {
+		return Object.keys(groupedTerms).sort((a, b) => {
+			if (!this.state.selectedCategory) return a.localeCompare(b);
+
+			return this.getCategoryOrder(a) - this.getCategoryOrder(b) || a.localeCompare(b);
+		});
+	}
+
 	renderNoResults() {
-		const query = this.searchQuery.trim();
+		const query = this.state.searchQuery.trim();
 		const message = query
 			? `No results for "${escapeHtml(query)}".`
 			: 'No entries found for the current filters.';
@@ -153,44 +210,15 @@ export class LexiconView {
 		return `<p class="term-aliases text-body-sm">Also listed as: ${labels.join(', ')}</p>`;
 	}
 
-	getFilteredTerms() {
-		return this.terms.filter(term =>
-			(!this.selectedCategory || term.category === this.selectedCategory) &&
-			(
-				term.name.toLowerCase().includes(this.searchQuery) ||
-				term.aliases?.some(alias => alias.toLowerCase().includes(this.searchQuery)) ||
-				term.category.toLowerCase().includes(this.searchQuery)/* ||
-				term.description.toLowerCase().includes(this.searchQuery)*/
-			)
-		);
-	}
-
-	groupTerms(filteredTerms) {
-		return filteredTerms.reduce((groups, term) => {
-			const key = this.selectedCategory ? term.category : term.letter;
-			if (!groups[key]) groups[key] = [];
-			groups[key].push(term);
-			return groups;
-		}, {});
-	}
-
-	getSortedGroups(groupedTerms) {
-		return Object.keys(groupedTerms).sort((a, b) => {
-			if (!this.selectedCategory) return a.localeCompare(b);
-
-			return this.getCategoryOrder(a) - this.getCategoryOrder(b) || a.localeCompare(b);
-		});
-	}
-
 	render(scrollToTop = false) {
 		const filteredTerms = this.getFilteredTerms();
-		const groupedTerms = this.groupTerms(filteredTerms);
+		const groupedTerms = this.getGroupedTerms(filteredTerms);
 		const sortedGroups = this.getSortedGroups(groupedTerms);
 
-		this.lexiconEntries.innerHTML = filteredTerms.length
+		this.el.results.innerHTML = filteredTerms.length
 			? sortedGroups.map(group => this.renderGroup(group, groupedTerms[group])).join('')
 			: this.renderNoResults();
-		this.updateAlphabetNav(this.selectedCategory ? [] : filteredTerms);
+		this.updateAlphabetNav(this.state.selectedCategory ? [] : filteredTerms);
 
 		if (scrollToTop) {
 			this.scrollResultsToTop();
@@ -199,8 +227,8 @@ export class LexiconView {
 
 	renderGroup(group, terms) {
 		const groupedItems = terms.sort((a, b) => a.name.localeCompare(b.name));
-		const sectionId = this.selectedCategory ? this.getCategoryId(group) : group;
-		const headingClass = this.selectedCategory
+		const sectionId = this.state.selectedCategory ? this.getCategoryId(group) : group;
+		const headingClass = this.state.selectedCategory
 			? 'lexicon-section-title is-category text-heading-md grid-col-md-2'
 			: 'lexicon-section-title text-display-md grid-col-md-2';
 
@@ -227,15 +255,5 @@ export class LexiconView {
 				${this.renderSeeAlso(term)}
 			</article>
 		`;
-	}
-
-	updateAlphabetNav(filteredTerms) {
-		const activeLetters = new Set(filteredTerms.map(t => t.letter));
-		const alphabetLinks = document.querySelectorAll('.alphabet-link');
-
-		alphabetLinks.forEach(link => {
-			const letter = link.textContent.trim();
-			link.classList.toggle('active', activeLetters.has(letter));
-		});
 	}
 }

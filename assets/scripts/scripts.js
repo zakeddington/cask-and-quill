@@ -16,10 +16,10 @@ async function initApp() {
 		isAdmin = await auth.init();
 	}
 
-	if (document.getElementById('lexicon-entries')) {
+	const elLexiconView = document.getElementById('lexicon-view');
+	if (elLexiconView) {
 		const { LexiconView } = await import('./views/lexicon-view.js');
-
-		new LexiconView().init();
+		new LexiconView(elLexiconView);
 	}
 
 	const elRegionsList = document.getElementById('regions-list');
