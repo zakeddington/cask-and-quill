@@ -49,33 +49,61 @@ export class CatalogView {
 	}
 
 	async init() {
-		if (this.el.categorySelect) {
-			this.components.categoryDropdown = new CustomDropdown(this.el.categorySelect);
-		}
-		if (this.el.filterSelect) {
-			this.components.filterDropdown = new CustomDropdown(this.el.filterSelect);
-		}
-		if (this.el.sortSelect) {
-			this.components.sortDropdown = new CustomDropdown(this.el.sortSelect);
-		}
+		this.initModalEditCatalog();
+		this.initFilterSelect();
+		this.initSortSelect();
+
+		await this.fetchCatalogData();
+
+		this.initCategorySelect();
+		this.render();
+		this.addEventListeners();
+	}
+
+	async fetchCatalogData() {
+		const bottles = await fetchBottles().catch(err => {
+			window.console.warn('Failed to load bottles from database.', err);
+			return [];
+		});
+		this.state.bottles = bottles;
+	}
+
+	initModalEditCatalog() {
 		if (this.el.modalRoot) {
 			this.components.modal = new ModalEditCatalog(this.el.modalRoot, {
 				onSave: (bottle) => this.onSave(bottle),
 				onDelete: (id) => this.onDelete(id)
 			});
 		}
+	}
 
-		this.addEventListeners();
-		this.populateFilterSelect();
+	initFilterSelect() {
+		if (this.el.filterSelect) {
+			this.components.filterDropdown = new CustomDropdown(this.el.filterSelect);
 
-		const bottles = await fetchBottles().catch(err => {
-			window.console.warn('Failed to load bottles from database.', err);
-			return [];
-		});
+			this.components.filterDropdown.setOptions([
+				{ value: '', label: 'Fill Level' },
+				...CATALOG_FILL_OPTIONS
+			]);
+		}
+	}
 
-		this.state.bottles = bottles;
-		this.populateCategorySelect();
-		this.render();
+	initSortSelect() {
+		if (this.el.sortSelect) {
+			this.components.sortDropdown = new CustomDropdown(this.el.sortSelect);
+		}
+	}
+
+	initCategorySelect() {
+		if (this.el.categorySelect) {
+			this.components.categoryDropdown = new CustomDropdown(this.el.categorySelect);
+
+			const categories = [...new Set(this.state.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+			this.components.categoryDropdown.setOptions([
+				{ value: '', label: 'Category' },
+				...categories.map(c => ({ value: c, label: c }))
+			]);
+		}
 	}
 
 	addEventListeners() {
@@ -93,31 +121,6 @@ export class CatalogView {
 	onAuthChange(event) {
 		this.state.isAdmin = event.detail.isAdmin;
 		this.render();
-	}
-
-	populateFilterSelect() {
-		if (!this.components.filterDropdown) return;
-		this.components.filterDropdown.setOptions([
-			{ value: '', label: 'Fill Level' },
-			...CATALOG_FILL_OPTIONS
-		]);
-	}
-
-	populateCategorySelect() {
-		if (!this.components.categoryDropdown) return;
-		const categories = [...new Set(this.state.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-		this.components.categoryDropdown.setOptions([
-			{ value: '', label: 'Category' },
-			...categories.map(c => ({ value: c, label: c }))
-		]);
-	}
-
-	async saveBottle(bottle) {
-		try {
-			await updateBottle(bottle);
-		} catch (error) {
-			window.console.warn('Failed to save bottle.', error);
-		}
 	}
 
 	onCatalogClick(event) {
@@ -159,7 +162,7 @@ export class CatalogView {
 		}
 
 		event.preventDefault();
-		triggers[nextIndex].focus();
+		elTriggers[nextIndex].focus();
 	}
 
 	onSearchInput(event) {
@@ -182,6 +185,13 @@ export class CatalogView {
 		this.render();
 	}
 
+	onDelete(id) {
+		this.state.bottles = this.state.bottles.filter(bottle => bottle.id !== id);
+		this.state.expandedId = this.state.expandedId === id ? null : this.state.expandedId;
+		this.render();
+		deleteBottle(id).catch(err => window.console.warn('Failed to delete bottle.', err));
+	}
+
 	onSave(updatedBottle) {
 		if (!updatedBottle.id) {
 			const maxId = Math.max(0, ...this.state.bottles.map(b => parseInt(b.id, 10) || 0));
@@ -193,6 +203,14 @@ export class CatalogView {
 			this.saveBottle(updatedBottle);
 		}
 		this.render();
+	}
+
+	async saveBottle(bottle) {
+		try {
+			await updateBottle(bottle);
+		} catch (error) {
+			window.console.warn('Failed to save bottle.', error);
+		}
 	}
 
 	openAddModal() {
@@ -215,13 +233,6 @@ export class CatalogView {
 			tastingNotes: { nose: '', palate: '', finish: '' }
 		};
 		this.components.modal?.open(newBottle, { isNew: true });
-	}
-
-	onDelete(id) {
-		this.state.bottles = this.state.bottles.filter(bottle => bottle.id !== id);
-		this.state.expandedId = this.state.expandedId === id ? null : this.state.expandedId;
-		this.render();
-		deleteBottle(id).catch(err => window.console.warn('Failed to delete bottle.', err));
 	}
 
 	toggleBottle(id) {
@@ -270,7 +281,7 @@ export class CatalogView {
 		});
 	}
 
-	groupBottles(bottles) {
+	getGroupedBottles(bottles) {
 		return bottles.reduce((groups, bottle) => {
 			const key = bottle.category || 'Uncategorized';
 			if (!groups[key]) groups[key] = [];
@@ -283,7 +294,7 @@ export class CatalogView {
 		const filtered = this.getFilteredBottles();
 		const activeBottles = filtered.filter(bottle => bottle.fill !== 'bottle-kill');
 		const killedBottles = filtered.filter(bottle => bottle.fill === 'bottle-kill');
-		const groupedBottles = this.groupBottles(activeBottles);
+		const groupedBottles = this.getGroupedBottles(activeBottles);
 		const groupNames = Object.keys(groupedBottles).sort((a, b) => a.localeCompare(b));
 
 		if (this.el.addBtn) this.el.addBtn.hidden = !this.state.isAdmin;
