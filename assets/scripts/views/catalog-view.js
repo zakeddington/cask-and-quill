@@ -15,41 +15,57 @@ import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supab
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
 export class CatalogView {
-	constructor(isAdmin = false) {
-		this.catalogList = document.getElementById('catalog-list');
-		this.catalogCount = document.getElementById('catalog-count');
-		this.searchInput = document.getElementById('catalog-search');
-		this.categorySelect = document.getElementById('catalog-category');
-		this.filterSelect = document.getElementById('catalog-filter');
-		this.sortSelect = document.getElementById('catalog-sort');
-		const modalRoot = document.getElementById('catalog-modal-root');
-		this.addBtn = document.getElementById('catalog-add-btn');
-		this.bottles = [];
-		this.expandedId = null;
-		this.searchQuery = '';
-		this.categoryFilter = '';
-		this.fillFilter = '';
-		this.abvSort = '';
-		this.isAdmin = isAdmin;
-		this.modal = modalRoot ? new ModalEditCatalog(modalRoot, {
-			onSave: (bottle) => this.handleSave(bottle),
-			onDelete: (id) => this.handleDelete(id)
-		}) : null;
+	constructor(elContainer, isAdmin = false) {
+		this.el = {
+			container: elContainer,
+			catalog: elContainer.querySelector('#catalog'),
+			count: elContainer.querySelector('#catalog-count'),
+			searchInput: elContainer.querySelector('#catalog-search'),
+			categorySelect: elContainer.querySelector('#catalog-category'),
+			filterSelect: elContainer.querySelector('#catalog-filter'),
+			sortSelect: elContainer.querySelector('#catalog-sort'),
+			addBtn: elContainer.querySelector('#catalog-add-btn'),
+			modalRoot: elContainer.querySelector('#catalog-modal-root'),
+		};
 
-		window.addEventListener('auth-change', event => {
-			this.isAdmin = event.detail.isAdmin;
-			this.render();
-		});
+		this.state = {
+			bottles: [],
+			expandedId: null,
+			searchQuery: '',
+			categoryFilter: '',
+			fillFilter: '',
+			abvSort: '',
+			isAdmin,
+		};
+
+		this.components = {
+			categoryDropdown: null,
+			filterDropdown: null,
+			sortDropdown: null,
+			modal: null,
+		};
+
+		this.init();
 	}
 
 	async init() {
-		if (!this.catalogList) return;
+		if (this.el.categorySelect) {
+			this.components.categoryDropdown = new CustomDropdown(this.el.categorySelect);
+		}
+		if (this.el.filterSelect) {
+			this.components.filterDropdown = new CustomDropdown(this.el.filterSelect);
+		}
+		if (this.el.sortSelect) {
+			this.components.sortDropdown = new CustomDropdown(this.el.sortSelect);
+		}
+		if (this.el.modalRoot) {
+			this.components.modal = new ModalEditCatalog(this.el.modalRoot, {
+				onSave: (bottle) => this.onSave(bottle),
+				onDelete: (id) => this.onDelete(id)
+			});
+		}
 
-		if (this.categorySelect) this.categoryDropdown = new CustomDropdown(this.categorySelect);
-		if (this.filterSelect) this.filterDropdown = new CustomDropdown(this.filterSelect);
-		if (this.sortSelect) this.sortDropdown = new CustomDropdown(this.sortSelect);
-
-		this.setupEventListeners();
+		this.addEventListeners();
 		this.populateFilterSelect();
 
 		const bottles = await fetchBottles().catch(err => {
@@ -57,33 +73,40 @@ export class CatalogView {
 			return [];
 		});
 
-		this.bottles = bottles;
+		this.state.bottles = bottles;
 		this.populateCategorySelect();
 		this.render();
 	}
 
-	setupEventListeners() {
-		this.catalogList.addEventListener('click', event => this.handleCatalogClick(event));
-		this.catalogList.addEventListener('keydown', event => this.handleCatalogKeydown(event));
-		this.searchInput?.addEventListener('input', event => this.handleSearch(event));
-		this.categorySelect?.addEventListener('change', event => this.handleCategoryChange(event));
-		this.filterSelect?.addEventListener('change', event => this.handleFilterChange(event));
-		this.sortSelect?.addEventListener('change', event => this.handleSortChange(event));
-		this.addBtn?.addEventListener('click', () => this.openAddModal());
+	addEventListeners() {
+		this.el.catalog.addEventListener('click', event => this.onCatalogClick(event));
+		this.el.catalog.addEventListener('keydown', event => this.onCatalogKeydown(event));
+		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
+		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
+		this.el.filterSelect?.addEventListener('change', event => this.onFilterChange(event));
+		this.el.sortSelect?.addEventListener('change', event => this.onSortChange(event));
+		this.el.addBtn?.addEventListener('click', () => this.openAddModal());
+
+		window.addEventListener('auth-change', event => this.onAuthChange(event));
+	}
+
+	onAuthChange(event) {
+		this.state.isAdmin = event.detail.isAdmin;
+		this.render();
 	}
 
 	populateFilterSelect() {
-		if (!this.filterDropdown) return;
-		this.filterDropdown.setOptions([
+		if (!this.components.filterDropdown) return;
+		this.components.filterDropdown.setOptions([
 			{ value: '', label: 'Fill Level' },
 			...CATALOG_FILL_OPTIONS
 		]);
 	}
 
 	populateCategorySelect() {
-		if (!this.categoryDropdown) return;
-		const categories = [...new Set(this.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-		this.categoryDropdown.setOptions([
+		if (!this.components.categoryDropdown) return;
+		const categories = [...new Set(this.state.bottles.map(b => b.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+		this.components.categoryDropdown.setOptions([
 			{ value: '', label: 'Category' },
 			...categories.map(c => ({ value: c, label: c }))
 		]);
@@ -97,11 +120,11 @@ export class CatalogView {
 		}
 	}
 
-	handleCatalogClick(event) {
+	onCatalogClick(event) {
 		const editButton = event.target.closest('[data-catalog-action="edit"]');
 		if (editButton) {
 			const bottle = this.getBottleById(editButton.dataset.bottleId);
-			if (bottle) this.modal?.open(bottle);
+			if (bottle) this.components.modal?.open(bottle);
 			return;
 		}
 
@@ -111,57 +134,62 @@ export class CatalogView {
 		this.toggleBottle(trigger.dataset.bottleId);
 	}
 
-	handleCatalogKeydown(event) {
+	onCatalogKeydown(event) {
 		if (!event.target.matches('.catalog-accordion-trigger')) return;
 
-		const triggers = Array.from(this.catalogList.querySelectorAll('.catalog-accordion-trigger'));
-		const currentIndex = triggers.indexOf(event.target);
+		const elTriggers = Array.from(this.el.catalog.querySelectorAll('.catalog-accordion-trigger'));
+		const currentIndex = elTriggers.indexOf(event.target);
 		let nextIndex = currentIndex;
 
-		if (event.key === KEY_ARROW_DOWN) {
-			nextIndex = (currentIndex + 1) % triggers.length;
-		} else if (event.key === KEY_ARROW_UP) {
-			nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
-		} else if (event.key === KEY_HOME) {
-			nextIndex = 0;
-		} else if (event.key === KEY_END) {
-			nextIndex = triggers.length - 1;
-		} else {
-			return;
+		switch (event.key) {
+			case KEY_ARROW_DOWN:
+				nextIndex = (currentIndex + 1) % elTriggers.length;
+				break;
+			case KEY_ARROW_UP:
+				nextIndex = (currentIndex - 1 + elTriggers.length) % elTriggers.length;
+				break;
+			case KEY_HOME:
+				nextIndex = 0;
+				break;
+			case KEY_END:
+				nextIndex = elTriggers.length - 1;
+				break;
+			default:
+				return;
 		}
 
 		event.preventDefault();
 		triggers[nextIndex].focus();
 	}
 
-	handleSearch(event) {
-		this.searchQuery = event.target.value.trim().toLowerCase();
+	onSearchInput(event) {
+		this.state.searchQuery = event.target.value.trim().toLowerCase();
 		this.render();
 	}
 
-	handleCategoryChange(event) {
-		this.categoryFilter = event.target.value;
+	onCategoryChange(event) {
+		this.state.categoryFilter = event.target.value;
 		this.render();
 	}
 
-	handleFilterChange(event) {
-		this.fillFilter = event.target.value;
+	onFilterChange(event) {
+		this.state.fillFilter = event.target.value;
 		this.render();
 	}
 
-	handleSortChange(event) {
-		this.abvSort = event.target.value;
+	onSortChange(event) {
+		this.state.abvSort = event.target.value;
 		this.render();
 	}
 
-	handleSave(updatedBottle) {
+	onSave(updatedBottle) {
 		if (!updatedBottle.id) {
-			const maxId = Math.max(0, ...this.bottles.map(b => parseInt(b.id, 10) || 0));
+			const maxId = Math.max(0, ...this.state.bottles.map(b => parseInt(b.id, 10) || 0));
 			updatedBottle = { ...updatedBottle, id: String(maxId + 1).padStart(4, '0') };
-			this.bottles = [...this.bottles, updatedBottle];
+			this.state.bottles = [...this.state.bottles, updatedBottle];
 			insertBottle(updatedBottle).catch(err => window.console.warn('Failed to insert bottle.', err));
 		} else {
-			this.bottles = this.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
+			this.state.bottles = this.state.bottles.map(item => item.id === updatedBottle.id ? updatedBottle : item);
 			this.saveBottle(updatedBottle);
 		}
 		this.render();
@@ -186,30 +214,30 @@ export class CatalogView {
 			mashBill: { corn: '', barley: '', maltedBarley: '', rye: '', maltedRye: '', wheat: '' },
 			tastingNotes: { nose: '', palate: '', finish: '' }
 		};
-		this.modal?.open(newBottle, { isNew: true });
+		this.components.modal?.open(newBottle, { isNew: true });
 	}
 
-	handleDelete(id) {
-		this.bottles = this.bottles.filter(bottle => bottle.id !== id);
-		this.expandedId = this.expandedId === id ? null : this.expandedId;
+	onDelete(id) {
+		this.state.bottles = this.state.bottles.filter(bottle => bottle.id !== id);
+		this.state.expandedId = this.state.expandedId === id ? null : this.state.expandedId;
 		this.render();
 		deleteBottle(id).catch(err => window.console.warn('Failed to delete bottle.', err));
 	}
 
 	toggleBottle(id) {
-		const previousId = this.expandedId;
-		this.expandedId = previousId === id ? null : id;
+		const previousId = this.state.expandedId;
+		this.state.expandedId = previousId === id ? null : id;
 
 		if (previousId) {
 			this.setBottleExpanded(previousId, false);
 		}
-		if (this.expandedId) {
-			this.setBottleExpanded(this.expandedId, true);
+		if (this.state.expandedId) {
+			this.setBottleExpanded(this.state.expandedId, true);
 		}
 	}
 
 	setBottleExpanded(id, expanded) {
-		const trigger = this.catalogList.querySelector(`.catalog-accordion-trigger[data-bottle-id="${CSS.escape(id)}"]`);
+		const trigger = this.el.catalog.querySelector(`.catalog-accordion-trigger[data-bottle-id="${CSS.escape(id)}"]`);
 		if (!trigger) return;
 
 		const article = trigger.closest('.catalog-bottle');
@@ -229,15 +257,15 @@ export class CatalogView {
 	}
 
 	getBottleById(id) {
-		return this.bottles.find(bottle => bottle.id === id);
+		return this.state.bottles.find(bottle => bottle.id === id);
 	}
 
 	getFilteredBottles() {
-		return this.bottles.filter(bottle => {
-			const matchesSearch = !this.searchQuery ||
-				`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.searchQuery);
-			const matchesCategory = !this.categoryFilter || bottle.category === this.categoryFilter;
-			const matchesFill = !this.fillFilter || bottle.fill === this.fillFilter;
+		return this.state.bottles.filter(bottle => {
+			const matchesSearch = !this.state.searchQuery ||
+				`${bottle.brand} ${bottle.bottle}`.toLowerCase().includes(this.state.searchQuery);
+			const matchesCategory = !this.state.categoryFilter || bottle.category === this.state.categoryFilter;
+			const matchesFill = !this.state.fillFilter || bottle.fill === this.state.fillFilter;
 			return matchesSearch && matchesCategory && matchesFill;
 		});
 	}
@@ -258,7 +286,7 @@ export class CatalogView {
 		const groupedBottles = this.groupBottles(activeBottles);
 		const groupNames = Object.keys(groupedBottles).sort((a, b) => a.localeCompare(b));
 
-		if (this.addBtn) this.addBtn.hidden = !this.isAdmin;
+		if (this.el.addBtn) this.el.addBtn.hidden = !this.state.isAdmin;
 		this.renderCount(activeBottles.length, killedBottles.length);
 
 		const groupSections = groupNames.map(group => this.renderGroup(group, groupedBottles[group]));
@@ -266,32 +294,32 @@ export class CatalogView {
 			groupSections.push(this.renderGroup('Bottle Kills', killedBottles, { isBottleKills: true }));
 		}
 
-		this.catalogList.innerHTML = groupSections.length
+		this.el.catalog.innerHTML = groupSections.length
 			? groupSections.join('')
 			: this.renderEmptyState();
 	}
 
 	renderCount(activeCount, killedCount) {
-		if (!this.catalogCount) return;
+		if (!this.el.count) return;
 
-		const totalActive = this.bottles.filter(bottle => bottle.fill !== 'bottle-kill').length;
-		const isFiltered = this.searchQuery || this.categoryFilter || this.fillFilter;
+		const totalActive = this.state.bottles.filter(bottle => bottle.fill !== 'bottle-kill').length;
+		const isFiltered = this.state.searchQuery || this.state.categoryFilter || this.state.fillFilter;
 		const suffix = isFiltered && activeCount !== totalActive ? ` of ${totalActive}` : '';
 		const killedNote = killedCount
 			? ` <span class="text-heading-sm font-regular">(${killedCount} killed)</span>`
 			: '';
-		this.catalogCount.innerHTML = `${activeCount}${suffix} bottle${totalActive === 1 ? '' : 's'}${killedNote}`;
+		this.el.count.innerHTML = `${activeCount}${suffix} bottle${totalActive === 1 ? '' : 's'}${killedNote}`;
 	}
 
 	renderEmptyState() {
-		return (this.searchQuery || this.fillFilter)
+		return (this.state.searchQuery || this.state.fillFilter)
 			? `<div class="empty-state"><h2>No bottles match your filters.</h2></div>`
 			: `<div class="empty-state"><h2>No bottles logged yet.</h2></div>`;
 	}
 
 	renderGroup(group, bottles, { isBottleKills = false } = {}) {
 		const sortedBottles = [...bottles].sort((a, b) => {
-			switch (this.abvSort) {
+			switch (this.state.abvSort) {
 				case 'abv-asc': return (parseFloat(a.abv) || 0) - (parseFloat(b.abv) || 0);
 				case 'abv-desc': return (parseFloat(b.abv) || 0) - (parseFloat(a.abv) || 0);
 				case 'age-asc': return this.parseAge(a.age) - this.parseAge(b.age);
@@ -322,7 +350,7 @@ export class CatalogView {
 	}
 
 	renderBottle(bottle) {
-		const isOpen = this.expandedId === bottle.id;
+		const isOpen = this.state.expandedId === bottle.id;
 		const triggerId = `catalog-trigger-${bottle.id}`;
 		const panelId = `catalog-panel-${bottle.id}`;
 
@@ -444,7 +472,7 @@ export class CatalogView {
 					<h4 class="text-body-md text-color-secondary">Journal</h4>
 					${this.renderTastingNotes(bottle.tastingNotes)}
 				</section>
-				${this.isAdmin ? `
+				${this.state.isAdmin ? `
 				<div class="catalog-detail-actions">
 					<button class="button-primary" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>

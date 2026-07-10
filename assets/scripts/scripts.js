@@ -22,16 +22,16 @@ async function initApp() {
 		new LexiconView(elLexiconView);
 	}
 
-	const elRegionsList = document.getElementById('regions-list');
-	if (elRegionsList) {
+	const elRegionsView = document.querySelector('.regions-view');
+	if (elRegionsView) {
 		const { RegionsView } = await import('./views/regions-view.js');
-		new RegionsView(elRegionsList);
+		new RegionsView(elRegionsView);
 	}
 
-	if (document.getElementById('catalog-list')) {
+	const elCatalogView = document.querySelector('.catalog-view');
+	if (elCatalogView) {
 		const { CatalogView } = await import('./views/catalog-view.js');
-
-		new CatalogView(isAdmin).init();
+		new CatalogView(elCatalogView, isAdmin);
 	}
 
 	if (document.getElementById('flavors-list')) {

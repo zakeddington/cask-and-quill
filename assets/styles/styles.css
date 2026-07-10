@@ -48,7 +48,6 @@
 @import "views/lexicon/lexicon-content.css" layer(views);
 
 /* Catalog */
-@import "views/catalog/catalog-list.css" layer(views);
 @import "views/catalog/catalog-accordion.css" layer(views);
 @import "views/catalog/catalog-accordion-detail.css" layer(views);
 
