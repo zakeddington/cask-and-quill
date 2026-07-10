@@ -10,6 +10,7 @@ export class RegionsView {
 
 		this.el = {
 			container: elContainer,
+			regions: elContainer.querySelector('#regions'),
 		}
 
 		this.init();
@@ -71,7 +72,7 @@ export class RegionsView {
 	}
 
 	render() {
-		this.el.container.innerHTML = this.data.map(region => this.renderRegion(region)).join('');
+		this.el.regions.innerHTML = this.data.map(region => this.renderRegion(region)).join('');
 	}
 
 	renderRegion(region) {
