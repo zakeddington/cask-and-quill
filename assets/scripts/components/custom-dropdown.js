@@ -13,67 +13,65 @@ import {
 
 export class CustomDropdown {
 	constructor(selectEl) {
-		this._select = selectEl;
-		this._options = this._readOptions();
-		this._value = selectEl.value || (this._options[0]?.value ?? '');
-		this._isOpen = false;
-		this._outsideHandler = null;
-		this._build();
-		this._bindEvents();
-	}
+		this.el = {
+			select: selectEl,
+		};
 
-	get value() { return this._value; }
+		this.state = {
+			options: this.readOptions(),
+			value: '',
+			isOpen: false,
+		};
+		this.state.value = selectEl.value || (this.state.options[0]?.value ?? '');
 
-	setValue(v) {
-		if (this._value === v) return;
-		this._value = v;
-		this._select.value = v;
-		this._updateDisplay();
-		this._syncSelected();
+		this.onOutsideClick = this.onOutsideClick.bind(this);
+
+		this.build();
+		this.addEventListeners();
 	}
 
 	setOptions(options) {
-		const prev = this._value;
-		this._options = options;
+		const prev = this.state.value;
+		this.state.options = options;
 		const stillExists = options.some(o => o.value === prev);
-		this._value = stillExists ? prev : (options[0]?.value ?? '');
-		this._select.innerHTML = options.map(o =>
+		this.state.value = stillExists ? prev : (options[0]?.value ?? '');
+		this.el.select.innerHTML = options.map(o =>
 			`<option value="${html(o.value)}">${html(o.label)}</option>`
 		).join('');
-		this._select.value = this._value;
-		this._rebuildList();
-		this._updateDisplay();
+		this.el.select.value = this.state.value;
+		this.renderList();
+		this.updateDisplay();
 	}
 
-	_readOptions() {
-		return Array.from(this._select.options).map(o => ({
+	readOptions() {
+		return Array.from(this.el.select.options).map(o => ({
 			value: o.value,
 			label: o.textContent.trim()
 		}));
 	}
 
-	_getCurrentLabel() {
-		return this._options.find(o => o.value === this._value)?.label
-			?? this._options[0]?.label
+	getCurrentLabel() {
+		return this.state.options.find(o => o.value === this.state.value)?.label
+			?? this.state.options[0]?.label
 			?? '';
 	}
 
-	_build() {
-		const ariaLabel = this._select.getAttribute('aria-label') ?? '';
+	build() {
+		const ariaLabel = this.el.select.getAttribute('aria-label') ?? '';
 
-		this._wrapper = document.createElement('div');
-		this._wrapper.className = 'custom-dropdown';
+		this.el.wrapper = document.createElement('div');
+		this.el.wrapper.className = 'custom-dropdown';
 
-		this._trigger = document.createElement('button');
-		this._trigger.type = 'button';
-		this._trigger.className = 'custom-dropdown-trigger';
-		this._trigger.setAttribute('aria-haspopup', 'listbox');
-		this._trigger.setAttribute('aria-expanded', 'false');
-		if (ariaLabel) this._trigger.setAttribute('aria-label', ariaLabel);
+		this.el.trigger = document.createElement('button');
+		this.el.trigger.type = 'button';
+		this.el.trigger.className = 'custom-dropdown-trigger';
+		this.el.trigger.setAttribute('aria-haspopup', 'listbox');
+		this.el.trigger.setAttribute('aria-expanded', 'false');
+		if (ariaLabel) this.el.trigger.setAttribute('aria-label', ariaLabel);
 
-		this._valueEl = document.createElement('span');
-		this._valueEl.className = 'custom-dropdown-label';
-		this._valueEl.textContent = this._getCurrentLabel();
+		this.el.valueLabel = document.createElement('span');
+		this.el.valueLabel.className = 'custom-dropdown-label';
+		this.el.valueLabel.textContent = this.getCurrentLabel();
 
 		const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 		icon.setAttribute('class', 'svg-icon custom-dropdown-icon');
@@ -83,141 +81,147 @@ export class CustomDropdown {
 		use.setAttribute('href', `${SPRITE_URL}#icon-caret-down`);
 		icon.appendChild(use);
 
-		this._trigger.appendChild(this._valueEl);
-		this._trigger.appendChild(icon);
+		this.el.trigger.appendChild(this.el.valueLabel);
+		this.el.trigger.appendChild(icon);
 
-		this._list = document.createElement('ul');
-		this._list.className = 'custom-dropdown-list';
-		this._list.setAttribute('role', 'listbox');
-		if (ariaLabel) this._list.setAttribute('aria-label', ariaLabel);
-		this._list.hidden = true;
+		this.el.list = document.createElement('ul');
+		this.el.list.className = 'custom-dropdown-list';
+		this.el.list.setAttribute('role', 'listbox');
+		if (ariaLabel) this.el.list.setAttribute('aria-label', ariaLabel);
+		this.el.list.hidden = true;
 
-		this._rebuildList();
+		this.renderList();
 
-		this._wrapper.appendChild(this._trigger);
-		this._wrapper.appendChild(this._list);
+		this.el.wrapper.appendChild(this.el.trigger);
+		this.el.wrapper.appendChild(this.el.list);
 
-		this._select.parentNode.insertBefore(this._wrapper, this._select);
-		this._select.hidden = true;
+		this.el.select.parentNode.insertBefore(this.el.wrapper, this.el.select);
+		this.el.select.hidden = true;
 	}
 
-	_rebuildList() {
-		this._list.innerHTML = '';
-		this._options.forEach(o => {
+	renderList() {
+		this.el.list.innerHTML = '';
+		this.state.options.forEach(o => {
 			const li = document.createElement('li');
-			const selected = o.value === this._value;
+			const selected = o.value === this.state.value;
 			li.className = 'custom-dropdown-option' + (selected ? ' is-selected' : '');
 			li.setAttribute('role', 'option');
 			li.setAttribute('aria-selected', String(selected));
 			li.dataset.value = o.value;
 			li.tabIndex = -1;
 			li.textContent = o.label;
-			this._list.appendChild(li);
+			this.el.list.appendChild(li);
 		});
 	}
 
-	_updateDisplay() {
-		this._valueEl.textContent = this._getCurrentLabel();
+	updateDisplay() {
+		this.el.valueLabel.textContent = this.getCurrentLabel();
 	}
 
-	_syncSelected() {
-		this._list.querySelectorAll('.custom-dropdown-option').forEach(el => {
-			const selected = el.dataset.value === this._value;
-			el.classList.toggle('is-selected', selected);
-			el.setAttribute('aria-selected', String(selected));
+	syncSelected() {
+		this.el.list.querySelectorAll('.custom-dropdown-option').forEach(option => {
+			const selected = option.dataset.value === this.state.value;
+			option.classList.toggle('is-selected', selected);
+			option.setAttribute('aria-selected', String(selected));
 		});
 	}
 
-	_open() {
-		this._isOpen = true;
-		this._wrapper.classList.add('is-open');
-		this._trigger.setAttribute('aria-expanded', 'true');
-		this._list.hidden = false;
+	open() {
+		this.state.isOpen = true;
+		this.el.wrapper.classList.add('is-open');
+		this.el.trigger.setAttribute('aria-expanded', 'true');
+		this.el.list.hidden = false;
 
-		const focused = this._list.querySelector('.is-selected') ?? this._list.querySelector('.custom-dropdown-option');
+		const focused = this.el.list.querySelector('.is-selected') ?? this.el.list.querySelector('.custom-dropdown-option');
 		focused?.focus();
 
-		this._outsideHandler = e => {
-			if (!this._wrapper.contains(e.target)) this._close();
-		};
-		document.addEventListener('pointerdown', this._outsideHandler);
+		document.addEventListener('pointerdown', this.onOutsideClick);
 	}
 
-	_close() {
-		if (!this._isOpen) return;
-		this._isOpen = false;
-		this._wrapper.classList.remove('is-open');
-		this._trigger.setAttribute('aria-expanded', 'false');
-		this._list.hidden = true;
-		document.removeEventListener('pointerdown', this._outsideHandler);
+	close() {
+		if (!this.state.isOpen) return;
+		this.state.isOpen = false;
+		this.el.wrapper.classList.remove('is-open');
+		this.el.trigger.setAttribute('aria-expanded', 'false');
+		this.el.list.hidden = true;
+		document.removeEventListener('pointerdown', this.onOutsideClick);
 	}
 
-	_selectOption(value) {
-		const prev = this._value;
-		this._value = value;
-		this._select.value = value;
-		this._updateDisplay();
-		this._syncSelected();
-		this._close();
-		this._trigger.focus();
+	selectOption(value) {
+		const prev = this.state.value;
+		this.state.value = value;
+		this.el.select.value = value;
+		this.updateDisplay();
+		this.syncSelected();
+		this.close();
+		this.el.trigger.focus();
 
 		if (prev !== value) {
-			this._select.dispatchEvent(new Event('change', { bubbles: true }));
+			this.el.select.dispatchEvent(new Event('change', { bubbles: true }));
 		}
 	}
 
-	_bindEvents() {
-		this._trigger.addEventListener('click', e => {
-			e.stopPropagation();
-			this._isOpen ? this._close() : this._open();
-		});
+	addEventListeners() {
+		this.el.trigger.addEventListener('click', event => this.onTriggerClick(event));
+		this.el.trigger.addEventListener('keydown', event => this.onTriggerKeydown(event));
+		this.el.list.addEventListener('keydown', event => this.onListKeydown(event));
+		this.el.list.addEventListener('click', event => this.onListClick(event));
+	}
 
-		this._trigger.addEventListener('keydown', e => {
-			if (e.key === KEY_ARROW_DOWN || e.key === KEY_ARROW_UP || e.key === KEY_ENTER || e.key === KEY_SPACE) {
-				e.preventDefault();
-				if (!this._isOpen) this._open();
-			}
-		});
+	onOutsideClick(event) {
+		if (!this.el.wrapper.contains(event.target)) this.close();
+	}
 
-		this._list.addEventListener('keydown', e => {
-			const options = Array.from(this._list.querySelectorAll('.custom-dropdown-option'));
-			const focused = this._list.querySelector(':focus');
-			const idx = options.indexOf(focused);
+	onTriggerClick(event) {
+		event.stopPropagation();
+		this.state.isOpen ? this.close() : this.open();
+	}
 
-			switch (e.key) {
-				case KEY_ARROW_DOWN:
-					e.preventDefault();
-					options[(idx + 1) % options.length]?.focus();
-					break;
-				case KEY_ARROW_UP:
-					e.preventDefault();
-					options[(idx - 1 + options.length) % options.length]?.focus();
-					break;
-				case KEY_HOME:
-					e.preventDefault();
-					options[0]?.focus();
-					break;
-				case KEY_END:
-					e.preventDefault();
-					options[options.length - 1]?.focus();
-					break;
-				case KEY_ENTER:
-				case KEY_SPACE:
-					e.preventDefault();
-					if (focused?.matches('.custom-dropdown-option')) {
-						this._selectOption(focused.dataset.value);
-					}
-					break;
-				case KEY_ESCAPE:
-				case KEY_TAB:
-					this._close();
-					break;
-			}
-		});
+	onTriggerKeydown(event) {
+		if (event.key === KEY_ARROW_DOWN || event.key === KEY_ARROW_UP || event.key === KEY_ENTER || event.key === KEY_SPACE) {
+			event.preventDefault();
+			if (!this.state.isOpen) this.open();
+		}
+	}
 
-		this._list.addEventListener('click', e => {
-			const option = e.target.closest('.custom-dropdown-option');
-			if (option) this._selectOption(option.dataset.value);
-		});
+	onListKeydown(event) {
+		const options = Array.from(this.el.list.querySelectorAll('.custom-dropdown-option'));
+		const focused = this.el.list.querySelector(':focus');
+		const idx = options.indexOf(focused);
+
+		switch (event.key) {
+			case KEY_ARROW_DOWN:
+				event.preventDefault();
+				options[(idx + 1) % options.length]?.focus();
+				break;
+			case KEY_ARROW_UP:
+				event.preventDefault();
+				options[(idx - 1 + options.length) % options.length]?.focus();
+				break;
+			case KEY_HOME:
+				event.preventDefault();
+				options[0]?.focus();
+				break;
+			case KEY_END:
+				event.preventDefault();
+				options[options.length - 1]?.focus();
+				break;
+			case KEY_ENTER:
+			case KEY_SPACE:
+				event.preventDefault();
+				if (focused?.matches('.custom-dropdown-option')) {
+					this.selectOption(focused.dataset.value);
+				}
+				break;
+			case KEY_ESCAPE:
+			case KEY_TAB:
+				this.close();
+				break;
+		}
+	}
+
+	onListClick(event) {
+		const option = event.target.closest('.custom-dropdown-option');
+		if (option) this.selectOption(option.dataset.value);
 	}
 }
