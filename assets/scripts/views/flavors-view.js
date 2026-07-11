@@ -4,29 +4,139 @@ import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
 
 export class FlavorsView {
-	constructor(el, isAdmin = false) {
-		this.el = el;
-		this.state = { q: '', family: 'All Families' };
-		this.data = [];
-		this.isAdmin = isAdmin;
-		this.modal = null;
+	constructor(elContainer, isAdmin = false) {
+		this.el = {
+			container: elContainer,
+			flavors: elContainer.querySelector('#flavors'),
+			count: elContainer.querySelector('#flavors-count'),
+			searchInput: elContainer.querySelector('#flavors-search'),
+			familySelect: elContainer.querySelector('#flavors-family'),
+			modalRoot: elContainer.querySelector('#flavor-modal-root'),
+		};
+
+		this.state = {
+			families: [],
+			searchQuery: '',
+			familyFilter: 'All Families',
+			isAdmin,
+		};
+
+		this.components = {
+			familyDropdown: null,
+			modal: null,
+		};
+
+		this.init();
 	}
 
 	get total() {
-		return this.data.reduce((a, f) => a + f.subs.reduce((b, s) => b + s.terms.length, 0), 0);
+		return this.state.families.reduce((a, f) => a + f.subs.reduce((b, s) => b + s.terms.length, 0), 0);
 	}
 
-	get famOptions() {
-		return ['All Families', ...this.data.map(f => f.name)];
+	get familyOptions() {
+		return ['All Families', ...this.state.families.map(f => f.name)];
 	}
 
-	slug(name) {
+	async init() {
+		this.initModalEditFlavor();
+
+		const loaded = await this.fetchFlavorData();
+		if (!loaded) return;
+
+		this.initFamilySelect();
+		this.render();
+		this.addEventListeners();
+	}
+
+	async fetchFlavorData() {
+		try {
+			this.state.families = await fetchFlavorFamilies();
+			return true;
+		} catch (err) {
+			this.el.flavors.innerHTML = '<div class="empty-state">Failed to load flavor families.</div>';
+			window.console.warn('Failed to load flavor families.', err);
+			return false;
+		}
+	}
+
+	initModalEditFlavor() {
+		if (this.el.modalRoot) {
+			this.components.modal = new ModalEditFlavor(this.el.modalRoot, {
+				onSave: family => this.onSave(family),
+				onDelete: id => this.onDelete(id)
+			});
+		}
+	}
+
+	initFamilySelect() {
+		if (this.el.familySelect) {
+			this.components.familyDropdown = new CustomDropdown(this.el.familySelect);
+			this.components.familyDropdown.setOptions(this.familyOptions.map(o => ({ value: o, label: o })));
+		}
+	}
+
+	addEventListeners() {
+		this.el.flavors.addEventListener('click', event => this.onFlavorsClick(event));
+		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
+		this.el.familySelect?.addEventListener('change', event => this.onFamilyChange(event));
+
+		window.addEventListener('auth-change', event => this.onAuthChange(event));
+	}
+
+	onAuthChange(event) {
+		this.state.isAdmin = event.detail.isAdmin;
+		this.render();
+	}
+
+	onFlavorsClick(event) {
+		const editBtn = event.target.closest('[data-edit-family-idx]');
+		if (!editBtn) return;
+
+		const idx = parseInt(editBtn.dataset.editFamilyIdx);
+		this.components.modal?.open(this.state.families[idx]);
+	}
+
+	onSearchInput(event) {
+		this.state.searchQuery = event.target.value;
+		this.render();
+	}
+
+	onFamilyChange(event) {
+		this.state.familyFilter = event.target.value;
+		this.render();
+	}
+
+	onSave(family) {
+		const idx = this.state.families.findIndex(f => f.id === family.id);
+		if (idx !== -1) this.state.families[idx] = family;
+		this.updateFamilySelect();
+		this.render();
+
+		updateFlavorFamily(family.id, { name: family.name, description: family.desc, subs: family.subs })
+			.catch(err => window.console.warn('Failed to save flavor family.', err));
+	}
+
+	onDelete(id) {
+		this.state.families = this.state.families.filter(f => f.id !== id);
+		this.updateFamilySelect();
+		this.render();
+
+		deleteFlavorFamily(id).catch(err => window.console.warn('Failed to delete flavor family.', err));
+	}
+
+	updateFamilySelect() {
+		this.components.familyDropdown?.setOptions(this.familyOptions.map(o => ({ value: o, label: o })));
+	}
+
+	getSlug(name) {
 		return name.toLowerCase().replace(/[\s/]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 	}
 
-	filter(q, family) {
-		q = (q || '').trim().toLowerCase();
-		return this.data
+	getFilteredFamilies() {
+		const q = this.state.searchQuery.trim().toLowerCase();
+		const family = this.state.familyFilter;
+
+		return this.state.families
 			.map((f, i) => ({ f, i }))
 			.filter(({ f }) => family === 'All Families' || family === f.name)
 			.map(({ f, i }) => {
@@ -43,143 +153,71 @@ export class FlavorsView {
 			.filter(f => !q || f.count > 0);
 	}
 
-	async init() {
-		this.el.innerHTML = '<div class="empty-state">Loading…</div>';
+	render() {
+		const families = this.getFilteredFamilies();
+		const shown = families.reduce((a, f) => a + f.count, 0);
 
-		try {
-			this.data = await fetchFlavorFamilies();
-		} catch (err) {
-			this.el.innerHTML = '<div class="empty-state">Failed to load flavor families.</div>';
-			console.error(err);
-			return;
-		}
+		if (this.el.count) this.el.count.textContent = `${shown} of ${this.total} tasting notes`;
 
-		const modalRoot = document.getElementById('flavor-modal-root');
-		if (modalRoot) {
-			this.modal = new ModalEditFlavor(modalRoot, {
-				onSave: family => this.handleSave(family),
-				onDelete: id => this.handleDelete(id)
-			});
-		}
-
-		window.addEventListener('auth-change', e => {
-			this.isAdmin = e.detail.isAdmin;
-			this._render();
-		});
-
-		this.el.addEventListener('click', e => {
-			const editBtn = e.target.closest('[data-edit-family-idx]');
-			if (editBtn && this.modal) {
-				const idx = parseInt(editBtn.dataset.editFamilyIdx);
-				this.modal.open(this.data[idx]);
-			}
-		});
-
-		const familySelectEl = document.getElementById('flavors-family');
-		if (familySelectEl) {
-			this.familyDropdown = new CustomDropdown(familySelectEl);
-			this.familyDropdown.setOptions(this.famOptions.map(o => ({ value: o, label: o })));
-			familySelectEl.addEventListener('change', e => {
-				this.state.family = e.target.value;
-				this._render();
-			});
-		}
-
-		document.getElementById('flavors-search')?.addEventListener('input', e => {
-			this.state.q = e.target.value;
-			this._render();
-		});
-
-		this._render();
+		this.el.flavors.innerHTML = families.length
+			? families.map(f => this.renderFamily(f)).join('')
+			: this.renderEmptyState();
 	}
 
-	async handleSave(family) {
-		const idx = this.data.findIndex(f => f.id === family.id);
-		if (idx !== -1) this.data[idx] = family;
-		this._updateFamilySelect();
-		this._render();
-
-		try {
-			await updateFlavorFamily(family.id, { name: family.name, description: family.desc, subs: family.subs });
-		} catch (err) {
-			console.error('Failed to save flavor family:', err);
-		}
+	renderEmptyState() {
+		return `<div class="empty-state">No flavors match "${this.state.searchQuery}".</div>`;
 	}
 
-	async handleDelete(id) {
-		this.data = this.data.filter(f => f.id !== id);
-		this._updateFamilySelect();
-		this._render();
+	renderFamily(f) {
+		const subsHtml = f.subs.map(s => this.renderSub(s)).join('');
 
-		try {
-			await deleteFlavorFamily(id);
-		} catch (err) {
-			console.error('Failed to delete flavor family:', err);
-		}
-	}
-
-	_updateFamilySelect() {
-		this.familyDropdown?.setOptions(this.famOptions.map(o => ({ value: o, label: o })));
-	}
-
-	_render() {
-		const { q, family } = this.state;
-		const fams = this.filter(q, family);
-		const shown = fams.reduce((a, f) => a + f.count, 0);
-
-		const countEl = document.getElementById('flavors-count');
-		if (countEl) countEl.textContent = `${shown} of ${this.total} tasting notes`;
-
-		if (fams.length === 0) {
-			this.el.innerHTML = `<div class="empty-state">No flavors match "${q}".</div>`;
-			return;
-		}
-
-		this.el.innerHTML = fams.map(f => {
-			const subsHtml = f.subs.map(s => {
-				const termsHtml = s.terms.map(t => `
-					<div class="flavor-term-spine"></div>
-					<div class="flavor-node">${t}</div>
-				`).join('');
-
-				return `
-					<div class="flavor-col">
-						<div class="flavor-col-spine"></div>
-						<div class="flavor-sublabel">${s.name}</div>
-						${termsHtml}
+		return `
+			<div class="flavor-family flavor-theme-${this.getSlug(f.name)}">
+				<div class="flavor-family-header">
+					<div class="flavor-family-header-inner">
+						<span class="flavor-family-name">${f.name}</span>
+						<span class="flavor-family-desc">${f.desc}</span>
+						<span class="flavor-family-count">${f.count} notes</span>
+						${this.state.isAdmin ? `
+							<button class="flavor-family-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
+								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
+								Edit
+							</button>
+						` : ''}
 					</div>
-				`;
-			}).join('');
-
-			return `
-				<div class="flavor-family flavor-theme-${this.slug(f.name)}">
-					<div class="flavor-family-header">
-						<div class="flavor-family-header-inner">
-							<span class="flavor-family-name">${f.name}</span>
-							<span class="flavor-family-desc">${f.desc}</span>
-							<span class="flavor-family-count">${f.count} notes</span>
-							${this.isAdmin ? `
-								<button class="flavor-family-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
-									<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
-									Edit
-								</button>
-							` : ''}
-						</div>
+				</div>
+				<div class="flavor-family-content">
+					<div class="flavor-h-spine"></div>
+					<div class="flavor-family-aside">
+						<img class="flavor-family-img" src="/assets/images/flavor-${this.getSlug(f.name)}.jpg" alt="${f.name}">
 					</div>
-					<div class="flavor-family-content">
-						<div class="flavor-h-spine"></div>
-						<div class="flavor-family-aside">
-							<img class="flavor-family-img" src="/assets/images/flavor-${this.slug(f.name)}.jpg" alt="${f.name}">
-						</div>
-						<div class="flavor-family-main">
-							<div class="flavor-v-spine"></div>
-							<div class="flavor-tree">
-								${subsHtml}
-							</div>
+					<div class="flavor-family-main">
+						<div class="flavor-v-spine"></div>
+						<div class="flavor-tree">
+							${subsHtml}
 						</div>
 					</div>
 				</div>
-			`;
-		}).join('');
+			</div>
+		`;
+	}
+
+	renderSub(s) {
+		const termsHtml = s.terms.map(t => this.renderTerm(t)).join('');
+
+		return `
+			<div class="flavor-col">
+				<div class="flavor-col-spine"></div>
+				<div class="flavor-sublabel">${s.name}</div>
+				${termsHtml}
+			</div>
+		`;
+	}
+
+	renderTerm(term) {
+		return `
+			<div class="flavor-term-spine"></div>
+			<div class="flavor-node">${term}</div>
+		`;
 	}
 }

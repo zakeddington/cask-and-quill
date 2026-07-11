@@ -34,9 +34,10 @@ async function initApp() {
 		new CatalogView(elCatalogView, isAdmin);
 	}
 
-	if (document.getElementById('flavors-list')) {
+	const elFlavorsView = document.querySelector('.flavors-view');
+	if (elFlavorsView) {
 		const { FlavorsView } = await import('./views/flavors-view.js');
-		new FlavorsView(document.getElementById('flavors-list'), isAdmin).init();
+		new FlavorsView(elFlavorsView, isAdmin);
 	}
 
 	if (document.getElementById('journal-drawer')) {
