@@ -6,46 +6,57 @@
 	overflow: hidden;
 }
 
+.drawer {
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: var(--z-drawer-content);
+
+	&.is-open {
+		pointer-events: auto;
+
+		.drawer-overlay {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.drawer-panel {
+			transform: translateX(0);
+		}
+	}
+}
+
 .drawer-overlay {
 	background-color: rgba(28, 28, 22, 0.6);
 	inset: 0;
 	opacity: 0;
-	pointer-events: none;
-	position: fixed;
+	position: absolute;
 	transition: opacity 0.3s ease;
-	z-index: var(--z-drawer-overlay);
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
 	}
-
-	&.is-open {
-		opacity: 1;
-		pointer-events: auto;
-	}
 }
 
-.drawer {
+.drawer-panel {
 	background-color: var(--color-background-header);
 	border-left: 2px solid var(--color-border-accent);
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
 	max-width: 400px;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 0;
 	transform: translateX(100%);
 	transition: transform 0.3s ease;
 	width: 80dvw;
-	z-index: var(--z-drawer-content);
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
-	}
-
-	&.is-open {
-		transform: translateX(0);
 	}
 }
 

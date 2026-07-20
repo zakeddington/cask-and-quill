@@ -1,7 +1,4 @@
 async function initApp() {
-	const { NavDrawer } = await import('./components/drawer-nav.js');
-	new NavDrawer().init();
-
 	let isAdmin = false;
 
 	if (document.getElementById('auth-root')) {
@@ -14,6 +11,12 @@ async function initApp() {
 			}
 		});
 		isAdmin = await auth.init();
+	}
+
+	const elNavMenuBtn = document.getElementById('nav-menu-btn');
+	if (elNavMenuBtn) {
+		const { BaseDrawer } = await import('./components/drawer.js');
+		new BaseDrawer(elNavMenuBtn);
 	}
 
 	const elLexiconView = document.getElementById('lexicon-view');
@@ -38,16 +41,6 @@ async function initApp() {
 	if (elFlavorsView) {
 		const { FlavorsView } = await import('./views/flavors-view.js');
 		new FlavorsView(elFlavorsView, isAdmin);
-	}
-
-	if (document.getElementById('journal-drawer')) {
-		const { JournalDrawer } = await import('./components/drawer-journal.js');
-
-		new JournalDrawer(
-			document.getElementById('journal-drawer'),
-			document.getElementById('journal-drawer-overlay'),
-			isAdmin
-		);
 	}
 }
 

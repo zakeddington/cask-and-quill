@@ -2,6 +2,7 @@ import { html, getFormValue } from '../utils.js';
 import { init as pellInit } from '../vendor/pell.js';
 import { BaseModal } from './modal.js';
 import { CustomDropdown } from './custom-dropdown.js';
+import { JournalDrawer } from './drawer-journal.js';
 import {
 	CATALOG_IDENTITY_FIELDS,
 	CATALOG_SPEC_FIELDS,
@@ -13,6 +14,7 @@ import {
 export class ModalEditCatalog extends BaseModal {
 	constructor(modalRoot, callbacks) {
 		super(modalRoot, callbacks);
+		this.isAdmin = callbacks.isAdmin;
 		this.currentBottle = null;
 		this.isNew = false;
 		this.setupEventListeners();
@@ -32,6 +34,7 @@ export class ModalEditCatalog extends BaseModal {
 		this.modalRoot.innerHTML = this.renderModal(bottle);
 		this.initRichTextEditors();
 		this.initDropdowns();
+		this.initJournalDrawer();
 		super.open();
 	}
 
@@ -58,10 +61,9 @@ export class ModalEditCatalog extends BaseModal {
 		this.modalRoot.querySelectorAll('[data-catalog-dropdown]').forEach(select => new CustomDropdown(select));
 	}
 
-	onAction(event, action, btn) {
-		if (action === 'open-journal') {
-			window.dispatchEvent(new CustomEvent('open-journal-drawer'));
-		}
+	initJournalDrawer() {
+		const trigger = this.modalRoot.querySelector('[data-journal-trigger]');
+		if (trigger) new JournalDrawer(trigger, { isAdmin: this.isAdmin?.() });
 	}
 
 	handleSubmit(event) {
@@ -183,7 +185,7 @@ export class ModalEditCatalog extends BaseModal {
 		return `
 			<fieldset class="modal-fieldset catalog-fieldset-journal">
 				<legend>Tasting Journal</legend>
-				<button class="catalog-journal-btn button-icon-only" type="button" data-modal-action="open-journal" aria-label="Open journal notes">
+				<button class="catalog-journal-btn button-icon-only" type="button" data-journal-trigger aria-controls="journal-drawer" aria-expanded="false" aria-label="Open journal notes">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
 				</button>
 				<div class="catalog-form-stack">

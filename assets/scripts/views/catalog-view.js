@@ -72,7 +72,8 @@ export class CatalogView {
 		if (this.el.modalRoot) {
 			this.components.modal = new ModalEditCatalog(this.el.modalRoot, {
 				onSave: (bottle) => this.onSave(bottle),
-				onDelete: (id) => this.onDelete(id)
+				onDelete: (id) => this.onDelete(id),
+				isAdmin: () => this.state.isAdmin,
 			});
 		}
 	}
