@@ -1,6 +1,7 @@
 import { init as pellInit } from '../vendor/pell.js';
 import { getGlobalNotes, updateGlobalNotes } from '../supabase.js';
 import { SPRITE_URL } from '../config/constants.js';
+import { AUTH_CHANGE } from '../config/events.js';
 import { BaseDrawer } from './drawer.js';
 
 export class JournalDrawer extends BaseDrawer {
@@ -22,7 +23,7 @@ export class JournalDrawer extends BaseDrawer {
 	addEventListeners() {
 		super.addEventListeners();
 		this.el.drawer.addEventListener('click', event => this.onJournalClick(event));
-		window.addEventListener('auth-change', event => this.onAuthChange(event));
+		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
 	}
 
 	onAuthChange(event) {

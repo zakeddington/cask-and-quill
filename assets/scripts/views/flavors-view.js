@@ -2,6 +2,7 @@ import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../
 import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
+import { AUTH_CHANGE } from '../config/events.js';
 
 export class FlavorsView {
 	constructor(elContainer, isAdmin = false) {
@@ -80,7 +81,7 @@ export class FlavorsView {
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
 		this.el.familySelect?.addEventListener('change', event => this.onFamilyChange(event));
 
-		window.addEventListener('auth-change', event => this.onAuthChange(event));
+		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
 	}
 
 	onAuthChange(event) {

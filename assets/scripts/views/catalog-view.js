@@ -1,4 +1,5 @@
 import { html, stripHtml } from '../utils.js';
+import { AUTH_CHANGE } from '../config/events.js';
 import {
 	CATALOG_FILL_OPTIONS,
 	CATALOG_FILL_ICON_CONFIG,
@@ -116,7 +117,7 @@ export class CatalogView {
 		this.el.sortSelect?.addEventListener('change', event => this.onSortChange(event));
 		this.el.addBtn?.addEventListener('click', () => this.openAddModal());
 
-		window.addEventListener('auth-change', event => this.onAuthChange(event));
+		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
 	}
 
 	onAuthChange(event) {
