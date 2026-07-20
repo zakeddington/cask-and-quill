@@ -12,26 +12,24 @@ import {
 } from '../config/constants.js';
 
 export class ModalEditCatalog extends BaseModal {
-	constructor(modalRoot, callbacks) {
-		super(modalRoot, callbacks);
-		this.isAdmin = callbacks.isAdmin;
-		this.currentBottle = null;
-		this.isNew = false;
-		this.setupEventListeners();
+	constructor(modalRoot, options) {
+		super(modalRoot, options);
+		this.state.currentBottle = null;
+		this.state.isNew = false;
 	}
 
-	get isOpen() { return this.currentBottle !== null; }
-	getDeleteTarget() { return this.currentBottle.id; }
+	get isOpen() { return this.state.currentBottle !== null; }
+	getDeleteTarget() { return this.state.currentBottle.id; }
 
-	setupEventListeners() {
-		super.setupEventListeners();
-		this.modalRoot.addEventListener('submit', event => this.handleSubmit(event));
+	addEventListeners() {
+		super.addEventListeners();
+		this.el.modalRoot.addEventListener('submit', event => this.onSubmit(event));
 	}
 
 	open(bottle, { isNew = false } = {}) {
-		this.currentBottle = bottle;
-		this.isNew = isNew;
-		this.modalRoot.innerHTML = this.renderModal(bottle);
+		this.state.currentBottle = bottle;
+		this.state.isNew = isNew;
+		this.el.modalRoot.innerHTML = this.renderModal(bottle);
 		this.initRichTextEditors();
 		this.initDropdowns();
 		this.initJournalDrawer();
@@ -39,14 +37,14 @@ export class ModalEditCatalog extends BaseModal {
 	}
 
 	close() {
-		this.currentBottle = null;
+		this.state.currentBottle = null;
 		super.close();
 	}
 
 	initRichTextEditors() {
-		this.modalRoot.querySelectorAll('[data-rich-editor]').forEach(container => {
+		this.el.modalRoot.querySelectorAll('[data-rich-editor]').forEach(container => {
 			const name = container.dataset.richEditor;
-			const hidden = this.modalRoot.querySelector(`input[type="hidden"][name="${CSS.escape(name)}"]`);
+			const hidden = this.el.modalRoot.querySelector(`input[type="hidden"][name="${CSS.escape(name)}"]`);
 			const editor = pellInit({
 				element: container,
 				onChange: html => { if (hidden) hidden.value = html; },
@@ -58,21 +56,21 @@ export class ModalEditCatalog extends BaseModal {
 	}
 
 	initDropdowns() {
-		this.modalRoot.querySelectorAll('[data-catalog-dropdown]').forEach(select => new CustomDropdown(select));
+		this.el.modalRoot.querySelectorAll('[data-catalog-dropdown]').forEach(select => new CustomDropdown(select));
 	}
 
 	initJournalDrawer() {
-		const trigger = this.modalRoot.querySelector('[data-journal-trigger]');
-		if (trigger) new JournalDrawer(trigger, { isAdmin: this.isAdmin?.() });
+		const trigger = this.el.modalRoot.querySelector('[data-journal-trigger]');
+		if (trigger) new JournalDrawer(trigger, { isAdmin: this.options.isAdmin?.() });
 	}
 
-	handleSubmit(event) {
+	onSubmit(event) {
 		event.preventDefault();
-		if (!this.currentBottle) return;
+		if (!this.state.currentBottle) return;
 
 		const formData = new FormData(event.target);
 		const updatedBottle = {
-			...this.currentBottle,
+			...this.state.currentBottle,
 			fill: getFormValue(formData, 'fill'),
 			category: getFormValue(formData, 'category'),
 			type: getFormValue(formData, 'type'),
@@ -96,13 +94,13 @@ export class ModalEditCatalog extends BaseModal {
 			}, {})
 		};
 
-		this.onSave(updatedBottle);
+		this.options.onSave(updatedBottle);
 		this.close();
 	}
 
 	renderDeleteConfirm() {
 		return `
-			<p class="modal-confirm-text">Delete <strong>${html(this.currentBottle.brand)} ${html(this.currentBottle.bottle)}</strong>? This cannot be undone.</p>
+			<p class="modal-confirm-text">Delete <strong>${html(this.state.currentBottle.brand)} ${html(this.state.currentBottle.bottle)}</strong>? This cannot be undone.</p>
 			<div>
 				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
 				<button class="button-destructive" type="button" data-modal-action="delete-execute">Delete</button>
@@ -112,7 +110,7 @@ export class ModalEditCatalog extends BaseModal {
 
 	renderFooter() {
 		return `
-			${this.isNew ? '<div></div>' : `
+			${this.state.isNew ? '<div></div>' : `
 			<div class="modal-footer-col">
 				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
@@ -121,7 +119,7 @@ export class ModalEditCatalog extends BaseModal {
 			</div>`}
 			<div class="modal-footer-col">
 				<button class="button-secondary" type="button" data-modal-action="close">Cancel</button>
-				<button class="button-primary" type="submit">${this.isNew ? 'Add Bottle' : 'Save Changes'}</button>
+				<button class="button-primary" type="submit">${this.state.isNew ? 'Add Bottle' : 'Save Changes'}</button>
 			</div>
 		`;
 	}
@@ -133,8 +131,8 @@ export class ModalEditCatalog extends BaseModal {
 				<form class="modal-panel" data-catalog-edit-form>
 					<header class="modal-header catalog-modal-header">
 						<div>
-							${this.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
-							<h2 id="catalog-modal-title">${this.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
+							${this.state.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
+							<h2 id="catalog-modal-title">${this.state.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
 						</div>
 						<button class="modal-close button-icon-only" type="button" data-modal-action="close" aria-label="Close edit modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>

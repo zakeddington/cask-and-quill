@@ -3,26 +3,25 @@ import { BaseModal } from './modal.js';
 import { SPRITE_URL } from '../config/constants.js';
 
 export class ModalEditFlavor extends BaseModal {
-	constructor(modalRoot, callbacks) {
-		super(modalRoot, callbacks);
-		this.currentFamily = null;
-		this.editState = null;
-		this.setupEventListeners();
+	constructor(modalRoot, options) {
+		super(modalRoot, options);
+		this.state.currentFamily = null;
+		this.state.editState = null;
 	}
 
-	get isOpen() { return this.currentFamily !== null; }
-	getDeleteTarget() { return this.currentFamily.id; }
+	get isOpen() { return this.state.currentFamily !== null; }
+	getDeleteTarget() { return this.state.currentFamily.id; }
 
 	open(family) {
-		this.currentFamily = family;
-		this.editState = this.cloneFamily(family);
-		this.modalRoot.innerHTML = this.renderModal();
+		this.state.currentFamily = family;
+		this.state.editState = this.cloneFamily(family);
+		this.el.modalRoot.innerHTML = this.renderModal();
 		super.open();
 	}
 
 	close() {
-		this.currentFamily = null;
-		this.editState = null;
+		this.state.currentFamily = null;
+		this.state.editState = null;
 		super.close();
 	}
 
@@ -40,12 +39,12 @@ export class ModalEditFlavor extends BaseModal {
 
 	// Read all current input values from the DOM into editState.
 	syncFromDom() {
-		const nameInput = this.modalRoot.querySelector('[data-field="name"]');
-		const descInput = this.modalRoot.querySelector('[data-field="desc"]');
-		if (nameInput) this.editState.name = nameInput.value;
-		if (descInput) this.editState.desc = descInput.value;
+		const nameInput = this.el.modalRoot.querySelector('[data-field="name"]');
+		const descInput = this.el.modalRoot.querySelector('[data-field="desc"]');
+		if (nameInput) this.state.editState.name = nameInput.value;
+		if (descInput) this.state.editState.desc = descInput.value;
 
-		this.editState.subs = [...this.modalRoot.querySelectorAll('[data-sub-item]')].map(subEl => ({
+		this.state.editState.subs = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')].map(subEl => ({
 			name: subEl.querySelector('[data-sub-name]')?.value ?? '',
 			terms: [...subEl.querySelectorAll('[data-term-input]')].map(t => t.value)
 		}));
@@ -53,7 +52,7 @@ export class ModalEditFlavor extends BaseModal {
 
 	// Update data-sub-idx on all buttons/inputs inside every sub-item and refresh disabled states.
 	reindexSubs() {
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		const totalSubs = subItems.length;
 		subItems.forEach((subEl, si) => {
 			subEl.querySelectorAll('[data-sub-idx]').forEach(el => { el.dataset.subIdx = si; });
@@ -108,12 +107,12 @@ export class ModalEditFlavor extends BaseModal {
 
 	moveSub(idx, dir) {
 		this.syncFromDom();
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		const target = subItems[idx];
 		const sibling = subItems[idx + dir];
 		if (!target || !sibling) return;
 
-		const arr = this.editState.subs;
+		const arr = this.state.editState.subs;
 		[arr[idx], arr[idx + dir]] = [arr[idx + dir], arr[idx]];
 
 		if (dir === -1) {
@@ -128,9 +127,9 @@ export class ModalEditFlavor extends BaseModal {
 
 	removeSub(idx) {
 		this.syncFromDom();
-		this.editState.subs.splice(idx, 1);
+		this.state.editState.subs.splice(idx, 1);
 
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		subItems[idx]?.remove();
 		this.reindexSubs();
 	}
@@ -138,13 +137,13 @@ export class ModalEditFlavor extends BaseModal {
 	addSub() {
 		this.syncFromDom();
 		const newSub = { name: '', terms: [''] };
-		this.editState.subs.push(newSub);
+		this.state.editState.subs.push(newSub);
 
-		const si = this.editState.subs.length - 1;
-		const total = this.editState.subs.length;
+		const si = this.state.editState.subs.length - 1;
+		const total = this.state.editState.subs.length;
 		const subEl = createEl(this.renderSub(newSub, si, total));
 
-		this.modalRoot.querySelector('.flavor-subs-list')?.appendChild(subEl);
+		this.el.modalRoot.querySelector('.flavor-subs-list')?.appendChild(subEl);
 		this.reindexSubs();
 		subEl.querySelector('[data-sub-name]')?.focus();
 	}
@@ -153,7 +152,7 @@ export class ModalEditFlavor extends BaseModal {
 
 	moveTerm(subIdx, termIdx, dir) {
 		this.syncFromDom();
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
@@ -162,7 +161,7 @@ export class ModalEditFlavor extends BaseModal {
 		const sibling = termRows[termIdx + dir];
 		if (!target || !sibling) return;
 
-		const terms = this.editState.subs[subIdx]?.terms;
+		const terms = this.state.editState.subs[subIdx]?.terms;
 		if (terms) [terms[termIdx], terms[termIdx + dir]] = [terms[termIdx + dir], terms[termIdx]];
 
 		if (dir === -1) {
@@ -177,9 +176,9 @@ export class ModalEditFlavor extends BaseModal {
 
 	removeTerm(subIdx, termIdx) {
 		this.syncFromDom();
-		this.editState.subs[subIdx]?.terms.splice(termIdx, 1);
+		this.state.editState.subs[subIdx]?.terms.splice(termIdx, 1);
 
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
@@ -189,9 +188,9 @@ export class ModalEditFlavor extends BaseModal {
 
 	addTerm(subIdx) {
 		this.syncFromDom();
-		this.editState.subs[subIdx]?.terms.push('');
+		this.state.editState.subs[subIdx]?.terms.push('');
 
-		const subItems = [...this.modalRoot.querySelectorAll('[data-sub-item]')];
+		const subItems = [...this.el.modalRoot.querySelectorAll('[data-sub-item]')];
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
@@ -209,14 +208,14 @@ export class ModalEditFlavor extends BaseModal {
 	handleSave() {
 		this.syncFromDom();
 		const updated = {
-			...this.currentFamily,
-			name: this.editState.name,
-			desc: this.editState.desc,
-			subs: this.editState.subs
+			...this.state.currentFamily,
+			name: this.state.editState.name,
+			desc: this.state.editState.desc,
+			subs: this.state.editState.subs
 				.map(s => ({ name: s.name.trim(), terms: s.terms.filter(t => t.trim()) }))
 				.filter(s => s.name)
 		};
-		this.onSave(updated);
+		this.options.onSave(updated);
 		this.close();
 	}
 
@@ -224,7 +223,7 @@ export class ModalEditFlavor extends BaseModal {
 
 	renderDeleteConfirm() {
 		return `
-			<p class="modal-confirm-text">Delete <strong>${html(this.currentFamily.name)}</strong>? This cannot be undone.</p>
+			<p class="modal-confirm-text">Delete <strong>${html(this.state.currentFamily.name)}</strong>? This cannot be undone.</p>
 			<div class="modal-footer-col">
 				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
 				<button class="button-destructive" type="button" data-modal-action="delete-execute">Delete</button>
@@ -248,7 +247,7 @@ export class ModalEditFlavor extends BaseModal {
 	}
 
 	renderModal() {
-		const s = this.editState;
+		const s = this.state.editState;
 		return `
 			<div class="modal flavor-modal" role="dialog" aria-modal="true" aria-labelledby="flavor-modal-title">
 				<button class="modal-overlay" type="button" data-modal-action="close" aria-label="Close modal"></button>
