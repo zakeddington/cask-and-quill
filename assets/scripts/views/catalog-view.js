@@ -23,7 +23,7 @@ export class CatalogView {
 			count: elContainer.querySelector('#catalog-count'),
 			searchInput: elContainer.querySelector('#catalog-search'),
 			categorySelect: elContainer.querySelector('#catalog-category'),
-			filterSelect: elContainer.querySelector('#catalog-filter'),
+			fillSelect: elContainer.querySelector('#catalog-fill'),
 			sortSelect: elContainer.querySelector('#catalog-sort'),
 			addBtn: elContainer.querySelector('#catalog-add-btn'),
 			modalRoot: elContainer.querySelector('#catalog-modal-root'),
@@ -41,7 +41,7 @@ export class CatalogView {
 
 		this.components = {
 			categoryDropdown: null,
-			filterDropdown: null,
+			fillDropdown: null,
 			sortDropdown: null,
 			modal: null,
 		};
@@ -51,7 +51,7 @@ export class CatalogView {
 
 	async init() {
 		this.initModalEditCatalog();
-		this.initFilterSelect();
+		this.initFillSelect();
 		this.initSortSelect();
 
 		await this.fetchCatalogData();
@@ -79,11 +79,11 @@ export class CatalogView {
 		}
 	}
 
-	initFilterSelect() {
-		if (this.el.filterSelect) {
-			this.components.filterDropdown = new CustomDropdown(this.el.filterSelect);
+	initFillSelect() {
+		if (this.el.fillSelect) {
+			this.components.fillDropdown = new CustomDropdown(this.el.fillSelect);
 
-			this.components.filterDropdown.setOptions([
+			this.components.fillDropdown.setOptions([
 				{ value: '', label: 'Fill Level' },
 				...CATALOG_FILL_OPTIONS
 			]);
@@ -113,7 +113,7 @@ export class CatalogView {
 		this.el.catalog.addEventListener('keydown', event => this.onCatalogKeydown(event));
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
 		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
-		this.el.filterSelect?.addEventListener('change', event => this.onFilterChange(event));
+		this.el.fillSelect?.addEventListener('change', event => this.onFillChange(event));
 		this.el.sortSelect?.addEventListener('change', event => this.onSortChange(event));
 		this.el.addBtn?.addEventListener('click', () => this.openAddModal());
 
@@ -177,7 +177,7 @@ export class CatalogView {
 		this.render();
 	}
 
-	onFilterChange(event) {
+	onFillChange(event) {
 		this.state.fillFilter = event.target.value;
 		this.render();
 	}
