@@ -12,6 +12,7 @@ export class LexiconView {
 			navLinks: elContainer.querySelectorAll('.lexicon-nav-link'),
 			pageControls: elContainer.querySelector('.page-controls'),
 			searchInput: elContainer.querySelector('#search-input'),
+			searchClear: elContainer.querySelector('#search-clear'),
 			categorySelect: elContainer.querySelector('#category-select'),
 			results: elContainer.querySelector('#lexicon-entries'),
 		};
@@ -89,6 +90,10 @@ export class LexiconView {
 			this.el.searchInput.addEventListener('input', event => this.onSearchInput(event));
 		}
 
+		if (this.el.searchClear) {
+			this.el.searchClear.addEventListener('click', () => this.onSearchClear());
+		}
+
 		if (this.el.categorySelect) {
 			this.el.categorySelect.addEventListener('change', event => this.onCategoryChange(event));
 		}
@@ -103,6 +108,7 @@ export class LexiconView {
 
 	onSearchInput(event) {
 		const nextQuery = event.target.value.toLowerCase();
+		if (this.el.searchClear) this.el.searchClear.hidden = !nextQuery;
 
 		window.clearTimeout(this.timer.search);
 		this.timer.search = window.setTimeout(() => {
@@ -110,6 +116,16 @@ export class LexiconView {
 			this.clearHash();
 			this.render(true);
 		}, this.config.searchDebounceDelay);
+	}
+
+	onSearchClear() {
+		window.clearTimeout(this.timer.search);
+		this.el.searchInput.value = '';
+		this.state.searchQuery = '';
+		if (this.el.searchClear) this.el.searchClear.hidden = true;
+		this.clearHash();
+		this.render(true);
+		this.el.searchInput.focus();
 	}
 
 	onCategoryChange(event) {

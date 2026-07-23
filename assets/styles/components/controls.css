@@ -65,6 +65,18 @@
 	}
 }
 
+.search-input {
+	padding-right: 3rem;
+}
+
+/* Clear button: centered inside the search input on the right */
+.search-clear {
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 /* Filter controls: a flex row of selects and buttons */
 .filter-controls {
 	align-items: flex-start;

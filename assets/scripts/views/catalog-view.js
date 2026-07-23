@@ -22,6 +22,7 @@ export class CatalogView {
 			catalog: elContainer.querySelector('#catalog'),
 			count: elContainer.querySelector('#catalog-count'),
 			searchInput: elContainer.querySelector('#catalog-search'),
+			searchClear: elContainer.querySelector('#catalog-search-clear'),
 			categorySelect: elContainer.querySelector('#catalog-category'),
 			fillSelect: elContainer.querySelector('#catalog-fill'),
 			sortSelect: elContainer.querySelector('#catalog-sort'),
@@ -112,6 +113,7 @@ export class CatalogView {
 		this.el.catalog.addEventListener('click', event => this.onCatalogClick(event));
 		this.el.catalog.addEventListener('keydown', event => this.onCatalogKeydown(event));
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
+		this.el.searchClear?.addEventListener('click', () => this.onSearchClear());
 		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
 		this.el.fillSelect?.addEventListener('change', event => this.onFillChange(event));
 		this.el.sortSelect?.addEventListener('change', event => this.onSortChange(event));
@@ -169,7 +171,16 @@ export class CatalogView {
 
 	onSearchInput(event) {
 		this.state.searchQuery = event.target.value.trim().toLowerCase();
+		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
 		this.render();
+	}
+
+	onSearchClear() {
+		this.el.searchInput.value = '';
+		this.state.searchQuery = '';
+		if (this.el.searchClear) this.el.searchClear.hidden = true;
+		this.render();
+		this.el.searchInput.focus();
 	}
 
 	onCategoryChange(event) {

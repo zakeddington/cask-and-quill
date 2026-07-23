@@ -99,7 +99,10 @@
 				<section class="page-controls page-controls--sticky">
 					<div class="controls-row">
 						<div class="search-container">
-							<input type="text" id="search-input" placeholder="Find a term..." class="search-input">
+							<input type="search" id="search-input" placeholder="Find a term..." class="search-input" aria-label="Find a term">
+							<button id="search-clear" class="search-clear button-icon-only" type="button" aria-label="Clear search" hidden>
+								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+							</button>
 						</div>
 						<div class="filter-controls">
 							<select id="category-select" class="filter-select" aria-label="Select category"></select>

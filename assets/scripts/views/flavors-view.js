@@ -11,6 +11,7 @@ export class FlavorsView {
 			flavors: elContainer.querySelector('#flavors'),
 			count: elContainer.querySelector('#flavors-count'),
 			searchInput: elContainer.querySelector('#flavors-search'),
+			searchClear: elContainer.querySelector('#flavors-search-clear'),
 			familySelect: elContainer.querySelector('#flavors-family'),
 			modalRoot: elContainer.querySelector('#flavor-modal-root'),
 		};
@@ -79,6 +80,7 @@ export class FlavorsView {
 	addEventListeners() {
 		this.el.flavors.addEventListener('click', event => this.onFlavorsClick(event));
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
+		this.el.searchClear?.addEventListener('click', () => this.onSearchClear());
 		this.el.familySelect?.addEventListener('change', event => this.onFamilyChange(event));
 
 		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
@@ -99,7 +101,16 @@ export class FlavorsView {
 
 	onSearchInput(event) {
 		this.state.searchQuery = event.target.value;
+		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
 		this.render();
+	}
+
+	onSearchClear() {
+		this.el.searchInput.value = '';
+		this.state.searchQuery = '';
+		if (this.el.searchClear) this.el.searchClear.hidden = true;
+		this.render();
+		this.el.searchInput.focus();
 	}
 
 	onFamilyChange(event) {
