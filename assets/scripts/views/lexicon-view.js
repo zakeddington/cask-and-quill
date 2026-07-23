@@ -9,7 +9,7 @@ export class LexiconView {
 		this.el = {
 			header: document.querySelector('.header'),
 			container: elContainer,
-			alphabetLinks: elContainer.querySelectorAll('.alphabet-link'),
+			navLinks: elContainer.querySelectorAll('.lexicon-nav-link'),
 			pageControls: elContainer.querySelector('.page-controls'),
 			searchInput: elContainer.querySelector('#search-input'),
 			categorySelect: elContainer.querySelector('#category-select'),
@@ -70,10 +70,10 @@ export class LexiconView {
 		document.documentElement.style.setProperty(this.config.stickyOffsetProperty, `${offset}px`);
 	}
 
-	updateAlphabetNav(filteredTerms) {
+	updateNav(filteredTerms) {
 		const activeLetters = new Set(filteredTerms.map(t => t.letter));
 
-		this.el.alphabetLinks.forEach(link => {
+		this.el.navLinks.forEach(link => {
 			const letter = link.textContent.trim();
 			link.classList.toggle('active', activeLetters.has(letter));
 		});
@@ -218,7 +218,7 @@ export class LexiconView {
 		this.el.results.innerHTML = filteredTerms.length
 			? sortedGroups.map(group => this.renderGroup(group, groupedTerms[group])).join('')
 			: this.renderNoResults();
-		this.updateAlphabetNav(this.state.selectedCategory ? [] : filteredTerms);
+		this.updateNav(this.state.selectedCategory ? [] : filteredTerms);
 
 		if (scrollToTop) {
 			this.scrollResultsToTop();

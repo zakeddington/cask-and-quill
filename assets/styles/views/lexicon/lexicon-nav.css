@@ -1,10 +1,10 @@
 /* Lexicon alphabet nav */
-.alphabet-nav {
+.lexicon-nav {
 	display: none;
 }
 
 @media (min-width: 768px) {
-	.alphabet-nav {
+	.lexicon-nav {
 		align-items: center;
 		display: flex;
 		flex-direction: column;
@@ -14,7 +14,7 @@
 	}
 }
 
-.alphabet-list {
+.lexicon-nav-list {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -23,7 +23,7 @@
 	padding: 0.25rem;
 }
 
-.alphabet-link {
+.lexicon-nav-link {
 	display: block;
 	font-family: var(--font-sans-serif);
 	font-weight: var(--font-weight-bold);
@@ -33,7 +33,7 @@
 	width: 1.5em;
 }
 
-.alphabet-link:not(.active) {
+.lexicon-nav-link:not(.active) {
 	color: var(--color-text-disabled);
 	pointer-events: none;
 }
