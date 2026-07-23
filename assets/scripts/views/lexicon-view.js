@@ -61,6 +61,11 @@ export class LexiconView {
 		if (target) target.scrollIntoView({ block: 'start' });
 	}
 
+	clearHash() {
+		if (!location.hash) return;
+		history.replaceState(null, '', location.pathname + location.search);
+	}
+
 	updateStickyOffset() {
 		if (!this.el.header || !this.el.pageControls) return;
 
@@ -102,12 +107,14 @@ export class LexiconView {
 		window.clearTimeout(this.timer.search);
 		this.timer.search = window.setTimeout(() => {
 			this.state.searchQuery = nextQuery;
+			this.clearHash();
 			this.render(true);
 		}, this.config.searchDebounceDelay);
 	}
 
 	onCategoryChange(event) {
 		this.state.selectedCategory = event.target.value;
+		this.clearHash();
 		this.render(true);
 	}
 
