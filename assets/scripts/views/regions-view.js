@@ -11,6 +11,7 @@ export class RegionsView {
 		this.el = {
 			container: elContainer,
 			regions: elContainer.querySelector('#regions'),
+			subRegions: null,
 		}
 
 		this.init();
@@ -19,7 +20,12 @@ export class RegionsView {
 	init() {
 		this.render();
 		this.initAccordions();
-		new SubRegionMapSwitcher().init(this.el.container);
+		this.initMapSwitcher();
+	}
+
+	initMapSwitcher() {
+		this.el.subRegions = this.el.container.querySelectorAll('.sub-regions[data-map-target]');
+		this.el.subRegions.forEach(group => new SubRegionMapSwitcher(group));
 	}
 
 	initAccordions() {

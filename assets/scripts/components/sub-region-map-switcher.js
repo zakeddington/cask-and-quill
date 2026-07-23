@@ -1,86 +1,53 @@
 export class SubRegionMapSwitcher {
-	constructor() {
-		this.root = document;
-		this.alphaThreshold = 16;
+	constructor(groupEl) {
+		this.config = {
+			alphaThreshold: 16,
+		};
+
 		this.imageCache = new Map();
-		this.groupContexts = [];
-	}
 
-	init(root = document) {
-		this.root = root;
-		this.groupContexts = [];
+		const elMap = document.getElementById(groupEl.dataset.mapTarget);
 
-		const subRegionGroups = this.root.querySelectorAll('.sub-regions[data-map-target]');
-		subRegionGroups.forEach(group => {
-			const context = this.createGroupContext(group);
+		this.el = {
+			group: groupEl,
+			mapContainer: groupEl.closest('.map-container') || groupEl,
+			map: elMap,
+			mapBaseImage: elMap?.querySelector('.map-base-image'),
+			allHighlightImage: elMap?.querySelector('.map-all-highlight-image'),
+			overlays: elMap ? Array.from(elMap.querySelectorAll('.map-region-image')) : [],
+			regionItems: Array.from(groupEl.querySelectorAll('.sub-region[data-region-key][data-map-highlight-image]')),
+		};
 
-			if (!context) return;
-			this.groupContexts.push(context);
-
-			this.primeGroupContext(context);
-			this.registerRegionData(context);
-			this.bindRegionItemEvents(context);
-			this.bindContainerEvents(context);
-			this.bindMapHoverEvents(context);
-			this.bindFocusEvents(context);
-		});
-	}
-
-	createGroupContext(group) {
-		const mapStack = document.getElementById(group.dataset.mapTarget);
-		const mapContainer = group.closest('.map-container') || group;
-		const mapBaseImage = mapStack?.querySelector('.map-base-image');
-		const allHighlightImage = mapStack?.querySelector('.map-all-highlight-image');
-
-		if (!mapStack || !mapBaseImage || !allHighlightImage) return null;
-
-		return {
-			group,
-			mapStack,
-			mapContainer,
-			mapBaseImage,
-			allHighlightImage,
-			baseSrc: mapStack.dataset.baseSrc,
-			initialHighlightSrc: mapStack.dataset.initialHighlightSrc,
-			overlays: Array.from(mapStack.querySelectorAll('.map-region-image')),
-			regionItems: Array.from(group.querySelectorAll('.sub-region[data-region-key][data-map-highlight-image]')),
+		this.state = {
 			regions: new Map(),
 			isSectionHovered: false,
 			activeLayerIndex: 0,
 			activeRegionKey: '',
 			activeSource: '',
 			overlayTransitionToken: 0,
-			mapHoverToken: 0
+			mapHoverToken: 0,
 		};
+
+		if (!this.el.map || !this.el.mapBaseImage || !this.el.allHighlightImage) return;
+
+		this.initMap();
+		this.registerRegionData();
+		this.addEventListeners();
 	}
 
-	primeGroupContext(context) {
-		this.loadImage(context.baseSrc);
-		this.loadImage(context.initialHighlightSrc);
-		context.mapBaseImage.src = context.baseSrc;
-		context.allHighlightImage.src = context.initialHighlightSrc;
-		this.setAllHighlightVisible(context, true);
-	}
-
-	registerRegionData(context) {
-		context.regionItems.forEach(regionElement => {
-			const regionKey = regionElement.dataset.regionKey;
-			const highlightSrc = regionElement.dataset.mapHighlightImage;
-			const imageRecord = this.loadImage(highlightSrc);
-
-			context.regions.set(regionKey, {
-				element: regionElement,
-				highlightSrc,
-				hitMap: null
+	loadImage(src) {
+		if (!this.imageCache.has(src)) {
+			const image = new Image();
+			const ready = new Promise(resolve => {
+				image.addEventListener('load', resolve, { once: true });
+				image.addEventListener('error', resolve, { once: true });
 			});
 
-			imageRecord.ready.then(() => {
-				const region = context.regions.get(regionKey);
-				if (!region) return;
+			image.src = src;
+			this.imageCache.set(src, { image, ready });
+		}
 
-				region.hitMap = this.createHitMap(imageRecord.image);
-			});
-		});
+		return this.imageCache.get(src);
 	}
 
 	createHitMap(image) {
@@ -88,14 +55,14 @@ export class SubRegionMapSwitcher {
 		const height = image.naturalHeight || 0;
 		if (!width || !height) return null;
 
-		const hitCanvas = document.createElement('canvas');
-		hitCanvas.width = width;
-		hitCanvas.height = height;
-		const context = hitCanvas.getContext('2d', { willReadFrequently: true });
-		if (!context) return null;
+		const canvas = document.createElement('canvas');
+		canvas.width = width;
+		canvas.height = height;
+		const ctx = canvas.getContext('2d', { willReadFrequently: true });
+		if (!ctx) return null;
 
-		context.drawImage(image, 0, 0);
-		const alpha = context.getImageData(0, 0, width, height).data;
+		ctx.drawImage(image, 0, 0);
+		const alpha = ctx.getImageData(0, 0, width, height).data;
 		const alphaMap = new Uint8ClampedArray(width * height);
 		for (let i = 0; i < alphaMap.length; i += 1) {
 			alphaMap[i] = alpha[(i * 4) + 3];
@@ -104,87 +71,155 @@ export class SubRegionMapSwitcher {
 		return { width, height, alpha: alphaMap };
 	}
 
-	loadImage(src) {
-		if (!this.imageCache.has(src)) {
-			const image = new Image();
-			const loadPromise = new Promise(resolve => {
-				image.addEventListener('load', resolve, { once: true });
-				image.addEventListener('error', resolve, { once: true });
+	initMap() {
+		const { baseSrc, initialHighlightSrc } = this.el.map.dataset;
+		this.loadImage(baseSrc);
+		this.loadImage(initialHighlightSrc);
+		this.el.mapBaseImage.src = baseSrc;
+		this.el.allHighlightImage.src = initialHighlightSrc;
+		this.setAllHighlightVisible(true);
+	}
+
+	registerRegionData() {
+		this.el.regionItems.forEach(regionElement => {
+			const regionKey = regionElement.dataset.regionKey;
+			const highlightSrc = regionElement.dataset.mapHighlightImage;
+			const imageRecord = this.loadImage(highlightSrc);
+
+			this.state.regions.set(regionKey, { element: regionElement, highlightSrc, hitMap: null });
+
+			imageRecord.ready.then(() => {
+				const region = this.state.regions.get(regionKey);
+				if (!region) return;
+
+				region.hitMap = this.createHitMap(imageRecord.image);
+			});
+		});
+	}
+
+	addEventListeners() {
+		this.el.regionItems.forEach(regionElement => {
+			const regionKey = regionElement.dataset.regionKey;
+
+			regionElement.addEventListener('mouseenter', () => {
+				this.setSectionHovered(true);
+				this.showRegion(regionKey, 'text');
 			});
 
-			image.src = src;
-			this.imageCache.set(src, { image, ready: loadPromise });
+			regionElement.addEventListener('focus', () => {
+				this.setSectionHovered(true);
+				this.showRegion(regionKey, 'text');
+			});
+
+			regionElement.addEventListener('mouseleave', event => this.onRegionMouseLeave(event));
+		});
+
+		this.el.mapContainer.addEventListener('mouseenter', () => this.setSectionHovered(true));
+		this.el.mapContainer.addEventListener('mouseleave', () => this.setSectionHovered(false));
+
+		this.el.map.addEventListener('mousemove', event => this.onMapMouseMove(event));
+		this.el.map.addEventListener('mouseleave', () => this.onMapMouseLeave());
+
+		this.el.group.addEventListener('focusout', event => this.onGroupFocusOut(event));
+	}
+
+	onRegionMouseLeave(event) {
+		const nextRegion = event.relatedTarget?.closest?.('.sub-region[data-region-key]');
+		if (nextRegion) return;
+		if (this.state.activeSource === 'text') this.clearActiveRegion();
+	}
+
+	onMapMouseMove(event) {
+		if (!this.state.isSectionHovered) return;
+
+		this.state.mapHoverToken += 1;
+		const token = this.state.mapHoverToken;
+		const regionKey = this.getPointRegionKey(event.clientX, event.clientY);
+		if (token !== this.state.mapHoverToken) return;
+
+		if (regionKey) {
+			this.showRegion(regionKey, 'map');
+			return;
 		}
 
-		return this.imageCache.get(src);
+		if (this.state.activeSource === 'map') this.clearActiveRegion();
 	}
 
-	setAllHighlightVisible(context, isVisible) {
-		context.allHighlightImage.classList.toggle('is-visible', isVisible);
+	onMapMouseLeave() {
+		if (this.state.activeSource === 'map') this.clearActiveRegion();
 	}
 
-	clearActiveRegion(context) {
-		context.overlayTransitionToken += 1;
-		context.activeRegionKey = '';
-		context.activeSource = '';
-		context.overlays.forEach(overlay => overlay.classList.remove('is-visible'));
-		context.regions.forEach(region => region.element.classList.remove('is-active'));
+	onGroupFocusOut(event) {
+		const nextFocusTarget = event.relatedTarget;
+		if (!this.el.mapContainer.contains(nextFocusTarget)) this.setSectionHovered(false);
 	}
 
-	setRegionOverlay(context, src) {
+	setAllHighlightVisible(isVisible) {
+		this.el.allHighlightImage.classList.toggle('is-visible', isVisible);
+	}
+
+	clearActiveRegion() {
+		this.state.overlayTransitionToken += 1;
+		this.state.activeRegionKey = '';
+		this.state.activeSource = '';
+		this.el.overlays.forEach(overlay => overlay.classList.remove('is-visible'));
+		this.state.regions.forEach(region => region.element.classList.remove('is-active'));
+	}
+
+	setRegionOverlay(src) {
 		if (!src) return;
 
-		context.overlayTransitionToken += 1;
-		const currentTransitionToken = context.overlayTransitionToken;
+		this.state.overlayTransitionToken += 1;
+		const token = this.state.overlayTransitionToken;
 
-		const nextLayerIndex = context.activeLayerIndex === 0 ? 1 : 0;
-		const nextOverlay = context.overlays[nextLayerIndex];
-		const currentOverlay = context.overlays[context.activeLayerIndex];
+		const nextLayerIndex = this.state.activeLayerIndex === 0 ? 1 : 0;
+		const nextOverlay = this.el.overlays[nextLayerIndex];
+		const currentOverlay = this.el.overlays[this.state.activeLayerIndex];
 		if (!nextOverlay || !currentOverlay) return;
 
 		this.loadImage(src).ready.then(() => {
-			if (currentTransitionToken !== context.overlayTransitionToken) return;
+			if (token !== this.state.overlayTransitionToken) return;
 
 			requestAnimationFrame(() => {
-				if (currentTransitionToken !== context.overlayTransitionToken) return;
+				if (token !== this.state.overlayTransitionToken) return;
 
 				nextOverlay.src = src;
 				nextOverlay.classList.add('is-visible');
 				currentOverlay.classList.remove('is-visible');
-				context.activeLayerIndex = nextLayerIndex;
+				this.state.activeLayerIndex = nextLayerIndex;
 			});
 		});
 	}
 
-	showRegion(context, regionKey, source) {
-		const region = context.regions.get(regionKey);
+	showRegion(regionKey, source) {
+		const region = this.state.regions.get(regionKey);
 		if (!region) return;
-		if (context.activeRegionKey === regionKey && context.activeSource === source) return;
+		if (this.state.activeRegionKey === regionKey && this.state.activeSource === source) return;
 
-		context.activeRegionKey = regionKey;
-		context.activeSource = source;
-		this.setAllHighlightVisible(context, false);
-		this.setRegionOverlay(context, region.highlightSrc);
-		context.regions.forEach((entry, key) => {
+		this.state.activeRegionKey = regionKey;
+		this.state.activeSource = source;
+		this.setAllHighlightVisible(false);
+		this.setRegionOverlay(region.highlightSrc);
+		this.state.regions.forEach((entry, key) => {
 			entry.element.classList.toggle('is-active', key === regionKey);
 		});
 	}
 
-	setSectionHovered(context, hovered) {
-		if (context.isSectionHovered === hovered) return;
+	setSectionHovered(hovered) {
+		if (this.state.isSectionHovered === hovered) return;
 
-		context.isSectionHovered = hovered;
+		this.state.isSectionHovered = hovered;
 		if (hovered) {
-			this.setAllHighlightVisible(context, false);
+			this.setAllHighlightVisible(false);
 			return;
 		}
 
-		this.clearActiveRegion(context);
-		this.setAllHighlightVisible(context, true);
+		this.clearActiveRegion();
+		this.setAllHighlightVisible(true);
 	}
 
-	getPointRegionKey(context, clientX, clientY) {
-		const rect = context.mapStack.getBoundingClientRect();
+	getPointRegionKey(clientX, clientY) {
+		const rect = this.el.map.getBoundingClientRect();
 		if (!rect.width || !rect.height) return '';
 
 		const x = (clientX - rect.left) / rect.width;
@@ -192,7 +227,7 @@ export class SubRegionMapSwitcher {
 		if (x < 0 || x > 1 || y < 0 || y > 1) return '';
 
 		let matchedKey = '';
-		context.regions.forEach((region, key) => {
+		this.state.regions.forEach((region, key) => {
 			const hitMap = region.hitMap;
 			if (!hitMap || matchedKey) return;
 
@@ -201,80 +236,9 @@ export class SubRegionMapSwitcher {
 			if (px < 0 || py < 0 || px >= hitMap.width || py >= hitMap.height) return;
 
 			const alpha = hitMap.alpha[(py * hitMap.width) + px];
-			if (alpha > this.alphaThreshold) {
-				matchedKey = key;
-			}
+			if (alpha > this.config.alphaThreshold) matchedKey = key;
 		});
 
 		return matchedKey;
-	}
-
-	bindRegionItemEvents(context) {
-		context.regionItems.forEach(regionElement => {
-			const regionKey = regionElement.dataset.regionKey;
-
-			regionElement.addEventListener('mouseenter', () => {
-				this.setSectionHovered(context, true);
-				this.showRegion(context, regionKey, 'text');
-			});
-
-			regionElement.addEventListener('focus', () => {
-				this.setSectionHovered(context, true);
-				this.showRegion(context, regionKey, 'text');
-			});
-
-			regionElement.addEventListener('mouseleave', event => {
-				const nextRegion = event.relatedTarget?.closest?.('.sub-region[data-region-key]');
-				if (nextRegion) return;
-				if (context.activeSource === 'text') {
-					this.clearActiveRegion(context);
-				}
-			});
-		});
-	}
-
-	bindContainerEvents(context) {
-		context.mapContainer.addEventListener('mouseenter', () => {
-			this.setSectionHovered(context, true);
-		});
-
-		context.mapContainer.addEventListener('mouseleave', () => {
-			this.setSectionHovered(context, false);
-		});
-	}
-
-	bindMapHoverEvents(context) {
-		context.mapStack.addEventListener('mousemove', event => {
-			if (!context.isSectionHovered) return;
-
-			context.mapHoverToken += 1;
-			const currentToken = context.mapHoverToken;
-			const regionKey = this.getPointRegionKey(context, event.clientX, event.clientY);
-			if (currentToken !== context.mapHoverToken) return;
-
-			if (regionKey) {
-				this.showRegion(context, regionKey, 'map');
-				return;
-			}
-
-			if (context.activeSource === 'map') {
-				this.clearActiveRegion(context);
-			}
-		});
-
-		context.mapStack.addEventListener('mouseleave', () => {
-			if (context.activeSource === 'map') {
-				this.clearActiveRegion(context);
-			}
-		});
-	}
-
-	bindFocusEvents(context) {
-		context.group.addEventListener('focusout', event => {
-			const nextFocusTarget = event.relatedTarget;
-			if (!context.mapContainer.contains(nextFocusTarget)) {
-				this.setSectionHovered(context, false);
-			}
-		});
 	}
 }
