@@ -55,7 +55,7 @@ export class FlavorsView {
 			this.state.families = await fetchFlavorFamilies();
 			return true;
 		} catch (err) {
-			this.el.flavors.innerHTML = '<div class="empty-state">Failed to load flavor families.</div>';
+			this.el.flavors.innerHTML = '<div class="empty-state"><h2 class="text-heading-lg">Failed to load flavor families.</h2></div>';
 			window.console.warn('Failed to load flavor families.', err);
 			return false;
 		}
@@ -177,7 +177,7 @@ export class FlavorsView {
 	}
 
 	renderEmptyState() {
-		return `<div class="empty-state">No flavors match "${this.state.searchQuery}".</div>`;
+		return `<div class="empty-state"><h2 class="text-heading-lg">No flavors match "${this.state.searchQuery}".</h2></div>`;
 	}
 
 	renderFamily(f) {

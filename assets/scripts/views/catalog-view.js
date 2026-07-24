@@ -337,8 +337,8 @@ export class CatalogView {
 
 	renderEmptyState() {
 		return (this.state.searchQuery || this.state.fillFilter)
-			? `<div class="empty-state"><h2>No bottles match your filters.</h2></div>`
-			: `<div class="empty-state"><h2>No bottles logged yet.</h2></div>`;
+			? `<div class="empty-state"><h2 class="text-heading-lg">No bottles match your filters.</h2></div>`
+			: `<div class="empty-state"><h2 class="text-heading-lg">No bottles logged yet.</h2></div>`;
 	}
 
 	renderGroup(group, bottles, { isBottleKills = false } = {}) {

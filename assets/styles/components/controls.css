@@ -111,6 +111,8 @@
 
 /* Empty / no-results state */
 .empty-state {
-	border-top: 2px solid var(--color-border-accent);
+	margin: 0 auto;
+	max-width: var(--layout-max-width);
 	padding-top: 2rem;
+	width: 100%;
 }

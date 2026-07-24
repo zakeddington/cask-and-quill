@@ -2,6 +2,10 @@
 .flavors-list {
 	margin-top: -6rem;
 	width: 100dvw;
+
+	.empty-state {
+		width: calc(var(--layout-max-width) - var(--layout-inline-padding) - var(--layout-inline-padding));
+	}
 }
 
 /* ——— Family block ——— */
