@@ -173,10 +173,8 @@ export class FlavorsView {
 			.map((f, i) => ({ f, i }))
 			.filter(({ f }) => family === 'All Families' || family === f.name)
 			.map(({ f, i }) => {
-				const famMatch = q && f.name.toLowerCase().includes(q);
 				let subs = f.subs.map(s => {
-					const subMatch = famMatch || (q && s.name.toLowerCase().includes(q));
-					const terms = (q && !subMatch) ? s.terms.filter(t => t.toLowerCase().includes(q)) : s.terms;
+					const terms = q ? s.terms.filter(t => t.toLowerCase().includes(q)) : s.terms;
 					return { name: s.name, terms };
 				});
 				if (q) subs = subs.filter(s => s.terms.length > 0);
