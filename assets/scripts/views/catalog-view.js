@@ -431,7 +431,7 @@ export class CatalogView {
 						<span class="catalog-bottle-heading-col text-body-sm font-medium">
 							${this.renderMashBillSummary(bottle.mashBill)}
 						</span>
-						<span class="catalog-bottle-heading-col text-body-sm font-medium">${html(stripHtml(bottle.cask))}</span>
+						<span class="catalog-bottle-heading-col catalog-cask-heading">${bottle.cask}</span>
 						<span class="catalog-journal-status">
 							${this.renderJournalIcon(bottle)}
 							<span class="catalog-accordion-icon" aria-hidden="true">

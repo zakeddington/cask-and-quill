@@ -46,6 +46,16 @@
 	margin: 0;
 }
 
+.catalog-cask-heading {
+	* {
+		font-size: var(--font-size-body-sm);
+		font-weight: var(--font-weight-medium);
+		letter-spacing: var(--letter-spacing-normal);
+		line-height: var(--line-height-normal);
+		margin-bottom: 0;
+	}
+}
+
 .catalog-accordion-trigger {
 	align-items: flex-start;
 	background: none;
