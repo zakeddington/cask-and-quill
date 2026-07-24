@@ -22,6 +22,7 @@ export const CATALOG_CATEGORY_OPTIONS = [
 export const CATALOG_IDENTITY_FIELDS = [
 	{ name: 'brand', label: 'Brand' },
 	{ name: 'bottle', label: 'Bottle' },
+	{ name: 'barrel', label: 'Barrel' },
 	{ name: 'category', label: 'Category', type: 'select', options: CATALOG_CATEGORY_OPTIONS },
 	{ name: 'type', label: 'Type' },
 	{ name: 'distillery', label: 'Distillery' },

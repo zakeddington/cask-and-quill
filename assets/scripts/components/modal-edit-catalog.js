@@ -76,6 +76,7 @@ export class ModalEditCatalog extends BaseModal {
 			type: getFormValue(formData, 'type'),
 			brand: getFormValue(formData, 'brand'),
 			bottle: getFormValue(formData, 'bottle'),
+			barrel: getFormValue(formData, 'barrel'),
 			age: getFormValue(formData, 'age'),
 			abv: getFormValue(formData, 'abv'),
 			proof: getFormValue(formData, 'proof'),

@@ -8,6 +8,7 @@ CREATE TABLE bottles (
 	type         text,
 	brand        text,
 	bottle       text,
+	barrel       text,
 	age          text,
 	abv          text,
 	proof        text,

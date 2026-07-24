@@ -257,6 +257,7 @@ export class CatalogView {
 			type: '',
 			brand: '',
 			bottle: '',
+			barrel: '',
 			age: '',
 			abv: '',
 			proof: '',
@@ -416,6 +417,7 @@ export class CatalogView {
 						<span class="catalog-bottle-heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
+							${bottle.barrel ? `<span class="text-body-sm text-color-secondary">${html(bottle.barrel)}</span>` : ''}
 						</span>
 						<span class="catalog-bottle-heading-col">
 							<span class="text-heading-sm font-medium text-color-secondary">${html(bottle.type)}</span>
