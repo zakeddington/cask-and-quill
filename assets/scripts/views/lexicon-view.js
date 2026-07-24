@@ -14,6 +14,7 @@ export class LexiconView {
 			searchInput: elContainer.querySelector('#search-input'),
 			searchClear: elContainer.querySelector('#search-clear'),
 			categorySelect: elContainer.querySelector('#category-select'),
+			clearAllBtn: elContainer.querySelector('#lexicon-clear-all'),
 			results: elContainer.querySelector('#lexicon-entries'),
 		};
 
@@ -98,6 +99,10 @@ export class LexiconView {
 			this.el.categorySelect.addEventListener('change', event => this.onCategoryChange(event));
 		}
 
+		if (this.el.clearAllBtn) {
+			this.el.clearAllBtn.addEventListener('click', () => this.onClearAll());
+		}
+
 		window.addEventListener('resize', () => this.onResize());
 	}
 
@@ -114,6 +119,7 @@ export class LexiconView {
 		this.timer.search = window.setTimeout(() => {
 			this.state.searchQuery = nextQuery;
 			this.clearHash();
+			this.updateClearAllVisibility();
 			this.render(true);
 		}, this.config.searchDebounceDelay);
 	}
@@ -124,6 +130,7 @@ export class LexiconView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 		this.clearHash();
+		this.updateClearAllVisibility();
 		this.render(true);
 		this.el.searchInput.focus();
 	}
@@ -131,7 +138,26 @@ export class LexiconView {
 	onCategoryChange(event) {
 		this.state.selectedCategory = event.target.value;
 		this.clearHash();
+		this.updateClearAllVisibility();
 		this.render(true);
+	}
+
+	onClearAll() {
+		window.clearTimeout(this.timer.search);
+		this.el.searchInput.value = '';
+		this.state.searchQuery = '';
+		if (this.el.searchClear) this.el.searchClear.hidden = true;
+
+		this.components.categoryDropdown?.selectOption('');
+
+		this.clearHash();
+		this.updateClearAllVisibility();
+		this.render(true);
+	}
+
+	updateClearAllVisibility() {
+		if (!this.el.clearAllBtn) return;
+		this.el.clearAllBtn.hidden = !(this.state.searchQuery || this.state.selectedCategory);
 	}
 
 	scrollResultsToTop() {

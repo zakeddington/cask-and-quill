@@ -93,6 +93,12 @@
 	}
 }
 
+/* "Clear all" button: appears in the filter row once a search term or filter is active */
+.filter-clear-all {
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
 /* Results count line */
 .results-count {
 	margin: 0;

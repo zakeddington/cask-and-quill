@@ -26,6 +26,7 @@ export class CatalogView {
 			categorySelect: elContainer.querySelector('#catalog-category'),
 			fillSelect: elContainer.querySelector('#catalog-fill'),
 			sortSelect: elContainer.querySelector('#catalog-sort'),
+			clearAllBtn: elContainer.querySelector('#catalog-clear-all'),
 			addBtn: elContainer.querySelector('#catalog-add-btn'),
 			modalRoot: elContainer.querySelector('#catalog-modal-root'),
 		};
@@ -117,6 +118,7 @@ export class CatalogView {
 		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
 		this.el.fillSelect?.addEventListener('change', event => this.onFillChange(event));
 		this.el.sortSelect?.addEventListener('change', event => this.onSortChange(event));
+		this.el.clearAllBtn?.addEventListener('click', () => this.onClearAll());
 		this.el.addBtn?.addEventListener('click', () => this.openAddModal());
 
 		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
@@ -172,6 +174,7 @@ export class CatalogView {
 	onSearchInput(event) {
 		this.state.searchQuery = event.target.value.trim().toLowerCase();
 		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
+		this.updateClearAllVisibility();
 		this.render();
 	}
 
@@ -179,23 +182,43 @@ export class CatalogView {
 		this.el.searchInput.value = '';
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
+		this.updateClearAllVisibility();
 		this.render();
 		this.el.searchInput.focus();
 	}
 
 	onCategoryChange(event) {
 		this.state.categoryFilter = event.target.value;
+		this.updateClearAllVisibility();
 		this.render();
 	}
 
 	onFillChange(event) {
 		this.state.fillFilter = event.target.value;
+		this.updateClearAllVisibility();
 		this.render();
 	}
 
 	onSortChange(event) {
 		this.state.abvSort = event.target.value;
 		this.render();
+	}
+
+	onClearAll() {
+		this.el.searchInput.value = '';
+		this.state.searchQuery = '';
+		if (this.el.searchClear) this.el.searchClear.hidden = true;
+
+		this.components.categoryDropdown?.selectOption('');
+		this.components.fillDropdown?.selectOption('');
+
+		this.updateClearAllVisibility();
+		this.render();
+	}
+
+	updateClearAllVisibility() {
+		if (!this.el.clearAllBtn) return;
+		this.el.clearAllBtn.hidden = !(this.state.searchQuery || this.state.categoryFilter || this.state.fillFilter);
 	}
 
 	onDelete(id) {
