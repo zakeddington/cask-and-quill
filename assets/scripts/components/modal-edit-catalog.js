@@ -1,5 +1,5 @@
 import { html, getFormValue } from '../utils.js';
-import { init as pellInit } from '../vendor/pell.js';
+import { initRichEditor } from './rich-editor.js';
 import { BaseModal } from './modal.js';
 import { CustomDropdown } from './custom-dropdown.js';
 import { JournalDrawer } from './drawer-journal.js';
@@ -45,13 +45,11 @@ export class ModalEditCatalog extends BaseModal {
 		this.el.modalRoot.querySelectorAll('[data-rich-editor]').forEach(container => {
 			const name = container.dataset.richEditor;
 			const hidden = this.el.modalRoot.querySelector(`input[type="hidden"][name="${CSS.escape(name)}"]`);
-			const editor = pellInit({
+			initRichEditor({
 				element: container,
-				onChange: html => { if (hidden) hidden.value = html; },
-				actions: ['bold', 'italic', 'underline', 'olist', 'ulist'],
-				defaultParagraphSeparator: 'p',
+				value: hidden?.value ?? '',
+				onChange: html => { if (hidden) hidden.value = html; }
 			});
-			editor.content.innerHTML = hidden?.value ?? '';
 		});
 	}
 

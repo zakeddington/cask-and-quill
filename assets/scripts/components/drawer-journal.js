@@ -1,4 +1,4 @@
-import { init as pellInit } from '../vendor/pell.js';
+import { initRichEditor } from './rich-editor.js';
 import { getGlobalNotes, updateGlobalNotes } from '../supabase.js';
 import { SPRITE_URL } from '../config/constants.js';
 import { AUTH_CHANGE } from '../config/events.js';
@@ -95,13 +95,11 @@ export class JournalDrawer extends BaseDrawer {
 	renderBody() {
 		if (this.state.isEditing) {
 			this.el.body.innerHTML = `<div class="drawer-journal-rich-editor"></div>`;
-			this.components.pellEditor = pellInit({
+			this.components.pellEditor = initRichEditor({
 				element: this.el.body.querySelector('.drawer-journal-rich-editor'),
-				onChange: () => {},
-				actions: ['bold', 'italic', 'underline', 'olist', 'ulist'],
-				defaultParagraphSeparator: 'p',
+				value: this.state.content,
+				onChange: () => {}
 			});
-			this.components.pellEditor.content.innerHTML = this.state.content;
 		} else if (this.state.content) {
 			this.el.body.innerHTML = `<div class="drawer-journal-text">${this.state.content}</div>`;
 		} else {

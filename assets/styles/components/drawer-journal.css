@@ -32,12 +32,12 @@
 	flex-direction: column;
 	height: 100%;
 
-	.pell-content {
+	.pell-content, .pell-source {
 		height: 100%;
 		min-height: 14rem;
+	}
 
-		* {
-			font-size: var(--font-size-body-sm);
-		}
+	.pell-content * {
+		font-size: var(--font-size-body-sm);
 	}
 }

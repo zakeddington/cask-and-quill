@@ -75,3 +75,24 @@
 		margin-bottom: 0.25em;
 	}
 }
+
+.pell-source {
+	background: var(--color-form-input-background);
+	border: 0;
+	box-sizing: border-box;
+	color: var(--color-text-primary);
+	display: block;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: var(--font-size-body-sm);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--line-height-relaxed);
+	min-height: 6rem;
+	outline: 0;
+	padding: 0.6rem 0.75rem;
+	resize: vertical;
+	width: 100%;
+
+	&[hidden] {
+		display: none;
+	}
+}
