@@ -1,0 +1,53 @@
+/* Accordion Title */
+.region-title {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.region-title-name {
+	font-family: var(--font-body);
+	font-size: var(--font-size-heading-xl);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+}
+
+.region-title-description {
+	color: var(--color-text-secondary);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-transform: none;
+}
+
+.region-title-description-item {
+	margin: 0;
+}
+
+@media (min-width: 768px) {
+	.region-title-description {
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.region-title-description-item + .region-title-description-item {
+		align-items: center;
+		display: flex;
+	}
+
+	.region-title-description-item + .region-title-description-item::before {
+		content: "•";
+		margin-right: 0.5rem;
+	}
+}
+
+/* Main content container */
+.region-content {
+	display: flex;
+	flex-direction: column;
+}

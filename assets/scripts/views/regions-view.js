@@ -1,7 +1,8 @@
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
-import { SPRITE_URL, KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_HOME, KEY_END } from '../config/constants.js';
+import { AccordionGroup } from '../components/accordion-group.js';
+import { SPRITE_URL } from '../config/constants.js';
 
 export class RegionsView {
 	constructor(elContainer) {
@@ -29,52 +30,7 @@ export class RegionsView {
 	}
 
 	initAccordions() {
-		const elTriggers = this.el.container.querySelectorAll('.region-accordion-trigger');
-		elTriggers.forEach(elTrigger => {
-			elTrigger.addEventListener('click', () => this.toggleAccordion(elTrigger));
-			elTrigger.addEventListener('keydown', event => this.onAccordionKeydown(event, elTriggers));
-		});
-	}
-
-	toggleAccordion(elTrigger) {
-		const elSection = elTrigger.closest('.region-section');
-		const elPanel = document.getElementById(elTrigger.getAttribute('aria-controls'));
-		const isExpanded = elTrigger.getAttribute('aria-expanded') === 'true';
-
-		elTrigger.setAttribute('aria-expanded', String(!isExpanded));
-		elPanel.setAttribute('aria-hidden', String(isExpanded));
-		elSection.classList.toggle('is-open', !isExpanded);
-
-		if (!isExpanded) {
-			setTimeout(() => {
-				elSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			}, 350);
-		}
-	}
-
-	onAccordionKeydown(event, elTriggers) {
-		const currentIndex = Array.from(elTriggers).indexOf(event.currentTarget);
-		let nextIndex = currentIndex;
-
-		switch (event.key) {
-			case KEY_ARROW_DOWN:
-				nextIndex = (currentIndex + 1) % elTriggers.length;
-				break;
-			case KEY_ARROW_UP:
-				nextIndex = (currentIndex - 1 + elTriggers.length) % elTriggers.length;
-				break;
-			case KEY_HOME:
-				nextIndex = 0;
-				break;
-			case KEY_END:
-				nextIndex = elTriggers.length - 1;
-				break;
-			default:
-				return;
-		}
-
-		event.preventDefault();
-		elTriggers[nextIndex].focus();
+		new AccordionGroup(this.el.regions);
 	}
 
 	render() {
@@ -82,46 +38,43 @@ export class RegionsView {
 	}
 
 	renderRegion(region) {
-		const isOpen = false;
+		const isOpen = region.isOpen;
 		const triggerId = `region-trigger-${region.id}`;
 		const panelId = `region-panel-${region.id}`;
 
 		return `
-			<section class="region-section${isOpen ? ' is-open' : ''}">
-				<header class="region-header">
-					<h2 class="region-title">
-						<button
-							aria-controls="${panelId}"
-							aria-expanded="${isOpen}"
-							class="region-accordion-trigger"
-							id="${triggerId}"
-							type="button"
-						>
-							<span class="region-title-content">
-								<span class="region-title-text">${escapeHtml(region.name)}</span>
-								${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
-							</span>
-							<span class="region-accordion-icon" aria-hidden="true">
-								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
-							</span>
-						</button>
-					</h2>
-				</header>
+			<section class="accordion${isOpen ? ' is-open' : ''}">
+				<button
+					aria-controls="${panelId}"
+					aria-expanded="${isOpen}"
+					class="accordion-trigger"
+					id="${triggerId}"
+					type="button"
+				>
+					<span class="region-title">
+						<span class="region-title-name">${escapeHtml(region.name)}</span>
+						${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
+					</span>
+					<span class="accordion-trigger-icon" aria-hidden="true">
+						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
+					</span>
+				</button>
 
 				<div
 					aria-hidden="${!isOpen}"
 					aria-labelledby="${triggerId}"
-					class="region-panel"
+					class="accordion-panel"
 					id="${panelId}"
 					role="region"
+					inert
 				>
-					<div class="region-panel-inner grid grid-align-stretch grid-col-full">
+					<div class="accordion-panel-inner grid grid-align-stretch grid-col-full">
 						<aside class="region-sidebar grid-col-md-3">
 							${this.renderLegalFramework(region)}
 							<img alt="${escapeHtml(region.name)} Bottle" class="region-bottle" src="${region.bottleImage}" />
 						</aside>
 
-						<div class="region-main grid-col-md-9">
+						<div class="region-content grid-col-md-9">
 							${this.renderVarieties(region)}
 							${region.subRegions ? this.renderSubRegions(region) : ''}
 						</div>

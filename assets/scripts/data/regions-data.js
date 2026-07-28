@@ -2,6 +2,7 @@
 export const REGIONS_DATA = [
 	{
 		id: 'scotland',
+		isOpen: false,
 		name: 'Scotland',
 		regulator: 'Regulated by the Scotch Whisky Regulations 2009 (SWR 2009)',
 		keyRegulationsSummary: [
@@ -62,6 +63,7 @@ export const REGIONS_DATA = [
 	},
 	{
 		id: 'ireland',
+		isOpen: false,
 		name: 'Ireland',
 		regulator: 'Regulated by Irish Whiskey Technical File (2014) & EU Geographic Indication',
 		keyRegulationsSummary: [
@@ -107,6 +109,7 @@ export const REGIONS_DATA = [
 	},
 	{
 		id: 'usa',
+		isOpen: false,
 		name: 'United States',
 		regulator: 'Regulated by TTB (Alcohol and Tobacco Tax and Trade Bureau)',
 		keyRegulationsSummary: [
@@ -197,6 +200,7 @@ export const REGIONS_DATA = [
 	},
 	{
 		id: 'japan',
+		isOpen: false,
 		name: 'Japan',
 		regulator: 'Regulated by Japan Spirits & Liqueurs Makers Association Standards (2021)',
 		keyRegulationsSummary: [
@@ -238,6 +242,7 @@ export const REGIONS_DATA = [
 	},
 	{
 		id: 'canada',
+		isOpen: false,
 		name: 'Canada',
 		regulator: 'Regulated by Canada\'s Food and Drug Regulations (Division 2, B.02.020)',
 		keyRegulationsSummary: [

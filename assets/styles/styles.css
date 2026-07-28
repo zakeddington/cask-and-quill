@@ -23,6 +23,7 @@
 /* Components */
 /* --------------------------------------------------------------- */
 @import "components/header.css" layer(components);
+@import "components/accordion.css" layer(components);
 @import "components/drawer.css" layer(components);
 @import "components/drawer-journal.css" layer(components);
 @import "components/drawer-nav.css" layer(components);
@@ -37,7 +38,7 @@
 /* Views */
 /* --------------------------------------------------------------- */
 /* Regions */
-@import "views/regions/region-accordion.css" layer(views);
+@import "views/regions/region-content.css" layer(views);
 @import "views/regions/region-sidebar.css" layer(views);
 @import "views/regions/region-varieties.css" layer(views);
 @import "views/regions/region-map.css" layer(views);
