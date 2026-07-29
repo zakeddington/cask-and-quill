@@ -27,7 +27,7 @@
 				<a id="flavors-btn" class="button button-tertiary" href="/flavors/">Flavors</a>
 			</div>
 			<div id="auth-root" class="auth-root"></div>
-			<button id="catalog-add-btn" class="button-primary nav-catalog-add-btn" hidden>
+			<button id="catalog-add-btn" class="button-primary nav-catalog-add-btn" aria-label="Add Bottle" hidden>
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-plus"></use></svg>
 				<span>Add Bottle</span>
 			</button>
@@ -37,7 +37,7 @@
 		</nav>
 	</header>
 
-	<nav id="nav-drawer" class="drawer drawer-nav" aria-label="Site navigation" aria-hidden="true">
+	<nav id="nav-drawer" class="drawer drawer-nav" aria-label="Site navigation" aria-hidden="true" inert>
 		<div class="drawer-overlay"></div>
 		<div class="drawer-panel">
 			<div class="drawer-header drawer-nav-header">
@@ -107,7 +107,7 @@
 
 	<div id="catalog-modal-root" class="catalog-modal-root" aria-live="polite"></div>
 
-	<aside id="journal-drawer" class="drawer drawer-journal" aria-hidden="true" aria-label="Journal Notes">
+	<aside id="journal-drawer" class="drawer drawer-journal" aria-hidden="true" aria-label="Journal Notes" inert>
 		<div class="drawer-overlay"></div>
 		<div class="drawer-panel">
 			<div class="drawer-header drawer-journal-header">

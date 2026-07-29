@@ -43,6 +43,7 @@ export class BaseDrawer {
 		this.el.drawer.classList.add('is-open');
 		this.el.trigger?.setAttribute('aria-expanded', 'true');
 		this.el.drawer.setAttribute('aria-hidden', 'false');
+		this.el.drawer.removeAttribute('inert');
 		document.body.classList.add(this.options.bodyClass);
 		document.addEventListener('keydown', this.events.onKeydown);
 		this.el.drawer.querySelector(this.options.closeSelector)?.focus();
@@ -53,6 +54,7 @@ export class BaseDrawer {
 		this.el.drawer.classList.remove('is-open');
 		this.el.trigger?.setAttribute('aria-expanded', 'false');
 		this.el.drawer.setAttribute('aria-hidden', 'true');
+		this.el.drawer.setAttribute('inert', '');
 		document.body.classList.remove(this.options.bodyClass);
 		document.removeEventListener('keydown', this.events.onKeydown);
 		this.state.previousFocus?.focus?.();
