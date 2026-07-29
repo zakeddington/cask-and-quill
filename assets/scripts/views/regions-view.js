@@ -44,21 +44,23 @@ export class RegionsView {
 
 		return `
 			<section class="accordion${isOpen ? ' is-open' : ''}">
-				<button
-					aria-controls="${panelId}"
-					aria-expanded="${isOpen}"
-					class="accordion-trigger"
-					id="${triggerId}"
-					type="button"
-				>
-					<span class="region-title">
-						<span class="region-title-name">${escapeHtml(region.name)}</span>
-						${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
-					</span>
-					<span class="accordion-trigger-icon" aria-hidden="true">
-						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
-					</span>
-				</button>
+				<h2>
+					<button
+						aria-controls="${panelId}"
+						aria-expanded="${isOpen}"
+						class="accordion-trigger"
+						id="${triggerId}"
+						type="button"
+					>
+						<span class="region-title">
+							<span class="region-title-name">${escapeHtml(region.name)}</span>
+							${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
+						</span>
+						<span class="accordion-trigger-icon" aria-hidden="true">
+							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
+						</span>
+					</button>
+				</h2>
 
 				<div
 					aria-hidden="${!isOpen}"
