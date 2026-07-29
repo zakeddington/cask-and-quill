@@ -350,7 +350,7 @@ export class CatalogView {
 		const panelId = `catalog-panel-${bottle.id}`;
 
 		return `
-			<article class="catalog-bottle${isOpen ? ' is-open' : ''}">
+			<article class="catalog-bottle accordion ${isOpen ? 'is-open' : ''}">
 				<h3 class="catalog-bottle-heading${isOpen ? ' theme-accent' : ''}">
 					<button
 						aria-controls="${html(panelId)}"
@@ -381,7 +381,7 @@ export class CatalogView {
 						<span class="catalog-bottle-heading-col catalog-cask-heading">${bottle.cask}</span>
 						<span class="catalog-journal-status">
 							${this.renderJournalIcon(bottle)}
-							<span class="catalog-accordion-icon" aria-hidden="true">
+							<span class="accordion-trigger-icon" aria-hidden="true">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
 							</span>
 						</span>
@@ -391,12 +391,12 @@ export class CatalogView {
 				<div
 					aria-hidden="${!isOpen}"
 					aria-labelledby="${html(triggerId)}"
-					class="catalog-panel"
+					class="accordion-panel"
 					id="${html(panelId)}"
 					role="region"
 					${isOpen ? '' : 'inert'}
 				>
-					<div class="catalog-panel-inner">
+					<div class="accordion-panel-inner">
 						${this.renderDetails(bottle)}
 					</div>
 				</div>

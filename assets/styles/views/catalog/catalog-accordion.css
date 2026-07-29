@@ -31,7 +31,7 @@
 
 .catalog-bottle {
 	border: 2px solid transparent;
-	scroll-margin-top: var(--layout-scroll-header-offset);
+	margin: 0;
 
 	&:nth-child(odd) {
 		background-color: var(--color-background-secondary);
@@ -190,51 +190,6 @@
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	stroke-width: 1.8;
-}
-
-.catalog-accordion-icon {
-	align-items: center;
-	color: var(--color-text-accent);
-	display: flex;
-	font-size: var(--font-size-heading-sm);
-	height: 2rem;
-	justify-content: center;
-	transition: transform 0.25s ease;
-	width: 2rem;
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
-
-	.svg-icon {
-		height: 1.5rem;
-		width: 1.5rem;
-	}
-}
-
-.catalog-bottle.is-open .catalog-accordion-icon {
-	transform: rotateX(180deg);
-}
-
-.catalog-panel {
-	display: grid;
-	grid-template-rows: 0fr;
-	opacity: 0;
-	transition: grid-template-rows 0.35s ease, opacity 0.25s ease;
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
-}
-
-.catalog-bottle.is-open .catalog-panel {
-	grid-template-rows: 1fr;
-	opacity: 1;
-}
-
-.catalog-panel-inner {
-	min-height: 0;
-	overflow: hidden;
 }
 
 .catalog-fill-icon {

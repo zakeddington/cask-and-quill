@@ -43,7 +43,7 @@ export class RegionsView {
 		const panelId = `region-panel-${region.id}`;
 
 		return `
-			<section class="accordion${isOpen ? ' is-open' : ''}">
+			<section class="accordion ${isOpen ? 'is-open' : ''}">
 				<h2>
 					<button
 						aria-controls="${panelId}"
