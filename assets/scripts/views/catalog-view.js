@@ -6,14 +6,11 @@ import {
 	CATALOG_MASH_BILL_FIELDS,
 	CATALOG_TASTING_NOTE_FIELDS,
 	SPRITE_URL,
-	KEY_ARROW_DOWN,
-	KEY_ARROW_UP,
-	KEY_HOME,
-	KEY_END
 } from '../config/constants.js';
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
 import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
+import { AccordionGroup } from '../components/accordion-group.js';
 
 export class CatalogView {
 	constructor(elContainer, isAdmin = false) {
@@ -55,12 +52,23 @@ export class CatalogView {
 		this.initModalEditCatalog();
 		this.initFillSelect();
 		this.initSortSelect();
+		this.initAccordions();
 
 		await this.fetchCatalogData();
 
 		this.initCategorySelect();
 		this.render();
 		this.addEventListeners();
+	}
+
+	initAccordions() {
+		new AccordionGroup(this.el.catalog, {
+			selectorAccordion: '.catalog-bottle',
+			selectorTrigger: '.catalog-accordion-trigger',
+			allowMultiple: false,
+			scrollBlock: 'nearest',
+			onToggleCallback: (elAccordion, elTrigger, isOpen) => this.onBottleToggle(elAccordion, elTrigger, isOpen),
+		});
 	}
 
 	async fetchCatalogData() {
@@ -112,7 +120,6 @@ export class CatalogView {
 
 	addEventListeners() {
 		this.el.catalog.addEventListener('click', event => this.onCatalogClick(event));
-		this.el.catalog.addEventListener('keydown', event => this.onCatalogKeydown(event));
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
 		this.el.searchClear?.addEventListener('click', () => this.onSearchClear());
 		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
@@ -134,41 +141,7 @@ export class CatalogView {
 		if (editButton) {
 			const bottle = this.getBottleById(editButton.dataset.bottleId);
 			if (bottle) this.components.modal?.open(bottle);
-			return;
 		}
-
-		const trigger = event.target.closest('.catalog-accordion-trigger');
-		if (!trigger) return;
-
-		this.toggleBottle(trigger.dataset.bottleId);
-	}
-
-	onCatalogKeydown(event) {
-		if (!event.target.matches('.catalog-accordion-trigger')) return;
-
-		const elTriggers = Array.from(this.el.catalog.querySelectorAll('.catalog-accordion-trigger'));
-		const currentIndex = elTriggers.indexOf(event.target);
-		let nextIndex = currentIndex;
-
-		switch (event.key) {
-			case KEY_ARROW_DOWN:
-				nextIndex = (currentIndex + 1) % elTriggers.length;
-				break;
-			case KEY_ARROW_UP:
-				nextIndex = (currentIndex - 1 + elTriggers.length) % elTriggers.length;
-				break;
-			case KEY_HOME:
-				nextIndex = 0;
-				break;
-			case KEY_END:
-				nextIndex = elTriggers.length - 1;
-				break;
-			default:
-				return;
-		}
-
-		event.preventDefault();
-		elTriggers[nextIndex].focus();
 	}
 
 	onSearchInput(event) {
@@ -272,36 +245,10 @@ export class CatalogView {
 		this.components.modal?.open(newBottle, { isNew: true });
 	}
 
-	toggleBottle(id) {
-		const previousId = this.state.expandedId;
-		this.state.expandedId = previousId === id ? null : id;
-
-		if (previousId) {
-			this.setBottleExpanded(previousId, false);
-		}
-		if (this.state.expandedId) {
-			this.setBottleExpanded(this.state.expandedId, true);
-		}
-	}
-
-	setBottleExpanded(id, expanded) {
-		const trigger = this.el.catalog.querySelector(`.catalog-accordion-trigger[data-bottle-id="${CSS.escape(id)}"]`);
-		if (!trigger) return;
-
-		const article = trigger.closest('.catalog-bottle');
-		const panel = article?.querySelector('.catalog-panel');
-		const heading = article?.querySelector('.catalog-bottle-heading');
-
-		article?.classList.toggle('is-open', expanded);
-		heading?.classList.toggle('theme-accent', expanded);
-		trigger.setAttribute('aria-expanded', String(expanded));
-		panel?.setAttribute('aria-hidden', String(!expanded));
-
-		if (expanded) {
-			setTimeout(() => {
-				article.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-			}, 350);
-		}
+	onBottleToggle(elAccordion, elTrigger, isOpen) {
+		const id = elTrigger.dataset.bottleId;
+		this.state.expandedId = isOpen ? id : (this.state.expandedId === id ? null : this.state.expandedId);
+		elAccordion.querySelector('.catalog-bottle-heading')?.classList.toggle('theme-accent', isOpen);
 	}
 
 	getBottleById(id) {
@@ -447,6 +394,7 @@ export class CatalogView {
 					class="catalog-panel"
 					id="${html(panelId)}"
 					role="region"
+					${isOpen ? '' : 'inert'}
 				>
 					<div class="catalog-panel-inner">
 						${this.renderDetails(bottle)}
