@@ -1,4 +1,5 @@
 /* Color Palette */
+/* ----------------------------------------------------------------------------------- */
 :root {
 	/* Brown scale */
 	--color-palette-brown-900: #1c1c16;  /* darkest */
@@ -45,6 +46,7 @@
 }
 
 /* Color Tokens */
+/* ----------------------------------------------------------------------------------- */
 :root {
 	/* Backgrounds */
 	--color-background-primary: var(--color-palette-cream-50);
@@ -140,6 +142,7 @@
 }
 
 /* Layout Grid */
+/* ----------------------------------------------------------------------------------- */
 :root {
 	--layout-max-width: 1920px;
 	--layout-inline-padding: clamp(1.5rem, 2vw, 2rem);
@@ -165,13 +168,16 @@
 	}
 }
 
-/* Typography Families */
+/* Typography */
+/* ----------------------------------------------------------------------------------- */
+
+/* Font families */
 :root {
 	--font-body: "Newsreader", serif;
 	--font-sans-serif: "Work Sans", sans-serif;
 }
 
-/* Typography Scales - Font Sizes */
+/* Font Sizes */
 :root {
 	/* Display/Hero sizes */
 	--font-size-display-lg: clamp(4.25rem, 12vw, 9rem); /* 68px - 144px */
@@ -191,7 +197,7 @@
 	--font-size-body-xs: 0.75rem;
 }
 
-/* Typography Weights */
+/* Weights */
 :root {
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;
@@ -199,14 +205,14 @@
 	--font-weight-bold: 700;
 }
 
-/* Typography Line Heights */
+/* Line Heights */
 :root {
 	--line-height-tight: 1;
 	--line-height-normal: 1.4;
 	--line-height-relaxed: 1.6;
 }
 
-/* Typography Letter Spacing */
+/* Letter Spacing */
 :root {
 	--letter-spacing-tight: 0;
 	--letter-spacing-normal: 0;
@@ -215,6 +221,7 @@
 }
 
 /* Layers */
+/* ----------------------------------------------------------------------------------- */
 :root {
 	--z-default: 1;
 	--z-above-default: 2;

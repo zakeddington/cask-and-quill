@@ -1,8 +1,6 @@
-/* ============================================================
-   Catalog Edit Modal — Component-specific styles
-   Base modal styles: components/modal.css
-   ============================================================ */
+/* Catalog Edit Modal content - inherits modal styles */
 
+/* Field containers */
 .catalog-form-grid {
 	display: grid;
 	gap: 1rem;
@@ -24,6 +22,7 @@
 	gap: 1rem;
 }
 
+/* Form fields */
 .catalog-field input:not([type="radio"]),
 .catalog-field textarea {
 	color: var(--color-text-primary);
@@ -87,6 +86,7 @@
 	width: 1rem;
 }
 
+/* Rich text editors */
 .catalog-rich-editor {
 	background-color: var(--color-background-primary);
 }
@@ -103,6 +103,7 @@
 	*:last-child { margin-bottom: 0; }
 }
 
+/* Journal drawer button */
 .catalog-fieldset-journal {
 	position: relative;
 }

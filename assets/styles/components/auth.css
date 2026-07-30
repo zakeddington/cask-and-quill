@@ -3,8 +3,7 @@
 	position: relative;
 }
 
-/* Logged-in popover menu */
-
+/* Logout dropdown menu */
 .auth-user {
 	display: inline-flex;
 	position: relative;
@@ -42,8 +41,7 @@
 	}
 }
 
-/* Login dialog */
-
+/* Login modal */
 .auth-dialog {
 	background-color: var(--color-background-primary);
 	border: 2px solid var(--color-border-accent);

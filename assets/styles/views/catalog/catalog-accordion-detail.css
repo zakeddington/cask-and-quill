@@ -15,6 +15,7 @@
 	}
 }
 
+/* Columns */
 .catalog-detail-block {
 	border-bottom: 1px solid var(--color-border-accent);
 	padding-bottom: 1rem;
@@ -33,6 +34,7 @@
 	margin-bottom: 1rem;
 }
 
+/* Content lists */
 .catalog-detail-list {
 	display: grid;
 	gap: 0.5rem;
@@ -65,6 +67,7 @@
 		}
 	}
 
+	/* Mash bill layout */
 	.is-horizontal & {
 		align-items: center;
 		border-top: 0;
@@ -86,6 +89,7 @@
 	width: 1.25rem;
 }
 
+/* Item title */
 .catalog-detail-list dt {
 	color: var(--color-text-primary);
 	font-family: var(--font-sans-serif);
@@ -99,6 +103,7 @@
 	}
 }
 
+/* Item detail */
 .catalog-detail-list dd {
 	color: var(--color-text-accent);
 	font-size: var(--font-size-body-sm);
@@ -110,6 +115,7 @@
 	}
 }
 
+/* Journal column */
 .catalog-tasting-block {
 	background-color: var(--color-background-primary);
 	border: 1px solid var(--color-border-primary);
@@ -143,6 +149,7 @@
 	margin: 0;
 }
 
+/* Edit footer */
 .catalog-detail-actions {
 	display: flex;
 	justify-content: flex-end;

@@ -1,4 +1,3 @@
-/* Global grid classes */
 .grid {
 	display: grid;
 	gap: var(--grid-gap);

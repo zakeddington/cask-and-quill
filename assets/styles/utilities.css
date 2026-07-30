@@ -1,5 +1,3 @@
-/* Typography Utility Classes */
-
 .text-display-lg {
 	font-size: var(--font-size-display-lg);
 	font-weight: var(--font-weight-bold);

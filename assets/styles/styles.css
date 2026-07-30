@@ -37,22 +37,18 @@
 
 /* Views */
 /* --------------------------------------------------------------- */
-/* Regions */
 @import "views/regions/region-content.css" layer(views);
 @import "views/regions/region-sidebar.css" layer(views);
 @import "views/regions/region-varieties.css" layer(views);
 @import "views/regions/region-map.css" layer(views);
 
-/* Lexicon */
 @import "views/lexicon/lexicon-layout.css" layer(views);
 @import "views/lexicon/lexicon-nav.css" layer(views);
 @import "views/lexicon/lexicon-content.css" layer(views);
 
-/* Catalog */
 @import "views/catalog/catalog-accordion.css" layer(views);
 @import "views/catalog/catalog-accordion-detail.css" layer(views);
 
-/* Flavors */
 @import "views/flavors/flavor-family.css" layer(views);
 
 /* Utilities */

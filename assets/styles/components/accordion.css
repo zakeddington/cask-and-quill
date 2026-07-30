@@ -1,7 +1,3 @@
-/* ============================================================
-   Accordion — Base Component
-   ============================================================ */
-
 .accordion {
 	scroll-margin-top: var(--layout-scroll-header-offset);
 

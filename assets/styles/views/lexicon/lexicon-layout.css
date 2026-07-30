@@ -1,4 +1,3 @@
-/* Lexicon layout */
 .lexicon-container {
 	display: flex;
 	flex-direction: column;
@@ -11,7 +10,6 @@
 	}
 }
 
-/* Lexicon main content */
 .lexicon-main {
 	flex: 1;
 }

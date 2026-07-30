@@ -1,14 +1,9 @@
-/* ============================================================
-   Flavor Family Edit Modal — Component-specific styles
-   Base modal styles: components/modal.css
-   ============================================================ */
-
+/* Flavor Family Edit Modal content - inherits modal styles */
 .flavor-modal .modal-panel {
 	max-width: 720px;
 }
 
-/* ——— Detail fields (Name + Description) ——— */
-
+/* Name & Description fields */
 .flavor-detail-fields {
 	display: grid;
 	gap: 1rem;
@@ -24,8 +19,7 @@
 	}
 }
 
-/* ——— Sub-categories list ——— */
-
+/* Sub-categories fields */
 .flavor-subs-list {
 	display: grid;
 	gap: 0.5rem;
@@ -53,8 +47,7 @@
 	min-width: 0;
 }
 
-/* ——— Terms list ——— */
-
+/* Flavor fields */
 .flavor-terms-list {
 	display: grid;
 	gap: 0.35rem;
@@ -80,8 +73,7 @@
 	margin-left: 2.5rem;
 }
 
-/* ——— Reorder buttons ——— */
-
+/* Flavor buttons */
 .flavor-reorder-btns {
 	display: flex;
 	flex-direction: column;
@@ -96,8 +88,6 @@
 		width: 1rem;
 	}
 }
-
-/* ——— Remove buttons ——— */
 
 .flavor-remove-btn {
 	.svg-icon {

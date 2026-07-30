@@ -1,4 +1,5 @@
 
+/* Results */
 .flavors-list {
 	margin-top: -6rem;
 	width: 100dvw;
@@ -8,7 +9,7 @@
 	}
 }
 
-/* ——— Family block ——— */
+/* Family group */
 .flavor-family {
 	--flavor-header-bg: var(--flavor-color-base);
 	--flavor-header-text: contrast-color(var(--flavor-color-base));
@@ -26,7 +27,7 @@
 	margin-bottom: 3rem;
 }
 
-/* ——— Per-column shade progression (light → saturated) ——— */
+/* Column colors */
 .flavor-col:nth-child(1) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 25%, white); --col-node-text: contrast-color(var(--col-node-bg)); }
 .flavor-col:nth-child(5) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 35%, white); --col-node-text: contrast-color(var(--col-node-bg)); }
 .flavor-col:nth-child(3) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 45%, white); --col-node-text: contrast-color(var(--col-node-bg)); }
@@ -36,6 +37,7 @@
 .flavor-col:nth-child(6) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 75%, white); --col-node-text: contrast-color(var(--col-node-bg)); }
 .flavor-col:nth-child(4) { --col-node-bg: color-mix(in oklch, var(--flavor-color-base) 80%, white); --col-node-text: contrast-color(var(--col-node-bg)); }
 
+/* Header row */
 .flavor-family-header {
 	background: var(--flavor-header-bg);
 }
@@ -98,8 +100,7 @@
 	}
 }
 
-/* ——— Content layout (aside + tree) ——— */
-
+/* Content layout (aside + tree) */
 .flavor-family-content {
 	display: flex;
 	flex-direction: column-reverse;
@@ -112,6 +113,7 @@
 	}
 }
 
+/* Image column */
 .flavor-family-aside {
 	flex-shrink: 0;
 	margin: auto;
@@ -130,6 +132,7 @@
 	width: 100%;
 }
 
+/* Content column */
 .flavor-family-main {
 	flex: 1;
 	min-width: 0;
@@ -141,8 +144,7 @@
 	}
 }
 
-/* ——— Tree structure ——— */
-
+/* Tree lines above columns */
 .flavor-v-spine {
 	background: var(--flavor-color-base);
 	height: 1rem;
@@ -159,6 +161,7 @@
 	width: 100dvw;
 }
 
+/* Flavors */
 .flavor-tree {
 	align-items: flex-start;
 	border-top: 2px solid var(--flavor-color-base);
