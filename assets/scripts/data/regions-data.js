@@ -355,5 +355,89 @@ export const REGIONS_DATA = [
 				tags: ['Wheat', 'Column Still', 'Minor Category'],
 			},
 		],
+	},
+	{
+		id: 'australia',
+		isOpen: false,
+		name: 'Australia',
+		regulator: 'No whisky-specific legal definition — governed by the joint Food Standards Australia New Zealand (FSANZ) Standard 2.7.5, the Excise Act 1901, and the Customs Act 1901',
+		keyRegulationsSummary: [
+			'2 yr min',
+			'No max distillation specified',
+			'37% (74°) min bottled',
+			'General country-of-origin food label requirement',
+		],
+		bottleImage: '',
+		legalFramework: [
+			{ label: 'Production location', value: 'No dedicated whisky appellation exists; claims of Australian origin fall under general country-of-origin food labelling law rather than a whisky-specific mandate.' },
+			{ label: 'Grain base', value: 'Any cereal grain permitted; no malted barley requirement. Multi-grain mash bills, including Archie Rose\'s six-grain recipe, are legally whisky.' },
+			{ label: 'Fermentation', value: 'No restrictions specified; externally sourced wash or wort from breweries is permitted, a practice several early producers relied on.' },
+			{ label: 'Distillation ceiling', value: 'No statutory ceiling; the Australian Taxation Office administratively recognizes distillation up to roughly 95% (190°) ABV as consistent with whisky character.' },
+			{ label: 'Entry proof', value: 'No entry proof specified.' },
+			{ label: 'Barrels', value: 'Oak casks; no size limit codified in law.' },
+			{ label: 'Aging minimum', value: '2 years in wood, per the Excise Act 1901 (domestic release) and Customs Act 1901 (imports).' },
+			{ label: 'Bottling minimum', value: '37% (74°) ABV, the general spirits floor set by FSANZ Standard 2.7.5.' },
+			{ label: 'Permitted additives', value: 'Caramel coloring (E150a) permitted; no formal prohibition on other flavoring agents or wood chips.' },
+			{ label: 'Notes', value: 'Australia has no legal definition of "single malt," unlike Scotland, Ireland, or the U.S. This gap fueled a 2025 industry dispute after producers marketed spirit matured only 10-14 days via accelerated-maturation technology as single malt whisky; the Australian Distillers Association and Tasmanian Whisky and Spirits Producers Association have pushed for a stricter standard.' },
+		],
+		varieties: [
+			{
+				name: 'Single Malt',
+				description: 'Australian Single Malt is the dominant category, made from malted barley in copper pot stills largely following Scotch conventions, but without any binding legal definition of the term. See legal notes for requirement disputes. Tasmania\'s cooler climate has made it the reputational and historical center of the category since Bill Lark reopened small-batch distilling there in 1992, led by Lark, Sullivans Cove, Overeem, and Hellyers Road, while mainland producers such as Archie Rose mature in a hotter climate that accelerates evaporation and flavor extraction.',
+				tags: ['Malted Barley', 'Pot Still', 'No Legal Definition', 'Dominant Category'],
+			},
+			{
+				name: 'Multi-Grain & Rye',
+				description: 'Multi-Grain and Rye whiskies use grain bills beyond malted barley, since Australian law imposes no mash bill restriction on whisky generally. Archie Rose distills its flagship single malt from a six-grain mash and won World\'s Best Rye Whisky in 2020, illustrating the stylistic freedom the law allows.',
+				tags: ['Any Grain(s)', 'No Mash Bill Restriction'],
+			},
+			{
+				name: 'Wine-Cask-Matured',
+				description: 'Wine-Cask-Matured whisky is a distinctly Australian style built on the country\'s fortified and table wine industry rather than a separate legal category. Producers season casks with port, apera (the industry\'s post-2010 term for sherry-style fortified wine), and Australian red wine; Starward matures its entire range in ex-wine casks from the Barossa region for a deliberately fruit-forward house style.',
+				tags: ['Ex-Port/Apera Casks', 'Ex-Red Wine Casks', 'Stylistic, Not Legal Category'],
+			},
+			{
+				name: 'Blended',
+				description: 'Blended Whisky combines malt and grain components and once dominated the market during the British-owned "Blended Whisky Period" of 1930-1980, before falling to a minority category after tariff protections ended and the era\'s major distilleries closed. Modern craft blends persist, but single malt now leads the category.',
+				tags: ['Malt & Grain Whisky', 'Minority Category', 'Historic Majority (1930-1980)'],
+			}
+		]
+	},
+	{
+		id: 'new-zealand',
+		isOpen: false,
+		name: 'New Zealand',
+		regulator: 'No government whisky law — production shares Food Standards Australia New Zealand (FSANZ) Standard 2.7.5 with Australia; whisky-specific rules come from Distilled Spirits Aotearoa\'s voluntary New Zealand Whisky Definition (2021)',
+		keyRegulationsSummary: [
+			'2 yr min (voluntary)',
+			'94.8% (189.6°) max distillation',
+			'40% (80°) min bottled',
+			'produced in New Zealand',
+		],
+		bottleImage: '',
+		legalFramework: [
+			{ label: 'Production location', value: 'Mashing, fermentation, distillation, maturation, and bottling must all take place in New Zealand under the voluntary DSA standard — a stricter production-location test than most whisky-producing nations, though it carries no legal force.' },
+			{ label: 'Grain base', value: 'Single malt requires 100% malted cereal grain, water, and yeast; blended New Zealand whisky may use fermentable sugars from cereal grain more broadly.' },
+			{ label: 'Fermentation', value: 'No commercially produced liquid malt extract or added flavoring ingredients permitted. Enzymes are banned for single malt but permitted for blended New Zealand whisky.' },
+			{ label: 'Distillation ceiling', value: 'Less than 94.8% (189.6°) ABV, batch distilled in copper pot stills.' },
+			{ label: 'Entry proof', value: 'No entry proof specified.' },
+			{ label: 'Barrels', value: 'Wooden casks not exceeding 700 litres. Wood chips are not permitted during maturation.' },
+			{ label: 'Aging minimum', value: '2 years, per the voluntary DSA standard; no government-mandated minimum exists.' },
+			{ label: 'Bottling minimum', value: '40% (80°) ABV under the DSA standard — higher than the 37% general spirits floor New Zealand shares with Australia under FSANZ Standard 2.7.5.' },
+			{ label: 'Permitted additives', value: 'Natural caramel coloring (E150a) only, for consistency.' },
+			{ label: 'Notes', value: 'New Zealand has no government-enforced whisky law; the Distilled Spirits Aotearoa standard adopted by member consensus in February 2021 is explicitly non-binding and is enforced only through peer pressure, including a prohibition on non-compliant products using New Zealand place names or imagery.' },
+		],
+		varieties: [
+			{
+				name: 'Single Malt',
+				description: 'New Zealand Single Malt is effectively the country\'s only active whisky category, made from 100% malted barley without enzymes and matured under a climate far more extreme than most producing nations. Central Otago distilleries such as Cardrona report seasonal temperature swings of roughly 40°C, accelerating maturation, while Thomson Whisky in Auckland uses South Island barley smoked over native manuka wood and peat.',
+				tags: ['100% Malted Barley', 'No Enzymes', 'Pot Still', 'Dominant Category'],
+			},
+			{
+				name: 'Legacy Grain & Blended Stock',
+				description: 'The Willowbank Distillery in Dunedin, the world\'s southernmost whisky distillery in its day, produced New Zealand\'s Wilson\'s, 45 South, and Lammerlaw labels from 1974 until its closure in 1997. The New Zealand Whisky Collection acquired its surviving casks in 2010 and continues to bottle the stock, including a grain whisky component, as South Island Single Malt and Doublewood releases aged 20 years or more — the only trace of grain or blended whisky in New Zealand\'s history, since no distillery today produces either.',
+				tags: ['Historic Stock (1987-1994)', 'Includes Grain Whisky', 'No Longer in Production'],
+			},
+		],
 	}
 ];
