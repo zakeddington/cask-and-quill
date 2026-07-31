@@ -318,5 +318,42 @@ export const REGIONS_DATA = [
 				tags: ['2+ Single Malts', 'Voluntary Standard (IMWA)'],
 			},
 		],
+	},
+	{
+		id: 'taiwan',
+		isOpen: false,
+		name: 'Taiwan',
+		regulator: 'No whisky-specific law or geographic indication — governed by the generic tax/labeling definition of "whisky" in the Enforcement Rules of the Tobacco and Alcohol Administration Act (Ministry of Finance)',
+		keyRegulationsSummary: [
+			'2 yr min',
+			'No max distillation specified',
+			'40% (80°) min bottled',
+			'No domestic-production requirement',
+		],
+		bottleImage: '',
+		legalFramework: [
+			{ label: 'Production location', value: 'No requirement that whisky sold as "Taiwan whisky" be entirely produced in Taiwan; the statute defines a generic tax category rather than a protected designation of origin, unlike Scotch, Irish, or Japanese whisky.' },
+			{ label: 'Grain base', value: 'Any grain, malted or not, is permitted by law. Malted barley dominates in practice, though some producers experiment with rice, wheat, and corn.' },
+			{ label: 'Fermentation', value: 'Saccharification and fermentation required; no restriction on enzymes specified.' },
+			{ label: 'Distillation ceiling', value: 'No distillation ceiling specified.' },
+			{ label: 'Entry proof', value: 'No entry proof specified.' },
+			{ label: 'Barrels', value: 'Wooden casks; no size limit specified.' },
+			{ label: 'Aging minimum', value: '2 years in wooden casks.' },
+			{ label: 'Bottling minimum', value: '40% (80°) ABV.' },
+			{ label: 'Permitted additives', value: 'No additive rules specified in the statute.' },
+			{ label: 'Notes', value: 'Because the law sets no domestic-production or single-distillery requirement, leading producers such as Kavalan and Nantou Distillery (Omar) voluntarily hold themselves to Scotch Whisky Association-style practices, including on-site distillation and a ban on imported bulk spirit. Taiwan\'s subtropical climate and large diurnal swings (as low as 26°C at night to as high as 42°C by day at Kavalan) drive an angel\'s share of roughly 12% per year versus Scotland\'s 2%, so whisky aged 4 to 6 years can taste comparable to a 12- to 18-year-old Scotch.' },
+		],
+		varieties: [
+			{
+				name: 'Single Malt',
+				description: 'Single Malt dominates Taiwan\'s whisky output, led by Kavalan (Yilan) and Omar from Nantou Distillery, unlike most whisky-producing nations where blends lead the market. Producers favor first-fill and heavily toasted casks to stand up to accelerated tropical maturation, and Nantou\'s continued operation as a fruit winery lets Omar finish whisky in casks that previously held lychee, plum, or orange wine.',
+				tags: ['Malted Barley', 'Pot Still', 'Dominant Category', 'Fruit-Wine Cask Finishes (Omar)'],
+			},
+			{
+				name: 'Single Grain',
+				description: 'Single Grain is a smaller category led by the Taichung Distillery\'s Grainvest line, distilled from wheat in column stills. It offers a lighter, sweeter counterpoint to Taiwan\'s single-malt-led market.',
+				tags: ['Wheat', 'Column Still', 'Minor Category'],
+			},
+		],
 	}
 ];
