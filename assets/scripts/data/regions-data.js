@@ -278,10 +278,9 @@ export const REGIONS_DATA = [
 		name: 'India',
 		regulator: 'No unified whisky law — governed by Food Safety and Standards Authority of India (FSSAI, 2018, amended 2023) Alcoholic Beverages Regulations, state excise acts, and a voluntary Indian Malt Whisky Association (IMWA, 2025)',
 		keyRegulationsSummary: [
-			'No national aging minimum',
-			'No grain requirement (molasses permitted)',
-			'Blended whisky: ≥2% actual malt/grain spirit',
-			'Single malt: voluntary 3 yr standard (IMWA)',
+			'No official requirements',
+			'Voluntary requirements for Single Malt only',
+			'Primarily not legal whisky internationally (no grain requirement, molasses permitted)',
 		],
 		bottleImage: '',
 		legalFramework: [
