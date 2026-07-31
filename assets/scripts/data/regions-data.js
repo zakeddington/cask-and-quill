@@ -271,5 +271,52 @@ export const REGIONS_DATA = [
 				tags: ['No Mash Bill Restrictions', 'Aged 3+ Years', 'Primary Designation', 'Rye Synonym'],
 			}
 		]
+	},
+	{
+		id: 'india',
+		isOpen: false,
+		name: 'India',
+		regulator: 'No unified whisky law — governed by Food Safety and Standards Authority of India (FSSAI, 2018, amended 2023) Alcoholic Beverages Regulations, state excise acts, and a voluntary Indian Malt Whisky Association (IMWA, 2025)',
+		keyRegulationsSummary: [
+			'No national aging minimum',
+			'No grain requirement (molasses permitted)',
+			'Blended whisky: ≥2% actual malt/grain spirit',
+			'Single malt: voluntary 3 yr standard (IMWA)',
+		],
+		bottleImage: '',
+		legalFramework: [
+			{ label: 'Production location', value: 'No requirement that whisky be sold as "Indian" originate entirely in India; FSSAI regulates food safety of what is sold domestically rather than mandating domestic production.' },
+			{ label: 'Grain base', value: 'No national requirement to use grain at all. FSSAI\'s whisky definition permits neutral spirit distilled from molasses, cereals, or other agricultural carbohydrate sources; the large majority of Indian whisky by volume is molasses-based extra neutral alcohol (ENA).' },
+			{ label: 'Fermentation', value: 'No national restriction specified.' },
+			{ label: 'Distillation ceiling', value: 'No national distillation ceiling specified for whisky.' },
+			{ label: 'Entry proof', value: 'No entry proof specified.' },
+			{ label: 'Barrels', value: 'No national cask material or size requirement. FSSAI requires only that any beverage labeled "matured" spend at least 1 year in oak or other suitable wood vats, barrels, or with wood chips — a rule applying to all alcoholic beverages, not whisky specifically.' },
+			{ label: 'Aging minimum', value: 'No national whisky-specific minimum; FSSAI\'s general "matured" claim requires only 1 year in wood. The voluntary IMWA standard requires 3 years for Indian Single Malt, but binds only its own members.' },
+			{ label: 'Bottling minimum', value: 'No national bottling ABV minimum specified for whisky; state excise departments set their own sale-strength conventions, which vary by state.' },
+			{ label: 'Permitted additives', value: 'FSSAI permits caramel coloring, flavoring, and blending with neutral or rectified spirit. Its "blended malt/grain whisky" category requires as little as 2% actual malt or grain whisky, with the remainder made up of neutral or rectified spirit.' },
+			{ label: 'Notes', value: 'Regulation is split across FSSAI, state excise departments (which license production and vary by state), and Bureau of Indian Standards (BIS) voluntary standards — there is no single binding law comparable to Scotland\'s SWR 2009. The IMWA, launched March 2025 by Amrut, Paul John, Rampur, and Indri, set its own voluntary standard for "Indian Single Malt" and filed for Geographical Indication protection in February 2025; the application remains pending and the standard has no legal force outside IMWA\'s membership.' },
+		],
+		varieties: [
+			{
+				name: 'Indian Whisky (IMFL)',
+				description: 'The category that accounts for the large majority of Indian whisky by volume, sold under India\'s "Indian Made Foreign Liquor" framework. Brands such as McDowell\'s No. 1, Officer\'s Choice, and Royal Stag are built on extra neutral alcohol (ENA) distilled from molasses, blended with flavoring, caramel coloring, and often only a small fraction of actual malt or grain whisky. Because it is not grain-based, this category cannot legally be sold as "whisky" in the US, UK, or EU.',
+				tags: ['Molasses-Based ENA', 'No Aging Minimum', 'World\'s Best-Selling by Volume', 'Not Legal as "Whisky" in US/UK/EU'],
+			},
+			{
+				name: 'Blended Malt / Grain Whisky',
+				description: 'FSSAI\'s blended malt or blended grain whisky category requires as little as 2% actual barley malt or grain whisky, with the remainder made up of neutral or rectified spirit. It sits between mass-market IMFL and genuine single malt, and the label alone often cannot show how much real malt or grain distillate a bottle contains.',
+				tags: ['≥2% Malt/Grain Whisky', 'Neutral/Rectified Spirit Permitted', 'FSSAI Category'],
+			},
+			{
+				name: 'Indian Single Malt',
+				description: 'Made from 100% malted barley at a single Indian distillery and distilled in pot stills, following the voluntary standard set by the Indian Malt Whisky Association in 2025. Producers such as Amrut, Paul John, Rampur, and Indri age their spirit at least 3 years in oak casks under 700 litres, though tropical heat matures whisky 3 to 4 times faster than in Scotland, so a young Indian single malt can taste comparable to a much older Scotch. The standard is voluntary and carries no legal force outside IMWA\'s own membership.',
+				tags: ['100% Malted Barley', 'Pot Still', 'One Distillery', 'Voluntary 3 Yr Standard (IMWA)', 'Accelerated Tropical Maturation'],
+			},
+			{
+				name: 'Indian Pure Malt',
+				description: 'Indian Pure Malt blends single malt whiskies from two or more Indian distilleries, similar in concept to Scotch\'s Blended Malt category. Like Indian Single Malt, it follows IMWA\'s voluntary standard rather than a legal one.',
+				tags: ['2+ Single Malts', 'Voluntary Standard (IMWA)'],
+			},
+		],
 	}
 ];

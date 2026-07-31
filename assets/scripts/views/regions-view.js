@@ -73,7 +73,7 @@ export class RegionsView {
 					<div class="accordion-panel-inner grid grid-align-stretch grid-col-full">
 						<aside class="region-sidebar grid-col-md-3">
 							${this.renderLegalFramework(region)}
-							<img alt="${escapeHtml(region.name)} Bottle" class="region-bottle" src="${region.bottleImage}" />
+							${this.renderBottleImage(region.bottleImage, region.name)}
 						</aside>
 
 						<div class="region-content grid-col-md-9">
@@ -84,6 +84,14 @@ export class RegionsView {
 				</div>
 			</section>
 		`;
+	}
+
+	renderBottleImage(src, name) {
+		if (src) {
+			return `<img alt="${escapeHtml(name)} Bottle" class="region-bottle" src="${src}" />`;
+		} else {
+			return ``;
+		}
 	}
 
 	renderKeyRegulationsSummary(summary) {
