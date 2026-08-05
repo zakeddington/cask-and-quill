@@ -282,7 +282,7 @@ export const REGIONS_DATA = [
 			'Voluntary requirements for Single Malt only',
 			'Primarily not legal whisky internationally (no grain requirement, molasses permitted)',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-indian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No requirement that whisky be sold as "Indian" originate entirely in India; FSSAI regulates food safety of what is sold domestically rather than mandating domestic production.' },
 			{ label: 'Grain base', value: 'No national requirement to use grain at all. FSSAI\'s whisky definition permits neutral spirit distilled from molasses, cereals, or other agricultural carbohydrate sources; the large majority of Indian whisky by volume is molasses-based extra neutral alcohol (ENA).' },
@@ -329,7 +329,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'No domestic-production requirement',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-taiwanese.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No requirement that whisky sold as "Taiwan whisky" be entirely produced in Taiwan; the statute defines a generic tax category rather than a protected designation of origin, unlike Scotch, Irish, or Japanese whisky.' },
 			{ label: 'Grain base', value: 'Any grain, malted or not, is permitted by law. Malted barley dominates in practice, though some producers experiment with rice, wheat, and corn.' },
@@ -366,7 +366,7 @@ export const REGIONS_DATA = [
 			'37% (74°) min bottled',
 			'General country-of-origin food label requirement',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-australian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No dedicated whisky appellation exists; claims of Australian origin fall under general country-of-origin food labelling law rather than a whisky-specific mandate.' },
 			{ label: 'Grain base', value: 'Any cereal grain permitted; no malted barley requirement. Multi-grain mash bills, including Archie Rose\'s six-grain recipe, are legally whisky.' },
@@ -413,7 +413,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in New Zealand',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-new-zealand.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Mashing, fermentation, distillation, maturation, and bottling must all take place in New Zealand under the voluntary DSA standard — a stricter production-location test than most whisky-producing nations, though it carries no legal force.' },
 			{ label: 'Grain base', value: 'Single malt requires 100% malted cereal grain, water, and yeast; blended New Zealand whisky may use fermentable sugars from cereal grain more broadly.' },
@@ -450,7 +450,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in an EU member state',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-european.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery in an EU member state. This is a bloc-wide floor: individual countries and registered regional GIs, such as Ireland or France\'s Brittany and Alsace, may layer stricter rules on top.' },
 			{ label: 'Grain base', value: 'Malted cereals required, with or without whole unmalted cereal grains.' },
@@ -493,7 +493,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled (EU floor)',
 			'Voluntary mash bill rules only (2025 Manifesto)',
 		],
-		bottleImage: '',
+		bottleImage: 'assets/images/bottle-danish.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No legal requirement that whisky sold as "Danish" originate entirely in Denmark. The 2025 Danish Whisky Manifesto is a voluntary pledge among its ten founding distilleries rather than a geographic designation, though its signatories intend to pursue a future EU geographical indication.' },
 			{ label: 'Grain base', value: 'The EU floor requires malted cereals. The Manifesto adds category-specific mash bills on top: 100% malted barley for Danish Single Malt, and at least 51% of the named grain for Danish Rye, Wheat, or Oat Whisky.' },
