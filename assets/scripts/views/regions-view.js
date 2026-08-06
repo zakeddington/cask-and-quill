@@ -120,7 +120,7 @@ export class RegionsView {
 						${this.renderBottleImage(region.bottleImage, region.name)}
 					</div>
 
-					<div class="region-header-info grid-col-md-12 grid-col-lg-9">
+					<div class="region-header-content grid-col-md-12 grid-col-lg-9">
 						<div class="region-title">
 							<h2 class="region-title-name">${escapeHtml(region.name)}</h2>
 							${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
@@ -158,12 +158,12 @@ export class RegionsView {
 
 	renderLegalFramework(region) {
 		return `
-			<div class="region-sidebar-block theme-accent">
-				<h3 class="sidebar-title text-label">
-					<svg class="svg-icon sidebar-title-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-gavel"></use></svg>
+			<div class="region-legal theme-accent">
+				<h3 class="region-legal-title text-label">
+					<svg class="svg-icon region-legal-title-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-gavel"></use></svg>
 					LEGAL FRAMEWORK
 				</h3>
-				<ul class="sidebar-list text-body-sm">
+				<ul class="region-legal-list text-body-sm">
 					${region.legalFramework.map(rule => `
 						<li><strong>${escapeHtml(rule.label)}:</strong> ${escapeHtml(rule.value)}</li>
 					`).join('')}

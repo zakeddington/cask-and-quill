@@ -10,7 +10,12 @@
 	}
 }
 
-.regions-content {
-	flex: 1;
-	min-width: 0;
+.region {
+	border-bottom: 2px solid var(--color-border-accent);
+	margin-bottom: 4rem;
+	scroll-margin-top: var(--layout-scroll-header-offset);
+
+	@media (min-width: 1024px) {
+		margin-bottom: 6rem;
+	}
 }
