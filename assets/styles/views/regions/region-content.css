@@ -46,6 +46,17 @@
 	}
 }
 
+/* Region section */
+.region {
+	border-bottom: 2px solid var(--color-border-accent);
+	margin-bottom: 4rem;
+	scroll-margin-top: var(--layout-scroll-header-offset);
+
+	@media (min-width: 1024px) {
+		margin-bottom: 6rem;
+	}
+}
+
 /* Main content container */
 .region-content {
 	display: flex;

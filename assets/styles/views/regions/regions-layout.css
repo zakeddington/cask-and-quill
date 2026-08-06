@@ -1,0 +1,16 @@
+.regions-container {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+@media (min-width: 768px) {
+	.regions-container {
+		flex-direction: row;
+	}
+}
+
+.regions-content {
+	flex: 1;
+	min-width: 0;
+}

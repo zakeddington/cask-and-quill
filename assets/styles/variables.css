@@ -51,6 +51,7 @@
 	/* Backgrounds */
 	--color-background-primary: var(--color-palette-cream-50);
 	--color-background-secondary: var(--color-palette-brown-700-alpha-05);
+	--color-background-secondary-alt: var(--color-palette-brown-700-alpha-10);
 	--color-background-tertiary: var(--color-palette-cream-50-alpha-50);
 	--color-background-header: var(--color-palette-cream-200);
 	--color-background-tag: var(--color-palette-brown-700-alpha-10);

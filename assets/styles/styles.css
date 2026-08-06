@@ -37,8 +37,10 @@
 
 /* Views */
 /* --------------------------------------------------------------- */
+@import "views/regions/regions-layout.css" layer(views);
+@import "views/regions/regions-nav.css" layer(views);
 @import "views/regions/region-content.css" layer(views);
-@import "views/regions/region-sidebar.css" layer(views);
+@import "views/regions/region-header.css" layer(views);
 @import "views/regions/region-varieties.css" layer(views);
 @import "views/regions/region-map.css" layer(views);
 

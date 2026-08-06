@@ -1,0 +1,43 @@
+.regions-nav-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.regions-nav-link {
+	white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+	.regions-nav {
+		align-self: start;
+		flex-shrink: 0;
+		position: sticky;
+		top: var(--layout-scroll-header-offset);
+		width: 12rem;
+	}
+
+	.regions-nav-list {
+		flex-direction: column;
+	}
+
+	.regions-nav-link {
+		border-bottom: 1px solid var(--color-border-primary);
+		border-left: 5px solid transparent;
+		justify-content: flex-start;
+		padding: 1rem ;
+		width: 100%;
+
+		&:not(:disabled):hover,
+		&:not(:disabled):focus {
+			background: var(--color-background-secondary);
+		}
+
+		&.active {
+			background: var(--color-background-secondary-alt);
+			border-bottom-color: var(--color-border-primary);
+			border-bottom-width: 1px;
+			border-left-color: var(--color-button-tertiary-border-active);
+		}
+	}
+}

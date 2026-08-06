@@ -1,8 +1,6 @@
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
-import { AccordionGroup } from '../components/accordion-group.js';
-import { SPRITE_URL } from '../config/constants.js';
 
 export class RegionsView {
 	constructor(elContainer) {
@@ -13,15 +11,23 @@ export class RegionsView {
 			container: elContainer,
 			regions: elContainer.querySelector('#regions'),
 			subRegions: null,
+			navLinks: null,
+			regionSections: null,
 		}
+
+		this.state = {
+			intersectingIds: new Set(),
+		};
+
+		this.observer = null;
 
 		this.init();
 	}
 
 	init() {
 		this.render();
-		this.initAccordions();
 		this.initMapSwitcher();
+		this.initNav();
 	}
 
 	initMapSwitcher() {
@@ -29,58 +35,103 @@ export class RegionsView {
 		this.el.subRegions.forEach(group => new SubRegionMapSwitcher(group));
 	}
 
-	initAccordions() {
-		new AccordionGroup(this.el.regions);
+	initNav() {
+		this.el.navLinks = Array.from(this.el.regions.querySelectorAll('.regions-nav-link'));
+		this.el.regionSections = Array.from(this.el.regions.querySelectorAll('.region'));
+
+		this.el.navLinks.forEach(link => {
+			link.addEventListener('click', event => this.onNavLinkClick(event, link));
+		});
+
+		const headerHeight = this.el.container.querySelector('.header')?.getBoundingClientRect().height || 0;
+
+		this.observer = new IntersectionObserver(
+			entries => this.onIntersect(entries),
+			{ rootMargin: `-${headerHeight}px 0px -30% 0px` }
+		);
+
+		this.el.regionSections.forEach(section => this.observer.observe(section));
+	}
+
+	onNavLinkClick(event, link) {
+		const targetId = link.getAttribute('href').slice(1);
+		const target = document.getElementById(targetId);
+		if (!target) return;
+
+		event.preventDefault();
+		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
+	onIntersect(entries) {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				this.state.intersectingIds.add(entry.target.id);
+			} else {
+				this.state.intersectingIds.delete(entry.target.id);
+			}
+		});
+
+		const activeId = this.el.regionSections
+			.map(section => section.id)
+			.filter(id => this.state.intersectingIds.has(id))
+			.pop();
+
+		if (!activeId) return;
+
+		this.el.navLinks.forEach(link => {
+			link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+		});
 	}
 
 	render() {
-		this.el.regions.innerHTML = this.data.map(region => this.renderRegion(region)).join('');
+		this.el.regions.innerHTML = `
+			<div class="regions-container">
+				${this.renderNav()}
+				<div class="regions-content">
+					${this.data.map(region => this.renderRegion(region)).join('')}
+				</div>
+			</div>
+		`;
+	}
+
+	getRegionId(region) {
+		return `region-${region.id}`;
+	}
+
+	renderNav() {
+		return `
+			<nav class="regions-nav" aria-label="Region navigation">
+				<ul class="regions-nav-list list-reset">
+					${this.data.map(region => `
+						<li>
+							<a class="button button-tertiary regions-nav-link" href="#${this.getRegionId(region)}">${escapeHtml(region.name)}</a>
+						</li>
+					`).join('')}
+				</ul>
+			</nav>
+		`;
 	}
 
 	renderRegion(region) {
-		const isOpen = region.isOpen;
-		const triggerId = `region-trigger-${region.id}`;
-		const panelId = `region-panel-${region.id}`;
-
 		return `
-			<section class="accordion ${isOpen ? 'is-open' : ''}">
-				<h2>
-					<button
-						aria-controls="${panelId}"
-						aria-expanded="${isOpen}"
-						class="accordion-trigger"
-						id="${triggerId}"
-						type="button"
-					>
-						<span class="region-title">
-							<span class="region-title-name">${escapeHtml(region.name)}</span>
-							${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
-						</span>
-						<span class="accordion-trigger-icon" aria-hidden="true">
-							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
-						</span>
-					</button>
-				</h2>
-
-				<div
-					aria-hidden="${!isOpen}"
-					aria-labelledby="${triggerId}"
-					class="accordion-panel"
-					id="${panelId}"
-					role="region"
-					inert
-				>
-					<div class="accordion-panel-inner grid grid-align-stretch grid-col-full">
-						<aside class="region-sidebar grid-col-md-3">
-							${this.renderLegalFramework(region)}
-							${this.renderBottleImage(region.bottleImage, region.name)}
-						</aside>
-
-						<div class="region-content grid-col-md-9">
-							${this.renderVarieties(region)}
-							${region.subRegions ? this.renderSubRegions(region) : ''}
-						</div>
+			<section class="region" id="${this.getRegionId(region)}">
+				<div class="region-header grid grid-align-center">
+					<div class="region-header-media grid-col-md-12 grid-col-lg-3">
+						${this.renderBottleImage(region.bottleImage, region.name)}
 					</div>
+
+					<div class="region-header-info grid-col-md-12 grid-col-lg-9">
+						<div class="region-title">
+							<h2 class="region-title-name">${escapeHtml(region.name)}</h2>
+							${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
+						</div>
+						${this.renderLegalFramework(region)}
+					</div>
+				</div>
+
+				<div class="region-content">
+					${this.renderVarieties(region)}
+					${region.subRegions ? this.renderSubRegions(region) : ''}
 				</div>
 			</section>
 		`;
@@ -136,10 +187,10 @@ export class RegionsView {
 	renderVariety(variety) {
 		return `
 			<div class="variety-item grid">
-				<div class="variety-info grid-col-md-4">
+				<div class="variety-info grid-col-md-12 grid-col-lg-3">
 					<h4 class="variety-name">${escapeHtml(variety.name)}</h4>
 				</div>
-				<div class="variety-description grid-col-md-8">
+				<div class="variety-description grid-col-md-9">
 					<p>${escapeHtml(variety.description)}</p>
 					<div class="variety-tags">
 						${variety.tags.map(tag => `<span class="tag text-label">${escapeHtml(tag)}</span>`).join('')}
