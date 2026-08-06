@@ -10,12 +10,12 @@ export class SubRegionMapSwitcher {
 
 		this.el = {
 			group: groupEl,
-			mapContainer: groupEl.closest('.map-container') || groupEl,
+			mapContainer: groupEl.closest('.sub-regions-map-container') || groupEl,
 			map: elMap,
-			mapBaseImage: elMap?.querySelector('.map-base-image'),
-			allHighlightImage: elMap?.querySelector('.map-all-highlight-image'),
-			overlays: elMap ? Array.from(elMap.querySelectorAll('.map-region-image')) : [],
-			regionItems: Array.from(groupEl.querySelectorAll('.sub-region[data-region-key][data-map-highlight-image]')),
+			mapBaseImage: elMap?.querySelector('.sub-regions-map-image-base'),
+			allHighlightImage: elMap?.querySelector('.sub-regions-map-image-all-highlight'),
+			overlays: elMap ? Array.from(elMap.querySelectorAll('.sub-regions-map-image-highlight')) : [],
+			regionItems: Array.from(groupEl.querySelectorAll('.sub-regions-list-item[data-region-key][data-map-highlight-image]')),
 		};
 
 		this.state = {
@@ -124,7 +124,7 @@ export class SubRegionMapSwitcher {
 	}
 
 	onRegionMouseLeave(event) {
-		const nextRegion = event.relatedTarget?.closest?.('.sub-region[data-region-key]');
+		const nextRegion = event.relatedTarget?.closest?.('.sub-regions-list-item[data-region-key]');
 		if (nextRegion) return;
 		if (this.state.activeSource === 'text') this.clearActiveRegion();
 	}

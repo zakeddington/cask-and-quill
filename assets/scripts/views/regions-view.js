@@ -31,7 +31,7 @@ export class RegionsView {
 	}
 
 	initMapSwitcher() {
-		this.el.subRegions = this.el.container.querySelectorAll('.sub-regions[data-map-target]');
+		this.el.subRegions = this.el.container.querySelectorAll('.sub-regions-list[data-map-target]');
 		this.el.subRegions.forEach(group => new SubRegionMapSwitcher(group));
 	}
 
@@ -203,29 +203,29 @@ export class RegionsView {
 		const initialHighlightSrc = region.mapAllHighlightImage;
 
 		return `
-			<div class="region-map">
+			<div class="sub-regions">
 				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
-				<div class="map-container grid grid-align-center">
+				<div class="sub-regions-map-container grid grid-align-center">
 					<div
-						class="map-image grid-col-md-12 grid-col-lg-6"
+						class="sub-regions-map-image-container grid-col-md-12 grid-col-lg-6"
 						data-base-src="${escapeHtml(baseMapSrc)}"
 						data-initial-highlight-src="${escapeHtml(initialHighlightSrc)}"
 						id="${escapeHtml(mapId)}"
 					>
 						<img
 							alt="${escapeHtml(defaultMapAlt)}"
-							class="map-base-image"
+							class="sub-regions-map-image-base"
 							src="${escapeHtml(baseMapSrc)}"
 						/>
-						<img alt="" aria-hidden="true" class="map-all-highlight-image is-visible" src="${escapeHtml(initialHighlightSrc)}" />
-						<img alt="" aria-hidden="true" class="map-region-image" />
-						<img alt="" aria-hidden="true" class="map-region-image" />
+						<img alt="" aria-hidden="true" class="sub-regions-map-image-all-highlight is-visible" src="${escapeHtml(initialHighlightSrc)}" />
+						<img alt="" aria-hidden="true" class="sub-regions-map-image-highlight" />
+						<img alt="" aria-hidden="true" class="sub-regions-map-image-highlight" />
 					</div>
-					<div class="sub-regions grid grid-col-md-12 grid-col-lg-6" data-map-target="${escapeHtml(mapId)}">
+					<div class="sub-regions-list grid grid-col-md-12 grid-col-lg-6" data-map-target="${escapeHtml(mapId)}">
 						${region.subRegions.map(sub => {
 							return `
 								<div
-									class="sub-region grid-col-full"
+									class="sub-regions-list-item grid-col-full"
 									data-region-key="${escapeHtml(sub.key)}"
 									data-map-highlight-image="${escapeHtml(sub.mapHighlightImage)}"
 									tabindex="0"

@@ -1,49 +1,49 @@
-.map-image {
+.sub-regions-map-image-container {
 	align-self: start;
 	display: grid;
+
+	img {
+		grid-area: 1 / 1;
+		height: auto;
+		width: 100%;
+	}
 }
 
-.map-image img {
-	grid-area: 1 / 1;
-	height: auto;
-	width: 100%;
-}
-
-.map-base-image {
+.sub-regions-map-image-base {
 	opacity: 1;
 	z-index: var(--z-default);
 }
 
-.map-all-highlight-image {
+.sub-regions-map-image-all-highlight {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.22s ease;
 	z-index: var(--z-above-default);
+
+	&.is-visible {
+		opacity: 1;
+	}
 }
 
-.map-all-highlight-image.is-visible {
-	opacity: 1;
-}
-
-.map-region-image {
+.sub-regions-map-image-highlight {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.22s ease;
 	z-index: var(--z-elevated);
-}
 
-.map-region-image.is-visible {
-	opacity: 1;
+	&.is-visible {
+		opacity: 1;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.map-all-highlight-image,
-	.map-region-image {
+	.sub-regions-map-image-all-highlight,
+	.sub-regions-map-image-highlight {
 		transition: none;
 	}
 }
 
-.sub-regions {
+.sub-regions-list {
 	padding: 1rem 0;
 	row-gap: 1rem;
 
@@ -52,7 +52,7 @@
 	}
 }
 
-.sub-region {
+.sub-regions-list-item {
 	border-left: 2px solid var(--color-border-accent);
 	cursor: pointer;
 	padding-left: 1rem;
@@ -68,18 +68,18 @@
 	:last-child {
 		margin-bottom: 0;
 	}
-}
 
-.sub-region:hover,
-.sub-region.is-active,
-.sub-region:focus-visible {
-	background: var(--color-background-secondary);
-}
+	&:hover,
+	&.is-active,
+	&:focus-visible {
+		background: var(--color-background-secondary);
+	}
 
-.sub-region:focus-visible {
-	outline-offset: -2px;
-}
+	&:focus-visible {
+		outline-offset: -2px;
+	}
 
-.sub-region p {
-	color: var(--color-text-secondary);
+	p {
+		color: var(--color-text-secondary);
+	}
 }
