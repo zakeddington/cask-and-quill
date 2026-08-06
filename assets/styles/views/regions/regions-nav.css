@@ -11,10 +11,8 @@
 @media (min-width: 768px) {
 	.regions-nav {
 		align-self: start;
-		flex-shrink: 0;
 		position: sticky;
 		top: var(--layout-scroll-header-offset);
-		width: 12rem;
 	}
 
 	.regions-nav-list {

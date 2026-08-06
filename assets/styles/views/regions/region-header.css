@@ -1,9 +1,26 @@
+/* Overall container for entire region */
+.region {
+	border-bottom: 2px solid var(--color-border-accent);
+	display: flex;
+	flex-direction: column;
+	gap: var(--grid-gap);
+	margin-bottom: 4rem;
+	scroll-margin-top: var(--layout-scroll-header-offset);
+
+	@media (min-width: 1024px) {
+		margin-bottom: 6rem;
+	}
+}
+
+/* Container for title, description & legal content */
 .region-header-content {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
 }
 
+
+/* Title & description block */
 .region-title {
 	display: flex;
 	flex-direction: column;
@@ -51,6 +68,7 @@
 	}
 }
 
+/* Legal info block */
 .region-legal {
 	display: flex;
 	flex-direction: column;

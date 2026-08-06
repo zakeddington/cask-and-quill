@@ -1,28 +1,18 @@
-.region-varieties {
-	margin-top: 2rem;
-}
-
-.varieties-title {
-	border-bottom: 1px solid var(--color-border-primary);
-	margin-bottom: 0;
-	padding-bottom: 1rem;
-}
-
 .varieties-list > :nth-child(odd) {
 	background-color: var(--color-background-secondary);
 }
 
-.variety-item {
+.variety {
 	border-bottom: 1px solid var(--color-border-primary);
 	padding: 2.5rem 0;
 }
 
-.variety-item:last-child {
+.variety:last-child {
 	border-bottom: none;
 }
 
 
-.variety-info {
+.variety-title-col {
 	padding-left: 1.5rem;
 	padding-right: var(--grid-gap);
 
@@ -31,12 +21,12 @@
 	}
 }
 
-.variety-name {
+.variety-title {
 	color: var(--color-text-secondary);
 	margin-bottom: 0;
 }
 
-.variety-description {
+.variety-desc-col {
 	padding-left: 1.5rem;
 	padding-right: var(--grid-gap);
 
@@ -45,8 +35,8 @@
 	}
 }
 
-.variety-description,
-.variety-description p {
+.variety-desc-col,
+.variety-desc-col p {
 	color: var(--color-text-secondary);
 }
 

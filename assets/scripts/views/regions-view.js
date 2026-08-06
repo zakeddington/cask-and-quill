@@ -85,11 +85,9 @@ export class RegionsView {
 
 	render() {
 		this.el.regions.innerHTML = `
-			<div class="regions-container">
-				${this.renderNav()}
-				<div class="regions-content">
-					${this.data.map(region => this.renderRegion(region)).join('')}
-				</div>
+			${this.renderNav()}
+			<div class="grid-col-md-9 grid-col-lg-10">
+				${this.data.map(region => this.renderRegion(region)).join('')}
 			</div>
 		`;
 	}
@@ -100,7 +98,7 @@ export class RegionsView {
 
 	renderNav() {
 		return `
-			<nav class="regions-nav" aria-label="Region navigation">
+			<nav class="regions-nav grid-col-md-3 grid-col-lg-2" aria-label="Region navigation">
 				<ul class="regions-nav-list list-reset">
 					${this.data.map(region => `
 						<li>
@@ -116,7 +114,7 @@ export class RegionsView {
 		return `
 			<section class="region" id="${this.getRegionId(region)}">
 				<div class="region-header grid grid-align-center">
-					<div class="region-header-media grid-col-md-12 grid-col-lg-3">
+					<div class="grid-col-md-12 grid-col-lg-3">
 						${this.renderBottleImage(region.bottleImage, region.name)}
 					</div>
 
@@ -129,10 +127,8 @@ export class RegionsView {
 					</div>
 				</div>
 
-				<div class="region-content">
-					${this.renderVarieties(region)}
-					${region.subRegions ? this.renderSubRegions(region) : ''}
-				</div>
+				${this.renderVarieties(region)}
+				${region.subRegions ? this.renderSubRegions(region) : ''}
 			</section>
 		`;
 	}
@@ -176,7 +172,7 @@ export class RegionsView {
 	renderVarieties(region) {
 		return `
 			<div class="region-varieties">
-				<h3 class="varieties-title text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Varieties</h3>
+				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Varieties</h3>
 				<div class="varieties-list">
 					${region.varieties.map(variety => this.renderVariety(variety)).join('')}
 				</div>
@@ -186,11 +182,11 @@ export class RegionsView {
 
 	renderVariety(variety) {
 		return `
-			<div class="variety-item grid">
-				<div class="variety-info grid-col-md-12 grid-col-lg-3">
-					<h4 class="variety-name">${escapeHtml(variety.name)}</h4>
+			<div class="variety grid">
+				<div class="variety-title-col grid-col-md-12 grid-col-lg-3">
+					<h4 class="variety-title">${escapeHtml(variety.name)}</h4>
 				</div>
-				<div class="variety-description grid-col-md-9">
+				<div class="variety-desc-col grid-col-md-9">
 					<p>${escapeHtml(variety.description)}</p>
 					<div class="variety-tags">
 						${variety.tags.map(tag => `<span class="tag text-label">${escapeHtml(tag)}</span>`).join('')}
@@ -208,7 +204,7 @@ export class RegionsView {
 
 		return `
 			<div class="region-map">
-				<h3 class="varieties-title text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
+				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
 				<div class="map-container grid grid-align-center">
 					<div
 						class="map-image grid-col-md-12 grid-col-lg-6"
