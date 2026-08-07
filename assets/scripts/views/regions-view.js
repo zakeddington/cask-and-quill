@@ -1,6 +1,7 @@
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
+import { CustomDropdown } from '../components/custom-dropdown.js';
 
 export class RegionsView {
 	constructor(elContainer) {
@@ -13,10 +14,15 @@ export class RegionsView {
 			subRegions: null,
 			navLinks: null,
 			regionSections: null,
+			regionSelect: null,
 		}
 
 		this.state = {
 			intersectingIds: new Set(),
+		};
+
+		this.components = {
+			regionDropdown: null,
 		};
 
 		this.observer = null;
@@ -38,10 +44,16 @@ export class RegionsView {
 	initNav() {
 		this.el.navLinks = Array.from(this.el.regions.querySelectorAll('.regions-nav-link'));
 		this.el.regionSections = Array.from(this.el.regions.querySelectorAll('.region'));
+		this.el.regionSelect = this.el.regions.querySelector('#regions-nav-select');
 
-		this.el.navLinks.forEach(link => {
-			link.addEventListener('click', event => this.onNavLinkClick(event, link));
+		this.el.navLinks.forEach(elLink => {
+			elLink.addEventListener('click', event => this.onNavLinkClick(event, elLink));
 		});
+
+		if (this.el.regionSelect) {
+			this.components.regionDropdown = new CustomDropdown(this.el.regionSelect);
+			this.el.regionSelect.addEventListener('change', event => this.onRegionSelectChange(event));
+		}
 
 		const headerHeight = this.el.container.querySelector('.header')?.getBoundingClientRect().height || 0;
 
@@ -53,12 +65,19 @@ export class RegionsView {
 		this.el.regionSections.forEach(section => this.observer.observe(section));
 	}
 
-	onNavLinkClick(event, link) {
-		const targetId = link.getAttribute('href').slice(1);
+	onNavLinkClick(event, elLink) {
+		event.preventDefault();
+		this.scrollToRegion(elLink.getAttribute('href').slice(1));
+	}
+
+	onRegionSelectChange(event) {
+		this.scrollToRegion(event.target.value);
+	}
+
+	scrollToRegion(targetId) {
 		const target = document.getElementById(targetId);
 		if (!target) return;
 
-		event.preventDefault();
 		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
@@ -81,6 +100,8 @@ export class RegionsView {
 		this.el.navLinks.forEach(link => {
 			link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
 		});
+
+		this.components.regionDropdown?.syncValue(activeId);
 	}
 
 	render() {
@@ -99,6 +120,9 @@ export class RegionsView {
 	renderNav() {
 		return `
 			<nav class="regions-nav grid-col-md-3 grid-col-lg-2" aria-label="Region navigation">
+				<select id="regions-nav-select" aria-label="Jump to region">
+					${this.data.map(region => `<option value="${this.getRegionId(region)}">${escapeHtml(region.name)}</option>`).join('')}
+				</select>
 				<ul class="regions-nav-list list-reset">
 					${this.data.map(region => `
 						<li>

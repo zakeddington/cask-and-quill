@@ -1,3 +1,12 @@
+
+@media (max-width: 767px) {
+	.regions-view {
+		.hero {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /* Overall container for entire region */
 .region {
 	border-bottom: 2px solid var(--color-border-accent);
@@ -5,7 +14,12 @@
 	flex-direction: column;
 	gap: var(--grid-gap);
 	margin-bottom: 4rem;
+	padding-top: 1rem;
 	scroll-margin-top: var(--layout-scroll-header-offset);
+
+	@media (min-width: 768px) {
+		padding-top: 0;
+	}
 
 	@media (min-width: 1024px) {
 		margin-bottom: 6rem;

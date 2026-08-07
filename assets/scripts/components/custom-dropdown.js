@@ -147,6 +147,14 @@ export class CustomDropdown {
 		document.removeEventListener('pointerdown', this.onOutsideClick);
 	}
 
+	syncValue(value) {
+		if (this.state.value === value) return;
+		this.state.value = value;
+		this.el.select.value = value;
+		this.updateDisplay();
+		this.syncSelected();
+	}
+
 	selectOption(value) {
 		const prev = this.state.value;
 		this.state.value = value;
