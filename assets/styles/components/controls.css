@@ -16,10 +16,14 @@
 .page-controls--sticky {
 	background-color: var(--color-background-primary);
 	padding-bottom: 1rem;
-	padding-top: var(--layout-header-offset);
+	padding-top: 1rem;
 	position: sticky;
 	top: var(--layout-header-height);
 	z-index: var(--z-sticky);
+
+	@media (min-width: 768px) {
+		padding-top: var(--layout-header-offset);
+	}
 }
 
 .page-controls--sticky::after {
