@@ -179,7 +179,7 @@ export class RegionsView {
 	renderLegalFramework(region) {
 		return `
 			<div class="region-legal theme-region theme-${this.getRegionId(region)}">
-				<h3 class="region-legal-title text-label">
+				<h3 class="region-legal-title text-label-md">
 					<svg class="svg-icon region-legal-title-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-gavel"></use></svg>
 					LEGAL FRAMEWORK
 				</h3>
