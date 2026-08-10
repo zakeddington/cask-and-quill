@@ -178,12 +178,12 @@ export class RegionsView {
 
 	renderLegalFramework(region) {
 		return `
-			<div class="region-legal theme-accent">
+			<div class="region-legal theme-region theme-${this.getRegionId(region)}">
 				<h3 class="region-legal-title text-label">
 					<svg class="svg-icon region-legal-title-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-gavel"></use></svg>
 					LEGAL FRAMEWORK
 				</h3>
-				<ul class="region-legal-list text-body-sm">
+				<ul class="region-legal-list text-body-md">
 					${region.legalFramework.map(rule => `
 						<li><strong>${escapeHtml(rule.label)}:</strong> ${escapeHtml(rule.value)}</li>
 					`).join('')}
@@ -254,7 +254,7 @@ export class RegionsView {
 									data-map-highlight-image="${escapeHtml(sub.mapHighlightImage)}"
 									tabindex="0"
 								>
-									<h5>${escapeHtml(sub.name)}</h5>
+									<h4 class="text-heading-sm text-color-accent margin-bottom-none">${escapeHtml(sub.name)}</h4>
 									<p class="text-body-sm">${escapeHtml(sub.description)}</p>
 								</div>
 							`;

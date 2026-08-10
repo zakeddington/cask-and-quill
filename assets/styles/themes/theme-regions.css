@@ -1,0 +1,57 @@
+.theme-region {
+	--color-background-primary: var(--color-palette-brown-400);
+	--color-border-primary: var(--color-palette-cream-50-alpha-50);
+	--color-text-primary: var(--color-palette-cream-50);
+	--color-text-secondary: var(--color-palette-white);
+	--color-text-accent: var(--color-palette-white);
+	background-color: var(--color-background-primary);
+	color: var(--color-text-primary);
+}
+
+.theme-region :where(strong, b) {
+	color: var(--color-text-secondary);
+}
+
+.theme-region-scotland {
+	--color-background-primary: var(--color-theme-scotland);
+}
+
+.theme-region-ireland {
+	--color-background-primary: var(--color-theme-ireland);
+}
+
+.theme-region-us {
+	--color-background-primary: var(--color-theme-us);
+}
+
+.theme-region-japan {
+	--color-background-primary: var(--color-theme-japan);
+}
+
+.theme-region-canada {
+	--color-background-primary: var(--color-theme-canada);
+}
+
+.theme-region-india {
+	--color-background-primary: var(--color-theme-india);
+}
+
+.theme-region-taiwan {
+	--color-background-primary: var(--color-theme-taiwan);
+}
+
+.theme-region-australia {
+	--color-background-primary: var(--color-theme-australia);
+}
+
+.theme-region-new-zealand {
+	--color-background-primary: var(--color-theme-new-zealand);
+}
+
+.theme-region-european-union {
+	--color-background-primary: var(--color-theme-european-union);
+}
+
+.theme-region-denmark {
+	--color-background-primary: var(--color-theme-denmark);
+}
