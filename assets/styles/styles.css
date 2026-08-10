@@ -18,7 +18,7 @@
 /* --------------------------------------------------------------- */
 @import "themes/theme-accent.css" layer(themes);
 @import "themes/theme-primary.css" layer(themes);
-@import "themes/flavor-themes.css" layer(themes);
+@import "themes/theme-flavors.css" layer(themes);
 @import "themes/theme-regions.css" layer(themes);
 
 /* Components */
