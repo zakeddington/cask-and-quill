@@ -27,10 +27,6 @@
 				<a id="flavors-btn" class="button button-tertiary" href="/flavors/">Flavors</a>
 			</div>
 			<div id="auth-root" class="auth-root"></div>
-			<button id="catalog-add-btn" class="button-primary nav-catalog-add-btn" aria-label="Add Bottle" hidden>
-				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-plus"></use></svg>
-				<span>Add Bottle</span>
-			</button>
 			<button id="nav-menu-btn" class="nav-menu-btn button-icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-list"></use></svg>
 			</button>
@@ -68,6 +64,12 @@
 		</section>
 
 		<section class="page-controls">
+			<div class="controls-row controls-row-single">
+				<button id="catalog-add-btn" class="button-primary catalog-add-btn" aria-label="Add Bottle" hidden>
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-plus"></use></svg>
+					<span>Add Bottle</span>
+				</button>
+			</div>
 			<div class="controls-row">
 				<div class="search-container">
 					<input type="search" id="catalog-search" placeholder="Search bottles..." class="search-input" aria-label="Search bottles">
