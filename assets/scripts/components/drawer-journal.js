@@ -14,6 +14,7 @@ export class JournalDrawer extends BaseDrawer {
 		this.state.content = '';
 		this.state.isAdmin = this.options.isAdmin;
 		this.state.isEditing = false;
+		this.state.loadFailed = false;
 
 		this.components = {
 			pellEditor: null,
@@ -33,15 +34,20 @@ export class JournalDrawer extends BaseDrawer {
 
 	async open() {
 		this.state.isEditing = false;
+		super.open();
+		await this.loadContent();
+	}
+
+	async loadContent() {
+		this.state.loadFailed = false;
 		this.el.body.innerHTML = `<p class="drawer-journal-empty">Loading…</p>`;
 		this.el.footer.innerHTML = '';
 
-		super.open();
-
 		try {
 			this.state.content = await getGlobalNotes();
-		} catch {
-			this.state.content = '';
+		} catch (err) {
+			window.console.warn('Failed to load journal notes.', err);
+			this.state.loadFailed = true;
 		}
 
 		this.renderBody();
@@ -55,7 +61,10 @@ export class JournalDrawer extends BaseDrawer {
 
 	onJournalClick(event) {
 		const action = event.target.closest('[data-journal-action]')?.dataset.journalAction;
-		if (action === 'edit') {
+		if (action === 'retry') {
+			this.loadContent();
+		} else if (action === 'edit') {
+			this.state.editStartContent = this.state.content;
 			this.state.isEditing = true;
 			this.renderBody();
 			this.renderFooter();
@@ -70,6 +79,11 @@ export class JournalDrawer extends BaseDrawer {
 
 	async onSave() {
 		const newContent = this.components.pellEditor?.content.innerHTML ?? '';
+
+		const wipesExistingContent = !newContent.trim() && this.state.editStartContent?.trim();
+		if (wipesExistingContent && !window.confirm('This will clear all existing journal notes. Are you sure?')) {
+			return;
+		}
 
 		const saveBtn = this.el.footer.querySelector('[data-journal-action="save"]');
 		if (saveBtn) {
@@ -100,6 +114,8 @@ export class JournalDrawer extends BaseDrawer {
 				value: this.state.content,
 				onChange: () => {}
 			});
+		} else if (this.state.loadFailed) {
+			this.el.body.innerHTML = `<p class="drawer-journal-empty">Couldn't load notes.</p>`;
 		} else if (this.state.content) {
 			this.el.body.innerHTML = `<div class="drawer-journal-text">${this.state.content}</div>`;
 		} else {
@@ -110,6 +126,8 @@ export class JournalDrawer extends BaseDrawer {
 	renderFooter() {
 		if (this.state.isEditing) {
 			this.el.footer.innerHTML = this.renderEditingFooter();
+		} else if (this.state.loadFailed) {
+			this.el.footer.innerHTML = `<button class="button-secondary" type="button" data-journal-action="retry">Retry</button>`;
 		} else if (this.state.isAdmin) {
 			this.el.footer.innerHTML = this.renderAdminFooter();
 		} else {
