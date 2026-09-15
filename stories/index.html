@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stories | Cask & Quill</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/styles/styles.css">
+</head>
+<body class="stories-view">
+	<header class="header">
+		<nav class="nav">
+			<a class="nav-logo" href="/">
+				<img class="nav-logo-img" src="/assets/images/logo.png" alt="Cask & Quill Logo">
+			</a>
+			<div class="nav-buttons">
+				<a id="regions-btn" class="button button-tertiary" href="/">Regions</a>
+				<a id="lexicon-btn" class="button button-tertiary" href="/lexicon/">Lexicon</a>
+				<a id="catalog-btn" class="button button-tertiary" href="/catalog/">Catalog</a>
+				<a id="flavors-btn" class="button button-tertiary" href="/flavors/">Flavors</a>
+				<a id="stories-btn" class="button button-tertiary active" href="/stories/">Stories</a>
+			</div>
+			<div id="auth-root" class="auth-root"></div>
+			<button id="nav-menu-btn" class="nav-menu-btn button-icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-list"></use></svg>
+			</button>
+		</nav>
+	</header>
+
+	<nav id="nav-drawer" class="drawer drawer-nav" aria-label="Site navigation" aria-hidden="true" inert>
+		<div class="drawer-overlay"></div>
+		<div class="drawer-panel">
+			<div class="drawer-header drawer-nav-header">
+				<button class="drawer-close button-icon-only" type="button" aria-label="Close menu">
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+				</button>
+			</div>
+			<div class="drawer-body">
+				<div class="drawer-nav-links">
+					<a class="button button-tertiary" href="/">Regions</a>
+					<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
+					<a class="button button-tertiary" href="/catalog/">Catalog</a>
+					<a class="button button-tertiary" href="/flavors/">Flavors</a>
+					<a class="button button-tertiary" href="/stories/">Stories</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<main class="main-content">
+		<section class="hero grid">
+			<div class="hero-heading grid-col-md-12 grid-col-lg-7">
+				<h1 class="hero-title">Stories</h1>
+				<p>Distillery legends, happy accidents, and the odd bit of trivia — the history and lore behind the names on the label.</p>
+			</div>
+			<div class="hero-image-col grid-col-md-12 grid-col-lg-5">
+				<img class="hero-image" src="/assets/images/hero-stories.jpg" alt="illustration of lantern, quill, letters and newspaper" />
+			</div>
+			<div class="hero-meta grid-col-full"></div>
+		</section>
+
+		<section class="grid">
+			<article class="story grid grid-col-full border-bottom-primary" id="story-1494">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>1494 - First historical mention of whiskey</h3>
+					<p>Whiskey's oldest paper trail isn't a legend — it's a tax record.</p>
+					<p>The Exchequer Rolls of King James IV, Scotland's royal financial ledgers, contain a line item from 1494 ordering "eight bolls of malt" sent to a Tironensian monk named Friar John Cor at Lindores Abbey in Fife, so he could make aqua vitae — Latin for "water of life," and the root of the word whisky itself. <em>"To Friar John Cor, by order of the King, to make aqua vitae VIII bolls of malt."</em></p>
+					<p>The entry doesn't explain why the king wanted it; historians assume a royal celebration. What it does prove is that monks, not distillers, were Scotland's first whisky makers, using stills brought over for medicine and preservation.</p>
+					<p>Lindores Abbey itself fell into ruin centuries ago, but a distillery bearing its name now stands on the same ground — turning the site of whisky's first receipt back into the site of its production.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-glenfiddich">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Glenfiddich</h3>
+					<p>Before 1963, no distillery in Scotland sold whisky under its own name.</p>
+					<p>The entire industry ran on blends — single malts were considered too rough, too regional, and too inconsistent to sell on their own, so distilleries quietly supplied malt to blending houses and stayed anonymous.</p>
+					<p>Glenfiddich broke ranks. In 1963 it released a single malt bottled and marketed under the Glenfiddich name, betting that drinkers would pay for a whisky with a distillery's actual character instead of a blender's smoothed-out formula.</p>
+					<p>It worked well enough that competitors had no choice but to follow, and within a couple of decades "single malt" had gone from a niche curiosity to its own respected category — one Glenfiddich effectively willed into existence by being first.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-hazmat">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Hazmat</h3>
+					<p>Cross 140 proof and a bourbon stops being a beverage in the eyes of shipping regulators and becomes hazardous material.</p>
+					<p>The alcohol content alone makes it flammable enough to fall under the same rules as fuel and solvents, which means high-proof bottlings — the kind distilleries release "barrel proof" or "cask strength" — are legally barred from passenger aircraft.</p>
+					<p>So while most of what's on a liquor store shelf can fly in checked luggage without issue, the strongest pours in the building sometimes can't leave the ground by plane at all.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-mountain-dew">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Mountain Dew</h3>
+					<p>Long before it was a neon soda, "mountain dew" was Appalachian slang for moonshine — homemade whiskey distilled in the hills, out of sight of tax collectors.</p>
+					<p>When Tennessee beverage bottlers Barney and Ally Hartman created a citrus soft drink in the 1940s, they leaned into that reputation on purpose: it was marketed as a whiskey mixer, and the name was a wink at the bootleg spirit it was meant to be poured alongside.</p>
+					<p>PepsiCo bought the brand in 1964 and, over the following decades, scrubbed the whiskey connection out of it entirely — today's Mountain Dew carries no trace of the moonshine culture its own name was built to reference.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-nikka">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Nikka</h3>
+					<p>Masataka Taketsuru is the reason Japanese whisky exists at all.</p>
+					<p>In 1918 he sailed to Scotland to study organic chemistry, but he spent his time apprenticing in distilleries, taking detailed notes on mashing, pot stills, and maturation that would later become the blueprint for an entire industry back home.</p>
+					<p>He also married a Scottish woman, Rita Cowan, who returned with him to Japan.</p>
+					<p>Shinjiro Torii, founder of what would become Suntory, hired Taketsuru to build the company's first distillery, Yamazaki, in 1923. The partnership didn't last — Taketsuru wanted to make whisky the Scottish way, smoky and uncompromising; Torii wanted something gentler, suited to Japanese palates.</p>
+					<p>Taketsuru left to start his own company, eventually renamed Nikka, and in 1934 built Yoichi, a distillery in Hokkaido chosen specifically because its cold, peat-rich, maritime climate reminded him of Scotland. Decades later, in 1969, Nikka added a second distillery, Miyagikyo, in Sendai — a deliberate counterpart to Yoichi, sited near a river convergence for a softer water source, built to produce a lighter, fruitier malt.</p>
+					<p>In 1985, Nikka Whisky From The Barrel is introduced. It is a blend from the two distilleries that became one of the most decorated whiskies in the world. It also contains undisclosed amounts of Scotch from Ben Nevis, a distillery owned by Nikka.</p>
+					<p>Then, in 2021, Japan's spirits association introduced formal rules defining what could legally be called "Japanese Whisky" — fully distilled, aged, and bottled in Japan, nothing imported. Whisky From The Barrel didn't qualify. Nikka had to strip the words "Japanese Whisky" off the label of one of its most awarded bottles — a whisky built on the very distilleries founded by the man who started the entire category, disowned by the label he made possible.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-teaspoon-blend">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Teaspoon blend</h3>
+					<p>Distilleries don't just sell finished bottles — they also sell bulk malt to independent bottlers and blending houses.</p>
+					<p>The trouble is, if that malt is sold as-is, the buyer could technically bottle it as a single malt under the original distillery's name, which the distillery usually doesn't want.</p>
+					<p>The fix is almost comically small: pour in a teaspoon of whisky from a different distillery, and the contents legally stop being a "single" malt and become a blend. A splash of a few milliliters is enough to strip away the name rights — the whisky is barely changed, but its legal identity is.</p>
+					<p>It's the industry's quiet way of saying "we made this, but you don't get to say so."</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-tennessee-whiskey-exemption">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>Tennessee Whiskey Exemption</h3>
+					<p>Tennessee whiskey isn't its own legal category — it's bourbon with an extra step.</p>
+					<p>To earn the label, the spirit has to be filtered through sugar maple charcoal before barreling, a step called the Lincoln County Process, named for the county where it originated.</p>
+					<p>Tennessee state law requires every whiskey made in the state to go through this process to be called "Tennessee whiskey" — with exactly one exemption. Prichard's Distillery, maker of Benjamin Prichard's Tennessee Whiskey, was granted a legal exemption and skips the charcoal filtering entirely.</p>
+					<p>Phil Prichard argued for and won a carve-out by pointing to his own ancestor. His case was that charcoal filtering is not a technique his ancestor, Benjamin Prichard, ever used — and more specifically, Benjamin Prichard couldn't have used charcoal filtering, as he was making whiskey decades before the process was even invented.</p>
+					<p>So the one distillery exempted from the process is sitting right where the process was born, in Lincoln County.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-the-glenlivet">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>The Glenlivet</h3>
+					<p>Once Glenlivet whisky built a reputation worth having, other distilleries in the region started tacking "-Glenlivet" onto their own names, hoping some of that reputation would rub off</p>
+					<p>Aberlour-Glenlivet, Macallan-Glenlivet, and more all appeared on labels that had nothing to do with the original.</p>
+					<p>The Glenlivet distillery fought this for years and eventually won the right to distinguish itself, settling on a small but permanent fix: adding "The" to its name.</p>
+					<p>It reads like a modest flourish, but it was a trademark maneuver — a definite article doing the legal work of saying this is the original, and everyone else was just borrowing the name.</p>
+				</div>
+			</article>
+			<article class="story grid grid-col-full border-bottom-primary" id="story-the-macallan">
+				<div class="story-image-col grid-col-md-4">
+					<img class="story-image" src="/assets/images/story-1494.jpg" alt="illustration of Lindores Abbey" />
+				</div>
+				<div class="story-content-col grid-col-md-8 grid-col-lg-6">
+					<h3>The Macallan</h3>
+					<p>Elspeth, Ethel ("Babs"), and Agnes Robertson inherited a controlling stake in what would become Highland Distillers, giving the three sisters a major share of the Scotch whisky business — including The Macallan.</p>
+					<p>When Seagram's came calling with an offer to buy them out, they adamantly turned it down.</p>
+					<p>Instead, in 1961, they created a holding company, The Edrington Group, to hold the shares, then set up a charitable trust — The Robertson Trust — and handed essentially all their voting shares to it.</p>
+					<p>Rather than keep the fortune, the sisters gave it away. The Robertson Trust grew into one of Scotland's largest independent grant-making charities, funding education, community development, and anti-poverty work for decades.</p>
+					<p>The Edrington Group is still steered in the sisters' name today and owns The Macallan, Highland Park, The Glenrothes, and more — a whisky empire that answers, ultimately, to a charity.</p>
+				</div>
+			</article>
+		</section>
+	</main>
+
+	<script type="module" src="/assets/scripts/scripts.js"></script>
+</body>
+</html>

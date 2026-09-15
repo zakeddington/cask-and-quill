@@ -52,6 +52,8 @@
 
 @import "views/flavors/flavor-family.css" layer(views);
 
+@import "views/stories/story.css" layer(views);
+
 /* Utilities */
 /* --------------------------------------------------------------- */
 @import "utilities.css" layer(utilities);

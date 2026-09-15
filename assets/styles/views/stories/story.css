@@ -1,0 +1,13 @@
+.story {
+	padding-bottom: var(--grid-gap);
+
+	:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.story-image {
+	margin: auto;
+	mix-blend-mode: multiply;
+	width: 400px;
+}
