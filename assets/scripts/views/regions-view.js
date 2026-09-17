@@ -107,7 +107,7 @@ export class RegionsView {
 	render() {
 		this.el.regions.innerHTML = `
 			${this.renderNav()}
-			<div class="grid-col-md-9 grid-col-lg-10">
+			<div class="grid-col-9--md grid-col-10--lg">
 				${this.data.map(region => this.renderRegion(region)).join('')}
 			</div>
 		`;
@@ -119,7 +119,7 @@ export class RegionsView {
 
 	renderNav() {
 		return `
-			<nav class="regions-nav grid-col-md-3 grid-col-lg-2" aria-label="Region navigation">
+			<nav class="regions-nav grid-col-3--md grid-col-2--lg" aria-label="Region navigation">
 				<select id="regions-nav-select" aria-label="Jump to region">
 					${this.data.map(region => `<option value="${this.getRegionId(region)}">${escapeHtml(region.name)}</option>`).join('')}
 				</select>
@@ -138,11 +138,11 @@ export class RegionsView {
 		return `
 			<section class="region" id="${this.getRegionId(region)}">
 				<div class="region-header grid grid-align-center">
-					<div class="grid-col-md-12 grid-col-lg-3">
+					<div class="grid-col-12--md grid-col-3--lg">
 						${this.renderBottleImage(region.bottleImage, region.name)}
 					</div>
 
-					<div class="region-header-content grid-col-md-12 grid-col-lg-9">
+					<div class="region-header-content grid-col-12--md grid-col-9--lg">
 						<div class="region-title">
 							<h2 class="region-title-name">${escapeHtml(region.name)}</h2>
 							${this.renderKeyRegulationsSummary(region.keyRegulationsSummary)}
@@ -207,10 +207,10 @@ export class RegionsView {
 	renderVariety(variety) {
 		return `
 			<div class="variety grid">
-				<div class="variety-title-col grid-col-md-12 grid-col-lg-3">
+				<div class="variety-title-col grid-col-12--md grid-col-3--lg">
 					<h4 class="variety-title">${escapeHtml(variety.name)}</h4>
 				</div>
-				<div class="variety-desc-col grid-col-md-9">
+				<div class="variety-desc-col grid-col-9--md">
 					<p>${escapeHtml(variety.description)}</p>
 					<div class="variety-tags">
 						${variety.tags.map(tag => `<span class="tag text-label">${escapeHtml(tag)}</span>`).join('')}
@@ -231,7 +231,7 @@ export class RegionsView {
 				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
 				<div class="sub-regions-map-container grid grid-align-center">
 					<div
-						class="sub-regions-map-image-container grid-col-md-12 grid-col-lg-6"
+						class="sub-regions-map-image-container grid-col-12--md grid-col-6--lg"
 						data-base-src="${escapeHtml(baseMapSrc)}"
 						data-initial-highlight-src="${escapeHtml(initialHighlightSrc)}"
 						id="${escapeHtml(mapId)}"
@@ -245,7 +245,7 @@ export class RegionsView {
 						<img alt="" aria-hidden="true" class="sub-regions-map-image-highlight" />
 						<img alt="" aria-hidden="true" class="sub-regions-map-image-highlight" />
 					</div>
-					<div class="sub-regions-list grid grid-col-md-12 grid-col-lg-6" data-map-target="${escapeHtml(mapId)}">
+					<div class="sub-regions-list grid grid-col-12--md grid-col-6--lg" data-map-target="${escapeHtml(mapId)}">
 						${region.subRegions.map(sub => {
 							return `
 								<div

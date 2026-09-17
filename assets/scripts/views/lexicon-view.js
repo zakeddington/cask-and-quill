@@ -278,13 +278,13 @@ export class LexiconView {
 		const groupedItems = terms.sort((a, b) => a.name.localeCompare(b.name));
 		const sectionId = this.state.selectedCategory ? this.getCategoryId(group) : group;
 		const headingClass = this.state.selectedCategory
-			? 'lexicon-section-title is-category text-heading-md grid-col-md-2'
-			: 'lexicon-section-title text-display-md grid-col-md-2';
+			? 'lexicon-section-title is-category text-heading-md grid-col-2--md'
+			: 'lexicon-section-title text-display-md grid-col-2--md';
 
 		return `
 			<section class="lexicon-section grid grid-col-full" id="${sectionId}">
 				<h2 class="${headingClass}">${escapeHtml(group)}</h2>
-				<div class="term-group grid grid-col-md-8">
+				<div class="term-group grid grid-col-8--md">
 					${groupedItems.map(term => this.renderTerm(term)).join('')}
 				</div>
 			</section>

@@ -1,6 +1,10 @@
 .story {
 	padding-bottom: var(--grid-gap);
 
+	@media (min-width: 1024px) {
+		align-items: center;
+	}
+
 	:last-child {
 		margin-bottom: 0;
 	}
