@@ -103,7 +103,21 @@ export class LexiconView {
 			this.el.clearAllBtn.addEventListener('click', () => this.onClearAll());
 		}
 
+		this.el.navLinks.forEach(link => {
+			link.addEventListener('click', event => this.onNavLinkClick(event));
+		});
+
 		window.addEventListener('resize', () => this.onResize());
+	}
+
+	onNavLinkClick(event) {
+		const targetId = event.currentTarget.getAttribute('href').slice(1);
+		const target = document.getElementById(targetId);
+		if (!target) return;
+
+		event.preventDefault();
+		history.pushState(null, '', `#${targetId}`);
+		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
 	onResize() {
