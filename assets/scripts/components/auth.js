@@ -29,13 +29,13 @@ export class Auth {
 	}
 
 	onOutsideClick(event) {
-		if (!this.el.container.querySelector('.auth-user')?.contains(event.target)) {
+		if (!this.el.container.querySelector('[data-auth-user]')?.contains(event.target)) {
 			this.closeMenu();
 		}
 	}
 
 	openMenu() {
-		const menu = this.el.container.querySelector('.auth-menu');
+		const menu = this.el.container.querySelector('[data-auth-menu]');
 		const button = this.el.container.querySelector('[data-auth-action="toggle-menu"]');
 		if (!menu || !button) return;
 
@@ -45,7 +45,7 @@ export class Auth {
 	}
 
 	closeMenu() {
-		const menu = this.el.container.querySelector('.auth-menu');
+		const menu = this.el.container.querySelector('[data-auth-menu]');
 		const button = this.el.container.querySelector('[data-auth-action="toggle-menu"]');
 		if (!menu || !button) return;
 
@@ -63,7 +63,7 @@ export class Auth {
 		} else if (action === 'close-login') {
 			document.getElementById('auth-dialog')?.close();
 		} else if (action === 'toggle-menu') {
-			const menu = this.el.container.querySelector('.auth-menu');
+			const menu = this.el.container.querySelector('[data-auth-menu]');
 			if (menu?.hidden) {
 				this.openMenu();
 			} else {
@@ -108,41 +108,41 @@ export class Auth {
 
 	renderSignedIn() {
 		return `
-			<div class="auth-user">
-				<button class="button-icon-only is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+			<div class="auth__user" data-auth-user>
+				<button class="button button--icon-only is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle-fill"></use></svg>
 				</button>
-				<div class="auth-menu" hidden>
-					<button class="auth-signout" data-auth-action="logout" type="button">Sign Out</button>
+				<div class="auth__menu" data-auth-menu hidden>
+					<button class="auth__signout" data-auth-action="logout" type="button">Sign Out</button>
 				</div>
 			</div>`;
 	}
 
 	renderSignedOut() {
 		return `
-			<button class="button-icon-only" data-auth-action="open-login" aria-label="Admin login">
+			<button class="button button--icon-only" data-auth-action="open-login" aria-label="Admin login">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle"></use></svg>
 			</button>
-			<dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
-				<form class="auth-form" data-auth-form>
-					<header class="auth-header">
-						<h2 id="auth-title" class="text-heading-sm">Admin Login</h2>
-						<button class="button-icon-only" type="button" data-auth-action="close-login" aria-label="Close">
+			<dialog class="auth__dialog" id="auth-dialog" aria-labelledby="auth-title">
+				<form class="auth__form" data-auth-form>
+					<header class="auth__header">
+						<h2 id="auth-title" class="auth__title text-heading-sm">Admin Login</h2>
+						<button class="button button--icon-only" type="button" data-auth-action="close-login" aria-label="Close">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
-					<label class="auth-field">
-						<span>Email</span>
+					<label class="auth__field">
+						<span class="auth__field-label">Email</span>
 						<input type="email" name="email" required autocomplete="email">
 					</label>
-					<label class="auth-field">
-						<span>Password</span>
+					<label class="auth__field">
+						<span class="auth__field-label">Password</span>
 						<input type="password" name="password" required autocomplete="current-password">
 					</label>
-					<p class="auth-error" data-auth-error hidden></p>
-					<div class="auth-actions">
-						<button class="button-secondary" type="button" data-auth-action="close-login">Cancel</button>
-						<button class="button-primary" type="submit">Sign In</button>
+					<p class="auth__error" data-auth-error hidden></p>
+					<div class="auth__actions">
+						<button class="button button--secondary" type="button" data-auth-action="close-login">Cancel</button>
+						<button class="button" type="submit">Sign In</button>
 					</div>
 				</form>
 			</dialog>`;

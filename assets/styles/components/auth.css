@@ -1,15 +1,15 @@
-.auth-root {
+.auth {
 	display: inline-flex;
 	position: relative;
 }
 
 /* Logout dropdown menu */
-.auth-user {
+.auth__user {
 	display: inline-flex;
 	position: relative;
 }
 
-.auth-menu {
+.auth__menu {
 	background-color: var(--color-background-primary);
 	border: 2px solid var(--color-border-accent);
 	box-shadow: 0 0.5rem 1.5rem rgba(28, 28, 22, 0.2);
@@ -20,7 +20,7 @@
 	top: calc(100% + 0.5rem);
 }
 
-.auth-signout {
+.auth__signout {
 	background-color: transparent;
 	border: 0;
 	color: var(--color-text-primary);
@@ -42,7 +42,7 @@
 }
 
 /* Login modal */
-.auth-dialog {
+.auth__dialog {
 	background-color: var(--color-background-primary);
 	border: 2px solid var(--color-border-accent);
 	box-shadow: 0 1.5rem 4rem rgba(28, 28, 22, 0.25);
@@ -56,12 +56,12 @@
 	}
 }
 
-.auth-form {
+.auth__form {
 	display: flex;
 	flex-direction: column;
 }
 
-.auth-header {
+.auth__header {
 	align-items: start;
 	background-color: var(--color-background-header);
 	border-bottom: 1px solid var(--color-border-primary);
@@ -69,13 +69,13 @@
 	gap: 1rem;
 	justify-content: space-between;
 	padding: 1.25rem;
-
-	h2 {
-		margin: 0;
-	}
 }
 
-.auth-field {
+.auth__title {
+	margin: 0;
+}
+
+.auth__field {
 	display: grid;
 	gap: 0.35rem;
 	padding: 0 1.25rem;
@@ -87,25 +87,25 @@
 	&:last-of-type {
 		padding-bottom: 0.5rem;
 	}
-
-	span {
-		color: var(--color-text-secondary);
-		font-family: var(--font-sans-serif);
-		font-size: var(--font-size-body-xs);
-		font-weight: var(--font-weight-bold);
-		letter-spacing: var(--letter-spacing-wide);
-		text-transform: uppercase;
-	}
 }
 
-.auth-error {
+.auth__field-label {
+	color: var(--color-text-secondary);
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-xs);
+	font-weight: var(--font-weight-bold);
+	letter-spacing: var(--letter-spacing-wide);
+	text-transform: uppercase;
+}
+
+.auth__error {
 	color: var(--color-text-accent);
 	font-size: var(--font-size-body-xs);
 	margin: 0;
 	padding: 0 1.25rem 0.5rem;
 }
 
-.auth-actions {
+.auth__actions {
 	background-color: var(--color-background-header);
 	border-top: 1px solid var(--color-border-primary);
 	display: flex;

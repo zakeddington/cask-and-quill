@@ -5,47 +5,47 @@
  * Structural scales (lightness, chroma multipliers) live in variables.css.
  */
 
-.flavor-theme-fruity {
+.theme--flavor-fruity {
 	--flavor-color-base: var(--color-theme-fruity);
 }
 
-.flavor-theme-floral {
+.theme--flavor-floral {
 	--flavor-color-base: var(--color-theme-floral);
 }
 
-.flavor-theme-herbal {
+.theme--flavor-herbal {
 	--flavor-color-base: var(--color-theme-herbal);
 }
 
-.flavor-theme-vegetal {
+.theme--flavor-vegetal {
 	--flavor-color-base: var(--color-theme-vegetal);
 }
 
-.flavor-theme-sweet {
+.theme--flavor-sweet {
 	--flavor-color-base: var(--color-theme-sweet);
 }
 
-.flavor-theme-cereal-grainy {
+.theme--flavor-cereal-grainy {
 	--flavor-color-base: var(--color-theme-cereal-grain);
 }
 
-.flavor-theme-woody {
+.theme--flavor-woody {
 	--flavor-color-base: var(--color-theme-woody);
 }
 
-.flavor-theme-earthy {
+.theme--flavor-earthy {
 	--flavor-color-base: var(--color-theme-earthy);
 }
 
-.flavor-theme-smoky-peaty {
+.theme--flavor-smoky-peaty {
 	--flavor-color-base: var(--color-theme-smoky-peaty);
 }
 
-.flavor-theme-spicy {
+.theme--flavor-spicy {
 	--flavor-color-base: var(--color-theme-spicy);
 }
 
-.flavor-theme-sulphury-feinty {
+.theme--flavor-sulphury-feinty {
 	--flavor-color-base: var(--color-theme-sulphury-feinty);
 }
 

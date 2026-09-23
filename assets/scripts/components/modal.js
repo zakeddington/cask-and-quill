@@ -4,8 +4,8 @@ export class BaseModal {
 	constructor(modalRoot, options = {}) {
 		this.options = {
 			bodyClass: 'modal-is-open',
-			closeSelector: '.modal-close',
-			footerSelector: '.modal-footer',
+			closeSelector: '[data-modal-close]',
+			footerSelector: '[data-modal-footer]',
 			onSave: null,
 			onDelete: null,
 			...options,

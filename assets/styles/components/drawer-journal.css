@@ -1,4 +1,4 @@
-.drawer-journal-text {
+.drawer-journal__text {
 	* {
 		color: var(--color-text-primary);
 		font-family: var(--font-sans-serif);
@@ -20,14 +20,14 @@
 	}
 }
 
-.drawer-journal-empty {
+.drawer-journal__empty {
 	color: var(--color-text-secondary);
 	font-family: var(--font-sans-serif);
 	font-size: var(--font-size-body-sm);
 	font-style: italic;
 }
 
-.drawer-journal-rich-editor {
+.drawer-journal__rich-editor {
 	display: flex;
 	flex-direction: column;
 	height: 100%;

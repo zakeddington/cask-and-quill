@@ -9,7 +9,7 @@ export class LexiconView {
 		this.el = {
 			header: document.querySelector('.header'),
 			container: elContainer,
-			navLinks: elContainer.querySelectorAll('.lexicon-nav-link'),
+			navLinks: elContainer.querySelectorAll('[data-lexicon-nav-link]'),
 			pageControls: elContainer.querySelector('.page-controls'),
 			searchInput: elContainer.querySelector('#search-input'),
 			searchClear: elContainer.querySelector('#search-clear'),
@@ -82,7 +82,7 @@ export class LexiconView {
 
 		this.el.navLinks.forEach(link => {
 			const letter = link.textContent.trim();
-			link.classList.toggle('active', activeLetters.has(letter));
+			link.classList.toggle('is-active', activeLetters.has(letter));
 		});
 	}
 
@@ -234,7 +234,7 @@ export class LexiconView {
 			: 'No entries found for the current filters.';
 
 		return `
-			<div class="empty-state grid-col-full">
+			<div class="empty-state grid__col--full">
 				<h2 class="text-heading-lg">${message}</h2>
 			</div>
 		`;
@@ -257,7 +257,7 @@ export class LexiconView {
 	renderPronunciation(term) {
 		if (!term.pronunciation) return '';
 
-		return `<p class="term-pronunciation text-body-sm">Pronounced: ${escapeHtml(term.pronunciation)}</p>`;
+		return `<p class="term__pronunciation text-body-sm">Pronounced: ${escapeHtml(term.pronunciation)}</p>`;
 	}
 
 	renderAliases(term) {
@@ -270,7 +270,7 @@ export class LexiconView {
 				: escapeHtml(alias);
 		});
 
-		return `<p class="term-aliases text-body-sm">Also listed as: ${labels.join(', ')}</p>`;
+		return `<p class="term__aliases text-body-sm">Also listed as: ${labels.join(', ')}</p>`;
 	}
 
 	render(scrollToTop = false) {
@@ -292,13 +292,13 @@ export class LexiconView {
 		const groupedItems = terms.sort((a, b) => a.name.localeCompare(b.name));
 		const sectionId = this.state.selectedCategory ? this.getCategoryId(group) : group;
 		const headingClass = this.state.selectedCategory
-			? 'lexicon-section-title is-category text-heading-md grid-col-2--md'
-			: 'lexicon-section-title text-display-md grid-col-2--md';
+			? 'lexicon__section-title lexicon__section-title--category text-heading-md grid__col--2-md'
+			: 'lexicon__section-title text-display-md grid__col--2-md';
 
 		return `
-			<section class="lexicon-section grid grid-col-full" id="${sectionId}">
+			<section class="lexicon__section grid grid__col--full" id="${sectionId}">
 				<h2 class="${headingClass}">${escapeHtml(group)}</h2>
-				<div class="term-group grid grid-col-8--md">
+				<div class="lexicon__term-group grid grid__col--8-md">
 					${groupedItems.map(term => this.renderTerm(term)).join('')}
 				</div>
 			</section>
@@ -307,14 +307,14 @@ export class LexiconView {
 
 	renderTerm(term) {
 		return `
-			<article class="term-item grid-col-full" id="${term.id}">
-				<div class="term-heading">
+			<article class="term grid__col--full" id="${term.id}">
+				<div class="term__heading">
 					<p class="text-label">${escapeHtml(term.category)}</p>
 					<h3>${escapeHtml(term.name)}</h3>
 					${this.renderPronunciation(term)}
 					${this.renderAliases(term)}
 				</div>
-				<p class="term-description">${escapeHtml(term.description)}</p>
+				<p class="term__description">${escapeHtml(term.description)}</p>
 				${this.renderSeeAlso(term)}
 			</article>
 		`;

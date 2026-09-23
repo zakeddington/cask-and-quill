@@ -1,10 +1,7 @@
 /* Flavor Family Edit Modal content - inherits modal styles */
-.flavor-modal .modal-panel {
-	max-width: 720px;
-}
 
 /* Name & Description fields */
-.flavor-detail-fields {
+.flavor-editor__detail-fields {
 	display: grid;
 	gap: 1rem;
 
@@ -13,32 +10,32 @@
 	}
 }
 
-.flavor-field-full {
+.flavor-editor__field-full {
 	@media (min-width: 768px) {
 		grid-column: 1 / -1;
 	}
 }
 
 /* Sub-categories fields */
-.flavor-subs-list {
+.flavor-editor__subs-list {
 	display: grid;
 	gap: 0.5rem;
 	margin-bottom: 0.75rem;
 }
 
-.flavor-sub-item {
+.flavor-editor__sub-item {
 	border: 1px solid var(--color-border-primary);
 	padding: 0.75rem;
 }
 
-.flavor-sub-header {
+.flavor-editor__sub-header {
 	align-items: center;
 	display: flex;
 	gap: 0.5rem;
 	margin-bottom: 0.5rem;
 }
 
-.flavor-sub-name {
+.flavor-editor__sub-name {
 	color: var(--color-text-primary);
 	flex: 1;
 	font-family: var(--font-sans-serif);
@@ -48,20 +45,20 @@
 }
 
 /* Flavor fields */
-.flavor-terms-list {
+.flavor-editor__terms-list {
 	display: grid;
 	gap: 0.35rem;
 	margin-bottom: 0.5rem;
 	padding-left: 2.5rem;
 }
 
-.flavor-term-row {
+.flavor-editor__term-row {
 	align-items: center;
 	display: flex;
 	gap: 0.5rem;
 }
 
-.flavor-term-input {
+.flavor-editor__term-input {
 	color: var(--color-text-primary);
 	flex: 1;
 	font-family: var(--font-sans-serif);
@@ -69,18 +66,18 @@
 	min-width: 0;
 }
 
-.flavor-terms-add-btn {
+.flavor-editor__terms-add-btn {
 	margin-left: 2.5rem;
 }
 
 /* Flavor buttons */
-.flavor-reorder-btns {
+.flavor-editor__reorder-btns {
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
 }
 
-.flavor-reorder-btn {
+.flavor-editor__reorder-btn {
 	padding: 0.1rem;
 
 	.svg-icon {
@@ -89,7 +86,7 @@
 	}
 }
 
-.flavor-remove-btn {
+.flavor-editor__remove-btn {
 	.svg-icon {
 		height: 1rem;
 		width: 1rem;

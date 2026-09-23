@@ -17,38 +17,38 @@
 <body class="catalog-view">
 	<header class="header">
 		<nav class="nav">
-			<a class="nav-logo" href="/">
-				<img class="nav-logo-img" src="/assets/images/logo.png" alt="Cask & Quill Logo">
+			<a class="nav__logo" href="/">
+				<img class="nav__logo-img" src="/assets/images/logo.png" alt="Cask & Quill Logo">
 			</a>
-			<div class="nav-buttons">
-				<a id="regions-btn" class="button button-tertiary" href="/">Regions</a>
-				<a id="lexicon-btn" class="button button-tertiary" href="/lexicon/">Lexicon</a>
-				<a id="catalog-btn" class="button button-tertiary active" href="/catalog/">Catalog</a>
-				<a id="flavors-btn" class="button button-tertiary" href="/flavors/">Flavors</a>
-				<a id="stories-btn" class="button button-tertiary" href="/stories/">Stories</a>
+			<div class="nav__buttons">
+				<a id="regions-btn" class="button button--tertiary" href="/">Regions</a>
+				<a id="lexicon-btn" class="button button--tertiary" href="/lexicon/">Lexicon</a>
+				<a id="catalog-btn" class="button button--tertiary is-active" href="/catalog/">Catalog</a>
+				<a id="flavors-btn" class="button button--tertiary" href="/flavors/">Flavors</a>
+				<a id="stories-btn" class="button button--tertiary" href="/stories/">Stories</a>
 			</div>
-			<div id="auth-root" class="auth-root"></div>
-			<button id="nav-menu-btn" class="nav-menu-btn button-icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+			<div id="auth-root" class="auth"></div>
+			<button id="nav-menu-btn" class="nav__menu-btn button button--icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-list"></use></svg>
 			</button>
 		</nav>
 	</header>
 
 	<nav id="nav-drawer" class="drawer drawer-nav" aria-label="Site navigation" aria-hidden="true" inert>
-		<div class="drawer-overlay"></div>
-		<div class="drawer-panel">
-			<div class="drawer-header drawer-nav-header">
-				<button class="drawer-close button-icon-only" type="button" aria-label="Close menu">
+		<div class="drawer__overlay" data-drawer-overlay></div>
+		<div class="drawer__panel">
+			<div class="drawer__header">
+				<button class="drawer__close button button--icon-only" type="button" data-drawer-close aria-label="Close menu">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 				</button>
 			</div>
-			<div class="drawer-body">
-				<div class="drawer-nav-links">
-					<a class="button button-tertiary" href="/">Regions</a>
-					<a class="button button-tertiary" href="/lexicon/">Lexicon</a>
-					<a class="button button-tertiary active" href="/catalog/">Catalog</a>
-					<a class="button button-tertiary" href="/flavors/">Flavors</a>
-					<a class="button button-tertiary" href="/stories/">Stories</a>
+			<div class="drawer__body">
+				<div class="drawer-nav__links">
+					<a class="button button--tertiary drawer-nav__link" href="/">Regions</a>
+					<a class="button button--tertiary drawer-nav__link" href="/lexicon/">Lexicon</a>
+					<a class="button button--tertiary drawer-nav__link is-active" href="/catalog/">Catalog</a>
+					<a class="button button--tertiary drawer-nav__link" href="/flavors/">Flavors</a>
+					<a class="button button--tertiary drawer-nav__link" href="/stories/">Stories</a>
 				</div>
 			</div>
 		</div>
@@ -56,41 +56,41 @@
 
 	<main class="main-content">
 		<section class="hero grid">
-			<div class="hero-heading grid-col-12--md grid-col-7--lg">
-				<h1 class="hero-title">Catalog</h1>
+			<div class="hero__heading grid__col--12-md grid__col--7-lg">
+				<h1 class="hero__title">Catalog</h1>
 				<p>A working ledger of bottles, production notes, mash bills, and tasting impressions from the private collection.</p>
 			</div>
-			<div class="hero-image-col grid-col-12--md grid-col-5--lg">
-				<img class="hero-image" src="/assets/images/hero-catalog.jpg" alt="illustration of bottles" />
+			<div class="hero__image-col grid__col--12-md grid__col--5-lg">
+				<img class="hero__image" src="/assets/images/hero-catalog.jpg" alt="illustration of bottles" />
 			</div>
 		</section>
 
 		<section class="page-controls">
-			<div class="controls-row controls-row-single">
-				<button id="catalog-add-btn" class="button-primary catalog-add-btn" aria-label="Add Bottle" hidden>
+			<div class="page-controls__row page-controls__row--single">
+				<button id="catalog-add-btn" class="button page-controls__add-btn" aria-label="Add Bottle" hidden>
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-plus"></use></svg>
 					<span>Add Bottle</span>
 				</button>
 			</div>
-			<div class="controls-row">
-				<div class="search-container">
-					<input type="search" id="catalog-search" placeholder="Search bottles..." class="search-input" aria-label="Search bottles">
-					<button id="catalog-search-clear" class="search-clear button-icon-only" type="button" aria-label="Clear search" hidden>
+			<div class="page-controls__row">
+				<div class="page-controls__search">
+					<input type="search" id="catalog-search" placeholder="Search bottles..." class="page-controls__search-input" aria-label="Search bottles">
+					<button id="catalog-search-clear" class="page-controls__search-clear button button--icon-only" type="button" aria-label="Clear search" hidden>
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 					</button>
 				</div>
-				<div class="filter-controls">
-					<button id="catalog-clear-all" class="filter-clear-all button-tertiary" type="button" hidden>
+				<div class="page-controls__filters">
+					<button id="catalog-clear-all" class="page-controls__clear-all button button--tertiary" type="button" hidden>
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 						Clear all
 					</button>
-					<select id="catalog-category" class="filter-select" aria-label="Filter by category">
+					<select id="catalog-category" class="page-controls__select" aria-label="Filter by category">
 						<option value="">Category</option>
 					</select>
-					<select id="catalog-fill" class="filter-select" aria-label="Filter by fill level">
+					<select id="catalog-fill" class="page-controls__select" aria-label="Filter by fill level">
 						<option value="">Fill Level</option>
 					</select>
-					<select id="catalog-sort" class="filter-select" aria-label="Sort bottles">
+					<select id="catalog-sort" class="page-controls__select" aria-label="Sort bottles">
 						<option value="">Sort</option>
 						<option value="abv-asc">ABV: Low to High</option>
 						<option value="abv-desc">ABV: High to Low</option>
@@ -99,8 +99,8 @@
 					</select>
 				</div>
 			</div>
-			<div class="controls-row">
-				<p id="catalog-count" class="results-count text-heading-md">0 bottles</p>
+			<div class="page-controls__row">
+				<p id="catalog-count" class="page-controls__count text-heading-md">0 bottles</p>
 			</div>
 		</section>
 
@@ -109,19 +109,19 @@
 		<div id="catalog" class="catalog"></div>
 	</main>
 
-	<div id="catalog-modal-root" class="catalog-modal-root" aria-live="polite"></div>
+	<div id="catalog-modal-root" aria-live="polite"></div>
 
 	<aside id="journal-drawer" class="drawer drawer-journal" aria-hidden="true" aria-label="Journal Notes" inert>
-		<div class="drawer-overlay"></div>
-		<div class="drawer-panel">
-			<div class="drawer-header drawer-journal-header">
+		<div class="drawer__overlay" data-drawer-overlay></div>
+		<div class="drawer__panel">
+			<div class="drawer__header">
 				<h2 class="text-heading-md">Journal Notes</h2>
-				<button class="drawer-close button-icon-only" type="button" aria-label="Close journal notes">
+				<button class="drawer__close button button--icon-only" type="button" data-drawer-close aria-label="Close journal notes">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
 				</button>
 			</div>
-			<div class="drawer-body"></div>
-			<footer class="drawer-footer"></footer>
+			<div class="drawer__body" data-drawer-body></div>
+			<footer class="drawer__footer" data-drawer-footer></footer>
 		</div>
 	</aside>
 

@@ -24,7 +24,7 @@
 	}
 }
 
-.nav-logo {
+.nav__logo {
 	height: 2.5rem;
 
 	@media (min-width: 768px) {
@@ -32,12 +32,12 @@
 	}
 }
 
-.nav-logo-img {
+.nav__logo-img {
 	height: 100%;
 	width: auto;
 }
 
-.nav-buttons {
+.nav__buttons {
 	align-items: center;
 	display: flex;
 	gap: 0.5rem;

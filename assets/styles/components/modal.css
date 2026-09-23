@@ -16,14 +16,18 @@
 	}
 }
 
-.modal-overlay {
+.modal--narrow .modal__panel {
+	max-width: 720px;
+}
+
+.modal__overlay {
 	background-color: rgba(28, 28, 22, 0.78);
 	border: 0;
 	inset: 0;
 	position: absolute;
 }
 
-.modal-panel {
+.modal__panel {
 	background-color: var(--color-background-primary);
 	border: 2px solid var(--color-border-accent);
 	box-shadow: 0 1.5rem 4rem rgba(28, 28, 22, 0.25);
@@ -36,8 +40,8 @@
 	width: 100%;
 }
 
-.modal-header,
-.modal-footer {
+.modal__header,
+.modal__footer {
 	background-color: var(--color-background-header);
 	display: flex;
 	gap: 1rem;
@@ -48,24 +52,24 @@
 	}
 }
 
-.modal-header {
+.modal__header {
 	align-items: flex-start;
 	border-bottom: 1px solid var(--color-border-primary);
 	justify-content: space-between;
 }
 
-.modal-header h2 {
+.modal__title {
 	margin: 0;
 }
 
-.modal-close {
+.modal__close {
 	flex-shrink: 0;
 	font-size: var(--font-size-heading-md);
 	min-height: 2rem;
 	min-width: 2rem;
 }
 
-.modal-footer {
+.modal__footer {
 	align-items: center;
 	border-top: 1px solid var(--color-border-primary);
 	flex-direction: column;
@@ -76,7 +80,7 @@
 	}
 }
 
-.modal-footer-col {
+.modal__footer-col {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -92,13 +96,13 @@
 	}
 }
 
-.modal-confirm-text {
+.modal__confirm-text {
 	color: var(--color-text-primary);
 	font-family: var(--font-sans-serif);
 	font-size: var(--font-size-body-sm);
 }
 
-.modal-body {
+.modal__body {
 	display: grid;
 	gap: 2rem;
 	overflow-y: auto;
@@ -109,14 +113,14 @@
 	}
 }
 
-.modal-fieldset {
+.modal__fieldset {
 	border: 0;
 	margin: 0;
 	min-width: 0;
 	padding: 0;
 }
 
-.modal-fieldset legend {
+.modal__fieldset legend {
 	border-bottom: 1px solid var(--color-border-primary);
 	color: var(--color-text-primary);
 	font-family: var(--font-body);
@@ -127,12 +131,12 @@
 	width: 100%;
 }
 
-.modal-field {
+.modal__field {
 	display: grid;
 	gap: 0.35rem;
 }
 
-.modal-field span {
+.modal__field-label {
 	color: var(--color-text-secondary);
 	font-family: var(--font-sans-serif);
 	font-size: var(--font-size-body-xs);

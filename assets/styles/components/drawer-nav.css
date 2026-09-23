@@ -1,44 +1,44 @@
-.nav-menu-btn {
+.nav__menu-btn {
 	display: none;
 }
 
 @media (max-width: 1023px) {
-	.nav-buttons {
+	.nav__buttons {
 		display: none;
 	}
 
-	.auth-root {
+	.auth {
 		margin-left: auto;
 	}
 
-	.nav-menu-btn {
+	.nav__menu-btn {
 		display: inline-flex;
 	}
 }
 
 .drawer-nav {
-	.drawer-body {
+	.drawer__body {
 		padding: 0;
 	}
 }
 
-.drawer-nav-links {
+.drawer-nav__links {
 	display: flex;
 	flex-direction: column;
+}
 
-	.button-tertiary {
-		border-bottom: 1px solid var(--color-border-primary);
-		border-left: 5px solid transparent;
-		font-size: var(--font-size-body-md);
-		justify-content: flex-start;
-		padding: 1rem 1.5rem;
-		width: 100%;
+.drawer-nav__link {
+	border-bottom: 1px solid var(--color-border-primary);
+	border-left: 5px solid transparent;
+	font-size: var(--font-size-body-md);
+	justify-content: flex-start;
+	padding: 1rem 1.5rem;
+	width: 100%;
 
-		&.active {
-			background: var(--color-background-secondary);
-			border-bottom-color: var(--color-border-primary);
-			border-bottom-width: 1px;
-			border-left-color: var(--color-button-tertiary-border-active);
-		}
+	&.is-active {
+		background: var(--color-background-secondary);
+		border-bottom-color: var(--color-border-primary);
+		border-bottom-width: 1px;
+		border-left-color: var(--color-button-tertiary-border-active);
 	}
 }

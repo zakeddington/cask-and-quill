@@ -63,8 +63,6 @@ export class CatalogView {
 
 	initAccordions() {
 		new AccordionGroup(this.el.catalog, {
-			selectorAccordion: '.catalog-bottle',
-			selectorTrigger: '.catalog-accordion-trigger',
 			allowMultiple: false,
 			scrollBlock: 'nearest',
 			onToggleCallback: (elAccordion, elTrigger, isOpen) => this.onBottleToggle(elAccordion, elTrigger, isOpen),
@@ -248,7 +246,7 @@ export class CatalogView {
 	onBottleToggle(elAccordion, elTrigger, isOpen) {
 		const id = elTrigger.dataset.bottleId;
 		this.state.expandedId = isOpen ? id : (this.state.expandedId === id ? null : this.state.expandedId);
-		elAccordion.querySelector('.catalog-bottle-heading')?.classList.toggle('theme-accent', isOpen);
+		elAccordion.querySelector('[data-bottle-heading]')?.classList.toggle('theme--accent', isOpen);
 	}
 
 	getBottleById(id) {
@@ -324,11 +322,11 @@ export class CatalogView {
 		});
 
 		return `
-			<section class="catalog-group${isBottleKills ? ' catalog-group-bottle-kills' : ''}">
-				<div class="catalog-group-heading">
+			<section class="catalog__group${isBottleKills ? ' catalog__group--bottle-kills' : ''}">
+				<div class="catalog__group-heading">
 					<h2>${html(group)}</h2>
 				</div>
-				<div class="catalog-column-headings theme-primary" aria-hidden="true">
+				<div class="catalog__column-headings theme--primary" aria-hidden="true">
 					<span>Fill</span>
 					<span>Brand/Bottle</span>
 					<span>Type/Category</span>
@@ -337,7 +335,7 @@ export class CatalogView {
 					<span>Cask/Finish/Notes</span>
 					<span>Journal</span>
 				</div>
-				<div class="catalog-bottles">
+				<div class="catalog__bottles">
 					${sortedBottles.map(bottle => this.renderBottle(bottle)).join('')}
 				</div>
 			</section>
@@ -350,38 +348,39 @@ export class CatalogView {
 		const panelId = `catalog-panel-${bottle.id}`;
 
 		return `
-			<article class="catalog-bottle accordion ${isOpen ? 'is-open' : ''}">
-				<h3 class="catalog-bottle-heading${isOpen ? ' theme-accent' : ''}">
+			<article class="catalog-bottle accordion ${isOpen ? 'is-open' : ''}" data-accordion>
+				<h3 class="catalog-bottle__heading${isOpen ? ' theme--accent' : ''}" data-bottle-heading>
 					<button
 						aria-controls="${html(panelId)}"
 						aria-expanded="${isOpen}"
-						class="catalog-accordion-trigger"
+						class="catalog-bottle__trigger"
+						data-accordion-trigger
 						data-bottle-id="${html(bottle.id)}"
 						id="${html(triggerId)}"
 						type="button"
 					>
-						<span class="catalog-bottle-heading-col">${this.renderFillIcon(bottle.fill)}</span>
-						<span class="catalog-bottle-heading-col">
+						<span class="catalog-bottle__heading-col">${this.renderFillIcon(bottle.fill)}</span>
+						<span class="catalog-bottle__heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
 							${bottle.barrel ? `<span class="text-body-sm text-color-secondary">${html(bottle.barrel)}</span>` : ''}
 						</span>
-						<span class="catalog-bottle-heading-col">
+						<span class="catalog-bottle__heading-col">
 							<span class="text-heading-sm font-medium text-color-secondary">${html(bottle.type)}</span>
 							<span class="text-body-md">${html(bottle.category)}</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-body-sm font-medium text-color-secondary">
+						<span class="catalog-bottle__heading-col text-body-sm font-medium text-color-secondary">
 							<span>${html(bottle.age)} Years</span>
 							<span>${html(bottle.abv)}%</span>
 							<span>${html(bottle.proof)}°</span>
 						</span>
-						<span class="catalog-bottle-heading-col text-body-sm font-medium">
+						<span class="catalog-bottle__heading-col text-body-sm font-medium">
 							${this.renderMashBillSummary(bottle.mashBill)}
 						</span>
-						<span class="catalog-bottle-heading-col catalog-cask-heading">${bottle.cask}</span>
-						<span class="catalog-journal-status">
+						<span class="catalog-bottle__heading-col catalog-bottle__cask-heading">${bottle.cask}</span>
+						<span class="catalog-bottle__journal-status">
 							${this.renderJournalIcon(bottle)}
-							<span class="accordion-trigger-icon" aria-hidden="true">
+							<span class="accordion__trigger-icon" aria-hidden="true">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
 							</span>
 						</span>
@@ -391,12 +390,12 @@ export class CatalogView {
 				<div
 					aria-hidden="${!isOpen}"
 					aria-labelledby="${html(triggerId)}"
-					class="accordion-panel"
+					class="accordion__panel"
 					id="${html(panelId)}"
 					role="region"
 					${isOpen ? '' : 'inert'}
 				>
-					<div class="accordion-panel-inner">
+					<div class="accordion__panel-inner">
 						${this.renderDetails(bottle)}
 					</div>
 				</div>
@@ -409,7 +408,7 @@ export class CatalogView {
 		const label = this.getFillLabel(fill);
 		if (!icon) return `<span>${html(label)}</span>`;
 		return `
-			<span class="catalog-fill-icon ${html(colorClass)}" title="${html(label)}" role="img">
+			<span class="fill-icon ${html(colorClass)}" title="${html(label)}" role="img">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${html(icon)}"></use></svg>
 			</span>
 		`;
@@ -425,7 +424,7 @@ export class CatalogView {
 		const label = hasContent ? 'Journal notes entered' : 'No journal notes entered';
 
 		return `
-			<span class="catalog-journal-icon${hasContent ? ' has-content' : ' is-empty'}" title="${label}" role="img">
+			<span class="catalog-bottle__journal-icon${hasContent ? ' has-content' : ' is-empty'}" title="${label}" role="img">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${hasContent ? 'icon-file-text' : 'icon-file'}"></use></svg>
 			</span>
 		`;
@@ -449,29 +448,29 @@ export class CatalogView {
 		];
 
 		return `
-			<div class="catalog-detail-grid">
-				<section class="catalog-detail-block">
+			<div class="catalog-detail">
+				<section class="catalog-detail__block">
 					<h4 class="text-body-md text-color-secondary">Brand Details</h4>
-					<dl class="catalog-detail-list">
+					<dl class="catalog-detail__list">
 						${details.map(item => `
-							<div class="catalog-detail-list-item">
-								<dt>${html(item.label)}</dt>
-								<dd>${html(item.value)}</dd>
+							<div class="catalog-detail__list-item">
+								<dt class="catalog-detail__term">${html(item.label)}</dt>
+								<dd class="catalog-detail__value">${html(item.value)}</dd>
 							</div>
 						`).join('')}
 					</dl>
 				</section>
-				<section class="catalog-detail-block">
+				<section class="catalog-detail__block">
 					<h4 class="text-body-md text-color-secondary">Mash Bill</h4>
 					${this.renderMashBill(bottle.mashBill, bottle.char)}
 				</section>
-				<section class="catalog-detail-block catalog-tasting-block">
+				<section class="catalog-detail__block catalog-detail__block--tasting">
 					<h4 class="text-body-md text-color-secondary">Journal</h4>
 					${this.renderTastingNotes(bottle.tastingNotes)}
 				</section>
 				${this.state.isAdmin ? `
-				<div class="catalog-detail-actions">
-					<button class="button-primary" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">
+				<div class="catalog-detail__actions">
+					<button class="button" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 						Edit Entry
 					</button>
@@ -494,7 +493,7 @@ export class CatalogView {
 
 		if (!active.length) return '<span>—</span>';
 
-		return active.map(({ label, formatted }) => `<span class="catalog-mash-bill-summary"><span>${html(formatted)}</span> <span>${html(label)}</span></span>`).join('');
+		return active.map(({ label, formatted }) => `<span class="catalog-bottle__mash-bill-summary"><span>${html(formatted)}</span> <span>${html(label)}</span></span>`).join('');
 	}
 
 	renderMashBill(mashBill, char) {
@@ -508,21 +507,21 @@ export class CatalogView {
 			.sort((a, b) => (parseFloat(b.display) || 0) - (parseFloat(a.display) || 0));
 
 		return `
-			<dl class="catalog-detail-list is-horizontal">
+			<dl class="catalog-detail__list catalog-detail__list--horizontal">
 				${fields.map(({ field, estimated, display }) => {
 					const muted = !display || display === '0';
 					const classes = [muted ? 'is-muted' : '', estimated ? 'is-estimated' : ''].filter(Boolean).join(' ');
 					return `
-					<div class="catalog-detail-list-item ${classes}">
-						<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
-						<dt>${html(field.label)}</dt>
-						<dd>${html(display || '0')}%</dd>
+					<div class="catalog-detail__list-item ${classes}">
+						<svg class="svg-icon catalog-detail__mash-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#${field.icon}"></use></svg>
+						<dt class="catalog-detail__term">${html(field.label)}</dt>
+						<dd class="catalog-detail__value">${html(display || '0')}%</dd>
 					</div>`;
 				}).join('')}
-				<div class="catalog-detail-list-item ${char === 'N/A' ? 'is-muted' : ''}">
-					<svg class="svg-icon mash-bill-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-barrel"></use></svg>
-					<dt>Char Level</dt>
-					<dd>${html(char)}</dd>
+				<div class="catalog-detail__list-item ${char === 'N/A' ? 'is-muted' : ''}">
+					<svg class="svg-icon catalog-detail__mash-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-barrel"></use></svg>
+					<dt class="catalog-detail__term">Char Level</dt>
+					<dd class="catalog-detail__value">${html(char)}</dd>
 				</div>
 			</dl>
 		`;
@@ -530,7 +529,7 @@ export class CatalogView {
 
 	renderTastingNotes(notes) {
 		return `
-			<div class="catalog-tasting-notes">
+			<div class="catalog-detail__tasting-notes">
 				${CATALOG_TASTING_NOTE_FIELDS.map(field => `
 					<div>
 						<h5>
@@ -539,7 +538,7 @@ export class CatalogView {
 						</h5>
 						${field.options
 							? `<p>${html(notes?.[field.name])}</p>`
-							: `<div class="catalog-rich-content">${notes?.[field.name] ?? ''}</div>`
+							: `<div class="catalog-detail__rich-content">${notes?.[field.name] ?? ''}</div>`
 						}
 					</div>
 				`).join('')}

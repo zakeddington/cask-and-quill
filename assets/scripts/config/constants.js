@@ -39,11 +39,11 @@ export const CATALOG_FILL_OPTIONS = [
 ];
 
 export const CATALOG_FILL_ICON_CONFIG = {
-	'plenty': { icon: 'icon-water-drop', colorClass: 'catalog-fill-plenty' },
-	'average': { icon: 'icon-water-drop', colorClass: 'catalog-fill-average' },
-	'low': { icon: 'icon-water-drop', colorClass: 'catalog-fill-low' },
-	'extremely-low': { icon: 'icon-exclamation-mark', colorClass: 'catalog-fill-extremely-low' },
-	'bottle-kill': { icon: 'icon-drop-slash', colorClass: 'catalog-fill-bottle-kill' }
+	'plenty': { icon: 'icon-water-drop', colorClass: 'fill-icon--plenty' },
+	'average': { icon: 'icon-water-drop', colorClass: 'fill-icon--average' },
+	'low': { icon: 'icon-water-drop', colorClass: 'fill-icon--low' },
+	'extremely-low': { icon: 'icon-exclamation-mark', colorClass: 'fill-icon--extremely-low' },
+	'bottle-kill': { icon: 'icon-drop-slash', colorClass: 'fill-icon--bottle-kill' }
 };
 
 export const CATALOG_SPEC_FIELDS = [

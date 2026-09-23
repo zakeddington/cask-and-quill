@@ -1,4 +1,4 @@
-.theme-primary {
+.theme--primary {
 	--color-background-primary: var(--color-palette-brown-900);
 	--color-border-primary: var(--color-palette-cream-50-alpha-50);
 	--color-text-primary: var(--color-palette-cream-50);

@@ -1,15 +1,15 @@
-.lexicon-container {
+.lexicon {
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
 }
 
 @media (min-width: 768px) {
-	.lexicon-container {
+	.lexicon {
 		flex-direction: row;
 	}
 }
 
-.lexicon-main {
+.lexicon__main {
 	flex: 1;
 }

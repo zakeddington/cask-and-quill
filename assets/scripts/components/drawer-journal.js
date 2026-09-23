@@ -8,8 +8,8 @@ export class JournalDrawer extends BaseDrawer {
 	constructor(triggerEl, options = {}) {
 		super(triggerEl, options);
 
-		this.el.body = this.el.drawer.querySelector('.drawer-body');
-		this.el.footer = this.el.drawer.querySelector('.drawer-footer');
+		this.el.body = this.el.drawer.querySelector('[data-drawer-body]');
+		this.el.footer = this.el.drawer.querySelector('[data-drawer-footer]');
 
 		this.state.content = '';
 		this.state.isAdmin = this.options.isAdmin;
@@ -40,7 +40,7 @@ export class JournalDrawer extends BaseDrawer {
 
 	async loadContent() {
 		this.state.loadFailed = false;
-		this.el.body.innerHTML = `<p class="drawer-journal-empty">Loading…</p>`;
+		this.el.body.innerHTML = `<p class="drawer-journal__empty">Loading…</p>`;
 		this.el.footer.innerHTML = '';
 
 		try {
@@ -108,18 +108,18 @@ export class JournalDrawer extends BaseDrawer {
 
 	renderBody() {
 		if (this.state.isEditing) {
-			this.el.body.innerHTML = `<div class="drawer-journal-rich-editor"></div>`;
+			this.el.body.innerHTML = `<div class="drawer-journal__rich-editor" data-journal-editor></div>`;
 			this.components.pellEditor = initRichEditor({
-				element: this.el.body.querySelector('.drawer-journal-rich-editor'),
+				element: this.el.body.querySelector('[data-journal-editor]'),
 				value: this.state.content,
 				onChange: () => {}
 			});
 		} else if (this.state.loadFailed) {
-			this.el.body.innerHTML = `<p class="drawer-journal-empty">Couldn't load notes.</p>`;
+			this.el.body.innerHTML = `<p class="drawer-journal__empty">Couldn't load notes.</p>`;
 		} else if (this.state.content) {
-			this.el.body.innerHTML = `<div class="drawer-journal-text">${this.state.content}</div>`;
+			this.el.body.innerHTML = `<div class="drawer-journal__text">${this.state.content}</div>`;
 		} else {
-			this.el.body.innerHTML = `<p class="drawer-journal-empty">No notes yet.</p>`;
+			this.el.body.innerHTML = `<p class="drawer-journal__empty">No notes yet.</p>`;
 		}
 	}
 
@@ -127,7 +127,7 @@ export class JournalDrawer extends BaseDrawer {
 		if (this.state.isEditing) {
 			this.el.footer.innerHTML = this.renderEditingFooter();
 		} else if (this.state.loadFailed) {
-			this.el.footer.innerHTML = `<button class="button-secondary" type="button" data-journal-action="retry">Retry</button>`;
+			this.el.footer.innerHTML = `<button class="button button--secondary" type="button" data-journal-action="retry">Retry</button>`;
 		} else if (this.state.isAdmin) {
 			this.el.footer.innerHTML = this.renderAdminFooter();
 		} else {
@@ -137,14 +137,14 @@ export class JournalDrawer extends BaseDrawer {
 
 	renderEditingFooter() {
 		return `
-			<button class="button-secondary" type="button" data-journal-action="cancel">Cancel</button>
-			<button class="button-primary" type="button" data-journal-action="save">Save Changes</button>
+			<button class="button button--secondary" type="button" data-journal-action="cancel">Cancel</button>
+			<button class="button" type="button" data-journal-action="save">Save Changes</button>
 		`;
 	}
 
 	renderAdminFooter() {
 		return `
-			<button class="button-secondary" type="button" data-journal-action="edit">
+			<button class="button button--secondary" type="button" data-journal-action="edit">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 				Edit
 			</button>

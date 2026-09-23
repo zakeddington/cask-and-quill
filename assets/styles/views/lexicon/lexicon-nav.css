@@ -13,7 +13,7 @@
 	}
 }
 
-.lexicon-nav-list {
+.lexicon-nav__list {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -22,7 +22,7 @@
 	padding: 0.25rem;
 }
 
-.lexicon-nav-link {
+.lexicon-nav__link {
 	display: block;
 	font-family: var(--font-sans-serif);
 	font-weight: var(--font-weight-bold);
@@ -32,7 +32,7 @@
 	width: 1.5em;
 }
 
-.lexicon-nav-link:not(.active) {
+.lexicon-nav__link:not(.is-active) {
 	color: var(--color-text-disabled);
 	pointer-events: none;
 }

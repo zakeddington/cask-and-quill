@@ -1,4 +1,4 @@
-.theme-accent {
+.theme--accent {
 	--color-background-primary: var(--color-palette-brown-400);
 	--color-border-primary: var(--color-palette-cream-50-alpha-50);
 	--color-text-primary: var(--color-palette-cream-50-alpha-80);
@@ -8,6 +8,6 @@
 	color: var(--color-text-primary);
 }
 
-.theme-accent :where(strong, b) {
+.theme--accent :where(strong, b) {
 	color: var(--color-text-secondary);
 }

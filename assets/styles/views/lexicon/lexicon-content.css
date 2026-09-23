@@ -1,39 +1,39 @@
-.lexicon-entries {
+.lexicon__entries {
 	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
-.lexicon-section {
+.lexicon__section {
 	position: relative;
 	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
-.lexicon-section-title {
+.lexicon__section-title {
 	color: var(--color-text-disabled);
 }
 
-.lexicon-section-title.is-category {
+.lexicon__section-title--category {
 	color: var(--color-text-secondary);
 }
 
 @media (min-width: 768px) {
-	.lexicon-section-title {
+	.lexicon__section-title {
 		height: fit-content;
 		position: sticky;
 		top: var(--layout-scroll-header-lexicon-controls-offset);
 	}
 }
 
-.term-item {
+.term {
 	margin-bottom: 0;
 	scroll-margin-top: var(--layout-scroll-header-lexicon-controls-offset);
 }
 
-.term-pronunciation,
-.term-aliases {
+.term__pronunciation,
+.term__aliases {
 	color: var(--color-text-secondary);
 	margin-bottom: 0.5rem;
 }
 
-.term-description {
+.term__description {
 	color: var(--color-text-secondary);
 }

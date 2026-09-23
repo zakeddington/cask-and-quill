@@ -64,17 +64,17 @@ export class CustomDropdown {
 
 		this.el.trigger = document.createElement('button');
 		this.el.trigger.type = 'button';
-		this.el.trigger.className = 'custom-dropdown-trigger';
+		this.el.trigger.className = 'custom-dropdown__trigger';
 		this.el.trigger.setAttribute('aria-haspopup', 'listbox');
 		this.el.trigger.setAttribute('aria-expanded', 'false');
 		if (ariaLabel) this.el.trigger.setAttribute('aria-label', ariaLabel);
 
 		this.el.valueLabel = document.createElement('span');
-		this.el.valueLabel.className = 'custom-dropdown-label';
+		this.el.valueLabel.className = 'custom-dropdown__label';
 		this.el.valueLabel.textContent = this.getCurrentLabel();
 
 		const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		icon.setAttribute('class', 'svg-icon custom-dropdown-icon');
+		icon.setAttribute('class', 'svg-icon custom-dropdown__icon');
 		icon.setAttribute('aria-hidden', 'true');
 		icon.setAttribute('focusable', 'false');
 		const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
@@ -85,7 +85,7 @@ export class CustomDropdown {
 		this.el.trigger.appendChild(icon);
 
 		this.el.list = document.createElement('ul');
-		this.el.list.className = 'custom-dropdown-list';
+		this.el.list.className = 'custom-dropdown__list';
 		this.el.list.setAttribute('role', 'listbox');
 		if (ariaLabel) this.el.list.setAttribute('aria-label', ariaLabel);
 		this.el.list.hidden = true;
@@ -104,7 +104,7 @@ export class CustomDropdown {
 		this.state.options.forEach(o => {
 			const li = document.createElement('li');
 			const selected = o.value === this.state.value;
-			li.className = 'custom-dropdown-option' + (selected ? ' is-selected' : '');
+			li.className = 'custom-dropdown__option' + (selected ? ' is-selected' : '');
 			li.setAttribute('role', 'option');
 			li.setAttribute('aria-selected', String(selected));
 			li.dataset.value = o.value;
@@ -119,7 +119,7 @@ export class CustomDropdown {
 	}
 
 	syncSelected() {
-		this.el.list.querySelectorAll('.custom-dropdown-option').forEach(option => {
+		this.el.list.querySelectorAll('[role="option"]').forEach(option => {
 			const selected = option.dataset.value === this.state.value;
 			option.classList.toggle('is-selected', selected);
 			option.setAttribute('aria-selected', String(selected));
@@ -132,7 +132,7 @@ export class CustomDropdown {
 		this.el.trigger.setAttribute('aria-expanded', 'true');
 		this.el.list.hidden = false;
 
-		const focused = this.el.list.querySelector('.is-selected') ?? this.el.list.querySelector('.custom-dropdown-option');
+		const focused = this.el.list.querySelector('[aria-selected="true"]') ?? this.el.list.querySelector('[role="option"]');
 		focused?.focus();
 
 		document.addEventListener('pointerdown', this.onOutsideClick);
@@ -193,7 +193,7 @@ export class CustomDropdown {
 	}
 
 	onListKeydown(event) {
-		const options = Array.from(this.el.list.querySelectorAll('.custom-dropdown-option'));
+		const options = Array.from(this.el.list.querySelectorAll('[role="option"]'));
 		const focused = this.el.list.querySelector(':focus');
 		const idx = options.indexOf(focused);
 
@@ -217,7 +217,7 @@ export class CustomDropdown {
 			case KEY_ENTER:
 			case KEY_SPACE:
 				event.preventDefault();
-				if (focused?.matches('.custom-dropdown-option')) {
+				if (focused?.matches('[role="option"]')) {
 					this.selectOption(focused.dataset.value);
 				}
 				break;
@@ -229,7 +229,7 @@ export class CustomDropdown {
 	}
 
 	onListClick(event) {
-		const option = event.target.closest('.custom-dropdown-option');
+		const option = event.target.closest('[role="option"]');
 		if (option) this.selectOption(option.dataset.value);
 	}
 }

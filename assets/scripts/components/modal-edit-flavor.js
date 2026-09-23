@@ -66,7 +66,7 @@ export class ModalEditFlavor extends BaseModal {
 
 	// Update data-term-idx / data-sub-idx on all term rows within a sub and refresh disabled states.
 	reindexTerms(subEl, si) {
-		const termRows = [...subEl.querySelectorAll('.flavor-term-row')];
+		const termRows = [...subEl.querySelectorAll('[data-term-row]')];
 		const totalTerms = termRows.length;
 		termRows.forEach((termRow, ti) => {
 			termRow.querySelectorAll('[data-sub-idx]').forEach(el => { el.dataset.subIdx = si; });
@@ -143,7 +143,7 @@ export class ModalEditFlavor extends BaseModal {
 		const total = this.state.editState.subs.length;
 		const subEl = createEl(this.renderSub(newSub, si, total));
 
-		this.el.modalRoot.querySelector('.flavor-subs-list')?.appendChild(subEl);
+		this.el.modalRoot.querySelector('[data-subs-list]')?.appendChild(subEl);
 		this.reindexSubs();
 		subEl.querySelector('[data-sub-name]')?.focus();
 	}
@@ -156,7 +156,7 @@ export class ModalEditFlavor extends BaseModal {
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
-		const termRows = [...subEl.querySelectorAll('.flavor-term-row')];
+		const termRows = [...subEl.querySelectorAll('[data-term-row]')];
 		const target = termRows[termIdx];
 		const sibling = termRows[termIdx + dir];
 		if (!target || !sibling) return;
@@ -182,7 +182,7 @@ export class ModalEditFlavor extends BaseModal {
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
-		subEl.querySelectorAll('.flavor-term-row')[termIdx]?.remove();
+		subEl.querySelectorAll('[data-term-row]')[termIdx]?.remove();
 		this.reindexTerms(subEl, subIdx);
 	}
 
@@ -194,11 +194,11 @@ export class ModalEditFlavor extends BaseModal {
 		const subEl = subItems[subIdx];
 		if (!subEl) return;
 
-		const ti = subEl.querySelectorAll('.flavor-term-row').length;
+		const ti = subEl.querySelectorAll('[data-term-row]').length;
 		const total = ti + 1;
 		const termEl = createEl(this.renderTerm('', subIdx, ti, total));
 
-		subEl.querySelector('.flavor-terms-list')?.appendChild(termEl);
+		subEl.querySelector('[data-terms-list]')?.appendChild(termEl);
 		this.reindexTerms(subEl, subIdx);
 		termEl.querySelector('[data-term-input]')?.focus();
 	}
@@ -223,25 +223,25 @@ export class ModalEditFlavor extends BaseModal {
 
 	renderDeleteConfirm() {
 		return `
-			<p class="modal-confirm-text">Delete <strong>${html(this.state.currentFamily.name)}</strong>? This cannot be undone.</p>
-			<div class="modal-footer-col">
-				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
-				<button class="button-destructive" type="button" data-modal-action="delete-execute">Delete</button>
+			<p class="modal__confirm-text">Delete <strong>${html(this.state.currentFamily.name)}</strong>? This cannot be undone.</p>
+			<div class="modal__footer-col">
+				<button class="button button--secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
+				<button class="button button--destructive" type="button" data-modal-action="delete-execute">Delete</button>
 			</div>
 		`;
 	}
 
 	renderFooter() {
 		return `
-			<div class="modal-footer-col">
-				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
+			<div class="modal__footer-col">
+				<button class="button button--tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Family
 				</button>
 			</div>
-			<div class="modal-footer-col">
-				<button class="button-secondary" type="button" data-modal-action="close">Cancel</button>
-				<button class="button-primary" type="button" data-modal-action="save">Save Changes</button>
+			<div class="modal__footer-col">
+				<button class="button button--secondary" type="button" data-modal-action="close">Cancel</button>
+				<button class="button" type="button" data-modal-action="save">Save Changes</button>
 			</div>
 		`;
 	}
@@ -249,44 +249,44 @@ export class ModalEditFlavor extends BaseModal {
 	renderModal() {
 		const s = this.state.editState;
 		return `
-			<div class="modal flavor-modal" role="dialog" aria-modal="true" aria-labelledby="flavor-modal-title">
-				<button class="modal-overlay" type="button" data-modal-action="close" aria-label="Close modal"></button>
-				<div class="modal-panel">
-					<header class="modal-header">
-						<h2 id="flavor-modal-title">Edit Flavor Family</h2>
-						<button class="modal-close button-icon-only" type="button" data-modal-action="close" aria-label="Close modal">
+			<div class="modal modal--narrow" role="dialog" aria-modal="true" aria-labelledby="flavor-modal-title">
+				<button class="modal__overlay" type="button" data-modal-action="close" aria-label="Close modal"></button>
+				<div class="modal__panel flavor-editor">
+					<header class="modal__header">
+						<h2 id="flavor-modal-title" class="modal__title">Edit Flavor Family</h2>
+						<button class="modal__close button button--icon-only" type="button" data-modal-action="close" data-modal-close aria-label="Close modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
 
-					<div class="modal-body">
-						<fieldset class="modal-fieldset">
+					<div class="modal__body">
+						<fieldset class="modal__fieldset">
 							<legend>Family Details</legend>
-							<div class="flavor-detail-fields">
-								<label class="modal-field">
-									<span>Name</span>
+							<div class="flavor-editor__detail-fields">
+								<label class="modal__field">
+									<span class="modal__field-label">Name</span>
 									<input type="text" data-field="name" value="${html(s.name)}" placeholder="Family name">
 								</label>
-								<label class="modal-field flavor-field-full">
-									<span>Description</span>
+								<label class="modal__field flavor-editor__field-full">
+									<span class="modal__field-label">Description</span>
 									<input type="text" data-field="desc" value="${html(s.desc)}" placeholder="Short description">
 								</label>
 							</div>
 						</fieldset>
 
-						<fieldset class="modal-fieldset">
+						<fieldset class="modal__fieldset">
 							<legend>Sub-categories</legend>
-							<div class="flavor-subs-list">
+							<div class="flavor-editor__subs-list" data-subs-list>
 								${s.subs.map((sub, si) => this.renderSub(sub, si, s.subs.length)).join('')}
 							</div>
-							<button class="button-tertiary" type="button" data-modal-action="add-sub">
+							<button class="button button--tertiary" type="button" data-modal-action="add-sub">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-plus"></use></svg>
 								Add sub-category
 							</button>
 						</fieldset>
 					</div>
 
-					<footer class="modal-footer">
+					<footer class="modal__footer" data-modal-footer>
 						${this.renderFooter()}
 					</footer>
 				</div>
@@ -296,25 +296,25 @@ export class ModalEditFlavor extends BaseModal {
 
 	renderSub(sub, si, total) {
 		return `
-			<div class="flavor-sub-item" data-sub-item>
-				<div class="flavor-sub-header">
-					<div class="flavor-reorder-btns">
-						<button class="flavor-reorder-btn button-icon-only" type="button" data-modal-action="sub-up" data-sub-idx="${si}" aria-label="Move sub-category up"${si === 0 ? ' disabled' : ''}>
+			<div class="flavor-editor__sub-item" data-sub-item>
+				<div class="flavor-editor__sub-header">
+					<div class="flavor-editor__reorder-btns">
+						<button class="flavor-editor__reorder-btn button button--icon-only" type="button" data-modal-action="sub-up" data-sub-idx="${si}" aria-label="Move sub-category up"${si === 0 ? ' disabled' : ''}>
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-up"></use></svg>
 						</button>
-						<button class="flavor-reorder-btn button-icon-only" type="button" data-modal-action="sub-down" data-sub-idx="${si}" aria-label="Move sub-category down"${si === total - 1 ? ' disabled' : ''}>
+						<button class="flavor-editor__reorder-btn button button--icon-only" type="button" data-modal-action="sub-down" data-sub-idx="${si}" aria-label="Move sub-category down"${si === total - 1 ? ' disabled' : ''}>
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
 						</button>
 					</div>
-					<input class="flavor-sub-name" type="text" data-sub-name placeholder="Sub-category name" value="${html(sub.name)}">
-					<button class="flavor-remove-btn button-icon-only" type="button" data-modal-action="remove-sub" data-sub-idx="${si}" aria-label="Remove sub-category">
+					<input class="flavor-editor__sub-name" type="text" data-sub-name placeholder="Sub-category name" value="${html(sub.name)}">
+					<button class="flavor-editor__remove-btn button button--icon-only" type="button" data-modal-action="remove-sub" data-sub-idx="${si}" aria-label="Remove sub-category">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 					</button>
 				</div>
-				<div class="flavor-terms-list">
+				<div class="flavor-editor__terms-list" data-terms-list>
 					${sub.terms.map((term, ti) => this.renderTerm(term, si, ti, sub.terms.length)).join('')}
 				</div>
-				<button class="button-tertiary flavor-terms-add-btn" type="button" data-modal-action="add-term" data-sub-idx="${si}">
+				<button class="button button--tertiary flavor-editor__terms-add-btn" type="button" data-modal-action="add-term" data-sub-idx="${si}">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-plus"></use></svg>
 					Add term
 				</button>
@@ -324,17 +324,17 @@ export class ModalEditFlavor extends BaseModal {
 
 	renderTerm(term, si, ti, total) {
 		return `
-			<div class="flavor-term-row">
-				<div class="flavor-reorder-btns">
-					<button class="flavor-reorder-btn button-icon-only" type="button" data-modal-action="term-up" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term up"${ti === 0 ? ' disabled' : ''}>
+			<div class="flavor-editor__term-row" data-term-row>
+				<div class="flavor-editor__reorder-btns">
+					<button class="flavor-editor__reorder-btn button button--icon-only" type="button" data-modal-action="term-up" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term up"${ti === 0 ? ' disabled' : ''}>
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-up"></use></svg>
 					</button>
-					<button class="flavor-reorder-btn button-icon-only" type="button" data-modal-action="term-down" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term down"${ti === total - 1 ? ' disabled' : ''}>
+					<button class="flavor-editor__reorder-btn button button--icon-only" type="button" data-modal-action="term-down" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Move term down"${ti === total - 1 ? ' disabled' : ''}>
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>
 					</button>
 				</div>
-				<input class="flavor-term-input" type="text" data-term-input placeholder="Flavor term" value="${html(term)}">
-				<button class="flavor-remove-btn button-icon-only" type="button" data-modal-action="remove-term" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Remove term">
+				<input class="flavor-editor__term-input" type="text" data-term-input placeholder="Flavor term" value="${html(term)}">
+				<button class="flavor-editor__remove-btn button button--icon-only" type="button" data-modal-action="remove-term" data-sub-idx="${si}" data-term-idx="${ti}" aria-label="Remove term">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 				</button>
 			</div>

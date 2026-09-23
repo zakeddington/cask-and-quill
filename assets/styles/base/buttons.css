@@ -1,6 +1,5 @@
 button,
-.button,
-.button-primary {
+.button {
 	align-items: center;
 	background-color: var(--color-button-primary-background);
 	border: 2px solid var(--color-button-primary-border);
@@ -27,7 +26,7 @@ button,
 		text-decoration: none;
 	}
 
-	&.active {
+	&.is-active {
 		background-color: var(--color-button-primary-background-active);
 		border-color: var(--color-button-primary-border-active);
 		color: var(--color-button-primary-text-active);
@@ -44,7 +43,7 @@ button,
 	}
 }
 
-.button-secondary {
+.button--secondary {
 	background-color: var(--color-button-secondary-background);
 	border-color: var(--color-button-secondary-border);
 	color: var(--color-button-secondary-text);
@@ -56,14 +55,14 @@ button,
 		color: var(--color-button-secondary-text-hover);
 	}
 
-	&.active {
+	&.is-active {
 		background-color: var(--color-button-secondary-background-active);
 		border-color: var(--color-button-secondary-border-active);
 		color: var(--color-button-secondary-text-active);
 	}
 }
 
-.button-tertiary {
+.button--tertiary {
 	background-color: var(--color-button-tertiary-background);
 	border: 0;
 	border-bottom: 2px solid var(--color-button-tertiary-border);
@@ -77,7 +76,7 @@ button,
 		color: var(--color-button-tertiary-text-hover);
 	}
 
-	&.active {
+	&.is-active {
 		background-color: var(--color-button-tertiary-background-active);
 		border-bottom: 2px solid var(--color-button-tertiary-border-active);
 		color: var(--color-button-tertiary-text-active);
@@ -89,7 +88,7 @@ button,
 	}
 }
 
-.button-destructive {
+.button--destructive {
 	background-color: var(--color-button-destructive-background);
 	border-color: var(--color-button-destructive-border);
 	color: var(--color-button-destructive-text);
@@ -101,14 +100,14 @@ button,
 		color: var(--color-button-destructive-text-hover);
 	}
 
-	&.active {
+	&.is-active {
 		background-color: var(--color-button-destructive-background-active);
 		border-color: var(--color-button-destructive-border-active);
 		color: var(--color-button-destructive-text-active);
 	}
 }
 
-.button-icon-only {
+.button--icon-only {
 	background-color: var(--color-button-icon-only-background);
 	border-color: var(--color-button-icon-only-border);
 	color: var(--color-button-icon-only-text);
@@ -122,7 +121,7 @@ button,
 		color: var(--color-button-icon-only-text-hover);
 	}
 
-	&.active {
+	&.is-active {
 		background-color: var(--color-button-icon-only-background);
 		border-color: var(--color-button-icon-only-border-active);
 		color: var(--color-button-icon-only-text-active);

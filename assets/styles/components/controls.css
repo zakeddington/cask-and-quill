@@ -38,7 +38,7 @@
 }
 
 /* A single row within page-controls: search on left, filters on right */
-.controls-row {
+.page-controls__row {
 	align-items: center;
 	border-bottom: 1px solid var(--color-border-primary);
 	display: grid;
@@ -52,33 +52,33 @@
 }
 
 @media (min-width: 1024px) {
-	.controls-row {
+	.page-controls__row {
 		grid-template-columns: minmax(0, 1fr) auto;
 	}
 }
 
-.controls-row-single {
+.page-controls__row--single {
 	grid-template-columns: 1fr;
 }
 
 /* Search input wrapper */
-.search-container {
+.page-controls__search {
 	position: relative;
 	width: 100%;
 }
 
 @media (min-width: 1024px) {
-	.search-container {
+	.page-controls__search {
 		max-width: 32rem;
 	}
 }
 
-.search-input {
+.page-controls__search-input {
 	padding-right: 3rem;
 }
 
 /* Clear button: centered inside the search input on the right */
-.search-clear {
+.page-controls__search-clear {
 	position: absolute;
 	right: 0.5rem;
 	top: 50%;
@@ -86,7 +86,7 @@
 }
 
 /* Filter controls: a flex row of selects and buttons */
-.filter-controls {
+.page-controls__filters {
 	align-items: flex-start;
 	display: flex;
 	flex-direction: column;
@@ -102,13 +102,13 @@
 }
 
 /* "Clear all" button: appears in the filter row once a search term or filter is active */
-.filter-clear-all {
+.page-controls__clear-all {
 	flex-shrink: 0;
 	white-space: nowrap;
 }
 
 /* Results count line */
-.results-count {
+.page-controls__count {
 	margin: 0;
 }
 
@@ -132,7 +132,7 @@
 }
 
 /* Catalog only - add bottle button */
-.catalog-add-btn {
+.page-controls__add-btn {
 	justify-content: center;
 	padding: 0.5rem;
 

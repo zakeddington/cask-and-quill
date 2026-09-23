@@ -203,27 +203,27 @@ export class FlavorsView {
 		const subsHtml = f.subs.map(s => this.renderSub(s)).join('');
 
 		return `
-			<div class="flavor-family flavor-theme-${this.getSlug(f.name)}">
-				<div class="flavor-family-header">
-					<div class="flavor-family-header-inner">
-						<span class="flavor-family-name">${f.name}</span>
-						<span class="flavor-family-desc">${f.desc}</span>
-						<span class="flavor-family-count">${f.count} notes</span>
+			<div class="flavor-family theme--flavor-${this.getSlug(f.name)}">
+				<div class="flavor-family__header">
+					<div class="flavor-family__header-inner">
+						<span class="flavor-family__name">${f.name}</span>
+						<span class="flavor-family__desc">${f.desc}</span>
+						<span class="flavor-family__count">${f.count} notes</span>
 						${this.state.isAdmin ? `
-							<button class="flavor-family-edit-btn button-tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
+							<button class="flavor-family__edit-btn button button--tertiary" type="button" data-edit-family-idx="${f.idx}" aria-label="Edit ${f.name} family">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 								Edit
 							</button>
 						` : ''}
 					</div>
 				</div>
-				<div class="flavor-family-content">
-					<div class="flavor-h-spine"></div>
-					<div class="flavor-family-aside">
-						<img class="flavor-family-img" src="/assets/images/flavor-${this.getSlug(f.name)}.jpg" alt="${f.name}">
+				<div class="flavor-family__content">
+					<div class="flavor-family__h-spine"></div>
+					<div class="flavor-family__aside">
+						<img class="flavor-family__img" src="/assets/images/flavor-${this.getSlug(f.name)}.jpg" alt="${f.name}">
 					</div>
-					<div class="flavor-family-main">
-						<div class="flavor-v-spine"></div>
+					<div class="flavor-family__main">
+						<div class="flavor-family__v-spine"></div>
 						<div class="flavor-tree">
 							${subsHtml}
 						</div>
@@ -237,9 +237,9 @@ export class FlavorsView {
 		const termsHtml = s.terms.map(t => this.renderTerm(t)).join('');
 
 		return `
-			<div class="flavor-col">
-				<div class="flavor-col-spine"></div>
-				<div class="flavor-sublabel">${s.name}</div>
+			<div class="flavor-tree__col">
+				<div class="flavor-tree__col-spine"></div>
+				<div class="flavor-tree__sublabel">${s.name}</div>
 				${termsHtml}
 			</div>
 		`;
@@ -247,8 +247,8 @@ export class FlavorsView {
 
 	renderTerm(term) {
 		return `
-			<div class="flavor-term-spine"></div>
-			<div class="flavor-node">${term}</div>
+			<div class="flavor-tree__term-spine"></div>
+			<div class="flavor-tree__node">${term}</div>
 		`;
 	}
 }

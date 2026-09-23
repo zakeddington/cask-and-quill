@@ -99,10 +99,10 @@ export class ModalEditCatalog extends BaseModal {
 
 	renderDeleteConfirm() {
 		return `
-			<p class="modal-confirm-text">Delete <strong>${html(this.state.currentBottle.brand)} ${html(this.state.currentBottle.bottle)}</strong>? This cannot be undone.</p>
+			<p class="modal__confirm-text">Delete <strong>${html(this.state.currentBottle.brand)} ${html(this.state.currentBottle.bottle)}</strong>? This cannot be undone.</p>
 			<div>
-				<button class="button-secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
-				<button class="button-destructive" type="button" data-modal-action="delete-execute">Delete</button>
+				<button class="button button--secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
+				<button class="button button--destructive" type="button" data-modal-action="delete-execute">Delete</button>
 			</div>
 		`;
 	}
@@ -110,42 +110,42 @@ export class ModalEditCatalog extends BaseModal {
 	renderFooter() {
 		return `
 			${this.state.isNew ? '<div></div>' : `
-			<div class="modal-footer-col">
-				<button class="button-tertiary" type="button" data-modal-action="delete-prompt">
+			<div class="modal__footer-col">
+				<button class="button button--tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Bottle
 				</button>
 			</div>`}
-			<div class="modal-footer-col">
-				<button class="button-secondary" type="button" data-modal-action="close">Cancel</button>
-				<button class="button-primary" type="submit">${this.state.isNew ? 'Add Bottle' : 'Save Changes'}</button>
+			<div class="modal__footer-col">
+				<button class="button button--secondary" type="button" data-modal-action="close">Cancel</button>
+				<button class="button" type="submit">${this.state.isNew ? 'Add Bottle' : 'Save Changes'}</button>
 			</div>
 		`;
 	}
 
 	renderModal(bottle) {
 		return `
-			<div class="modal catalog-modal" role="dialog" aria-modal="true" aria-labelledby="catalog-modal-title">
-				<button class="modal-overlay" type="button" data-modal-action="close" aria-label="Close edit modal"></button>
-				<form class="modal-panel" data-catalog-edit-form>
-					<header class="modal-header catalog-modal-header">
+			<div class="modal" role="dialog" aria-modal="true" aria-labelledby="catalog-modal-title">
+				<button class="modal__overlay" type="button" data-modal-action="close" aria-label="Close edit modal"></button>
+				<form class="modal__panel catalog-form" data-catalog-edit-form>
+					<header class="modal__header">
 						<div>
 							${this.state.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
-							<h2 id="catalog-modal-title">${this.state.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
+							<h2 id="catalog-modal-title" class="modal__title">${this.state.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
 						</div>
-						<button class="modal-close button-icon-only" type="button" data-modal-action="close" aria-label="Close edit modal">
+						<button class="modal__close button button--icon-only" type="button" data-modal-action="close" data-modal-close aria-label="Close edit modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
 
-					<div class="modal-body">
+					<div class="modal__body">
 						${this.renderFieldset('Bottle Identity', CATALOG_IDENTITY_FIELDS, bottle)}
 						${this.renderFieldset('Technical Specs', CATALOG_SPEC_FIELDS, bottle)}
 						${this.renderMashBillFieldset(bottle)}
 						${this.renderTastingFieldset(bottle)}
 					</div>
 
-					<footer class="modal-footer">
+					<footer class="modal__footer" data-modal-footer>
 						${this.renderFooter()}
 					</footer>
 				</form>
@@ -155,9 +155,9 @@ export class ModalEditCatalog extends BaseModal {
 
 	renderFieldset(title, fields, bottle) {
 		return `
-			<fieldset class="modal-fieldset">
+			<fieldset class="modal__fieldset">
 				<legend>${html(title)}</legend>
-				<div class="catalog-form-grid">
+				<div class="catalog-form__grid">
 					${fields.map(field => this.renderField(field, bottle[field.name])).join('')}
 				</div>
 			</fieldset>
@@ -166,9 +166,9 @@ export class ModalEditCatalog extends BaseModal {
 
 	renderMashBillFieldset(bottle) {
 		return `
-			<fieldset class="modal-fieldset">
+			<fieldset class="modal__fieldset">
 				<legend>Mash Bill</legend>
-				<div class="catalog-form-grid catalog-form-grid-compact">
+				<div class="catalog-form__grid catalog-form__grid--compact">
 					${CATALOG_MASH_BILL_FIELDS.map(field => this.renderField({
 						...field,
 						name: `mashBill.${field.name}`
@@ -180,12 +180,12 @@ export class ModalEditCatalog extends BaseModal {
 
 	renderTastingFieldset(bottle) {
 		return `
-			<fieldset class="modal-fieldset catalog-fieldset-journal">
+			<fieldset class="modal__fieldset catalog-form__journal-fieldset">
 				<legend>Tasting Journal</legend>
-				<button class="catalog-journal-btn button-icon-only" type="button" data-journal-trigger aria-controls="journal-drawer" aria-expanded="false" aria-label="Open journal notes">
+				<button class="catalog-form__journal-btn button button--icon-only" type="button" data-journal-trigger aria-controls="journal-drawer" aria-expanded="false" aria-label="Open journal notes">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
 				</button>
-				<div class="catalog-form-stack">
+				<div class="catalog-form__stack">
 					${CATALOG_TASTING_NOTE_FIELDS.map(field => this.renderField({
 						...field,
 						name: `tastingNotes.${field.name}`,
@@ -205,13 +205,14 @@ export class ModalEditCatalog extends BaseModal {
 			return this.renderRadioField(field, value);
 		}
 
-		const fieldId = `catalog-field-${field.name.replace(/\./g, '-')}`;
+		const fieldKey = field.name.replace(/\./g, '-');
+		const fieldId = `catalog-field-${fieldKey}`;
 
 		if (field.multiline) {
 			return `
-				<div class="modal-field catalog-field ${html(fieldId)}">
-					<span>${html(field.label)}</span>
-					<div class="catalog-rich-editor" data-rich-editor="${html(field.name)}"></div>
+				<div class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}">
+					<span class="modal__field-label">${html(field.label)}</span>
+					<div class="catalog-form__rich-editor" data-rich-editor="${html(field.name)}"></div>
 					<input type="hidden" name="${html(field.name)}" value="${html(value)}">
 				</div>
 			`;
@@ -220,23 +221,24 @@ export class ModalEditCatalog extends BaseModal {
 		const input = `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">`;
 
 		return `
-			<label class="modal-field catalog-field ${html(fieldId)}" for="${html(fieldId)}">
-				<span>${html(field.label)}</span>
+			<label class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}" for="${html(fieldId)}">
+				<span class="modal__field-label">${html(field.label)}</span>
 				${field.unit ? `
-				<div class="catalog-field-unit-wrap">
+				<div class="catalog-form__unit-wrap">
 					${input}
-					<span class="catalog-field-unit" aria-hidden="true">${html(field.unit)}</span>
+					<span class="catalog-form__unit" aria-hidden="true">${html(field.unit)}</span>
 				</div>` : input}
 			</label>
 		`;
 	}
 
 	renderSelectField(field, value) {
-		const fieldId = `catalog-field-${field.name.replace(/\./g, '-')}`;
+		const fieldKey = field.name.replace(/\./g, '-');
+		const fieldId = `catalog-field-${fieldKey}`;
 		const hasMatch = field.options.some(option => option.value === value);
 		return `
-			<div class="modal-field catalog-field ${html(fieldId)}">
-				<span>${html(field.label)}</span>
+			<div class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}">
+				<span class="modal__field-label">${html(field.label)}</span>
 				<select id="${html(fieldId)}" name="${html(field.name)}" aria-label="${html(field.label)}" data-catalog-dropdown>
 					<option value=""${hasMatch ? '' : ' selected'}>Select ${html(field.label)}</option>
 					${field.options.map(option => `
@@ -250,13 +252,13 @@ export class ModalEditCatalog extends BaseModal {
 	renderRadioField(field, value) {
 		const labelId = `catalog-field-${field.name.replace(/\./g, '-')}-label`;
 		return `
-			<div class="modal-field catalog-field catalog-field-radio" role="group" aria-labelledby="${html(labelId)}">
-				<span id="${html(labelId)}">${html(field.label)}</span>
-				<div class="catalog-radio-group">
+			<div class="modal__field catalog-form__field catalog-form__field--radio" role="group" aria-labelledby="${html(labelId)}">
+				<span id="${html(labelId)}" class="modal__field-label">${html(field.label)}</span>
+				<div class="catalog-form__radio-group">
 					${field.options.map(option => `
-						<label class="catalog-radio-option">
+						<label class="catalog-form__radio-option">
 							<input type="radio" name="${html(field.name)}" value="${html(option.value)}"${value === option.value ? ' checked' : ''}>
-							<span>${html(option.label)}</span>
+							<span class="modal__field-label">${html(option.label)}</span>
 						</label>
 					`).join('')}
 				</div>
