@@ -119,7 +119,7 @@ export class CustomDropdown {
 	}
 
 	syncSelected() {
-		this.el.list.querySelectorAll('[role="option"]').forEach(option => {
+		this.el.list.querySelectorAll('.custom-dropdown__option').forEach(option => {
 			const selected = option.dataset.value === this.state.value;
 			option.classList.toggle('is-selected', selected);
 			option.setAttribute('aria-selected', String(selected));
@@ -132,7 +132,7 @@ export class CustomDropdown {
 		this.el.trigger.setAttribute('aria-expanded', 'true');
 		this.el.list.hidden = false;
 
-		const focused = this.el.list.querySelector('[aria-selected="true"]') ?? this.el.list.querySelector('[role="option"]');
+		const focused = this.el.list.querySelector('.custom-dropdown__option.is-selected') ?? this.el.list.querySelector('.custom-dropdown__option');
 		focused?.focus();
 
 		document.addEventListener('pointerdown', this.onOutsideClick);
@@ -193,7 +193,7 @@ export class CustomDropdown {
 	}
 
 	onListKeydown(event) {
-		const options = Array.from(this.el.list.querySelectorAll('[role="option"]'));
+		const options = Array.from(this.el.list.querySelectorAll('.custom-dropdown__option'));
 		const focused = this.el.list.querySelector(':focus');
 		const idx = options.indexOf(focused);
 
@@ -217,7 +217,7 @@ export class CustomDropdown {
 			case KEY_ENTER:
 			case KEY_SPACE:
 				event.preventDefault();
-				if (focused?.matches('[role="option"]')) {
+				if (focused?.matches('.custom-dropdown__option')) {
 					this.selectOption(focused.dataset.value);
 				}
 				break;
@@ -229,7 +229,7 @@ export class CustomDropdown {
 	}
 
 	onListClick(event) {
-		const option = event.target.closest('[role="option"]');
+		const option = event.target.closest('.custom-dropdown__option');
 		if (option) this.selectOption(option.dataset.value);
 	}
 }

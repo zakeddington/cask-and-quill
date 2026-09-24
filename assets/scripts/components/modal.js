@@ -4,8 +4,8 @@ export class BaseModal {
 	constructor(modalRoot, options = {}) {
 		this.options = {
 			bodyClass: 'modal-is-open',
-			closeSelector: '[data-modal-close]',
-			footerSelector: '[data-modal-footer]',
+			closeSelector: '.modal__close',
+			footerSelector: '.modal__footer',
 			onSave: null,
 			onDelete: null,
 			...options,
@@ -47,7 +47,7 @@ export class BaseModal {
 	}
 
 	onModalClick(event) {
-		const btn = event.target.closest('[data-modal-action]');
+		const btn = event.target.closest('.modal__action');
 		const action = btn?.dataset.modalAction;
 
 		if (action === 'close') { this.close(); return; }
@@ -69,7 +69,7 @@ export class BaseModal {
 		const footer = this.el.modalRoot.querySelector(this.options.footerSelector);
 		if (!footer) return;
 		footer.innerHTML = this.renderDeleteConfirm();
-		footer.querySelector('[data-modal-action="delete-execute"]')?.focus();
+		footer.querySelector('.modal__confirm-btn')?.focus();
 	}
 
 	hideDeleteConfirm() {

@@ -29,14 +29,14 @@ export class Auth {
 	}
 
 	onOutsideClick(event) {
-		if (!this.el.container.querySelector('[data-auth-user]')?.contains(event.target)) {
+		if (!this.el.container.querySelector('.auth__user')?.contains(event.target)) {
 			this.closeMenu();
 		}
 	}
 
 	openMenu() {
-		const menu = this.el.container.querySelector('[data-auth-menu]');
-		const button = this.el.container.querySelector('[data-auth-action="toggle-menu"]');
+		const menu = this.el.container.querySelector('.auth__menu');
+		const button = this.el.container.querySelector('.auth__menu-toggle');
 		if (!menu || !button) return;
 
 		menu.hidden = false;
@@ -45,8 +45,8 @@ export class Auth {
 	}
 
 	closeMenu() {
-		const menu = this.el.container.querySelector('[data-auth-menu]');
-		const button = this.el.container.querySelector('[data-auth-action="toggle-menu"]');
+		const menu = this.el.container.querySelector('.auth__menu');
+		const button = this.el.container.querySelector('.auth__menu-toggle');
 		if (!menu || !button) return;
 
 		menu.hidden = true;
@@ -55,7 +55,7 @@ export class Auth {
 	}
 
 	async onAuthClick(event) {
-		const action = event.target.closest('[data-auth-action]')?.dataset.authAction;
+		const action = event.target.closest('.auth__action')?.dataset.authAction;
 		if (!action) return;
 
 		if (action === 'open-login') {
@@ -63,7 +63,7 @@ export class Auth {
 		} else if (action === 'close-login') {
 			document.getElementById('auth-dialog')?.close();
 		} else if (action === 'toggle-menu') {
-			const menu = this.el.container.querySelector('[data-auth-menu]');
+			const menu = this.el.container.querySelector('.auth__menu');
 			if (menu?.hidden) {
 				this.openMenu();
 			} else {
@@ -80,10 +80,10 @@ export class Auth {
 
 	async onAuthSubmit(event) {
 		event.preventDefault();
-		if (!event.target.matches('[data-auth-form]')) return;
+		if (!event.target.matches('.auth__form')) return;
 
 		const formData = new FormData(event.target);
-		const errorEl = this.el.container.querySelector('[data-auth-error]');
+		const errorEl = this.el.container.querySelector('.auth__error');
 
 		try {
 			errorEl.hidden = true;
@@ -108,26 +108,26 @@ export class Auth {
 
 	renderSignedIn() {
 		return `
-			<div class="auth__user" data-auth-user>
-				<button class="button button--icon-only is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
+			<div class="auth__user">
+				<button class="auth__action auth__menu-toggle button button--icon-only is-signed-in" data-auth-action="toggle-menu" aria-label="Account menu" aria-expanded="false" aria-haspopup="true">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle-fill"></use></svg>
 				</button>
-				<div class="auth__menu" data-auth-menu hidden>
-					<button class="auth__signout" data-auth-action="logout" type="button">Sign Out</button>
+				<div class="auth__menu" hidden>
+					<button class="auth__action auth__signout" data-auth-action="logout" type="button">Sign Out</button>
 				</div>
 			</div>`;
 	}
 
 	renderSignedOut() {
 		return `
-			<button class="button button--icon-only" data-auth-action="open-login" aria-label="Admin login">
+			<button class="auth__action button button--icon-only" data-auth-action="open-login" aria-label="Admin login">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-user-circle"></use></svg>
 			</button>
 			<dialog class="auth__dialog" id="auth-dialog" aria-labelledby="auth-title">
-				<form class="auth__form" data-auth-form>
+				<form class="auth__form">
 					<header class="auth__header">
 						<h2 id="auth-title" class="auth__title text-heading-sm">Admin Login</h2>
-						<button class="button button--icon-only" type="button" data-auth-action="close-login" aria-label="Close">
+						<button class="auth__action button button--icon-only" type="button" data-auth-action="close-login" aria-label="Close">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
@@ -139,9 +139,9 @@ export class Auth {
 						<span class="auth__field-label">Password</span>
 						<input type="password" name="password" required autocomplete="current-password">
 					</label>
-					<p class="auth__error" data-auth-error hidden></p>
+					<p class="auth__error" hidden></p>
 					<div class="auth__actions">
-						<button class="button button--secondary" type="button" data-auth-action="close-login">Cancel</button>
+						<button class="auth__action button button--secondary" type="button" data-auth-action="close-login">Cancel</button>
 						<button class="button" type="submit">Sign In</button>
 					</div>
 				</form>

@@ -135,7 +135,7 @@ export class CatalogView {
 	}
 
 	onCatalogClick(event) {
-		const editButton = event.target.closest('[data-catalog-action="edit"]');
+		const editButton = event.target.closest('.catalog-detail__edit-btn');
 		if (editButton) {
 			const bottle = this.getBottleById(editButton.dataset.bottleId);
 			if (bottle) this.components.modal?.open(bottle);
@@ -246,7 +246,7 @@ export class CatalogView {
 	onBottleToggle(elAccordion, elTrigger, isOpen) {
 		const id = elTrigger.dataset.bottleId;
 		this.state.expandedId = isOpen ? id : (this.state.expandedId === id ? null : this.state.expandedId);
-		elAccordion.querySelector('[data-bottle-heading]')?.classList.toggle('theme--accent', isOpen);
+		elAccordion.querySelector('.catalog-bottle__heading')?.classList.toggle('theme--accent', isOpen);
 	}
 
 	getBottleById(id) {
@@ -348,13 +348,12 @@ export class CatalogView {
 		const panelId = `catalog-panel-${bottle.id}`;
 
 		return `
-			<article class="catalog-bottle accordion ${isOpen ? 'is-open' : ''}" data-accordion>
-				<h3 class="catalog-bottle__heading${isOpen ? ' theme--accent' : ''}" data-bottle-heading>
+			<article class="catalog-bottle accordion ${isOpen ? 'is-open' : ''}">
+				<h3 class="catalog-bottle__heading${isOpen ? ' theme--accent' : ''}">
 					<button
 						aria-controls="${html(panelId)}"
 						aria-expanded="${isOpen}"
-						class="catalog-bottle__trigger"
-						data-accordion-trigger
+						class="accordion__trigger catalog-bottle__trigger"
 						data-bottle-id="${html(bottle.id)}"
 						id="${html(triggerId)}"
 						type="button"
@@ -470,7 +469,7 @@ export class CatalogView {
 				</section>
 				${this.state.isAdmin ? `
 				<div class="catalog-detail__actions">
-					<button class="button" data-catalog-action="edit" data-bottle-id="${html(bottle.id)}" type="button">
+					<button class="catalog-detail__edit-btn button" data-bottle-id="${html(bottle.id)}" type="button">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 						Edit Entry
 					</button>

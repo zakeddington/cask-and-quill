@@ -94,7 +94,7 @@ export class FlavorsView {
 	}
 
 	onFlavorsClick(event) {
-		const editBtn = event.target.closest('[data-edit-family-idx]');
+		const editBtn = event.target.closest('.flavor-family__edit-btn');
 		if (!editBtn) return;
 
 		const idx = parseInt(editBtn.dataset.editFamilyIdx);

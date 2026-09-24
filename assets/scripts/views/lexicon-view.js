@@ -9,7 +9,7 @@ export class LexiconView {
 		this.el = {
 			header: document.querySelector('.header'),
 			container: elContainer,
-			navLinks: elContainer.querySelectorAll('[data-lexicon-nav-link]'),
+			navLinks: elContainer.querySelectorAll('.lexicon-nav__link'),
 			pageControls: elContainer.querySelector('.page-controls'),
 			searchInput: elContainer.querySelector('#search-input'),
 			searchClear: elContainer.querySelector('#search-clear'),

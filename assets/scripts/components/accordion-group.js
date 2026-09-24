@@ -4,8 +4,8 @@ import { KEY_ARROW_DOWN, KEY_ARROW_UP, KEY_HOME, KEY_END, KEY_ESCAPE } from '../
 export class AccordionGroup {
 	constructor(elContainer, options = {}) {
 		this.options = {
-			selectorAccordion: '[data-accordion]',
-			selectorTrigger: '[data-accordion-trigger]',
+			selectorAccordion: '.accordion',
+			selectorTrigger: '.accordion__trigger',
 			classIsOpen: 'is-open',
 			scrollSpeed: 350,
 			scrollBlock: 'start',

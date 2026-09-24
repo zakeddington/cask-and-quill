@@ -42,8 +42,8 @@ export class ModalEditCatalog extends BaseModal {
 	}
 
 	initRichTextEditors() {
-		this.el.modalRoot.querySelectorAll('[data-rich-editor]').forEach(container => {
-			const name = container.dataset.richEditor;
+		this.el.modalRoot.querySelectorAll('.catalog-form__rich-editor').forEach(container => {
+			const name = container.dataset.fieldName;
 			const hidden = this.el.modalRoot.querySelector(`input[type="hidden"][name="${CSS.escape(name)}"]`);
 			initRichEditor({
 				element: container,
@@ -54,11 +54,11 @@ export class ModalEditCatalog extends BaseModal {
 	}
 
 	initDropdowns() {
-		this.el.modalRoot.querySelectorAll('[data-catalog-dropdown]').forEach(select => new CustomDropdown(select));
+		this.el.modalRoot.querySelectorAll('.catalog-form__dropdown').forEach(select => new CustomDropdown(select));
 	}
 
 	initJournalDrawer() {
-		const trigger = this.el.modalRoot.querySelector('[data-journal-trigger]');
+		const trigger = this.el.modalRoot.querySelector('.catalog-form__journal-btn');
 		if (trigger) new JournalDrawer(trigger, { isAdmin: this.options.isAdmin?.() });
 	}
 
@@ -101,8 +101,8 @@ export class ModalEditCatalog extends BaseModal {
 		return `
 			<p class="modal__confirm-text">Delete <strong>${html(this.state.currentBottle.brand)} ${html(this.state.currentBottle.bottle)}</strong>? This cannot be undone.</p>
 			<div>
-				<button class="button button--secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
-				<button class="button button--destructive" type="button" data-modal-action="delete-execute">Delete</button>
+				<button class="modal__action button button--secondary" type="button" data-modal-action="delete-cancel">Cancel</button>
+				<button class="modal__action modal__confirm-btn button button--destructive" type="button" data-modal-action="delete-execute">Delete</button>
 			</div>
 		`;
 	}
@@ -111,13 +111,13 @@ export class ModalEditCatalog extends BaseModal {
 		return `
 			${this.state.isNew ? '<div></div>' : `
 			<div class="modal__footer-col">
-				<button class="button button--tertiary" type="button" data-modal-action="delete-prompt">
+				<button class="modal__action button button--tertiary" type="button" data-modal-action="delete-prompt">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-prohibit"></use></svg>
 					Delete Bottle
 				</button>
 			</div>`}
 			<div class="modal__footer-col">
-				<button class="button button--secondary" type="button" data-modal-action="close">Cancel</button>
+				<button class="modal__action button button--secondary" type="button" data-modal-action="close">Cancel</button>
 				<button class="button" type="submit">${this.state.isNew ? 'Add Bottle' : 'Save Changes'}</button>
 			</div>
 		`;
@@ -126,14 +126,14 @@ export class ModalEditCatalog extends BaseModal {
 	renderModal(bottle) {
 		return `
 			<div class="modal" role="dialog" aria-modal="true" aria-labelledby="catalog-modal-title">
-				<button class="modal__overlay" type="button" data-modal-action="close" aria-label="Close edit modal"></button>
-				<form class="modal__panel catalog-form" data-catalog-edit-form>
+				<button class="modal__action modal__overlay" type="button" data-modal-action="close" aria-label="Close edit modal"></button>
+				<form class="modal__panel catalog-form">
 					<header class="modal__header">
 						<div>
 							${this.state.isNew ? '' : `<p class="text-label">Bottle Log ID: #${html(bottle.id)}</p>`}
 							<h2 id="catalog-modal-title" class="modal__title">${this.state.isNew ? 'Add Bottle Entry' : 'Edit Bottle Entry'}</h2>
 						</div>
-						<button class="modal__close button button--icon-only" type="button" data-modal-action="close" data-modal-close aria-label="Close edit modal">
+						<button class="modal__action modal__close button button--icon-only" type="button" data-modal-action="close" aria-label="Close edit modal">
 							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-x"></use></svg>
 						</button>
 					</header>
@@ -145,7 +145,7 @@ export class ModalEditCatalog extends BaseModal {
 						${this.renderTastingFieldset(bottle)}
 					</div>
 
-					<footer class="modal__footer" data-modal-footer>
+					<footer class="modal__footer">
 						${this.renderFooter()}
 					</footer>
 				</form>
@@ -182,7 +182,7 @@ export class ModalEditCatalog extends BaseModal {
 		return `
 			<fieldset class="modal__fieldset catalog-form__journal-fieldset">
 				<legend>Tasting Journal</legend>
-				<button class="catalog-form__journal-btn button button--icon-only" type="button" data-journal-trigger aria-controls="journal-drawer" aria-expanded="false" aria-label="Open journal notes">
+				<button class="catalog-form__journal-btn button button--icon-only" type="button" aria-controls="journal-drawer" aria-expanded="false" aria-label="Open journal notes">
 					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-notebook"></use></svg>
 				</button>
 				<div class="catalog-form__stack">
@@ -212,7 +212,7 @@ export class ModalEditCatalog extends BaseModal {
 			return `
 				<div class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}">
 					<span class="modal__field-label">${html(field.label)}</span>
-					<div class="catalog-form__rich-editor" data-rich-editor="${html(field.name)}"></div>
+					<div class="catalog-form__rich-editor" data-field-name="${html(field.name)}"></div>
 					<input type="hidden" name="${html(field.name)}" value="${html(value)}">
 				</div>
 			`;
@@ -239,7 +239,7 @@ export class ModalEditCatalog extends BaseModal {
 		return `
 			<div class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}">
 				<span class="modal__field-label">${html(field.label)}</span>
-				<select id="${html(fieldId)}" name="${html(field.name)}" aria-label="${html(field.label)}" data-catalog-dropdown>
+				<select id="${html(fieldId)}" name="${html(field.name)}" aria-label="${html(field.label)}" class="catalog-form__dropdown">
 					<option value=""${hasMatch ? '' : ' selected'}>Select ${html(field.label)}</option>
 					${field.options.map(option => `
 						<option value="${html(option.value)}"${value === option.value ? ' selected' : ''}>${html(option.label)}</option>

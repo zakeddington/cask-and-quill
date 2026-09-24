@@ -37,13 +37,13 @@ export class RegionsView {
 	}
 
 	initMapSwitcher() {
-		this.el.subRegions = this.el.container.querySelectorAll('[data-map-target]');
+		this.el.subRegions = this.el.container.querySelectorAll('.sub-regions__list');
 		this.el.subRegions.forEach(group => new SubRegionMapSwitcher(group));
 	}
 
 	initNav() {
-		this.el.navLinks = Array.from(this.el.regions.querySelectorAll('[data-regions-nav-link]'));
-		this.el.regionSections = Array.from(this.el.regions.querySelectorAll('[data-region]'));
+		this.el.navLinks = Array.from(this.el.regions.querySelectorAll('.regions-nav__link'));
+		this.el.regionSections = Array.from(this.el.regions.querySelectorAll('.region'));
 		this.el.regionSelect = this.el.regions.querySelector('#regions-nav-select');
 
 		this.el.navLinks.forEach(elLink => {
@@ -126,7 +126,7 @@ export class RegionsView {
 				<ul class="regions-nav__list list-reset">
 					${this.data.map(region => `
 						<li>
-							<a class="button button--tertiary regions-nav__link" data-regions-nav-link href="#${this.getRegionId(region)}">${escapeHtml(region.name)}</a>
+							<a class="button button--tertiary regions-nav__link" href="#${this.getRegionId(region)}">${escapeHtml(region.name)}</a>
 						</li>
 					`).join('')}
 				</ul>
@@ -136,7 +136,7 @@ export class RegionsView {
 
 	renderRegion(region) {
 		return `
-			<section class="region" data-region id="${this.getRegionId(region)}">
+			<section class="region" id="${this.getRegionId(region)}">
 				<div class="region__header grid grid--align-center">
 					<div class="grid__col--12-md grid__col--3-lg">
 						${this.renderBottleImage(region.bottleImage, region.name)}
@@ -229,7 +229,7 @@ export class RegionsView {
 		return `
 			<div class="sub-regions">
 				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
-				<div class="sub-regions__map-container grid grid--align-center" data-map-container>
+				<div class="sub-regions__map-container grid grid--align-center">
 					<div
 						class="sub-regions__map grid__col--12-md grid__col--6-lg"
 						data-base-src="${escapeHtml(baseMapSrc)}"
@@ -239,12 +239,11 @@ export class RegionsView {
 						<img
 							alt="${escapeHtml(defaultMapAlt)}"
 							class="sub-regions__map-image sub-regions__map-image--base"
-							data-map-layer="base"
 							src="${escapeHtml(baseMapSrc)}"
 						/>
-						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--all-highlight is-visible" data-map-layer="all-highlight" src="${escapeHtml(initialHighlightSrc)}" />
-						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--highlight" data-map-layer="highlight" />
-						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--highlight" data-map-layer="highlight" />
+						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--all-highlight is-visible" src="${escapeHtml(initialHighlightSrc)}" />
+						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--highlight" />
+						<img alt="" aria-hidden="true" class="sub-regions__map-image sub-regions__map-image--highlight" />
 					</div>
 					<div class="sub-regions__list grid grid__col--12-md grid__col--6-lg" data-map-target="${escapeHtml(mapId)}">
 						${region.subRegions.map(sub => {

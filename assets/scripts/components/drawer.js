@@ -3,8 +3,8 @@ import { KEY_ESCAPE, KEY_TAB } from '../config/constants.js';
 export class BaseDrawer {
 	constructor(triggerEl, options = {}) {
 		this.options = {
-			overlaySelector: '[data-drawer-overlay]',
-			closeSelector: '[data-drawer-close]',
+			overlaySelector: '.drawer__overlay',
+			closeSelector: '.drawer__close',
 			bodyClass: 'drawer-is-open',
 			focusableSelectors: 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])',
 			isAdmin: false,
