@@ -258,7 +258,7 @@ export const REGIONS_DATA = [
 			{ label: 'Fermentation', value: 'Enzymes permitted.' },
 			{ label: 'Distillation ceiling', value: 'No distillation ceiling specified.' },
 			{ label: 'Entry proof', value: 'No entry proof specified.' },
-			{ label: 'Barrels', value: 'Wooden casks.' },
+			{ label: 'Barrels', value: 'Wooden casks not exceeding 700 litres.' },
 			{ label: 'Aging minimum', value: '3 years.' },
 			{ label: 'Bottling minimum', value: '40% (80°) ABV.' },
 			{ label: 'Permitted additives', value: 'Caramel coloring (E150a), caramel flavoring, and up to 9.09% of other spirits, wine, or flavorings permitted.' },
@@ -387,7 +387,7 @@ export const REGIONS_DATA = [
 			},
 			{
 				name: 'Multi-Grain & Rye',
-				description: 'Multi-Grain and Rye whiskies use grain bills beyond malted barley, since Australian law imposes no mash bill restriction on whisky generally. Archie Rose distills its flagship single malt from a six-grain mash and won World\'s Best Rye Whisky in 2020, illustrating the stylistic freedom the law allows.',
+				description: 'Multi-Grain and Rye whiskies use grain bills beyond malted barley, since Australian law requires only that whisky be distilled from grain and sets no rules on which grains or proportions. Archie Rose shows the range this allows: its flagship single malt is built from six different malted barleys, while its Rye Malt Whisky, made from malted rye, won World\'s Best Rye Whisky in 2020.',
 				tags: ['Any Grain(s)', 'No Mash Bill Restriction'],
 			},
 			{
@@ -434,7 +434,7 @@ export const REGIONS_DATA = [
 			},
 			{
 				name: 'Legacy Grain & Blended Stock',
-				description: 'The Willowbank Distillery in Dunedin, the world\'s southernmost whisky distillery in its day, produced New Zealand\'s Wilson\'s, 45 South, and Lammerlaw labels from 1974 until its closure in 1997. The New Zealand Whisky Collection acquired its surviving casks in 2010 and continues to bottle the stock, including a grain whisky component, as South Island Single Malt and Doublewood releases aged 20 years or more — the only trace of grain or blended whisky in New Zealand\'s history, since no distillery today produces either.',
+				description: 'The Willowbank Distillery in Dunedin, the world\'s southernmost whisky distillery in its day, produced New Zealand\'s Wilson\'s, 45 South, and Lammerlaw labels from 1974 until its closure in 1997. In 2010 the New Zealand Whisky Collection acquired the distillery\'s surviving casks, distilled between 1987 and 1994, which hold both malt and grain whisky. The malt stock is bottled as South Island Single Malt and the grain in blended releases such as Doublewood, with the whisky now aged well over 30 years. These casks are a rare surviving link to New Zealand\'s earlier whisky industry.',
 				tags: ['Historic Stock (1987-1994)', 'Includes Grain Whisky', 'No Longer in Production'],
 			},
 		],

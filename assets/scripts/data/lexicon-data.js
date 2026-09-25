@@ -205,7 +205,7 @@ export const LEXICON_TERMS = [
 		name: 'Canadian Whisky',
 		category: STYLES_REGULATIONS,
 		letter: 'C',
-		description: 'Whisky made, mashed, distilled, and aged in Canada from cereal grain, then matured in wood smaller than 700 liters for at least three years and bottled at no less than 40% ABV. It is often called rye even when rye is not the dominant grain, and may include caramel coloring, flavoring, or limited additions of aged spirit or wine under Canadian law.',
+		description: 'Whisky mashed, distilled, and aged in Canada from cereal grain, matured for at least three years in wood barrels of no more than 700 liters, and bottled at no less than 40% ABV. Canadian law permits it to be labeled "rye whisky" whatever the grain bill, so the name often appears when rye is not the dominant grain, and it may contain caramel and flavoring, including up to 9.09% of other aged spirits or wine.',
 		seeAlso: ['ABV', 'Rye', 'Whisky']
 	},
 	{
