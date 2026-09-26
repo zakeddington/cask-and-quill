@@ -54,6 +54,8 @@
 
 @import "views/stories/story.css" layer(views);
 
+@import "views/quiz/quiz.css" layer(views);
+
 /* Utilities */
 /* --------------------------------------------------------------- */
 @import "utilities.css" layer(utilities);

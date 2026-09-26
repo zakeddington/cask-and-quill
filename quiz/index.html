@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cask & Quill</title>
+	<title>Quiz | Cask & Quill</title>
 	<link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
 	<link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
@@ -14,19 +14,19 @@
 	<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
-<body class="regions-view">
+<body class="stories-view">
 	<header class="header">
 		<nav class="nav">
 			<a class="nav__logo" href="/">
 				<img class="nav__logo-img" src="/assets/images/logo.png" alt="Cask & Quill Logo">
 			</a>
 			<div class="nav__buttons">
-				<a id="regions-btn" class="button button--tertiary is-active" href="/">Regions</a>
+				<a id="regions-btn" class="button button--tertiary" href="/">Regions</a>
 				<a id="lexicon-btn" class="button button--tertiary" href="/lexicon/">Lexicon</a>
 				<a id="catalog-btn" class="button button--tertiary" href="/catalog/">Catalog</a>
 				<a id="flavors-btn" class="button button--tertiary" href="/flavors/">Flavors</a>
 				<a id="stories-btn" class="button button--tertiary" href="/stories/">Stories</a>
-				<a id="quiz-btn" class="button button--tertiary" href="/quiz/">Quiz</a>
+				<a id="quiz-btn" class="button button--tertiary is-active" href="/quiz/">Quiz</a>
 			</div>
 			<div id="auth-root" class="auth"></div>
 			<button id="nav-menu-btn" class="nav__menu-btn button button--icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
@@ -45,40 +45,33 @@
 			</div>
 			<div class="drawer__body">
 				<div class="drawer-nav__links">
-					<a class="button button--tertiary drawer-nav__link is-active" href="/">Regions</a>
+					<a class="button button--tertiary drawer-nav__link" href="/">Regions</a>
 					<a class="button button--tertiary drawer-nav__link" href="/lexicon/">Lexicon</a>
 					<a class="button button--tertiary drawer-nav__link" href="/catalog/">Catalog</a>
 					<a class="button button--tertiary drawer-nav__link" href="/flavors/">Flavors</a>
 					<a class="button button--tertiary drawer-nav__link" href="/stories/">Stories</a>
-					<a class="button button--tertiary drawer-nav__link" href="/quiz/">Quiz</a>
+					<a class="button button--tertiary drawer-nav__link is-active" href="/quiz/">Quiz</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
 	<main class="main-content">
-		<section class="hero grid">
-			<div class="hero__heading grid__col--12-md grid__col--7-lg">
-				<h1 class="hero__title">Whisk(e)y <span class="hero__title-note text-display-sm italic">n.</span></h1>
-				<p class="text-label-md">/'hwiski, 'wiski/</p>
-				<p>Derived from the Classical Gaelic "uisce beatha," meaning "water of life." An alcoholic liquor distilled from a fermented mash of grain, such as barley, rye, or corn, and usually aged in oak containers.</p>
-			</div>
-			<div class="hero__image-col grid__col--12-md grid__col--5-lg">
-				<img class="hero__image" src="/assets/images/hero-whiskey.jpg" alt="illustration of barrels" />
-			</div>
-			<div class="hero__meta grid__col--full">
-				<div class="hero__meta-item">
-					<p class="text-label">Etymology</p>
-					<p>Old Irish • 12th Century</p>
+		<div class="quiz-view" id="quiz-view">
+			<section class="quiz-view__hero hero grid">
+				<div class="hero__heading grid__col--12-md grid__col--7-lg">
+					<h1 class="hero__title">Quiz</h1>
+					<p>Put your whiskey knowledge to the test — from the still and the cask to the label and the regions behind every bottle.</p>
 				</div>
-				<div class="hero__meta-item">
-					<p class="text-label">Variants</p>
-					<p>Whisky (Scotch/Japanese), Whiskey (Irish/American)</p>
+				<div class="hero__image-col grid__col--12-md grid__col--5-lg">
+					<img class="hero__image" src="/assets/images/hero-whiskey.jpg" alt="illustration of barrels" />
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<div id="regions" class="grid"></div>
+			<div class="quiz-view__screen">
+				<!-- Quiz screens will be populated by JavaScript -->
+			</div>
+		</div>
 	</main>
 
 	<script type="module" src="/assets/scripts/scripts.js"></script>

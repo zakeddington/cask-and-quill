@@ -34,6 +34,14 @@ export class RegionsView {
 		this.render();
 		this.initMapSwitcher();
 		this.initNav();
+		this.scrollToHash();
+	}
+
+	scrollToHash() {
+		if (!location.hash) return;
+
+		const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+		if (target) target.scrollIntoView({ block: 'start' });
 	}
 
 	initMapSwitcher() {

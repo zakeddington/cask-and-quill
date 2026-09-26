@@ -42,6 +42,12 @@ async function initApp() {
 		const { FlavorsView } = await import('./views/flavors-view.js');
 		new FlavorsView(elFlavorsView, isAdmin);
 	}
+
+	const elQuizView = document.getElementById('quiz-view');
+	if (elQuizView) {
+		const { QuizView } = await import('./views/quiz-view.js');
+		new QuizView(elQuizView);
+	}
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
