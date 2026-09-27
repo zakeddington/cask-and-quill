@@ -1,0 +1,19 @@
+/* Shared */
+/* --------------------------------------------------------------- */
+.quiz-view__screen {
+	display: flex;
+	flex-direction: column;
+	gap: var(--grid-gap);
+	scroll-margin-top: var(--layout-scroll-header-offset);
+}
+
+.quiz-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.quiz-source-link {
+	margin-bottom: 0;
+}

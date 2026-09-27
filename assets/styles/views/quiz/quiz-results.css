@@ -1,0 +1,119 @@
+/* Results */
+/* --------------------------------------------------------------- */
+.quiz-results__summary {
+	border-bottom: 2px solid var(--color-border-accent);
+	margin-bottom: 3rem;
+	padding-bottom: 3rem;
+}
+
+.quiz-results__title {
+	margin: 0.5rem 0;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.quiz-results__total {
+	color: var(--color-text-secondary);
+	font-size: 0.5em;
+}
+
+.quiz-results__percent {
+	color: var(--color-text-accent);
+	margin-bottom: 2rem;
+}
+
+.quiz-results__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.quiz-results__breakdowns {
+	display: grid;
+	gap: 2rem;
+}
+
+.quiz-breakdown__title {
+	margin-bottom: 1rem;
+}
+
+.quiz-breakdown__list {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.quiz-breakdown__row {
+	align-items: center;
+	display: grid;
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-sm);
+	gap: 1rem;
+	grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr) 3rem;
+}
+
+.quiz-breakdown__meter {
+	background-color: var(--color-background-secondary-alt);
+	display: block;
+	height: 0.5rem;
+}
+
+.quiz-breakdown__meter-fill {
+	background-color: var(--color-border-accent);
+	display: block;
+	height: 100%;
+}
+
+.quiz-breakdown__value {
+	font-weight: var(--font-weight-semibold);
+	text-align: right;
+}
+
+.quiz-results__review {
+	max-width: 48rem;
+
+	h2 {
+		margin-bottom: 2rem;
+	}
+}
+
+.quiz-results__review-list {
+	display: grid;
+	gap: 2rem;
+}
+
+.quiz-review {
+	border-bottom: 1px solid var(--color-border-primary);
+	padding-bottom: 2rem;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.quiz-review__question {
+	margin-bottom: 1rem;
+}
+
+.quiz-review__answer {
+	font-family: var(--font-sans-serif);
+	margin-bottom: 0.25rem;
+
+	span {
+		font-weight: var(--font-weight-semibold);
+	}
+}
+
+.quiz-review__answer--yours span {
+	color: var(--color-quiz-incorrect);
+	text-decoration: line-through;
+}
+
+.quiz-review__answer--correct span {
+	color: var(--color-quiz-correct-text);
+}
+
+.quiz-review__explanation {
+	margin-top: 1rem;
+}

@@ -59,7 +59,6 @@ export class QuizView {
 	constructor(elContainer) {
 		this.el = {
 			container: elContainer,
-			hero: elContainer.querySelector('.quiz-view__hero'),
 			screen: elContainer.querySelector('.quiz-view__screen'),
 		};
 
@@ -220,11 +219,6 @@ export class QuizView {
 			return;
 		}
 
-		if (target.closest('.quiz-setup__quick-start')) {
-			this.startQuiz(DEFAULT_CONFIG);
-			return;
-		}
-
 		if (target.closest('.quiz-setup__start')) {
 			this.startQuiz(this.state.config);
 			return;
@@ -297,7 +291,7 @@ export class QuizView {
 	showScreen(screen) {
 		this.state.screen = screen;
 		this.render();
-		window.scrollTo({ top: 0 });
+		this.el.screen.scrollIntoView({ block: 'start' });
 
 		const focusTarget = screen === SCREEN_QUESTION
 			? this.el.screen.querySelector('.quiz-question__title')
@@ -310,8 +304,6 @@ export class QuizView {
 	render() {
 		if (this.state.screen === SCREEN_QUESTION && !this.state.quiz) this.state.screen = SCREEN_SETUP;
 		if (this.state.screen === SCREEN_RESULTS && !this.state.quiz?.completedAt) this.state.screen = SCREEN_SETUP;
-
-		if (this.el.hero) this.el.hero.hidden = this.state.screen !== SCREEN_SETUP;
 
 		if (this.state.screen === SCREEN_QUESTION) {
 			this.el.screen.innerHTML = this.renderQuestion();
@@ -347,32 +339,25 @@ export class QuizView {
 
 	renderSetup() {
 		return `
-			<div class="quiz-setup">
-				${this.renderResumeBanner()}
-				<section class="quiz-setup__panel quiz-setup__panel--quick">
-					<div class="quiz-setup__panel-text">
-						<h2 class="text-heading-lg">Quick quiz</h2>
-						<p>Twenty random questions from every category and difficulty.</p>
+			${this.renderResumeBanner()}
+			<section class="quiz-setup" aria-labelledby="quiz-setup-title">
+				<div class="quiz-setup__header">
+					<h2 id="quiz-setup-title" class="text-heading-lg">Build a quiz</h2>
+					<p>Narrow the pool by category, difficulty, or source, or leave everything unselected for a random mix of all ${QUIZ_QUESTIONS.length} questions.</p>
+				</div>
+				${this.filterGroups.map(group => this.renderFilterGroup(group)).join('')}
+				${this.renderLengthGroup()}
+				<div class="quiz-setup__footer">
+					<p class="quiz-setup__summary" aria-live="polite"></p>
+					<div class="quiz-setup__actions">
+						<button class="quiz-setup__clear button button--tertiary" type="button">
+							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+							Clear filters
+						</button>
+						<button class="quiz-setup__start button" type="button">Start quiz</button>
 					</div>
-					<button class="quiz-setup__quick-start button" type="button">Start random quiz</button>
-				</section>
-
-				<section class="quiz-setup__panel" aria-labelledby="quiz-custom-title">
-					<div class="quiz-setup__panel-text">
-						<h2 id="quiz-custom-title" class="text-heading-lg">Custom quiz</h2>
-						<p>Narrow the pool by category, difficulty, or source. Leave a group empty to include everything in it.</p>
-					</div>
-					${this.filterGroups.map(group => this.renderFilterGroup(group)).join('')}
-					${this.renderLengthGroup()}
-					<div class="quiz-setup__footer">
-						<p class="quiz-setup__summary" aria-live="polite"></p>
-						<div class="quiz-setup__actions">
-							<button class="quiz-setup__clear button button--tertiary" type="button">Clear filters</button>
-							<button class="quiz-setup__start button" type="button">Start custom quiz</button>
-						</div>
-					</div>
-				</section>
-			</div>
+				</div>
+			</section>
 		`;
 	}
 
@@ -383,7 +368,7 @@ export class QuizView {
 		const answered = Object.keys(quiz.answers).length;
 
 		return `
-			<section class="quiz-resume" aria-label="Quiz in progress">
+			<section class="quiz-resume theme--accent" aria-label="Quiz in progress">
 				<div>
 					<p class="text-label">Quiz in progress</p>
 					<p class="quiz-resume__text">${answered} of ${quiz.questions.length} questions answered. Starting a new quiz will replace it.</p>
@@ -399,15 +384,15 @@ export class QuizView {
 	renderFilterGroup(group) {
 		return `
 			<fieldset class="quiz-setup__group">
-				<legend class="quiz-setup__legend text-label">
+				<legend class="quiz-setup__legend">
 					${escapeHtml(group.label)}
-					<span class="quiz-setup__legend-hint" data-group="${group.key}"></span>
+					<span class="quiz-setup__legend-count text-label" data-group="${group.key}"></span>
 				</legend>
 				<div class="quiz-setup__chips">
 					${group.values.map(value => `
-						<button class="quiz-chip" type="button" data-group="${group.key}" data-value="${escapeHtml(value)}" aria-pressed="false">
+						<button class="quiz-chip button--secondary" type="button" data-group="${group.key}" data-value="${escapeHtml(value)}" aria-pressed="false">
 							${escapeHtml(group.format(value))}
-							<span class="quiz-chip__count">${group.counts[value] ?? 0}</span>
+							<span class="quiz-chip__count">(${group.counts[value] ?? 0})</span>
 						</button>
 					`).join('')}
 				</div>
@@ -418,10 +403,10 @@ export class QuizView {
 	renderLengthGroup() {
 		return `
 			<fieldset class="quiz-setup__group">
-				<legend class="quiz-setup__legend text-label">Questions</legend>
+				<legend class="quiz-setup__legend">Questions</legend>
 				<div class="quiz-setup__chips">
 					${LENGTH_OPTIONS.map(value => `
-						<button class="quiz-chip" type="button" data-group="length" data-value="${value}" aria-pressed="false">
+						<button class="quiz-chip button--secondary" type="button" data-group="length" data-value="${value}" aria-pressed="false">
 							${value === QUIZ_LENGTH_ALL ? 'All' : value}
 						</button>
 					`).join('')}
@@ -442,7 +427,7 @@ export class QuizView {
 			chip.setAttribute('aria-pressed', String(isPressed));
 		});
 
-		this.el.screen.querySelectorAll('.quiz-setup__legend-hint').forEach(hint => {
+		this.el.screen.querySelectorAll('.quiz-setup__legend-count').forEach(hint => {
 			const count = config[hint.dataset.group].length;
 			hint.textContent = count ? `${count} selected` : 'All';
 		});
@@ -548,9 +533,9 @@ export class QuizView {
 				<div class="quiz-results__summary grid">
 					<div class="quiz-results__score-col grid__col--12-md grid__col--5-lg">
 						<p class="text-label">Quiz complete</p>
-						<h1 class="quiz-results__title" tabindex="-1">
+						<h2 class="quiz-results__title text-display-lg" tabindex="-1">
 							${score}<span class="quiz-results__total">/${total}</span>
-						</h1>
+						</h2>
 						<p class="quiz-results__percent text-heading-md">${percent}% correct</p>
 						<div class="quiz-results__actions">
 							<button class="quiz-results__retry button" type="button">New quiz, same settings</button>

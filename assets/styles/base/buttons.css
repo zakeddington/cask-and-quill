@@ -18,21 +18,27 @@ button,
 	text-transform: uppercase;
 	transition: all 0.3s ease;
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--color-button-primary-background-hover);
 		border-color: var(--color-button-primary-border-hover);
 		color: var(--color-button-primary-text-hover);
 		text-decoration: none;
 	}
 
-	&.is-active {
+	&:active,
+	&.is-active,
+	&[aria-pressed="true"] {
 		background-color: var(--color-button-primary-background-active);
 		border-color: var(--color-button-primary-border-active);
 		color: var(--color-button-primary-text-active);
 	}
 
-	&:disabled {
+	&:disabled,
+	&.is-disabled  {
+		background-color: var(--color-button-primary-background);
+		border: 2px solid var(--color-button-primary-border);
+		color: var(--color-button-primary-text);
 		cursor: default;
 		opacity: 0.2;
 	}
@@ -48,17 +54,28 @@ button,
 	border-color: var(--color-button-secondary-border);
 	color: var(--color-button-secondary-text);
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--color-button-secondary-background-hover);
 		border-color: var(--color-button-secondary-border-hover);
 		color: var(--color-button-secondary-text-hover);
 	}
 
-	&.is-active {
+	&:active,
+	&.is-active,
+	&[aria-pressed="true"] {
 		background-color: var(--color-button-secondary-background-active);
 		border-color: var(--color-button-secondary-border-active);
 		color: var(--color-button-secondary-text-active);
+	}
+
+	&:disabled,
+	&.is-disabled {
+		background-color: var(--color-button-secondary-background);
+		border-color: var(--color-button-secondary-border);
+		color: var(--color-button-secondary-text);
+		cursor: default;
+		opacity: 0.2;
 	}
 }
 
@@ -69,17 +86,28 @@ button,
 	color: var(--color-button-tertiary-text);
 	padding: 0.25rem;
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--color-button-tertiary-background-hover);
 		border-bottom: 2px solid var(--color-button-tertiary-border-hover);
 		color: var(--color-button-tertiary-text-hover);
 	}
 
-	&.is-active {
+	&:active,
+	&.is-active,
+	&[aria-pressed="true"] {
 		background-color: var(--color-button-tertiary-background-active);
 		border-bottom: 2px solid var(--color-button-tertiary-border-active);
 		color: var(--color-button-tertiary-text-active);
+	}
+
+	&:disabled,
+	&.is-disabled  {
+		background-color: var(--color-button-tertiary-background);
+		border: 2px solid var(--color-button-tertiary-border);
+		color: var(--color-button-tertiary-text);
+		cursor: default;
+		opacity: 0.2;
 	}
 
 	.svg-icon {
@@ -93,17 +121,28 @@ button,
 	border-color: var(--color-button-destructive-border);
 	color: var(--color-button-destructive-text);
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--color-button-destructive-background-hover);
 		border-color: var(--color-button-destructive-border-hover);
 		color: var(--color-button-destructive-text-hover);
 	}
 
-	&.is-active {
+	&:active,
+	&.is-active,
+	&[aria-pressed="true"] {
 		background-color: var(--color-button-destructive-background-active);
 		border-color: var(--color-button-destructive-border-active);
 		color: var(--color-button-destructive-text-active);
+	}
+
+	&:disabled,
+	&.is-disabled  {
+		background-color: var(--color-button-destructive-background);
+		border: 2px solid var(--color-button-destructive-border);
+		color: var(--color-button-destructive-text);
+		cursor: default;
+		opacity: 0.2;
 	}
 }
 
@@ -114,17 +153,26 @@ button,
 	line-height: var(--line-height-tight);
 	padding: 0.25rem;
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--color-button-icon-only-background-hover);
 		border-color: var(--color-button-icon-only-border-hover);
 		color: var(--color-button-icon-only-text-hover);
 	}
 
-	&.is-active {
+	&:active,
+	&.is-active,
+	&[aria-pressed="true"] {
 		background-color: var(--color-button-icon-only-background);
 		border-color: var(--color-button-icon-only-border-active);
 		color: var(--color-button-icon-only-text-active);
+	}
+
+	&:disabled,
+	&.is-disabled  {
+		background-color: var(--color-button-icon-only-background);
+		border-color: var(--color-button-icon-only-border);
+		color: var(--color-button-icon-only-text);
 	}
 
 	.svg-icon {

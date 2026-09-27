@@ -100,10 +100,10 @@
 	/* Buttons - Secondary */
 	--color-button-secondary-background: var(--color-palette-transparent);
 	--color-button-secondary-background-hover: var(--color-palette-brown-900);
-	--color-button-secondary-background-active: var(--color-palette-brown-900);
+	--color-button-secondary-background-active: var(--color-palette-brown-400);
 	--color-button-secondary-border: var(--color-palette-brown-900);
 	--color-button-secondary-border-hover: var(--color-palette-brown-900);
-	--color-button-secondary-border-active: var(--color-palette-brown-900);
+	--color-button-secondary-border-active: var(--color-palette-brown-400);
 	--color-button-secondary-text: var(--color-palette-brown-900);
 	--color-button-secondary-text-hover: var(--color-palette-white);
 	--color-button-secondary-text-active: var(--color-palette-white);
