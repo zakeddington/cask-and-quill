@@ -39,16 +39,3 @@
 .variety__desc-col p {
 	color: var(--color-text-secondary);
 }
-
-.variety__tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	margin-top: 1rem;
-}
-
-.tag {
-	background-color: var(--color-background-tag);
-	border-radius: 0.25rem;
-	padding: 0.25rem 0.5rem;
-}

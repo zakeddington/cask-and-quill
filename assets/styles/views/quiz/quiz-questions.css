@@ -1,42 +1,50 @@
 
-/* Question */
-/* --------------------------------------------------------------- */
 .quiz-question {
+	background: var(--color-background-secondary);
+	border: 1px solid var(--color-border-primary);
+	display: flex;
+	flex-direction: column;
+	gap: var(--grid-gap);
 	margin: 0 auto;
-	max-width: 48rem;
+	padding: 1rem;
+
+	@media (min-width: 1024px) {
+		padding: 2rem;
+		width: 50%;
+	}
 }
 
 .quiz-question__header {
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 	justify-content: space-between;
-	margin-bottom: 1rem;
 }
 
 .quiz-question__count {
+	display: inline-flex;
+	flex: 1;
 	margin: 0;
 }
 
-.quiz-progress {
+.quiz-question__progress {
 	background-color: var(--color-background-secondary-alt);
 	height: 0.375rem;
-	margin-bottom: 3rem;
 	overflow: hidden;
+	width: 100%;
 }
 
-.quiz-progress__bar {
+.quiz-question__progress-bar {
 	background-color: var(--color-border-accent);
 	height: 100%;
 	transition: width 0.3s ease;
 }
 
-.quiz-question__title {
-	margin-bottom: 2rem;
-
-	&:focus {
-		outline: none;
-	}
+.quiz-question__question {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .quiz-question .quiz-question__options {

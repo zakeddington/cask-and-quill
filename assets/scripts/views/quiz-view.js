@@ -323,12 +323,12 @@ export class QuizView {
 		const href = isLexicon ? `/lexicon/#${question.sourceId}` : `/#region-${question.sourceId}`;
 		const label = SOURCE_LABELS[question.source];
 
-		return `<p class="quiz-source-link text-body-sm">Learn more: <a href="${escapeHtml(href)}">${escapeHtml(label)} — ${escapeHtml(name)}</a></p>`;
+		return `<p class="quiz-source-link text-body-sm">Learn more: <a href="${escapeHtml(href)}" target="_blank">${escapeHtml(label)} — ${escapeHtml(name)}</a></p>`;
 	}
 
 	renderTags(question) {
 		return `
-			<div class="quiz-tags">
+			<div class="tags">
 				<span class="tag text-label">${escapeHtml(question.category)}</span>
 				<span class="tag text-label">${escapeHtml(capitalize(question.difficulty))}</span>
 			</div>
@@ -341,8 +341,8 @@ export class QuizView {
 		return `
 			${this.renderResumeBanner()}
 			<section class="quiz-setup" aria-labelledby="quiz-setup-title">
-				<div class="quiz-setup__header">
-					<h2 id="quiz-setup-title" class="text-heading-lg">Build a quiz</h2>
+				<div class="quiz-setup__header theme--accent">
+					<h2 id="quiz-setup-title" class="text-heading-lg text-color-secondary">Build a quiz</h2>
 					<p>Narrow the pool by category, difficulty, or source, or leave everything unselected for a random mix of all ${QUIZ_QUESTIONS.length} questions.</p>
 				</div>
 				${this.filterGroups.map(group => this.renderFilterGroup(group)).join('')}
@@ -463,19 +463,21 @@ export class QuizView {
 				<div class="quiz-question__header">
 					<p class="quiz-question__count text-label">Question ${quiz.currentIndex + 1} of ${total}</p>
 					<button class="quiz-question__exit button button--tertiary" type="button">Exit quiz</button>
-				</div>
-				<div class="quiz-progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answeredCount}">
-					<div class="quiz-progress__bar" style="width: ${(answeredCount / total) * 100}%"></div>
+					<div class="quiz-question__progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answeredCount}">
+						<div class="quiz-question__progress-bar" style="width: ${(answeredCount / total) * 100}%"></div>
+					</div>
 				</div>
 
-				${this.renderTags(question)}
-				<h2 id="quiz-question-title" class="quiz-question__title text-heading-lg" tabindex="-1">${escapeHtml(question.question)}</h2>
+				<div class="quiz-question__question">
+					${this.renderTags(question)}
+					<h2 id="quiz-question-title" class="quiz-question__title text-heading-lg" tabindex="-1">${escapeHtml(question.question)}</h2>
+				</div>
 
 				<ol class="quiz-question__options list-reset">
 					${entry.options.map((option, index) => this.renderOption(question, option, index, selected)).join('')}
 				</ol>
 
-				${isAnswered ? this.renderFeedback(question, selected) : '<p class="quiz-question__hint text-body-sm">Tip: press 1–4 to answer.</p>'}
+				${isAnswered ? this.renderFeedback(question, selected) : '<p class="quiz-question__hint text-body-sm">Tip: Use keyboard 1–4 to answer.</p>'}
 			</section>
 		`;
 	}

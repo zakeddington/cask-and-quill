@@ -22,6 +22,7 @@
 
 	/* Bottle fill */
 	--color-palette-green: #2e9432;
+	--color-palette-green-alpha-10: rgba(46, 151, 51, 0.1);
 	--color-palette-green-dark: #22702a;
 	--color-palette-yellow: #ffc107;
 	--color-palette-red: #e61303;
@@ -156,7 +157,7 @@
 
 	/* Quiz feedback */
 	--color-quiz-correct: var(--color-palette-green);
-	--color-quiz-correct-background: rgba(46, 148, 50, 0.1);
+	--color-quiz-correct-background: var(--color-palette-green-alpha-10);
 	--color-quiz-correct-text: var(--color-palette-green-dark);
 	--color-quiz-incorrect: var(--color-palette-brown-200);
 	--color-quiz-incorrect-background: var(--color-palette-brown-400-alpha-10);

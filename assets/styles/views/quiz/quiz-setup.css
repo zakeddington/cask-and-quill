@@ -3,11 +3,11 @@
 	border: 1px solid var(--color-border-primary);
 	display: grid;
 	gap: 1rem;
-	padding: 1rem 0;
+	padding-bottom: 1rem;
 
 	@media (min-width: 1024px) {
 		gap: 2rem;
-		padding: 2rem 0;
+		padding-bottom: 2rem;
 	}
 
 	&:last-child {
@@ -17,10 +17,10 @@
 
 .quiz-setup__header {
 	border-bottom: 1px solid var(--color-border-primary);
-	padding: 0 1rem 1rem 1rem;
+	padding: 1rem;
 
 	@media (min-width: 1024px) {
-		padding: 0 2rem 2rem 2rem;
+		padding: 2rem;
 	}
 
 	h2 {

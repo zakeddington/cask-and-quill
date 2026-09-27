@@ -220,7 +220,7 @@ export class RegionsView {
 				</div>
 				<div class="variety__desc-col grid__col--9-md">
 					<p>${escapeHtml(variety.description)}</p>
-					<div class="variety__tags">
+					<div class="tags">
 						${variety.tags.map(tag => `<span class="tag text-label">${escapeHtml(tag)}</span>`).join('')}
 					</div>
 				</div>
