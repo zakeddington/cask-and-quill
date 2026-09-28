@@ -71,7 +71,9 @@
 }
 
 .quiz-results__review {
-	max-width: 48rem;
+	.tags {
+		margin: 0 0 1rem 0;
+	}
 
 	h2 {
 		margin-bottom: 2rem;
@@ -85,35 +87,37 @@
 
 .quiz-review {
 	border-bottom: 1px solid var(--color-border-primary);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	padding-bottom: 2rem;
+
+	* {
+		margin-bottom: 0;
+	}
 
 	&:last-child {
 		border-bottom: 0;
 	}
 }
 
-.quiz-review__question {
-	margin-bottom: 1rem;
+.quiz-review__answers {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
 }
 
 .quiz-review__answer {
 	font-family: var(--font-sans-serif);
-	margin-bottom: 0.25rem;
-
-	span {
-		font-weight: var(--font-weight-semibold);
-	}
 }
 
 .quiz-review__answer--yours span {
 	color: var(--color-quiz-incorrect);
+	font-weight: var(--font-weight-semibold);
 	text-decoration: line-through;
 }
 
 .quiz-review__answer--correct span {
 	color: var(--color-quiz-correct-text);
-}
-
-.quiz-review__explanation {
-	margin-top: 1rem;
+	font-weight: var(--font-weight-semibold);
 }

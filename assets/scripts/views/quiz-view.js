@@ -593,8 +593,10 @@ export class QuizView {
 			<article class="quiz-review">
 				${this.renderTags(question)}
 				<h3 class="quiz-review__question text-heading-md">${escapeHtml(question.question)}</h3>
-				<p class="quiz-review__answer quiz-review__answer--yours text-body-sm">Your answer: <span>${escapeHtml(selected ?? 'No answer')}</span></p>
-				<p class="quiz-review__answer quiz-review__answer--correct text-body-sm">Correct answer: <span>${escapeHtml(question.answer)}</span></p>
+				<div class="quiz-review__answers">
+					<p class="quiz-review__answer quiz-review__answer--yours text-body-sm">Your answer: <span>${escapeHtml(selected ?? 'No answer')}</span></p>
+					<p class="quiz-review__answer quiz-review__answer--correct text-body-sm">Correct answer: <span>${escapeHtml(question.answer)}</span></p>
+				</div>
 				<p class="quiz-review__explanation">${escapeHtml(question.explanation)}</p>
 				${this.renderSourceLink(question)}
 			</article>
