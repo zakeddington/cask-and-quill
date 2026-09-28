@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS } from '../data/quiz-data.js';
+import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS } from '../data/quiz/index.js';
 import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../data/lexicon-data.js';
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';

@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS, QUIZ_SOURCES } from './data/quiz-data.js';
+import { QUIZ_QUESTIONS, QUIZ_SOURCES } from './data/quiz/index.js';
 import { LEXICON_TERMS } from './data/lexicon-data.js';
 
 export const QUIZ_VERSION = 1;
