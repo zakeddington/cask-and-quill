@@ -403,7 +403,15 @@ export class QuizView {
 					<h2 id="quiz-setup-title" class="text-heading-lg text-color-secondary">Build a quiz</h2>
 					<p>Pick the Lexicon or Regions to quiz on everything in it, or narrow it down by category, country, or question type. Leave everything unselected for a random mix of all ${QUIZ_QUESTIONS.length} questions.</p>
 				</div>
-				${FILTER_KEYS.map(key => this.renderFilterGroup(key)).join('')}
+				<div class="quiz-setup__sources">
+					${this.renderFilterGroup('sources')}
+					${QUIZ_SOURCES.map(source => `
+						<div class="quiz-setup__source-filters">
+							${SOURCE_FILTER_KEYS[source].map(key => this.renderFilterGroup(key)).join('')}
+						</div>
+					`).join('')}
+				</div>
+				${this.renderFilterGroup('difficulties')}
 				${this.renderLengthGroup()}
 				<div class="quiz-setup__footer">
 					<p class="quiz-setup__summary" aria-live="polite"></p>
@@ -442,6 +450,7 @@ export class QuizView {
 	renderFilterGroup(key) {
 		const group = this.filterGroups[key];
 		const classes = ['quiz-setup__group'];
+		if (key === 'sources') classes.push('quiz-setup__group--sources');
 		if (group.source) classes.push('quiz-setup__group--sub');
 
 		return `

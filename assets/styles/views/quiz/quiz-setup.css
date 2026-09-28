@@ -101,3 +101,45 @@
 .quiz-setup__group--sub .quiz-setup__legend {
 	font-size: var(--font-size-heading-sm);
 }
+
+/* Source picker and each source's sub-filters */
+/* Desktop: two columns, with the source buttons on the same columns as their sub-filters */
+.quiz-setup__sources {
+	display: grid;
+	gap: 1rem;
+
+	@media (min-width: 1024px) {
+		column-gap: var(--grid-gap);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		padding: 0 2rem;
+		row-gap: 2rem;
+
+		.quiz-setup__group {
+			padding: 0;
+			width: auto;
+		}
+	}
+}
+
+.quiz-setup__group--sources {
+	@media (min-width: 1024px) {
+		grid-column: 1 / -1;
+
+		.quiz-setup__chips {
+			column-gap: var(--grid-gap);
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			justify-items: start;
+		}
+	}
+}
+
+.quiz-setup__source-filters {
+	align-content: start;
+	display: grid;
+	gap: 1rem;
+
+	@media (min-width: 1024px) {
+		gap: 2rem;
+	}
+}
