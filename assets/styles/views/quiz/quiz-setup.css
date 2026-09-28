@@ -96,3 +96,8 @@
 	gap: 1.5rem;
 	justify-content: space-between;
 }
+
+/* Sub-filters that belong to a source (lexicon categories, region countries and question types) */
+.quiz-setup__group--sub .quiz-setup__legend {
+	font-size: var(--font-size-heading-sm);
+}

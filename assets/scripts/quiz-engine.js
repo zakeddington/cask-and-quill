@@ -1,12 +1,25 @@
-import { QUIZ_QUESTIONS } from './data/quiz-data.js';
+import { QUIZ_QUESTIONS, QUIZ_SOURCES } from './data/quiz-data.js';
+import { LEXICON_TERMS } from './data/lexicon-data.js';
 
 export const QUIZ_VERSION = 1;
 export const QUIZ_LENGTH_ALL = 'all';
 
 const QUESTIONS_BY_ID = new Map(QUIZ_QUESTIONS.map(question => [question.id, question]));
+const LEXICON_CATEGORY_BY_ID = new Map(LEXICON_TERMS.map(term => [term.id, term.category]));
+
+// Sub-filters that belong to each source; picking any of them includes that source
+export const SOURCE_FILTER_KEYS = {
+	lexicon: ['lexiconCategories'],
+	regions: ['regionCountries', 'regionTopics'],
+};
 
 export function getQuestion(id) {
 	return QUESTIONS_BY_ID.get(id);
+}
+
+// Lexicon questions take their category from the linked lexicon term
+export function getLexiconCategory(question) {
+	return question.source === 'lexicon' ? LEXICON_CATEGORY_BY_ID.get(question.sourceId) : undefined;
 }
 
 export function shuffle(items) {
@@ -18,15 +31,51 @@ export function shuffle(items) {
 	return result;
 }
 
+// A source is included when it's picked directly or through one of its sub-filters.
+// Nothing picked at all means every source is included.
+export function getIncludedSources(config) {
+	const included = QUIZ_SOURCES.filter(source =>
+		config.sources?.includes(source) ||
+		SOURCE_FILTER_KEYS[source].some(key => config[key]?.length)
+	);
+	return included.length ? included : QUIZ_SOURCES;
+}
+
+// Whether a question belongs to a single filter value, e.g. ('regionCountries', 'japan')
+export function isInFilter(question, key, value) {
+	switch (key) {
+		case 'sources': return question.source === value;
+		case 'lexiconCategories': return getLexiconCategory(question) === value;
+		case 'regionCountries': return question.source === 'regions' && question.sourceId === value;
+		case 'regionTopics': return question.topic === value;
+		case 'difficulties': return question.difficulty === value;
+		default: return false;
+	}
+}
+
 // An empty filter list means "any"
+function matchesAny(question, config, key) {
+	const values = config[key] ?? [];
+	return !values.length || values.some(value => isInFilter(question, key, value));
+}
+
 export function filterQuestions(config) {
-	const { categories = [], difficulties = [], sources = [] } = config;
+	const sources = getIncludedSources(config);
 
 	return QUIZ_QUESTIONS.filter(question =>
-		(!categories.length || categories.includes(question.category)) &&
-		(!difficulties.length || difficulties.includes(question.difficulty)) &&
-		(!sources.length || sources.includes(question.source))
+		sources.includes(question.source) &&
+		SOURCE_FILTER_KEYS[question.source].every(key => matchesAny(question, config, key)) &&
+		matchesAny(question, config, 'difficulties')
 	);
+}
+
+// How many questions a filter value would contribute, given the other selections
+export function countFilterMatches(config, key, value) {
+	const trial = key === 'sources'
+		? { ...config, sources: [...(config.sources ?? []), value] }
+		: { ...config, [key]: [value] };
+
+	return filterQuestions(trial).filter(question => isInFilter(question, key, value)).length;
 }
 
 export function getQuizLength(config, poolSize) {
@@ -92,7 +141,9 @@ export function scoreQuiz(quiz) {
 	const result = {
 		score: 0,
 		total: quiz.questions.length,
-		byCategory: {},
+		byLexiconCategory: {},
+		byRegionCountry: {},
+		byRegionTopic: {},
 		byDifficulty: {},
 		missed: [],
 	};
@@ -107,7 +158,12 @@ export function scoreQuiz(quiz) {
 			result.missed.push(id);
 		}
 
-		addToBreakdown(result.byCategory, question.category, correct);
+		if (question.source === 'lexicon') {
+			addToBreakdown(result.byLexiconCategory, getLexiconCategory(question), correct);
+		} else {
+			addToBreakdown(result.byRegionCountry, question.sourceId, correct);
+			addToBreakdown(result.byRegionTopic, question.topic, correct);
+		}
 		addToBreakdown(result.byDifficulty, question.difficulty, correct);
 	});
 
