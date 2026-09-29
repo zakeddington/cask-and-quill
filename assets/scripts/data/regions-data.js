@@ -79,7 +79,7 @@ export const REGIONS_DATA = [
 			{ label: 'Fermentation', value: 'Natural (non-synthetic) enzymes permitted.' },
 			{ label: 'Distillation ceiling', value: 'Less than 94.8% (189.6°) ABV.' },
 			{ label: 'Entry proof', value: 'No entry proof specified.' },
-			{ label: 'Barrels', value: 'Wooden casks.' },
+			{ label: 'Barrels', value: 'Wooden casks, such as oak, not exceeding 700 litres.' },
 			{ label: 'Aging minimum', value: '3 years.' },
 			{ label: 'Bottling minimum', value: '40% (80°) ABV.' },
 			{ label: 'Permitted additives', value: 'Caramel coloring (E150a) only. No other additives permitted.' },
@@ -279,7 +279,7 @@ export const REGIONS_DATA = [
 		regulator: 'No unified whisky law — governed by Food Safety and Standards Authority of India (FSSAI, 2018, amended 2023) Alcoholic Beverages Regulations, state excise acts, and a voluntary Indian Malt Whisky Association (IMWA, 2025)',
 		keyRegulationsSummary: [
 			'No official requirements',
-			'Voluntary requirements for Single Malt only',
+			'Voluntary requirements for malt whisky only (IMWA)',
 			'Primarily not legal whisky internationally (no grain requirement, molasses permitted)',
 		],
 		bottleImage: 'assets/images/bottle-indian.jpg',
@@ -369,7 +369,7 @@ export const REGIONS_DATA = [
 		bottleImage: 'assets/images/bottle-australian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No dedicated whisky appellation exists; claims of Australian origin fall under general country-of-origin food labelling law rather than a whisky-specific mandate.' },
-			{ label: 'Grain base', value: 'Any cereal grain permitted; no malted barley requirement. Multi-grain mash bills, including Archie Rose\'s six-grain recipe, are legally whisky.' },
+			{ label: 'Grain base', value: 'Any cereal grain permitted; no malted barley requirement, so multi-grain mash bills are legally whisky.' },
 			{ label: 'Fermentation', value: 'No restrictions specified; externally sourced wash or wort from breweries is permitted, a practice several early producers relied on.' },
 			{ label: 'Distillation ceiling', value: 'No statutory ceiling; the Australian Taxation Office administratively recognizes distillation up to roughly 95% (190°) ABV as consistent with whisky character.' },
 			{ label: 'Entry proof', value: 'No entry proof specified.' },
@@ -377,7 +377,7 @@ export const REGIONS_DATA = [
 			{ label: 'Aging minimum', value: '2 years in wood, per the Excise Act 1901 (domestic release) and Customs Act 1901 (imports).' },
 			{ label: 'Bottling minimum', value: '37% (74°) ABV, the general spirits floor set by FSANZ Standard 2.7.5.' },
 			{ label: 'Permitted additives', value: 'Caramel coloring (E150a) permitted; no formal prohibition on other flavoring agents or wood chips.' },
-			{ label: 'Notes', value: 'Australia has no legal definition of "single malt," unlike Scotland, Ireland, or the U.S. This gap fueled a 2025 industry dispute after producers marketed spirit matured only 10-14 days via accelerated-maturation technology as single malt whisky; the Australian Distillers Association and Tasmanian Whisky and Spirits Producers Association have pushed for a stricter standard.' },
+			{ label: 'Notes', value: 'Australia has no legal definition of "single malt." Because the 2-year wood-maturation rule applies only to spirits sold as "whisky," producers can sell rapidly matured malt spirit as "single malt" as long as they don\'t call it whisky. Mountain Distilling\'s Red Gum Single Malt, force-aged with red gum wood in about 15 days, drew attention in 2021 after winning IWSC gold. The Australian Distillers Association and Tasmanian Whisky and Spirits Producers Association have pushed for a stricter standard because of this.' },
 		],
 		varieties: [
 			{
@@ -448,13 +448,13 @@ export const REGIONS_DATA = [
 			'3 yr min',
 			'94.8% (189.6°) max distillation',
 			'40% (80°) min bottled',
-			'produced in an EU member state',
+			'no EU origin requirement',
 		],
 		bottleImage: 'assets/images/bottle-european.jpg',
 		legalFramework: [
-			{ label: 'Production location', value: 'Entirely produced at a distillery in an EU member state. This is a bloc-wide floor: individual countries and registered regional GIs, such as Ireland or France\'s Brittany and Alsace, may layer stricter rules on top.' },
+			{ label: 'Production location', value: 'No EU-wide requirement. Whisky produced anywhere, inside or outside the EU, may be sold as "whisky" if it meets the production rules of Regulation (EU) 2019/787. Location requirements come only from registered geographical indications (e.g., Irish Whiskey, Whisky breton, Whisky alsacien) or from stricter national rules, which member states may apply to whisky produced on their own territory.' },
 			{ label: 'Grain base', value: 'Malted cereals required, with or without whole unmalted cereal grains.' },
-			{ label: 'Fermentation', value: 'No restriction specified.' },
+			{ label: 'Fermentation', value: 'Saccharified by the malt\'s own diastase, with or without other natural enzymes, and fermented by yeast.' },
 			{ label: 'Distillation ceiling', value: 'Less than 94.8% (189.6°) ABV, each and every distillation.' },
 			{ label: 'Entry proof', value: 'No entry proof specified.' },
 			{ label: 'Barrels', value: 'Wooden casks not exceeding 700 litres.' },
@@ -468,7 +468,7 @@ export const REGIONS_DATA = [
 			{
 				name: 'EU Whisky / Whiskey',
 				description: 'The baseline category defined by Regulation (EU) 2019/787, applying to any member state without its own stricter national or geographic rules. It requires a mash of malted cereals, with or without whole unmalted grains, distilled below 94.8% ABV and matured at least 3 years in wooden casks no larger than 700 litres. Germany\'s Slyrs and the Netherlands\' Zuidam, maker of the Millstone range, are notable producers operating under this floor alone, with no national rules of their own.',
-				tags: ['Malted Cereals', 'Any EU Member State', 'Aged 3+ Years'],
+				tags: ['Malted Cereals', 'Sold in the EU', 'Aged 3+ Years'],
 			},
 			{
 				name: 'EU Single Malt',
@@ -477,7 +477,7 @@ export const REGIONS_DATA = [
 			},
 			{
 				name: 'French Whisky (Whisky Breton & Whisky Alsacien)',
-				description: 'France holds two registered EU geographical indications for whisky: Whisky Breton / Whisky de Bretagne, created in 2015 and led by the Warenghem distillery\'s Armorik in Brittany, and Whisky Alsacien / Whisky d\'Alsace from Alsace. Both require water sourced locally and fermentation, distillation, and aging to take place within the named region, mirroring the specificity of Scotland\'s sub-regions but with binding legal force.',
+				description: 'France holds two registered EU geographical indications for whisky: Whisky Breton / Whisky de Bretagne, created in 2015 and led by the Warenghem distillery\'s Armorik in Brittany, and Whisky Alsacien / Whisky d\'Alsace from Alsace. Both require water sourced locally and fermentation, distillation, and aging to take place within the named region. Like Scotland\'s protected regional names, such as Speyside and Islay, the names are reserved for whisky made there, but the French GIs go further by also requiring local water.',
 				tags: ['Registered EU GI', 'Regional Water & Production', 'Brittany & Alsace'],
 			},
 		],
@@ -495,9 +495,9 @@ export const REGIONS_DATA = [
 		],
 		bottleImage: 'assets/images/bottle-danish.jpg',
 		legalFramework: [
-			{ label: 'Production location', value: 'No legal requirement that whisky sold as "Danish" originate entirely in Denmark. The 2025 Danish Whisky Manifesto is a voluntary pledge among its ten founding distilleries rather than a geographic designation, though its signatories intend to pursue a future EU geographical indication.' },
+			{ label: 'Production location', value: 'No legal requirement (beyond general EU spirits and labeling rules) that whisky sold as "Danish" originate entirely in Denmark. The 2025 Danish Whisky Manifesto is a voluntary pledge among its ten founding distilleries rather than a geographic designation, though its signatories intend to pursue a future EU geographical indication.' },
 			{ label: 'Grain base', value: 'The EU floor requires malted cereals. The Manifesto adds category-specific mash bills on top: 100% malted barley for Danish Single Malt, and at least 51% of the named grain for Danish Rye, Wheat, or Oat Whisky.' },
-			{ label: 'Fermentation', value: 'No restriction specified.' },
+			{ label: 'Fermentation', value: 'Saccharified by the malt\'s own diastase, with or without other natural enzymes, and fermented by yeast, per the EU floor.' },
 			{ label: 'Distillation ceiling', value: 'Less than 94.8% (189.6°) ABV, per the EU floor.' },
 			{ label: 'Entry proof', value: 'No entry proof specified.' },
 			{ label: 'Barrels', value: 'Wooden casks not exceeding 700 litres, per the EU floor.' },
