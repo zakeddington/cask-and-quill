@@ -28,12 +28,12 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 		topic: LEGAL,
 		question: 'Under New Zealand\'s voluntary standard, enzymes are...',
 		options: [
-			'Banned for single malt but permitted for blended whisky',
+			'Banned for single malt, allowed for blends',
 			'Permitted for every whisky category',
 			'Banned for every whisky category',
 			'Required for blended whisky only'
 		],
-		answer: 'Banned for single malt but permitted for blended whisky',
+		answer: 'Banned for single malt, allowed for blends',
 		explanation: 'The standard also bans liquid malt extract, added flavorings, and wood chips during maturation.'
 	},
 	{

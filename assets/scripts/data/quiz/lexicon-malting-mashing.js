@@ -9,9 +9,9 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 		source: LEXICON,
 		sourceId: 'wash',
 		question: 'The fermented wash, or distiller\'s beer, is typically around what ABV?',
-		options: ['1-3%', '5-10%', '20-35%', '40-45%'],
-		answer: '5-10%',
-		explanation: 'Wash is essentially an unhopped beer, usually around 5-10% ABV, ready for distillation.'
+		options: ['1-3%', '6-10%', '20-35%', '40-45%'],
+		answer: '6-10%',
+		explanation: 'Wash is essentially an unhopped beer, usually around 6-10% ABV, ready for distillation.'
 	},
 	{
 		id: 'wash-unhopped-beer',
@@ -102,13 +102,13 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 		sourceId: 'draff',
 		question: 'What is draff, a byproduct often used as animal feed?',
 		options: [
-			'Grain remnants drained from the wash',
+			'Spent grain left in the mash tun',
 			'Residue left in the still after low wines',
 			'Charred wood scraped from old casks',
 			'Spent yeast from the washback'
 		],
-		answer: 'Grain remnants drained from the wash',
-		explanation: 'Draff is the Scottish term for spent grain remnants. The liquid residue left in the still is pot ale.'
+		answer: 'Spent grain left in the mash tun',
+		explanation: 'Draff is the spent grain left once the wort is drawn off, before fermentation. The liquid residue left in the still is pot ale.'
 	},
 	{
 		id: 'saccharification-definition',
@@ -227,5 +227,220 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 		],
 		answer: 'It uses only fresh yeast, with no backset',
 		explanation: 'A sweet mash is started without backset, using only fresh yeast.'
+	},
+	{
+		id: 'backset-definition',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'backset',
+		question: 'In American whiskey-making, what is backset?',
+		options: [
+			'Acidic liquid strained from the mash after distillation',
+			'Sweet wort held back from the first mash for later',
+			'Spent grain returned to local farms as animal feed',
+			'Low wines saved and added to the next spirit run'
+		],
+		answer: 'Acidic liquid strained from the mash after distillation',
+		explanation: 'Backset is the acidic liquid left after primary distillation. It is added to a new mash or fermenter.'
+	},
+	{
+		id: 'backset-contamination',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'backset',
+		question: 'Besides supporting fermentation, why do American distillers add backset to a new mash?',
+		options: [
+			'To discourage bacterial contamination',
+			'To raise the alcohol content of the wash',
+			'To add color before the spirit is barreled',
+			'To replace the need for fresh yeast'
+		],
+		answer: 'To discourage bacterial contamination',
+		explanation: 'Backset\'s acidity helps protect the new mash from unwanted bacteria while fermentation gets going.'
+	},
+	{
+		id: 'sour-mash-tradition',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'sour-mash',
+		question: 'The sour mash process is associated with which whisky tradition?',
+		options: ['American whiskey', 'Scotch malt whisky', 'Japanese whisky', 'Irish pot still whiskey'],
+		answer: 'American whiskey',
+		explanation: 'Sour mash is an American whiskey process that uses acidic backset from a previous batch.'
+	},
+	{
+		id: 'malt-why-germinate',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'malt',
+		question: 'Why do maltsters let barley germinate before kilning it?',
+		options: [
+			'To develop enzymes that turn starch into sugar',
+			'To add smoky flavor to the grain',
+			'To dry the grain out for long storage',
+			'To strip the husks off before milling'
+		],
+		answer: 'To develop enzymes that turn starch into sugar',
+		explanation: 'Germination develops amylase enzymes, which later convert the grain\'s starches into fermentable sugars during mashing.'
+	},
+	{
+		id: 'malt-whisky-meaning',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'malt',
+		question: 'Besides the grain itself, the word "malt" is also used to describe what?',
+		options: [
+			'Whisky made from malted barley',
+			'Any whisky aged in oak casks',
+			'Whisky blended from many distilleries',
+			'The sugar left in a finished whisky'
+		],
+		answer: 'Whisky made from malted barley',
+		explanation: '"Malt" can mean the germinated, kiln-dried grain or the whisky made from malted barley.'
+	},
+	{
+		id: 'malted-rye-scenario',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'malted',
+		question: 'A whisky\'s recipe lists "malted rye." What has been done to that rye?',
+		options: [
+			'It was germinated, then heated to stop growth',
+			'It was milled into a rough flour for mashing',
+			'It was smoked over peat and then fermented',
+			'It was soaked in sherry before being distilled'
+		],
+		answer: 'It was germinated, then heated to stop growth',
+		explanation: 'Malted grain has been germinated and heated. Barley is the usual malted grain, but other grains can be malted too.'
+	},
+	{
+		id: 'mash-definition',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'mash',
+		question: 'In whisky-making, what is a mash?',
+		options: [
+			'A mix of grist and hot water',
+			'A mix of new make and water',
+			'A blend of low wines and feints',
+			'A mix of spent grain and pot ale'
+		],
+		answer: 'A mix of grist and hot water',
+		explanation: 'In the mash, starches convert into fermentable sugars. Once strained, the sweet liquid is wort.'
+	},
+	{
+		id: 'mash-bill-definition',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'mash-bill',
+		question: 'What is a whiskey\'s mash bill?',
+		options: [
+			'The recipe or ratio of grains used',
+			'The tax paid on each batch of mash',
+			'The record of each cask\'s fill date',
+			'The schedule of mashing temperatures'
+		],
+		answer: 'The recipe or ratio of grains used',
+		explanation: 'The mash bill, also written mashbill, is the grain recipe. A bourbon mash bill always includes at least 51% corn.'
+	},
+	{
+		id: 'mashing-step-order',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'mashing',
+		question: 'Which production step comes directly between milling the grain and fermentation?',
+		options: ['Mashing', 'Malting', 'Distillation', 'Maturation'],
+		answer: 'Mashing',
+		explanation: 'Milled grain is mixed with hot water during mashing, producing wort that is then fermented.'
+	},
+	{
+		id: 'underback-multiple-mashes',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'underback',
+		question: 'Why might a distillery mash the same grain several times with progressively hotter water?',
+		options: [
+			'To extract as much sugar as possible',
+			'To sterilize the grain before fermenting',
+			'To darken the color of the wort',
+			'To remove fusel oils from the mash'
+		],
+		answer: 'To extract as much sugar as possible',
+		explanation: 'Each batch of wort drains into the underback between mashes, and hotter water pulls out more of the remaining sugar.'
+	},
+	{
+		id: 'steep-definition',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'steep',
+		question: 'What is the term for the first stage of malting, where barley is soaked in water?',
+		options: ['Steep', 'Kiln', 'Mash', 'Draff'],
+		answer: 'Steep',
+		explanation: 'Steeping soaks the barley to start germination, the first step in the malting process.'
+	},
+	{
+		id: 'steep-vessel',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'steep',
+		question: 'Besides the soaking stage of malting, what else does the word "steep" refer to?',
+		options: [
+			'The vessel used for soaking',
+			'The floor where grain germinates',
+			'The chimney of a malt kiln',
+			'The pipe feeding the underback'
+		],
+		answer: 'The vessel used for soaking',
+		explanation: 'A steep is both the first stage of malting and the vessel in which the barley is soaked.'
+	},
+	{
+		id: 'saladin-box-era',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'saladin-box',
+		question: 'When was the Saladin box invented?',
+		options: ['Early 18th century', 'Late 19th century', 'Mid 20th century', 'Early 21st century'],
+		answer: 'Late 19th century',
+		explanation: 'The Saladin box was invented in the late 19th century as a mechanical alternative to turning malt by hand.'
+	},
+	{
+		id: 'exogenous-enzymes-unmalted',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'exogenous-enzymes',
+		question: 'A distiller mashes a recipe of mostly unmalted grain. What might they add to help convert its starches?',
+		options: ['Exogenous enzymes', 'Backset', 'Caramel coloring', 'Extra yeast'],
+		answer: 'Exogenous enzymes',
+		explanation: 'Commercial enzymes are added when natural malt enzymes are insufficient, as in high-adjunct or unmalted grain recipes.'
+	},
+	{
+		id: 'wort-cooling',
+		category: INGREDIENTS_FERMENTATION,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'wort',
+		question: 'Why is wort cooled before it goes to fermentation?',
+		options: [
+			'Hot wort would kill the yeast',
+			'Cooling makes the wort sweeter',
+			'Cooling separates out the husks',
+			'Cold wort distills more quickly'
+		],
+		answer: 'Hot wort would kill the yeast',
+		explanation: 'Wort leaves the mash tun hot, so it is cooled to a temperature yeast can survive before fermentation begins.'
 	}
 ];

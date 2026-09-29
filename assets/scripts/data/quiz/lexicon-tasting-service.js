@@ -1,4 +1,4 @@
-import { TASTING_SERVICE, EASY, MEDIUM, LEXICON } from './quiz-constants.js';
+import { TASTING_SERVICE, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Tasting & Service
 export const LEXICON_TASTING_SERVICE_QUESTIONS = [
@@ -131,5 +131,91 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 		],
 		answer: 'Drawing small samples from a barrel',
 		explanation: 'The valinch is a tubular tool used to take small quantities of whisky from a barrel for sampling.'
+	},
+	{
+		id: 'mouthfeel-definition',
+		category: TASTING_SERVICE,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'mouthfeel',
+		question: 'In a tasting note, what does "mouthfeel" describe?',
+		options: [
+			'The texture and viscosity on the palate',
+			'The aroma rising from the glass',
+			'The length of the aftertaste',
+			'The color of the whisky'
+		],
+		answer: 'The texture and viscosity on the palate',
+		explanation: 'Mouthfeel is the perception of viscosity, texture, and other sensations in the mouth.'
+	},
+	{
+		id: 'on-the-rocks-definition',
+		category: TASTING_SERVICE,
+		difficulty: EASY,
+		source: LEXICON,
+		sourceId: 'on-the-rocks',
+		question: 'A whisky served "on the rocks" comes...',
+		options: ['With ice cubes', 'With nothing added', 'With a splash of water', 'In a quaich'],
+		answer: 'With ice cubes',
+		explanation: 'On the rocks means served with ice cubes. Neat means with no ice, water, or mixers.'
+	},
+	{
+		id: 'pipette-two-uses',
+		category: TASTING_SERVICE,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'pipette',
+		question: 'The word "pipette" can describe tools for which two tasks?',
+		options: [
+			'Adding water drops and drawing cask samples',
+			'Measuring pours and chilling the whisky',
+			'Sealing casks and stirring the whisky',
+			'Filtering spirit and charring barrels'
+		],
+		answer: 'Adding water drops and drawing cask samples',
+		explanation: 'A glass pipette adds water to whisky drop by drop, and a tubular pipette removes small samples from a cask.'
+	},
+	{
+		id: 'whisky-thief-scenario',
+		category: TASTING_SERVICE,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'whisky-thief',
+		question: 'A warehouse manager wants to taste a little whisky straight from a barrel. Which tool would they reach for?',
+		options: ['A jigger', 'A whisky thief', 'A quaich', 'A bung'],
+		answer: 'A whisky thief',
+		explanation: 'A whisky thief is a tubular tool used to remove small quantities of whisky from a barrel for sampling.'
+	},
+	{
+		id: 'finish-second-meaning',
+		category: TASTING_SERVICE,
+		difficulty: HARD,
+		source: LEXICON,
+		sourceId: 'finish',
+		question: 'Besides the aftertaste, what else can "finish" refer to?',
+		options: [
+			'A short spell in a second cask',
+			'The strength at which it is bottled',
+			'The final pass through the still',
+			'The last dram left in a bottle'
+		],
+		answer: 'A short spell in a second cask',
+		explanation: 'Finish can also mean cask finishing, where mature whisky moves to a different cask, usually briefly, to pick up specific flavors.'
+	},
+	{
+		id: 'dram-modern-usage',
+		category: TASTING_SERVICE,
+		difficulty: MEDIUM,
+		source: LEXICON,
+		sourceId: 'dram',
+		question: 'In everyday use today, what does "a dram" usually mean?',
+		options: [
+			'A serving of whisky',
+			'An exact 1.5 fl oz pour',
+			'A two-handled cup',
+			'A sample from a cask'
+		],
+		answer: 'A serving of whisky',
+		explanation: 'Dram began as a unit of about 1/8 fl oz but is now a colloquial term for a serving of whisky, especially Scotch.'
 	}
 ];

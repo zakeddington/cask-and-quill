@@ -306,12 +306,12 @@ export const REGIONS_INDIA_QUESTIONS = [
 		topic: LEGAL,
 		question: 'Which wood contact can satisfy FSSAI\'s requirement for a "matured" claim?',
 		options: [
-			'Oak or other suitable wood vats, barrels, or wood chips',
+			'Oak or other suitable wood, including chips',
 			'Oak casks no larger than 700 litres only',
 			'New charred oak barrels of any size only',
 			'Ex-bourbon or ex-sherry oak barrels only'
 		],
-		answer: 'Oak or other suitable wood vats, barrels, or wood chips',
+		answer: 'Oak or other suitable wood, including chips',
 		explanation: 'FSSAI allows vats, barrels, or wood chips of oak or other suitable wood. There is no national cask material or size requirement.'
 	},
 	{
@@ -335,12 +335,12 @@ export const REGIONS_INDIA_QUESTIONS = [
 		topic: LEGAL,
 		question: 'What does FSSAI permit in Indian whisky?',
 		options: [
-			'Caramel coloring, flavoring, and blending with neutral or rectified spirit',
-			'Caramel coloring (E150a) only, and nothing else',
-			'No additives of any kind, including coloring',
-			'Flavoring only, with coloring and spirit banned'
+			'Coloring, flavoring, and neutral spirit',
+			'Caramel coloring (E150a) only',
+			'No additives of any kind',
+			'Flavoring only, never coloring'
 		],
-		answer: 'Caramel coloring, flavoring, and blending with neutral or rectified spirit',
+		answer: 'Coloring, flavoring, and neutral spirit',
 		explanation: 'FSSAI permits coloring, flavoring, and neutral spirit. Scotland, Ireland, and Japan allow only caramel coloring.'
 	},
 	{

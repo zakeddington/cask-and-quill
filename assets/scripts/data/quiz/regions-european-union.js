@@ -390,12 +390,12 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 		topic: VARIETIES,
 		question: 'Beyond the EU floor, what do both French whisky GIs require?',
 		options: [
-			'Local water, with fermentation, distillation, and aging in the region',
-			'A minimum of 5 years aging in French oak casks',
-			'Bottling at 46% ABV or more with no chill filtering',
-			'Maturation in ex-Cognac or ex-Armagnac casks'
+			'Local water and in-region production',
+			'At least 5 years in French oak',
+			'Bottling at 46% ABV or more',
+			'Maturation in ex-Cognac casks'
 		],
-		answer: 'Local water, with fermentation, distillation, and aging in the region',
+		answer: 'Local water and in-region production',
 		explanation: 'Whisky Breton and Whisky Alsacien tie the water and each main production step to the named region.'
 	},
 	{

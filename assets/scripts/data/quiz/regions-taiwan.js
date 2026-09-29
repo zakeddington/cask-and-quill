@@ -204,12 +204,12 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 		topic: LEGAL,
 		question: 'What does Taiwan\'s whisky definition require for fermentation?',
 		options: [
-			'Saccharification and fermentation, with no enzyme restriction specified',
+			'Saccharification and fermentation, any enzymes',
 			'Yeast only, with added enzymes explicitly banned',
 			'Natural malt enzymes only, with no added enzymes',
 			'Fermentation only at a separately licensed brewery'
 		],
-		answer: 'Saccharification and fermentation, with no enzyme restriction specified',
+		answer: 'Saccharification and fermentation, any enzymes',
 		explanation: 'Taiwan requires saccharification and fermentation but does not restrict enzymes. Scotland, by contrast, allows yeast only.'
 	},
 	{

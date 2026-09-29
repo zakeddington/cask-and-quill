@@ -45,7 +45,7 @@ export const LEXICON_TERMS = [
 		name: 'Aftershots',
 		category: DISTILLATION,
 		letter: 'A',
-		description: 'The final spirit produced from a spirit still at the end of distillation. This low-alcohol, heavier fraction contains fusel oils and is usually discarded or redistilled.',
+		description: 'Another name for feints: the final, low-alcohol fraction produced from a spirit still at the end of distillation. This heavier fraction contains fusel oils and is usually discarded or redistilled.',
 		seeAlso: ['Distillation', 'Feints', 'Spirit Still', 'Still', 'Tails']
 	},
 	{
@@ -115,7 +115,7 @@ export const LEXICON_TERMS = [
 		name: 'Beer Still',
 		category: DISTILLATION,
 		letter: 'B',
-		description: 'The first still in a double-distillation process (also called a wash still or strip still). Produces "low wines" at 25–35% ABV for further distillation.',
+		description: 'The first still in a double-distillation process (also called a wash still or strip still). Produces "low wines," typically 20–35% ABV, for further distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Double Distillation', 'Low Wines', 'Still', 'Wash', 'Wash Still']
 	},
 	{
@@ -326,7 +326,7 @@ export const LEXICON_TERMS = [
 		name: 'Cooperage',
 		category: PEOPLE_PRODUCERS,
 		letter: 'C',
-		description: 'The craft of making and repairing wooden barrels and casks. A cooper is the skilled tradesperson. The quality and preparation of the cask is one of the most significant influences on final whisky flavor. A business or premises that produces barrels or casks. Also sometimes used to refer to casks or barrels, e.g., "aged in new cooperage."',
+		description: 'The craft of making and repairing wooden barrels and casks, or a business or premises that does this work; the skilled tradesperson is a cooper. The word is also used for the casks themselves, e.g., "aged in new cooperage." The quality and preparation of the cask is one of the most significant influences on final whisky flavor.',
 		seeAlso: ['Barrel', 'Cask', 'Cooper', 'Whisky']
 	},
 	{
@@ -390,7 +390,7 @@ export const LEXICON_TERMS = [
 		name: 'Distiller\'s Beer',
 		category: FERMENTATION_CHEMISTRY,
 		letter: 'D',
-		description: 'The alcoholic liquid produced by fermentation before distillation, usually around 7% to 10% ABV.',
+		description: 'Another name for wash, common in American distilling: the alcoholic liquid produced by fermentation before distillation, typically around 6–10% ABV.',
 		seeAlso: ['ABV', 'Distillation', 'Fermentation', 'Wash']
 	},
 	{
@@ -414,16 +414,16 @@ export const LEXICON_TERMS = [
 		name: 'Draff',
 		category: MALTING_MASHING,
 		letter: 'D',
-		description: 'A term used in Scotland for the remnants of grain drained from the wash following fermentation. Often used as animal feed.',
+		description: 'The spent grain left in the mash tun after the wort is drawn off, often sold as animal feed.',
 		pronunciation: 'draft',
-		seeAlso: ['Fermentation', 'Wash']
+		seeAlso: ['Mash Tub/Tun', 'Wort']
 	},
 	{
 		id: 'dram',
 		name: 'Dram',
 		category: TASTING_SERVICE,
 		letter: 'D',
-		description: 'A traditional unit of measurement for spirits (approximately 1/8 of a fluid ounce) that has evolved into a general colloquial term for a serving of whisky, especially Scotch. A Scottish term for a glass of whisky; or a measurement equal to 1/8 fl oz.',
+		description: 'A traditional unit of measurement for spirits (approximately 1/8 of a fluid ounce) that has evolved into a Scottish, and now general, colloquial term for a serving of whisky, especially Scotch.',
 		seeAlso: ['Scotch', 'Whisky']
 	},
 	{
@@ -431,7 +431,7 @@ export const LEXICON_TERMS = [
 		name: 'Dunnage Warehouse',
 		category: MATURATION_WOOD,
 		letter: 'D',
-		description: 'A traditional low-lying, earth-floored warehouse used in Scotland for cask storage. Casks are laid on wooden runners in two or three tiers. Temperature-stable, producing slow maturation. A traditional warehouse, typically found in Scotland and Ireland, built with an earth floor and brick or stone walls.',
+		description: 'A traditional low-lying warehouse, typically found in Scotland and Ireland, with an earth floor and brick or stone walls. Casks are laid on wooden runners in two or three tiers, and the stable temperature produces slow maturation.',
 		pronunciation: 'DUN-ij warehouse',
 		seeAlso: ['Cask', 'Maturation', 'Warehouse']
 	},
@@ -472,7 +472,7 @@ export const LEXICON_TERMS = [
 		name: 'Feints',
 		category: DISTILLATION,
 		letter: 'F',
-		description: 'The final, lower-strength fraction collected after the heart during distillation. Feints contain heavier compounds and are usually recycled into a later distillation or discarded.',
+		description: 'The Scottish term for the lower-strength fraction collected after the heart, equivalent to "tails" in American distilling and also called aftershots. Feints contain heavier compounds and are usually recycled into a later distillation or discarded.',
 		seeAlso: ['Aftershots', 'Distillation', 'Heart', 'Tails']
 	},
 	{
@@ -480,7 +480,7 @@ export const LEXICON_TERMS = [
 		name: 'Fermentation',
 		category: FERMENTATION_CHEMISTRY,
 		letter: 'F',
-		description: 'The process by which yeast converts sugars (from the grain mash) into alcohol and CO₂. Produces a beer-like "wash" or "distiller\'s beer" typically at 6–10% ABV before distillation. A metabolic process where yeast feeds on sugar, creating acids, gases, and/or alcohol as byproducts. All whisky-making includes a fermentation process before distillation.',
+		description: 'The metabolic process in which yeast converts sugars from the grain mash into alcohol and CO₂, along with acids and other flavor compounds. All whisky-making includes fermentation, which produces a beer-like "wash" or "distiller\'s beer," typically at 6–10% ABV, before distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Distiller\'s Beer', 'Mash', 'Wash', 'Whisky', 'Wort', 'Yeast']
 	},
 	{
@@ -528,7 +528,7 @@ export const LEXICON_TERMS = [
 		name: 'Floor Malting',
 		category: MALTING_MASHING,
 		letter: 'F',
-		description: 'A traditional process where barley is germinated on a floor, turned by hand. Mostly replaced with more efficient modern processes like drum malting. The germination process converts barley\'s starches to fermentable sugars, and the process is stopped by drying with heat.',
+		description: 'A traditional process where steeped barley is spread on a floor to germinate and turned by hand. Mostly replaced with more efficient modern processes like drum malting. Germination develops the enzymes that later convert the barley\'s starches to fermentable sugars during mashing, and it is stopped by drying the grain with heat in a kiln.',
 		seeAlso: ['Barley', 'Malting']
 	},
 	{
@@ -552,7 +552,7 @@ export const LEXICON_TERMS = [
 		name: 'Grain Whisky',
 		category: STYLES_REGULATIONS,
 		letter: 'G',
-		description: 'Whisky produced primarily from grains other than malted barley (wheat, corn), typically in column stills. Lighter and more neutral than malt whisky. Used extensively in blended Scotch. A spirit made from grains such as corn, wheat, or rye that has typically been distilled in a column still. Some countries, like Scotland and Ireland, have regulations defining grain whisky more specifically.',
+		description: 'Whisky produced primarily from grains other than malted barley, such as corn, wheat, or rye, and typically distilled in column stills. Lighter and more neutral than malt whisky, it is used extensively in blended Scotch. Some countries, like Scotland and Ireland, define grain whisky more specifically in law.',
 		seeAlso: ['Barley', 'Column Still', 'Corn', 'Malt', 'Malt Whisky', 'Malted', 'Rye', 'Scotch', 'Still', 'Whisky']
 	},
 	{
@@ -600,7 +600,7 @@ export const LEXICON_TERMS = [
 		name: 'High Wines',
 		category: DISTILLATION,
 		letter: 'H',
-		description: 'The stronger spirit produced in the second distillation of Scotch whisky (from the spirit still), typically 60–80% ABV, before cut separation. A spirit that has undergone its final distillation and is ready for dilution and/or maturation.',
+		description: 'The stronger spirit from the final distillation, typically 60–80% ABV. In Scotch production, it is the spirit-still run before the cuts are made; in American distilling, it usually means the finished distillate from the doubler or thumper, ready to be reduced and barreled.',
 		seeAlso: ['ABV', 'Cut', 'Distillation', 'Maturation', 'Scotch', 'Spirit Still', 'Still', 'Whisky']
 	},
 	{
@@ -616,7 +616,7 @@ export const LEXICON_TERMS = [
 		name: 'Hogshead',
 		category: MATURATION_WOOD,
 		letter: 'H',
-		description: 'A common Scotch maturation cask size holding approximately 250L (66 US gallons). Made by dismantling bourbon barrels and reassembling with additional staves. In Scotch whisky, a cask with a volume capacity between 250 and 305 liters.',
+		description: 'A common Scotch maturation cask holding between 250 and 305 liters, with a typical hogshead around 250L (66 US gallons). Traditionally made by dismantling bourbon barrels and reassembling them with additional staves.',
 		seeAlso: ['Barrel', 'Bourbon', 'Cask', 'Maturation', 'Scotch', 'Whisky']
 	},
 	{
@@ -696,7 +696,7 @@ export const LEXICON_TERMS = [
 		name: 'Low Wines',
 		category: DISTILLATION,
 		letter: 'L',
-		description: 'The spirit produced after the first distillation of a whisky wash, typically 20–35% ABV. Returned to the spirit still for a second distillation. A distillate that lacks sufficient alcohol by volume to produce a finished spirit and requires additional distillation.',
+		description: 'The spirit produced after the first distillation of a whisky wash, typically 20–35% ABV. It lacks enough alcohol to be a finished spirit, so it is returned to the spirit still for a second distillation.',
 		seeAlso: ['ABV', 'Distillate', 'Distillation', 'Spirit Still', 'Still', 'Wash', 'Whisky']
 	},
 	{
@@ -721,7 +721,7 @@ export const LEXICON_TERMS = [
 		name: 'Malt',
 		category: MALTING_MASHING,
 		letter: 'M',
-		description: 'Grain (typically barley) that has been steeped in water, allowed to germinate, then kiln-dried to halt germination. Germination develops enzymes (amylases) that convert starches to fermentable sugars. Germinated grain (usually barley) that has been heated to stop growth. Also a term to describe whisky made from malted barley.',
+		description: 'Grain (typically barley) that has been steeped in water, allowed to germinate, then kiln-dried to halt germination. Germination develops enzymes (amylases) that later convert starches to fermentable sugars during mashing. Also a term for whisky made from malted barley.',
 		seeAlso: ['Barley', 'Kiln', 'Malted', 'Malting', 'Saccharification', 'Whisky']
 	},
 	{
@@ -916,14 +916,6 @@ export const LEXICON_TERMS = [
 		seeAlso: ['Bourbon', 'Cask', 'Maturation', 'Mizunara', 'Scotch', 'Whisky']
 	},
 	{
-		id: 'ofc-old-fashioned-copper',
-		name: 'OFC (Old Fashioned Copper)',
-		category: DISTILLATION,
-		letter: 'O',
-		description: 'A term sometimes used for pot still distillation equipment or vintage still designs. Also refers to Old Fitzgerald\'s historical bourbon line.',
-		seeAlso: ['Bourbon', 'Distillation', 'Pot Still', 'Still']
-	},
-	{
 		id: 'on-the-rocks',
 		name: 'On the Rocks',
 		category: TASTING_SERVICE,
@@ -943,8 +935,8 @@ export const LEXICON_TERMS = [
 		name: 'Pagoda Roof',
 		category: MATURATION_WOOD,
 		letter: 'P',
-		description: 'A distinctive style of Scottish distillery chimney, modeled after Chinese architecture, used to improve air flow for the smoke used in drying malted barley.',
-		seeAlso: ['Barley', 'Malted']
+		description: 'A distinctive pagoda-shaped roof over a Scottish distillery\'s malt kiln, modeled after Chinese architecture, that improves airflow for the smoke used to dry malted barley.',
+		seeAlso: ['Barley', 'Kiln', 'Malted']
 	},
 	{
 		id: 'peat',
@@ -1007,7 +999,7 @@ export const LEXICON_TERMS = [
 		name: 'Proof',
 		category: MEASUREMENTS_LABELING,
 		letter: 'P',
-		description: 'In the US, proof equals twice the ABV (e.g., 100 proof = 50% ABV). In the UK, historically measured on a different scale, but now largely harmonized with ABV internationally. In the U.S., the ethanol content of a spirit at 60 degrees Fahrenheit. The number is equal to double the spirit\'s ABV.',
+		description: 'A measure of a spirit\'s alcohol strength. In the U.S., proof is the ethanol content at 60 degrees Fahrenheit, expressed as twice the ABV (e.g., 100 proof = 50% ABV). The UK historically used a different scale, but strength is now largely harmonized with ABV internationally.',
 		seeAlso: ['ABV', 'Ethanol']
 	},
 	{
@@ -1189,11 +1181,11 @@ export const LEXICON_TERMS = [
 	},
 	{
 		id: 'slainte',
-		name: 'Sláinte',
+		name: 'Sláinte (Irish) / Slàinte (Scottish Gaelic)',
 		category: TASTING_SERVICE,
 		letter: 'S',
-		description: 'A Gaelic toast that translates to "health" commonly used in Ireland and Scotland. Pronounced slanj or slan-juh.',
-		pronunciation: 'SLAHN-chuh'
+		description: 'A traditional toast meaning "health," used in Ireland and Scotland. Fuller forms include sláinte mhaith (Irish) and slàinte mhath (Scottish Gaelic), "good health"; in Scotland, a common reply is slàinte mhòr, "great health."',
+		pronunciation: 'SLAHN-chuh (often anglicized as "slanj")'
 	},
 	{
 		id: 'small-barrel',
@@ -1296,7 +1288,7 @@ export const LEXICON_TERMS = [
 		name: 'Tails',
 		category: DISTILLATION,
 		letter: 'T',
-		description: 'The final, heavier portion of a distillation run after the heart. Tails are lower in alcohol and can contain oily, musty, or harsh notes, so they are usually discarded or redistilled.',
+		description: 'The final, heavier portion of a distillation run after the heart, called feints or aftershots in Scotland. Tails are lower in alcohol and can contain oily, musty, or harsh notes, so they are usually discarded or redistilled.',
 		seeAlso: ['Aftershots', 'Distillation', 'Feints', 'Heart']
 	},
 	{
@@ -1312,7 +1304,7 @@ export const LEXICON_TERMS = [
 		name: 'Tennessee Whiskey',
 		category: STYLES_REGULATIONS,
 		letter: 'T',
-		description: 'A style of American whiskey produced in Tennessee meeting all bourbon requirements and additionally filtered through sugar maple charcoal (Lincoln County Process). Jack Daniel\'s is the global market leader. A whiskey made in Tennessee, meeting the same legal requirements as a bourbon, with the added requirement of filtration through sugar maple charcoal, referred to as the Lincoln County Process (with the exception of one distillery, Prichard\'s).',
+		description: 'A style of American whiskey made in Tennessee that meets all bourbon requirements and is additionally filtered through sugar maple charcoal, known as the Lincoln County Process. Prichard\'s is the one distillery exempt from the filtering requirement, and Jack Daniel\'s is the global market leader.',
 		seeAlso: ['Bourbon', 'Lincoln County Process', 'Whisky']
 	},
 	{
@@ -1320,7 +1312,7 @@ export const LEXICON_TERMS = [
 		name: 'Terroir',
 		category: REGIONS_TEROIR,
 		letter: 'T',
-		description: 'A concept borrowed from wine describing the environmental influence on whisky character — local water, barley, peat, climate, and warehouse conditions. Contested but increasingly relevant in craft and single malt discussions. The total environment of any agricultural site, and the overall influence that a specific region, distillery, or site, due to climate, weather, or other environmental factors, imparts to a wine or spirit.',
+		description: 'A concept borrowed from wine describing how a place\'s environment shapes a spirit\'s character: local water, barley, peat, climate, and warehouse conditions. Its influence on whisky is contested, but it is increasingly relevant in craft and single malt discussions.',
 		seeAlso: ['Barley', 'Malt', 'Peat', 'Single Malt', 'Warehouse', 'Whisky']
 	},
 	{
@@ -1408,7 +1400,7 @@ export const LEXICON_TERMS = [
 		name: 'Wash',
 		category: MALTING_MASHING,
 		letter: 'W',
-		description: 'The alcoholic liquid produced by fermenting wort with yeast, usually around 5% to 10% ABV. It is essentially an unhopped beer and is ready for distillation.',
+		description: 'The alcoholic liquid produced by fermenting wort with yeast, typically around 6–10% ABV. It is essentially an unhopped beer, also called distiller\'s beer, and is ready for distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Distiller\'s Beer', 'Fermentation', 'Wort', 'Yeast']
 	},
 	{

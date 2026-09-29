@@ -490,12 +490,12 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 		topic: LEGAL,
 		question: 'Which groups have pushed for a stricter Australian single malt standard?',
 		options: [
-			'The Australian Distillers Association and the Tasmanian Whisky and Spirits Producers Association',
+			'The Australian Distillers Association and Tasmanian producers\' association',
 			'Distilled Spirits Aotearoa and Food Standards Australia New Zealand',
 			'The Scotch Whisky Association and the Australian Taxation Office',
 			'The Australian Taxation Office and Food Standards Australia New Zealand'
 		],
-		answer: 'The Australian Distillers Association and the Tasmanian Whisky and Spirits Producers Association',
+		answer: 'The Australian Distillers Association and Tasmanian producers\' association',
 		explanation: 'Both industry groups pushed for a stricter standard after the 2025 dispute over fast-matured spirit sold as single malt.'
 	},
 	{
