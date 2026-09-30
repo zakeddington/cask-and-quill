@@ -16,6 +16,7 @@ export const CATALOG_CATEGORY_OPTIONS = [
 	{ value: 'American Wheat', label: 'American Wheat' },
 	{ value: 'Irish', label: 'Irish' },
 	{ value: 'Japanese', label: 'Japanese' },
+	{ value: 'New Zealand', label: 'New Zealand' },
 	{ value: 'Scotch', label: 'Scotch' }
 ];
 
