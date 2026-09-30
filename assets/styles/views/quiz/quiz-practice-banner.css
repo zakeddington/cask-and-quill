@@ -1,7 +1,7 @@
-.quiz-resume {
+.quiz-practice {
 	align-items: center;
 	background: var(--color-background-secondary-alt);
-	border: 2px solid var(--color-border-accent);
+	border: 2px solid var(--color-border-primary);
 	display: grid;
 	gap: 1rem;
 	padding: 2rem;
@@ -11,12 +11,6 @@
 	}
 }
 
-.quiz-resume__text {
+.quiz-practice__text {
 	margin: 0.25rem 0 0;
-}
-
-.quiz-resume__actions {
-	align-items: center;
-	display: flex;
-	gap: 1.5rem;
 }

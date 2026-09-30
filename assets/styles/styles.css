@@ -58,6 +58,7 @@
 @import "views/quiz/quiz-layout.css" layer(views);
 @import "views/quiz/quiz-setup.css" layer(views);
 @import "views/quiz/quiz-resume-banner.css" layer(views);
+@import "views/quiz/quiz-practice-banner.css" layer(views);
 @import "views/quiz/quiz-questions.css" layer(views);
 @import "views/quiz/quiz-results.css" layer(views);
 

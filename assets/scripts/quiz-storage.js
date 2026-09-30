@@ -47,14 +47,13 @@ export function loadHistory() {
 	return read(KEY_HISTORY, []);
 }
 
-// Entries saved before `asked` was recorded only have `missed`, so treat them as partial data
 export function appendHistory(entry) {
 	const history = [entry, ...loadHistory().filter(item => item.id !== entry.id)].slice(0, HISTORY_LIMIT);
 
 	// Keep the newest entries that fit the question budget; the latest entry is always kept
 	let questionCount = 0;
 	const kept = history.filter((item, index) => {
-		questionCount += item.asked?.length ?? item.missed?.length ?? 0;
+		questionCount += item.asked?.length ?? 0;
 		return index === 0 || questionCount <= HISTORY_QUESTION_LIMIT;
 	});
 

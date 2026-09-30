@@ -4,6 +4,16 @@ import { LEXICON_TERMS } from './data/lexicon-data.js';
 export const QUIZ_VERSION = 1;
 export const QUIZ_LENGTH_ALL = 'all';
 
+// Study quizzes draw from the filters; review quizzes draw from questions last answered wrong
+export const QUIZ_MODE_STUDY = 'study';
+export const QUIZ_MODE_REVIEW = 'review';
+
+// Relative chances of a question being picked when prioritising new and missed questions
+const WEIGHT_UNSEEN = 3;
+const WEIGHT_MISSED = 3;
+const WEIGHT_RECENT_FACTOR = 0.25;
+const RECENT_MS = 24 * 60 * 60 * 1000;
+
 const QUESTIONS_BY_ID = new Map(QUIZ_QUESTIONS.map(question => [question.id, question]));
 const LEXICON_CATEGORY_BY_ID = new Map(LEXICON_TERMS.map(term => [term.id, term.category]));
 
@@ -82,9 +92,40 @@ export function getQuizLength(config, poolSize) {
 	return config.length === QUIZ_LENGTH_ALL ? poolSize : Math.min(config.length, poolSize);
 }
 
-export function buildQuiz(config) {
-	const pool = filterQuestions(config);
-	const picked = shuffle(pool).slice(0, getQuizLength(config, pool.length));
+// Weight for a question's stats from getQuestionStats: unseen and last-missed questions are
+// most likely; otherwise likelier the more often it's been missed, and less likely if answered recently
+export function getPickWeight(item, now = Date.now()) {
+	if (!item) return WEIGHT_UNSEEN;
+	if (!item.lastCorrect) return WEIGHT_MISSED;
+
+	const weight = 0.5 + (1 - item.correct / item.seen);
+	return now - item.lastSeenAt < RECENT_MS ? weight * WEIGHT_RECENT_FACTOR : weight;
+}
+
+// Weighted random order without replacement (Efraimidis–Spirakis): heavier items tend to come first
+function weightedShuffle(items, getWeight) {
+	return items
+		.map(item => ({ item, key: Math.random() ** (1 / getWeight(item)) }))
+		.sort((a, b) => b.key - a.key)
+		.map(({ item }) => item);
+}
+
+function getPool(config, questionStats) {
+	return config.mode === QUIZ_MODE_REVIEW
+		? QUIZ_QUESTIONS.filter(question => questionStats.get(question.id)?.lastCorrect === false)
+		: filterQuestions(config);
+}
+
+// `questionStats` comes from getQuestionStats and drives review pools and prioritized picks
+export function buildQuiz(config, questionStats = new Map()) {
+	const pool = getPool(config, questionStats);
+	const now = Date.now();
+	const ordered = config.prioritize
+		? weightedShuffle(pool, question => getPickWeight(questionStats.get(question.id), now))
+		: shuffle(pool);
+
+	// Reshuffle the picks so the heaviest questions don't all come first
+	const picked = shuffle(ordered.slice(0, getQuizLength(config, pool.length)));
 
 	return {
 		version: QUIZ_VERSION,

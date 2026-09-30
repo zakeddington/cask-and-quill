@@ -24,6 +24,14 @@
 	margin-bottom: 2rem;
 }
 
+.quiz-results__percent:has(+ .quiz-results__comparison) {
+	margin-bottom: 0.5rem;
+}
+
+.quiz-results__comparison {
+	margin-bottom: 2rem;
+}
+
 .quiz-results__actions {
 	display: flex;
 	flex-wrap: wrap;

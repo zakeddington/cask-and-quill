@@ -6,6 +6,8 @@ import { KEY_ENTER } from '../config/constants.js';
 import {
 	QUIZ_VERSION,
 	QUIZ_LENGTH_ALL,
+	QUIZ_MODE_STUDY,
+	QUIZ_MODE_REVIEW,
 	SOURCE_FILTER_KEYS,
 	getQuestion,
 	getLexiconCategory,
@@ -22,15 +24,17 @@ import {
 	saveActiveQuiz,
 	clearActiveQuiz,
 	appendHistory,
+	loadHistory,
 	loadLastConfig,
 	saveLastConfig
 } from '../quiz-storage.js';
+import { getQuestionStats, getMissedQuestionIds, getPercent, compareWithPrevious } from '../quiz-stats.js';
 
 const SCREEN_SETUP = 'setup';
 const SCREEN_QUESTION = 'question';
 const SCREEN_RESULTS = 'results';
 
-const MODE_STUDY = 'study';
+const MODES = [QUIZ_MODE_STUDY, QUIZ_MODE_REVIEW];
 const LENGTH_OPTIONS = [10, 20, 30, QUIZ_LENGTH_ALL];
 
 const FILTER_KEYS = ['sources', 'lexiconCategories', 'regionCountries', 'regionTopics', 'difficulties'];
@@ -42,8 +46,14 @@ const DEFAULT_CONFIG = {
 	regionTopics: [],
 	difficulties: [],
 	length: 20,
-	mode: MODE_STUDY,
+	mode: QUIZ_MODE_STUDY,
+	prioritize: true,
 };
+
+const PRIORITIZE_OPTIONS = [
+	{ value: true, label: 'Favor new & missed' },
+	{ value: false, label: 'Fully random' },
+];
 
 const SOURCE_LABELS = {
 	lexicon: 'Lexicon',
@@ -71,6 +81,17 @@ function formatTopic(value) {
 // A source counts as picked when it's selected directly or through one of its sub-filters
 function isSourcePicked(config, source) {
 	return config.sources.includes(source) || SOURCE_FILTER_KEYS[source].some(key => config[key].length);
+}
+
+// Identifies quizzes with the same settings for score comparisons; question selection doesn't count
+function getConfigKey(config) {
+	return JSON.stringify([config.mode, config.length, ...FILTER_KEYS.map(key => [...config[key]].sort())]);
+}
+
+function formatChange(change) {
+	if (!change) return 'Same score as';
+	const points = Math.abs(change) === 1 ? 'point' : 'points';
+	return change > 0 ? `Up ${change} ${points} on` : `Down ${-change} ${points} on`;
 }
 
 // Quizzes draw from one source at a time, so at most one source is picked
@@ -133,6 +154,8 @@ export class QuizView {
 			...DEFAULT_CONFIG,
 			...Object.fromEntries(FILTER_KEYS.map(key => [key, pick(config?.[key], this.filterGroups[key].values)])),
 			length: LENGTH_OPTIONS.includes(config?.length) ? config.length : DEFAULT_CONFIG.length,
+			mode: MODES.includes(config?.mode) ? config.mode : DEFAULT_CONFIG.mode,
+			prioritize: typeof config?.prioritize === 'boolean' ? config.prioritize : DEFAULT_CONFIG.prioritize,
 		};
 
 		// Older saved configs may mix sources; keep only the first picked one
@@ -182,6 +205,11 @@ export class QuizView {
 		saveLastConfig(this.state.config);
 	}
 
+	setPrioritize(value) {
+		this.state.config.prioritize = value === 'true';
+		saveLastConfig(this.state.config);
+	}
+
 	clearFilters() {
 		this.state.config = {
 			...this.state.config,
@@ -193,8 +221,16 @@ export class QuizView {
 	// Quiz lifecycle
 	// ---------------------------------------------------------------
 
+	getQuestionStats() {
+		return getQuestionStats(loadHistory());
+	}
+
+	getMissedCount() {
+		return getMissedQuestionIds(this.getQuestionStats()).length;
+	}
+
 	startQuiz(config) {
-		const quiz = buildQuiz({ ...config });
+		const quiz = buildQuiz({ ...config }, this.getQuestionStats());
 		if (!quiz.questions.length) return;
 
 		this.state.quiz = quiz;
@@ -252,6 +288,11 @@ export class QuizView {
 		this.showScreen(SCREEN_RESULTS);
 	}
 
+	// Review quizzes ignore the setup filters and include every missed question
+	startReview() {
+		this.startQuiz({ ...DEFAULT_CONFIG, mode: QUIZ_MODE_REVIEW, length: QUIZ_LENGTH_ALL });
+	}
+
 	discardQuiz() {
 		this.state.quiz = null;
 		clearActiveQuiz();
@@ -267,6 +308,8 @@ export class QuizView {
 		if (chip) {
 			if (chip.dataset.group === 'length') {
 				this.setLength(chip.dataset.value);
+			} else if (chip.dataset.group === 'prioritize') {
+				this.setPrioritize(chip.dataset.value);
 			} else {
 				this.toggleFilter(chip.dataset.group, chip.dataset.value);
 			}
@@ -282,6 +325,11 @@ export class QuizView {
 
 		if (target.closest('.quiz-setup__start')) {
 			this.startQuiz(this.state.config);
+			return;
+		}
+
+		if (target.closest('.quiz-practice__start')) {
+			this.startReview();
 			return;
 		}
 
@@ -420,6 +468,7 @@ export class QuizView {
 				</div>
 				${this.renderFilterGroup('difficulties')}
 				${this.renderLengthGroup()}
+				${this.renderPrioritizeGroup()}
 				<div class="quiz-setup__footer">
 					<p class="quiz-setup__summary" aria-live="polite"></p>
 					<div class="quiz-setup__actions">
@@ -431,6 +480,7 @@ export class QuizView {
 					</div>
 				</div>
 			</section>
+			${this.renderPracticeBanner()}
 		`;
 	}
 
@@ -441,15 +491,32 @@ export class QuizView {
 		const answered = Object.keys(quiz.answers).length;
 
 		return `
-			<section class="quiz-resume theme--accent" aria-label="Quiz in progress">
+			<section class="quiz-resume" aria-label="Quiz in progress">
 				<div>
-					<p class="text-label">Quiz in progress</p>
+					<h2 class="text-heading-md text-color-accent">Quiz in progress</h2>
 					<p class="quiz-resume__text">${answered} of ${quiz.questions.length} questions answered. Starting a new quiz will replace it.</p>
 				</div>
 				<div class="quiz-resume__actions">
 					<button class="quiz-resume__discard button button--tertiary" type="button">Discard</button>
 					<button class="quiz-resume__continue button" type="button">Resume quiz</button>
 				</div>
+			</section>
+		`;
+	}
+
+	renderPracticeBanner() {
+		const count = this.getMissedCount();
+		if (!count) return '';
+
+		const questions = count === 1 ? 'question' : 'questions';
+
+		return `
+			<section class="quiz-practice" aria-label="Practice missed questions">
+				<div>
+					<h2 class="text-heading-md">Practice missed questions</h2>
+					<p class="quiz-practice__text">You have ${count} ${questions} you got wrong the last time you saw them. Answer one correctly and it comes off the list.</p>
+				</div>
+				<button class="quiz-practice__start button" type="button">Practice ${count} ${questions}</button>
 			</section>
 		`;
 	}
@@ -493,6 +560,21 @@ export class QuizView {
 		`;
 	}
 
+	renderPrioritizeGroup() {
+		return `
+			<fieldset class="quiz-setup__group">
+				<legend class="quiz-setup__legend">Question selection</legend>
+				<div class="quiz-setup__chips">
+					${PRIORITIZE_OPTIONS.map(({ value, label }) => `
+						<button class="quiz-chip button--secondary" type="button" data-group="prioritize" data-value="${value}" aria-pressed="false">
+							${label}
+						</button>
+					`).join('')}
+				</div>
+			</fieldset>
+		`;
+	}
+
 	// Update chip states and the live count without re-rendering, so focus stays on the clicked chip
 	updateSetupControls() {
 		const config = this.state.config;
@@ -504,6 +586,11 @@ export class QuizView {
 
 			if (group === 'length') {
 				chip.setAttribute('aria-pressed', String(String(config.length) === value));
+				return;
+			}
+
+			if (group === 'prioritize') {
+				chip.setAttribute('aria-pressed', String(String(config.prioritize) === value));
 				return;
 			}
 
@@ -624,19 +711,21 @@ export class QuizView {
 	renderResults() {
 		const quiz = this.state.quiz;
 		const { score, total, byLexiconCategory, byRegionCountry, byRegionTopic, byDifficulty, missed } = scoreQuiz(quiz);
-		const percent = total ? Math.round((score / total) * 100) : 0;
+		const percent = getPercent({ score, total });
+		const isReview = quiz.config.mode === QUIZ_MODE_REVIEW;
 
 		return `
 			<section class="quiz-results">
 				<div class="quiz-results__summary grid">
 					<div class="quiz-results__score-col grid__col--12-md grid__col--5-lg">
-						<p class="text-label">Quiz complete</p>
+						<p class="text-label">${isReview ? 'Practice complete' : 'Quiz complete'}</p>
 						<h2 class="quiz-results__title text-display-lg" tabindex="-1">
 							${score}<span class="quiz-results__total">/${total}</span>
 						</h2>
 						<p class="quiz-results__percent text-heading-md">${percent}% correct</p>
+						${this.renderComparison({ id: quiz.id, score, total, completedAt: quiz.completedAt })}
 						<div class="quiz-results__actions">
-							<button class="quiz-results__retry button" type="button">New quiz, same settings</button>
+							${this.renderRetryButton(isReview)}
 							<button class="quiz-results__setup button button--secondary" type="button">Back to setup</button>
 						</div>
 					</div>
@@ -656,6 +745,32 @@ export class QuizView {
 				</section>
 			</section>
 		`;
+	}
+
+	renderComparison(current) {
+		const key = getConfigKey(this.sanitizeConfig(this.state.quiz.config));
+		const comparison = compareWithPrevious(loadHistory(), current, config => getConfigKey(this.sanitizeConfig(config)) === key);
+		if (!comparison) return '';
+
+		const { change, bestPercent, isPersonalBest } = comparison;
+		const previous = this.state.quiz.config.mode === QUIZ_MODE_REVIEW ? 'your last practice' : 'your last quiz with these settings';
+
+		return `
+			<p class="quiz-results__comparison">
+				${isPersonalBest ? '<strong>New personal best.</strong>' : `Personal best: ${bestPercent}%.`}
+				${formatChange(change)} ${previous}.
+			</p>
+		`;
+	}
+
+	// Review quizzes can only be retried while missed questions remain
+	renderRetryButton(isReview) {
+		if (!isReview) return '<button class="quiz-results__retry button" type="button">New quiz, same settings</button>';
+
+		const count = this.getMissedCount();
+		if (!count) return '';
+
+		return `<button class="quiz-results__retry button" type="button">Practice ${count} missed ${count === 1 ? 'question' : 'questions'}</button>`;
 	}
 
 	renderBreakdown(title, breakdown, order, format) {
