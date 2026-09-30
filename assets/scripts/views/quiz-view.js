@@ -4,6 +4,7 @@ import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { KEY_ENTER } from '../config/constants.js';
 import {
+	QUIZ_VERSION,
 	QUIZ_LENGTH_ALL,
 	SOURCE_FILTER_KEYS,
 	getQuestion,
@@ -233,10 +234,16 @@ export class QuizView {
 		const quiz = this.state.quiz;
 		quiz.completedAt = Date.now();
 
+		// Store question IDs only; breakdowns are derived from current question data when read
+		const { score, total, missed } = scoreQuiz(quiz);
 		appendHistory({
+			version: QUIZ_VERSION,
 			id: quiz.id,
 			config: quiz.config,
-			...scoreQuiz(quiz),
+			score,
+			total,
+			asked: quiz.questions.map(entry => entry.id),
+			missed,
 			startedAt: quiz.startedAt,
 			completedAt: quiz.completedAt,
 		});

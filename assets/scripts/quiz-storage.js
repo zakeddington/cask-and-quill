@@ -2,6 +2,8 @@ const KEY_ACTIVE = 'cq-quiz-active';
 const KEY_HISTORY = 'cq-quiz-history';
 const KEY_LAST_CONFIG = 'cq-quiz-last-config';
 const HISTORY_LIMIT = 100;
+// Caps total stored question IDs across entries (~25 bytes each), so long "All" quizzes can't fill storage
+const HISTORY_QUESTION_LIMIT = 20000;
 
 // Storage can be unavailable (private mode, blocked site data), so every access is guarded
 function read(key, fallback) {
@@ -45,9 +47,18 @@ export function loadHistory() {
 	return read(KEY_HISTORY, []);
 }
 
+// Entries saved before `asked` was recorded only have `missed`, so treat them as partial data
 export function appendHistory(entry) {
-	const history = loadHistory().filter(item => item.id !== entry.id);
-	write(KEY_HISTORY, [entry, ...history].slice(0, HISTORY_LIMIT));
+	const history = [entry, ...loadHistory().filter(item => item.id !== entry.id)].slice(0, HISTORY_LIMIT);
+
+	// Keep the newest entries that fit the question budget; the latest entry is always kept
+	let questionCount = 0;
+	const kept = history.filter((item, index) => {
+		questionCount += item.asked?.length ?? item.missed?.length ?? 0;
+		return index === 0 || questionCount <= HISTORY_QUESTION_LIMIT;
+	});
+
+	write(KEY_HISTORY, kept);
 }
 
 export function loadLastConfig() {
