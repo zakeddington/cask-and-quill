@@ -61,6 +61,7 @@
 @import "views/quiz/quiz-practice-banner.css" layer(views);
 @import "views/quiz/quiz-questions.css" layer(views);
 @import "views/quiz/quiz-results.css" layer(views);
+@import "views/quiz/quiz-progress.css" layer(views);
 
 /* Utilities */
 /* --------------------------------------------------------------- */

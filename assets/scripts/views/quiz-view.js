@@ -25,10 +25,20 @@ import {
 	clearActiveQuiz,
 	appendHistory,
 	loadHistory,
+	removeHistoryEntry,
+	restoreHistoryEntry,
+	clearHistory,
 	loadLastConfig,
 	saveLastConfig
 } from '../quiz-storage.js';
-import { getQuestionStats, getMissedQuestionIds, getPercent, compareWithPrevious } from '../quiz-stats.js';
+import {
+	getQuestionStats,
+	getFilterStats,
+	getSummary,
+	getMissedQuestionIds,
+	getPercent,
+	compareWithPrevious
+} from '../quiz-stats.js';
 
 const SCREEN_SETUP = 'setup';
 const SCREEN_QUESTION = 'question';
@@ -54,6 +64,27 @@ const PRIORITIZE_OPTIONS = [
 	{ value: true, label: 'Favor new & missed' },
 	{ value: false, label: 'Fully random' },
 ];
+
+// Progress section
+const HISTORY_PREVIEW_LENGTH = 10;
+const TREND_LENGTH = 12;
+const PROGRESS_GROUPS = ['lexiconCategories', 'regionCountries', 'regionTopics', 'difficulties'];
+
+// An area needs enough answers, and a low enough score, to be suggested for focus
+const FOCUS_AREA_MIN_ATTEMPTS = 5;
+const FOCUS_AREA_MAX_ACCURACY = 0.8;
+const FOCUS_AREA_LIMIT = 3;
+
+// Used when a quiz summary has too many values in a group to list
+const COUNT_LABELS = {
+	lexiconCategories: 'categories',
+	regionCountries: 'countries',
+	regionTopics: 'question types',
+	difficulties: 'difficulties',
+};
+
+const DATE_FORMAT = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+const SHORT_DATE_FORMAT = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
 
 const SOURCE_LABELS = {
 	lexicon: 'Lexicon',
@@ -119,6 +150,8 @@ export class QuizView {
 			screen: SCREEN_SETUP,
 			quiz: null,
 			config: this.sanitizeConfig(loadLastConfig()),
+			showAllHistory: false,
+			removedEntry: null,
 		};
 
 		this.init();
@@ -293,9 +326,75 @@ export class QuizView {
 		this.startQuiz({ ...DEFAULT_CONFIG, mode: QUIZ_MODE_REVIEW, length: QUIZ_LENGTH_ALL });
 	}
 
+	// Focus-area quizzes use the setup's length and selection, but only the one area's filter
+	startAreaQuiz(key, value) {
+		const { length, prioritise } = this.state.config;
+		this.startQuiz({ ...DEFAULT_CONFIG, length, prioritise, [key]: [value] });
+	}
+
 	discardQuiz() {
 		this.state.quiz = null;
 		clearActiveQuiz();
+	}
+
+	// History
+	// ---------------------------------------------------------------
+
+	removeEntry(id) {
+		const history = loadHistory();
+		const index = history.findIndex(entry => entry.id === id);
+		if (index === -1) return;
+
+		removeHistoryEntry(id);
+		this.state.removedEntry = history[index];
+		this.refreshProgress();
+
+		// Keep focus in the list: the next item, else the previous one, else Undo
+		const buttons = [...this.el.screen.querySelectorAll('.quiz-history__remove')];
+		(buttons[index] ?? buttons[index - 1] ?? this.el.screen.querySelector('.quiz-history__undo'))?.focus();
+	}
+
+	undoRemove() {
+		const entry = this.state.removedEntry;
+		if (!entry) return;
+
+		restoreHistoryEntry(entry);
+		this.state.removedEntry = null;
+		this.refreshProgress();
+
+		const button = this.el.screen.querySelector(`.quiz-history__remove[data-id="${CSS.escape(entry.id)}"]`);
+		(button ?? this.el.screen.querySelector('.quiz-history__title'))?.focus();
+	}
+
+	clearAllHistory() {
+		const count = loadHistory().length;
+		const quizzes = count === 1 ? 'quiz' : 'quizzes';
+		if (!window.confirm(`Clear all ${count} ${quizzes} from your history? Your progress will be reset and this can't be undone.`)) return;
+
+		clearHistory();
+		this.state.removedEntry = null;
+		this.refreshProgress();
+		this.el.screen.querySelector('.quiz-setup__start')?.focus();
+	}
+
+	toggleHistory() {
+		this.state.showAllHistory = !this.state.showAllHistory;
+		this.refreshProgress();
+		this.el.screen.querySelector('.quiz-history__toggle')?.focus();
+	}
+
+	// Re-render only what history affects, so the setup selections, scroll and focus are kept
+	refreshProgress() {
+		this.el.screen.querySelector('.quiz-practice').outerHTML = this.renderPracticeBanner();
+		this.el.screen.querySelector('.quiz-progress').outerHTML = this.renderProgress();
+
+		// Fill the status after insertion so screen readers announce it
+		const status = this.el.screen.querySelector('.quiz-history__status');
+		if (status && this.state.removedEntry) {
+			requestAnimationFrame(() => {
+				status.innerHTML = 'Quiz removed. <button class="quiz-history__undo button button--tertiary" type="button">Undo</button>';
+			});
+		}
 	}
 
 	// Events
@@ -330,6 +429,33 @@ export class QuizView {
 
 		if (target.closest('.quiz-practice__start')) {
 			this.startReview();
+			return;
+		}
+
+		const areaStart = target.closest('.quiz-focus__start');
+		if (areaStart) {
+			this.startAreaQuiz(areaStart.dataset.group, areaStart.dataset.value);
+			return;
+		}
+
+		const remove = target.closest('.quiz-history__remove');
+		if (remove) {
+			this.removeEntry(remove.dataset.id);
+			return;
+		}
+
+		if (target.closest('.quiz-history__undo')) {
+			this.undoRemove();
+			return;
+		}
+
+		if (target.closest('.quiz-history__clear')) {
+			this.clearAllHistory();
+			return;
+		}
+
+		if (target.closest('.quiz-history__toggle')) {
+			this.toggleHistory();
 			return;
 		}
 
@@ -399,6 +525,7 @@ export class QuizView {
 
 	showScreen(screen) {
 		this.state.screen = screen;
+		this.state.removedEntry = null;
 		this.render();
 		this.el.screen.scrollIntoView({ block: 'start' });
 
@@ -481,6 +608,7 @@ export class QuizView {
 				</div>
 			</section>
 			${this.renderPracticeBanner()}
+			${this.renderProgress()}
 		`;
 	}
 
@@ -506,18 +634,249 @@ export class QuizView {
 
 	renderPracticeBanner() {
 		const count = this.getMissedCount();
-		if (!count) return '';
-
 		const questions = count === 1 ? 'question' : 'questions';
 
+		// Always rendered, hidden when empty, so refreshProgress can replace it in place
 		return `
-			<section class="quiz-practice" aria-label="Practice missed questions">
+			<section class="quiz-practice" aria-label="Practice missed questions" ${count ? '' : 'hidden'}>
 				<div>
 					<h2 class="text-heading-md">Practice missed questions</h2>
 					<p class="quiz-practice__text">You have ${count} ${questions} you got wrong the last time you saw them. Answer one correctly and it comes off the list.</p>
 				</div>
 				<button class="quiz-practice__start button" type="button">Practice ${count} ${questions}</button>
 			</section>
+		`;
+	}
+
+	// Progress section
+
+	describeConfig(config) {
+		if (config.mode === QUIZ_MODE_REVIEW) return 'Missed questions';
+
+		const parts = [];
+		const source = getPickedSource(config);
+		if (source) parts.push(SOURCE_LABELS[source]);
+
+		PROGRESS_GROUPS.forEach(key => {
+			const values = config[key];
+			if (!values.length) return;
+			parts.push(values.length > 2
+				? `${values.length} ${COUNT_LABELS[key]}`
+				: values.map(this.filterGroups[key].format).join(', '));
+		});
+
+		return parts.length ? parts.join(' · ') : 'All questions';
+	}
+
+	renderProgress() {
+		const history = loadHistory();
+		if (!history.length && !this.state.removedEntry) return '<section class="quiz-progress" hidden></section>';
+
+		const questionStats = getQuestionStats(history);
+		const areas = PROGRESS_GROUPS.map(key => ({
+			key,
+			stats: getFilterStats(questionStats, key, this.filterGroups[key].values),
+		}));
+
+		return `
+			<section class="quiz-progress" aria-labelledby="quiz-progress-title">
+				<div class="quiz-progress__header">
+					<h2 id="quiz-progress-title" class="text-heading-lg">Your progress</h2>
+					<p>Built from the quizzes you've finished in this browser. Remove a quiz to leave it out.</p>
+				</div>
+				${history.length ? `
+					${this.renderProgressStats(getSummary(history, questionStats), getMissedQuestionIds(questionStats).length)}
+					<div class="quiz-progress__overview">
+						${this.renderTrend(history)}
+						${this.renderFocusAreas(areas)}
+					</div>
+					${this.renderAreaBreakdowns(areas)}
+				` : ''}
+				${this.renderHistory(history)}
+			</section>
+		`;
+	}
+
+	renderProgressStats(summary, missedCount) {
+		const coverage = Math.round((summary.questionsSeen / summary.poolSize) * 100);
+		const tiles = [
+			{ label: 'Quizzes taken', value: summary.quizzesTaken },
+			{ label: 'Questions seen', value: summary.questionsSeen, detail: `of ${summary.poolSize} (${coverage}%)` },
+			{ label: 'Accuracy', value: summary.accuracy === null ? '–' : `${Math.round(summary.accuracy * 100)}%`, detail: 'across all answers' },
+			{ label: 'To practice', value: missedCount, detail: 'wrong last time' },
+		];
+
+		return `
+			<dl class="quiz-progress__stats">
+				${tiles.map(({ label, value, detail }) => `
+					<div class="quiz-stat">
+						<dt class="quiz-stat__label text-label">${label}</dt>
+						<dd class="quiz-stat__value">${value}</dd>
+						${detail ? `<dd class="quiz-stat__detail text-body-sm">${detail}</dd>` : ''}
+					</div>
+				`).join('')}
+			</dl>
+		`;
+	}
+
+	// Recent scores as bars, oldest to newest; each bar shows its details on hover or focus
+	renderTrend(history) {
+		const entries = history.filter(entry => entry.total).slice(0, TREND_LENGTH).reverse();
+		const average = Math.round(entries.reduce((sum, entry) => sum + getPercent(entry), 0) / entries.length);
+
+		return `
+			<div class="quiz-trend">
+				<h3 class="quiz-trend__title text-label">Recent scores</h3>
+				${entries.length < 2 ? '<p class="text-body-sm">Finish another quiz to see your scores over time.</p>' : `
+					<p class="quiz-trend__summary text-body-sm">Last ${entries.length} quizzes, averaging ${average}%.</p>
+					<div class="quiz-trend__plot">
+						<ol class="quiz-trend__chart list-reset" aria-label="Scores, oldest to newest">
+							${entries.map(entry => {
+								const percent = getPercent(entry);
+								const label = `${SHORT_DATE_FORMAT.format(entry.completedAt)}: ${entry.score}/${entry.total} (${percent}%)`;
+								return `
+									<li class="quiz-trend__item" tabindex="0" aria-label="${escapeHtml(label)}">
+										<span class="quiz-trend__bar" style="height: ${percent}%"></span>
+										<span class="quiz-trend__tooltip" aria-hidden="true">${escapeHtml(label)}</span>
+									</li>
+								`;
+							}).join('')}
+						</ol>
+						<span class="quiz-trend__axis quiz-trend__axis--top" aria-hidden="true">100%</span>
+						<span class="quiz-trend__axis quiz-trend__axis--bottom" aria-hidden="true">0%</span>
+					</div>
+				`}
+			</div>
+		`;
+	}
+
+	// The lowest-scoring areas with enough answers to judge, each with a one-click quiz
+	renderFocusAreas(areas) {
+		const focus = areas
+			.flatMap(({ key, stats }) => Object.entries(stats)
+				.filter(([, item]) => item.attempts >= FOCUS_AREA_MIN_ATTEMPTS && item.correct / item.attempts < FOCUS_AREA_MAX_ACCURACY)
+				.map(([value, item]) => ({ key, value, accuracy: item.correct / item.attempts })))
+			.sort((a, b) => a.accuracy - b.accuracy)
+			.slice(0, FOCUS_AREA_LIMIT);
+
+		return `
+			<div class="quiz-focus">
+				<h3 class="quiz-focus__title text-label">Focus areas</h3>
+				${focus.length ? `
+					<ul class="quiz-focus__list list-reset">
+						${focus.map(({ key, value, accuracy }) => {
+							const group = this.filterGroups[key];
+							const name = group.format(value);
+							return `
+								<li class="quiz-focus__item">
+									<div>
+										<p class="quiz-focus__name">${escapeHtml(name)}</p>
+										<p class="quiz-focus__meta text-body-sm">${escapeHtml(group.label)} · ${Math.round(accuracy * 100)}% correct</p>
+									</div>
+									<button class="quiz-focus__start button button--secondary" type="button" data-group="${key}" data-value="${escapeHtml(value)}" aria-label="Quiz me on ${escapeHtml(name)}">Quiz me</button>
+								</li>
+							`;
+						}).join('')}
+					</ul>
+				` : `<p class="text-body-sm">Nothing stands out yet. Areas where you score under ${FOCUS_AREA_MAX_ACCURACY * 100}% after ${FOCUS_AREA_MIN_ATTEMPTS} or more answers will show here.</p>`}
+			</div>
+		`;
+	}
+
+	renderAreaBreakdowns(areas) {
+		const groups = areas.map(area => this.renderAreaGroup(area)).join('');
+		if (!groups) return '';
+
+		return `
+			<div class="quiz-progress__areas">
+				<div class="quiz-progress__areas-header">
+					<h3 class="text-heading-md">By area</h3>
+					<p class="text-body-sm">Bars show the share of your answers that were correct. The last column shows how many of the area's questions you've seen.</p>
+				</div>
+				<div class="quiz-progress__area-groups">${groups}</div>
+			</div>
+		`;
+	}
+
+	renderAreaGroup({ key, stats }) {
+		const group = this.filterGroups[key];
+		const rows = group.values.filter(value => stats[value].seen);
+		if (!rows.length) return '';
+
+		return `
+			<div class="quiz-breakdown quiz-breakdown--coverage">
+				<h4 class="quiz-breakdown__title text-label">${escapeHtml(group.label)}</h4>
+				<ul class="quiz-breakdown__list list-reset">
+					${rows.map(value => {
+						const { correct, attempts, seen, pool } = stats[value];
+						const percent = Math.round((correct / attempts) * 100);
+						return `
+							<li class="quiz-breakdown__row">
+								<span class="quiz-breakdown__label">${escapeHtml(group.format(value))}</span>
+								<span class="quiz-breakdown__meter" aria-hidden="true">
+									<span class="quiz-breakdown__meter-fill" style="width: ${percent}%"></span>
+								</span>
+								<span class="quiz-breakdown__value" aria-label="${percent}% correct">${percent}%</span>
+								<span class="quiz-breakdown__meta">${seen}/${pool} seen</span>
+							</li>
+						`;
+					}).join('')}
+				</ul>
+			</div>
+		`;
+	}
+
+	renderHistory(history) {
+		const visible = this.state.showAllHistory ? history : history.slice(0, HISTORY_PREVIEW_LENGTH);
+
+		return `
+			<div class="quiz-history">
+				<div class="quiz-history__header">
+					<h3 class="quiz-history__title text-heading-md" tabindex="-1">Past quizzes${history.length ? ` (${history.length})` : ''}</h3>
+					${history.length ? `
+						<button class="quiz-history__clear button button--tertiary" type="button">
+							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+							Clear history
+						</button>
+					` : ''}
+				</div>
+				<p class="quiz-history__status text-body-sm" role="status"></p>
+				${history.length
+					? `<ol class="quiz-history__list list-reset">${visible.map(entry => this.renderHistoryItem(entry)).join('')}</ol>`
+					: '<p>No quizzes in your history.</p>'}
+				${history.length > HISTORY_PREVIEW_LENGTH ? `
+					<button class="quiz-history__toggle button button--secondary" type="button" aria-expanded="${this.state.showAllHistory}">
+						${this.state.showAllHistory ? 'Show fewer' : `Show all ${history.length} quizzes`}
+					</button>
+				` : ''}
+			</div>
+		`;
+	}
+
+	renderHistoryItem(entry) {
+		const config = this.sanitizeConfig(entry.config);
+		const date = DATE_FORMAT.format(entry.completedAt);
+		const questions = entry.total === 1 ? 'question' : 'questions';
+
+		return `
+			<li class="quiz-history__item">
+				<div class="quiz-history__details">
+					<p class="quiz-history__name">
+						${config.mode === QUIZ_MODE_REVIEW ? '<span class="tag text-label">Practice</span>' : ''}
+						${escapeHtml(this.describeConfig(config))}
+					</p>
+					<p class="quiz-history__meta text-body-sm">
+						<time datetime="${new Date(entry.completedAt).toISOString()}">${escapeHtml(date)}</time> · ${entry.total} ${questions}
+					</p>
+				</div>
+				<p class="quiz-history__score">
+					<strong>${entry.score}/${entry.total}</strong>
+					<span class="quiz-history__percent">${getPercent(entry)}%</span>
+				</p>
+				<button class="quiz-history__remove button button--icon-only" type="button" data-id="${escapeHtml(entry.id)}" aria-label="Remove quiz from ${escapeHtml(date)}">
+					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
+				</button>
+			</li>
 		`;
 	}
 

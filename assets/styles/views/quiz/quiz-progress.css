@@ -1,0 +1,313 @@
+/* Progress and history section on the setup screen */
+/* --------------------------------------------------------------- */
+.quiz-progress {
+	background: var(--color-background-secondary);
+	border: 1px solid var(--color-border-primary);
+	display: grid;
+	gap: 2rem;
+	padding: 1rem;
+
+	@media (min-width: 1024px) {
+		gap: 3rem;
+		padding: 2rem;
+	}
+}
+
+.quiz-progress__header {
+	h2 {
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+/* Stat tiles */
+.quiz-progress__stats {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+
+	@media (min-width: 1024px) {
+		gap: var(--grid-gap);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.quiz-stat {
+	border-top: 2px solid var(--color-border-accent);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding-top: 0.75rem;
+}
+
+.quiz-stat__value {
+	color: var(--color-text-primary);
+	font-size: var(--font-size-display-sm);
+	font-weight: var(--font-weight-bold);
+	letter-spacing: var(--letter-spacing-tight);
+	line-height: 1;
+}
+
+.quiz-stat__detail {
+	color: var(--color-text-secondary);
+}
+
+/* Recent scores and focus areas */
+.quiz-progress__overview {
+	display: grid;
+	gap: 2rem;
+
+	@media (min-width: 1024px) {
+		gap: var(--grid-gap);
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	}
+}
+
+.quiz-trend__title,
+.quiz-focus__title {
+	margin-bottom: 0.5rem;
+}
+
+.quiz-trend__summary {
+	margin-bottom: 1rem;
+}
+
+/* Bars sit on a baseline with a recessive gridline at 100% and 50% */
+.quiz-trend__plot {
+	display: grid;
+	gap: 0 0.5rem;
+	grid-template-columns: minmax(0, 1fr) auto;
+	grid-template-rows: auto 1fr auto;
+	height: 10rem;
+}
+
+.quiz-trend__chart {
+	align-items: end;
+	border-bottom: 1px solid var(--color-text-secondary);
+	border-top: 1px solid var(--color-border-primary);
+	display: flex;
+	grid-column: 1;
+	justify-content: space-around;
+	grid-row: 1 / -1;
+}
+
+.quiz-trend__axis {
+	color: var(--color-text-secondary);
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-xs);
+	grid-column: 2;
+	line-height: 1;
+}
+
+.quiz-trend__axis--top {
+	grid-row: 1;
+}
+
+.quiz-trend__axis--bottom {
+	grid-row: 3;
+}
+
+/* Each item spans the full plot height so the hover target is bigger than the bar */
+.quiz-trend__item {
+	align-items: end;
+	display: flex;
+	flex: 1;
+	height: 100%;
+	justify-content: center;
+	max-width: 4rem;
+	position: relative;
+
+	&:focus-visible {
+		outline: 2px solid var(--color-border-focus-visible);
+		outline-offset: 2px;
+	}
+
+	&:hover .quiz-trend__bar,
+	&:focus-visible .quiz-trend__bar {
+		background-color: var(--color-text-primary);
+	}
+
+	&:hover .quiz-trend__tooltip,
+	&:focus-visible .quiz-trend__tooltip {
+		opacity: 1;
+	}
+}
+
+.quiz-trend__bar {
+	background-color: var(--color-border-accent);
+	border-radius: 2px 2px 0 0;
+	display: block;
+	min-height: 2px;
+	width: min(100%, 1.25rem);
+}
+
+.quiz-trend__tooltip {
+	background-color: var(--color-text-primary);
+	bottom: calc(100% + 0.5rem);
+	color: var(--color-background-primary);
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: var(--font-sans-serif);
+	font-size: var(--font-size-body-xs);
+	opacity: 0;
+	padding: 0.25rem 0.5rem;
+	pointer-events: none;
+	position: absolute;
+	white-space: nowrap;
+	z-index: 1;
+}
+
+/* Keep the end tooltips inside the plot */
+.quiz-trend__item:first-child .quiz-trend__tooltip {
+	left: 0;
+	transform: none;
+}
+
+.quiz-trend__item:last-child .quiz-trend__tooltip {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+
+.quiz-focus__list {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.quiz-focus__item {
+	align-items: center;
+	border-bottom: 1px solid var(--color-border-primary);
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	padding: 0.5rem 0;
+}
+
+.quiz-focus__name {
+	font-weight: var(--font-weight-semibold);
+	margin: 0;
+}
+
+.quiz-focus__start {
+	white-space: nowrap;
+}
+
+.quiz-focus__meta {
+	color: var(--color-text-secondary);
+	margin: 0;
+}
+
+/* By area */
+.quiz-progress__areas-header {
+	margin-bottom: 1.5rem;
+
+	h3 {
+		margin-bottom: 0.25rem;
+	}
+
+	p {
+		color: var(--color-text-secondary);
+		margin: 0;
+	}
+}
+
+.quiz-progress__area-groups {
+	display: grid;
+	gap: 2rem;
+
+	@media (min-width: 1024px) {
+		column-gap: var(--grid-gap);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* Small screens put the meter on its own line under the label and numbers */
+.quiz-breakdown--coverage .quiz-breakdown__row {
+	gap: 0.25rem 1rem;
+	grid-template-areas:
+		"label value meta"
+		"meter meter meter";
+	grid-template-columns: minmax(0, 1fr) 2.5rem 5.5rem;
+
+	@media (min-width: 768px) {
+		gap: 1rem;
+		grid-template-areas: "label meter value meta";
+		grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr) 2.5rem 5.5rem;
+	}
+
+	.quiz-breakdown__label { grid-area: label; }
+	.quiz-breakdown__meter { grid-area: meter; }
+	.quiz-breakdown__value { grid-area: value; }
+	.quiz-breakdown__meta { grid-area: meta; }
+}
+
+.quiz-breakdown__meta {
+	color: var(--color-text-secondary);
+	text-align: right;
+	white-space: nowrap;
+}
+
+/* Past quizzes */
+.quiz-history__header {
+	align-items: baseline;
+	border-bottom: 1px solid var(--color-border-primary);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	padding-bottom: 0.5rem;
+}
+
+.quiz-history__title:focus {
+	outline: none;
+}
+
+.quiz-history__status {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	margin: 0;
+	min-height: 2.5rem;
+}
+
+.quiz-history__item {
+	align-items: center;
+	border-bottom: 1px solid var(--color-border-primary);
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: minmax(0, 1fr) auto auto;
+	padding: 0.75rem 0;
+}
+
+.quiz-history__name {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	font-weight: var(--font-weight-semibold);
+	gap: 0.5rem;
+	margin: 0;
+}
+
+.quiz-history__meta {
+	color: var(--color-text-secondary);
+	margin: 0.25rem 0 0;
+}
+
+.quiz-history__score {
+	display: grid;
+	font-family: var(--font-sans-serif);
+	justify-items: end;
+	margin: 0;
+}
+
+.quiz-history__percent {
+	color: var(--color-text-secondary);
+	font-size: var(--font-size-body-sm);
+}
+
+.quiz-history__toggle {
+	margin-top: 1.5rem;
+}

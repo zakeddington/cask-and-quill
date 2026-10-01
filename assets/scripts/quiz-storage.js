@@ -67,3 +67,17 @@ export function loadLastConfig() {
 export function saveLastConfig(config) {
 	write(KEY_LAST_CONFIG, config);
 }
+
+export function removeHistoryEntry(id) {
+	write(KEY_HISTORY, loadHistory().filter(item => item.id !== id));
+}
+
+// Puts a removed entry back in date order, e.g. to undo a removal
+export function restoreHistoryEntry(entry) {
+	const history = [entry, ...loadHistory().filter(item => item.id !== entry.id)];
+	write(KEY_HISTORY, history.sort((a, b) => b.completedAt - a.completedAt));
+}
+
+export function clearHistory() {
+	remove(KEY_HISTORY);
+}
