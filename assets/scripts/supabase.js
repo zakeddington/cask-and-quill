@@ -98,6 +98,84 @@ export async function updateGlobalNotes(value) {
 	if (error) throw error;
 }
 
+// Quiz history
+// Rows are owned by the signed-in user: user_id defaults to auth.uid() on insert,
+// and row level security limits every query to that user's rows.
+
+const QUIZ_HISTORY_COLUMNS = 'id, version, config, score, total, asked, missed, started_at, completed_at';
+const QUIZ_HISTORY_PAGE_SIZE = 1000;
+
+function toQuizHistoryEntry(row) {
+	return {
+		version: row.version,
+		id: row.id,
+		config: row.config,
+		score: row.score,
+		total: row.total,
+		asked: row.asked,
+		missed: row.missed,
+		startedAt: row.started_at ? Date.parse(row.started_at) : null,
+		completedAt: Date.parse(row.completed_at),
+	};
+}
+
+function toQuizHistoryRow(entry) {
+	return {
+		id: entry.id,
+		version: entry.version,
+		config: entry.config,
+		score: entry.score,
+		total: entry.total,
+		asked: entry.asked,
+		missed: entry.missed,
+		started_at: entry.startedAt ? new Date(entry.startedAt).toISOString() : null,
+		completed_at: new Date(entry.completedAt).toISOString(),
+	};
+}
+
+// Newest first; fetched in pages because requests are capped at 1000 rows
+export async function fetchQuizHistory() {
+	const rows = [];
+
+	for (let from = 0; ; from += QUIZ_HISTORY_PAGE_SIZE) {
+		const { data, error } = await supabase
+			.from('quiz_history')
+			.select(QUIZ_HISTORY_COLUMNS)
+			.order('completed_at', { ascending: false })
+			.range(from, from + QUIZ_HISTORY_PAGE_SIZE - 1);
+		if (error) throw error;
+
+		rows.push(...data);
+		if (data.length < QUIZ_HISTORY_PAGE_SIZE) break;
+	}
+
+	return rows.map(toQuizHistoryEntry);
+}
+
+// Entries never change once saved, so ones already stored are skipped
+export async function insertQuizHistory(entries) {
+	const { error } = await supabase
+		.from('quiz_history')
+		.upsert(entries.map(toQuizHistoryRow), { onConflict: 'user_id,id', ignoreDuplicates: true });
+	if (error) throw error;
+}
+
+export async function deleteQuizHistory(id) {
+	const { error } = await supabase
+		.from('quiz_history')
+		.delete()
+		.eq('id', id);
+	if (error) throw error;
+}
+
+export async function clearQuizHistory(userId) {
+	const { error } = await supabase
+		.from('quiz_history')
+		.delete()
+		.eq('user_id', userId);
+	if (error) throw error;
+}
+
 export async function getSession() {
 	const { data } = await supabase.auth.getSession();
 	return data.session;

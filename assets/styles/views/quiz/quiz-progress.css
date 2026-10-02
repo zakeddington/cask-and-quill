@@ -13,6 +13,20 @@
 	}
 }
 
+.quiz-progress__notice {
+	align-items: center;
+	border-left: 2px solid var(--color-border-accent);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	padding-left: 1rem;
+
+	p {
+		margin: 0;
+	}
+}
+
 .quiz-progress__header {
 	h2 {
 		margin-bottom: 0.5rem;

@@ -3,6 +3,7 @@ import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../data/lexicon-data.js';
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils.js';
 import { KEY_ENTER } from '../config/constants.js';
+import { AUTH_CHANGE } from '../config/events.js';
 import {
 	QUIZ_VERSION,
 	QUIZ_LENGTH_ALL,
@@ -23,14 +24,22 @@ import {
 	loadActiveQuiz,
 	saveActiveQuiz,
 	clearActiveQuiz,
-	appendHistory,
-	loadHistory,
-	removeHistoryEntry,
-	restoreHistoryEntry,
-	clearHistory,
 	loadLastConfig,
 	saveLastConfig
 } from '../quiz-storage.js';
+import {
+	HISTORY_LOADING,
+	HISTORY_ERROR,
+	getHistory,
+	getHistoryStatus,
+	isHistorySynced,
+	onHistoryChange,
+	loadHistory,
+	addHistoryEntry,
+	removeHistoryEntry,
+	restoreHistoryEntry,
+	clearAllHistory
+} from '../quiz-history.js';
 import {
 	getQuestionStats,
 	getFilterStats,
@@ -170,10 +179,13 @@ export class QuizView {
 
 		this.addEventListeners();
 		this.render();
+		loadHistory();
 	}
 
 	addEventListeners() {
 		this.el.screen.addEventListener('click', event => this.onClick(event));
+		window.addEventListener(AUTH_CHANGE, () => loadHistory());
+		onHistoryChange(() => this.onHistoryChange());
 		document.addEventListener('keydown', event => this.onKeydown(event));
 	}
 
@@ -255,7 +267,7 @@ export class QuizView {
 	// ---------------------------------------------------------------
 
 	getQuestionStats() {
-		return getQuestionStats(loadHistory());
+		return getQuestionStats(getHistory());
 	}
 
 	getMissedCount() {
@@ -305,7 +317,7 @@ export class QuizView {
 
 		// Store question IDs only; breakdowns are derived from current question data when read
 		const { score, total, missed } = scoreQuiz(quiz);
-		appendHistory({
+		addHistoryEntry({
 			version: QUIZ_VERSION,
 			id: quiz.id,
 			config: quiz.config,
@@ -328,8 +340,8 @@ export class QuizView {
 
 	// Focus-area quizzes use the setup's length and selection, but only the one area's filter
 	startAreaQuiz(key, value) {
-		const { length, prioritise } = this.state.config;
-		this.startQuiz({ ...DEFAULT_CONFIG, length, prioritise, [key]: [value] });
+		const { length, prioritize } = this.state.config;
+		this.startQuiz({ ...DEFAULT_CONFIG, length, prioritize, [key]: [value] });
 	}
 
 	discardQuiz() {
@@ -340,41 +352,78 @@ export class QuizView {
 	// History
 	// ---------------------------------------------------------------
 
-	removeEntry(id) {
-		const history = loadHistory();
+	// History changes apply in memory straight away; if saving fails they're rolled back and explained
+
+	async removeEntry(id) {
+		const history = getHistory();
 		const index = history.findIndex(entry => entry.id === id);
 		if (index === -1) return;
 
-		removeHistoryEntry(id);
+		const request = removeHistoryEntry(id);
 		this.state.removedEntry = history[index];
 		this.refreshProgress();
 
 		// Keep focus in the list: the next item, else the previous one, else Undo
 		const buttons = [...this.el.screen.querySelectorAll('.quiz-history__remove')];
 		(buttons[index] ?? buttons[index - 1] ?? this.el.screen.querySelector('.quiz-history__undo'))?.focus();
+
+		try {
+			await request;
+		} catch (error) {
+			console.error('Failed to remove quiz from history', error);
+			this.state.removedEntry = null;
+			this.refreshProgress("Couldn't remove that quiz. Check your connection and try again.");
+		}
 	}
 
-	undoRemove() {
+	async undoRemove() {
 		const entry = this.state.removedEntry;
 		if (!entry) return;
 
-		restoreHistoryEntry(entry);
+		const request = restoreHistoryEntry(entry);
 		this.state.removedEntry = null;
 		this.refreshProgress();
 
 		const button = this.el.screen.querySelector(`.quiz-history__remove[data-id="${CSS.escape(entry.id)}"]`);
 		(button ?? this.el.screen.querySelector('.quiz-history__title'))?.focus();
+
+		try {
+			await request;
+		} catch (error) {
+			console.error('Failed to restore quiz to history', error);
+			this.state.removedEntry = entry;
+			this.refreshProgress("Couldn't put that quiz back. Check your connection and try again.");
+		}
 	}
 
-	clearAllHistory() {
-		const count = loadHistory().length;
+	async clearAllHistory() {
+		const count = getHistory().length;
 		const quizzes = count === 1 ? 'quiz' : 'quizzes';
-		if (!window.confirm(`Clear all ${count} ${quizzes} from your history? Your progress will be reset and this can't be undone.`)) return;
+		const where = isHistorySynced() ? 'your account' : 'your history';
+		if (!window.confirm(`Clear all ${count} ${quizzes} from ${where}? Your progress will be reset and this can't be undone.`)) return;
 
-		clearHistory();
+		const request = clearAllHistory();
 		this.state.removedEntry = null;
 		this.refreshProgress();
 		this.el.screen.querySelector('.quiz-setup__start')?.focus();
+
+		try {
+			await request;
+		} catch (error) {
+			console.error('Failed to clear quiz history', error);
+			this.refreshProgress("Couldn't clear your history. Check your connection and try again.");
+		}
+	}
+
+	// A load finished or started, e.g. on page load or after signing in or out
+	onHistoryChange() {
+		this.state.removedEntry = null;
+
+		if (this.state.screen === SCREEN_SETUP) {
+			this.refreshProgress();
+		} else if (this.state.screen === SCREEN_RESULTS) {
+			this.render();
+		}
 	}
 
 	toggleHistory() {
@@ -383,16 +432,23 @@ export class QuizView {
 		this.el.screen.querySelector('.quiz-history__toggle')?.focus();
 	}
 
-	// Re-render only what history affects, so the setup selections, scroll and focus are kept
-	refreshProgress() {
+	// Re-render only what history affects, so the setup selections, scroll and focus are kept.
+	// `message` replaces the usual status, e.g. to explain a failed save.
+	refreshProgress(message = '') {
 		this.el.screen.querySelector('.quiz-practice').outerHTML = this.renderPracticeBanner();
-		this.el.screen.querySelector('.quiz-progress').outerHTML = this.renderProgress();
+		this.el.screen.querySelector('.quiz-progress').outerHTML = this.renderProgress(Boolean(message));
+
+		const statusHtml = message
+			? escapeHtml(message)
+			: this.state.removedEntry
+				? 'Quiz removed. <button class="quiz-history__undo button button--tertiary" type="button">Undo</button>'
+				: '';
 
 		// Fill the status after insertion so screen readers announce it
 		const status = this.el.screen.querySelector('.quiz-history__status');
-		if (status && this.state.removedEntry) {
+		if (status && statusHtml) {
 			requestAnimationFrame(() => {
-				status.innerHTML = 'Quiz removed. <button class="quiz-history__undo button button--tertiary" type="button">Undo</button>';
+				status.innerHTML = statusHtml;
 			});
 		}
 	}
@@ -456,6 +512,11 @@ export class QuizView {
 
 		if (target.closest('.quiz-history__toggle')) {
 			this.toggleHistory();
+			return;
+		}
+
+		if (target.closest('.quiz-progress__retry')) {
+			loadHistory();
 			return;
 		}
 
@@ -668,9 +729,22 @@ export class QuizView {
 		return parts.length ? parts.join(' · ') : 'All questions';
 	}
 
-	renderProgress() {
-		const history = loadHistory();
-		if (!history.length && !this.state.removedEntry) return '<section class="quiz-progress" hidden></section>';
+	// `hasMessage` keeps the section visible to show a status message even with no history
+	renderProgress(hasMessage = false) {
+		const history = getHistory();
+		const status = getHistoryStatus();
+		const isEmpty = !history.length && !this.state.removedEntry && !hasMessage;
+
+		if (status === HISTORY_LOADING) {
+			return `
+				<section class="quiz-progress" aria-labelledby="quiz-progress-title" aria-busy="true">
+					${this.renderProgressHeader()}
+					<p class="quiz-progress__notice" role="status">Loading your progress…</p>
+				</section>
+			`;
+		}
+
+		if (status !== HISTORY_ERROR && isEmpty) return '<section class="quiz-progress" hidden></section>';
 
 		const questionStats = getQuestionStats(history);
 		const areas = PROGRESS_GROUPS.map(key => ({
@@ -680,10 +754,13 @@ export class QuizView {
 
 		return `
 			<section class="quiz-progress" aria-labelledby="quiz-progress-title">
-				<div class="quiz-progress__header">
-					<h2 id="quiz-progress-title" class="text-heading-lg">Your progress</h2>
-					<p>Built from the quizzes you've finished in this browser. Remove a quiz to leave it out.</p>
-				</div>
+				${this.renderProgressHeader()}
+				${status === HISTORY_ERROR ? `
+					<div class="quiz-progress__notice" role="alert">
+						<p>Couldn't load your quiz history from your account.${history.length ? ' Showing quizzes from this browser that are waiting to sync.' : ''}</p>
+						<button class="quiz-progress__retry button button--secondary" type="button">Try again</button>
+					</div>
+				` : ''}
 				${history.length ? `
 					${this.renderProgressStats(getSummary(history, questionStats), getMissedQuestionIds(questionStats).length)}
 					<div class="quiz-progress__overview">
@@ -694,6 +771,19 @@ export class QuizView {
 				` : ''}
 				${this.renderHistory(history)}
 			</section>
+		`;
+	}
+
+	renderProgressHeader() {
+		const source = isHistorySynced()
+			? 'Built from the quizzes saved to your account, on any device.'
+			: "Built from the quizzes you've finished in this browser.";
+
+		return `
+			<div class="quiz-progress__header">
+				<h2 id="quiz-progress-title" class="text-heading-lg">Your progress</h2>
+				<p>${source} Remove a quiz to leave it out.</p>
+			</div>
 		`;
 	}
 
@@ -1108,7 +1198,7 @@ export class QuizView {
 
 	renderComparison(current) {
 		const key = getConfigKey(this.sanitizeConfig(this.state.quiz.config));
-		const comparison = compareWithPrevious(loadHistory(), current, config => getConfigKey(this.sanitizeConfig(config)) === key);
+		const comparison = compareWithPrevious(getHistory(), current, config => getConfigKey(this.sanitizeConfig(config)) === key);
 		if (!comparison) return '';
 
 		const { change, bestPercent, isPersonalBest } = comparison;

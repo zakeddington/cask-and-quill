@@ -1,6 +1,8 @@
 const KEY_ACTIVE = 'cq-quiz-active';
 const KEY_HISTORY = 'cq-quiz-history';
 const KEY_LAST_CONFIG = 'cq-quiz-last-config';
+// Quizzes finished while signed in that haven't reached Supabase yet, keyed by user ID
+const KEY_PENDING = 'cq-quiz-history-pending';
 const HISTORY_LIMIT = 100;
 // Caps total stored question IDs across entries (~25 bytes each), so long "All" quizzes can't fill storage
 const HISTORY_QUESTION_LIMIT = 20000;
@@ -80,4 +82,18 @@ export function restoreHistoryEntry(entry) {
 
 export function clearHistory() {
 	remove(KEY_HISTORY);
+}
+
+export function loadPendingHistory(userId) {
+	return read(KEY_PENDING, {})[userId] ?? [];
+}
+
+export function savePendingHistory(userId, entries) {
+	const pending = read(KEY_PENDING, {});
+	if (entries.length) {
+		pending[userId] = entries;
+	} else {
+		delete pending[userId];
+	}
+	write(KEY_PENDING, pending);
 }
