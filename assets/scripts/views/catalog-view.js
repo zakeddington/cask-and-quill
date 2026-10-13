@@ -284,7 +284,7 @@ export class CatalogView {
 
 		const groupSections = groupNames.map(group => this.renderGroup(group, groupedBottles[group]));
 		if (killedBottles.length) {
-			groupSections.push(this.renderGroup('Bottle Kills', killedBottles, { isBottleKills: true }));
+			groupSections.push(this.renderGroup('Unique Bottle Kills', killedBottles, { isBottleKills: true }));
 		}
 
 		this.el.catalog.innerHTML = groupSections.length
