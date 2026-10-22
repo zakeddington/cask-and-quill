@@ -10,6 +10,25 @@
 	}
 }
 
+/* Even stories flip: content first, image second */
+.story:nth-child(even) {
+	@media (min-width: 768px) {
+		.story__image-col {
+			order: 1;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.story__image-col {
+			grid-column: auto / span var(--grid-col-span);
+		}
+
+		.story__content-col {
+			grid-column: 2 / span var(--grid-col-span);
+		}
+	}
+}
+
 .story__image {
 	margin: auto;
 	mix-blend-mode: multiply;
