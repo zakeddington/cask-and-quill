@@ -371,27 +371,31 @@ export class CatalogView {
 						id="${html(triggerId)}"
 						type="button"
 					>
-						<span class="catalog-bottle__heading-col">${this.renderFillIcon(bottle.fill)}</span>
-						${this.renderImage(bottle.image)}
-						<span class="catalog-bottle__heading-col">
+						<span class="catalog-bottle__col catalog-bottle__col--fill">
+							${this.renderFillIcon(bottle.fill)}
+						</span>
+						<span class="catalog-bottle__col catalog-bottle__col--bottle">
+							${this.renderImage(bottle.image)}
+						</span>
+						<span class="catalog-bottle__col catalog-bottle__col--brand-bottle">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
 							${bottle.barrel ? `<span class="text-body-sm text-color-secondary">${html(bottle.barrel)}</span>` : ''}
 						</span>
-						<span class="catalog-bottle__heading-col">
+						<span class="catalog-bottle__col catalog-bottle__col--type-category">
 							<span class="text-heading-sm font-medium text-color-secondary">${html(bottle.type)}</span>
 							<span class="text-body-md">${html(bottle.category)}</span>
 						</span>
-						<span class="catalog-bottle__heading-col text-body-sm font-medium text-color-secondary">
+						<span class="catalog-bottle__col catalog-bottle__col--specs text-body-sm font-medium text-color-secondary">
 							<span>${html(bottle.age)} Years</span>
 							<span>${html(bottle.abv)}%</span>
 							<span>${html(bottle.proof)}°</span>
 						</span>
-						<span class="catalog-bottle__heading-col text-body-sm font-medium">
+						<span class="catalog-bottle__col catalog-bottle__col--mash text-body-sm font-medium">
 							${this.renderMashBillSummary(bottle.mashBill)}
 						</span>
-						<span class="catalog-bottle__heading-col catalog-bottle__cask-heading">${bottle.cask}</span>
-						<span class="catalog-bottle__journal-status">
+						<span class="catalog-bottle__col catalog-bottle__col--notes">${bottle.cask}</span>
+						<span class="catalog-bottle__col catalog-bottle__col--journal">
 							${this.renderJournalIcon(bottle)}
 							<span class="accordion__trigger-icon" aria-hidden="true">
 								<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-caret-down"></use></svg>

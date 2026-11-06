@@ -72,12 +72,15 @@
 
 .catalog-detail__block .catalog-bottle__image {
 	background: none;
-	height: 100%;
-	margin: 0;
+	padding: 0;
 }
 
 .catalog-detail__block .catalog-bottle__image img {
 	height: 100%;
+
+	@media (max-width: 767px) {
+		width: 50%;
+	}
 }
 
 .catalog-detail__block h4 {
