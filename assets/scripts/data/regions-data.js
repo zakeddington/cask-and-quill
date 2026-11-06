@@ -11,9 +11,9 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in Scotland',
 		],
-		bottleImage: 'assets/images/bottle-scotch.jpg',
-		mapBaseImage: 'assets/images/map-all-base.png',
-		mapAllHighlightImage: 'assets/images/map-all-highlight.png',
+		bottleImage: 'assets/images/bottles/bottle-scotch.jpg',
+		mapBaseImage: 'assets/images/map/map-all-base.png',
+		mapAllHighlightImage: 'assets/images/map/map-all-highlight.png',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery in Scotland.' },
 			{ label: 'Grain base', value: 'Malted barley required for single malt; other whole grains permitted by category.' },
@@ -53,12 +53,12 @@ export const REGIONS_DATA = [
 			}
 		],
 		subRegions: [
-			{ key: 'speyside', name: 'Speyside', mapHighlightImage: 'assets/images/map-speyside-highlight.png', description: 'Officially a sub-region of the Highlands but recognized independently, Speyside is centered on the River Spey and has the densest concentration of distilleries in Scotland. Home to names like Glenfiddich, The Macallan, and Glenlivet, it is known for elegant, complex, fruit-forward malts that are often sweet and refined.' },
-			{ key: 'islay', name: 'Islay', mapHighlightImage: 'assets/images/map-islay-highlight.png', description: 'Islay is an island off Scotland\'s west coast and is famous for heavily peated, maritime whiskies. Many expressions carry high phenol levels and pungent notes of smoke, brine, medicinal seaweed, and coastal peat, with Laphroaig, Ardbeg, and Lagavulin among its defining distilleries.' },
-			{ key: 'highlands', name: 'Highlands', mapHighlightImage: 'assets/images/map-highlands-highlight.png', description: 'The Highlands are Scotland\'s largest whisky region, stretching north of the line from Greenock to Dundee and formally including Speyside as a sub-region. Because of its size, the region has no single required flavor profile and ranges widely from light, floral malts to robust, rich, and peated styles.' },
-			{ key: 'lowlands', name: 'Lowlands', mapHighlightImage: 'assets/images/map-lowlands-highlight.png', description: 'The Lowlands sit south of the Highland line and have historically been associated with lighter, grassier, gentler whiskies. The region has a tradition of triple distillation and was once an important heartland for grain whisky production.' },
-			{ key: 'campbeltown', name: 'Campbeltown', mapHighlightImage: 'assets/images/map-campbeltown-highlight.png', description: 'Campbeltown sits on the Kintyre peninsula and was once known as Scotland\'s whisky capital. Today it is a small but distinct region with only three operating distilleries, known for briny, oily, robust, and sometimes lightly peated whiskies from producers such as Springbank, Glen Scotia, and Glengyle.' },
-			{ key: 'islands', name: 'Islands', mapHighlightImage: 'assets/images/map-islands-highlight.png', description: 'The Islands grouping covers Scotch whisky made on Scotland\'s whisky-producing islands outside Islay, including Orkney, Skye, Mull, Jura, and Arran. Often treated as part of the Highlands, these malts vary widely but commonly show coastal, mineral, smoky, or maritime character.' },
+			{ key: 'speyside', name: 'Speyside', mapHighlightImage: 'assets/images/map/map-speyside-highlight.png', description: 'Officially a sub-region of the Highlands but recognized independently, Speyside is centered on the River Spey and has the densest concentration of distilleries in Scotland. Home to names like Glenfiddich, The Macallan, and Glenlivet, it is known for elegant, complex, fruit-forward malts that are often sweet and refined.' },
+			{ key: 'islay', name: 'Islay', mapHighlightImage: 'assets/images/map/map-islay-highlight.png', description: 'Islay is an island off Scotland\'s west coast and is famous for heavily peated, maritime whiskies. Many expressions carry high phenol levels and pungent notes of smoke, brine, medicinal seaweed, and coastal peat, with Laphroaig, Ardbeg, and Lagavulin among its defining distilleries.' },
+			{ key: 'highlands', name: 'Highlands', mapHighlightImage: 'assets/images/map/map-highlands-highlight.png', description: 'The Highlands are Scotland\'s largest whisky region, stretching north of the line from Greenock to Dundee and formally including Speyside as a sub-region. Because of its size, the region has no single required flavor profile and ranges widely from light, floral malts to robust, rich, and peated styles.' },
+			{ key: 'lowlands', name: 'Lowlands', mapHighlightImage: 'assets/images/map/map-lowlands-highlight.png', description: 'The Lowlands sit south of the Highland line and have historically been associated with lighter, grassier, gentler whiskies. The region has a tradition of triple distillation and was once an important heartland for grain whisky production.' },
+			{ key: 'campbeltown', name: 'Campbeltown', mapHighlightImage: 'assets/images/map/map-campbeltown-highlight.png', description: 'Campbeltown sits on the Kintyre peninsula and was once known as Scotland\'s whisky capital. Today it is a small but distinct region with only three operating distilleries, known for briny, oily, robust, and sometimes lightly peated whiskies from producers such as Springbank, Glen Scotia, and Glengyle.' },
+			{ key: 'islands', name: 'Islands', mapHighlightImage: 'assets/images/map/map-islands-highlight.png', description: 'The Islands grouping covers Scotch whisky made on Scotland\'s whisky-producing islands outside Islay, including Orkney, Skye, Mull, Jura, and Arran. Often treated as part of the Highlands, these malts vary widely but commonly show coastal, mineral, smoky, or maritime character.' },
 		]
 	},
 	{
@@ -72,7 +72,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in Ireland',
 		],
-		bottleImage: 'assets/images/bottle-irish.jpg',
+		bottleImage: 'assets/images/bottles/bottle-irish.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery on the island of Ireland (Republic and Northern Ireland).' },
 			{ label: 'Grain base', value: 'Malted grains required, with or without additional unmalted whole grains.' },
@@ -118,7 +118,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in United States',
 		],
-		bottleImage: 'assets/images/bottle-bourbon.jpg',
+		bottleImage: 'assets/images/bottles/bottle-bourbon.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery in the United States.' },
 			{ label: 'Grain base', value: 'Any grain or combination of grains permitted; specific minimums required by category.' },
@@ -209,7 +209,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in Japan',
 		],
-		bottleImage: 'assets/images/bottle-japanese.jpg',
+		bottleImage: 'assets/images/bottles/bottle-japanese.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery in Japan.' },
 			{ label: 'Grain base', value: 'Malted grains required; additional unmalted grains permitted.' },
@@ -251,7 +251,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in Canada',
 		],
-		bottleImage: 'assets/images/bottle-canadian.jpg',
+		bottleImage: 'assets/images/bottles/bottle-canadian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Entirely produced at a distillery in Canada.' },
 			{ label: 'Grain base', value: 'Any grain or combination of grains permitted; no specific percentages mandated.' },
@@ -282,7 +282,7 @@ export const REGIONS_DATA = [
 			'Voluntary requirements for malt whisky only (IMWA)',
 			'Primarily not legal whisky internationally (no grain requirement, molasses permitted)',
 		],
-		bottleImage: 'assets/images/bottle-indian.jpg',
+		bottleImage: 'assets/images/bottles/bottle-indian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No requirement that whisky be sold as "Indian" originate entirely in India; FSSAI regulates food safety of what is sold domestically rather than mandating domestic production.' },
 			{ label: 'Grain base', value: 'No national requirement to use grain at all. FSSAI\'s whisky definition permits neutral spirit distilled from molasses, cereals, or other agricultural carbohydrate sources; the large majority of Indian whisky by volume is molasses-based extra neutral alcohol (ENA).' },
@@ -329,7 +329,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'No domestic-production requirement',
 		],
-		bottleImage: 'assets/images/bottle-taiwanese.jpg',
+		bottleImage: 'assets/images/bottles/bottle-taiwanese.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No requirement that whisky sold as "Taiwan whisky" be entirely produced in Taiwan; the statute defines a generic tax category rather than a protected designation of origin, unlike Scotch, Irish, or Japanese whisky.' },
 			{ label: 'Grain base', value: 'Any grain, malted or not, is permitted by law. Malted barley dominates in practice, though some producers experiment with rice, wheat, and corn.' },
@@ -366,7 +366,7 @@ export const REGIONS_DATA = [
 			'37% (74°) min bottled',
 			'General country-of-origin food label requirement',
 		],
-		bottleImage: 'assets/images/bottle-australian.jpg',
+		bottleImage: 'assets/images/bottles/bottle-australian.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No dedicated whisky appellation exists; claims of Australian origin fall under general country-of-origin food labelling law rather than a whisky-specific mandate.' },
 			{ label: 'Grain base', value: 'Any cereal grain permitted; no malted barley requirement, so multi-grain mash bills are legally whisky.' },
@@ -413,7 +413,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'produced in New Zealand',
 		],
-		bottleImage: 'assets/images/bottle-new-zealand.jpg',
+		bottleImage: 'assets/images/bottles/bottle-new-zealand.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'Mashing, fermentation, distillation, maturation, and bottling must all take place in New Zealand under the voluntary DSA standard — a stricter production-location test than most whisky-producing nations, though it carries no legal force.' },
 			{ label: 'Grain base', value: 'Single malt requires 100% malted cereal grain, water, and yeast; blended New Zealand whisky may use fermentable sugars from cereal grain more broadly.' },
@@ -450,7 +450,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled',
 			'no EU origin requirement',
 		],
-		bottleImage: 'assets/images/bottle-european.jpg',
+		bottleImage: 'assets/images/bottles/bottle-european.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No EU-wide requirement. Whisky produced anywhere, inside or outside the EU, may be sold as "whisky" if it meets the production rules of Regulation (EU) 2019/787. Location requirements come only from registered geographical indications (e.g., Irish Whiskey, Whisky breton, Whisky alsacien) or from stricter national rules, which member states may apply to whisky produced on their own territory.' },
 			{ label: 'Grain base', value: 'Malted cereals required, with or without whole unmalted cereal grains.' },
@@ -493,7 +493,7 @@ export const REGIONS_DATA = [
 			'40% (80°) min bottled (EU floor)',
 			'Voluntary mash bill rules only (2025 Manifesto)',
 		],
-		bottleImage: 'assets/images/bottle-danish.jpg',
+		bottleImage: 'assets/images/bottles/bottle-danish.jpg',
 		legalFramework: [
 			{ label: 'Production location', value: 'No legal requirement (beyond general EU spirits and labeling rules) that whisky sold as "Danish" originate entirely in Denmark. The 2025 Danish Whisky Manifesto is a voluntary pledge among its ten founding distilleries rather than a geographic designation, though its signatories intend to pursue a future EU geographical indication.' },
 			{ label: 'Grain base', value: 'The EU floor requires malted cereals. The Manifesto adds category-specific mash bills on top: 100% malted barley for Danish Single Malt, and at least 51% of the named grain for Danish Rye, Wheat, or Oat Whisky.' },

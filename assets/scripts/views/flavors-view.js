@@ -220,7 +220,7 @@ export class FlavorsView {
 				<div class="flavor-family__content">
 					<div class="flavor-family__h-spine"></div>
 					<div class="flavor-family__aside">
-						<img class="flavor-family__img" src="/assets/images/flavor-${this.getSlug(f.name)}.jpg" alt="${f.name}">
+						<img class="flavor-family__img" src="/assets/images/flavors/flavor-${this.getSlug(f.name)}.jpg" alt="${f.name}">
 					</div>
 					<div class="flavor-family__main">
 						<div class="flavor-family__v-spine"></div>
