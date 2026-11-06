@@ -6,16 +6,17 @@
 	padding: 1rem;
 
 	@media (min-width: 768px) {
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		padding: 2rem;
+		grid-template-columns: 1fr 2fr 2fr;
 	}
 
 	@media (min-width: 1024px) {
-		grid-template-columns: 1.5fr 1.75fr 3fr;
+		grid-template-columns: 1fr 1.5fr 1.5fr 3fr;
+		padding: 2rem;
 	}
 }
 
-/* Columns */
+/* Columns Layout */
+/* --------------------------------------------------------------- */
 .catalog-detail__block {
 	border-bottom: 1px solid var(--color-border-accent);
 	padding-bottom: 1rem;
@@ -23,11 +24,60 @@
 	@media (min-width: 768px) {
 		border-bottom: 0;
 		padding-bottom: 0;
-
-		&:first-child {
-			border-right: 1px solid var(--color-border-primary);
-		}
 	}
+}
+
+.catalog-detail__block--bottle {
+	@media (min-width: 768px) {
+		grid-row: 1 / span 2;
+	}
+}
+
+.catalog-detail__block--brand {
+	@media (min-width: 768px) {
+		border-right: 1px solid var(--color-border-primary);
+	}
+}
+
+/* .catalog-detail__block--mash {} */
+
+.catalog-detail__block--journal {
+	background-color: var(--color-background-primary);
+	border: 1px solid var(--color-border-primary);
+	padding: 1.5rem;
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		grid-column: 1 / span 3;
+		padding: 2rem;
+	}
+
+	@media (min-width: 1024px) {
+		grid-column: auto;
+		padding: 2rem;
+	}
+}
+
+.catalog-detail__block--actions {
+	text-align: right;
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		grid-column: 1 / span 3;
+	}
+
+	@media (min-width: 1024px) {
+		grid-column: 4;
+	}
+}
+/* --------------------------------------------------------------- */
+
+.catalog-detail__block .catalog-bottle__image {
+	background: none;
+	height: 100%;
+	margin: 0;
+}
+
+.catalog-detail__block .catalog-bottle__image img {
+	height: 100%;
 }
 
 .catalog-detail__block h4 {
@@ -115,22 +165,6 @@
 	}
 }
 
-/* Journal column */
-.catalog-detail__block--tasting {
-	background-color: var(--color-background-primary);
-	border: 1px solid var(--color-border-primary);
-	padding: 1.5rem;
-
-	@media (min-width: 768px) {
-		grid-column: 1 / -1;
-		padding: 2rem;
-	}
-
-	@media (min-width: 1024px) {
-		grid-column: auto;
-	}
-}
-
 .catalog-detail__tasting-notes {
 	display: grid;
 	gap: 1rem;
@@ -147,14 +181,4 @@
 	font-family: var(--font-sans-serif);
 	font-size: var(--font-size-body-md);
 	margin: 0;
-}
-
-/* Edit footer */
-.catalog-detail__actions {
-	display: flex;
-	justify-content: flex-end;
-
-	@media (min-width: 768px) {
-		grid-column: 1 / -1;
-	}
 }

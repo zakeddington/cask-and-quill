@@ -75,6 +75,7 @@ export class ModalEditCatalog extends BaseModal {
 			brand: getFormValue(formData, 'brand'),
 			bottle: getFormValue(formData, 'bottle'),
 			barrel: getFormValue(formData, 'barrel'),
+			image: getFormValue(formData, 'image'),
 			age: getFormValue(formData, 'age'),
 			abv: getFormValue(formData, 'abv'),
 			proof: getFormValue(formData, 'proof'),
@@ -218,7 +219,7 @@ export class ModalEditCatalog extends BaseModal {
 			`;
 		}
 
-		const input = `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}">`;
+		const input = `<input id="${html(fieldId)}" name="${html(field.name)}" type="${html(field.type || 'text')}" value="${html(value)}"${field.placeholder ? ` placeholder="${html(field.placeholder)}"` : ''}>`;
 
 		return `
 			<label class="modal__field catalog-form__field catalog-form__field--${html(fieldKey)}" for="${html(fieldId)}">

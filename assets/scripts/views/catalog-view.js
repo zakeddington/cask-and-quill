@@ -5,6 +5,8 @@ import {
 	CATALOG_FILL_ICON_CONFIG,
 	CATALOG_MASH_BILL_FIELDS,
 	CATALOG_TASTING_NOTE_FIELDS,
+	CATALOG_IMAGE_PATH,
+	CATALOG_IMAGE_PLACEHOLDER,
 	SPRITE_URL,
 } from '../config/constants.js';
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
@@ -118,6 +120,7 @@ export class CatalogView {
 
 	addEventListeners() {
 		this.el.catalog.addEventListener('click', event => this.onCatalogClick(event));
+		this.el.catalog.addEventListener('error', event => this.onImageError(event), true);
 		this.el.searchInput?.addEventListener('input', event => this.onSearchInput(event));
 		this.el.searchClear?.addEventListener('click', () => this.onSearchClear());
 		this.el.categorySelect?.addEventListener('change', event => this.onCategoryChange(event));
@@ -140,6 +143,14 @@ export class CatalogView {
 			const bottle = this.getBottleById(editButton.dataset.bottleId);
 			if (bottle) this.components.modal?.open(bottle);
 		}
+	}
+
+	onImageError(event) {
+		const image = event.target;
+		if (!image.matches?.('.catalog-bottle__image img')) return;
+
+		const placeholderSrc = CATALOG_IMAGE_PATH + CATALOG_IMAGE_PLACEHOLDER;
+		if (!image.src.endsWith(placeholderSrc)) image.src = placeholderSrc;
 	}
 
 	onSearchInput(event) {
@@ -229,6 +240,7 @@ export class CatalogView {
 			brand: '',
 			bottle: '',
 			barrel: '',
+			image: '',
 			age: '',
 			abv: '',
 			proof: '',
@@ -328,6 +340,7 @@ export class CatalogView {
 				</div>
 				<div class="catalog__column-headings theme--primary" aria-hidden="true">
 					<span>Fill</span>
+					<span></span>
 					<span>Brand/Bottle</span>
 					<span>Type/Category</span>
 					<span>Specs</span>
@@ -359,6 +372,7 @@ export class CatalogView {
 						type="button"
 					>
 						<span class="catalog-bottle__heading-col">${this.renderFillIcon(bottle.fill)}</span>
+						${this.renderImage(bottle.image)}
 						<span class="catalog-bottle__heading-col">
 							<span class="text-heading-sm text-color-accent">${html(bottle.brand)}</span>
 							<span class="text-body-md font-semibold">${html(bottle.bottle)}</span>
@@ -399,6 +413,15 @@ export class CatalogView {
 					</div>
 				</div>
 			</article>
+		`;
+	}
+
+	renderImage(image) {
+		const filename = String(image ?? '').trim() || CATALOG_IMAGE_PLACEHOLDER;
+		return `
+			<span class="catalog-bottle__image" aria-hidden="true">
+				<img src="${html(CATALOG_IMAGE_PATH + encodeURIComponent(filename))}" alt="" loading="lazy">
+			</span>
 		`;
 	}
 
@@ -448,7 +471,10 @@ export class CatalogView {
 
 		return `
 			<div class="catalog-detail">
-				<section class="catalog-detail__block">
+				<section class="catalog-detail__block catalog-detail__block--bottle">
+					${this.renderImage(bottle.image)}
+				</section>
+				<section class="catalog-detail__block catalog-detail__block--brand">
 					<h4 class="text-body-md text-color-secondary">Brand Details</h4>
 					<dl class="catalog-detail__list">
 						${details.map(item => `
@@ -459,21 +485,21 @@ export class CatalogView {
 						`).join('')}
 					</dl>
 				</section>
-				<section class="catalog-detail__block">
+				<section class="catalog-detail__block catalog-detail__block--mash">
 					<h4 class="text-body-md text-color-secondary">Mash Bill</h4>
 					${this.renderMashBill(bottle.mashBill, bottle.char)}
 				</section>
-				<section class="catalog-detail__block catalog-detail__block--tasting">
+				<section class="catalog-detail__block catalog-detail__block--journal">
 					<h4 class="text-body-md text-color-secondary">Journal</h4>
 					${this.renderTastingNotes(bottle.tastingNotes)}
 				</section>
 				${this.state.isAdmin ? `
-				<div class="catalog-detail__actions">
+				<section class="atalog-detail__block catalog-detail__block--actions">
 					<button class="catalog-detail__edit-btn button" data-bottle-id="${html(bottle.id)}" type="button">
 						<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="${SPRITE_URL}#icon-pencil"></use></svg>
 						Edit Entry
 					</button>
-				</div>` : ''}
+				</section>` : ''}
 			</div>
 		`;
 	}

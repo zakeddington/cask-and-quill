@@ -1,4 +1,6 @@
 export const SPRITE_URL = '/assets/images/icon-sprite.svg';
+export const CATALOG_IMAGE_PATH = '/assets/images/catalog/';
+export const CATALOG_IMAGE_PLACEHOLDER = '_placeholder.webp';
 
 export const KEY_ARROW_DOWN = 'ArrowDown';
 export const KEY_ARROW_UP = 'ArrowUp';
@@ -24,6 +26,7 @@ export const CATALOG_IDENTITY_FIELDS = [
 	{ name: 'brand', label: 'Brand' },
 	{ name: 'bottle', label: 'Bottle' },
 	{ name: 'barrel', label: 'Barrel' },
+	{ name: 'image', label: 'Image Filename', placeholder: 'bottle-name.jpg' },
 	{ name: 'category', label: 'Category', type: 'select', options: CATALOG_CATEGORY_OPTIONS },
 	{ name: 'type', label: 'Type' },
 	{ name: 'distillery', label: 'Distillery' },
