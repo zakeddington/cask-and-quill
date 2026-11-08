@@ -77,6 +77,7 @@
 
 .catalog-detail__block .catalog-bottle__image img {
 	height: 100%;
+	mix-blend-mode: multiply;
 
 	@media (max-width: 767px) {
 		width: 50%;
