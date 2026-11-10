@@ -1,12 +1,6 @@
-import { QUIZ_QUESTIONS, QUIZ_SOURCES, LEXICON, REGIONS } from '../../data/quiz/index.js';
+import { QUIZ_QUESTIONS } from '../../data/quiz/index.js';
 import { LEXICON_TERMS } from '../../data/lexicon-data.js';
-
-export const QUIZ_VERSION = 1;
-export const QUIZ_LENGTH_ALL = 'all';
-
-// Study quizzes draw from the filters; review quizzes draw from questions last answered wrong
-export const QUIZ_MODE_STUDY = 'study';
-export const QUIZ_MODE_REVIEW = 'review';
+import { QUIZ_SOURCE, QUIZ_SOURCES, QUIZ_SOURCE_FILTER_KEYS, QUIZ_VERSION, QUIZ_MODE, QUIZ_LENGTH_ALL } from './constants.js';
 
 // Relative chances of a question being picked when prioritising new and missed questions
 const WEIGHT_UNSEEN = 3;
@@ -17,19 +11,13 @@ const RECENT_MS = 24 * 60 * 60 * 1000;
 const QUESTIONS_BY_ID = new Map(QUIZ_QUESTIONS.map(question => [question.id, question]));
 const LEXICON_CATEGORY_BY_ID = new Map(LEXICON_TERMS.map(term => [term.id, term.category]));
 
-// Sub-filters that belong to each source; picking any of them includes that source
-export const SOURCE_FILTER_KEYS = {
-	[LEXICON]: ['lexiconCategories'],
-	[REGIONS]: ['regionCountries', 'regionTopics'],
-};
-
 export function getQuestion(id) {
 	return QUESTIONS_BY_ID.get(id);
 }
 
 // Lexicon questions take their category from the linked lexicon term
 export function getLexiconCategory(question) {
-	return question.source === LEXICON ? LEXICON_CATEGORY_BY_ID.get(question.sourceId) : undefined;
+	return question.source === QUIZ_SOURCE.LEXICON ? LEXICON_CATEGORY_BY_ID.get(question.sourceId) : undefined;
 }
 
 export function shuffle(items) {
@@ -46,7 +34,7 @@ export function shuffle(items) {
 export function getIncludedSources(config) {
 	const included = QUIZ_SOURCES.filter(source =>
 		config.sources?.includes(source) ||
-		SOURCE_FILTER_KEYS[source].some(key => config[key]?.length)
+		QUIZ_SOURCE_FILTER_KEYS[source].some(key => config[key]?.length)
 	);
 	return included.length ? included : QUIZ_SOURCES;
 }
@@ -56,7 +44,7 @@ export function isInFilter(question, key, value) {
 	switch (key) {
 		case 'sources': return question.source === value;
 		case 'lexiconCategories': return getLexiconCategory(question) === value;
-		case 'regionCountries': return question.source === REGIONS && question.sourceId === value;
+		case 'regionCountries': return question.source === QUIZ_SOURCE.REGIONS && question.sourceId === value;
 		case 'regionTopics': return question.topic === value;
 		case 'difficulties': return question.difficulty === value;
 		default: return false;
@@ -74,7 +62,7 @@ export function filterQuestions(config) {
 
 	return QUIZ_QUESTIONS.filter(question =>
 		sources.includes(question.source) &&
-		SOURCE_FILTER_KEYS[question.source].every(key => matchesAny(question, config, key)) &&
+		QUIZ_SOURCE_FILTER_KEYS[question.source].every(key => matchesAny(question, config, key)) &&
 		matchesAny(question, config, 'difficulties')
 	);
 }
@@ -111,7 +99,7 @@ function weightedShuffle(items, getWeight) {
 }
 
 function getPool(config, questionStats) {
-	return config.mode === QUIZ_MODE_REVIEW
+	return config.mode === QUIZ_MODE.REVIEW
 		? QUIZ_QUESTIONS.filter(question => questionStats.get(question.id)?.lastCorrect === false)
 		: filterQuestions(config);
 }
@@ -199,7 +187,7 @@ export function scoreQuiz(quiz) {
 			result.missed.push(id);
 		}
 
-		if (question.source === LEXICON) {
+		if (question.source === QUIZ_SOURCE.LEXICON) {
 			addToBreakdown(result.byLexiconCategory, getLexiconCategory(question), correct);
 		} else {
 			addToBreakdown(result.byRegionCountry, question.sourceId, correct);

@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Distillation
 export const LEXICON_DISTILLATION_QUESTIONS = [
 	{
 		id: 'foreshots-first-off-still',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'foreshots',
 		question: 'What is the first portion of spirit to come off the still, high in methanol and usually discarded or redistilled?',
 		options: ['Heart', 'Foreshots', 'Feints', 'Low Wines'],
@@ -14,8 +14,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'heart-collected-for-aging',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'heart',
 		question: 'Which portion of a distillation run is collected and sent to the cask for aging?',
 		options: ['Heads', 'Tails', 'Heart', 'Foreshots'],
@@ -24,8 +24,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'queens-run-meaning',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'queens-run',
 		question: '"Queen\'s Run" is a traditional term for which part of a distillation run?',
 		options: ['The foreshots', 'The heart, or middle cut', 'The final tails', 'The residue left in the still'],
@@ -34,8 +34,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cut',
 		question: 'In distillation, what does "making the cut" refer to?',
 		options: [
@@ -49,8 +49,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'tails-fate',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tails',
 		question: 'What usually happens to the tails (feints) at the end of a distillation run?',
 		options: [
@@ -64,8 +64,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'low-wines',
 		question: 'What is the spirit produced by the first distillation of the wash called?',
 		options: ['High Wines', 'New Make Spirit', 'Low Wines', 'Pot Ale'],
@@ -74,8 +74,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-abv',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'low-wines',
 		question: 'Low wines typically fall within which ABV range?',
 		options: ['5-10%', '20-35%', '40-50%', '60-80%'],
@@ -84,8 +84,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'high-wines-abv',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'high-wines',
 		question: 'High wines from the spirit still typically fall within which ABV range before the cut?',
 		options: ['20-35%', '40-50%', '60-80%', '94-95%'],
@@ -94,8 +94,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'wash-still-larger',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wash-still',
 		question: 'In a Scottish double-distillation setup, which still is typically the larger of the two?',
 		options: ['Spirit Still', 'Wash Still', 'Intermediate Still', 'Doubler'],
@@ -104,8 +104,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-still-role',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'spirit-still',
 		question: 'Which still redistills the low wines to produce new make spirit?',
 		options: ['Wash Still', 'Beer Still', 'Coffey Still', 'Spirit Still'],
@@ -114,8 +114,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'beer-still-aliases',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'beer-still',
 		question: 'The first still in a double-distillation process goes by several names. Which of these is NOT one of them?',
 		options: ['Beer Still', 'Wash Still', 'Strip Still', 'Spirit Still'],
@@ -124,8 +124,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'intermediate-still-position',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'intermediate-still',
 		question: 'In pot still triple distillation, which still sits between the wash still and the spirit still?',
 		options: ['Thumper', 'Intermediate Still', 'Doubler', 'Column Still'],
@@ -134,8 +134,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'thumper-vs-doubler',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'thumper',
 		question: 'In American distilling, what distinguishes a thumper from a doubler?',
 		options: [
@@ -149,8 +149,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'triple-distillation-traditions',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'triple-distillation',
 		question: 'Triple distillation is most closely associated with which whisky traditions?',
 		options: [
@@ -164,8 +164,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'double-distillation-scotch',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'double-distillation',
 		question: 'How many times is most Scotch malt whisky distilled?',
 		options: ['Once', 'Twice', 'Three times', 'Continuously'],
@@ -174,8 +174,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'coffey-still-inventor',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'coffey-still',
 		question: 'Who patented the column still design that enabled continuous distillation?',
 		options: ['John Jameson', 'Aeneas Coffey', 'Elijah Craig', 'Jack Daniel'],
@@ -184,8 +184,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'coffey-still-year',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'coffey-still',
 		question: 'In what year was the Coffey still patented?',
 		options: ['1776', '1830', '1897', '1909'],
@@ -194,8 +194,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'column-still-use',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'column-still',
 		question: 'Which type of still is most commonly used for grain whisky and blending stock?',
 		options: ['Pot Still', 'Column Still', 'Doubler', 'Worm Tub'],
@@ -204,8 +204,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-still-required',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pot-still',
 		question: 'Pot stills are required for which of these whisky styles?',
 		options: [
@@ -219,8 +219,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'distillation-principle',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'distillation',
 		question: 'Distillation separates alcohol from water because alcohol...',
 		options: [
@@ -234,8 +234,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'copper-purpose',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'copper',
 		question: 'Why is copper the primary metal used for stills?',
 		options: [
@@ -249,8 +249,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lyne-arm-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'lyne-arm',
 		question: 'What is a lyne arm?',
 		options: [
@@ -264,8 +264,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'reflux-effect',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'reflux',
 		question: 'Tall stills with upward-angled lyne arms create more reflux. What kind of spirit does that tend to produce?',
 		options: ['Heavier and oilier', 'Lighter and cleaner', 'Smokier and more phenolic', 'Higher in methanol'],
@@ -274,8 +274,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'worm-tub-character',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'worm-tub',
 		question: 'Compared with modern shell-and-tube condensers, worm tubs tend to produce spirit that is...',
 		options: ['Lighter and more floral', 'Higher in proof', 'Heavier and more sulfurous', 'Completely free of congeners'],
@@ -284,8 +284,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-purpose',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'spirit-safe',
 		question: 'What is the purpose of a spirit safe in a Scottish distillery?',
 		options: [
@@ -299,8 +299,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-ale-definition',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pot-ale',
 		question: 'In Scotland, what is pot ale?',
 		options: [
@@ -314,8 +314,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'white-dog-term',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'white-dog',
 		question: 'What is the American industry term for unaged corn or bourbon distillate straight off the still?',
 		options: ['White Dog', 'Poitín', 'Low Wines', 'Backset'],
@@ -324,8 +324,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'new-make-spirit-legal-status',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'new-make-spirit',
 		question: 'How long must Scottish new make spirit age before it can legally be called whisky?',
 		options: ['1 year', '2 years', '3 years', '4 years'],
@@ -334,8 +334,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lincoln-county-process',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'lincoln-county-process',
 		question: 'The Lincoln County Process filters new spirit through charcoal made from which wood?',
 		options: ['American white oak', 'Sugar maple', 'Hickory', 'Cherry'],
@@ -344,8 +344,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'aftershots-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'aftershots',
 		question: 'What is the term for the final, low-alcohol spirit produced by a spirit still at the end of distillation?',
 		options: ['Foreshots', 'Aftershots', 'Low Wines', 'Pot Ale'],
@@ -354,8 +354,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'aftershots-fusel-oils',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'aftershots',
 		question: 'Aftershots are a heavier fraction that contains which compounds?',
 		options: ['Fusel oils', 'Methanol', 'Tannins', 'Lactones'],
@@ -364,8 +364,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'condenser-purpose',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'condenser',
 		question: 'What does a condenser do in the distillation apparatus?',
 		options: [
@@ -379,8 +379,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'condenser-types',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'condenser',
 		question: 'Which of these is a type of condenser?',
 		options: ['Lyne Arm', 'Spirit Safe', 'Worm Tub', 'Neck'],
@@ -389,8 +389,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'shell-and-tube-condenser-cooling',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'shell-and-tube-condenser',
 		question: 'How does a shell and tube condenser cool the spirit vapor?',
 		options: [
@@ -404,8 +404,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'worm-tub-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'worm-tub',
 		question: 'What is a worm tub?',
 		options: [
@@ -419,8 +419,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'continuous-still-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'continuous-still',
 		question: 'What sets a continuous still apart from a pot still?',
 		options: [
@@ -434,8 +434,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'continuous-still-type',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'continuous-still',
 		question: 'Most continuous stills are which kind of still?',
 		options: ['Pot Stills', 'Column Stills', 'Doublers', 'Thumpers'],
@@ -444,8 +444,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'distillate-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'distillate',
 		question: 'In whisky making, what is "distillate"?',
 		options: [
@@ -459,8 +459,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'doubler-role',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'doubler',
 		question: 'In American whiskey distilling, what is a doubler used for?',
 		options: [
@@ -474,8 +474,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'feints-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'feints',
 		question: 'What are feints?',
 		options: [
@@ -489,8 +489,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'heads-why-separated',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'heads',
 		question: 'Why are the heads separated from the heart during a distillation run?',
 		options: [
@@ -504,8 +504,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-run-order',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cut',
 		question: 'Which sequence shows the parts of a distillation run from first to last?',
 		options: ['Heads, heart, tails', 'Heart, heads, tails', 'Tails, heart, heads', 'Heads, tails, heart'],
@@ -514,8 +514,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-late-heart-cut',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cut',
 		question: 'A stillman delays the end of the heart cut, letting more of the late run into the heart. What is the likely result?',
 		options: [
@@ -529,8 +529,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'middle-cut-also-called',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'middle-cut',
 		question: 'The middle cut of a distillation run is often called the...',
 		options: ['Heads', 'Heart', 'Feints', 'Aftershots'],
@@ -539,8 +539,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'neck-definition',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'neck',
 		question: 'What is the neck of a pot still?',
 		options: [
@@ -554,8 +554,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'neck-vapor-path',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'neck',
 		question: 'Vapor rising out of a pot still passes through which parts, in order?',
 		options: [
@@ -569,8 +569,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'still-two-types',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'still',
 		question: 'Stills are commonly grouped into which two broad types?',
 		options: [
@@ -584,8 +584,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'still-batch-continuous',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'still',
 		question: 'Which pairing of still and distillation method is correct?',
 		options: [
@@ -599,8 +599,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'copper-stainless-scenario',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'copper',
 		question: 'A distiller builds a pot still entirely from stainless steel instead of copper. What would you expect in the new make?',
 		options: [
@@ -614,8 +614,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'column-still-plates',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'column-still',
 		question: 'How does a column still repeatedly vaporize and condense alcohol?',
 		options: [
@@ -629,8 +629,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-still-character',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pot-still',
 		question: 'Compared with column stills, pot stills tend to produce spirit that is...',
 		options: [
@@ -644,8 +644,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lyne-arm-downward-angle',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'lyne-arm',
 		question: 'A distillery fits its still with a steeply downward-angled lyne arm. What effect would you expect?',
 		options: [
@@ -659,8 +659,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'reflux-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'reflux',
 		question: 'What is reflux?',
 		options: [
@@ -674,8 +674,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-tax-control',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'spirit-safe',
 		question: 'Why was the spirit safe historically kept locked?',
 		options: ['For tax control', 'To stop evaporation', 'To block out light', 'To prevent fires'],
@@ -684,8 +684,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-materials',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'spirit-safe',
 		question: 'A Scottish spirit safe is traditionally made of which materials?',
 		options: ['Brass and glass', 'Copper and oak', 'Iron and oak', 'Pewter and copper'],
@@ -694,8 +694,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-ale-use',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pot-ale',
 		question: 'What is pot ale, the residue from the first distillation, often used for?',
 		options: ['Animal feed', 'Seasoning casks', 'Diluting spirit', 'Charring barrels'],
@@ -704,8 +704,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'high-wines-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'high-wines',
 		question: 'In Scotch whisky production, what are high wines?',
 		options: [
@@ -719,8 +719,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'wash-still-input',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wash-still',
 		question: 'What liquid is distilled in the wash still?',
 		options: ['Fermented wash', 'Low wines', 'Feints', 'New make spirit'],
@@ -729,8 +729,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'intermediate-still-method',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'intermediate-still',
 		question: 'A distillery runs its spirit through a wash still, an intermediate still, and a spirit still. What is this practice called?',
 		options: ['Double distillation', 'Triple distillation', 'Continuous distillation', 'Column distillation'],
@@ -739,8 +739,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'triple-distillation-character',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'triple-distillation',
 		question: 'What effect does the extra distillation in triple distillation generally have on the spirit?',
 		options: [
@@ -754,8 +754,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'double-distillation-outputs',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'double-distillation',
 		question: 'In Scottish double distillation, what does each of the two stills produce, in order?',
 		options: [
@@ -769,8 +769,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'tails-character',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tails',
 		question: 'Which notes are typical of the tails of a distillation run?',
 		options: [
@@ -784,8 +784,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lincoln-county-process-other-name',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'lincoln-county-process',
 		question: 'The Lincoln County Process is also known as what?',
 		options: ['Charcoal mellowing', 'Sour mashing', 'Double barreling', 'Solera aging'],
@@ -794,8 +794,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-why-redistilled',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'low-wines',
 		question: 'Why must low wines go through another distillation?',
 		options: [
@@ -809,8 +809,8 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'beer-still-name',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'beer-still',
 		question: 'Why is the first still in American double distillation often called a beer still?',
 		options: [

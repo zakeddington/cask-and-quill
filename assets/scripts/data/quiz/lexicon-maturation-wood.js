@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Maturation & Wood
 export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	{
 		id: 'pagoda-roof-purpose',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pagoda-roof',
 		question: 'The distinctive pagoda roofs on Scottish distilleries were designed to...',
 		options: [
@@ -19,8 +19,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'angels-share-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'angel-s-share',
 		question: 'What is the "angel\'s share"?',
 		options: [
@@ -34,8 +34,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'devils-cut-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'devil-s-cut',
 		question: 'What is the "devil\'s cut"?',
 		options: [
@@ -49,8 +49,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'devils-cut-brand',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'devil-s-cut',
 		question: 'Which brand trademarked a product built on the "devil\'s cut" concept?',
 		options: ['Maker\'s Mark', 'Jim Beam', 'Buffalo Trace', 'Wild Turkey'],
@@ -59,8 +59,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-barrel-size',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barrel',
 		question: 'How many U.S. gallons does a standard bourbon barrel hold?',
 		options: ['30', '53', '66', '132'],
@@ -69,8 +69,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'butt-size',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'butt',
 		question: 'In Scotch whisky, how large is a butt?',
 		options: ['200 liters', '250 liters', '500 liters', '700 liters'],
@@ -79,8 +79,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'hogshead-construction',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'hogshead',
 		question: 'How is a hogshead typically made?',
 		options: [
@@ -94,8 +94,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'quarter-cask-size',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'quarter-cask',
 		question: 'In Scotland, what is the capacity of a quarter cask?',
 		options: ['50-75 liters', '127-159 liters', '250-305 liters', '480-500 liters'],
@@ -104,8 +104,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'largest-cask-size',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'butt',
 		question: 'Which of these Scotch cask types is the largest?',
 		options: ['Quarter cask', 'American barrel', 'Hogshead', 'Butt'],
@@ -114,8 +114,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'small-barrel-reason',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'small-barrel',
 		question: 'Why do many new distilleries use small barrels?',
 		options: [
@@ -129,8 +129,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charring-flavors',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'charring',
 		question: 'Which flavors does charring the inside of a barrel contribute?',
 		options: [
@@ -144,8 +144,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'first-fill-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'first-fill',
 		question: 'What does "first-fill" mean for a cask?',
 		options: [
@@ -159,8 +159,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'refill-cask-influence',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'refill',
 		question: 'Compared with first-fill casks, refill casks usually contribute...',
 		options: ['More intense wood character', 'Less intense wood character', 'More smoke', 'Higher proof'],
@@ -169,8 +169,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-finish-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cask-finish',
 		question: 'What is a cask finish?',
 		options: [
@@ -184,8 +184,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-traits',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'dunnage-warehouse',
 		question: 'Which description best fits a traditional dunnage warehouse?',
 		options: [
@@ -199,8 +199,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rickhouse-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rackhouse',
 		question: 'What is an American barrel warehouse with barrels stacked several levels high on ricks called?',
 		options: ['Dunnage warehouse', 'Rickhouse', 'Solera', 'Underback'],
@@ -209,8 +209,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bonded-warehouse-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bonded-warehouse',
 		question: 'What is a bonded warehouse?',
 		options: [
@@ -224,8 +224,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-rotation-purpose',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'warehouse-rotation',
 		question: 'Why do some bourbon producers rotate barrels between warehouse locations?',
 		options: [
@@ -239,8 +239,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'solera-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'solera',
 		question: 'The solera method, adapted from sherry production, is defined by what feature?',
 		options: [
@@ -254,8 +254,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-cask-equivalent',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-cask',
 		question: '"Single Cask," the term preferred in Scotland, is equivalent to which American term?',
 		options: ['Small Batch', 'Single Barrel', 'Bottled-in-Bond', 'Barrel Proof'],
@@ -264,8 +264,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-legal-status',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-barrel',
 		question: 'Is "Single Barrel" a legally defined designation?',
 		options: [
@@ -279,8 +279,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'maturation-oak-compounds',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'maturation',
 		question: 'Which compounds does whisky extract from oak during maturation?',
 		options: [
@@ -294,8 +294,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'oxidation-after-opening',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'oxidation',
 		question: 'Besides cask maturation, when else can oxidation affect whisky?',
 		options: [
@@ -309,8 +309,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-barrel-requirement',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'charring',
 		question: 'What type of barrel must bourbon be aged in?',
 		options: ['Used bourbon barrels', 'Ex-sherry casks', 'New charred oak', 'Any wooden cask'],
@@ -319,8 +319,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bung-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bung',
 		question: 'What is a bung?',
 		options: [
@@ -334,8 +334,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-general-term',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cask',
 		question: 'What is the general term for the oak vessels used to store and mature whisky?',
 		options: ['Cask', 'Rick', 'Bung', 'Solera'],
@@ -344,8 +344,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charcoal-mellowing-term',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'charcoal-mellowing',
 		question: 'What is the term for filtering new whiskey through sugar maple charcoal before or during barrel aging?',
 		options: ['Charring', 'Charcoal mellowing', 'Warehouse rotation', 'Solera'],
@@ -354,8 +354,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charring-sulfur',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'charring',
 		question: 'Besides adding flavor and color, what does the char layer inside a barrel do?',
 		options: [
@@ -369,8 +369,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-expression-species',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mizunara-expression',
 		question: 'A "Mizunara expression" is whisky matured in which oak species?',
 		options: ['Quercus alba', 'Quercus robur', 'Quercus mongolica', 'Quercus petraea'],
@@ -379,8 +379,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-expression-rarity',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mizunara-expression',
 		question: 'Why are Mizunara casks rare and expensive?',
 		options: [
@@ -394,8 +394,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rick-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rick',
 		question: 'In a rackhouse, what are the ricks?',
 		options: [
@@ -409,8 +409,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-materials',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'warehouse',
 		question: 'Besides a barrel\'s position in the building, what else about a warehouse can affect maturation?',
 		options: [
@@ -424,8 +424,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-regional-types',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'warehouse',
 		question: 'A Kentucky bourbon producer and a Scottish malt distillery each store casks. Which pairing of warehouse types is most typical?',
 		options: [
@@ -439,8 +439,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'wood-management-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wood-management',
 		question: 'What does "wood management" refer to at a distillery?',
 		options: [
@@ -454,8 +454,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'wood-management-house-style',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wood-management',
 		question: 'Why do progressive distilleries develop detailed wood policies?',
 		options: [
@@ -469,8 +469,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'angels-share-climate',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'angel-s-share',
 		question: 'A distiller moves casks from a cool site to a much warmer one. What typically happens to the angel\'s share?',
 		options: ['It increases', 'It decreases', 'It stops entirely', 'It becomes the devil\'s cut'],
@@ -479,8 +479,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'american-barrel-scotch-size',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barrel',
 		question: 'In Scotch whisky usage, what capacity may define an American barrel?',
 		options: ['127-159 liters', '173-191 liters', '250-305 liters', '480-500 liters'],
@@ -489,8 +489,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'hogshead-gallons',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'hogshead',
 		question: 'A typical 250-liter hogshead holds roughly how many U.S. gallons?',
 		options: ['40', '53', '66', '132'],
@@ -499,8 +499,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'first-fill-sherry-scenario',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'first-fill',
 		question: 'A blender wants the strongest possible sherry influence. Which cask should they choose?',
 		options: [
@@ -514,8 +514,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-finish-duration',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cask-finish',
 		question: 'How long must a cask finish last?',
 		options: [
@@ -529,8 +529,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-runners',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'dunnage-warehouse',
 		question: 'In a traditional dunnage warehouse, what do the casks rest on?',
 		options: ['Steel ricks', 'Wooden runners', 'Rotating racks', 'Concrete pallets'],
@@ -539,8 +539,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-slow',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'dunnage-warehouse',
 		question: 'Why does whisky tend to mature slowly in a dunnage warehouse?',
 		options: [
@@ -554,8 +554,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rackhouse-floor-variation',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rackhouse',
 		question: 'Why can two barrels in the same rickhouse mature at different speeds?',
 		options: [
@@ -569,8 +569,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-cask-strength',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-cask',
 		question: 'Is single cask whisky always bottled at cask strength?',
 		options: [
@@ -584,8 +584,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-variation',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-barrel',
 		question: 'Why can two single barrel bottlings of the same bourbon taste different?',
 		options: [
@@ -599,8 +599,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-canada',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-barrel',
 		question: 'What stands behind a "single barrel" claim on a Canadian whisky label?',
 		options: [
@@ -614,8 +614,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'small-barrel-threshold',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'small-barrel',
 		question: '"Small barrel" generally refers to any barrel smaller than what?',
 		options: ['30 gallons', '53 gallons', '66 gallons', '132 gallons'],
@@ -624,8 +624,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'maturation-not-effect',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'maturation',
 		question: 'Which of these is NOT a typical effect of maturation in oak?',
 		options: [
@@ -639,8 +639,8 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'oxidation-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'oxidation',
 		question: 'In whisky, what is oxidation?',
 		options: [

@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Ingredients & Grain
 export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	{
 		id: 'green-malt-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'green-malt',
 		question: 'What is green malt?',
 		options: [
@@ -19,8 +19,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'chocolate-malt-flavor',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'chocolate-malt',
 		question: 'Chocolate malt is barley dried at higher temperatures. What flavors does this release?',
 		options: ['Cocoa', 'Smoke and iodine', 'Green apple', 'Coconut'],
@@ -29,8 +29,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'bere-barley-origin',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bere-barley',
 		question: 'Bere barley, one of Britain\'s oldest barley varieties, is grown mainly where today?',
 		options: [
@@ -44,8 +44,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'flavoring-grain-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'flavoring-grain',
 		question: 'In bourbon, what is the secondary grain, such as rye or wheat, called?',
 		options: ['Base grain', 'Flavoring grain', 'Adjunct malt', 'Backset grain'],
@@ -54,8 +54,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'peat-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'peat',
 		question: 'What is peat?',
 		options: [
@@ -69,8 +69,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'oak-bourbon-species',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'oak',
 		question: 'Which oak species dominates bourbon production?',
 		options: [
@@ -84,8 +84,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-origin',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mizunara',
 		question: 'Mizunara is a rare oak species native to which country?',
 		options: ['Scotland', 'Japan', 'Spain', 'United States'],
@@ -94,8 +94,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-notes',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mizunara',
 		question: 'Which notes are most associated with Mizunara oak?',
 		options: [
@@ -109,8 +109,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'sherry-region',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sherry',
 		question: '"Sherry" is the anglicized name of which Spanish region?',
 		options: ['Rioja', 'Jerez', 'Porto', 'Montilla'],
@@ -119,8 +119,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'caramel-coloring-not-permitted',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'caramel-coloring-e150a',
 		question: 'Caramel coloring (E150a) is NOT permitted in which of these?',
 		options: ['Scotch', 'Irish whiskey', 'Bourbon', 'Canadian whisky'],
@@ -129,8 +129,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'rye-whiskey-minimum',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rye',
 		question: 'U.S. rye whiskey must be made from at least what percentage rye?',
 		options: ['20%', '30%', '51%', '80%'],
@@ -139,8 +139,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'barley-malt-whisky',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barley',
 		question: 'Which form of barley is required to make malt whisky?',
 		options: ['Malted barley', 'Unmalted barley', 'Roasted barley', 'Pearl barley'],
@@ -149,8 +149,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'barley-unmalted-use',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barley',
 		question: 'Which statement about barley in whisky-making is true?',
 		options: [
@@ -164,8 +164,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'unmalted-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'unmalted',
 		question: 'What does "unmalted" mean when describing barley?',
 		options: [
@@ -179,8 +179,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'corn-bourbon-primary',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'corn',
 		question: 'Which grain is the primary grain in bourbon?',
 		options: ['Corn', 'Rye', 'Wheat', 'Malted barley'],
@@ -189,8 +189,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'flavoring-grain-scenario',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'flavoring-grain',
 		question: 'A bourbon\'s mash bill is 70% corn, 20% rye, and 10% malted barley. Which is its flavoring grain?',
 		options: ['Corn', 'Rye', 'Malted barley', 'It has none'],
@@ -199,8 +199,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'yeast-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'yeast',
 		question: 'What is yeast?',
 		options: [
@@ -214,8 +214,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'yeast-strains',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'yeast',
 		question: 'Why might a distillery care which yeast strain it uses?',
 		options: [
@@ -229,8 +229,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'peat-flavor-not',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'peat',
 		question: 'Which of these flavors is NOT typically attributed to peat smoke?',
 		options: ['Medicinal', 'Earthy', 'Iodine', 'Coconut'],
@@ -239,8 +239,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'oak-quercus-alba',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'oak',
 		question: 'Quercus alba is the botanical name for which oak?',
 		options: ['American white oak', 'European oak', 'Japanese Mizunara oak', 'Spanish cork oak'],
@@ -249,8 +249,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'sherry-fortified-wine',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sherry',
 		question: 'What type of drink is sherry?',
 		options: ['A fortified wine', 'A sparkling wine', 'A grape brandy', 'A fruit liqueur'],
@@ -259,8 +259,8 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'caramel-coloring-purpose',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'caramel-coloring-e150a',
 		question: 'Why do producers add caramel coloring (E150a) to whisky?',
 		options: [

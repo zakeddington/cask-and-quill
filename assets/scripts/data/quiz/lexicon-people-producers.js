@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: People & Producers
 export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	{
 		id: 'cooper-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cooper',
 		question: 'What does a cooper do?',
 		options: ['Makes barrels and casks', 'Operates the spirit still', 'Malts barley', 'Blends whisky'],
@@ -14,8 +14,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'independent-bottler-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'independent-bottler',
 		question: 'What is an independent bottler?',
 		options: [
@@ -29,8 +29,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'ndp-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ndp-non-distiller-producer',
 		question: 'What does NDP stand for in the whiskey industry?',
 		options: ['Non-Distiller Producer', 'New Distillery Permit', 'National Distillers Program', 'Natural Distilled Product'],
@@ -39,8 +39,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-blender-role',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'master-blender',
 		question: 'What does a master blender do?',
 		options: [
@@ -54,8 +54,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'silent-distillery',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'silent',
 		question: 'A "silent" distillery is one that...',
 		options: [
@@ -69,8 +69,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'silent-season',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'silent-season',
 		question: 'What is a distillery\'s "silent season"?',
 		options: [
@@ -84,8 +84,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'marrying-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'marrying',
 		question: 'In whisky production, what is "marrying"?',
 		options: [
@@ -99,8 +99,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'expression-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'expression',
 		question: 'In whisky, what is an "expression"?',
 		options: [
@@ -114,8 +114,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'rectifier-definition',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rectifier',
 		question: 'In the whiskey trade, what is a rectifier?',
 		options: [
@@ -129,8 +129,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'blending-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'blending',
 		question: 'What is blending in whisky production?',
 		options: [
@@ -144,8 +144,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'blending-components',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'blending',
 		question: 'Blending can combine which kinds of whisky?',
 		options: ['Malts, grains, or both', 'Only malts from one distillery', 'Only grain whiskies', 'Only whiskies of the same age'],
@@ -154,8 +154,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'cooperage-meanings',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cooperage',
 		question: 'Which of these is NOT a meaning of "cooperage"?',
 		options: [
@@ -169,8 +169,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'cooperage-flavor',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cooperage',
 		question: 'Why does cooperage matter so much to whisky?',
 		options: [
@@ -184,8 +184,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-distiller-role',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'master-distiller',
 		question: 'What is a master distiller mainly responsible for?',
 		options: [
@@ -199,8 +199,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-distiller-title',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'master-distiller',
 		question: 'Which is true of the titles "master distiller" and "master blender"?',
 		options: [
@@ -214,8 +214,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'sourced-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sourced',
 		question: 'What does it mean when a whiskey is "sourced"?',
 		options: [
@@ -229,8 +229,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'ndp-scenario',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ndp-non-distiller-producer',
 		question: 'A company owns no stills but sells whiskey bought from a distillery under its own brand. What is it?',
 		options: ['A non-distiller producer', 'A master distiller', 'A silent distillery', 'A cooperage'],
@@ -239,8 +239,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'vatting-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'vatting',
 		question: 'What is vatting?',
 		options: [
@@ -254,8 +254,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'vatting-blended-malt',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'vatting',
 		question: 'Vatting is specifically associated with which style of Scotch?',
 		options: ['Blended Malt', 'Single Grain', 'Single Cask', 'Cask Strength'],
@@ -264,8 +264,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'marrying-required',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'marrying',
 		question: 'Is a marrying period required before a blended whisky is bottled?',
 		options: ['No, it is optional', 'Yes, for all Scotch', 'Yes, for blends only', 'Only at cask strength'],
@@ -274,8 +274,8 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'rectifier-vs-distiller',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'rectifier',
 		question: 'What sets a rectifier apart from a distiller?',
 		options: [

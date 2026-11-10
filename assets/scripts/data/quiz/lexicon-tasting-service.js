@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Tasting & Service
 export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	{
 		id: 'aqua-vitae-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'aqua-vitae',
 		question: 'What does the Latin "aqua vitae," the root concept behind the word whisky, mean?',
 		options: ['Water of life', 'Spirit of grain', 'Fire water', 'Gift of the gods'],
@@ -14,8 +14,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'uisge-beatha-language',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'aqua-vitae',
 		question: '"Uisge beatha" is the form of "water of life" in which language?',
 		options: ['Irish Gaelic', 'Scottish Gaelic', 'Welsh', 'Old Norse'],
@@ -24,8 +24,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'slainte-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'slainte',
 		question: 'The Gaelic toast "Sláinte" translates to what?',
 		options: ['Cheers', 'Health', 'Friendship', 'Bottoms up'],
@@ -34,8 +34,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'quaich-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'quaich',
 		question: 'What is a quaich?',
 		options: [
@@ -49,8 +49,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'dram-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'dram',
 		question: 'As a traditional unit of measurement, a dram equals roughly how much?',
 		options: ['1/8 fl oz', '1 fl oz', '1.5 fl oz', '2 fl oz'],
@@ -59,8 +59,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'jigger-measure',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'jigger',
 		question: 'A standard jigger measure is typically how much?',
 		options: ['0.5 fl oz', '1 fl oz', '1.5 fl oz', '3 fl oz'],
@@ -69,8 +69,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'neat-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'neat',
 		question: 'What does ordering a whisky "neat" mean?',
 		options: [
@@ -84,8 +84,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'nose-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'nose',
 		question: 'In tasting, what does "nose" refer to?',
 		options: ['The aroma of a spirit', 'The first sip', 'The aftertaste', 'The color of the spirit'],
@@ -94,8 +94,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'finish-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'finish',
 		question: 'In tasting, what is the "finish"?',
 		options: [
@@ -109,8 +109,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'valinch-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'valinch',
 		question: 'What is a valinch, also called a whisky thief, used for?',
 		options: [
@@ -124,8 +124,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'mouthfeel-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mouthfeel',
 		question: 'In a tasting note, what does "mouthfeel" describe?',
 		options: [
@@ -139,8 +139,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'on-the-rocks-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'on-the-rocks',
 		question: 'A whisky served "on the rocks" comes...',
 		options: ['With ice cubes', 'With nothing added', 'With a splash of water', 'In a quaich'],
@@ -149,8 +149,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'pipette-two-uses',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'pipette',
 		question: 'The word "pipette" can describe tools for which two tasks?',
 		options: [
@@ -164,8 +164,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'whisky-thief-scenario',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'whisky-thief',
 		question: 'A warehouse manager wants to taste a little whisky straight from a barrel. Which tool would they reach for?',
 		options: ['A jigger', 'A whisky thief', 'A quaich', 'A bung'],
@@ -174,8 +174,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'finish-second-meaning',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'finish',
 		question: 'Besides the aftertaste, what else can "finish" refer to?',
 		options: [
@@ -189,8 +189,8 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'dram-modern-usage',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'dram',
 		question: 'In everyday use today, what does "a dram" usually mean?',
 		options: [

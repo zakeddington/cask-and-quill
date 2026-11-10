@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Fermentation & Chemistry
 export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	{
 		id: 'fermentation-byproducts',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'fermentation',
 		question: 'During fermentation, yeast converts sugars into alcohol and which gas?',
 		options: ['Oxygen', 'Nitrogen', 'Carbon dioxide', 'Methane'],
@@ -14,8 +14,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ester-flavors',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ester',
 		question: 'Esters in whisky are most associated with which flavor notes?',
 		options: [
@@ -29,8 +29,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'congeners-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'congeners',
 		question: 'What are congeners?',
 		options: [
@@ -44,8 +44,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fusel-oils-reduction',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'fusel-oils-fusel-alcohols',
 		question: 'What reduces fusel oils during production?',
 		options: ['Chill filtration', 'Copper contact', 'Caramel coloring', 'Longer fermentation'],
@@ -54,8 +54,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'phenol-measurement',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'phenol-phenolic-ppm',
 		question: 'Peat influence in malted barley is measured by phenol content in which unit?',
 		options: ['Parts per million (PPM)', 'Proof degrees', 'Liters of pure alcohol', 'International Bitterness Units'],
@@ -64,8 +64,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'tannins-contribution',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tannins',
 		question: 'What do tannins extracted from oak contribute to whisky?',
 		options: ['Fruitiness and aroma', 'Astringency and structure', 'Smokiness and peat', 'Sweetness and viscosity'],
@@ -74,8 +74,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'vanillin-source',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'vanillin',
 		question: 'Vanillin, a main source of bourbon\'s vanilla flavor, is extracted from what?',
 		options: ['Malted barley', 'Charred American white oak', 'Corn husks', 'Sugar maple charcoal'],
@@ -84,8 +84,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'yield-measurement',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'yield',
 		question: 'How is a distillery\'s yield typically measured?',
 		options: [
@@ -99,8 +99,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'distiller-s-beer-synonym',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'distiller-s-beer',
 		question: 'Distiller\'s beer is another name for which liquid?',
 		options: ['Wash', 'Wort', 'Low wines', 'Backset'],
@@ -109,8 +109,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ethanol-ethyl-alcohol',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ethanol',
 		question: 'Ethanol, the potable alcohol in whisky, is also known as what?',
 		options: ['Ethyl alcohol', 'Methyl alcohol', 'Fusel alcohol', 'Isopropyl alcohol'],
@@ -119,8 +119,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fermenter-in-out',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'fermenter',
 		question: 'What goes into a fermenter, and what comes out?',
 		options: [
@@ -134,8 +134,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'congeners-not',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'congeners',
 		question: 'Which of these is NOT a congener?',
 		options: ['Ethanol', 'Esters', 'Aldehydes', 'Fusel oils'],
@@ -144,8 +144,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ester-formation',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ester',
 		question: 'Esters form when alcohols react with which compounds?',
 		options: ['Acids', 'Tannins', 'Phenols', 'Sugars'],
@@ -154,8 +154,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fusel-oils-moderate',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'fusel-oils-fusel-alcohols',
 		question: 'At moderate levels, what do fusel oils contribute to whisky?',
 		options: ['Body and complexity', 'Smoke and iodine', 'Color and sweetness', 'Vanilla and caramel'],
@@ -164,8 +164,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'phenol-ppm-comparison',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'phenol-phenolic-ppm',
 		question: 'One malted barley is rated at 50 PPM and another at 5 PPM. What does this tell you?',
 		options: [
@@ -179,8 +179,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'tannins-polyphenols',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tannins',
 		question: 'Chemically, what kind of compounds are tannins?',
 		options: ['Polyphenols', 'Esters', 'Aldehydes', 'Fusel alcohols'],
@@ -189,8 +189,8 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'yield-craft',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'yield',
 		question: 'Why might a craft distillery accept a lower yield than a commercial one?',
 		options: [

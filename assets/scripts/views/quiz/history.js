@@ -6,21 +6,18 @@ import {
 	clearQuizHistory
 } from '../../api/supabase.js';
 import * as local from './storage.js';
+import { QUIZ_HISTORY_STATUS } from './constants.js';
 
 // Quiz history, newest first. Signed-in users' history lives in Supabase so it follows them
 // across devices; everyone else's lives in localStorage. Entries are kept in memory so reads
 // stay synchronous. Changes apply to memory straight away and are saved in the background;
 // removals reject (and roll back) if the save fails.
 
-export const HISTORY_LOADING = 'loading';
-export const HISTORY_READY = 'ready';
-export const HISTORY_ERROR = 'error';
-
 // Starts with this browser's history so signed-out visitors never see a loading state
 const state = {
 	userId: null,
 	entries: local.loadHistory(),
-	status: HISTORY_READY,
+	status: QUIZ_HISTORY_STATUS.READY,
 };
 
 const listeners = new Set();
@@ -90,14 +87,14 @@ export async function loadHistory() {
 
 	if (!state.userId) {
 		state.entries = local.loadHistory();
-		state.status = HISTORY_READY;
+		state.status = QUIZ_HISTORY_STATUS.READY;
 		notify();
 		return;
 	}
 
 	const userId = state.userId;
 	state.entries = [];
-	state.status = HISTORY_LOADING;
+	state.status = QUIZ_HISTORY_STATUS.LOADING;
 	notify();
 
 	try {
@@ -107,13 +104,13 @@ export async function loadHistory() {
 		if (load !== loadCount) return;
 
 		state.entries = entries;
-		state.status = HISTORY_READY;
+		state.status = QUIZ_HISTORY_STATUS.READY;
 	} catch (error) {
 		if (load !== loadCount) return;
 
 		console.error('Failed to load quiz history', error);
 		state.entries = sortEntries(local.loadPendingHistory(userId));
-		state.status = HISTORY_ERROR;
+		state.status = QUIZ_HISTORY_STATUS.ERROR;
 	}
 
 	notify();

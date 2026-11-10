@@ -20,8 +20,6 @@ import { REGIONS_NEW_ZEALAND_QUESTIONS } from './regions-new-zealand.js';
 import { REGIONS_EUROPEAN_UNION_QUESTIONS } from './regions-european-union.js';
 import { REGIONS_DENMARK_QUESTIONS } from './regions-denmark.js';
 
-export { LEXICON, REGIONS, LEGAL, VARIETIES, SUB_REGIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS } from './quiz-constants.js';
-
 // Quiz data, one file per lexicon category and region
 // `answer` must exactly match one entry in `options`, so options can be shuffled freely.
 // `sourceId` references a LEXICON_TERMS id (source: 'lexicon') or a REGIONS_DATA id (source: 'regions').

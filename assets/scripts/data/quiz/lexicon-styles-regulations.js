@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Styles & Regulations
 export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	{
 		id: 'bourbon-corn-minimum',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bourbon',
 		question: 'What is the minimum percentage of corn required in a bourbon mash bill?',
 		options: ['25%', '51%', '80%', '100%'],
@@ -14,8 +14,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-distillation-ceiling',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bourbon',
 		question: 'What is the maximum distillation strength for bourbon?',
 		options: ['62.5% ABV (125°)', '80% ABV (160°)', '94.8% ABV (189.6°)', '95% ABV (190°)'],
@@ -24,8 +24,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-entry-proof',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bourbon',
 		question: 'What is the maximum strength at which bourbon may enter the barrel?',
 		options: ['50% ABV (100°)', '62.5% ABV (125°)', '70% ABV (140°)', '80% ABV (160°)'],
@@ -34,8 +34,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-aging',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'straight-whiskey',
 		question: 'What is the minimum aging for a U.S. "straight" whiskey?',
 		options: ['No minimum', '1 year', '2 years', '4 years'],
@@ -44,8 +44,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'corn-whiskey-minimum',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'corn-whiskey',
 		question: 'Corn whiskey requires a mash of at least what percentage corn?',
 		options: ['51%', '65%', '80%', '100%'],
@@ -54,8 +54,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheat-whiskey-minimum',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wheat-whiskey',
 		question: 'U.S. wheat whiskey must be made from at least what percentage wheat?',
 		options: ['20%', '30%', '51%', '80%'],
@@ -64,8 +64,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'malt-whisky-us-vs-scotland',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'malt-whisky',
 		question: 'How does American malt whiskey differ from Scottish malt whisky?',
 		options: [
@@ -79,8 +79,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-examples',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'high-rye',
 		question: 'Bulleit and Four Roses Single Barrel are common examples of which bourbon style?',
 		options: ['Wheated bourbon', 'High-rye bourbon', 'Bottled-in-Bond', 'Corn whiskey'],
@@ -89,8 +89,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-percentage',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'high-rye',
 		question: 'A "high rye" bourbon typically contains roughly how much rye?',
 		options: ['5-10%', '20-35%', '51-60%', '80% or more'],
@@ -99,8 +99,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheated-bourbon-example',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wheated-bourbon',
 		question: 'Which of these is a well-known wheated bourbon?',
 		options: ['Bulleit', 'Maker\'s Mark', 'Jack Daniel\'s', 'Crown Royal'],
@@ -109,8 +109,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'small-batch-legal-status',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'small-batch',
 		question: 'What does "small batch" legally require on a bourbon label?',
 		options: [
@@ -124,8 +124,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-whiskey-exception',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tennessee-whiskey',
 		question: 'Which Tennessee distillery is exempt from the Lincoln County Process requirement?',
 		options: ['Jack Daniel\'s', 'George Dickel', 'Prichard\'s', 'Nelson\'s Green Brier'],
@@ -134,8 +134,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-whiskey-leader',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'tennessee-whiskey',
 		question: 'Which brand is the global market leader in Tennessee whiskey?',
 		options: ['George Dickel', 'Jack Daniel\'s', 'Jim Beam', 'Evan Williams'],
@@ -144,8 +144,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-mash',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-pot-still',
 		question: 'Single Pot Still Irish whiskey requires a mash of at least...',
 		options: [
@@ -159,8 +159,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-other-cereals',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-pot-still',
 		question: 'Up to what percentage of other cereals may be used in a Single Pot Still mash?',
 		options: ['0%', '5%', '20%', '40%'],
@@ -169,8 +169,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-meaning',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'poitin',
 		question: 'Poitín, a traditional Irish spirit, translates to what?',
 		options: ['Little pot', 'Water of life', 'Mountain dew', 'Secret still'],
@@ -179,8 +179,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'flavored-whisky-abv',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'flavored-whisky',
 		question: 'Flavored whisky is often bottled at what strength relative to most whiskies?',
 		options: [
@@ -194,8 +194,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-spelling',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'whisky',
 		question: 'In which two countries is the spelling "whiskey" (with an e) standard?',
 		options: [
@@ -209,8 +209,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'grain-whisky-character',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'grain-whisky',
 		question: 'Compared with malt whisky, grain whisky is typically...',
 		options: [
@@ -224,8 +224,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'us-blended-whiskey-minimum',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'blend',
 		question: 'A U.S. blended whiskey must contain at least what percentage of straight whiskey?',
 		options: ['10%', '20%', '51%', '80%'],
@@ -234,8 +234,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'moonshine-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'moonshine',
 		question: 'Historically, what defined "moonshine"?',
 		options: [
@@ -249,8 +249,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'scotch-not-a-category',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'scotch',
 		question: 'Which of these is NOT a legal Scotch whisky category?',
 		options: ['Single Grain', 'Blended Malt', 'Single Pot Still', 'Blended Grain'],
@@ -259,8 +259,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-fermented-grain',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'whisky',
 		question: 'Whisky is a distilled spirit made from fermented what?',
 		options: ['Grain', 'Fruit', 'Sugarcane', 'Agave'],
@@ -269,8 +269,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-made-anywhere',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'whisky',
 		question: 'Which statement about where whisky can be made is true?',
 		options: [
@@ -284,8 +284,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'japanese-whisky-influence',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'japanese-whisky',
 		question: 'Japanese whisky is most closely influenced by which whisky tradition?',
 		options: ['Scotch', 'Bourbon', 'Irish pot still', 'Canadian rye'],
@@ -294,8 +294,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-pronunciation',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'poitin',
 		question: 'How is poitín pronounced?',
 		options: ['POY-tin', 'put-cheen', 'pwah-TAN', 'poh-TEEN'],
@@ -304,8 +304,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-aging',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'poitin',
 		question: 'How long is poitín aged?',
 		options: ['It is unaged', 'At least 1 year', 'At least 2 years', 'At least 3 years'],
@@ -314,8 +314,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-ingredients',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'poitin',
 		question: 'Which of these may be used as a base for poitín but not for Irish whiskey?',
 		options: ['Potatoes', 'Malted barley', 'Wheat', 'Corn'],
@@ -324,8 +324,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'flavored-whisky-additive',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'flavored-whisky',
 		question: 'Which of these would make a whisky a flavored whisky?',
 		options: [
@@ -339,8 +339,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-smoke-source',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'peated-scotch',
 		question: 'How does peat smoke get into peated Scotch?',
 		options: [
@@ -354,8 +354,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-legal-status',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'peated-scotch',
 		question: 'Is "peated Scotch" a legal Scotch whisky category?',
 		options: [
@@ -369,8 +369,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-regions',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'peated-scotch',
 		question: 'Which statement about where peated Scotch is made is true?',
 		options: [
@@ -384,8 +384,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'blended-malt-distillery-count',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'blended-malt',
 		question: 'A Scotch Blended Malt must contain malt whisky from at least how many distilleries?',
 		options: ['One', 'Two', 'Three', 'Five'],
@@ -394,8 +394,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'canadian-whisky-bottling-strength',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'canadian-whisky',
 		question: 'What is the minimum bottling strength for Canadian whisky?',
 		options: ['37.5% ABV', '40% ABV', '43% ABV', '46% ABV'],
@@ -404,8 +404,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'canadian-whisky-production-location',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'canadian-whisky',
 		question: 'A rye spirit is distilled in the U.S., then aged 3 years in Canada. Can it be sold as Canadian whisky?',
 		options: [
@@ -419,8 +419,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'irish-whiskey-distillation-strength',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'irish-whiskey',
 		question: 'What is the maximum distillation strength for Irish whiskey?',
 		options: ['80% ABV', '90% ABV', '94.8% ABV', '96% ABV'],
@@ -429,8 +429,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'irish-whiskey-distillation-method',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'irish-whiskey',
 		question: 'Which statement about how Irish whiskey is distilled is true?',
 		options: [
@@ -444,8 +444,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-grain-whisky-use',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-grain-whisky',
 		question: 'What happens to most single grain whisky?',
 		options: [
@@ -459,8 +459,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-not-feature',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-malt',
 		question: 'Which of these is NOT a defining feature of single malt whisky in general?',
 		options: [
@@ -474,8 +474,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-many-casks',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-malt',
 		question: 'Does "single malt" mean the whisky came from a single cask?',
 		options: [
@@ -489,8 +489,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-canadian-legal-status',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-malt-canadian',
 		question: 'What is the legal status of single malt Canadian whisky?',
 		options: [
@@ -504,8 +504,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-canadian-producers',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'single-malt-canadian',
 		question: 'Single malt Canadian whisky, made from 100% malted barley at one distillery, is increasingly associated with which producers?',
 		options: [
@@ -519,8 +519,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'grain-whisky-base-grain',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'grain-whisky',
 		question: 'Grain whisky is produced primarily from grains other than which one?',
 		options: ['Malted barley', 'Corn', 'Wheat', 'Rye'],
@@ -529,8 +529,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-mingling',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'straight-whiskey',
 		question: 'A producer wants to mingle two straight bourbons and still call the result straight bourbon. Which rule applies?',
 		options: [
@@ -544,8 +544,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-legal-term',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'straight-whiskey',
 		question: 'Which of these bourbon label terms is a U.S. legal designation?',
 		options: ['Straight', 'High rye', 'Wheated', 'Small batch'],
@@ -554,8 +554,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheat-whiskey-vs-wheated-bourbon',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wheat-whiskey',
 		question: 'A U.S. whiskey from 60% wheat, 30% corn, and 10% malted barley is aged in new charred oak within the usual proof limits. Which category fits?',
 		options: ['Wheat whiskey', 'Wheated bourbon', 'Bourbon', 'Corn whiskey'],
@@ -564,8 +564,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-vs-wheated-flavor',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'high-rye',
 		question: 'Of two bourbons, the first tastes spicy and dry and the second soft and sweet. Which mash bill styles best explain this?',
 		options: [
@@ -579,8 +579,8 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'blend-irish-components',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'blend',
 		question: 'Which of these is NOT one of the styles combined in Irish blended whiskey?',
 		options: ['Malt whiskey', 'Pot still whiskey', 'Grain whiskey', 'Poitín'],

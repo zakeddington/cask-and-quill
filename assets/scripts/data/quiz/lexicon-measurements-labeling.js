@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Measurements & Labeling
 export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	{
 		id: 'proof-to-abv',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'proof',
 		question: 'In the U.S., a whiskey labeled 100 proof has what ABV?',
 		options: ['40%', '50%', '57.1%', '100%'],
@@ -14,8 +14,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'proof-temperature',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'proof',
 		question: 'U.S. proof measures a spirit\'s ethanol content at what temperature?',
 		options: ['32°F', '60°F', '68°F', '72°F'],
@@ -24,8 +24,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'abv-typical-range',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'abv',
 		question: 'Most whiskies are bottled within which ABV range?',
 		options: ['20-35%', '35-40%', '40-63%', '65-80%'],
@@ -34,8 +34,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'age-statement-youngest',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'age-statement',
 		question: 'On a bottle containing whiskies of different ages, the age statement reflects...',
 		options: ['The oldest whisky', 'The average age', 'The youngest whisky', 'The age of the largest component'],
@@ -44,8 +44,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'nas-no-age-statement',
 		question: 'What does "NAS" mean on a whisky label?',
 		options: [
@@ -59,8 +59,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-proof',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bottled-in-bond',
 		question: 'Bottled-in-Bond whiskey must be bottled at what strength?',
 		options: ['At least 80 proof', 'Exactly 100 proof', 'At least 110 proof', 'Barrel proof'],
@@ -69,8 +69,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-act-year',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bottled-in-bond',
 		question: 'In what year was the Bottled-in-Bond Act passed?',
 		options: ['1830', '1897', '1920', '1964'],
@@ -79,8 +79,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-aging',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'bottled-in-bond',
 		question: 'How long must Bottled-in-Bond whiskey age in a federally bonded warehouse?',
 		options: ['At least 2 years', 'At least 3 years', 'At least 4 years', 'At least 6 years'],
@@ -89,8 +89,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'barrel-proof-tolerance',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barrel-proof',
 		question: 'Under TTB rules, barrel proof whiskey may be at most how many proof degrees below its strength recorded for tax purposes?',
 		options: ['1', '2', '5', '10'],
@@ -99,8 +99,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'cask-strength-bourbon-range',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cask-strength',
 		question: 'Cask strength bourbon is often bottled at around what proof?',
 		options: ['80-90°', '90-100°', '110-140°', '150-160°'],
@@ -109,8 +109,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'chill-filtration-purpose',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'chill-filtered',
 		question: 'Why is whisky chill filtered?',
 		options: [
@@ -124,8 +124,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'non-chill-filtered-cloudiness',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'non-chill-filtered',
 		question: 'What might you notice when adding ice or water to a non-chill filtered whisky?',
 		options: ['Some cloudiness', 'A color change to green', 'Heavy foaming', 'A strong sulfur smell'],
@@ -134,8 +134,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'ttb-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ttb',
 		question: 'Which U.S. agency enforces whiskey classifications and labeling rules?',
 		options: [
@@ -149,8 +149,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'abv-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'abv',
 		question: 'What does ABV measure?',
 		options: [
@@ -164,8 +164,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'proof-uk-scale',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'proof',
 		question: 'How did historical UK proof compare with U.S. proof?',
 		options: ['It used a different scale', 'It was identical to U.S. proof', 'It was exactly triple the ABV', 'It measured sugar, not alcohol'],
@@ -174,8 +174,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'age-statement-meaning',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'age-statement',
 		question: 'What does a whisky\'s age statement count?',
 		options: [
@@ -189,8 +189,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-why',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'nas-no-age-statement',
 		question: 'Why do producers often release whiskies with no age statement?',
 		options: [
@@ -204,8 +204,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-scotch-minimum',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'nas-no-age-statement',
 		question: 'Which statement about a NAS Scotch is true?',
 		options: [
@@ -219,8 +219,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'barrel-proof-meaning',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'barrel-proof',
 		question: 'What does "barrel proof" on a label tell you?',
 		options: [
@@ -234,8 +234,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'cask-strength-legal-status',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'cask-strength',
 		question: 'Which statement about "cask strength" on a bourbon label is accurate?',
 		options: [
@@ -249,8 +249,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'chill-filtered-process',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'chill-filtered',
 		question: 'How is chill filtration carried out?',
 		options: [
@@ -264,8 +264,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'non-chill-filtered-label',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'non-chill-filtered',
 		question: 'A label says "non-chill filtered." What does that tell you?',
 		options: [
@@ -279,8 +279,8 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'ttb-responsibilities',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'ttb',
 		question: 'Which of these is NOT a TTB responsibility for whiskey?',
 		options: [

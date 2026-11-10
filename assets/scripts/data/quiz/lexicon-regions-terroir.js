@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Regions & Terroir
 export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	{
 		id: 'islay-pronunciation',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'islay',
 		question: 'How is Islay pronounced?',
 		options: ['IZ-lay', 'EYE-luh', 'ISS-lee', 'EE-lay'],
@@ -14,8 +14,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-distillery-count',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'campbeltown',
 		question: 'Campbeltown, once called Scotland\'s whisky capital, now has how many working distilleries?',
 		options: ['One', 'Three', 'Nine', 'Over twenty'],
@@ -24,8 +24,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-origin',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'terroir',
 		question: 'The concept of terroir in whisky was borrowed from which industry?',
 		options: ['Beer', 'Wine', 'Coffee', 'Tea'],
@@ -34,8 +34,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'highlands-label-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'highlands',
 		question: 'A Scotch label reads "Highland Single Malt." What does "Highland" tell you?',
 		options: [
@@ -49,8 +49,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'lowlands-distilleries',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'lowlands',
 		question: 'Auchentoshan and Glenkinchie are distilleries in which Scotch region?',
 		options: ['Lowlands', 'Speyside', 'Islay', 'Campbeltown'],
@@ -59,8 +59,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'islands-orkney',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'islands',
 		question: 'Highland Park and Scapa, part of the Islands grouping, are made on which islands?',
 		options: ['Orkney', 'Skye', 'Mull', 'Arran'],
@@ -69,8 +69,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'speyside-distillery-share',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'speyside',
 		question: 'Roughly what share of Scotland\'s malt whisky distilleries are in Speyside?',
 		options: ['About a tenth', 'About a quarter', 'More than half', 'Nearly all'],
@@ -79,8 +79,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'speyside-name-origin',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'speyside',
 		question: 'The Speyside region takes its name from what?',
 		options: ['The River Spey', 'The town of Spey', 'The Spey mountains', 'The Spey family'],
@@ -89,8 +89,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-not-factor',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'terroir',
 		question: 'Which of these is NOT usually cited as a terroir influence on whisky?',
 		options: ['Local climate', 'Warehouse conditions', 'Local barley', 'Bottling strength'],
@@ -99,8 +99,8 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-status',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'terroir',
 		question: 'How is the idea of terroir generally regarded in whisky today?',
 		options: [

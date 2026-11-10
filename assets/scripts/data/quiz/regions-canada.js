@@ -1,13 +1,13 @@
-import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY, QUIZ_REGION_TOPIC } from '../../views/quiz/constants.js';
 
 // Regions: Canada
 export const REGIONS_CANADA_QUESTIONS = [
 	{
 		id: 'canada-rye-synonym',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'In Canada, "rye whisky" is legally...',
 		options: [
 			'Synonymous with Canadian whisky, regardless of rye content',
@@ -20,10 +20,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-no-distillation-ceiling',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which of these has no distillation ceiling for whisky?',
 		options: ['Scotland', 'Ireland', 'United States', 'Canada'],
 		answer: 'Canada',
@@ -31,10 +31,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-other-spirits',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Canadian whisky may include up to what percentage of other spirits, wine, or flavorings?',
 		options: ['2%', '5%', '9.09%', '20%'],
 		answer: '9.09%',
@@ -42,10 +42,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-examples',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Crown Royal and Canadian Club are examples of whisky from which country?',
 		options: ['United States', 'Canada', 'Ireland', 'Scotland'],
 		answer: 'Canada',
@@ -53,10 +53,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-mash-bill',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What mash bill restrictions apply to Canadian whisky?',
 		options: [
 			'None, since any grain combination is allowed',
@@ -69,10 +69,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-regulator',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which regulations define Canadian whisky?',
 		options: [
 			'Canada\'s Food and Drug Regulations',
@@ -85,10 +85,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-aging-minimum',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What is the minimum aging period for Canadian whisky?',
 		options: ['None', '2 years', '3 years', '4 years'],
 		answer: '3 years',
@@ -96,10 +96,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-barrels',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What cask rule applies to Canadian whisky?',
 		options: [
 			'Wooden casks not exceeding 700 litres',
@@ -112,10 +112,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-blending-tradition',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Canadian whisky comes from a tradition focused on what?',
 		options: ['Blending', 'Heavy peating', 'Single-cask bottling', 'Triple pot distillation'],
 		answer: 'Blending',
@@ -123,10 +123,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-caramel-flavoring-comparison',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which of these permits caramel flavoring in whisky, not just caramel coloring?',
 		options: ['Scotland', 'Ireland', 'Japan', 'Canada'],
 		answer: 'Canada',
@@ -134,10 +134,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-not-permitted',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which of these is NOT permitted for Canadian whisky?',
 		options: [
 			'Adding caramel coloring',
@@ -150,10 +150,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-aging-comparison',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Canada\'s whisky aging minimum matches which of these?',
 		options: ['Scotland', 'United States', 'Taiwan', 'Australia'],
 		answer: 'Scotland',
@@ -161,10 +161,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-india-no-ceiling',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which pair of countries both specify no distillation ceiling for whisky?',
 		options: [
 			'Canada and India',
@@ -177,10 +177,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-scenario-two-year-rye',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'A Canadian distillery ages a mostly corn whisky for 2 years in wooden casks. Can it be sold as Canadian rye whisky?',
 		options: [
 			'No, because it is aged less than 3 years',
@@ -193,10 +193,10 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-scenario-added-wine',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'canada',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'A 4-year-old Canadian whisky has 5% wine blended in for flavor. Can it still be sold as Canadian whisky?',
 		options: [
 			'Yes, because it is within the 9.09% allowance',

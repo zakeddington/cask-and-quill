@@ -1,13 +1,13 @@
-import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY, QUIZ_REGION_TOPIC } from '../../views/quiz/constants.js';
 
 // Regions: Japan
 export const REGIONS_JAPAN_QUESTIONS = [
 	{
 		id: 'japan-standards-year',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'In what year did Japan adopt its current whisky standards?',
 		options: ['1923', '1989', '2009', '2021'],
 		answer: '2021',
@@ -15,10 +15,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-pre-2021-gap',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What gap did Japan\'s 2021 whisky standards close?',
 		options: [
 			'Imported foreign whisky could be bottled as "Japanese whisky"',
@@ -31,10 +31,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-water-requirement',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which unusual requirement do Japan\'s whisky standards include?',
 		options: [
 			'Water must be extracted in Japan',
@@ -47,10 +47,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-dominant-companies',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Which two companies dominate Blended Japanese Whisky?',
 		options: [
 			'Diageo and Pernod Ricard',
@@ -63,10 +63,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-blending-diversity',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Cross-company barrel exchange is rare in Japan. How do Japanese distilleries create blending diversity instead?',
 		options: [
 			'By running multiple still shapes in-house',
@@ -79,10 +79,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-standards-body',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which organization set Japan\'s whisky standards?',
 		options: [
 			'Japan Spirits & Liqueurs Makers Association',
@@ -95,10 +95,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-aging-minimum',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What is the minimum aging requirement for Japanese whisky?',
 		options: ['None', '2 years', '3 years', '5 years'],
 		answer: '3 years',
@@ -106,10 +106,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-bottling-minimum',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What is the minimum bottling strength for Japanese whisky?',
 		options: ['37% ABV', '40% ABV', '43% ABV', '46% ABV'],
 		answer: '40% ABV',
@@ -117,10 +117,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-distillation-ceiling',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What is the maximum distillation strength for Japanese whisky?',
 		options: ['Less than 94.8% ABV', 'Less than 95% ABV', 'Less than 80% ABV', 'No ceiling'],
 		answer: 'Less than 95% ABV',
@@ -128,10 +128,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-cask-rule',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What casks do Japan\'s standards require for maturation?',
 		options: [
 			'Wooden casks not exceeding 700 litres',
@@ -144,10 +144,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-base',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'What grain base do Japan\'s whisky standards require?',
 		options: [
 			'Malted grains, with unmalted grains also permitted',
@@ -160,10 +160,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-additives',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which additive may be used in Japanese whisky?',
 		options: [
 			'Caramel coloring (E150a) only',
@@ -176,10 +176,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scotland-shared-rule',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which of these rules is identical in Japan and Scotland?',
 		options: ['Maximum cask size', 'Distillation ceiling', 'Type of wood for casks', 'Use of enzymes'],
 		answer: 'Maximum cask size',
@@ -187,10 +187,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-taiwan-origin',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'Which requirement do Japan\'s whisky standards have that Taiwan\'s law does not?',
 		options: [
 			'Production entirely in the country',
@@ -203,10 +203,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-aged-abroad',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: LEGAL,
+		topic: QUIZ_REGION_TOPIC.LEGAL,
 		question: 'A Japanese distillery ships its new-make spirit to Scotland to age for 3 years, then bottles it in Japan. Can it be labeled Japanese whisky?',
 		options: [
 			'No, it must be produced and aged entirely in Japan',
@@ -219,10 +219,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-imported-grain',
-		difficulty: HARD,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'A blend of Japanese malt whisky and imported Canadian grain whisky is bottled in Japan. Can it be labeled Blended Japanese Whisky?',
 		options: [
 			'No, every component must be produced and aged in Japan',
@@ -235,10 +235,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-caramel',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'A Japanese single malt is aged 4 years in Japan in ex-sherry casks, colored with caramel (E150a), and bottled at 43% ABV. Does it meet the standards?',
 		options: [
 			'Yes, it meets every rule',
@@ -251,10 +251,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-single-malt-not',
-		difficulty: MEDIUM,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Which of these is NOT a feature of Japanese Single Malt?',
 		options: [
 			'Made from 100% malted barley',
@@ -267,10 +267,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-still',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'Japanese Grain Whisky is typically distilled in which type of still?',
 		options: ['Column stills', 'Pot stills', 'Hybrid pot stills only', 'Alembic stills'],
 		answer: 'Column stills',
@@ -278,10 +278,10 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-role',
-		difficulty: EASY,
-		source: REGIONS,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.REGIONS,
 		sourceId: 'japan',
-		topic: VARIETIES,
+		topic: QUIZ_REGION_TOPIC.VARIETIES,
 		question: 'How is Japanese Grain Whisky most often used?',
 		options: [
 			'As a blending component',

@@ -1,15 +1,32 @@
-import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS, LEXICON, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from '../../data/quiz/index.js';
+import { QUIZ_QUESTIONS } from '../../data/quiz/index.js';
 import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../../data/lexicon-data.js';
 import { REGIONS_DATA } from '../../data/regions-data.js';
 import { escapeHtml } from '../../utils/utils.js';
 import { KEY_ENTER } from '../../config/constants.js';
 import { AUTH_CHANGE } from '../../config/events.js';
 import {
+	QUIZ_SOURCE,
+	QUIZ_SOURCES,
+	QUIZ_DIFFICULTIES,
+	QUIZ_REGION_TOPIC,
+	QUIZ_REGION_TOPICS,
 	QUIZ_VERSION,
+	QUIZ_MODE,
+	QUIZ_MODES,
 	QUIZ_LENGTH_ALL,
-	QUIZ_MODE_STUDY,
-	QUIZ_MODE_REVIEW,
-	SOURCE_FILTER_KEYS,
+	QUIZ_LENGTH_OPTIONS,
+	QUIZ_FILTER_KEYS,
+	QUIZ_SOURCE_FILTER_KEYS,
+	QUIZ_DEFAULT_CONFIG,
+	QUIZ_PRIORITIZE_OPTIONS,
+	QUIZ_SCREEN,
+	QUIZ_HISTORY_STATUS,
+	QUIZ_HISTORY_PREVIEW_LENGTH,
+	QUIZ_TREND_LENGTH,
+	QUIZ_PROGRESS_GROUPS,
+	QUIZ_FOCUS_AREA
+} from './constants.js';
+import {
 	getQuestion,
 	getLexiconCategory,
 	getIncludedSources,
@@ -28,8 +45,6 @@ import {
 	saveLastConfig
 } from './storage.js';
 import {
-	HISTORY_LOADING,
-	HISTORY_ERROR,
 	getHistory,
 	getHistoryStatus,
 	isHistorySynced,
@@ -49,41 +64,6 @@ import {
 	compareWithPrevious
 } from './stats.js';
 
-const SCREEN_SETUP = 'setup';
-const SCREEN_QUESTION = 'question';
-const SCREEN_RESULTS = 'results';
-
-const MODES = [QUIZ_MODE_STUDY, QUIZ_MODE_REVIEW];
-const LENGTH_OPTIONS = [10, 20, 30, QUIZ_LENGTH_ALL];
-
-const FILTER_KEYS = ['sources', 'lexiconCategories', 'regionCountries', 'regionTopics', 'difficulties'];
-
-const DEFAULT_CONFIG = {
-	sources: [],
-	lexiconCategories: [],
-	regionCountries: [],
-	regionTopics: [],
-	difficulties: [],
-	length: 20,
-	mode: QUIZ_MODE_STUDY,
-	prioritize: true,
-};
-
-const PRIORITIZE_OPTIONS = [
-	{ value: true, label: 'Favor new & missed' },
-	{ value: false, label: 'Fully random' },
-];
-
-// Progress section
-const HISTORY_PREVIEW_LENGTH = 10;
-const TREND_LENGTH = 12;
-const PROGRESS_GROUPS = ['lexiconCategories', 'regionCountries', 'regionTopics', 'difficulties'];
-
-// An area needs enough answers, and a low enough score, to be suggested for focus
-const FOCUS_AREA_MIN_ATTEMPTS = 5;
-const FOCUS_AREA_MAX_ACCURACY = 0.8;
-const FOCUS_AREA_LIMIT = 3;
-
 // Used when a quiz summary has too many values in a group to list
 const COUNT_LABELS = {
 	lexiconCategories: 'categories',
@@ -96,14 +76,14 @@ const DATE_FORMAT = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', ti
 const SHORT_DATE_FORMAT = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
 
 const SOURCE_LABELS = {
-	[LEXICON]: 'Lexicon',
-	[REGIONS]: 'Regions',
+	[QUIZ_SOURCE.LEXICON]: 'Lexicon',
+	[QUIZ_SOURCE.REGIONS]: 'Regions',
 };
 
 const TOPIC_LABELS = {
-	[LEGAL]: 'Legal',
-	[VARIETIES]: 'Varieties',
-	[SUB_REGIONS]: 'Sub-regions',
+	[QUIZ_REGION_TOPIC.LEGAL]: 'Legal',
+	[QUIZ_REGION_TOPIC.VARIETIES]: 'Varieties',
+	[QUIZ_REGION_TOPIC.SUB_REGIONS]: 'Sub-regions',
 };
 
 const LEXICON_NAMES = new Map(LEXICON_TERMS.map(term => [term.id, term.name]));
@@ -120,12 +100,12 @@ function formatTopic(value) {
 
 // A source counts as picked when it's selected directly or through one of its sub-filters
 function isSourcePicked(config, source) {
-	return config.sources.includes(source) || SOURCE_FILTER_KEYS[source].some(key => config[key].length);
+	return config.sources.includes(source) || QUIZ_SOURCE_FILTER_KEYS[source].some(key => config[key].length);
 }
 
 // Identifies quizzes with the same settings for score comparisons; question selection doesn't count
 function getConfigKey(config) {
-	return JSON.stringify([config.mode, config.length, ...FILTER_KEYS.map(key => [...config[key]].sort())]);
+	return JSON.stringify([config.mode, config.length, ...QUIZ_FILTER_KEYS.map(key => [...config[key]].sort())]);
 }
 
 function formatChange(change) {
@@ -149,14 +129,14 @@ export class QuizView {
 		// `source` marks a group as a sub-filter of that source
 		this.filterGroups = {
 			sources: { label: 'Source', values: QUIZ_SOURCES, format: value => SOURCE_LABELS[value] ?? value },
-			lexiconCategories: { label: 'Lexicon categories', source: LEXICON, values: LEXICON_CATEGORIES, format: value => value },
-			regionCountries: { label: 'Region countries', source: REGIONS, values: REGION_IDS, format: value => REGION_NAMES.get(value) ?? value },
-			regionTopics: { label: 'Region question types', source: REGIONS, values: QUIZ_REGION_TOPICS, format: value => value === SUB_REGIONS ? 'Sub-regions (Scotland)' : formatTopic(value) },
+			lexiconCategories: { label: 'Lexicon categories', source: QUIZ_SOURCE.LEXICON, values: LEXICON_CATEGORIES, format: value => value },
+			regionCountries: { label: 'Region countries', source: QUIZ_SOURCE.REGIONS, values: REGION_IDS, format: value => REGION_NAMES.get(value) ?? value },
+			regionTopics: { label: 'Region question types', source: QUIZ_SOURCE.REGIONS, values: QUIZ_REGION_TOPICS, format: value => value === QUIZ_REGION_TOPIC.SUB_REGIONS ? 'Sub-regions (Scotland)' : formatTopic(value) },
 			difficulties: { label: 'Difficulty', values: QUIZ_DIFFICULTIES, format: capitalize },
 		};
 
 		this.state = {
-			screen: SCREEN_SETUP,
+			screen: QUIZ_SCREEN.SETUP,
 			quiz: null,
 			config: this.sanitizeConfig(loadLastConfig()),
 			showAllHistory: false,
@@ -171,7 +151,7 @@ export class QuizView {
 
 		if (quiz) {
 			this.state.quiz = quiz;
-			this.state.screen = quiz.completedAt ? SCREEN_RESULTS : SCREEN_QUESTION;
+			this.state.screen = quiz.completedAt ? QUIZ_SCREEN.RESULTS : QUIZ_SCREEN.QUESTION;
 			saveActiveQuiz(quiz);
 		} else {
 			clearActiveQuiz();
@@ -196,18 +176,18 @@ export class QuizView {
 		const pick = (values, allowed) => Array.isArray(values) ? values.filter(value => allowed.includes(value)) : [];
 
 		const result = {
-			...DEFAULT_CONFIG,
-			...Object.fromEntries(FILTER_KEYS.map(key => [key, pick(config?.[key], this.filterGroups[key].values)])),
-			length: LENGTH_OPTIONS.includes(config?.length) ? config.length : DEFAULT_CONFIG.length,
-			mode: MODES.includes(config?.mode) ? config.mode : DEFAULT_CONFIG.mode,
-			prioritize: typeof config?.prioritize === 'boolean' ? config.prioritize : DEFAULT_CONFIG.prioritize,
+			...QUIZ_DEFAULT_CONFIG,
+			...Object.fromEntries(QUIZ_FILTER_KEYS.map(key => [key, pick(config?.[key], this.filterGroups[key].values)])),
+			length: QUIZ_LENGTH_OPTIONS.includes(config?.length) ? config.length : QUIZ_DEFAULT_CONFIG.length,
+			mode: QUIZ_MODES.includes(config?.mode) ? config.mode : QUIZ_DEFAULT_CONFIG.mode,
+			prioritize: typeof config?.prioritize === 'boolean' ? config.prioritize : QUIZ_DEFAULT_CONFIG.prioritize,
 		};
 
 		// Older saved configs may mix sources; keep only the first picked one
 		const picked = getPickedSource(result);
 		QUIZ_SOURCES.filter(source => source !== picked).forEach(source => {
 			result.sources = result.sources.filter(item => item !== source);
-			SOURCE_FILTER_KEYS[source].forEach(key => { result[key] = []; });
+			QUIZ_SOURCE_FILTER_KEYS[source].forEach(key => { result[key] = []; });
 		});
 
 		return result;
@@ -235,7 +215,7 @@ export class QuizView {
 		if (key === 'sources' && isSourcePicked(config, value)) {
 			// Deselecting a source also clears its sub-filters
 			config.sources = config.sources.filter(item => item !== value);
-			SOURCE_FILTER_KEYS[value].forEach(subKey => { config[subKey] = []; });
+			QUIZ_SOURCE_FILTER_KEYS[value].forEach(subKey => { config[subKey] = []; });
 		} else {
 			config[key] = config[key].includes(value)
 				? config[key].filter(item => item !== value)
@@ -258,7 +238,7 @@ export class QuizView {
 	clearFilters() {
 		this.state.config = {
 			...this.state.config,
-			...Object.fromEntries(FILTER_KEYS.map(key => [key, []])),
+			...Object.fromEntries(QUIZ_FILTER_KEYS.map(key => [key, []])),
 		};
 		saveLastConfig(this.state.config);
 	}
@@ -280,7 +260,7 @@ export class QuizView {
 
 		this.state.quiz = quiz;
 		saveActiveQuiz(quiz);
-		this.showScreen(SCREEN_QUESTION);
+		this.showScreen(QUIZ_SCREEN.QUESTION);
 	}
 
 	answerCurrent(optionIndex) {
@@ -305,7 +285,7 @@ export class QuizView {
 		if (quiz.currentIndex < quiz.questions.length - 1) {
 			quiz.currentIndex += 1;
 			saveActiveQuiz(quiz);
-			this.showScreen(SCREEN_QUESTION);
+			this.showScreen(QUIZ_SCREEN.QUESTION);
 		} else {
 			this.completeQuiz();
 		}
@@ -330,18 +310,18 @@ export class QuizView {
 		});
 
 		saveActiveQuiz(quiz);
-		this.showScreen(SCREEN_RESULTS);
+		this.showScreen(QUIZ_SCREEN.RESULTS);
 	}
 
 	// Review quizzes ignore the setup filters and include every missed question
 	startReview() {
-		this.startQuiz({ ...DEFAULT_CONFIG, mode: QUIZ_MODE_REVIEW, length: QUIZ_LENGTH_ALL });
+		this.startQuiz({ ...QUIZ_DEFAULT_CONFIG, mode: QUIZ_MODE.REVIEW, length: QUIZ_LENGTH_ALL });
 	}
 
 	// Focus-area quizzes use the setup's length and selection, but only the one area's filter
 	startAreaQuiz(key, value) {
 		const { length, prioritize } = this.state.config;
-		this.startQuiz({ ...DEFAULT_CONFIG, length, prioritize, [key]: [value] });
+		this.startQuiz({ ...QUIZ_DEFAULT_CONFIG, length, prioritize, [key]: [value] });
 	}
 
 	discardQuiz() {
@@ -419,9 +399,9 @@ export class QuizView {
 	onHistoryChange() {
 		this.state.removedEntry = null;
 
-		if (this.state.screen === SCREEN_SETUP) {
+		if (this.state.screen === QUIZ_SCREEN.SETUP) {
 			this.refreshProgress();
-		} else if (this.state.screen === SCREEN_RESULTS) {
+		} else if (this.state.screen === QUIZ_SCREEN.RESULTS) {
 			this.render();
 		}
 	}
@@ -521,13 +501,13 @@ export class QuizView {
 		}
 
 		if (target.closest('.quiz-resume__continue')) {
-			this.showScreen(this.state.quiz?.completedAt ? SCREEN_RESULTS : SCREEN_QUESTION);
+			this.showScreen(this.state.quiz?.completedAt ? QUIZ_SCREEN.RESULTS : QUIZ_SCREEN.QUESTION);
 			return;
 		}
 
 		if (target.closest('.quiz-resume__discard')) {
 			this.discardQuiz();
-			this.showScreen(SCREEN_SETUP);
+			this.showScreen(QUIZ_SCREEN.SETUP);
 			return;
 		}
 
@@ -543,7 +523,7 @@ export class QuizView {
 		}
 
 		if (target.closest('.quiz-question__exit')) {
-			this.showScreen(SCREEN_SETUP);
+			this.showScreen(QUIZ_SCREEN.SETUP);
 			return;
 		}
 
@@ -554,12 +534,12 @@ export class QuizView {
 
 		if (target.closest('.quiz-results__setup')) {
 			this.discardQuiz();
-			this.showScreen(SCREEN_SETUP);
+			this.showScreen(QUIZ_SCREEN.SETUP);
 		}
 	}
 
 	onKeydown(event) {
-		if (this.state.screen !== SCREEN_QUESTION) return;
+		if (this.state.screen !== QUIZ_SCREEN.QUESTION) return;
 		if (event.altKey || event.ctrlKey || event.metaKey) return;
 		if (event.target.closest('input, textarea, select, dialog')) return;
 
@@ -590,21 +570,21 @@ export class QuizView {
 		this.render();
 		this.el.screen.scrollIntoView({ block: 'start' });
 
-		const focusTarget = screen === SCREEN_QUESTION
+		const focusTarget = screen === QUIZ_SCREEN.QUESTION
 			? this.el.screen.querySelector('.quiz-question__title')
-			: screen === SCREEN_RESULTS
+			: screen === QUIZ_SCREEN.RESULTS
 				? this.el.screen.querySelector('.quiz-results__title')
 				: null;
 		focusTarget?.focus({ preventScroll: true });
 	}
 
 	render() {
-		if (this.state.screen === SCREEN_QUESTION && !this.state.quiz) this.state.screen = SCREEN_SETUP;
-		if (this.state.screen === SCREEN_RESULTS && !this.state.quiz?.completedAt) this.state.screen = SCREEN_SETUP;
+		if (this.state.screen === QUIZ_SCREEN.QUESTION && !this.state.quiz) this.state.screen = QUIZ_SCREEN.SETUP;
+		if (this.state.screen === QUIZ_SCREEN.RESULTS && !this.state.quiz?.completedAt) this.state.screen = QUIZ_SCREEN.SETUP;
 
-		if (this.state.screen === SCREEN_QUESTION) {
+		if (this.state.screen === QUIZ_SCREEN.QUESTION) {
 			this.el.screen.innerHTML = this.renderQuestion();
-		} else if (this.state.screen === SCREEN_RESULTS) {
+		} else if (this.state.screen === QUIZ_SCREEN.RESULTS) {
 			this.el.screen.innerHTML = this.renderResults();
 		} else {
 			this.el.screen.innerHTML = this.renderSetup();
@@ -613,7 +593,7 @@ export class QuizView {
 	}
 
 	renderSourceLink(question) {
-		const isLexicon = question.source === LEXICON;
+		const isLexicon = question.source === QUIZ_SOURCE.LEXICON;
 		const name = isLexicon ? LEXICON_NAMES.get(question.sourceId) : REGION_NAMES.get(question.sourceId);
 		if (!name) return '';
 
@@ -624,7 +604,7 @@ export class QuizView {
 	}
 
 	renderTags(question) {
-		const labels = question.source === LEXICON
+		const labels = question.source === QUIZ_SOURCE.LEXICON
 			? [getLexiconCategory(question)]
 			: [REGION_NAMES.get(question.sourceId), formatTopic(question.topic)];
 		labels.push(capitalize(question.difficulty));
@@ -650,7 +630,7 @@ export class QuizView {
 					${this.renderFilterGroup('sources')}
 					${QUIZ_SOURCES.map(source => `
 						<div class="quiz-setup__source-filters">
-							${SOURCE_FILTER_KEYS[source].map(key => this.renderFilterGroup(key)).join('')}
+							${QUIZ_SOURCE_FILTER_KEYS[source].map(key => this.renderFilterGroup(key)).join('')}
 						</div>
 					`).join('')}
 				</div>
@@ -712,13 +692,13 @@ export class QuizView {
 	// Progress section
 
 	describeConfig(config) {
-		if (config.mode === QUIZ_MODE_REVIEW) return 'Missed questions';
+		if (config.mode === QUIZ_MODE.REVIEW) return 'Missed questions';
 
 		const parts = [];
 		const source = getPickedSource(config);
 		if (source) parts.push(SOURCE_LABELS[source]);
 
-		PROGRESS_GROUPS.forEach(key => {
+		QUIZ_PROGRESS_GROUPS.forEach(key => {
 			const values = config[key];
 			if (!values.length) return;
 			parts.push(values.length > 2
@@ -735,7 +715,7 @@ export class QuizView {
 		const status = getHistoryStatus();
 		const isEmpty = !history.length && !this.state.removedEntry && !hasMessage;
 
-		if (status === HISTORY_LOADING) {
+		if (status === QUIZ_HISTORY_STATUS.LOADING) {
 			return `
 				<section class="quiz-progress" aria-labelledby="quiz-progress-title" aria-busy="true">
 					${this.renderProgressHeader()}
@@ -744,10 +724,10 @@ export class QuizView {
 			`;
 		}
 
-		if (status !== HISTORY_ERROR && isEmpty) return '<section class="quiz-progress" hidden></section>';
+		if (status !== QUIZ_HISTORY_STATUS.ERROR && isEmpty) return '<section class="quiz-progress" hidden></section>';
 
 		const questionStats = getQuestionStats(history);
-		const areas = PROGRESS_GROUPS.map(key => ({
+		const areas = QUIZ_PROGRESS_GROUPS.map(key => ({
 			key,
 			stats: getFilterStats(questionStats, key, this.filterGroups[key].values),
 		}));
@@ -755,7 +735,7 @@ export class QuizView {
 		return `
 			<section class="quiz-progress" aria-labelledby="quiz-progress-title">
 				${this.renderProgressHeader()}
-				${status === HISTORY_ERROR ? `
+				${status === QUIZ_HISTORY_STATUS.ERROR ? `
 					<div class="quiz-progress__notice" role="alert">
 						<p>Couldn't load your quiz history from your account.${history.length ? ' Showing quizzes from this browser that are waiting to sync.' : ''}</p>
 						<button class="quiz-progress__retry button button--secondary" type="button">Try again</button>
@@ -811,7 +791,7 @@ export class QuizView {
 
 	// Recent scores as bars, oldest to newest; each bar shows its details on hover or focus
 	renderTrend(history) {
-		const entries = history.filter(entry => entry.total).slice(0, TREND_LENGTH).reverse();
+		const entries = history.filter(entry => entry.total).slice(0, QUIZ_TREND_LENGTH).reverse();
 		const average = Math.round(entries.reduce((sum, entry) => sum + getPercent(entry), 0) / entries.length);
 
 		return `
@@ -844,10 +824,10 @@ export class QuizView {
 	renderFocusAreas(areas) {
 		const focus = areas
 			.flatMap(({ key, stats }) => Object.entries(stats)
-				.filter(([, item]) => item.attempts >= FOCUS_AREA_MIN_ATTEMPTS && item.correct / item.attempts < FOCUS_AREA_MAX_ACCURACY)
+				.filter(([, item]) => item.attempts >= QUIZ_FOCUS_AREA.MIN_ATTEMPTS && item.correct / item.attempts < QUIZ_FOCUS_AREA.MAX_ACCURACY)
 				.map(([value, item]) => ({ key, value, accuracy: item.correct / item.attempts })))
 			.sort((a, b) => a.accuracy - b.accuracy)
-			.slice(0, FOCUS_AREA_LIMIT);
+			.slice(0, QUIZ_FOCUS_AREA.LIMIT);
 
 		return `
 			<div class="quiz-focus">
@@ -868,7 +848,7 @@ export class QuizView {
 							`;
 						}).join('')}
 					</ul>
-				` : `<p class="text-body-sm">Nothing stands out yet. Areas where you score under ${FOCUS_AREA_MAX_ACCURACY * 100}% after ${FOCUS_AREA_MIN_ATTEMPTS} or more answers will show here.</p>`}
+				` : `<p class="text-body-sm">Nothing stands out yet. Areas where you score under ${QUIZ_FOCUS_AREA.MAX_ACCURACY * 100}% after ${QUIZ_FOCUS_AREA.MIN_ATTEMPTS} or more answers will show here.</p>`}
 			</div>
 		`;
 	}
@@ -917,7 +897,7 @@ export class QuizView {
 	}
 
 	renderHistory(history) {
-		const visible = this.state.showAllHistory ? history : history.slice(0, HISTORY_PREVIEW_LENGTH);
+		const visible = this.state.showAllHistory ? history : history.slice(0, QUIZ_HISTORY_PREVIEW_LENGTH);
 
 		return `
 			<div class="quiz-history">
@@ -934,7 +914,7 @@ export class QuizView {
 				${history.length
 					? `<ol class="quiz-history__list list-reset">${visible.map(entry => this.renderHistoryItem(entry)).join('')}</ol>`
 					: '<p>No quizzes in your history.</p>'}
-				${history.length > HISTORY_PREVIEW_LENGTH ? `
+				${history.length > QUIZ_HISTORY_PREVIEW_LENGTH ? `
 					<button class="quiz-history__toggle button button--secondary" type="button" aria-expanded="${this.state.showAllHistory}">
 						${this.state.showAllHistory ? 'Show fewer' : `Show all ${history.length} quizzes`}
 					</button>
@@ -952,7 +932,7 @@ export class QuizView {
 			<li class="quiz-history__item">
 				<div class="quiz-history__details">
 					<p class="quiz-history__name">
-						${config.mode === QUIZ_MODE_REVIEW ? '<span class="tag text-label">Practice</span>' : ''}
+						${config.mode === QUIZ_MODE.REVIEW ? '<span class="tag text-label">Practice</span>' : ''}
 						${escapeHtml(this.describeConfig(config))}
 					</p>
 					<p class="quiz-history__meta text-body-sm">
@@ -999,7 +979,7 @@ export class QuizView {
 			<fieldset class="quiz-setup__group">
 				<legend class="quiz-setup__legend">Questions</legend>
 				<div class="quiz-setup__chips">
-					${LENGTH_OPTIONS.map(value => `
+					${QUIZ_LENGTH_OPTIONS.map(value => `
 						<button class="quiz-chip button--secondary" type="button" data-group="length" data-value="${value}" aria-pressed="false">
 							${value === QUIZ_LENGTH_ALL ? 'All' : value}
 						</button>
@@ -1014,7 +994,7 @@ export class QuizView {
 			<fieldset class="quiz-setup__group">
 				<legend class="quiz-setup__legend">Question selection</legend>
 				<div class="quiz-setup__chips">
-					${PRIORITIZE_OPTIONS.map(({ value, label }) => `
+					${QUIZ_PRIORITIZE_OPTIONS.map(({ value, label }) => `
 						<button class="quiz-chip button--secondary" type="button" data-group="prioritize" data-value="${value}" aria-pressed="false">
 							${label}
 						</button>
@@ -1076,7 +1056,7 @@ export class QuizView {
 				: 'No questions match these filters. Try widening your selection.';
 		}
 		if (startBtn) startBtn.disabled = !poolSize;
-		if (clearBtn) clearBtn.hidden = !FILTER_KEYS.some(key => config[key].length);
+		if (clearBtn) clearBtn.hidden = !QUIZ_FILTER_KEYS.some(key => config[key].length);
 	}
 
 	// Question screen
@@ -1161,7 +1141,7 @@ export class QuizView {
 		const quiz = this.state.quiz;
 		const { score, total, byLexiconCategory, byRegionCountry, byRegionTopic, byDifficulty, missed } = scoreQuiz(quiz);
 		const percent = getPercent({ score, total });
-		const isReview = quiz.config.mode === QUIZ_MODE_REVIEW;
+		const isReview = quiz.config.mode === QUIZ_MODE.REVIEW;
 
 		return `
 			<section class="quiz-results">
@@ -1202,7 +1182,7 @@ export class QuizView {
 		if (!comparison) return '';
 
 		const { change, bestPercent, isPersonalBest } = comparison;
-		const previous = this.state.quiz.config.mode === QUIZ_MODE_REVIEW ? 'your last practice' : 'your last quiz with these settings';
+		const previous = this.state.quiz.config.mode === QUIZ_MODE.REVIEW ? 'your last practice' : 'your last quiz with these settings';
 
 		return `
 			<p class="quiz-results__comparison">

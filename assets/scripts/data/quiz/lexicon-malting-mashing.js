@@ -1,11 +1,11 @@
-import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { QUIZ_SOURCE, QUIZ_DIFFICULTY } from '../../views/quiz/constants.js';
 
 // Lexicon: Malting & Mashing
 export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	{
 		id: 'wash-abv',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wash',
 		question: 'The fermented wash, or distiller\'s beer, is typically around what ABV?',
 		options: ['1-3%', '6-10%', '20-35%', '40-45%'],
@@ -14,8 +14,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wash-unhopped-beer',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wash',
 		question: 'The wash that goes into the still is essentially what?',
 		options: ['An unhopped beer', 'A fortified wine', 'A sweet grain syrup', 'A diluted spirit'],
@@ -24,8 +24,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wort-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wort',
 		question: 'What is the sweet liquid produced during mashing called?',
 		options: ['Wash', 'Wort', 'Backset', 'Draff'],
@@ -34,8 +34,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'grist-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'grist',
 		question: 'What is grist?',
 		options: [
@@ -49,8 +49,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-tun-role',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mash-tub-tun',
 		question: 'In which vessel is grist combined with hot water to convert starches into sugars?',
 		options: ['Washback', 'Mash Tun', 'Underback', 'Spirit Safe'],
@@ -59,8 +59,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'washback-role',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'washback',
 		question: 'What is a washback?',
 		options: [
@@ -74,8 +74,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'underback-role',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'underback',
 		question: 'What is an underback used for?',
 		options: [
@@ -89,8 +89,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'draff-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'draff',
 		question: 'What is draff, a byproduct often used as animal feed?',
 		options: [
@@ -104,8 +104,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saccharification-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'saccharification',
 		question: 'What is saccharification?',
 		options: [
@@ -119,8 +119,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'exogenous-enzymes-scotland',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'exogenous-enzymes',
 		question: 'Commercial exogenous enzymes are prohibited in which of these?',
 		options: ['Bourbon', 'Canadian whisky', 'Japanese grain whisky', 'Scotch single malt'],
@@ -129,8 +129,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malting-stages',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'malting',
 		question: 'Which three stages make up the malting process?',
 		options: [
@@ -144,8 +144,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'kiln-purpose',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'kiln',
 		question: 'What is a kiln used for in malting?',
 		options: [
@@ -159,8 +159,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'floor-malting-replacement',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'floor-malting',
 		question: 'Traditional hand-turned floor malting has mostly been replaced by which process?',
 		options: ['Drum malting', 'Solera malting', 'Continuous malting', 'Column malting'],
@@ -169,8 +169,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saladin-box-purpose',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'saladin-box',
 		question: 'What is a Saladin box?',
 		options: [
@@ -184,8 +184,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sour-mash-backset',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sour-mash',
 		question: 'The sour mash process adds what to a new mash to help start fermentation?',
 		options: [
@@ -199,8 +199,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sweet-mash-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sweet-mash',
 		question: 'What distinguishes a sweet mash from a sour mash?',
 		options: [
@@ -214,8 +214,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'backset-definition',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'backset',
 		question: 'In American whiskey-making, what is backset?',
 		options: [
@@ -229,8 +229,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'backset-contamination',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'backset',
 		question: 'Besides supporting fermentation, why do American distillers add backset to a new mash?',
 		options: [
@@ -244,8 +244,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sour-mash-tradition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'sour-mash',
 		question: 'The sour mash process is associated with which whisky tradition?',
 		options: ['American whiskey', 'Scotch malt whisky', 'Japanese whisky', 'Irish pot still whiskey'],
@@ -254,8 +254,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malt-why-germinate',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'malt',
 		question: 'Why do maltsters let barley germinate before kilning it?',
 		options: [
@@ -269,8 +269,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malt-whisky-meaning',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'malt',
 		question: 'Besides the grain itself, the word "malt" is also used to describe what?',
 		options: [
@@ -284,8 +284,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malted-rye-scenario',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'malted',
 		question: 'A whisky\'s recipe lists "malted rye." What has been done to that rye?',
 		options: [
@@ -299,8 +299,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mash',
 		question: 'In whisky-making, what is a mash?',
 		options: [
@@ -314,8 +314,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-bill-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mash-bill',
 		question: 'What is a whiskey\'s mash bill?',
 		options: [
@@ -329,8 +329,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mashing-step-order',
-		difficulty: MEDIUM,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.MEDIUM,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'mashing',
 		question: 'Which production step comes directly between milling the grain and fermentation?',
 		options: ['Mashing', 'Malting', 'Distillation', 'Maturation'],
@@ -339,8 +339,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'underback-multiple-mashes',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'underback',
 		question: 'Why might a distillery mash the same grain several times with progressively hotter water?',
 		options: [
@@ -354,8 +354,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'steep-definition',
-		difficulty: EASY,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.EASY,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'steep',
 		question: 'What is the term for the first stage of malting, where barley is soaked in water?',
 		options: ['Steep', 'Kiln', 'Mash', 'Draff'],
@@ -364,8 +364,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'steep-vessel',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'steep',
 		question: 'Besides the soaking stage of malting, what else does the word "steep" refer to?',
 		options: [
@@ -379,8 +379,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saladin-box-era',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'saladin-box',
 		question: 'When was the Saladin box invented?',
 		options: ['Early 18th century', 'Late 19th century', 'Mid 20th century', 'Early 21st century'],
@@ -389,8 +389,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'exogenous-enzymes-unmalted',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'exogenous-enzymes',
 		question: 'A distiller mashes a recipe of mostly unmalted grain. What might they add to help convert its starches?',
 		options: ['Exogenous enzymes', 'Backset', 'Caramel coloring', 'Extra yeast'],
@@ -399,8 +399,8 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wort-cooling',
-		difficulty: HARD,
-		source: LEXICON,
+		difficulty: QUIZ_DIFFICULTY.HARD,
+		source: QUIZ_SOURCE.LEXICON,
 		sourceId: 'wort',
 		question: 'Why is wort cooled before it goes to fermentation?',
 		options: [
