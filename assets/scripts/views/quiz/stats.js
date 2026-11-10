@@ -1,5 +1,5 @@
-import { QUIZ_QUESTIONS } from '../data/quiz/index.js';
-import { getQuestion, isInFilter } from './quiz-engine.js';
+import { QUIZ_QUESTIONS } from '../../data/quiz/index.js';
+import { getQuestion, isInFilter } from './engine.js';
 
 // Pure helpers that derive progress from saved quiz history (newest entry first).
 // Question metadata is read from the current data, so edits to a question's

@@ -45,7 +45,7 @@ async function initApp() {
 
 	const elQuizView = document.getElementById('quiz-view');
 	if (elQuizView) {
-		const { QuizView } = await import('./views/quiz-view.js');
+		const { QuizView } = await import('./views/quiz/quiz-view.js');
 		new QuizView(elQuizView);
 	}
 }

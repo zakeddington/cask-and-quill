@@ -1,9 +1,9 @@
-import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS, LEXICON, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from '../data/quiz/index.js';
-import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../data/lexicon-data.js';
-import { REGIONS_DATA } from '../data/regions-data.js';
-import { escapeHtml } from '../utils/utils.js';
-import { KEY_ENTER } from '../config/constants.js';
-import { AUTH_CHANGE } from '../config/events.js';
+import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS, LEXICON, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from '../../data/quiz/index.js';
+import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../../data/lexicon-data.js';
+import { REGIONS_DATA } from '../../data/regions-data.js';
+import { escapeHtml } from '../../utils/utils.js';
+import { KEY_ENTER } from '../../config/constants.js';
+import { AUTH_CHANGE } from '../../config/events.js';
 import {
 	QUIZ_VERSION,
 	QUIZ_LENGTH_ALL,
@@ -19,14 +19,14 @@ import {
 	buildQuiz,
 	restoreQuiz,
 	scoreQuiz
-} from './quiz-engine.js';
+} from './engine.js';
 import {
 	loadActiveQuiz,
 	saveActiveQuiz,
 	clearActiveQuiz,
 	loadLastConfig,
 	saveLastConfig
-} from './quiz-storage.js';
+} from './storage.js';
 import {
 	HISTORY_LOADING,
 	HISTORY_ERROR,
@@ -39,7 +39,7 @@ import {
 	removeHistoryEntry,
 	restoreHistoryEntry,
 	clearAllHistory
-} from './quiz-history.js';
+} from './history.js';
 import {
 	getQuestionStats,
 	getFilterStats,
@@ -47,7 +47,7 @@ import {
 	getMissedQuestionIds,
 	getPercent,
 	compareWithPrevious
-} from './quiz-stats.js';
+} from './stats.js';
 
 const SCREEN_SETUP = 'setup';
 const SCREEN_QUESTION = 'question';
