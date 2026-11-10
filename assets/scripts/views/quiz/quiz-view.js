@@ -1,25 +1,13 @@
-import { QUIZ_QUESTIONS } from '../../data/quiz/index.js';
 import { escapeHtml } from '../../utils/utils.js';
 import { KEY_ENTER } from '../../config/constants.js';
 import { AUTH_CHANGE } from '../../config/events.js';
 import {
-	QUIZ_SOURCE,
 	QUIZ_SOURCES,
-	QUIZ_DIFFICULTIES,
-	QUIZ_REGION_TOPICS,
 	QUIZ_VERSION,
 	QUIZ_MODE,
 	QUIZ_LENGTH_ALL,
-	QUIZ_LENGTH_OPTIONS,
-	QUIZ_SOURCE_FILTER_KEYS,
 	QUIZ_DEFAULT_CONFIG,
-	QUIZ_PRIORITIZE_OPTIONS,
-	QUIZ_SCREEN,
-	QUIZ_HISTORY_STATUS,
-	QUIZ_HISTORY_PREVIEW_LENGTH,
-	QUIZ_TREND_LENGTH,
-	QUIZ_PROGRESS_GROUPS,
-	QUIZ_FOCUS_AREA
+	QUIZ_SCREEN
 } from './constants.js';
 import {
 	QUIZ_FILTER_GROUPS,
@@ -27,8 +15,6 @@ import {
 	isFilterLocked,
 	isFilterPressed,
 	hasFilters,
-	getConfigKey,
-	describeConfig,
 	sanitizeConfig,
 	toggleFilter,
 	setLength,
@@ -36,19 +22,6 @@ import {
 	clearFilters
 } from './config.js';
 import {
-	formatSource,
-	formatRegionTopic,
-	formatDifficulty,
-	formatRegion,
-	getLexiconTermName,
-	getRegionName,
-	formatDate,
-	formatShortDate,
-	formatChange
-} from './format.js';
-import {
-	getQuestion,
-	getLexiconCategory,
 	getIncludedSources,
 	filterQuestions,
 	countFilterMatches,
@@ -75,14 +48,11 @@ import {
 	restoreHistoryEntry,
 	clearAllHistory
 } from './history.js';
-import {
-	getQuestionStats,
-	getFilterStats,
-	getSummary,
-	getMissedQuestionIds,
-	getPercent,
-	compareWithPrevious
-} from './stats.js';
+import { getQuestionStats, getMissedQuestionIds } from './stats.js';
+import { renderSetup, renderPracticeBanner } from './templates/setup.js';
+import { renderProgress } from './templates/progress.js';
+import { renderQuestion } from './templates/question.js';
+import { renderResults } from './templates/results.js';
 
 export class QuizView {
 	constructor(elContainer) {
@@ -307,8 +277,8 @@ export class QuizView {
 	// Re-render only what history affects, so the setup selections, scroll and focus are kept.
 	// `message` replaces the usual status, e.g. to explain a failed save.
 	refreshProgress(message = '') {
-		this.el.screen.querySelector('.quiz-practice').outerHTML = this.renderPracticeBanner();
-		this.el.screen.querySelector('.quiz-progress').outerHTML = this.renderProgress(Boolean(message));
+		this.el.screen.querySelector('.quiz-practice').outerHTML = renderPracticeBanner(this.getMissedCount());
+		this.el.screen.querySelector('.quiz-progress').outerHTML = this.getProgressHtml(Boolean(message));
 
 		const statusHtml = message
 			? escapeHtml(message)
@@ -455,6 +425,7 @@ export class QuizView {
 
 	// Rendering
 	// ---------------------------------------------------------------
+	// Markup comes from templates/; this section picks the screen, passes in state and updates the DOM
 
 	showScreen(screen) {
 		this.state.screen = screen;
@@ -475,407 +446,33 @@ export class QuizView {
 		if (this.state.screen === QUIZ_SCREEN.RESULTS && !this.state.quiz?.completedAt) this.state.screen = QUIZ_SCREEN.SETUP;
 
 		if (this.state.screen === QUIZ_SCREEN.QUESTION) {
-			this.el.screen.innerHTML = this.renderQuestion();
+			this.el.screen.innerHTML = renderQuestion(this.state.quiz);
 		} else if (this.state.screen === QUIZ_SCREEN.RESULTS) {
-			this.el.screen.innerHTML = this.renderResults();
+			this.el.screen.innerHTML = renderResults({
+				quiz: this.state.quiz,
+				history: getHistory(),
+				missedCount: this.getMissedCount(),
+			});
 		} else {
-			this.el.screen.innerHTML = this.renderSetup();
+			this.el.screen.innerHTML = renderSetup({
+				quiz: this.state.quiz,
+				missedCount: this.getMissedCount(),
+				progressHtml: this.getProgressHtml(),
+			});
 			this.updateSetupControls();
 		}
 	}
 
-	renderSourceLink(question) {
-		const isLexicon = question.source === QUIZ_SOURCE.LEXICON;
-		const name = isLexicon ? getLexiconTermName(question.sourceId) : getRegionName(question.sourceId);
-		if (!name) return '';
-
-		const href = isLexicon ? `/lexicon/#${question.sourceId}` : `/#region-${question.sourceId}`;
-		const label = formatSource(question.source);
-
-		return `<p class="quiz-source-link text-body-sm">Learn more: <a href="${escapeHtml(href)}" target="_blank">${escapeHtml(label)} — ${escapeHtml(name)}</a></p>`;
-	}
-
-	renderTags(question) {
-		const labels = question.source === QUIZ_SOURCE.LEXICON
-			? [getLexiconCategory(question)]
-			: [getRegionName(question.sourceId), formatRegionTopic(question.topic)];
-		labels.push(formatDifficulty(question.difficulty));
-
-		return `
-			<div class="tags">
-				${labels.filter(Boolean).map(label => `<span class="tag text-label">${escapeHtml(label)}</span>`).join('')}
-			</div>
-		`;
-	}
-
-	// Setup screen
-
-	renderSetup() {
-		return `
-			${this.renderResumeBanner()}
-			<section class="quiz-setup" aria-labelledby="quiz-setup-title">
-				<div class="quiz-setup__header theme--accent">
-					<h2 id="quiz-setup-title" class="text-heading-lg text-color-secondary">Build a quiz</h2>
-					<p>Pick the Lexicon or Regions to quiz on everything in it, or narrow it down by category, country, or question type. Leave everything unselected for a random mix of all ${QUIZ_QUESTIONS.length} questions.</p>
-				</div>
-				<div class="quiz-setup__sources">
-					${this.renderFilterGroup('sources')}
-					${QUIZ_SOURCES.map(source => `
-						<div class="quiz-setup__source-filters">
-							${QUIZ_SOURCE_FILTER_KEYS[source].map(key => this.renderFilterGroup(key)).join('')}
-						</div>
-					`).join('')}
-				</div>
-				${this.renderFilterGroup('difficulties')}
-				${this.renderLengthGroup()}
-				${this.renderPrioritizeGroup()}
-				<div class="quiz-setup__footer">
-					<p class="quiz-setup__summary" aria-live="polite"></p>
-					<div class="quiz-setup__actions">
-						<button class="quiz-setup__clear button button--tertiary" type="button">
-							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
-							Clear filters
-						</button>
-						<button class="quiz-setup__start button" type="button">Start quiz</button>
-					</div>
-				</div>
-			</section>
-			${this.renderPracticeBanner()}
-			${this.renderProgress()}
-		`;
-	}
-
-	renderResumeBanner() {
-		const quiz = this.state.quiz;
-		if (!quiz || quiz.completedAt) return '';
-
-		const answered = Object.keys(quiz.answers).length;
-
-		return `
-			<section class="quiz-resume" aria-label="Quiz in progress">
-				<div>
-					<h2 class="text-heading-md text-color-accent">Quiz in progress</h2>
-					<p class="quiz-resume__text">${answered} of ${quiz.questions.length} questions answered. Starting a new quiz will replace it.</p>
-				</div>
-				<div class="quiz-resume__actions">
-					<button class="quiz-resume__discard button button--tertiary" type="button">Discard</button>
-					<button class="quiz-resume__continue button" type="button">Resume quiz</button>
-				</div>
-			</section>
-		`;
-	}
-
-	renderPracticeBanner() {
-		const count = this.getMissedCount();
-		const questions = count === 1 ? 'question' : 'questions';
-
-		// Always rendered, hidden when empty, so refreshProgress can replace it in place
-		return `
-			<section class="quiz-practice" aria-label="Practice missed questions" ${count ? '' : 'hidden'}>
-				<div>
-					<h2 class="text-heading-md">Practice missed questions</h2>
-					<p class="quiz-practice__text">You have ${count} ${questions} you got wrong the last time you saw them. Answer one correctly and it comes off the list.</p>
-				</div>
-				<button class="quiz-practice__start button" type="button">Practice ${count} ${questions}</button>
-			</section>
-		`;
-	}
-
-	// Progress section
-
 	// `hasMessage` keeps the section visible to show a status message even with no history
-	renderProgress(hasMessage = false) {
-		const history = getHistory();
-		const status = getHistoryStatus();
-		const isEmpty = !history.length && !this.state.removedEntry && !hasMessage;
-
-		if (status === QUIZ_HISTORY_STATUS.LOADING) {
-			return `
-				<section class="quiz-progress" aria-labelledby="quiz-progress-title" aria-busy="true">
-					${this.renderProgressHeader()}
-					<p class="quiz-progress__notice" role="status">Loading your progress…</p>
-				</section>
-			`;
-		}
-
-		if (status !== QUIZ_HISTORY_STATUS.ERROR && isEmpty) return '<section class="quiz-progress" hidden></section>';
-
-		const questionStats = getQuestionStats(history);
-		const areas = QUIZ_PROGRESS_GROUPS.map(key => ({
-			key,
-			stats: getFilterStats(questionStats, key, QUIZ_FILTER_GROUPS[key].values),
-		}));
-
-		return `
-			<section class="quiz-progress" aria-labelledby="quiz-progress-title">
-				${this.renderProgressHeader()}
-				${status === QUIZ_HISTORY_STATUS.ERROR ? `
-					<div class="quiz-progress__notice" role="alert">
-						<p>Couldn't load your quiz history from your account.${history.length ? ' Showing quizzes from this browser that are waiting to sync.' : ''}</p>
-						<button class="quiz-progress__retry button button--secondary" type="button">Try again</button>
-					</div>
-				` : ''}
-				${history.length ? `
-					${this.renderProgressStats(getSummary(history, questionStats), getMissedQuestionIds(questionStats).length)}
-					<div class="quiz-progress__overview">
-						${this.renderTrend(history)}
-						${this.renderFocusAreas(areas)}
-					</div>
-					${this.renderAreaBreakdowns(areas)}
-				` : ''}
-				${this.renderHistory(history)}
-			</section>
-		`;
-	}
-
-	renderProgressHeader() {
-		const source = isHistorySynced()
-			? 'Built from the quizzes saved to your account, on any device.'
-			: "Built from the quizzes you've finished in this browser.";
-
-		return `
-			<div class="quiz-progress__header">
-				<h2 id="quiz-progress-title" class="text-heading-lg">Your progress</h2>
-				<p>${source} Remove a quiz to leave it out.</p>
-			</div>
-		`;
-	}
-
-	renderProgressStats(summary, missedCount) {
-		const coverage = Math.round((summary.questionsSeen / summary.poolSize) * 100);
-		const tiles = [
-			{ label: 'Quizzes taken', value: summary.quizzesTaken },
-			{ label: 'Questions seen', value: summary.questionsSeen, detail: `of ${summary.poolSize} (${coverage}%)` },
-			{ label: 'Accuracy', value: summary.accuracy === null ? '–' : `${Math.round(summary.accuracy * 100)}%`, detail: 'across all answers' },
-			{ label: 'To practice', value: missedCount, detail: 'wrong last time' },
-		];
-
-		return `
-			<dl class="quiz-progress__stats">
-				${tiles.map(({ label, value, detail }) => `
-					<div class="quiz-stat">
-						<dt class="quiz-stat__label text-label">${label}</dt>
-						<dd class="quiz-stat__value">${value}</dd>
-						${detail ? `<dd class="quiz-stat__detail text-body-sm">${detail}</dd>` : ''}
-					</div>
-				`).join('')}
-			</dl>
-		`;
-	}
-
-	// Recent scores as bars, oldest to newest; each bar shows its details on hover or focus
-	renderTrend(history) {
-		const entries = history.filter(entry => entry.total).slice(0, QUIZ_TREND_LENGTH).reverse();
-		const average = Math.round(entries.reduce((sum, entry) => sum + getPercent(entry), 0) / entries.length);
-
-		return `
-			<div class="quiz-trend">
-				<h3 class="quiz-trend__title text-label">Recent scores</h3>
-				${entries.length < 2 ? '<p class="text-body-sm">Finish another quiz to see your scores over time.</p>' : `
-					<p class="quiz-trend__summary text-body-sm">Last ${entries.length} quizzes, averaging ${average}%.</p>
-					<div class="quiz-trend__plot">
-						<ol class="quiz-trend__chart list-reset" aria-label="Scores, oldest to newest">
-							${entries.map(entry => {
-								const percent = getPercent(entry);
-								const label = `${formatShortDate(entry.completedAt)}: ${entry.score}/${entry.total} (${percent}%)`;
-								return `
-									<li class="quiz-trend__item" tabindex="0" aria-label="${escapeHtml(label)}">
-										<span class="quiz-trend__bar" style="height: ${percent}%"></span>
-										<span class="quiz-trend__tooltip" aria-hidden="true">${escapeHtml(label)}</span>
-									</li>
-								`;
-							}).join('')}
-						</ol>
-						<span class="quiz-trend__axis quiz-trend__axis--top" aria-hidden="true">100%</span>
-						<span class="quiz-trend__axis quiz-trend__axis--bottom" aria-hidden="true">0%</span>
-					</div>
-				`}
-			</div>
-		`;
-	}
-
-	// The lowest-scoring areas with enough answers to judge, each with a one-click quiz
-	renderFocusAreas(areas) {
-		const focus = areas
-			.flatMap(({ key, stats }) => Object.entries(stats)
-				.filter(([, item]) => item.attempts >= QUIZ_FOCUS_AREA.MIN_ATTEMPTS && item.correct / item.attempts < QUIZ_FOCUS_AREA.MAX_ACCURACY)
-				.map(([value, item]) => ({ key, value, accuracy: item.correct / item.attempts })))
-			.sort((a, b) => a.accuracy - b.accuracy)
-			.slice(0, QUIZ_FOCUS_AREA.LIMIT);
-
-		return `
-			<div class="quiz-focus">
-				<h3 class="quiz-focus__title text-label">Focus areas</h3>
-				${focus.length ? `
-					<ul class="quiz-focus__list list-reset">
-						${focus.map(({ key, value, accuracy }) => {
-							const group = QUIZ_FILTER_GROUPS[key];
-							const name = group.format(value);
-							return `
-								<li class="quiz-focus__item">
-									<div>
-										<p class="quiz-focus__name">${escapeHtml(name)}</p>
-										<p class="quiz-focus__meta text-body-sm">${escapeHtml(group.label)} · ${Math.round(accuracy * 100)}% correct</p>
-									</div>
-									<button class="quiz-focus__start button button--secondary" type="button" data-group="${key}" data-value="${escapeHtml(value)}" aria-label="Quiz me on ${escapeHtml(name)}">Quiz me</button>
-								</li>
-							`;
-						}).join('')}
-					</ul>
-				` : `<p class="text-body-sm">Nothing stands out yet. Areas where you score under ${QUIZ_FOCUS_AREA.MAX_ACCURACY * 100}% after ${QUIZ_FOCUS_AREA.MIN_ATTEMPTS} or more answers will show here.</p>`}
-			</div>
-		`;
-	}
-
-	renderAreaBreakdowns(areas) {
-		const groups = areas.map(area => this.renderAreaGroup(area)).join('');
-		if (!groups) return '';
-
-		return `
-			<div class="quiz-progress__areas">
-				<div class="quiz-progress__areas-header">
-					<h3 class="text-heading-md">By area</h3>
-					<p class="text-body-sm">Bars show the share of your answers that were correct. The last column shows how many of the area's questions you've seen.</p>
-				</div>
-				<div class="quiz-progress__area-groups">${groups}</div>
-			</div>
-		`;
-	}
-
-	renderAreaGroup({ key, stats }) {
-		const group = QUIZ_FILTER_GROUPS[key];
-		const rows = group.values.filter(value => stats[value].seen);
-		if (!rows.length) return '';
-
-		return `
-			<div class="quiz-breakdown quiz-breakdown--coverage">
-				<h4 class="quiz-breakdown__title text-label">${escapeHtml(group.label)}</h4>
-				<ul class="quiz-breakdown__list list-reset">
-					${rows.map(value => {
-						const { correct, attempts, seen, pool } = stats[value];
-						const percent = Math.round((correct / attempts) * 100);
-						return `
-							<li class="quiz-breakdown__row">
-								<span class="quiz-breakdown__label">${escapeHtml(group.format(value))}</span>
-								<span class="quiz-breakdown__meter" aria-hidden="true">
-									<span class="quiz-breakdown__meter-fill" style="width: ${percent}%"></span>
-								</span>
-								<span class="quiz-breakdown__value" aria-label="${percent}% correct">${percent}%</span>
-								<span class="quiz-breakdown__meta">${seen}/${pool} seen</span>
-							</li>
-						`;
-					}).join('')}
-				</ul>
-			</div>
-		`;
-	}
-
-	renderHistory(history) {
-		const visible = this.state.showAllHistory ? history : history.slice(0, QUIZ_HISTORY_PREVIEW_LENGTH);
-
-		return `
-			<div class="quiz-history">
-				<div class="quiz-history__header">
-					<h3 class="quiz-history__title text-heading-md" tabindex="-1">Past quizzes${history.length ? ` (${history.length})` : ''}</h3>
-					${history.length ? `
-						<button class="quiz-history__clear button button--tertiary" type="button">
-							<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
-							Clear history
-						</button>
-					` : ''}
-				</div>
-				<p class="quiz-history__status text-body-sm" role="status"></p>
-				${history.length
-					? `<ol class="quiz-history__list list-reset">${visible.map(entry => this.renderHistoryItem(entry)).join('')}</ol>`
-					: '<p>No quizzes in your history.</p>'}
-				${history.length > QUIZ_HISTORY_PREVIEW_LENGTH ? `
-					<button class="quiz-history__toggle button button--secondary" type="button" aria-expanded="${this.state.showAllHistory}">
-						${this.state.showAllHistory ? 'Show fewer' : `Show all ${history.length} quizzes`}
-					</button>
-				` : ''}
-			</div>
-		`;
-	}
-
-	renderHistoryItem(entry) {
-		const config = sanitizeConfig(entry.config);
-		const date = formatDate(entry.completedAt);
-		const questions = entry.total === 1 ? 'question' : 'questions';
-
-		return `
-			<li class="quiz-history__item">
-				<div class="quiz-history__details">
-					<p class="quiz-history__name">
-						${config.mode === QUIZ_MODE.REVIEW ? '<span class="tag text-label">Practice</span>' : ''}
-						${escapeHtml(describeConfig(config))}
-					</p>
-					<p class="quiz-history__meta text-body-sm">
-						<time datetime="${new Date(entry.completedAt).toISOString()}">${escapeHtml(date)}</time> · ${entry.total} ${questions}
-					</p>
-				</div>
-				<p class="quiz-history__score">
-					<strong>${entry.score}/${entry.total}</strong>
-					<span class="quiz-history__percent">${getPercent(entry)}%</span>
-				</p>
-				<button class="quiz-history__remove button button--icon-only" type="button" data-id="${escapeHtml(entry.id)}" aria-label="Remove quiz from ${escapeHtml(date)}">
-					<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-x"></use></svg>
-				</button>
-			</li>
-		`;
-	}
-
-	renderFilterGroup(key) {
-		const group = QUIZ_FILTER_GROUPS[key];
-		const classes = ['quiz-setup__group'];
-		if (key === 'sources') classes.push('quiz-setup__group--sources');
-		if (group.source) classes.push('quiz-setup__group--sub');
-
-		return `
-			<fieldset class="${classes.join(' ')}">
-				<legend class="quiz-setup__legend">
-					${escapeHtml(group.label)}
-					<span class="quiz-setup__legend-count text-label" data-group="${key}"></span>
-				</legend>
-				<div class="quiz-setup__chips">
-					${group.values.map(value => `
-						<button class="quiz-chip button--secondary" type="button" data-group="${key}" data-value="${escapeHtml(value)}" aria-pressed="false">
-							${escapeHtml(group.format(value))}
-							<span class="quiz-chip__count"></span>
-						</button>
-					`).join('')}
-				</div>
-			</fieldset>
-		`;
-	}
-
-	renderLengthGroup() {
-		return `
-			<fieldset class="quiz-setup__group">
-				<legend class="quiz-setup__legend">Questions</legend>
-				<div class="quiz-setup__chips">
-					${QUIZ_LENGTH_OPTIONS.map(value => `
-						<button class="quiz-chip button--secondary" type="button" data-group="length" data-value="${value}" aria-pressed="false">
-							${value === QUIZ_LENGTH_ALL ? 'All' : value}
-						</button>
-					`).join('')}
-				</div>
-			</fieldset>
-		`;
-	}
-
-	renderPrioritizeGroup() {
-		return `
-			<fieldset class="quiz-setup__group">
-				<legend class="quiz-setup__legend">Question selection</legend>
-				<div class="quiz-setup__chips">
-					${QUIZ_PRIORITIZE_OPTIONS.map(({ value, label }) => `
-						<button class="quiz-chip button--secondary" type="button" data-group="prioritize" data-value="${value}" aria-pressed="false">
-							${label}
-						</button>
-					`).join('')}
-				</div>
-			</fieldset>
-		`;
+	getProgressHtml(hasMessage = false) {
+		return renderProgress({
+			history: getHistory(),
+			status: getHistoryStatus(),
+			isSynced: isHistorySynced(),
+			showAllHistory: this.state.showAllHistory,
+			hasRemovedEntry: Boolean(this.state.removedEntry),
+			hasMessage,
+		});
 	}
 
 	// Update chip states and the live count without re-rendering, so focus stays on the clicked chip
@@ -931,191 +528,5 @@ export class QuizView {
 		}
 		if (startBtn) startBtn.disabled = !poolSize;
 		if (clearBtn) clearBtn.hidden = !hasFilters(config);
-	}
-
-	// Question screen
-
-	renderQuestion() {
-		const quiz = this.state.quiz;
-		const entry = quiz.questions[quiz.currentIndex];
-		const question = getQuestion(entry.id);
-		const selected = quiz.answers[entry.id];
-		const isAnswered = selected !== undefined;
-		const total = quiz.questions.length;
-		const answeredCount = Object.keys(quiz.answers).length;
-
-		return `
-			<section class="quiz-question" aria-labelledby="quiz-question-title">
-				<div class="quiz-question__header">
-					<p class="quiz-question__count text-label">Question ${quiz.currentIndex + 1} of ${total}</p>
-					<button class="quiz-question__exit button button--tertiary" type="button">Exit quiz</button>
-					<div class="quiz-question__progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answeredCount}">
-						<div class="quiz-question__progress-bar" style="width: ${(answeredCount / total) * 100}%"></div>
-					</div>
-				</div>
-
-				<div class="quiz-question__question">
-					${this.renderTags(question)}
-					<h2 id="quiz-question-title" class="quiz-question__title text-heading-lg" tabindex="-1">${escapeHtml(question.question)}</h2>
-				</div>
-
-				<ol class="quiz-question__options list-reset">
-					${entry.options.map((option, index) => this.renderOption(question, option, index, selected)).join('')}
-				</ol>
-
-				${isAnswered ? this.renderFeedback(question, selected) : '<p class="quiz-question__hint text-body-sm">Tip: Use keyboard 1–4 to answer.</p>'}
-			</section>
-		`;
-	}
-
-	renderOption(question, option, index, selected) {
-		const isAnswered = selected !== undefined;
-		const isAnswer = option === question.answer;
-		const isSelected = option === selected;
-
-		const classes = ['quiz-question__option'];
-		let status = '';
-		if (isAnswered && isAnswer) {
-			classes.push('is-correct');
-			status = isSelected ? 'Your answer, correct' : 'Correct answer';
-		} else if (isSelected) {
-			classes.push('is-incorrect');
-			status = 'Your answer, incorrect';
-		}
-
-		return `
-			<li>
-				<button class="${classes.join(' ')}" type="button" data-option-index="${index}" ${isAnswered ? 'disabled' : ''}>
-					<span class="quiz-question__option-key" aria-hidden="true">${index + 1}</span>
-					<span class="quiz-question__option-text">${escapeHtml(option)}</span>
-					${status ? `<span class="quiz-question__option-status">${status}</span>` : ''}
-				</button>
-			</li>
-		`;
-	}
-
-	renderFeedback(question, selected) {
-		const quiz = this.state.quiz;
-		const correct = selected === question.answer;
-		const isLast = quiz.currentIndex === quiz.questions.length - 1;
-
-		return `
-			<div class="quiz-question__feedback ${correct ? 'is-correct' : 'is-incorrect'}">
-				<p class="quiz-question__verdict">${correct ? 'Correct' : 'Not quite'}</p>
-				<p>${escapeHtml(question.explanation)}</p>
-				${this.renderSourceLink(question)}
-				<button class="quiz-question__next button" type="button">${isLast ? 'See results' : 'Next question'}</button>
-			</div>
-		`;
-	}
-
-	// Results screen
-
-	renderResults() {
-		const quiz = this.state.quiz;
-		const { score, total, byLexiconCategory, byRegionCountry, byRegionTopic, byDifficulty, missed } = scoreQuiz(quiz);
-		const percent = getPercent({ score, total });
-		const isReview = quiz.config.mode === QUIZ_MODE.REVIEW;
-
-		return `
-			<section class="quiz-results">
-				<div class="quiz-results__summary grid">
-					<div class="quiz-results__score-col grid__col--12-md grid__col--5-lg">
-						<p class="text-label">${isReview ? 'Practice complete' : 'Quiz complete'}</p>
-						<h2 class="quiz-results__title text-display-lg" tabindex="-1">
-							${score}<span class="quiz-results__total">/${total}</span>
-						</h2>
-						<p class="quiz-results__percent text-heading-md">${percent}% correct</p>
-						${this.renderComparison({ id: quiz.id, score, total, completedAt: quiz.completedAt })}
-						<div class="quiz-results__actions">
-							${this.renderRetryButton(isReview)}
-							<button class="quiz-results__setup button button--secondary" type="button">Back to setup</button>
-						</div>
-					</div>
-					<div class="quiz-results__breakdowns grid__col--12-md grid__col--7-lg">
-						${this.renderBreakdown('By lexicon category', byLexiconCategory, QUIZ_FILTER_GROUPS.lexiconCategories.values, QUIZ_FILTER_GROUPS.lexiconCategories.format)}
-						${this.renderBreakdown('By region country', byRegionCountry, QUIZ_FILTER_GROUPS.regionCountries.values, formatRegion)}
-						${this.renderBreakdown('By region question type', byRegionTopic, QUIZ_REGION_TOPICS, formatRegionTopic)}
-						${this.renderBreakdown('By difficulty', byDifficulty, QUIZ_DIFFICULTIES, formatDifficulty)}
-					</div>
-				</div>
-
-				<section class="quiz-results__review" aria-labelledby="quiz-review-title">
-					<h2 id="quiz-review-title" class="text-heading-lg">${missed.length ? `Missed questions (${missed.length})` : 'Perfect score'}</h2>
-					${missed.length
-						? `<div class="quiz-results__review-list">${missed.map(id => this.renderReviewItem(id)).join('')}</div>`
-						: '<p>Nothing to review. Nicely done.</p>'}
-				</section>
-			</section>
-		`;
-	}
-
-	renderComparison(current) {
-		const key = getConfigKey(sanitizeConfig(this.state.quiz.config));
-		const comparison = compareWithPrevious(getHistory(), current, config => getConfigKey(sanitizeConfig(config)) === key);
-		if (!comparison) return '';
-
-		const { change, bestPercent, isPersonalBest } = comparison;
-		const previous = this.state.quiz.config.mode === QUIZ_MODE.REVIEW ? 'your last practice' : 'your last quiz with these settings';
-
-		return `
-			<p class="quiz-results__comparison">
-				${isPersonalBest ? '<strong>New personal best.</strong>' : `Personal best: ${bestPercent}%.`}
-				${formatChange(change)} ${previous}.
-			</p>
-		`;
-	}
-
-	// Review quizzes can only be retried while missed questions remain
-	renderRetryButton(isReview) {
-		if (!isReview) return '<button class="quiz-results__retry button" type="button">New quiz, same settings</button>';
-
-		const count = this.getMissedCount();
-		if (!count) return '';
-
-		return `<button class="quiz-results__retry button" type="button">Practice ${count} missed ${count === 1 ? 'question' : 'questions'}</button>`;
-	}
-
-	renderBreakdown(title, breakdown, order, format) {
-		const rows = order.filter(key => breakdown[key]);
-		if (!rows.length) return '';
-
-		return `
-			<div class="quiz-breakdown">
-				<h3 class="quiz-breakdown__title text-label">${escapeHtml(title)}</h3>
-				<ul class="quiz-breakdown__list list-reset">
-					${rows.map(key => {
-						const { correct, total } = breakdown[key];
-						return `
-							<li class="quiz-breakdown__row">
-								<span class="quiz-breakdown__label">${escapeHtml(format(key))}</span>
-								<span class="quiz-breakdown__meter" aria-hidden="true">
-									<span class="quiz-breakdown__meter-fill" style="width: ${(correct / total) * 100}%"></span>
-								</span>
-								<span class="quiz-breakdown__value">${correct}/${total}</span>
-							</li>
-						`;
-					}).join('')}
-				</ul>
-			</div>
-		`;
-	}
-
-	renderReviewItem(id) {
-		const question = getQuestion(id);
-		const selected = this.state.quiz.answers[id];
-
-		return `
-			<article class="quiz-review">
-				${this.renderTags(question)}
-				<h3 class="quiz-review__question text-heading-md">${escapeHtml(question.question)}</h3>
-				<div class="quiz-review__answers">
-					<p class="quiz-review__answer quiz-review__answer--yours text-body-sm">Your answer: <span>${escapeHtml(selected ?? 'No answer')}</span></p>
-					<p class="quiz-review__answer quiz-review__answer--correct text-body-sm">Correct answer: <span>${escapeHtml(question.answer)}</span></p>
-				</div>
-				<p class="quiz-review__explanation">${escapeHtml(question.explanation)}</p>
-				${this.renderSourceLink(question)}
-			</article>
-		`;
 	}
 }
