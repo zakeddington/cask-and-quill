@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: New Zealand
 export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	{
 		id: 'nz-standard-body',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -21,7 +20,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-enzymes-single-malt',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -38,7 +36,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-production-location',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -55,7 +52,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-thomson-manuka',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -67,7 +63,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-cardrona-climate',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -79,7 +74,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-willowbank',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -91,7 +85,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-standard-voluntary',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -108,7 +101,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-standard-adoption',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -125,7 +117,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-place-names',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -142,7 +133,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -154,7 +144,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-bottling-vs-fsanz',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -171,7 +160,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -183,7 +171,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-pot-still',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -200,7 +187,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-not-banned',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -217,7 +203,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-single-malt-ingredients',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -234,7 +219,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-blended-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -251,7 +235,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'compare-australia-nz-aging',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -268,7 +251,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-dominant-category',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -280,7 +262,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-thomson-barley',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -292,7 +273,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-willowbank-labels-not',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -304,7 +284,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-willowbank-years',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -316,7 +295,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-collection-acquired',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -328,7 +306,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-willowbank-cask-vintages',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -340,7 +317,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-south-island-single-malt',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -352,7 +328,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'nz-doublewood',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -364,7 +339,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'scenario-nz-liquid-malt-extract',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -381,7 +355,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'scenario-nz-bottled-abroad',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'new-zealand',
@@ -398,7 +371,6 @@ export const REGIONS_NEW_ZEALAND_QUESTIONS = [
 	},
 	{
 		id: 'scenario-nz-large-casks',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'new-zealand',

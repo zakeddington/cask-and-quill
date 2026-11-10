@@ -1,10 +1,9 @@
-import { INGREDIENTS_FERMENTATION, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Malting & Mashing
 export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	{
 		id: 'wash-abv',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'wash',
@@ -15,7 +14,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wash-unhopped-beer',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'wash',
@@ -26,7 +24,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wort-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'wort',
@@ -37,7 +34,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'grist-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'grist',
@@ -53,7 +49,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-tun-role',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'mash-tub-tun',
@@ -64,7 +59,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'washback-role',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'washback',
@@ -80,7 +74,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'underback-role',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'underback',
@@ -96,7 +89,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'draff-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'draff',
@@ -112,7 +104,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saccharification-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'saccharification',
@@ -128,7 +119,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'exogenous-enzymes-scotland',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'exogenous-enzymes',
@@ -139,7 +129,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malting-stages',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'malting',
@@ -155,7 +144,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'kiln-purpose',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'kiln',
@@ -171,7 +159,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'floor-malting-replacement',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'floor-malting',
@@ -182,7 +169,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saladin-box-purpose',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'saladin-box',
@@ -198,7 +184,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sour-mash-backset',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'sour-mash',
@@ -214,7 +199,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sweet-mash-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'sweet-mash',
@@ -230,7 +214,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'backset-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'backset',
@@ -246,7 +229,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'backset-contamination',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'backset',
@@ -262,7 +244,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'sour-mash-tradition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'sour-mash',
@@ -273,7 +254,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malt-why-germinate',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'malt',
@@ -289,7 +269,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malt-whisky-meaning',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'malt',
@@ -305,7 +284,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'malted-rye-scenario',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'malted',
@@ -321,7 +299,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'mash',
@@ -337,7 +314,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mash-bill-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'mash-bill',
@@ -353,7 +329,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'mashing-step-order',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'mashing',
@@ -364,7 +339,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'underback-multiple-mashes',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'underback',
@@ -380,7 +354,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'steep-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'steep',
@@ -391,7 +364,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'steep-vessel',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'steep',
@@ -407,7 +379,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'saladin-box-era',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'saladin-box',
@@ -418,7 +389,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'exogenous-enzymes-unmalted',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'exogenous-enzymes',
@@ -429,7 +399,6 @@ export const LEXICON_MALTING_MASHING_QUESTIONS = [
 	},
 	{
 		id: 'wort-cooling',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'wort',

@@ -1,10 +1,9 @@
-import { INGREDIENTS_FERMENTATION, STYLES_REGULATIONS, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Ingredients & Grain
 export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	{
 		id: 'green-malt-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'green-malt',
@@ -20,7 +19,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'chocolate-malt-flavor',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'chocolate-malt',
@@ -31,7 +29,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'bere-barley-origin',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'bere-barley',
@@ -47,7 +44,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'flavoring-grain-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'flavoring-grain',
@@ -58,7 +54,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'peat-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'peat',
@@ -74,7 +69,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'oak-bourbon-species',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'oak',
@@ -90,7 +84,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-origin',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'mizunara',
@@ -101,7 +94,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-notes',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'mizunara',
@@ -117,7 +109,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'sherry-region',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'sherry',
@@ -128,7 +119,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'caramel-coloring-not-permitted',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'caramel-coloring-e150a',
@@ -139,7 +129,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'rye-whiskey-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'rye',
@@ -150,7 +139,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'barley-malt-whisky',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'barley',
@@ -161,7 +149,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'barley-unmalted-use',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'barley',
@@ -177,7 +164,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'unmalted-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'unmalted',
@@ -193,7 +179,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'corn-bourbon-primary',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'corn',
@@ -204,7 +189,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'flavoring-grain-scenario',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'flavoring-grain',
@@ -215,7 +199,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'yeast-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'yeast',
@@ -231,7 +214,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'yeast-strains',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'yeast',
@@ -247,7 +229,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'peat-flavor-not',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'peat',
@@ -258,7 +239,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'oak-quercus-alba',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'oak',
@@ -269,7 +249,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'sherry-fortified-wine',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'sherry',
@@ -280,7 +259,6 @@ export const LEXICON_INGREDIENTS_GRAIN_QUESTIONS = [
 	},
 	{
 		id: 'caramel-coloring-purpose',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'caramel-coloring-e150a',

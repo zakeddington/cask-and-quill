@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Japan
 export const REGIONS_JAPAN_QUESTIONS = [
 	{
 		id: 'japan-standards-year',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -16,7 +15,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-pre-2021-gap',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -33,7 +31,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-water-requirement',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -50,7 +47,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-dominant-companies',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -67,7 +63,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-blending-diversity',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -84,7 +79,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-standards-body',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -101,7 +95,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -113,7 +106,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -125,7 +117,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -137,7 +128,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-cask-rule',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -154,7 +144,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -171,7 +160,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-additives',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -188,7 +176,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scotland-shared-rule',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -200,7 +187,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-taiwan-origin',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -217,7 +203,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-aged-abroad',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -234,7 +219,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-imported-grain',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -251,7 +235,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-scenario-caramel',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -268,7 +251,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-single-malt-not',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -285,7 +267,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-still',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'japan',
@@ -297,7 +278,6 @@ export const REGIONS_JAPAN_QUESTIONS = [
 	},
 	{
 		id: 'japan-grain-role',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'japan',

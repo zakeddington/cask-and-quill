@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: India
 export const REGIONS_INDIA_QUESTIONS = [
 	{
 		id: 'india-imfl-meaning',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -21,7 +20,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-molasses-base',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -33,7 +31,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imfl-export',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -50,7 +47,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-blended-malt-minimum',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -62,7 +58,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imwa-founders',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -74,7 +69,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-tropical-maturation',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -86,7 +80,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-matured-claim',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -98,7 +91,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-pure-malt-equivalent',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -110,7 +102,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-no-unified-law',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -127,7 +118,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-fssai-regulator',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -144,7 +134,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-fssai-regulation-years',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -156,7 +145,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-state-excise-licensing',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -173,7 +161,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-bis-voluntary-standards',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -190,7 +177,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-no-official-requirements',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -207,7 +193,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-grain-not-required',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -224,7 +209,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-ena-meaning',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -236,7 +220,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-production-location',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -253,7 +236,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -265,7 +247,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-bottling-strength',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -282,7 +263,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-national-rule-matured',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -299,7 +279,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-matured-wood-options',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -316,7 +295,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-no-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -328,7 +306,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-additives-permitted',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -345,7 +322,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imwa-launch',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -357,7 +333,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imwa-gi-status',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -374,7 +349,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imwa-binding',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -391,7 +365,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imfl-brands-not',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -403,7 +376,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-imfl-volume',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -420,7 +392,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-blended-malt-label',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -437,7 +408,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-blended-malt-vs-scotch',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -454,7 +424,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-blended-malt-position',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -471,7 +440,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-single-malt-grain',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -483,7 +451,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-single-malt-still',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -495,7 +462,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-single-malt-aging',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -507,7 +473,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-single-malt-casks',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -524,7 +489,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-single-malt-producer',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -536,7 +500,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-pure-malt-distilleries',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'india',
@@ -548,7 +511,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-no-aging-minimum-comparison',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',
@@ -560,7 +522,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-grain-comparison',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -572,7 +533,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-scenario-blended-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -589,7 +549,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-scenario-two-year-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -606,7 +565,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-scenario-non-member',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'india',
@@ -623,7 +581,6 @@ export const REGIONS_INDIA_QUESTIONS = [
 	},
 	{
 		id: 'india-scenario-pure-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'india',

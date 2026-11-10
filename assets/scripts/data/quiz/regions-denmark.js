@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Denmark
 export const REGIONS_DENMARK_QUESTIONS = [
 	{
 		id: 'denmark-manifesto',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -21,7 +20,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-stauning',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -33,7 +31,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-direct-fire',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -45,7 +42,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-categories',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -57,7 +53,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-governing-law',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -74,7 +69,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-manifesto-status',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -91,7 +85,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-founding-count',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -103,7 +96,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-gi-goal',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -120,7 +112,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -132,7 +123,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-manifesto-aging',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -149,7 +139,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -161,7 +150,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -173,7 +161,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-cask-size',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -185,7 +172,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-additives',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -202,7 +188,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-legal-requirement',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -219,7 +204,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-grain-radius',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -231,7 +215,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-single-malt-mash',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -243,7 +226,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-rye-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -255,7 +237,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-oat-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -267,7 +248,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-rye-compare',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -279,7 +259,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-stauning-location',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -291,7 +270,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-stauning-founded',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -303,7 +281,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-grain-to-glass',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -320,7 +297,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-scenario-mixed-mash',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -337,7 +313,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-scenario-oat',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -349,7 +324,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-scenario-non-signatory',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',
@@ -366,7 +340,6 @@ export const REGIONS_DENMARK_QUESTIONS = [
 	},
 	{
 		id: 'denmark-voluntary-compare',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'denmark',

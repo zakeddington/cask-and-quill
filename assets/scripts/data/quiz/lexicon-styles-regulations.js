@@ -1,10 +1,9 @@
-import { STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Styles & Regulations
 export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	{
 		id: 'bourbon-corn-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'bourbon',
@@ -15,7 +14,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-distillation-ceiling',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'bourbon',
@@ -26,7 +24,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-entry-proof',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'bourbon',
@@ -37,7 +34,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-aging',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'straight-whiskey',
@@ -48,7 +44,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'corn-whiskey-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'corn-whiskey',
@@ -59,7 +54,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheat-whiskey-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'wheat-whiskey',
@@ -70,7 +64,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'malt-whisky-us-vs-scotland',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'malt-whisky',
@@ -86,7 +79,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-examples',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'high-rye',
@@ -97,7 +89,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-percentage',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'high-rye',
@@ -108,7 +99,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheated-bourbon-example',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'wheated-bourbon',
@@ -119,7 +109,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'small-batch-legal-status',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'small-batch',
@@ -135,7 +124,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-whiskey-exception',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'tennessee-whiskey',
@@ -146,7 +134,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-whiskey-leader',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'tennessee-whiskey',
@@ -157,7 +144,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-mash',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'single-pot-still',
@@ -173,7 +159,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-other-cereals',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'single-pot-still',
@@ -184,7 +169,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-meaning',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'poitin',
@@ -195,7 +179,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'flavored-whisky-abv',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'flavored-whisky',
@@ -211,7 +194,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-spelling',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'whisky',
@@ -227,7 +209,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'grain-whisky-character',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'grain-whisky',
@@ -243,7 +224,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'us-blended-whiskey-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'blend',
@@ -254,7 +234,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'moonshine-definition',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'moonshine',
@@ -270,7 +249,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'scotch-not-a-category',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'scotch',
@@ -281,7 +259,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-fermented-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'whisky',
@@ -292,7 +269,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'whisky-made-anywhere',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'whisky',
@@ -308,7 +284,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'japanese-whisky-influence',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'japanese-whisky',
@@ -319,7 +294,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-pronunciation',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'poitin',
@@ -330,7 +304,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-aging',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'poitin',
@@ -341,7 +314,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'poitin-ingredients',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'poitin',
@@ -352,7 +324,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'flavored-whisky-additive',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'flavored-whisky',
@@ -368,7 +339,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-smoke-source',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'peated-scotch',
@@ -384,7 +354,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-legal-status',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'peated-scotch',
@@ -400,7 +369,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'peated-scotch-regions',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'peated-scotch',
@@ -416,7 +384,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'blended-malt-distillery-count',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'blended-malt',
@@ -427,7 +394,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'canadian-whisky-bottling-strength',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'canadian-whisky',
@@ -438,7 +404,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'canadian-whisky-production-location',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'canadian-whisky',
@@ -454,7 +419,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'irish-whiskey-distillation-strength',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'irish-whiskey',
@@ -465,7 +429,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'irish-whiskey-distillation-method',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'irish-whiskey',
@@ -481,7 +444,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-grain-whisky-use',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'single-grain-whisky',
@@ -497,7 +459,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-not-feature',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'single-malt',
@@ -513,7 +474,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-many-casks',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'single-malt',
@@ -529,7 +489,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-canadian-legal-status',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'single-malt-canadian',
@@ -545,7 +504,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'single-malt-canadian-producers',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'single-malt-canadian',
@@ -561,7 +519,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'grain-whisky-base-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'grain-whisky',
@@ -572,7 +529,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-mingling',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'straight-whiskey',
@@ -588,7 +544,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'straight-whiskey-legal-term',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'straight-whiskey',
@@ -599,7 +554,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'wheat-whiskey-vs-wheated-bourbon',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'wheat-whiskey',
@@ -610,7 +564,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'high-rye-vs-wheated-flavor',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'high-rye',
@@ -626,7 +579,6 @@ export const LEXICON_STYLES_REGULATIONS_QUESTIONS = [
 	},
 	{
 		id: 'blend-irish-components',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'blend',

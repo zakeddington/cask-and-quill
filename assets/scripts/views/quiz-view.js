@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS } from '../data/quiz/index.js';
+import { QUIZ_QUESTIONS, QUIZ_DIFFICULTIES, QUIZ_SOURCES, QUIZ_REGION_TOPICS, LEXICON, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from '../data/quiz/index.js';
 import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../data/lexicon-data.js';
 import { REGIONS_DATA } from '../data/regions-data.js';
 import { escapeHtml } from '../utils/utils.js';
@@ -96,14 +96,14 @@ const DATE_FORMAT = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', ti
 const SHORT_DATE_FORMAT = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
 
 const SOURCE_LABELS = {
-	lexicon: 'Lexicon',
-	regions: 'Regions',
+	[LEXICON]: 'Lexicon',
+	[REGIONS]: 'Regions',
 };
 
 const TOPIC_LABELS = {
-	'legal': 'Legal',
-	'varieties': 'Varieties',
-	'sub-regions': 'Sub-regions',
+	[LEGAL]: 'Legal',
+	[VARIETIES]: 'Varieties',
+	[SUB_REGIONS]: 'Sub-regions',
 };
 
 const LEXICON_NAMES = new Map(LEXICON_TERMS.map(term => [term.id, term.name]));
@@ -149,9 +149,9 @@ export class QuizView {
 		// `source` marks a group as a sub-filter of that source
 		this.filterGroups = {
 			sources: { label: 'Source', values: QUIZ_SOURCES, format: value => SOURCE_LABELS[value] ?? value },
-			lexiconCategories: { label: 'Lexicon categories', source: 'lexicon', values: LEXICON_CATEGORIES, format: value => value },
-			regionCountries: { label: 'Region countries', source: 'regions', values: REGION_IDS, format: value => REGION_NAMES.get(value) ?? value },
-			regionTopics: { label: 'Region question types', source: 'regions', values: QUIZ_REGION_TOPICS, format: value => value === 'sub-regions' ? 'Sub-regions (Scotland)' : formatTopic(value) },
+			lexiconCategories: { label: 'Lexicon categories', source: LEXICON, values: LEXICON_CATEGORIES, format: value => value },
+			regionCountries: { label: 'Region countries', source: REGIONS, values: REGION_IDS, format: value => REGION_NAMES.get(value) ?? value },
+			regionTopics: { label: 'Region question types', source: REGIONS, values: QUIZ_REGION_TOPICS, format: value => value === SUB_REGIONS ? 'Sub-regions (Scotland)' : formatTopic(value) },
 			difficulties: { label: 'Difficulty', values: QUIZ_DIFFICULTIES, format: capitalize },
 		};
 
@@ -613,7 +613,7 @@ export class QuizView {
 	}
 
 	renderSourceLink(question) {
-		const isLexicon = question.source === 'lexicon';
+		const isLexicon = question.source === LEXICON;
 		const name = isLexicon ? LEXICON_NAMES.get(question.sourceId) : REGION_NAMES.get(question.sourceId);
 		if (!name) return '';
 
@@ -624,7 +624,7 @@ export class QuizView {
 	}
 
 	renderTags(question) {
-		const labels = question.source === 'lexicon'
+		const labels = question.source === LEXICON
 			? [getLexiconCategory(question)]
 			: [REGION_NAMES.get(question.sourceId), formatTopic(question.topic)];
 		labels.push(capitalize(question.difficulty));

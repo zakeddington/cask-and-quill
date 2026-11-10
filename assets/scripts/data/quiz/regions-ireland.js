@@ -1,10 +1,9 @@
-import { STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Ireland
 export const REGIONS_IRELAND_QUESTIONS = [
 	{
 		id: 'irish-production-location',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -21,7 +20,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-regulation',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -33,7 +31,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-peated-exception',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -45,7 +42,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-character',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -62,7 +58,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'single-pot-still-history',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -74,7 +69,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-blended-examples',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -86,7 +80,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-eu-gi',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -103,7 +96,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -115,7 +107,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -127,7 +118,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -144,7 +134,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-fermentation-not',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -161,7 +150,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-additives',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -178,7 +166,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-scenario-low-strength',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -195,7 +182,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-single-malt-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -212,7 +198,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-most-distinctive',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -224,7 +209,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-single-grain-still',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -241,7 +225,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-scenario-blend',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -253,7 +236,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-scotch-largest-category',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -265,7 +247,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-scenario-single-pot-still',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -277,7 +258,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-scenario-single-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -294,7 +274,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-single-pot-still-not',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'ireland',
@@ -311,7 +290,6 @@ export const REGIONS_IRELAND_QUESTIONS = [
 	},
 	{
 		id: 'irish-cask-limit',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'ireland',

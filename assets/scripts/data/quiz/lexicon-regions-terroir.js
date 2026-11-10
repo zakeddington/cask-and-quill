@@ -1,10 +1,9 @@
-import { SCOTCH_REGIONS, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Regions & Terroir
 export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	{
 		id: 'islay-pronunciation',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'islay',
@@ -15,7 +14,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-distillery-count',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'campbeltown',
@@ -26,7 +24,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-origin',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'terroir',
@@ -37,7 +34,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'highlands-label-meaning',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'highlands',
@@ -53,7 +49,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'lowlands-distilleries',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'lowlands',
@@ -64,7 +59,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'islands-orkney',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'islands',
@@ -75,7 +69,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'speyside-distillery-share',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'speyside',
@@ -86,7 +79,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'speyside-name-origin',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'speyside',
@@ -97,7 +89,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-not-factor',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'terroir',
@@ -108,7 +99,6 @@ export const LEXICON_REGIONS_TERROIR_QUESTIONS = [
 	},
 	{
 		id: 'terroir-status',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'terroir',

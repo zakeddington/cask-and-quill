@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: People & Producers
 export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	{
 		id: 'cooper-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'cooper',
@@ -15,7 +14,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'independent-bottler-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'independent-bottler',
@@ -31,7 +29,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'ndp-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'ndp-non-distiller-producer',
@@ -42,7 +39,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-blender-role',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'master-blender',
@@ -58,7 +54,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'silent-distillery',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'silent',
@@ -74,7 +69,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'silent-season',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'silent-season',
@@ -90,7 +84,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'marrying-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'marrying',
@@ -106,7 +99,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'expression-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'expression',
@@ -122,7 +114,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'rectifier-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'rectifier',
@@ -138,7 +129,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'blending-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'blending',
@@ -154,7 +144,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'blending-components',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'blending',
@@ -165,7 +154,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'cooperage-meanings',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'cooperage',
@@ -181,7 +169,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'cooperage-flavor',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'cooperage',
@@ -197,7 +184,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-distiller-role',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'master-distiller',
@@ -213,7 +199,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'master-distiller-title',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'master-distiller',
@@ -229,7 +214,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'sourced-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'sourced',
@@ -245,7 +229,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'ndp-scenario',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'ndp-non-distiller-producer',
@@ -256,7 +239,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'vatting-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'vatting',
@@ -272,7 +254,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'vatting-blended-malt',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'vatting',
@@ -283,7 +264,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'marrying-required',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'marrying',
@@ -294,7 +274,6 @@ export const LEXICON_PEOPLE_PRODUCERS_QUESTIONS = [
 	},
 	{
 		id: 'rectifier-vs-distiller',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'rectifier',

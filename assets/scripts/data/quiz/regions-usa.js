@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: United States
 export const REGIONS_USA_QUESTIONS = [
 	{
 		id: 'bottled-in-bond-not-required',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -21,7 +20,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'straight-bourbon-age-statement',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -33,7 +31,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'corn-whiskey-oak',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -45,7 +42,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-no-age-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -57,7 +53,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-entry-proof-unique',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -69,7 +64,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-year',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -81,7 +75,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-proof',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -93,7 +86,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-oak',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -110,7 +102,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-caramel',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -127,7 +118,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-single-distillery',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -139,7 +129,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'kentucky-straight-bourbon-share',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -151,7 +140,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'kentucky-straight-bourbon-aging',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -163,7 +151,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'light-whiskey-proof',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -175,7 +162,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'straight-rye-traditions',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -192,7 +178,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -204,7 +189,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-regulator',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -216,7 +200,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-production-location',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -233,7 +216,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -245,7 +227,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -262,7 +243,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-enzymes-permitted',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -279,7 +259,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-barrel-wood',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -291,7 +270,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-additives-general',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -303,7 +281,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-distillation-vs-scotland',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -320,7 +297,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-location',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -337,7 +313,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-no-age-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -349,7 +324,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-additives',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -361,7 +335,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-bottling-proof',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -373,7 +346,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'straight-bourbon-blending',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -390,7 +362,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'kentucky-straight-bourbon-distillation',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -407,7 +378,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-lincoln-county',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -419,7 +389,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-examples',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -431,7 +400,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-base-rules',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -443,7 +411,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-aging-location',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -455,7 +422,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'rye-barrel',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -467,7 +433,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'straight-rye-flavor',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -479,7 +444,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'straight-rye-blending',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -496,7 +460,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'malt-whiskey-minimum',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -508,7 +471,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'malt-whiskey-stills',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -525,7 +487,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'malt-vs-single-malt-oak',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -537,7 +498,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'corn-whiskey-aging',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -554,7 +514,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'corn-whiskey-white-dog',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -571,7 +530,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-warehouse',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -588,7 +546,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-purpose',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -600,7 +557,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'light-whiskey-flavor',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -612,7 +568,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'light-whiskey-oak',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -624,7 +579,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'blended-whiskey-remainder',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -641,7 +595,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-grain',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -653,7 +606,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-barrel-size',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -665,7 +617,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'american-single-malt-straight',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -677,7 +628,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-new-charred-oak-exceptions',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -694,7 +644,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'us-proof-conversion',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -706,7 +655,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'tennessee-charcoal-style',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -718,7 +666,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'lincoln-county-timing',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -735,7 +682,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'highest-corn-category',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -747,7 +693,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'light-whiskey-not-bourbon',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -764,7 +709,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'rye-distillation-proof',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -776,7 +720,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'blended-whiskey-label',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -788,7 +731,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'blended-whiskey-coloring',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -800,7 +742,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-distilleries',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -812,7 +753,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-season',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -824,7 +764,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'malt-vs-single-malt-caramel',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -836,7 +775,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-kentucky-aging',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -853,7 +791,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-missing-age-statement',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -870,7 +807,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-high-corn-new-oak',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',
@@ -882,7 +818,6 @@ export const REGIONS_USA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-malt-used-casks',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'usa',

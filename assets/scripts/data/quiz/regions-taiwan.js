@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Taiwan
 export const REGIONS_TAIWAN_QUESTIONS = [
 	{
 		id: 'taiwan-producers',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -16,7 +15,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -28,7 +26,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-angels-share',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -40,7 +37,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-omar-casks',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -57,7 +53,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-dominant-category',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -69,7 +64,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-single-grain',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -81,7 +75,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-no-origin-rule',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -98,7 +91,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'compare-two-year-minimum',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -110,7 +102,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-regulator',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -127,7 +118,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-ministry',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -139,7 +129,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -151,7 +140,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -163,7 +151,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -180,7 +167,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-additives',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -197,7 +183,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-fermentation',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -214,7 +199,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-cask-rules-not',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -231,7 +215,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-climate',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -248,7 +231,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-kavalan-temperatures',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -260,7 +242,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-maturation-equivalence',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -272,7 +253,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-voluntary-onsite',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -289,7 +269,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-japan-pre-2021',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -301,7 +280,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-scenario-young-rice',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -318,7 +296,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-scenario-large-cask',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -330,7 +307,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-kavalan-location',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -342,7 +318,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-omar-distillery',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'taiwan',
@@ -354,7 +329,6 @@ export const REGIONS_TAIWAN_QUESTIONS = [
 	},
 	{
 		id: 'taiwan-cask-choice',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'taiwan',

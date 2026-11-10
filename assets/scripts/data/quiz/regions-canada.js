@@ -1,10 +1,9 @@
-import { STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Canada
 export const REGIONS_CANADA_QUESTIONS = [
 	{
 		id: 'canada-rye-synonym',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -21,7 +20,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-no-distillation-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -33,7 +31,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-other-spirits',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -45,7 +42,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-examples',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -57,7 +53,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-mash-bill',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -74,7 +69,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-regulator',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -91,7 +85,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -103,7 +96,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-barrels',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -120,7 +112,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-blending-tradition',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -132,7 +123,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-caramel-flavoring-comparison',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -144,7 +134,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-not-permitted',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -161,7 +150,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-aging-comparison',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -173,7 +161,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-india-no-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -190,7 +177,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-scenario-two-year-rye',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'canada',
@@ -207,7 +193,6 @@ export const REGIONS_CANADA_QUESTIONS = [
 	},
 	{
 		id: 'canada-scenario-added-wine',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'canada',

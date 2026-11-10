@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: European Union
 export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	{
 		id: 'eu-regulation',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -21,7 +20,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-single-malt-pot-still',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -38,7 +36,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-sweetening-tolerance',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -50,7 +47,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-france-market',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -62,7 +58,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-slyrs',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -74,7 +69,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-millstone',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -86,7 +80,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-french-gis',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -103,7 +96,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-armorik',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -115,7 +107,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'compare-94-8-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -127,7 +118,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -139,7 +129,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -151,7 +140,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-cask-rule',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -168,7 +156,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -185,7 +172,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-entry-proof',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -197,7 +183,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-each-distillation',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -214,7 +199,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-permitted-additive',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -231,7 +215,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-regulation-scope',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -243,7 +226,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-floor-role',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -260,7 +242,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-stricter-rules',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -272,7 +253,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-producing-states',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -284,7 +264,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-germany-distilleries',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -296,7 +275,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-single-malt-definition',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -313,7 +291,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-single-malt-protection',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -330,7 +307,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-baseline-producers',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -347,7 +323,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-armorik-region',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -359,7 +334,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-whisky-breton-year',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -371,7 +345,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-french-gi-alt-name',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -383,7 +356,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-french-gi-requirements',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -400,7 +372,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-no-max-distillation-compare',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -412,7 +383,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-bottling-compare',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -424,7 +394,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-scenario-two-years',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -441,7 +410,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-scenario-large-vat',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -458,7 +426,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-scenario-sweetened',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -475,7 +442,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-scenario-mixed-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -492,7 +458,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-production-location',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -509,7 +474,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-location-requirement-source',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -526,7 +490,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-scenario-imported',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -543,7 +506,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-fermentation',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',
@@ -560,7 +522,6 @@ export const REGIONS_EUROPEAN_UNION_QUESTIONS = [
 	},
 	{
 		id: 'eu-french-gi-vs-scotland',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'european-union',

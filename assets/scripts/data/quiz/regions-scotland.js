@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, SCOTCH_REGIONS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES, SUB_REGIONS } from './quiz-constants.js';
 
 // Regions: Scotland
 export const REGIONS_SCOTLAND_QUESTIONS = [
 	{
 		id: 'islay-style',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -21,7 +20,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islay-distillery',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -33,7 +31,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'speyside-concentration',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -45,7 +42,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'speyside-parent-region',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -57,7 +53,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'speyside-style',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -74,7 +69,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'highlands-largest',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -86,7 +80,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'highland-line',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -98,7 +91,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'lowlands-style',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -115,7 +107,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-distillery',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -127,7 +118,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-location',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -139,7 +129,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islands-exclusion',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -151,7 +140,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-regulation',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -168,7 +156,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-cask-limit',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -180,7 +167,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-oak-required',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -192,7 +178,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-fermentation',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -204,7 +189,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'blended-malt-former-name',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -221,7 +205,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-largest-category',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -233,7 +216,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-uncommon-category',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -245,7 +227,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-single-grain-producers',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -257,7 +238,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'blended-scotch-companies',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -274,7 +254,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-production-location',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -291,7 +270,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -308,7 +286,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-only-additive',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -325,7 +302,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-wine-not-permitted',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -342,7 +318,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-scenario-two-years',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -359,7 +334,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-scenario-bottling-strength',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -376,7 +350,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotland-scenario-distillation-ceiling',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -393,7 +366,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-single-malt-definition',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -405,7 +377,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-single-malt-still',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -417,7 +388,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-single-malt-not-required',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -434,7 +404,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-single-grain-meaning',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -451,7 +420,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-scenario-single-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -463,7 +431,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-scenario-blended-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -475,7 +442,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-scenario-blended-grain',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -487,7 +453,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-scenario-blended-scotch',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -499,7 +464,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-blended-composition',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -516,7 +480,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-blended-examples',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -528,7 +491,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'scotch-scenario-blend-age',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -540,7 +502,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'speyside-distillery',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -552,7 +513,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islay-location',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -564,7 +524,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islay-not-distillery',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -576,7 +535,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islay-phenols',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -588,7 +546,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'highlands-flavor-range',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -605,7 +562,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'highlands-grouped-regions',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -622,7 +578,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'lowlands-location',
-		category: SCOTCH_REGIONS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -634,7 +589,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'lowlands-grain-heartland',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -651,7 +605,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-whisky-capital',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -663,7 +616,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'campbeltown-style',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -680,7 +632,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islands-character',
-		category: SCOTCH_REGIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'scotland',
@@ -697,7 +648,6 @@ export const REGIONS_SCOTLAND_QUESTIONS = [
 	},
 	{
 		id: 'islands-jura',
-		category: SCOTCH_REGIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'scotland',

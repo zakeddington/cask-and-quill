@@ -1,10 +1,9 @@
-import { DISTILLATION, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Distillation
 export const LEXICON_DISTILLATION_QUESTIONS = [
 	{
 		id: 'foreshots-first-off-still',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'foreshots',
@@ -15,7 +14,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'heart-collected-for-aging',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'heart',
@@ -26,7 +24,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'queens-run-meaning',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'queens-run',
@@ -37,7 +34,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'cut',
@@ -53,7 +49,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'tails-fate',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'tails',
@@ -69,7 +64,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'low-wines',
@@ -80,7 +74,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-abv',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'low-wines',
@@ -91,7 +84,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'high-wines-abv',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'high-wines',
@@ -102,7 +94,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'wash-still-larger',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'wash-still',
@@ -113,7 +104,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-still-role',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'spirit-still',
@@ -124,7 +114,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'beer-still-aliases',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'beer-still',
@@ -135,7 +124,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'intermediate-still-position',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'intermediate-still',
@@ -146,7 +134,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'thumper-vs-doubler',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'thumper',
@@ -162,7 +149,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'triple-distillation-traditions',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'triple-distillation',
@@ -178,7 +164,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'double-distillation-scotch',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'double-distillation',
@@ -189,7 +174,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'coffey-still-inventor',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'coffey-still',
@@ -200,7 +184,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'coffey-still-year',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'coffey-still',
@@ -211,7 +194,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'column-still-use',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'column-still',
@@ -222,7 +204,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-still-required',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'pot-still',
@@ -238,7 +219,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'distillation-principle',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'distillation',
@@ -254,7 +234,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'copper-purpose',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'copper',
@@ -270,7 +249,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lyne-arm-definition',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'lyne-arm',
@@ -286,7 +264,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'reflux-effect',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'reflux',
@@ -297,7 +274,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'worm-tub-character',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'worm-tub',
@@ -308,7 +284,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-purpose',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'spirit-safe',
@@ -324,7 +299,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-ale-definition',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'pot-ale',
@@ -340,7 +314,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'white-dog-term',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'white-dog',
@@ -351,7 +324,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'new-make-spirit-legal-status',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'new-make-spirit',
@@ -362,7 +334,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lincoln-county-process',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'lincoln-county-process',
@@ -373,7 +344,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'aftershots-definition',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'aftershots',
@@ -384,7 +354,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'aftershots-fusel-oils',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'aftershots',
@@ -395,7 +364,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'condenser-purpose',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'condenser',
@@ -411,7 +379,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'condenser-types',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'condenser',
@@ -422,7 +389,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'shell-and-tube-condenser-cooling',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'shell-and-tube-condenser',
@@ -438,7 +404,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'worm-tub-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'worm-tub',
@@ -454,7 +419,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'continuous-still-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'continuous-still',
@@ -470,7 +434,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'continuous-still-type',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'continuous-still',
@@ -481,7 +444,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'distillate-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'distillate',
@@ -497,7 +459,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'doubler-role',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'doubler',
@@ -513,7 +474,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'feints-definition',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'feints',
@@ -529,7 +489,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'heads-why-separated',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'heads',
@@ -545,7 +504,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-run-order',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'cut',
@@ -556,7 +514,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'cut-late-heart-cut',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'cut',
@@ -572,7 +529,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'middle-cut-also-called',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'middle-cut',
@@ -583,7 +539,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'neck-definition',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'neck',
@@ -599,7 +554,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'neck-vapor-path',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'neck',
@@ -615,7 +569,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'still-two-types',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'still',
@@ -631,7 +584,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'still-batch-continuous',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'still',
@@ -647,7 +599,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'copper-stainless-scenario',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'copper',
@@ -663,7 +614,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'column-still-plates',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'column-still',
@@ -679,7 +629,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-still-character',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'pot-still',
@@ -695,7 +644,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lyne-arm-downward-angle',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'lyne-arm',
@@ -711,7 +659,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'reflux-definition',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'reflux',
@@ -727,7 +674,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-tax-control',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'spirit-safe',
@@ -738,7 +684,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'spirit-safe-materials',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'spirit-safe',
@@ -749,7 +694,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'pot-ale-use',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'pot-ale',
@@ -760,7 +704,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'high-wines-definition',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'high-wines',
@@ -776,7 +719,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'wash-still-input',
-		category: DISTILLATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'wash-still',
@@ -787,7 +729,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'intermediate-still-method',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'intermediate-still',
@@ -798,7 +739,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'triple-distillation-character',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'triple-distillation',
@@ -814,7 +754,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'double-distillation-outputs',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'double-distillation',
@@ -830,7 +769,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'tails-character',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'tails',
@@ -846,7 +784,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'lincoln-county-process-other-name',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'lincoln-county-process',
@@ -857,7 +794,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'low-wines-why-redistilled',
-		category: DISTILLATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'low-wines',
@@ -873,7 +809,6 @@ export const LEXICON_DISTILLATION_QUESTIONS = [
 	},
 	{
 		id: 'beer-still-name',
-		category: DISTILLATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'beer-still',

@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, STYLES_REGULATIONS, WORLD_WHISKY, EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, REGIONS, LEGAL, VARIETIES } from './quiz-constants.js';
 
 // Regions: Australia
 export const REGIONS_AUSTRALIA_QUESTIONS = [
 	{
 		id: 'australia-bottling-minimum',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -16,7 +15,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-aging-law',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -33,7 +31,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-bill-lark',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -45,7 +42,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-tasmania-producers',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -57,7 +53,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-single-malt-dispute',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -74,7 +69,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-starward',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -91,7 +85,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-apera',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -108,7 +101,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-blended-period',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -120,7 +112,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'compare-no-single-malt-definition',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -132,7 +123,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-aging-minimum',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -144,7 +134,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-no-whisky-law',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -161,7 +150,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-fsanz-partner',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -173,7 +161,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-bottling-source',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -190,7 +177,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-bottling-proof',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -202,7 +188,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-grain-base',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -219,7 +204,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-brewery-wash',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -236,7 +220,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'compare-no-statutory-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -248,7 +231,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-ato-ceiling',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -265,7 +247,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-not-specified',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -282,7 +263,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-cask-rule',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -299,7 +279,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'compare-oak-no-size-limit',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -311,7 +290,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-additives',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -328,7 +306,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'compare-australia-nz-wood-chips',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -345,7 +322,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-origin-labeling',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -362,7 +338,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-dominant-category',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -374,7 +349,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-single-malt-stills',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -391,7 +365,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-mainland-climate',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -408,7 +381,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-archie-rose-rye',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -425,7 +397,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-wine-cask-category',
-		category: STYLES_REGULATIONS,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -442,7 +413,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-cask-seasoning-not',
-		category: WORLD_WHISKY,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -454,7 +424,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-starward-style',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -466,7 +435,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-blended-decline',
-		category: WORLD_WHISKY,
 		difficulty: MEDIUM,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -483,7 +451,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'australia-single-malt-standard-groups',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -500,7 +467,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-australia-18-months',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -517,7 +483,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-australia-brewery-wort',
-		category: WORLD_WHISKY,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',
@@ -534,7 +499,6 @@ export const REGIONS_AUSTRALIA_QUESTIONS = [
 	},
 	{
 		id: 'scenario-australia-two-distillery-malt',
-		category: STYLES_REGULATIONS,
 		difficulty: HARD,
 		source: REGIONS,
 		sourceId: 'australia',

@@ -1,10 +1,9 @@
-import { LABELING_PRODUCERS, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Measurements & Labeling
 export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	{
 		id: 'proof-to-abv',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'proof',
@@ -15,7 +14,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'proof-temperature',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'proof',
@@ -26,7 +24,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'abv-typical-range',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'abv',
@@ -37,7 +34,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'age-statement-youngest',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'age-statement',
@@ -48,7 +44,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-meaning',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'nas-no-age-statement',
@@ -64,7 +59,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-proof',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'bottled-in-bond',
@@ -75,7 +69,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-act-year',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'bottled-in-bond',
@@ -86,7 +79,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'bottled-in-bond-aging',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'bottled-in-bond',
@@ -97,7 +89,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'barrel-proof-tolerance',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'barrel-proof',
@@ -108,7 +99,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'cask-strength-bourbon-range',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'cask-strength',
@@ -119,7 +109,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'chill-filtration-purpose',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'chill-filtered',
@@ -135,7 +124,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'non-chill-filtered-cloudiness',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'non-chill-filtered',
@@ -146,7 +134,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'ttb-meaning',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'ttb',
@@ -162,7 +149,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'abv-definition',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'abv',
@@ -178,7 +164,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'proof-uk-scale',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'proof',
@@ -189,7 +174,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'age-statement-meaning',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'age-statement',
@@ -205,7 +189,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-why',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'nas-no-age-statement',
@@ -221,7 +204,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'nas-scotch-minimum',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'nas-no-age-statement',
@@ -237,7 +219,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'barrel-proof-meaning',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'barrel-proof',
@@ -253,7 +234,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'cask-strength-legal-status',
-		category: LABELING_PRODUCERS,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'cask-strength',
@@ -269,7 +249,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'chill-filtered-process',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'chill-filtered',
@@ -285,7 +264,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'non-chill-filtered-label',
-		category: LABELING_PRODUCERS,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'non-chill-filtered',
@@ -301,7 +279,6 @@ export const LEXICON_MEASUREMENTS_LABELING_QUESTIONS = [
 	},
 	{
 		id: 'ttb-responsibilities',
-		category: LABELING_PRODUCERS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'ttb',

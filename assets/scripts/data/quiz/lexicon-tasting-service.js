@@ -1,10 +1,9 @@
-import { TASTING_SERVICE, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Tasting & Service
 export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	{
 		id: 'aqua-vitae-meaning',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'aqua-vitae',
@@ -15,7 +14,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'uisge-beatha-language',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'aqua-vitae',
@@ -26,7 +24,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'slainte-meaning',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'slainte',
@@ -37,7 +34,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'quaich-definition',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'quaich',
@@ -53,7 +49,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'dram-definition',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'dram',
@@ -64,7 +59,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'jigger-measure',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'jigger',
@@ -75,7 +69,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'neat-definition',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'neat',
@@ -91,7 +84,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'nose-definition',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'nose',
@@ -102,7 +94,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'finish-definition',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'finish',
@@ -118,7 +109,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'valinch-definition',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'valinch',
@@ -134,7 +124,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'mouthfeel-definition',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'mouthfeel',
@@ -150,7 +139,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'on-the-rocks-definition',
-		category: TASTING_SERVICE,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'on-the-rocks',
@@ -161,7 +149,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'pipette-two-uses',
-		category: TASTING_SERVICE,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'pipette',
@@ -177,7 +164,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'whisky-thief-scenario',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'whisky-thief',
@@ -188,7 +174,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'finish-second-meaning',
-		category: TASTING_SERVICE,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'finish',
@@ -204,7 +189,6 @@ export const LEXICON_TASTING_SERVICE_QUESTIONS = [
 	},
 	{
 		id: 'dram-modern-usage',
-		category: TASTING_SERVICE,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'dram',

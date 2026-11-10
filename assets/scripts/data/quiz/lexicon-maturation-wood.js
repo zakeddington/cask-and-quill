@@ -1,10 +1,9 @@
-import { INGREDIENTS_FERMENTATION, MATURATION_WOOD, STYLES_REGULATIONS, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Maturation & Wood
 export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	{
 		id: 'pagoda-roof-purpose',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'pagoda-roof',
@@ -20,7 +19,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'angels-share-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'angel-s-share',
@@ -36,7 +34,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'devils-cut-definition',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'devil-s-cut',
@@ -52,7 +49,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'devils-cut-brand',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'devil-s-cut',
@@ -63,7 +59,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-barrel-size',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'barrel',
@@ -74,7 +69,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'butt-size',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'butt',
@@ -85,7 +79,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'hogshead-construction',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'hogshead',
@@ -101,7 +94,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'quarter-cask-size',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'quarter-cask',
@@ -112,7 +104,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'largest-cask-size',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'butt',
@@ -123,7 +114,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'small-barrel-reason',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'small-barrel',
@@ -139,7 +129,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charring-flavors',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'charring',
@@ -155,7 +144,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'first-fill-definition',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'first-fill',
@@ -171,7 +159,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'refill-cask-influence',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'refill',
@@ -182,7 +169,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-finish-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'cask-finish',
@@ -198,7 +184,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-traits',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'dunnage-warehouse',
@@ -214,7 +199,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rickhouse-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'rackhouse',
@@ -225,7 +209,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bonded-warehouse-definition',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'bonded-warehouse',
@@ -241,7 +224,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-rotation-purpose',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'warehouse-rotation',
@@ -257,7 +239,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'solera-definition',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'solera',
@@ -273,7 +254,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-cask-equivalent',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'single-cask',
@@ -284,7 +264,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-legal-status',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'single-barrel',
@@ -300,7 +279,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'maturation-oak-compounds',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'maturation',
@@ -316,7 +294,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'oxidation-after-opening',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'oxidation',
@@ -332,7 +309,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bourbon-barrel-requirement',
-		category: STYLES_REGULATIONS,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'charring',
@@ -343,7 +319,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'bung-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'bung',
@@ -359,7 +334,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-general-term',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'cask',
@@ -370,7 +344,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charcoal-mellowing-term',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'charcoal-mellowing',
@@ -381,7 +354,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'charring-sulfur',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'charring',
@@ -397,7 +369,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-expression-species',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'mizunara-expression',
@@ -408,7 +379,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'mizunara-expression-rarity',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'mizunara-expression',
@@ -424,7 +394,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rick-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'rick',
@@ -440,7 +409,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-materials',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'warehouse',
@@ -456,7 +424,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'warehouse-regional-types',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'warehouse',
@@ -472,7 +439,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'wood-management-definition',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'wood-management',
@@ -488,7 +454,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'wood-management-house-style',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'wood-management',
@@ -504,7 +469,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'angels-share-climate',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'angel-s-share',
@@ -515,7 +479,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'american-barrel-scotch-size',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'barrel',
@@ -526,7 +489,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'hogshead-gallons',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'hogshead',
@@ -537,7 +499,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'first-fill-sherry-scenario',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'first-fill',
@@ -553,7 +514,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'cask-finish-duration',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'cask-finish',
@@ -569,7 +529,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-runners',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'dunnage-warehouse',
@@ -580,7 +539,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'dunnage-warehouse-slow',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'dunnage-warehouse',
@@ -596,7 +554,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'rackhouse-floor-variation',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'rackhouse',
@@ -612,7 +569,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-cask-strength',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'single-cask',
@@ -628,7 +584,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-variation',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'single-barrel',
@@ -644,7 +599,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'single-barrel-canada',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'single-barrel',
@@ -660,7 +614,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'small-barrel-threshold',
-		category: MATURATION_WOOD,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'small-barrel',
@@ -671,7 +624,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'maturation-not-effect',
-		category: MATURATION_WOOD,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'maturation',
@@ -687,7 +639,6 @@ export const LEXICON_MATURATION_WOOD_QUESTIONS = [
 	},
 	{
 		id: 'oxidation-definition',
-		category: MATURATION_WOOD,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'oxidation',

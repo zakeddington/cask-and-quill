@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS, QUIZ_SOURCES } from '../data/quiz/index.js';
+import { QUIZ_QUESTIONS, QUIZ_SOURCES, LEXICON, REGIONS } from '../data/quiz/index.js';
 import { LEXICON_TERMS } from '../data/lexicon-data.js';
 
 export const QUIZ_VERSION = 1;
@@ -19,8 +19,8 @@ const LEXICON_CATEGORY_BY_ID = new Map(LEXICON_TERMS.map(term => [term.id, term.
 
 // Sub-filters that belong to each source; picking any of them includes that source
 export const SOURCE_FILTER_KEYS = {
-	lexicon: ['lexiconCategories'],
-	regions: ['regionCountries', 'regionTopics'],
+	[LEXICON]: ['lexiconCategories'],
+	[REGIONS]: ['regionCountries', 'regionTopics'],
 };
 
 export function getQuestion(id) {
@@ -29,7 +29,7 @@ export function getQuestion(id) {
 
 // Lexicon questions take their category from the linked lexicon term
 export function getLexiconCategory(question) {
-	return question.source === 'lexicon' ? LEXICON_CATEGORY_BY_ID.get(question.sourceId) : undefined;
+	return question.source === LEXICON ? LEXICON_CATEGORY_BY_ID.get(question.sourceId) : undefined;
 }
 
 export function shuffle(items) {
@@ -56,7 +56,7 @@ export function isInFilter(question, key, value) {
 	switch (key) {
 		case 'sources': return question.source === value;
 		case 'lexiconCategories': return getLexiconCategory(question) === value;
-		case 'regionCountries': return question.source === 'regions' && question.sourceId === value;
+		case 'regionCountries': return question.source === REGIONS && question.sourceId === value;
 		case 'regionTopics': return question.topic === value;
 		case 'difficulties': return question.difficulty === value;
 		default: return false;
@@ -199,7 +199,7 @@ export function scoreQuiz(quiz) {
 			result.missed.push(id);
 		}
 
-		if (question.source === 'lexicon') {
+		if (question.source === LEXICON) {
 			addToBreakdown(result.byLexiconCategory, getLexiconCategory(question), correct);
 		} else {
 			addToBreakdown(result.byRegionCountry, question.sourceId, correct);

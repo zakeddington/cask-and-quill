@@ -1,10 +1,9 @@
-import { INGREDIENTS_FERMENTATION, EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
+import { EASY, MEDIUM, HARD, LEXICON } from './quiz-constants.js';
 
 // Lexicon: Fermentation & Chemistry
 export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	{
 		id: 'fermentation-byproducts',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'fermentation',
@@ -15,7 +14,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ester-flavors',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'ester',
@@ -31,7 +29,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'congeners-definition',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'congeners',
@@ -47,7 +44,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fusel-oils-reduction',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'fusel-oils-fusel-alcohols',
@@ -58,7 +54,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'phenol-measurement',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'phenol-phenolic-ppm',
@@ -69,7 +64,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'tannins-contribution',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'tannins',
@@ -80,7 +74,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'vanillin-source',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'vanillin',
@@ -91,7 +84,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'yield-measurement',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'yield',
@@ -107,7 +99,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'distiller-s-beer-synonym',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'distiller-s-beer',
@@ -118,7 +109,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ethanol-ethyl-alcohol',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: EASY,
 		source: LEXICON,
 		sourceId: 'ethanol',
@@ -129,7 +119,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fermenter-in-out',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'fermenter',
@@ -145,7 +134,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'congeners-not',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'congeners',
@@ -156,7 +144,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'ester-formation',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'ester',
@@ -167,7 +154,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'fusel-oils-moderate',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'fusel-oils-fusel-alcohols',
@@ -178,7 +164,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'phenol-ppm-comparison',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'phenol-phenolic-ppm',
@@ -194,7 +179,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'tannins-polyphenols',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: HARD,
 		source: LEXICON,
 		sourceId: 'tannins',
@@ -205,7 +189,6 @@ export const LEXICON_FERMENTATION_CHEMISTRY_QUESTIONS = [
 	},
 	{
 		id: 'yield-craft',
-		category: INGREDIENTS_FERMENTATION,
 		difficulty: MEDIUM,
 		source: LEXICON,
 		sourceId: 'yield',
