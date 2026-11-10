@@ -212,7 +212,7 @@ A Google Apps Script inside a dedicated spreadsheet fetches all bottles from the
 1. Create a new Google Sheet
 2. Open **Extensions → Apps Script**
 3. Name the project (click "Untitled project" top-left) and paste the script below
-4. Fill in `SUPABASE_URL` and `SUPABASE_ANON_KEY` from `assets/scripts/supabase.js`
+4. Fill in `SUPABASE_URL` and `SUPABASE_ANON_KEY` from `assets/scripts/api/supabase.js`
 5. Click **Run** → grant permissions (click **Advanced → Go to [project name] (unsafe)** when prompted — this is expected for personal scripts)
 6. Set a trigger: **Triggers (clock icon) → Add Trigger → `syncBottlesToSheet` → Time-driven → Week timer**
 

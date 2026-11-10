@@ -1,5 +1,5 @@
-import { html, stripHtml } from '../utils.js';
-import { UrlState } from '../url-state.js';
+import { html, stripHtml } from '../utils/utils.js';
+import { UrlState } from '../utils/url-state.js';
 import { AUTH_CHANGE } from '../config/events.js';
 import {
 	CATALOG_FILL_OPTIONS,
@@ -11,7 +11,7 @@ import {
 	SPRITE_URL,
 } from '../config/constants.js';
 import { ModalEditCatalog } from '../components/modal-edit-catalog.js';
-import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supabase.js';
+import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../api/supabase.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { AccordionGroup } from '../components/accordion-group.js';
 

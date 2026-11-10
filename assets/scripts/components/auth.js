@@ -1,4 +1,4 @@
-import { getSession, signIn, signOut } from '../supabase.js';
+import { getSession, signIn, signOut } from '../api/supabase.js';
 import { SPRITE_URL } from '../config/constants.js';
 
 export class Auth {

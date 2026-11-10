@@ -1,4 +1,4 @@
-import { QUIZ_QUESTIONS } from './data/quiz/index.js';
+import { QUIZ_QUESTIONS } from '../data/quiz/index.js';
 import { getQuestion, isInFilter } from './quiz-engine.js';
 
 // Pure helpers that derive progress from saved quiz history (newest entry first).

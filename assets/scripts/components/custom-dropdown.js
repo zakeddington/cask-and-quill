@@ -1,4 +1,4 @@
-import { html } from '../utils.js';
+import { html } from '../utils/utils.js';
 import {
 	SPRITE_URL,
 	KEY_ESCAPE,

@@ -1,4 +1,4 @@
-import { html, getFormValue } from '../utils.js';
+import { html, getFormValue } from '../utils/utils.js';
 import { initRichEditor } from './rich-editor.js';
 import { BaseModal } from './modal.js';
 import { CustomDropdown } from './custom-dropdown.js';

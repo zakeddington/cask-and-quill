@@ -1,5 +1,5 @@
 import { initRichEditor } from './rich-editor.js';
-import { getGlobalNotes, updateGlobalNotes } from '../supabase.js';
+import { getGlobalNotes, updateGlobalNotes } from '../api/supabase.js';
 import { SPRITE_URL } from '../config/constants.js';
 import { AUTH_CHANGE } from '../config/events.js';
 import { BaseDrawer } from './drawer.js';

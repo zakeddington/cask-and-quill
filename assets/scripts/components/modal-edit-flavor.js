@@ -1,4 +1,4 @@
-import { html, createEl } from '../utils.js';
+import { html, createEl } from '../utils/utils.js';
 import { BaseModal } from './modal.js';
 import { SPRITE_URL } from '../config/constants.js';
 

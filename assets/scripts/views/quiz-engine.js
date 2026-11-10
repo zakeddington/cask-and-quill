@@ -1,5 +1,5 @@
-import { QUIZ_QUESTIONS, QUIZ_SOURCES } from './data/quiz/index.js';
-import { LEXICON_TERMS } from './data/lexicon-data.js';
+import { QUIZ_QUESTIONS, QUIZ_SOURCES } from '../data/quiz/index.js';
+import { LEXICON_TERMS } from '../data/lexicon-data.js';
 
 export const QUIZ_VERSION = 1;
 export const QUIZ_LENGTH_ALL = 'all';

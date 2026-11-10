@@ -1,6 +1,6 @@
 import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon-data.js';
-import { escapeHtml, normalizeTermName } from '../utils.js';
-import { UrlState } from '../url-state.js';
+import { escapeHtml, normalizeTermName } from '../utils/utils.js';
+import { UrlState } from '../utils/url-state.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
 // Maps lexicon state keys to the URL query params that persist them.

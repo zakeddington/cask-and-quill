@@ -1,5 +1,5 @@
 import { REGIONS_DATA } from '../data/regions-data.js';
-import { escapeHtml } from '../utils.js';
+import { escapeHtml } from '../utils/utils.js';
 import { SubRegionMapSwitcher } from '../components/sub-region-map-switcher.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 

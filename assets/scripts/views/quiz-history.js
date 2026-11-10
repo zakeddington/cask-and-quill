@@ -4,7 +4,7 @@ import {
 	insertQuizHistory,
 	deleteQuizHistory,
 	clearQuizHistory
-} from './supabase.js';
+} from '../api/supabase.js';
 import * as local from './quiz-storage.js';
 
 // Quiz history, newest first. Signed-in users' history lives in Supabase so it follows them

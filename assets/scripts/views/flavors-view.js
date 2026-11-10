@@ -1,9 +1,9 @@
-import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../supabase.js';
+import { fetchFlavorFamilies, updateFlavorFamily, deleteFlavorFamily } from '../api/supabase.js';
 import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
 import { AUTH_CHANGE } from '../config/events.js';
-import { UrlState } from '../url-state.js';
+import { UrlState } from '../utils/url-state.js';
 
 const ALL_FAMILIES = 'All Families';
 
