@@ -14,6 +14,14 @@ import { fetchBottles, insertBottle, updateBottle, deleteBottle } from '../supab
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { AccordionGroup } from '../components/accordion-group.js';
 
+// Maps catalog state keys to the URL query params that persist them.
+const URL_PARAMS = {
+	searchQuery: 'q',
+	categoryFilter: 'category',
+	fillFilter: 'fill',
+	abvSort: 'sort',
+};
+
 export class CatalogView {
 	constructor(elContainer, isAdmin = false) {
 		this.el = {
@@ -47,6 +55,10 @@ export class CatalogView {
 			modal: null,
 		};
 
+		// Whether the current history entry was created by typing in search, so continued typing
+		// replaces it instead of adding an entry per keystroke.
+		this.isSearchHistoryEntry = false;
+
 		this.init();
 	}
 
@@ -59,8 +71,74 @@ export class CatalogView {
 		await this.fetchCatalogData();
 
 		this.initCategorySelect();
+		this.applyUrlState();
 		this.render();
 		this.addEventListeners();
+	}
+
+	// URL state
+
+	readUrlState() {
+		const params = new URLSearchParams(window.location.search);
+		return Object.fromEntries(
+			Object.entries(URL_PARAMS).map(([key, param]) => [key, params.get(param)?.trim() ?? ''])
+		);
+	}
+
+	// Applies the URL's params to state and controls, ignoring values the dropdowns don't offer.
+	applyUrlState() {
+		const urlState = this.readUrlState();
+
+		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
+		this.state.searchQuery = urlState.searchQuery.toLowerCase();
+		this.state.categoryFilter = this.syncDropdown(this.components.categoryDropdown, urlState.categoryFilter);
+		this.state.fillFilter = this.syncDropdown(this.components.fillDropdown, urlState.fillFilter);
+		this.state.abvSort = this.syncDropdown(this.components.sortDropdown, urlState.abvSort);
+
+		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
+		this.updateClearAllVisibility();
+	}
+
+	syncDropdown(dropdown, value) {
+		if (!dropdown) return '';
+		const isValid = dropdown.state.options.some(option => option.value === value);
+		const appliedValue = isValid ? value : '';
+		dropdown.syncValue(appliedValue);
+		return appliedValue;
+	}
+
+	// Writes the current filters/sort to the URL. `fromSearch` collapses a run of keystrokes into
+	// one history entry; any other change pushes a new entry so back/forward steps through them.
+	updateUrl({ fromSearch = false } = {}) {
+		const params = new URLSearchParams(window.location.search);
+		const values = {
+			searchQuery: this.el.searchInput?.value.trim() ?? '',
+			categoryFilter: this.state.categoryFilter,
+			fillFilter: this.state.fillFilter,
+			abvSort: this.state.abvSort,
+		};
+
+		Object.entries(URL_PARAMS).forEach(([key, param]) => {
+			if (values[key]) params.set(param, values[key]);
+			else params.delete(param);
+		});
+
+		const query = params.toString();
+		const url = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+		if (url === `${window.location.pathname}${window.location.search}${window.location.hash}`) return;
+
+		if (fromSearch && this.isSearchHistoryEntry) {
+			window.history.replaceState(null, '', url);
+		} else {
+			window.history.pushState(null, '', url);
+		}
+		this.isSearchHistoryEntry = fromSearch;
+	}
+
+	onPopState() {
+		this.isSearchHistoryEntry = false;
+		this.applyUrlState();
+		this.render();
 	}
 
 	initAccordions() {
@@ -130,6 +208,7 @@ export class CatalogView {
 		this.el.addBtn?.addEventListener('click', () => this.openAddModal());
 
 		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
+		window.addEventListener('popstate', () => this.onPopState());
 	}
 
 	onAuthChange(event) {
@@ -157,6 +236,7 @@ export class CatalogView {
 		this.state.searchQuery = event.target.value.trim().toLowerCase();
 		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
 		this.updateClearAllVisibility();
+		this.updateUrl({ fromSearch: true });
 		this.render();
 	}
 
@@ -165,6 +245,7 @@ export class CatalogView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
 		this.el.searchInput.focus();
 	}
@@ -172,17 +253,20 @@ export class CatalogView {
 	onCategoryChange(event) {
 		this.state.categoryFilter = event.target.value;
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
 	}
 
 	onFillChange(event) {
 		this.state.fillFilter = event.target.value;
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
 	}
 
 	onSortChange(event) {
 		this.state.abvSort = event.target.value;
+		this.updateUrl();
 		this.render();
 	}
 
@@ -191,11 +275,14 @@ export class CatalogView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 
-		this.components.categoryDropdown?.selectOption('');
-		this.components.fillDropdown?.selectOption('');
+		// syncValue (not selectOption) so no change events fire and the reset is one history entry.
+		this.state.categoryFilter = this.syncDropdown(this.components.categoryDropdown, '');
+		this.state.fillFilter = this.syncDropdown(this.components.fillDropdown, '');
 
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
+		this.el.searchInput.focus();
 	}
 
 	updateClearAllVisibility() {
