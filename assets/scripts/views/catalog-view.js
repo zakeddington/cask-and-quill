@@ -1,4 +1,4 @@
-import { html, stripHtml } from '../utils.js';
+import { html, stripHtml, readUrlParams, writeUrlParams } from '../utils.js';
 import { AUTH_CHANGE } from '../config/events.js';
 import {
 	CATALOG_FILL_OPTIONS,
@@ -78,16 +78,9 @@ export class CatalogView {
 
 	// URL state
 
-	readUrlState() {
-		const params = new URLSearchParams(window.location.search);
-		return Object.fromEntries(
-			Object.entries(URL_PARAMS).map(([key, param]) => [key, params.get(param)?.trim() ?? ''])
-		);
-	}
-
 	// Applies the URL's params to state and controls, ignoring values the dropdowns don't offer.
 	applyUrlState() {
-		const urlState = this.readUrlState();
+		const urlState = readUrlParams(URL_PARAMS);
 
 		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
 		this.state.searchQuery = urlState.searchQuery.toLowerCase();
@@ -110,29 +103,15 @@ export class CatalogView {
 	// Writes the current filters/sort to the URL. `fromSearch` collapses a run of keystrokes into
 	// one history entry; any other change pushes a new entry so back/forward steps through them.
 	updateUrl({ fromSearch = false } = {}) {
-		const params = new URLSearchParams(window.location.search);
 		const values = {
-			searchQuery: this.el.searchInput?.value.trim() ?? '',
+			searchQuery: this.el.searchInput?.value,
 			categoryFilter: this.state.categoryFilter,
 			fillFilter: this.state.fillFilter,
 			abvSort: this.state.abvSort,
 		};
 
-		Object.entries(URL_PARAMS).forEach(([key, param]) => {
-			if (values[key]) params.set(param, values[key]);
-			else params.delete(param);
-		});
-
-		const query = params.toString();
-		const url = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
-		if (url === `${window.location.pathname}${window.location.search}${window.location.hash}`) return;
-
-		if (fromSearch && this.isSearchHistoryEntry) {
-			window.history.replaceState(null, '', url);
-		} else {
-			window.history.pushState(null, '', url);
-		}
-		this.isSearchHistoryEntry = fromSearch;
+		const replace = fromSearch && this.isSearchHistoryEntry;
+		if (writeUrlParams(URL_PARAMS, values, { replace })) this.isSearchHistoryEntry = fromSearch;
 	}
 
 	onPopState() {

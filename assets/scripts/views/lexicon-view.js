@@ -1,6 +1,12 @@
 import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon-data.js';
-import { escapeHtml, normalizeTermName } from '../utils.js';
+import { escapeHtml, normalizeTermName, readUrlParams, writeUrlParams } from '../utils.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
+
+// Maps lexicon state keys to the URL query params that persist them.
+const URL_PARAMS = {
+	searchQuery: 'q',
+	selectedCategory: 'category',
+};
 
 export class LexiconView {
 	constructor(elContainer) {
@@ -38,11 +44,16 @@ export class LexiconView {
 			categoryDropdown: null,
 		};
 
+		// Whether the current history entry was created by typing in search, so continued typing
+		// replaces it instead of adding an entry per pause.
+		this.isSearchHistoryEntry = false;
+
 		this.init();
 	}
 
 	init() {
 		this.initCategorySelect();
+		this.applyUrlState();
 		this.addEventListeners();
 		this.render();
 		this.updateStickyOffset();
@@ -56,16 +67,61 @@ export class LexiconView {
 		}
 	}
 
+	// Applies the URL's params to state and controls, ignoring a category the dropdown doesn't offer.
+	applyUrlState() {
+		const urlState = readUrlParams(URL_PARAMS);
+
+		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
+		this.state.searchQuery = urlState.searchQuery.toLowerCase();
+		this.state.selectedCategory = this.syncDropdown(this.components.categoryDropdown, urlState.selectedCategory);
+
+		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
+		this.updateClearAllVisibility();
+	}
+
+	syncDropdown(dropdown, value) {
+		if (!dropdown) return '';
+		const isValid = dropdown.state.options.some(option => option.value === value);
+		const appliedValue = isValid ? value : '';
+		dropdown.syncValue(appliedValue);
+		return appliedValue;
+	}
+
+	// Writes the current filters to the URL, dropping any term/letter hash since the results
+	// change. `fromSearch` collapses a run of typing into one history entry; any other change
+	// pushes a new entry so back/forward steps through them.
+	updateUrl({ fromSearch = false } = {}) {
+		const values = {
+			searchQuery: this.el.searchInput?.value,
+			selectedCategory: this.state.selectedCategory,
+		};
+
+		const replace = fromSearch && this.isSearchHistoryEntry;
+		if (writeUrlParams(URL_PARAMS, values, { replace, hash: '' })) this.isSearchHistoryEntry = fromSearch;
+	}
+
+	// Fires for filter changes and for hash navigation (letter nav, "See also" links). Only
+	// re-render when the filters differ, so hash-only steps keep the browser's own scrolling.
+	onPopState() {
+		this.isSearchHistoryEntry = false;
+
+		const urlState = readUrlParams(URL_PARAMS);
+		const isSameFilters =
+			urlState.searchQuery.toLowerCase() === this.state.searchQuery.trim() &&
+			urlState.selectedCategory === this.state.selectedCategory;
+		if (isSameFilters) return;
+
+		window.clearTimeout(this.timer.search);
+		this.applyUrlState();
+		this.render();
+		this.scrollToHash();
+	}
+
 	scrollToHash() {
 		if (!location.hash) return;
 
 		const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
 		if (target) target.scrollIntoView({ block: 'start' });
-	}
-
-	clearHash() {
-		if (!location.hash) return;
-		history.replaceState(null, '', location.pathname + location.search);
 	}
 
 	updateStickyOffset() {
@@ -108,6 +164,7 @@ export class LexiconView {
 		});
 
 		window.addEventListener('resize', () => this.onResize());
+		window.addEventListener('popstate', () => this.onPopState());
 	}
 
 	onNavLinkClick(event) {
@@ -117,6 +174,7 @@ export class LexiconView {
 
 		event.preventDefault();
 		history.pushState(null, '', `#${targetId}`);
+		this.isSearchHistoryEntry = false;
 		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
@@ -132,7 +190,7 @@ export class LexiconView {
 		window.clearTimeout(this.timer.search);
 		this.timer.search = window.setTimeout(() => {
 			this.state.searchQuery = nextQuery;
-			this.clearHash();
+			this.updateUrl({ fromSearch: true });
 			this.updateClearAllVisibility();
 			this.render(true);
 		}, this.config.searchDebounceDelay);
@@ -143,7 +201,7 @@ export class LexiconView {
 		this.el.searchInput.value = '';
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
-		this.clearHash();
+		this.updateUrl();
 		this.updateClearAllVisibility();
 		this.render(true);
 		this.el.searchInput.focus();
@@ -151,7 +209,7 @@ export class LexiconView {
 
 	onCategoryChange(event) {
 		this.state.selectedCategory = event.target.value;
-		this.clearHash();
+		this.updateUrl();
 		this.updateClearAllVisibility();
 		this.render(true);
 	}
@@ -162,11 +220,13 @@ export class LexiconView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 
-		this.components.categoryDropdown?.selectOption('');
+		// syncValue (not selectOption) so no change event fires and the reset is one history entry.
+		this.state.selectedCategory = this.syncDropdown(this.components.categoryDropdown, '');
 
-		this.clearHash();
+		this.updateUrl();
 		this.updateClearAllVisibility();
 		this.render(true);
+		this.el.searchInput.focus();
 	}
 
 	updateClearAllVisibility() {
