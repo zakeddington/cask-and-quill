@@ -3,7 +3,7 @@ import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
 import { AUTH_CHANGE } from '../config/events.js';
-import { readUrlParams, writeUrlParams } from '../utils.js';
+import { UrlState } from '../url-state.js';
 
 const ALL_FAMILIES = 'All Families';
 
@@ -38,10 +38,6 @@ export class FlavorsView {
 			modal: null,
 		};
 
-		// Whether the current history entry was created by typing in search, so continued typing
-		// replaces it instead of adding an entry per keystroke.
-		this.isSearchHistoryEntry = false;
-
 		this.init();
 	}
 
@@ -60,6 +56,7 @@ export class FlavorsView {
 		if (!loaded) return;
 
 		this.initFamilySelect();
+		this.urlState = new UrlState(URL_PARAMS, { onPop: () => this.onPopState() });
 		this.applyUrlState();
 		this.render();
 		this.addEventListeners();
@@ -69,7 +66,7 @@ export class FlavorsView {
 
 	// Applies the URL's params to state and controls, ignoring a family the dropdown doesn't offer.
 	applyUrlState() {
-		const urlState = readUrlParams(URL_PARAMS);
+		const urlState = this.urlState.read();
 
 		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
 		this.state.searchQuery = urlState.searchQuery;
@@ -80,25 +77,18 @@ export class FlavorsView {
 	}
 
 	syncFamilyDropdown(value) {
-		const appliedValue = this.familyOptions.includes(value) ? value : ALL_FAMILIES;
-		this.components.familyDropdown?.syncValue(appliedValue);
-		return appliedValue;
+		return this.components.familyDropdown?.setValueIfValid(value, ALL_FAMILIES) ?? ALL_FAMILIES;
 	}
 
-	// Writes the current filters to the URL. `fromSearch` collapses a run of keystrokes into one
-	// history entry; any other change pushes a new entry so back/forward steps through them.
+	// "All Families" is the default, so it's left out of the URL.
 	updateUrl({ fromSearch = false, replace = false } = {}) {
-		const values = {
+		this.urlState.write({
 			searchQuery: this.el.searchInput?.value,
 			familyFilter: this.state.familyFilter === ALL_FAMILIES ? '' : this.state.familyFilter,
-		};
-
-		const shouldReplace = replace || (fromSearch && this.isSearchHistoryEntry);
-		if (writeUrlParams(URL_PARAMS, values, { replace: shouldReplace }) && !replace) this.isSearchHistoryEntry = fromSearch;
+		}, { fromSearch, replace });
 	}
 
 	onPopState() {
-		this.isSearchHistoryEntry = false;
 		this.applyUrlState();
 		this.render();
 	}
@@ -138,7 +128,6 @@ export class FlavorsView {
 		this.el.clearAllBtn?.addEventListener('click', () => this.onClearAll());
 
 		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
-		window.addEventListener('popstate', () => this.onPopState());
 	}
 
 	onAuthChange(event) {

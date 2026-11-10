@@ -155,6 +155,14 @@ export class CustomDropdown {
 		this.syncSelected();
 	}
 
+	// Like syncValue, but falls back to `fallback` (default: the first option) when `value` isn't
+	// one of the options. Returns the value applied. Fires no change event.
+	setValueIfValid(value, fallback = this.state.options[0]?.value ?? '') {
+		const appliedValue = this.state.options.some(option => option.value === value) ? value : fallback;
+		this.syncValue(appliedValue);
+		return appliedValue;
+	}
+
 	selectOption(value) {
 		const prev = this.state.value;
 		this.state.value = value;

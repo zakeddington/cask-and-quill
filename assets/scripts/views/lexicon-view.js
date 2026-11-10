@@ -1,5 +1,6 @@
 import { LEXICON_TERMS, LEXICON_CATEGORIES, getLexiconCategoryOptions } from '../data/lexicon-data.js';
-import { escapeHtml, normalizeTermName, readUrlParams, writeUrlParams } from '../utils.js';
+import { escapeHtml, normalizeTermName } from '../utils.js';
+import { UrlState } from '../url-state.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 
 // Maps lexicon state keys to the URL query params that persist them.
@@ -44,15 +45,13 @@ export class LexiconView {
 			categoryDropdown: null,
 		};
 
-		// Whether the current history entry was created by typing in search, so continued typing
-		// replaces it instead of adding an entry per pause.
-		this.isSearchHistoryEntry = false;
-
 		this.init();
 	}
 
 	init() {
 		this.initCategorySelect();
+		// Search is already debounced here before the URL is written, so no extra delay.
+		this.urlState = new UrlState(URL_PARAMS, { onPop: () => this.onPopState(), searchDelay: 0 });
 		this.applyUrlState();
 		this.addEventListeners();
 		this.render();
@@ -69,43 +68,28 @@ export class LexiconView {
 
 	// Applies the URL's params to state and controls, ignoring a category the dropdown doesn't offer.
 	applyUrlState() {
-		const urlState = readUrlParams(URL_PARAMS);
+		const urlState = this.urlState.read();
 
 		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
 		this.state.searchQuery = urlState.searchQuery.toLowerCase();
-		this.state.selectedCategory = this.syncDropdown(this.components.categoryDropdown, urlState.selectedCategory);
+		this.state.selectedCategory = this.components.categoryDropdown?.setValueIfValid(urlState.selectedCategory) ?? '';
 
 		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
 		this.updateClearAllVisibility();
 	}
 
-	syncDropdown(dropdown, value) {
-		if (!dropdown) return '';
-		const isValid = dropdown.state.options.some(option => option.value === value);
-		const appliedValue = isValid ? value : '';
-		dropdown.syncValue(appliedValue);
-		return appliedValue;
-	}
-
-	// Writes the current filters to the URL, dropping any term/letter hash since the results
-	// change. `fromSearch` collapses a run of typing into one history entry; any other change
-	// pushes a new entry so back/forward steps through them.
+	// Drops any term/letter hash, since the results change.
 	updateUrl({ fromSearch = false } = {}) {
-		const values = {
+		this.urlState.write({
 			searchQuery: this.el.searchInput?.value,
 			selectedCategory: this.state.selectedCategory,
-		};
-
-		const replace = fromSearch && this.isSearchHistoryEntry;
-		if (writeUrlParams(URL_PARAMS, values, { replace, hash: '' })) this.isSearchHistoryEntry = fromSearch;
+		}, { fromSearch, hash: '' });
 	}
 
 	// Fires for filter changes and for hash navigation (letter nav, "See also" links). Only
 	// re-render when the filters differ, so hash-only steps keep the browser's own scrolling.
 	onPopState() {
-		this.isSearchHistoryEntry = false;
-
-		const urlState = readUrlParams(URL_PARAMS);
+		const urlState = this.urlState.read();
 		const isSameFilters =
 			urlState.searchQuery.toLowerCase() === this.state.searchQuery.trim() &&
 			urlState.selectedCategory === this.state.selectedCategory;
@@ -164,7 +148,6 @@ export class LexiconView {
 		});
 
 		window.addEventListener('resize', () => this.onResize());
-		window.addEventListener('popstate', () => this.onPopState());
 	}
 
 	onNavLinkClick(event) {
@@ -174,7 +157,7 @@ export class LexiconView {
 
 		event.preventDefault();
 		history.pushState(null, '', `#${targetId}`);
-		this.isSearchHistoryEntry = false;
+		this.urlState.resetSearchEntry();
 		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
 
@@ -221,7 +204,7 @@ export class LexiconView {
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 
 		// syncValue (not selectOption) so no change event fires and the reset is one history entry.
-		this.state.selectedCategory = this.syncDropdown(this.components.categoryDropdown, '');
+		this.state.selectedCategory = this.components.categoryDropdown?.setValueIfValid('') ?? '';
 
 		this.updateUrl();
 		this.updateClearAllVisibility();
