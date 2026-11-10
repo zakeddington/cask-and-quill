@@ -1,6 +1,4 @@
 import { QUIZ_QUESTIONS } from '../../data/quiz/index.js';
-import { LEXICON_TERMS, LEXICON_CATEGORIES } from '../../data/lexicon-data.js';
-import { REGIONS_DATA } from '../../data/regions-data.js';
 import { escapeHtml } from '../../utils/utils.js';
 import { KEY_ENTER } from '../../config/constants.js';
 import { AUTH_CHANGE } from '../../config/events.js';
@@ -8,14 +6,11 @@ import {
 	QUIZ_SOURCE,
 	QUIZ_SOURCES,
 	QUIZ_DIFFICULTIES,
-	QUIZ_REGION_TOPIC,
 	QUIZ_REGION_TOPICS,
 	QUIZ_VERSION,
 	QUIZ_MODE,
-	QUIZ_MODES,
 	QUIZ_LENGTH_ALL,
 	QUIZ_LENGTH_OPTIONS,
-	QUIZ_FILTER_KEYS,
 	QUIZ_SOURCE_FILTER_KEYS,
 	QUIZ_DEFAULT_CONFIG,
 	QUIZ_PRIORITIZE_OPTIONS,
@@ -26,6 +21,31 @@ import {
 	QUIZ_PROGRESS_GROUPS,
 	QUIZ_FOCUS_AREA
 } from './constants.js';
+import {
+	QUIZ_FILTER_GROUPS,
+	isSourcePicked,
+	isFilterLocked,
+	isFilterPressed,
+	hasFilters,
+	getConfigKey,
+	describeConfig,
+	sanitizeConfig,
+	toggleFilter,
+	setLength,
+	setPrioritize,
+	clearFilters
+} from './config.js';
+import {
+	formatSource,
+	formatRegionTopic,
+	formatDifficulty,
+	formatRegion,
+	getLexiconTermName,
+	getRegionName,
+	formatDate,
+	formatShortDate,
+	formatChange
+} from './format.js';
 import {
 	getQuestion,
 	getLexiconCategory,
@@ -64,61 +84,6 @@ import {
 	compareWithPrevious
 } from './stats.js';
 
-// Used when a quiz summary has too many values in a group to list
-const COUNT_LABELS = {
-	lexiconCategories: 'categories',
-	regionCountries: 'countries',
-	regionTopics: 'question types',
-	difficulties: 'difficulties',
-};
-
-const DATE_FORMAT = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short' });
-const SHORT_DATE_FORMAT = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
-
-const SOURCE_LABELS = {
-	[QUIZ_SOURCE.LEXICON]: 'Lexicon',
-	[QUIZ_SOURCE.REGIONS]: 'Regions',
-};
-
-const TOPIC_LABELS = {
-	[QUIZ_REGION_TOPIC.LEGAL]: 'Legal',
-	[QUIZ_REGION_TOPIC.VARIETIES]: 'Varieties',
-	[QUIZ_REGION_TOPIC.SUB_REGIONS]: 'Sub-regions',
-};
-
-const LEXICON_NAMES = new Map(LEXICON_TERMS.map(term => [term.id, term.name]));
-const REGION_NAMES = new Map(REGIONS_DATA.map(region => [region.id, region.name]));
-const REGION_IDS = REGIONS_DATA.map(region => region.id);
-
-function capitalize(value) {
-	return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-function formatTopic(value) {
-	return TOPIC_LABELS[value] ?? value;
-}
-
-// A source counts as picked when it's selected directly or through one of its sub-filters
-function isSourcePicked(config, source) {
-	return config.sources.includes(source) || QUIZ_SOURCE_FILTER_KEYS[source].some(key => config[key].length);
-}
-
-// Identifies quizzes with the same settings for score comparisons; question selection doesn't count
-function getConfigKey(config) {
-	return JSON.stringify([config.mode, config.length, ...QUIZ_FILTER_KEYS.map(key => [...config[key]].sort())]);
-}
-
-function formatChange(change) {
-	if (!change) return 'Same score as';
-	const points = Math.abs(change) === 1 ? 'point' : 'points';
-	return change > 0 ? `Up ${change} ${points} on` : `Down ${-change} ${points} on`;
-}
-
-// Quizzes draw from one source at a time, so at most one source is picked
-function getPickedSource(config) {
-	return QUIZ_SOURCES.find(source => isSourcePicked(config, source));
-}
-
 export class QuizView {
 	constructor(elContainer) {
 		this.el = {
@@ -126,19 +91,10 @@ export class QuizView {
 			screen: elContainer.querySelector('.quiz-view__screen'),
 		};
 
-		// `source` marks a group as a sub-filter of that source
-		this.filterGroups = {
-			sources: { label: 'Source', values: QUIZ_SOURCES, format: value => SOURCE_LABELS[value] ?? value },
-			lexiconCategories: { label: 'Lexicon categories', source: QUIZ_SOURCE.LEXICON, values: LEXICON_CATEGORIES, format: value => value },
-			regionCountries: { label: 'Region countries', source: QUIZ_SOURCE.REGIONS, values: REGION_IDS, format: value => REGION_NAMES.get(value) ?? value },
-			regionTopics: { label: 'Region question types', source: QUIZ_SOURCE.REGIONS, values: QUIZ_REGION_TOPICS, format: value => value === QUIZ_REGION_TOPIC.SUB_REGIONS ? 'Sub-regions (Scotland)' : formatTopic(value) },
-			difficulties: { label: 'Difficulty', values: QUIZ_DIFFICULTIES, format: capitalize },
-		};
-
 		this.state = {
 			screen: QUIZ_SCREEN.SETUP,
 			quiz: null,
-			config: this.sanitizeConfig(loadLastConfig()),
+			config: sanitizeConfig(loadLastConfig()),
 			showAllHistory: false,
 			removedEntry: null,
 		};
@@ -172,75 +128,11 @@ export class QuizView {
 	// Config
 	// ---------------------------------------------------------------
 
-	sanitizeConfig(config) {
-		const pick = (values, allowed) => Array.isArray(values) ? values.filter(value => allowed.includes(value)) : [];
-
-		const result = {
-			...QUIZ_DEFAULT_CONFIG,
-			...Object.fromEntries(QUIZ_FILTER_KEYS.map(key => [key, pick(config?.[key], this.filterGroups[key].values)])),
-			length: QUIZ_LENGTH_OPTIONS.includes(config?.length) ? config.length : QUIZ_DEFAULT_CONFIG.length,
-			mode: QUIZ_MODES.includes(config?.mode) ? config.mode : QUIZ_DEFAULT_CONFIG.mode,
-			prioritize: typeof config?.prioritize === 'boolean' ? config.prioritize : QUIZ_DEFAULT_CONFIG.prioritize,
-		};
-
-		// Older saved configs may mix sources; keep only the first picked one
-		const picked = getPickedSource(result);
-		QUIZ_SOURCES.filter(source => source !== picked).forEach(source => {
-			result.sources = result.sources.filter(item => item !== source);
-			QUIZ_SOURCE_FILTER_KEYS[source].forEach(key => { result[key] = []; });
-		});
-
-		return result;
-	}
-
-	getFilterSource(key, value) {
-		return key === 'sources' ? value : this.filterGroups[key].source;
-	}
-
-	// Filters that belong to a different source than the picked one are locked
-	isFilterLocked(key, value) {
-		const picked = getPickedSource(this.state.config);
-		const source = this.getFilterSource(key, value);
-		return Boolean(picked && source && source !== picked);
-	}
-
-	isFilterPressed(key, value) {
-		return key === 'sources' ? isSourcePicked(this.state.config, value) : this.state.config[key].includes(value);
-	}
-
-	toggleFilter(key, value) {
-		const config = this.state.config;
-		if (this.isFilterLocked(key, value)) return;
-
-		if (key === 'sources' && isSourcePicked(config, value)) {
-			// Deselecting a source also clears its sub-filters
-			config.sources = config.sources.filter(item => item !== value);
-			QUIZ_SOURCE_FILTER_KEYS[value].forEach(subKey => { config[subKey] = []; });
-		} else {
-			config[key] = config[key].includes(value)
-				? config[key].filter(item => item !== value)
-				: [...config[key], value];
-		}
-
+	// Config changes come from the pure functions in config.js; this stores and saves the result
+	updateConfig(config) {
+		if (config === this.state.config) return;
+		this.state.config = config;
 		saveLastConfig(config);
-	}
-
-	setLength(value) {
-		this.state.config.length = value === QUIZ_LENGTH_ALL ? QUIZ_LENGTH_ALL : Number(value);
-		saveLastConfig(this.state.config);
-	}
-
-	setPrioritize(value) {
-		this.state.config.prioritize = value === 'true';
-		saveLastConfig(this.state.config);
-	}
-
-	clearFilters() {
-		this.state.config = {
-			...this.state.config,
-			...Object.fromEntries(QUIZ_FILTER_KEYS.map(key => [key, []])),
-		};
-		saveLastConfig(this.state.config);
 	}
 
 	// Quiz lifecycle
@@ -442,18 +334,18 @@ export class QuizView {
 		const chip = target.closest('.quiz-chip');
 		if (chip) {
 			if (chip.dataset.group === 'length') {
-				this.setLength(chip.dataset.value);
+				this.updateConfig(setLength(this.state.config, chip.dataset.value));
 			} else if (chip.dataset.group === 'prioritize') {
-				this.setPrioritize(chip.dataset.value);
+				this.updateConfig(setPrioritize(this.state.config, chip.dataset.value));
 			} else {
-				this.toggleFilter(chip.dataset.group, chip.dataset.value);
+				this.updateConfig(toggleFilter(this.state.config, chip.dataset.group, chip.dataset.value));
 			}
 			this.updateSetupControls();
 			return;
 		}
 
 		if (target.closest('.quiz-setup__clear')) {
-			this.clearFilters();
+			this.updateConfig(clearFilters(this.state.config));
 			this.updateSetupControls();
 			return;
 		}
@@ -528,7 +420,7 @@ export class QuizView {
 		}
 
 		if (target.closest('.quiz-results__retry')) {
-			this.startQuiz(this.sanitizeConfig(this.state.quiz.config));
+			this.startQuiz(sanitizeConfig(this.state.quiz.config));
 			return;
 		}
 
@@ -594,11 +486,11 @@ export class QuizView {
 
 	renderSourceLink(question) {
 		const isLexicon = question.source === QUIZ_SOURCE.LEXICON;
-		const name = isLexicon ? LEXICON_NAMES.get(question.sourceId) : REGION_NAMES.get(question.sourceId);
+		const name = isLexicon ? getLexiconTermName(question.sourceId) : getRegionName(question.sourceId);
 		if (!name) return '';
 
 		const href = isLexicon ? `/lexicon/#${question.sourceId}` : `/#region-${question.sourceId}`;
-		const label = SOURCE_LABELS[question.source];
+		const label = formatSource(question.source);
 
 		return `<p class="quiz-source-link text-body-sm">Learn more: <a href="${escapeHtml(href)}" target="_blank">${escapeHtml(label)} — ${escapeHtml(name)}</a></p>`;
 	}
@@ -606,8 +498,8 @@ export class QuizView {
 	renderTags(question) {
 		const labels = question.source === QUIZ_SOURCE.LEXICON
 			? [getLexiconCategory(question)]
-			: [REGION_NAMES.get(question.sourceId), formatTopic(question.topic)];
-		labels.push(capitalize(question.difficulty));
+			: [getRegionName(question.sourceId), formatRegionTopic(question.topic)];
+		labels.push(formatDifficulty(question.difficulty));
 
 		return `
 			<div class="tags">
@@ -691,24 +583,6 @@ export class QuizView {
 
 	// Progress section
 
-	describeConfig(config) {
-		if (config.mode === QUIZ_MODE.REVIEW) return 'Missed questions';
-
-		const parts = [];
-		const source = getPickedSource(config);
-		if (source) parts.push(SOURCE_LABELS[source]);
-
-		QUIZ_PROGRESS_GROUPS.forEach(key => {
-			const values = config[key];
-			if (!values.length) return;
-			parts.push(values.length > 2
-				? `${values.length} ${COUNT_LABELS[key]}`
-				: values.map(this.filterGroups[key].format).join(', '));
-		});
-
-		return parts.length ? parts.join(' · ') : 'All questions';
-	}
-
 	// `hasMessage` keeps the section visible to show a status message even with no history
 	renderProgress(hasMessage = false) {
 		const history = getHistory();
@@ -729,7 +603,7 @@ export class QuizView {
 		const questionStats = getQuestionStats(history);
 		const areas = QUIZ_PROGRESS_GROUPS.map(key => ({
 			key,
-			stats: getFilterStats(questionStats, key, this.filterGroups[key].values),
+			stats: getFilterStats(questionStats, key, QUIZ_FILTER_GROUPS[key].values),
 		}));
 
 		return `
@@ -803,7 +677,7 @@ export class QuizView {
 						<ol class="quiz-trend__chart list-reset" aria-label="Scores, oldest to newest">
 							${entries.map(entry => {
 								const percent = getPercent(entry);
-								const label = `${SHORT_DATE_FORMAT.format(entry.completedAt)}: ${entry.score}/${entry.total} (${percent}%)`;
+								const label = `${formatShortDate(entry.completedAt)}: ${entry.score}/${entry.total} (${percent}%)`;
 								return `
 									<li class="quiz-trend__item" tabindex="0" aria-label="${escapeHtml(label)}">
 										<span class="quiz-trend__bar" style="height: ${percent}%"></span>
@@ -835,7 +709,7 @@ export class QuizView {
 				${focus.length ? `
 					<ul class="quiz-focus__list list-reset">
 						${focus.map(({ key, value, accuracy }) => {
-							const group = this.filterGroups[key];
+							const group = QUIZ_FILTER_GROUPS[key];
 							const name = group.format(value);
 							return `
 								<li class="quiz-focus__item">
@@ -869,7 +743,7 @@ export class QuizView {
 	}
 
 	renderAreaGroup({ key, stats }) {
-		const group = this.filterGroups[key];
+		const group = QUIZ_FILTER_GROUPS[key];
 		const rows = group.values.filter(value => stats[value].seen);
 		if (!rows.length) return '';
 
@@ -924,8 +798,8 @@ export class QuizView {
 	}
 
 	renderHistoryItem(entry) {
-		const config = this.sanitizeConfig(entry.config);
-		const date = DATE_FORMAT.format(entry.completedAt);
+		const config = sanitizeConfig(entry.config);
+		const date = formatDate(entry.completedAt);
 		const questions = entry.total === 1 ? 'question' : 'questions';
 
 		return `
@@ -933,7 +807,7 @@ export class QuizView {
 				<div class="quiz-history__details">
 					<p class="quiz-history__name">
 						${config.mode === QUIZ_MODE.REVIEW ? '<span class="tag text-label">Practice</span>' : ''}
-						${escapeHtml(this.describeConfig(config))}
+						${escapeHtml(describeConfig(config))}
 					</p>
 					<p class="quiz-history__meta text-body-sm">
 						<time datetime="${new Date(entry.completedAt).toISOString()}">${escapeHtml(date)}</time> · ${entry.total} ${questions}
@@ -951,7 +825,7 @@ export class QuizView {
 	}
 
 	renderFilterGroup(key) {
-		const group = this.filterGroups[key];
+		const group = QUIZ_FILTER_GROUPS[key];
 		const classes = ['quiz-setup__group'];
 		if (key === 'sources') classes.push('quiz-setup__group--sources');
 		if (group.source) classes.push('quiz-setup__group--sub');
@@ -1025,16 +899,16 @@ export class QuizView {
 
 			// Counts reflect the other selections, so options that would add nothing are disabled,
 			// as is everything in the source that isn't picked
-			const isPressed = this.isFilterPressed(group, value);
+			const isPressed = isFilterPressed(config, group, value);
 			const count = countFilterMatches(config, group, value);
 			chip.setAttribute('aria-pressed', String(isPressed));
-			chip.disabled = this.isFilterLocked(group, value) || (!isPressed && !count);
+			chip.disabled = isFilterLocked(config, group, value) || (!isPressed && !count);
 			chip.querySelector('.quiz-chip__count').textContent = `(${count})`;
 		});
 
 		this.el.screen.querySelectorAll('.quiz-setup__legend-count').forEach(hint => {
 			const key = hint.dataset.group;
-			const source = this.filterGroups[key].source;
+			const source = QUIZ_FILTER_GROUPS[key].source;
 			const count = key === 'sources'
 				? QUIZ_SOURCES.filter(item => isSourcePicked(config, item)).length
 				: config[key].length;
@@ -1056,7 +930,7 @@ export class QuizView {
 				: 'No questions match these filters. Try widening your selection.';
 		}
 		if (startBtn) startBtn.disabled = !poolSize;
-		if (clearBtn) clearBtn.hidden = !QUIZ_FILTER_KEYS.some(key => config[key].length);
+		if (clearBtn) clearBtn.hidden = !hasFilters(config);
 	}
 
 	// Question screen
@@ -1159,10 +1033,10 @@ export class QuizView {
 						</div>
 					</div>
 					<div class="quiz-results__breakdowns grid__col--12-md grid__col--7-lg">
-						${this.renderBreakdown('By lexicon category', byLexiconCategory, LEXICON_CATEGORIES, value => value)}
-						${this.renderBreakdown('By region country', byRegionCountry, REGION_IDS, value => REGION_NAMES.get(value) ?? value)}
-						${this.renderBreakdown('By region question type', byRegionTopic, QUIZ_REGION_TOPICS, formatTopic)}
-						${this.renderBreakdown('By difficulty', byDifficulty, QUIZ_DIFFICULTIES, capitalize)}
+						${this.renderBreakdown('By lexicon category', byLexiconCategory, QUIZ_FILTER_GROUPS.lexiconCategories.values, QUIZ_FILTER_GROUPS.lexiconCategories.format)}
+						${this.renderBreakdown('By region country', byRegionCountry, QUIZ_FILTER_GROUPS.regionCountries.values, formatRegion)}
+						${this.renderBreakdown('By region question type', byRegionTopic, QUIZ_REGION_TOPICS, formatRegionTopic)}
+						${this.renderBreakdown('By difficulty', byDifficulty, QUIZ_DIFFICULTIES, formatDifficulty)}
 					</div>
 				</div>
 
@@ -1177,8 +1051,8 @@ export class QuizView {
 	}
 
 	renderComparison(current) {
-		const key = getConfigKey(this.sanitizeConfig(this.state.quiz.config));
-		const comparison = compareWithPrevious(getHistory(), current, config => getConfigKey(this.sanitizeConfig(config)) === key);
+		const key = getConfigKey(sanitizeConfig(this.state.quiz.config));
+		const comparison = compareWithPrevious(getHistory(), current, config => getConfigKey(sanitizeConfig(config)) === key);
 		if (!comparison) return '';
 
 		const { change, bestPercent, isPersonalBest } = comparison;
