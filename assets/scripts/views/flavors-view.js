@@ -3,6 +3,15 @@ import { ModalEditFlavor } from '../components/modal-edit-flavor.js';
 import { CustomDropdown } from '../components/custom-dropdown.js';
 import { SPRITE_URL } from '../config/constants.js';
 import { AUTH_CHANGE } from '../config/events.js';
+import { readUrlParams, writeUrlParams } from '../utils.js';
+
+const ALL_FAMILIES = 'All Families';
+
+// Maps flavor state keys to the URL query params that persist them.
+const URL_PARAMS = {
+	searchQuery: 'q',
+	familyFilter: 'family',
+};
 
 export class FlavorsView {
 	constructor(elContainer, isAdmin = false) {
@@ -20,7 +29,7 @@ export class FlavorsView {
 		this.state = {
 			families: [],
 			searchQuery: '',
-			familyFilter: 'All Families',
+			familyFilter: ALL_FAMILIES,
 			isAdmin,
 		};
 
@@ -28,6 +37,10 @@ export class FlavorsView {
 			familyDropdown: null,
 			modal: null,
 		};
+
+		// Whether the current history entry was created by typing in search, so continued typing
+		// replaces it instead of adding an entry per keystroke.
+		this.isSearchHistoryEntry = false;
 
 		this.init();
 	}
@@ -37,7 +50,7 @@ export class FlavorsView {
 	}
 
 	get familyOptions() {
-		return ['All Families', ...this.state.families.map(f => f.name)];
+		return [ALL_FAMILIES, ...this.state.families.map(f => f.name)];
 	}
 
 	async init() {
@@ -47,8 +60,47 @@ export class FlavorsView {
 		if (!loaded) return;
 
 		this.initFamilySelect();
+		this.applyUrlState();
 		this.render();
 		this.addEventListeners();
+	}
+
+	// URL state
+
+	// Applies the URL's params to state and controls, ignoring a family the dropdown doesn't offer.
+	applyUrlState() {
+		const urlState = readUrlParams(URL_PARAMS);
+
+		if (this.el.searchInput) this.el.searchInput.value = urlState.searchQuery;
+		this.state.searchQuery = urlState.searchQuery;
+		this.state.familyFilter = this.syncFamilyDropdown(urlState.familyFilter || ALL_FAMILIES);
+
+		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
+		this.updateClearAllVisibility();
+	}
+
+	syncFamilyDropdown(value) {
+		const appliedValue = this.familyOptions.includes(value) ? value : ALL_FAMILIES;
+		this.components.familyDropdown?.syncValue(appliedValue);
+		return appliedValue;
+	}
+
+	// Writes the current filters to the URL. `fromSearch` collapses a run of keystrokes into one
+	// history entry; any other change pushes a new entry so back/forward steps through them.
+	updateUrl({ fromSearch = false, replace = false } = {}) {
+		const values = {
+			searchQuery: this.el.searchInput?.value,
+			familyFilter: this.state.familyFilter === ALL_FAMILIES ? '' : this.state.familyFilter,
+		};
+
+		const shouldReplace = replace || (fromSearch && this.isSearchHistoryEntry);
+		if (writeUrlParams(URL_PARAMS, values, { replace: shouldReplace }) && !replace) this.isSearchHistoryEntry = fromSearch;
+	}
+
+	onPopState() {
+		this.isSearchHistoryEntry = false;
+		this.applyUrlState();
+		this.render();
 	}
 
 	async fetchFlavorData() {
@@ -86,6 +138,7 @@ export class FlavorsView {
 		this.el.clearAllBtn?.addEventListener('click', () => this.onClearAll());
 
 		window.addEventListener(AUTH_CHANGE, event => this.onAuthChange(event));
+		window.addEventListener('popstate', () => this.onPopState());
 	}
 
 	onAuthChange(event) {
@@ -105,6 +158,7 @@ export class FlavorsView {
 		this.state.searchQuery = event.target.value;
 		if (this.el.searchClear) this.el.searchClear.hidden = !this.state.searchQuery;
 		this.updateClearAllVisibility();
+		this.updateUrl({ fromSearch: true });
 		this.render();
 	}
 
@@ -113,6 +167,7 @@ export class FlavorsView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
 		this.el.searchInput.focus();
 	}
@@ -120,6 +175,7 @@ export class FlavorsView {
 	onFamilyChange(event) {
 		this.state.familyFilter = event.target.value;
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
 	}
 
@@ -128,20 +184,27 @@ export class FlavorsView {
 		this.state.searchQuery = '';
 		if (this.el.searchClear) this.el.searchClear.hidden = true;
 
-		this.components.familyDropdown?.selectOption('All Families');
+		// syncValue (not selectOption) so no change event fires and the reset is one history entry.
+		this.state.familyFilter = this.syncFamilyDropdown(ALL_FAMILIES);
 
 		this.updateClearAllVisibility();
+		this.updateUrl();
 		this.render();
+		this.el.searchInput.focus();
 	}
 
 	updateClearAllVisibility() {
 		if (!this.el.clearAllBtn) return;
-		this.el.clearAllBtn.hidden = !(this.state.searchQuery || this.state.familyFilter !== 'All Families');
+		this.el.clearAllBtn.hidden = !(this.state.searchQuery || this.state.familyFilter !== ALL_FAMILIES);
 	}
 
 	onSave(family) {
 		const idx = this.state.families.findIndex(f => f.id === family.id);
-		if (idx !== -1) this.state.families[idx] = family;
+		if (idx !== -1) {
+			// Keep filtering to a renamed family under its new name.
+			if (this.state.familyFilter === this.state.families[idx].name) this.state.familyFilter = family.name;
+			this.state.families[idx] = family;
+		}
 		this.updateFamilySelect();
 		this.render();
 
@@ -157,8 +220,13 @@ export class FlavorsView {
 		deleteFlavorFamily(id).catch(err => window.console.warn('Failed to delete flavor family.', err));
 	}
 
+	// Rebuilds the family options and keeps the filter valid, e.g. after the selected family is
+	// deleted. Replaces the history entry since this isn't a navigation the user made.
 	updateFamilySelect() {
 		this.components.familyDropdown?.setOptions(this.familyOptions.map(o => ({ value: o, label: o })));
+		this.state.familyFilter = this.syncFamilyDropdown(this.state.familyFilter);
+		this.updateClearAllVisibility();
+		this.updateUrl({ replace: true });
 	}
 
 	getSlug(name) {
@@ -171,7 +239,7 @@ export class FlavorsView {
 
 		return this.state.families
 			.map((f, i) => ({ f, i }))
-			.filter(({ f }) => family === 'All Families' || family === f.name)
+			.filter(({ f }) => family === ALL_FAMILIES || family === f.name)
 			.map(({ f, i }) => {
 				let subs = f.subs.map(s => {
 					const terms = q ? s.terms.filter(t => t.toLowerCase().includes(q)) : s.terms;
