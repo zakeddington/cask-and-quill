@@ -2,6 +2,7 @@ import { escapeHtml } from '../../../utils/utils.js';
 import {
 	QUIZ_MODE,
 	QUIZ_HISTORY_STATUS,
+	QUIZ_ACTION,
 	QUIZ_HISTORY_PREVIEW_LENGTH,
 	QUIZ_TREND_LENGTH,
 	QUIZ_PROGRESS_GROUPS,
@@ -42,7 +43,7 @@ export function renderProgress({ history, status, isSynced, showAllHistory, hasR
 			${status === QUIZ_HISTORY_STATUS.ERROR ? `
 				<div class="quiz-progress__notice" role="alert">
 					<p>Couldn't load your quiz history from your account.${history.length ? ' Showing quizzes from this browser that are waiting to sync.' : ''}</p>
-					<button class="quiz-progress__retry button button--secondary" type="button">Try again</button>
+					<button class="quiz-progress__retry button button--secondary" type="button" data-action="${QUIZ_ACTION.RETRY_HISTORY_LOAD}">Try again</button>
 				</div>
 			` : ''}
 			${history.length ? `
@@ -147,7 +148,7 @@ function renderFocusAreas(areas) {
 									<p class="quiz-focus__name">${escapeHtml(name)}</p>
 									<p class="quiz-focus__meta text-body-sm">${escapeHtml(group.label)} · ${Math.round(accuracy * 100)}% correct</p>
 								</div>
-								<button class="quiz-focus__start button button--secondary" type="button" data-group="${key}" data-value="${escapeHtml(value)}" aria-label="Quiz me on ${escapeHtml(name)}">Quiz me</button>
+								<button class="quiz-focus__start button button--secondary" type="button" data-action="${QUIZ_ACTION.START_AREA_QUIZ}" data-group="${key}" data-value="${escapeHtml(value)}" aria-label="Quiz me on ${escapeHtml(name)}">Quiz me</button>
 							</li>
 						`;
 					}).join('')}
@@ -208,7 +209,7 @@ function renderHistory(history, showAll) {
 			<div class="quiz-history__header">
 				<h3 class="quiz-history__title text-heading-md" tabindex="-1">Past quizzes${history.length ? ` (${history.length})` : ''}</h3>
 				${history.length ? `
-					<button class="quiz-history__clear button button--tertiary" type="button">
+					<button class="quiz-history__clear button button--tertiary" type="button" data-action="${QUIZ_ACTION.CLEAR_HISTORY}">
 						${renderIcon('icon-x')}
 						Clear history
 					</button>
@@ -219,7 +220,7 @@ function renderHistory(history, showAll) {
 				? `<ol class="quiz-history__list list-reset">${visible.map(renderHistoryItem).join('')}</ol>`
 				: '<p>No quizzes in your history.</p>'}
 			${history.length > QUIZ_HISTORY_PREVIEW_LENGTH ? `
-				<button class="quiz-history__toggle button button--secondary" type="button" aria-expanded="${showAll}">
+				<button class="quiz-history__toggle button button--secondary" type="button" data-action="${QUIZ_ACTION.TOGGLE_HISTORY}" aria-expanded="${showAll}">
 					${showAll ? 'Show fewer' : `Show all ${history.length} quizzes`}
 				</button>
 			` : ''}
@@ -247,7 +248,7 @@ function renderHistoryItem(entry) {
 				<strong>${entry.score}/${entry.total}</strong>
 				<span class="quiz-history__percent">${getPercent(entry)}%</span>
 			</p>
-			<button class="quiz-history__remove button button--icon-only" type="button" data-id="${escapeHtml(entry.id)}" aria-label="Remove quiz from ${escapeHtml(date)}">
+			<button class="quiz-history__remove button button--icon-only" type="button" data-action="${QUIZ_ACTION.REMOVE_HISTORY_ENTRY}" data-id="${escapeHtml(entry.id)}" aria-label="Remove quiz from ${escapeHtml(date)}">
 				${renderIcon('icon-x')}
 			</button>
 		</li>

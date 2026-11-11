@@ -2,6 +2,7 @@ import { escapeHtml } from '../../utils/utils.js';
 import { KEY_ENTER } from '../../config/constants.js';
 import { AUTH_CHANGE } from '../../config/events.js';
 import {
+	QUIZ_ACTION,
 	QUIZ_SOURCES,
 	QUIZ_VERSION,
 	QUIZ_MODE,
@@ -69,6 +70,8 @@ export class QuizView {
 			removedEntry: null,
 		};
 
+		this.actions = this.createActions();
+
 		this.init();
 	}
 
@@ -98,11 +101,14 @@ export class QuizView {
 	// Config
 	// ---------------------------------------------------------------
 
-	// Config changes come from the pure functions in config.js; this stores and saves the result
+	// Config changes come from the pure functions in config.js; this stores and saves the result,
+	// then updates the setup controls in place so focus stays on the clicked chip
 	updateConfig(config) {
-		if (config === this.state.config) return;
-		this.state.config = config;
-		saveLastConfig(config);
+		if (config !== this.state.config) {
+			this.state.config = config;
+			saveLastConfig(config);
+		}
+		this.updateSetupControls();
 	}
 
 	// Quiz lifecycle
@@ -186,9 +192,11 @@ export class QuizView {
 		this.startQuiz({ ...QUIZ_DEFAULT_CONFIG, length, prioritize, [key]: [value] });
 	}
 
+	// Drops the active quiz, whether in progress or finished, and returns to setup
 	discardQuiz() {
 		this.state.quiz = null;
 		clearActiveQuiz();
+		this.showScreen(QUIZ_SCREEN.SETUP);
 	}
 
 	// History
@@ -283,7 +291,7 @@ export class QuizView {
 		const statusHtml = message
 			? escapeHtml(message)
 			: this.state.removedEntry
-				? 'Quiz removed. <button class="quiz-history__undo button button--tertiary" type="button">Undo</button>'
+				? `Quiz removed. <button class="quiz-history__undo button button--tertiary" type="button" data-action="${QUIZ_ACTION.UNDO_REMOVE}">Undo</button>`
 				: '';
 
 		// Fill the status after insertion so screen readers announce it
@@ -298,106 +306,43 @@ export class QuizView {
 	// Events
 	// ---------------------------------------------------------------
 
+	// Clickable elements carry `data-action`; their other data attributes are passed to the handler
 	onClick(event) {
-		const target = event.target;
+		const el = event.target.closest('[data-action]');
+		if (!el) return;
 
-		const chip = target.closest('.quiz-chip');
-		if (chip) {
-			if (chip.dataset.group === 'length') {
-				this.updateConfig(setLength(this.state.config, chip.dataset.value));
-			} else if (chip.dataset.group === 'prioritize') {
-				this.updateConfig(setPrioritize(this.state.config, chip.dataset.value));
-			} else {
-				this.updateConfig(toggleFilter(this.state.config, chip.dataset.group, chip.dataset.value));
-			}
-			this.updateSetupControls();
-			return;
-		}
+		this.actions[el.dataset.action]?.(el.dataset);
+	}
 
-		if (target.closest('.quiz-setup__clear')) {
-			this.updateConfig(clearFilters(this.state.config));
-			this.updateSetupControls();
-			return;
-		}
+	createActions() {
+		return {
+			// Setup
+			[QUIZ_ACTION.TOGGLE_FILTER]: ({ group, value }) => this.updateConfig(toggleFilter(this.state.config, group, value)),
+			[QUIZ_ACTION.SET_LENGTH]: ({ value }) => this.updateConfig(setLength(this.state.config, value)),
+			[QUIZ_ACTION.SET_PRIORITIZE]: ({ value }) => this.updateConfig(setPrioritize(this.state.config, value)),
+			[QUIZ_ACTION.CLEAR_FILTERS]: () => this.updateConfig(clearFilters(this.state.config)),
+			[QUIZ_ACTION.START_QUIZ]: () => this.startQuiz(this.state.config),
+			[QUIZ_ACTION.START_REVIEW]: () => this.startReview(),
+			[QUIZ_ACTION.RESUME_QUIZ]: () => this.showScreen(this.state.quiz?.completedAt ? QUIZ_SCREEN.RESULTS : QUIZ_SCREEN.QUESTION),
+			[QUIZ_ACTION.DISCARD_QUIZ]: () => this.discardQuiz(),
 
-		if (target.closest('.quiz-setup__start')) {
-			this.startQuiz(this.state.config);
-			return;
-		}
+			// Progress
+			[QUIZ_ACTION.START_AREA_QUIZ]: ({ group, value }) => this.startAreaQuiz(group, value),
+			[QUIZ_ACTION.RETRY_HISTORY_LOAD]: () => loadHistory(),
+			[QUIZ_ACTION.REMOVE_HISTORY_ENTRY]: ({ id }) => this.removeEntry(id),
+			[QUIZ_ACTION.UNDO_REMOVE]: () => this.undoRemove(),
+			[QUIZ_ACTION.CLEAR_HISTORY]: () => this.clearAllHistory(),
+			[QUIZ_ACTION.TOGGLE_HISTORY]: () => this.toggleHistory(),
 
-		if (target.closest('.quiz-practice__start')) {
-			this.startReview();
-			return;
-		}
+			// Question
+			[QUIZ_ACTION.ANSWER]: ({ optionIndex }) => this.answerCurrent(Number(optionIndex)),
+			[QUIZ_ACTION.NEXT_QUESTION]: () => this.nextQuestion(),
+			[QUIZ_ACTION.EXIT_QUIZ]: () => this.showScreen(QUIZ_SCREEN.SETUP),
 
-		const areaStart = target.closest('.quiz-focus__start');
-		if (areaStart) {
-			this.startAreaQuiz(areaStart.dataset.group, areaStart.dataset.value);
-			return;
-		}
-
-		const remove = target.closest('.quiz-history__remove');
-		if (remove) {
-			this.removeEntry(remove.dataset.id);
-			return;
-		}
-
-		if (target.closest('.quiz-history__undo')) {
-			this.undoRemove();
-			return;
-		}
-
-		if (target.closest('.quiz-history__clear')) {
-			this.clearAllHistory();
-			return;
-		}
-
-		if (target.closest('.quiz-history__toggle')) {
-			this.toggleHistory();
-			return;
-		}
-
-		if (target.closest('.quiz-progress__retry')) {
-			loadHistory();
-			return;
-		}
-
-		if (target.closest('.quiz-resume__continue')) {
-			this.showScreen(this.state.quiz?.completedAt ? QUIZ_SCREEN.RESULTS : QUIZ_SCREEN.QUESTION);
-			return;
-		}
-
-		if (target.closest('.quiz-resume__discard')) {
-			this.discardQuiz();
-			this.showScreen(QUIZ_SCREEN.SETUP);
-			return;
-		}
-
-		const option = target.closest('.quiz-question__option');
-		if (option) {
-			this.answerCurrent(Number(option.dataset.optionIndex));
-			return;
-		}
-
-		if (target.closest('.quiz-question__next')) {
-			this.nextQuestion();
-			return;
-		}
-
-		if (target.closest('.quiz-question__exit')) {
-			this.showScreen(QUIZ_SCREEN.SETUP);
-			return;
-		}
-
-		if (target.closest('.quiz-results__retry')) {
-			this.startQuiz(sanitizeConfig(this.state.quiz.config));
-			return;
-		}
-
-		if (target.closest('.quiz-results__setup')) {
-			this.discardQuiz();
-			this.showScreen(QUIZ_SCREEN.SETUP);
-		}
+			// Results
+			[QUIZ_ACTION.RETRY_QUIZ]: () => this.startQuiz(sanitizeConfig(this.state.quiz.config)),
+			[QUIZ_ACTION.BACK_TO_SETUP]: () => this.discardQuiz(),
+		};
 	}
 
 	onKeydown(event) {

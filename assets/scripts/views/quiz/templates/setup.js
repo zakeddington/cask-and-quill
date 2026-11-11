@@ -2,6 +2,7 @@ import { escapeHtml } from '../../../utils/utils.js';
 import { QUIZ_QUESTIONS } from '../../../data/quiz/index.js';
 import {
 	QUIZ_SOURCES,
+	QUIZ_ACTION,
 	QUIZ_SOURCE_FILTER_KEYS,
 	QUIZ_LENGTH_ALL,
 	QUIZ_LENGTH_OPTIONS,
@@ -35,11 +36,11 @@ export function renderSetup({ quiz, missedCount, progressHtml }) {
 			<div class="quiz-setup__footer">
 				<p class="quiz-setup__summary" aria-live="polite"></p>
 				<div class="quiz-setup__actions">
-					<button class="quiz-setup__clear button button--tertiary" type="button">
+					<button class="quiz-setup__clear button button--tertiary" type="button" data-action="${QUIZ_ACTION.CLEAR_FILTERS}">
 						${renderIcon('icon-x')}
 						Clear filters
 					</button>
-					<button class="quiz-setup__start button" type="button">Start quiz</button>
+					<button class="quiz-setup__start button" type="button" data-action="${QUIZ_ACTION.START_QUIZ}">Start quiz</button>
 				</div>
 			</div>
 		</section>
@@ -58,7 +59,7 @@ export function renderPracticeBanner(missedCount) {
 				<h2 class="text-heading-md">Practice missed questions</h2>
 				<p class="quiz-practice__text">You have ${missedCount} ${questions} you got wrong the last time you saw them. Answer one correctly and it comes off the list.</p>
 			</div>
-			<button class="quiz-practice__start button" type="button">Practice ${missedCount} ${questions}</button>
+			<button class="quiz-practice__start button" type="button" data-action="${QUIZ_ACTION.START_REVIEW}">Practice ${missedCount} ${questions}</button>
 		</section>
 	`;
 }
@@ -75,8 +76,8 @@ function renderResumeBanner(quiz) {
 				<p class="quiz-resume__text">${answered} of ${quiz.questions.length} questions answered. Starting a new quiz will replace it.</p>
 			</div>
 			<div class="quiz-resume__actions">
-				<button class="quiz-resume__discard button button--tertiary" type="button">Discard</button>
-				<button class="quiz-resume__continue button" type="button">Resume quiz</button>
+				<button class="quiz-resume__discard button button--tertiary" type="button" data-action="${QUIZ_ACTION.DISCARD_QUIZ}">Discard</button>
+				<button class="quiz-resume__continue button" type="button" data-action="${QUIZ_ACTION.RESUME_QUIZ}">Resume quiz</button>
 			</div>
 		</section>
 	`;
@@ -96,7 +97,7 @@ function renderFilterGroup(key) {
 			</legend>
 			<div class="quiz-setup__chips">
 				${group.values.map(value => `
-					<button class="quiz-chip button--secondary" type="button" data-group="${key}" data-value="${escapeHtml(value)}" aria-pressed="false">
+					<button class="quiz-chip button--secondary" type="button" data-action="${QUIZ_ACTION.TOGGLE_FILTER}" data-group="${key}" data-value="${escapeHtml(value)}" aria-pressed="false">
 						${escapeHtml(group.format(value))}
 						<span class="quiz-chip__count"></span>
 					</button>
@@ -112,7 +113,7 @@ function renderLengthGroup() {
 			<legend class="quiz-setup__legend">Questions</legend>
 			<div class="quiz-setup__chips">
 				${QUIZ_LENGTH_OPTIONS.map(value => `
-					<button class="quiz-chip button--secondary" type="button" data-group="length" data-value="${value}" aria-pressed="false">
+					<button class="quiz-chip button--secondary" type="button" data-action="${QUIZ_ACTION.SET_LENGTH}" data-group="length" data-value="${value}" aria-pressed="false">
 						${value === QUIZ_LENGTH_ALL ? 'All' : value}
 					</button>
 				`).join('')}
@@ -127,7 +128,7 @@ function renderPrioritizeGroup() {
 			<legend class="quiz-setup__legend">Question selection</legend>
 			<div class="quiz-setup__chips">
 				${QUIZ_PRIORITIZE_OPTIONS.map(({ value, label }) => `
-					<button class="quiz-chip button--secondary" type="button" data-group="prioritize" data-value="${value}" aria-pressed="false">
+					<button class="quiz-chip button--secondary" type="button" data-action="${QUIZ_ACTION.SET_PRIORITIZE}" data-group="prioritize" data-value="${value}" aria-pressed="false">
 						${label}
 					</button>
 				`).join('')}

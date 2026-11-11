@@ -73,6 +73,33 @@ export const QUIZ_SCREEN = Object.freeze({
 	RESULTS: 'results',
 });
 
+// Values for the `data-action` attribute on clickable elements; the view maps each to a handler
+export const QUIZ_ACTION = Object.freeze({
+	// Setup
+	TOGGLE_FILTER: 'toggle-filter',
+	SET_LENGTH: 'set-length',
+	SET_PRIORITIZE: 'set-prioritize',
+	CLEAR_FILTERS: 'clear-filters',
+	START_QUIZ: 'start-quiz',
+	START_REVIEW: 'start-review',
+	RESUME_QUIZ: 'resume-quiz',
+	DISCARD_QUIZ: 'discard-quiz',
+	// Progress
+	START_AREA_QUIZ: 'start-area-quiz',
+	RETRY_HISTORY_LOAD: 'retry-history-load',
+	REMOVE_HISTORY_ENTRY: 'remove-history-entry',
+	UNDO_REMOVE: 'undo-remove',
+	CLEAR_HISTORY: 'clear-history',
+	TOGGLE_HISTORY: 'toggle-history',
+	// Question
+	ANSWER: 'answer',
+	NEXT_QUESTION: 'next-question',
+	EXIT_QUIZ: 'exit-quiz',
+	// Results
+	RETRY_QUIZ: 'retry-quiz',
+	BACK_TO_SETUP: 'back-to-setup',
+});
+
 export const QUIZ_HISTORY_STATUS = Object.freeze({
 	LOADING: 'loading',
 	READY: 'ready',

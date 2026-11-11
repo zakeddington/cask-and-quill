@@ -1,4 +1,5 @@
 import { escapeHtml } from '../../../utils/utils.js';
+import { QUIZ_ACTION } from '../constants.js';
 import { getQuestion } from '../engine.js';
 import { renderTags, renderSourceLink } from './shared.js';
 
@@ -17,7 +18,7 @@ export function renderQuestion(quiz) {
 		<section class="quiz-question" aria-labelledby="quiz-question-title">
 			<div class="quiz-question__header">
 				<p class="quiz-question__count text-label">Question ${quiz.currentIndex + 1} of ${total}</p>
-				<button class="quiz-question__exit button button--tertiary" type="button">Exit quiz</button>
+				<button class="quiz-question__exit button button--tertiary" type="button" data-action="${QUIZ_ACTION.EXIT_QUIZ}">Exit quiz</button>
 				<div class="quiz-question__progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answeredCount}">
 					<div class="quiz-question__progress-bar" style="width: ${(answeredCount / total) * 100}%"></div>
 				</div>
@@ -54,7 +55,7 @@ function renderOption(question, option, index, selected) {
 
 	return `
 		<li>
-			<button class="${classes.join(' ')}" type="button" data-option-index="${index}" ${isAnswered ? 'disabled' : ''}>
+			<button class="${classes.join(' ')}" type="button" data-action="${QUIZ_ACTION.ANSWER}" data-option-index="${index}" ${isAnswered ? 'disabled' : ''}>
 				<span class="quiz-question__option-key" aria-hidden="true">${index + 1}</span>
 				<span class="quiz-question__option-text">${escapeHtml(option)}</span>
 				${status ? `<span class="quiz-question__option-status">${status}</span>` : ''}
@@ -71,7 +72,7 @@ function renderFeedback(question, selected, isLast) {
 			<p class="quiz-question__verdict">${correct ? 'Correct' : 'Not quite'}</p>
 			<p>${escapeHtml(question.explanation)}</p>
 			${renderSourceLink(question)}
-			<button class="quiz-question__next button" type="button">${isLast ? 'See results' : 'Next question'}</button>
+			<button class="quiz-question__next button" type="button" data-action="${QUIZ_ACTION.NEXT_QUESTION}">${isLast ? 'See results' : 'Next question'}</button>
 		</div>
 	`;
 }

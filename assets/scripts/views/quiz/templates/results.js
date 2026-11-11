@@ -1,5 +1,5 @@
 import { escapeHtml } from '../../../utils/utils.js';
-import { QUIZ_MODE, QUIZ_DIFFICULTIES, QUIZ_REGION_TOPICS } from '../constants.js';
+import { QUIZ_ACTION, QUIZ_MODE, QUIZ_DIFFICULTIES, QUIZ_REGION_TOPICS } from '../constants.js';
 import { QUIZ_FILTER_GROUPS, sanitizeConfig, getConfigKey } from '../config.js';
 import { getQuestion, scoreQuiz } from '../engine.js';
 import { getPercent, compareWithPrevious } from '../stats.js';
@@ -26,7 +26,7 @@ export function renderResults({ quiz, history, missedCount }) {
 					${renderComparison(quiz, history, { id: quiz.id, score, total, completedAt: quiz.completedAt })}
 					<div class="quiz-results__actions">
 						${renderRetryButton(isReview, missedCount)}
-						<button class="quiz-results__setup button button--secondary" type="button">Back to setup</button>
+						<button class="quiz-results__setup button button--secondary" type="button" data-action="${QUIZ_ACTION.BACK_TO_SETUP}">Back to setup</button>
 					</div>
 				</div>
 				<div class="quiz-results__breakdowns grid__col--12-md grid__col--7-lg">
@@ -65,10 +65,10 @@ function renderComparison(quiz, history, current) {
 
 // Review quizzes can only be retried while missed questions remain
 function renderRetryButton(isReview, missedCount) {
-	if (!isReview) return '<button class="quiz-results__retry button" type="button">New quiz, same settings</button>';
+	if (!isReview) return `<button class="quiz-results__retry button" type="button" data-action="${QUIZ_ACTION.RETRY_QUIZ}">New quiz, same settings</button>`;
 	if (!missedCount) return '';
 
-	return `<button class="quiz-results__retry button" type="button">Practice ${missedCount} missed ${missedCount === 1 ? 'question' : 'questions'}</button>`;
+	return `<button class="quiz-results__retry button" type="button" data-action="${QUIZ_ACTION.RETRY_QUIZ}">Practice ${missedCount} missed ${missedCount === 1 ? 'question' : 'questions'}</button>`;
 }
 
 function renderBreakdown(title, breakdown, order, format) {
