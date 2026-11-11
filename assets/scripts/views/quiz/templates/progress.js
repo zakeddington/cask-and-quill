@@ -77,7 +77,7 @@ function renderStats(summary, missedCount) {
 	const tiles = [
 		{ label: 'Quizzes taken', value: summary.quizzesTaken },
 		{ label: 'Questions seen', value: summary.questionsSeen, detail: `of ${summary.poolSize} (${coverage}%)` },
-		{ label: 'Accuracy', value: summary.accuracy === null ? '–' : `${Math.round(summary.accuracy * 100)}%`, detail: 'across all answers' },
+		{ label: 'Accuracy', value: summary.accuracy === null ? '-' : `${Math.round(summary.accuracy * 100)}%`, detail: 'across all answers' },
 		{ label: 'To practice', value: missedCount, detail: 'wrong last time' },
 	];
 

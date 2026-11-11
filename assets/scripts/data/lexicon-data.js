@@ -115,7 +115,7 @@ export const LEXICON_TERMS = [
 		name: 'Beer Still',
 		category: DISTILLATION,
 		letter: 'B',
-		description: 'The first still in a double-distillation process (also called a wash still or strip still). Produces "low wines," typically 20–35% ABV, for further distillation.',
+		description: 'The first still in a double-distillation process (also called a wash still or strip still). Produces "low wines," typically 20-35% ABV, for further distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Double Distillation', 'Low Wines', 'Still', 'Wash', 'Wash Still']
 	},
 	{
@@ -237,7 +237,7 @@ export const LEXICON_TERMS = [
 		name: 'Cask Strength',
 		category: MEASUREMENTS_LABELING,
 		letter: 'C',
-		description: 'Whisky bottled at the natural strength it had when drawn from the cask, without significant dilution before bottling. As a bourbon designation it is non-legal and usually indicates whiskey bottled directly from the barrel with no or minimal dilution, often around 110–140° proof, while still meeting all bourbon requirements.',
+		description: 'Whisky bottled at the natural strength it had when drawn from the cask, without significant dilution before bottling. As a bourbon designation it is non-legal and usually indicates whiskey bottled directly from the barrel with no or minimal dilution, often around 110-140° proof, while still meeting all bourbon requirements.',
 		seeAlso: ['Barrel', 'Barrel Proof', 'Bourbon', 'Cask', 'Proof', 'Still', 'Whisky']
 	},
 	{
@@ -390,7 +390,7 @@ export const LEXICON_TERMS = [
 		name: 'Distiller\'s Beer',
 		category: FERMENTATION_CHEMISTRY,
 		letter: 'D',
-		description: 'Another name for wash, common in American distilling: the alcoholic liquid produced by fermentation before distillation, typically around 6–10% ABV.',
+		description: 'Another name for wash, common in American distilling: the alcoholic liquid produced by fermentation before distillation, typically around 6-10% ABV.',
 		seeAlso: ['ABV', 'Distillation', 'Fermentation', 'Wash']
 	},
 	{
@@ -480,7 +480,7 @@ export const LEXICON_TERMS = [
 		name: 'Fermentation',
 		category: FERMENTATION_CHEMISTRY,
 		letter: 'F',
-		description: 'The metabolic process in which yeast converts sugars from the grain mash into alcohol and CO₂, along with acids and other flavor compounds. All whisky-making includes fermentation, which produces a beer-like "wash" or "distiller\'s beer," typically at 6–10% ABV, before distillation.',
+		description: 'The metabolic process in which yeast converts sugars from the grain mash into alcohol and CO₂, along with acids and other flavor compounds. All whisky-making includes fermentation, which produces a beer-like "wash" or "distiller\'s beer," typically at 6-10% ABV, before distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Distiller\'s Beer', 'Mash', 'Wash', 'Whisky', 'Wort', 'Yeast']
 	},
 	{
@@ -592,7 +592,7 @@ export const LEXICON_TERMS = [
 		name: 'High Rye',
 		category: STYLES_REGULATIONS,
 		letter: 'H',
-		description: 'A non-legal bourbon designation for a mash bill with elevated rye content, typically around 20–35%, in the secondary grain bill. High-rye bourbons tend to taste spicier and drier than lower-rye bourbons, with Bulleit and Four Roses Single Barrel as common examples.',
+		description: 'A non-legal bourbon designation for a mash bill with elevated rye content, typically around 20-35%, in the secondary grain bill. High-rye bourbons tend to taste spicier and drier than lower-rye bourbons, with Bulleit and Four Roses Single Barrel as common examples.',
 		seeAlso: ['Barrel', 'Bourbon', 'Mash', 'Mash Bill', 'Rye', 'Single Barrel']
 	},
 	{
@@ -600,7 +600,7 @@ export const LEXICON_TERMS = [
 		name: 'High Wines',
 		category: DISTILLATION,
 		letter: 'H',
-		description: 'The stronger spirit from the final distillation, typically 60–80% ABV. In Scotch production, it is the spirit-still run before the cuts are made; in American distilling, it usually means the finished distillate from the doubler or thumper, ready to be reduced and barreled.',
+		description: 'The stronger spirit from the final distillation, typically 60-80% ABV. In Scotch production, it is the spirit-still run before the cuts are made; in American distilling, it usually means the finished distillate from the doubler or thumper, ready to be reduced and barreled.',
 		seeAlso: ['ABV', 'Cut', 'Distillation', 'Maturation', 'Scotch', 'Spirit Still', 'Still', 'Whisky']
 	},
 	{
@@ -696,7 +696,7 @@ export const LEXICON_TERMS = [
 		name: 'Low Wines',
 		category: DISTILLATION,
 		letter: 'L',
-		description: 'The spirit produced after the first distillation of a whisky wash, typically 20–35% ABV. It lacks enough alcohol to be a finished spirit, so it is returned to the spirit still for a second distillation.',
+		description: 'The spirit produced after the first distillation of a whisky wash, typically 20-35% ABV. It lacks enough alcohol to be a finished spirit, so it is returned to the spirit still for a second distillation.',
 		seeAlso: ['ABV', 'Distillate', 'Distillation', 'Spirit Still', 'Still', 'Wash', 'Whisky']
 	},
 	{
@@ -1200,7 +1200,7 @@ export const LEXICON_TERMS = [
 		name: 'Small Batch',
 		category: STYLES_REGULATIONS,
 		letter: 'S',
-		description: 'A non-legally defined marketing term suggesting whisky was made from a limited number of barrels or in lesser quantities than a producer\'s standard release. In bourbon, it often implies a blend of roughly 10–200 barrels, but no legal minimum or maximum exists.',
+		description: 'A non-legally defined marketing term suggesting whisky was made from a limited number of barrels or in lesser quantities than a producer\'s standard release. In bourbon, it often implies a blend of roughly 10-200 barrels, but no legal minimum or maximum exists.',
 		seeAlso: ['Barrel', 'Blend', 'Bourbon', 'Whisky']
 	},
 	{
@@ -1400,7 +1400,7 @@ export const LEXICON_TERMS = [
 		name: 'Wash',
 		category: MALTING_MASHING,
 		letter: 'W',
-		description: 'The alcoholic liquid produced by fermenting wort with yeast, typically around 6–10% ABV. It is essentially an unhopped beer, also called distiller\'s beer, and is ready for distillation.',
+		description: 'The alcoholic liquid produced by fermenting wort with yeast, typically around 6-10% ABV. It is essentially an unhopped beer, also called distiller\'s beer, and is ready for distillation.',
 		seeAlso: ['ABV', 'Distillation', 'Distiller\'s Beer', 'Fermentation', 'Wort', 'Yeast']
 	},
 	{

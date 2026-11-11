@@ -90,7 +90,7 @@ export function getPickWeight(item, now = Date.now()) {
 	return now - item.lastSeenAt < RECENT_MS ? weight * WEIGHT_RECENT_FACTOR : weight;
 }
 
-// Weighted random order without replacement (Efraimidis–Spirakis): heavier items tend to come first
+// Weighted random order without replacement (Efraimidis-Spirakis): heavier items tend to come first
 function weightedShuffle(items, getWeight) {
 	return items
 		.map(item => ({ item, key: Math.random() ** (1 / getWeight(item)) }))

@@ -3508,7 +3508,7 @@ var PostgrestQueryBuilder = class {
   * @remarks
   * When using `count` with `.range()` or `.limit()`, the returned `count` is the total number of rows
   * that match your filters, not the number of rows in the current page. Use this to build pagination UI.
-  
+
   * - By default, Supabase projects return a maximum of 1,000 rows. This setting can be changed in your project's [API settings](/dashboard/project/_/settings/api). It's recommended that you keep it low to limit the payload size of accidental or malicious requests. You can use `range()` queries to paginate through your data.
   * - `select()` can be combined with [Filters](/docs/reference/javascript/using-filters)
   * - `select()` can be combined with [Modifiers](/docs/reference/javascript/using-modifiers)
@@ -3740,7 +3740,7 @@ var PostgrestQueryBuilder = class {
   *       name
   *     )
   *   `)
-  *   
+  *
   * ```
   *
   * @exampleSql Query referenced tables through a join table
@@ -3809,7 +3809,7 @@ var PostgrestQueryBuilder = class {
   *     "status": 200,
   *     "statusText": "OK"
   *   }
-  *   
+  *
   * ```
   *
   * @exampleDescription Query the same referenced table multiple times
@@ -3900,7 +3900,7 @@ var PostgrestQueryBuilder = class {
   *         )
   *       )
   *     `)
-  *   
+  *
   * ```
   *
   * @exampleSql Query nested foreign tables through a join table
@@ -3988,7 +3988,7 @@ var PostgrestQueryBuilder = class {
   *     "status": 200,
   *     "statusText": "OK"
   *   }
-  *   
+  *
   * ```
   *
   * @exampleDescription Filtering through referenced tables
@@ -5302,7 +5302,7 @@ var PostgrestClient = class PostgrestClient2 {
 // node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
 var WebSocketFactory = class {
   /**
-   * Static-only utility – prevent instantiation.
+   * Static-only utility - prevent instantiation.
    */
   constructor() {
   }
@@ -16856,13 +16856,13 @@ var GoTrueClient = class _GoTrueClient {
    * @remarks
    * - The `verifyOtp` method takes in different verification types.
    * - If a phone number is used, the type can either be:
-   *   1. `sms` – Used when verifying a one-time password (OTP) sent via SMS during sign-up or sign-in.
-   *   2. `phone_change` – Used when verifying an OTP sent to a new phone number during a phone number update process.
+   *   1. `sms` - Used when verifying a one-time password (OTP) sent via SMS during sign-up or sign-in.
+   *   2. `phone_change` - Used when verifying an OTP sent to a new phone number during a phone number update process.
    * - If an email address is used, the type can be one of the following (note: `signup` and `magiclink` types are deprecated):
-   *   1. `email` – Used when verifying an OTP sent to the user's email during sign-up or sign-in.
-   *   2. `recovery` – Used when verifying an OTP sent for account recovery, typically after a password reset request.
-   *   3. `invite` – Used when verifying an OTP sent as part of an invitation to join a project or organization.
-   *   4. `email_change` – Used when verifying an OTP sent to a new email address during an email update process.
+   *   1. `email` - Used when verifying an OTP sent to the user's email during sign-up or sign-in.
+   *   2. `recovery` - Used when verifying an OTP sent for account recovery, typically after a password reset request.
+   *   3. `invite` - Used when verifying an OTP sent as part of an invitation to join a project or organization.
+   *   4. `email_change` - Used when verifying an OTP sent to a new email address during an email update process.
    * - The verification type used should be determined based on the corresponding auth method called before `verifyOtp` to sign up / sign-in a user.
    * - The `TokenHash` is contained in the [email templates](/docs/guides/auth/auth-email-templates) and can be used to sign in.  You may wish to use the hash for the PKCE flow for Server Side Auth. Read [the Password-based Auth guide](/docs/guides/auth/passwords) for more details.
    *
@@ -18208,7 +18208,7 @@ var GoTrueClient = class _GoTrueClient {
    *   terminate the others.
    * - Since Supabase Auth uses JWTs for authentication, the access token JWT will be valid until it's expired. When the user signs out, Supabase revokes the refresh token and deletes the JWT from the client-side. This does not revoke the JWT and it will still be valid until it expires.
    *
-   * @example Sign out of every device (global – default)
+   * @example Sign out of every device (global - default)
    * ```js
    * const { error } = await supabase.auth.signOut()
    * ```

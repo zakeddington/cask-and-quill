@@ -189,7 +189,7 @@ export const REGIONS_DATA = [
 			{
 				name: 'Light Whiskey',
 				description: 'Light Whiskey is distilled between 161° and 189° proof, aged in used or uncharred new oak, and designed for a lighter, more neutral flavor profile.',
-				tags: ['Distilled 161°–189° Proof', 'Used or Uncharred Oak'],
+				tags: ['Distilled 161°-189° Proof', 'Used or Uncharred Oak'],
 			},
 			{
 				name: 'Blended Whiskey',

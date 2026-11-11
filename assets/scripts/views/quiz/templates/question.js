@@ -33,7 +33,7 @@ export function renderQuestion(quiz) {
 				${entry.options.map((option, index) => renderOption(question, option, index, selected)).join('')}
 			</ol>
 
-			${isAnswered ? renderFeedback(question, selected, isLast) : '<p class="quiz-question__hint text-body-sm">Tip: Use keyboard 1–4 to answer.</p>'}
+			${isAnswered ? renderFeedback(question, selected, isLast) : '<p class="quiz-question__hint text-body-sm">Tip: Use keyboard 1-4 to answer.</p>'}
 		</section>
 	`;
 }
