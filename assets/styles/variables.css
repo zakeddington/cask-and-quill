@@ -7,6 +7,7 @@
 	--color-palette-brown-700-alpha-25: rgba(97, 63, 40, 0.25);
 	--color-palette-brown-700-alpha-10: rgba(97, 63, 40, 0.1);
 	--color-palette-brown-700-alpha-05: rgba(97, 63, 40, 0.05);
+	--color-palette-brown-600: #e6ded2;	/* light */
 	--color-palette-brown-400: #712B13;  /* reddish */
 	--color-palette-brown-400-alpha-50: rgba(113, 43, 19, 0.5);
 	--color-palette-brown-400-alpha-10: rgba(113, 43, 19, 0.1);
@@ -69,6 +70,7 @@
 	--color-background-tertiary: var(--color-palette-cream-50-alpha-50);
 	--color-background-header: var(--color-palette-cream-200);
 	--color-background-tag: var(--color-palette-brown-700-alpha-10);
+	--color-background-catalog: var(--color-palette-brown-600);
 
 	/* Text */
 	--color-text-primary: var(--color-palette-brown-900);

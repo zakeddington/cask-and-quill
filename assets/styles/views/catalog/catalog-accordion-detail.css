@@ -1,5 +1,5 @@
 .catalog-detail {
-	background: var(--color-palette-brown-700-alpha-10);
+	background: var(--color-background-catalog);
 	border-top: 2px solid var(--color-border-accent);
 	display: grid;
 	gap: 1rem;
@@ -76,8 +76,12 @@
 }
 
 .catalog-detail__block .catalog-bottle__image img {
+	background: var(--color-background-catalog) url('/assets/images/catalog/_shadow.webp') center bottom no-repeat;
+	background-blend-mode: multiply;
+	background-size: 100% auto;
+	box-sizing: border-box;
 	height: 100%;
-	mix-blend-mode: multiply;
+	object-position: center bottom;
 
 	@media (max-width: 767px) {
 		width: 50%;
