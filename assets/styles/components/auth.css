@@ -10,9 +10,9 @@
 }
 
 .auth__menu {
-	background-color: var(--color-background-primary);
+	background-color: var(--color-background-elevated);
 	border: 2px solid var(--color-border-accent);
-	box-shadow: 0 0.5rem 1.5rem rgba(28, 28, 22, 0.2);
+	box-shadow: var(--shadow-md);
 	min-width: 10rem;
 	padding: 0.5rem;
 	position: absolute;
@@ -43,16 +43,16 @@
 
 /* Login modal */
 .auth__dialog {
-	background-color: var(--color-background-primary);
+	background-color: var(--color-background-elevated);
 	border: 2px solid var(--color-border-accent);
-	box-shadow: 0 1.5rem 4rem rgba(28, 28, 22, 0.25);
+	box-shadow: var(--shadow-lg);
 	margin: auto;
 	max-width: 26rem;
 	padding: 0;
 	width: calc(100% - 2rem);
 
 	&::backdrop {
-		background-color: rgba(28, 28, 22, 0.78);
+		background-color: var(--color-overlay, rgba(28, 28, 22, 0.78));
 	}
 }
 

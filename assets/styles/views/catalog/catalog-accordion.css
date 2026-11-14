@@ -42,7 +42,7 @@
 	}
 
 	&.is-open {
-		border-color: var(--color-border-accent)
+		border-color: var(--color-border-accent);
 	}
 }
 
@@ -203,7 +203,7 @@
 	object-fit: contain;
 
 	[aria-expanded="true"] & {
-		mix-blend-mode: multiply;
+		mix-blend-mode: var(--image-blend-mode);
 	}
 }
 

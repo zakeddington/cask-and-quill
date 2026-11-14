@@ -3,11 +3,13 @@
 :root {
 	/* Brown scale */
 	--color-palette-brown-900: #1c1c16;  /* darkest */
+	--color-palette-brown-800: #351f16;  /* dark theme hero glow */
 	--color-palette-brown-700: #613F28;  /* medium */
 	--color-palette-brown-700-alpha-25: rgba(97, 63, 40, 0.25);
 	--color-palette-brown-700-alpha-10: rgba(97, 63, 40, 0.1);
 	--color-palette-brown-700-alpha-05: rgba(97, 63, 40, 0.05);
 	--color-palette-brown-600: #e6ded2;	/* light */
+	--color-palette-brown-500: #431507;
 	--color-palette-brown-400: #712B13;  /* reddish */
 	--color-palette-brown-400-alpha-50: rgba(113, 43, 19, 0.5);
 	--color-palette-brown-400-alpha-10: rgba(113, 43, 19, 0.1);
@@ -25,12 +27,60 @@
 	--color-palette-green: #2e9432;
 	--color-palette-green-alpha-10: rgba(46, 151, 51, 0.1);
 	--color-palette-green-dark: #22702a;
+	--color-palette-green-900: #155219; /* accent theme correct — 3.7:1 on amber-500 */
 	--color-palette-yellow: #ffc107;
 	--color-palette-red: #e61303;
 
 	/* Neutral scale */
 	--color-palette-white: #ffffff; /* accent theme text */
 	--color-palette-transparent: transparent;
+
+	/* Ink scale (dark theme surfaces — warm, charred-oak blacks) */
+	--color-palette-ink-950: #0a0908;    /* page */
+	--color-palette-ink-900: #14120f;    /* header */
+	--color-palette-ink-850: #1b1815;    /* elevated panels */
+	--color-palette-ink-800: #2a2520;    /* hover fills, hairlines */
+	--color-palette-ink-950-alpha-85: rgba(10, 9, 8, 0.85);
+	--color-palette-ink-950-alpha-80: rgba(10, 9, 8, 0.8);
+	--color-palette-ink-950-alpha-75: rgba(10, 9, 8, 0.75);
+	--color-palette-ink-950-alpha-70: rgba(10, 9, 8, 0.7);
+	--color-palette-ink-950-alpha-50: rgba(10, 9, 8, 0.5);
+	--color-palette-ink-950-alpha-25: rgba(10, 9, 8, 0.25);
+	--color-palette-ink-950-alpha-15: rgba(10, 9, 8, 0.15);
+	--color-palette-ink-950-alpha-10: rgba(10, 9, 8, 0.1);
+	--color-palette-ink-950-alpha-05: rgba(10, 9, 8, 0.05);
+	--color-palette-cream-50-alpha-04: rgba(253, 249, 239, 0.04);
+	--color-palette-cream-50-alpha-07: rgba(253, 249, 239, 0.07);
+	--color-palette-cream-50-alpha-12: rgba(253, 249, 239, 0.12);
+	--color-palette-cream-50-alpha-18: rgba(253, 249, 239, 0.18);
+	--color-palette-cream-50-alpha-35: rgba(253, 249, 239, 0.35);
+	--color-palette-cream-50-alpha-65: rgba(253, 249, 239, 0.65);
+
+	/* Parchment scale (dark theme text) — contrast on ink-950 / ink-850 */
+	--color-palette-parchment-100: #f3ece0; /* button fills          */
+	--color-palette-parchment-200: #e9dbc7; /* text-tertiary (headings) — 14.6 / 13.0 */
+	--color-palette-parchment-300: #eadfcc; /* text-primary (body)      — 10.9 /  9.7 */
+	--color-palette-parchment-500: #e6c896; /* text-secondary           —  7.0 /  6.2 */
+	--color-palette-parchment-600: #8a8072; /* muted                    —  5.1 /  4.6 */
+	--color-palette-parchment-700: #6e655a; /* disabled                 —  3.5 /  3.1 */
+
+	/* Amber scale (dark theme accent — whiskey in the glass) */
+	--color-palette-amber-300: #f2c27f;
+	--color-palette-amber-400: #e3a857;
+	--color-palette-amber-400-alpha-50: rgba(227, 168, 87, 0.5);
+	--color-palette-amber-500: #d4973f;  /* accent theme surface — ink text 7.9:1 */
+	--color-palette-amber-700: #fba51a;
+
+	/* Dark theme status */
+	--color-palette-green-300: #6cc673;
+	--color-palette-green-400: #4fb257;
+	--color-palette-green-400-alpha-14: rgba(79, 178, 87, 0.14);
+	--color-palette-yellow-300: #f5c242;
+	--color-palette-red-400: #ef5a3c;
+	--color-palette-rust-300: #f2816a;
+	--color-palette-rust-300-alpha-12: rgba(242, 129, 106, 0.12);
+	--color-palette-rust-500: #cf4413;
+	--color-palette-rust-600: #b9370c;
 
 	/* Flavor Colors */
 	--color-theme-fruity: #d60127;
@@ -58,111 +108,6 @@
 	--color-theme-denmark: #211e1a;
 
 	--flavor-color-base: #cc0000;
-}
-
-/* Color Tokens */
-/* ----------------------------------------------------------------------------------- */
-:root {
-	/* Backgrounds */
-	--color-background-primary: var(--color-palette-cream-50);
-	--color-background-secondary: var(--color-palette-brown-700-alpha-05);
-	--color-background-secondary-alt: var(--color-palette-brown-700-alpha-10);
-	--color-background-tertiary: var(--color-palette-cream-50-alpha-50);
-	--color-background-header: var(--color-palette-cream-200);
-	--color-background-tag: var(--color-palette-brown-700-alpha-10);
-	--color-background-catalog: var(--color-palette-brown-600);
-
-	/* Text */
-	--color-text-primary: var(--color-palette-brown-900);
-	--color-text-secondary: var(--color-palette-brown-700);
-	--color-text-accent: var(--color-palette-brown-400);
-	--color-text-disabled: var(--color-palette-brown-400-alpha-10);
-	--color-text-muted: var(--color-palette-brown-700-alpha-25);
-
-	/* Borders */
-	--color-border-primary: var(--color-palette-brown-700-alpha-10);
-	--color-border-secondary: var(--color-palette-cream-300);
-	--color-border-accent: var(--color-palette-brown-400);
-	--color-border-focus-visible: var(--color-palette-brown-400);
-
-	/* Links */
-	--color-link-default: var(--color-palette-brown-400);
-	--color-link-hover: var(--color-palette-brown-400);
-
-	/* Buttons - Primary */
-	--color-button-primary-background: var(--color-palette-brown-900);
-	--color-button-primary-background-hover: var(--color-palette-brown-400);
-	--color-button-primary-background-active: var(--color-palette-brown-400);
-	--color-button-primary-border: var(--color-palette-brown-900);
-	--color-button-primary-border-hover: var(--color-palette-brown-400);
-	--color-button-primary-border-active: var(--color-palette-brown-400);
-	--color-button-primary-text: var(--color-palette-white);
-	--color-button-primary-text-hover: var(--color-palette-white);
-	--color-button-primary-text-active: var(--color-palette-white);
-
-	/* Buttons - Secondary */
-	--color-button-secondary-background: var(--color-palette-transparent);
-	--color-button-secondary-background-hover: var(--color-palette-brown-900);
-	--color-button-secondary-background-active: var(--color-palette-brown-400);
-	--color-button-secondary-border: var(--color-palette-brown-900);
-	--color-button-secondary-border-hover: var(--color-palette-brown-900);
-	--color-button-secondary-border-active: var(--color-palette-brown-400);
-	--color-button-secondary-text: var(--color-palette-brown-900);
-	--color-button-secondary-text-hover: var(--color-palette-white);
-	--color-button-secondary-text-active: var(--color-palette-white);
-
-	/* Buttons - Tertiary */
-	--color-button-tertiary-background: var(--color-palette-transparent);
-	--color-button-tertiary-background-hover: var(--color-palette-transparent);
-	--color-button-tertiary-background-active: var(--color-palette-transparent);
-	--color-button-tertiary-border: var(--color-palette-transparent);
-	--color-button-tertiary-border-hover: var(--color-palette-brown-400-alpha-50);
-	--color-button-tertiary-border-active: var(--color-palette-brown-400);
-	--color-button-tertiary-text: var(--color-palette-brown-700);
-	--color-button-tertiary-text-hover: var(--color-palette-brown-400);
-	--color-button-tertiary-text-active: var(--color-palette-brown-400);
-
-	/* Buttons - Destuctive */
-	--color-button-destructive-background: var(--color-palette-brown-200);
-	--color-button-destructive-background-hover: var(--color-palette-brown-100);
-	--color-button-destructive-background-active: var(--color-palette-brown-200);
-	--color-button-destructive-border: var(--color-palette-brown-200);
-	--color-button-destructive-border-hover: var(--color-palette-brown-100);
-	--color-button-destructive-border-active: var(--color-palette-brown-200);
-	--color-button-destructive-text: var(--color-palette-white);
-	--color-button-destructive-text-hover: var(--color-palette-white);
-	--color-button-destructive-text-active: var(--color-palette-white);
-
-	/* Buttons - Icon Only */
-	--color-button-icon-only-background: var(--color-palette-transparent);
-	--color-button-icon-only-background-hover: var(--color-palette-brown-700);
-	--color-button-icon-only-background-active: var(--color-palette-transparent);
-	--color-button-icon-only-border: var(--color-palette-transparent);
-	--color-button-icon-only-border-hover: var(--color-palette-transparent);
-	--color-button-icon-only-border-active: var(--color-palette-transparent);
-	--color-button-icon-only-text: var(--color-palette-brown-700);
-	--color-button-icon-only-text-hover: var(--color-palette-white);
-	--color-button-icon-only-text-active: var(--color-palette-brown-400);
-
-	/* Forms */
-	--color-form-input-background: var(--color-palette-brown-700-alpha-10);
-	--color-form-input-text: var(--color-palette-brown-400);
-	--color-form-input-placeholder: var(--color-palette-brown-700);
-
-	/* Bottle fill */
-	--color-bottle-fill-text: var(--color-palette-cream-50);
-	--color-bottle-fill-plenty: var(--color-palette-green);
-	--color-bottle-fill-average: var(--color-palette-yellow);
-	--color-bottle-fill-low: var(--color-palette-red);
-	--color-bottle-fill-x-low: var(--color-palette-red);
-	--color-bottle-fill-x: var(--color-palette-brown-900);
-
-	/* Quiz feedback */
-	--color-quiz-correct: var(--color-palette-green);
-	--color-quiz-correct-background: var(--color-palette-green-alpha-10);
-	--color-quiz-correct-text: var(--color-palette-green-dark);
-	--color-quiz-incorrect: var(--color-palette-brown-200);
-	--color-quiz-incorrect-background: var(--color-palette-brown-400-alpha-10);
 }
 
 /* Layout Grid */

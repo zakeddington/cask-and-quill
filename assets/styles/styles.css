@@ -17,8 +17,12 @@
 
 /* Themes */
 /* --------------------------------------------------------------- */
-@import "themes/theme-accent.css" layer(themes);
+/* Complete themes — each defines every color token, so nesting fully replaces the parent */
 @import "themes/theme-primary.css" layer(themes);
+@import "themes/theme-dark.css" layer(themes);
+@import "themes/theme-accent.css" layer(themes);
+
+/* Tints — local accent colors only; inherit everything else from the surrounding theme */
 @import "themes/theme-flavors.css" layer(themes);
 @import "themes/theme-regions.css" layer(themes);
 

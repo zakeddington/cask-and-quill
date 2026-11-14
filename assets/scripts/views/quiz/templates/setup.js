@@ -18,7 +18,7 @@ export function renderSetup({ quiz, missedCount, progressHtml }) {
 	return `
 		${renderResumeBanner(quiz)}
 		<section class="quiz-setup" aria-labelledby="quiz-setup-title">
-			<div class="quiz-setup__header theme--accent">
+			<div class="quiz-setup__header">
 				<h2 id="quiz-setup-title" class="text-heading-lg text-color-secondary">Build a quiz</h2>
 				<p>Pick the Lexicon or Regions to quiz on everything in it, or narrow it down by category, country, or question type. Leave everything unselected for a random mix of all ${QUIZ_QUESTIONS.length} questions.</p>
 			</div>

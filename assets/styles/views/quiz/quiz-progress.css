@@ -58,7 +58,7 @@
 }
 
 .quiz-stat__value {
-	color: var(--color-text-primary);
+	color: var(--color-text-tertiary);
 	font-size: var(--font-size-display-sm);
 	font-weight: var(--font-weight-bold);
 	letter-spacing: var(--letter-spacing-tight);

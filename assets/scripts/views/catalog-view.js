@@ -387,7 +387,7 @@ export class CatalogView {
 				<div class="catalog__group-heading">
 					<h2>${html(group)}</h2>
 				</div>
-				<div class="catalog__column-headings theme--primary" aria-hidden="true">
+				<div class="catalog__column-headings theme--dark" aria-hidden="true">
 					<span>Fill</span>
 					<span></span>
 					<span>Brand/Bottle</span>

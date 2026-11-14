@@ -112,13 +112,13 @@
 	.is-correct & {
 		background-color: var(--color-quiz-correct);
 		border-color: var(--color-quiz-correct);
-		color: var(--color-palette-white);
+		color: var(--color-quiz-key-text);
 	}
 
 	.is-incorrect & {
 		background-color: var(--color-quiz-incorrect);
 		border-color: var(--color-quiz-incorrect);
-		color: var(--color-palette-white);
+		color: var(--color-quiz-key-text);
 	}
 }
 

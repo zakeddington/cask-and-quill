@@ -1,8 +1,133 @@
+/*
+ * Light theme — the site default.
+ * Applied at :root, and re-applied by .theme--primary on any nested element.
+ *
+ * Every theme (primary, dark, accent) defines the COMPLETE set of color tokens,
+ * so a nested theme fully replaces its parent's values — nothing leaks through.
+ * When adding a token, add it to all three files.
+ */
+
+:root,
 .theme--primary {
-	--color-background-primary: var(--color-palette-brown-900);
-	--color-border-primary: var(--color-palette-cream-50-alpha-50);
-	--color-text-primary: var(--color-palette-cream-50);
-	--color-text-secondary: var(--color-palette-cream-50-alpha-80);
+	/* Backgrounds */
+	--color-background-primary: var(--color-palette-cream-50);
+	--color-background-secondary: var(--color-palette-brown-700-alpha-05);
+	--color-background-secondary-alt: var(--color-palette-brown-700-alpha-10);
+	--color-background-tertiary: var(--color-palette-cream-50-alpha-50);
+	--color-background-header: var(--color-palette-cream-200);
+	--color-background-tag: var(--color-palette-brown-700-alpha-10);
+	--color-background-catalog: var(--color-palette-brown-600);
+	--color-background-elevated: var(--color-palette-cream-50); /* modals, dialogs, dropdowns, menus */
+
+	/* Overlays & elevation */
+	--color-overlay: rgba(28, 28, 22, 0.78);        /* modal / dialog scrim */
+	--color-overlay-subtle: rgba(28, 28, 22, 0.6);  /* drawer scrim */
+	--shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.08);
+	--shadow-md: 0 0.5rem 1.5rem rgba(28, 28, 22, 0.2);
+	--shadow-lg: 0 1.5rem 4rem rgba(28, 28, 22, 0.25);
+
+	/* Media — multiply knocks out white image backgrounds on light pages,
+	   but would crush images to black on dark ones */
+	--image-blend-mode: multiply;
+	--color-background-hero-glow: var(--color-palette-transparent); /* glow is dark-theme only */
+
+	/* Text */
+	--color-text-primary: var(--color-palette-brown-900);   /* body copy */
+	--color-text-secondary: var(--color-palette-brown-700); /* alternate / supporting copy */
+	--color-text-tertiary: var(--color-palette-brown-900);  /* headings */
+	--color-text-accent: var(--color-palette-brown-400);
+	--color-text-disabled: var(--color-palette-brown-400-alpha-10);
+	--color-text-muted: var(--color-palette-brown-700-alpha-25);
+
+	/* Borders */
+	--color-border-primary: var(--color-palette-brown-700-alpha-10);
+	--color-border-secondary: var(--color-palette-cream-300);
+	--color-border-accent: var(--color-palette-brown-400);
+	--color-border-focus-visible: var(--color-palette-brown-400);
+
+	/* Links */
+	--color-link-default: var(--color-palette-brown-400);
+	--color-link-hover: var(--color-palette-brown-400);
+
+	/* Buttons - Primary */
+	--color-button-primary-background: var(--color-palette-brown-900);
+	--color-button-primary-background-hover: var(--color-palette-brown-400);
+	--color-button-primary-background-active: var(--color-palette-brown-400);
+	--color-button-primary-border: var(--color-palette-brown-900);
+	--color-button-primary-border-hover: var(--color-palette-brown-400);
+	--color-button-primary-border-active: var(--color-palette-brown-400);
+	--color-button-primary-text: var(--color-palette-white);
+	--color-button-primary-text-hover: var(--color-palette-white);
+	--color-button-primary-text-active: var(--color-palette-white);
+
+	/* Buttons - Secondary */
+	--color-button-secondary-background: var(--color-palette-transparent);
+	--color-button-secondary-background-hover: var(--color-palette-brown-900);
+	--color-button-secondary-background-active: var(--color-palette-brown-400);
+	--color-button-secondary-border: var(--color-palette-brown-900);
+	--color-button-secondary-border-hover: var(--color-palette-brown-900);
+	--color-button-secondary-border-active: var(--color-palette-brown-400);
+	--color-button-secondary-text: var(--color-palette-brown-900);
+	--color-button-secondary-text-hover: var(--color-palette-white);
+	--color-button-secondary-text-active: var(--color-palette-white);
+
+	/* Buttons - Tertiary */
+	--color-button-tertiary-background: var(--color-palette-transparent);
+	--color-button-tertiary-background-hover: var(--color-palette-transparent);
+	--color-button-tertiary-background-active: var(--color-palette-transparent);
+	--color-button-tertiary-border: var(--color-palette-transparent);
+	--color-button-tertiary-border-hover: var(--color-palette-brown-400-alpha-50);
+	--color-button-tertiary-border-active: var(--color-palette-brown-400);
+	--color-button-tertiary-text: var(--color-palette-brown-700);
+	--color-button-tertiary-text-hover: var(--color-palette-brown-400);
+	--color-button-tertiary-text-active: var(--color-palette-brown-400);
+
+	/* Buttons - Destuctive */
+	--color-button-destructive-background: var(--color-palette-brown-200);
+	--color-button-destructive-background-hover: var(--color-palette-brown-100);
+	--color-button-destructive-background-active: var(--color-palette-brown-200);
+	--color-button-destructive-border: var(--color-palette-brown-200);
+	--color-button-destructive-border-hover: var(--color-palette-brown-100);
+	--color-button-destructive-border-active: var(--color-palette-brown-200);
+	--color-button-destructive-text: var(--color-palette-white);
+	--color-button-destructive-text-hover: var(--color-palette-white);
+	--color-button-destructive-text-active: var(--color-palette-white);
+
+	/* Buttons - Icon Only */
+	--color-button-icon-only-background: var(--color-palette-transparent);
+	--color-button-icon-only-background-hover: var(--color-palette-brown-700);
+	--color-button-icon-only-background-active: var(--color-palette-transparent);
+	--color-button-icon-only-border: var(--color-palette-transparent);
+	--color-button-icon-only-border-hover: var(--color-palette-transparent);
+	--color-button-icon-only-border-active: var(--color-palette-transparent);
+	--color-button-icon-only-text: var(--color-palette-brown-700);
+	--color-button-icon-only-text-hover: var(--color-palette-white);
+	--color-button-icon-only-text-active: var(--color-palette-brown-400);
+
+	/* Forms */
+	--color-form-input-background: var(--color-palette-brown-700-alpha-10);
+	--color-form-input-text: var(--color-palette-brown-400);
+	--color-form-input-placeholder: var(--color-palette-brown-700);
+
+	/* Bottle fill */
+	--color-bottle-fill-text: var(--color-palette-cream-50);
+	--color-bottle-fill-plenty: var(--color-palette-green);
+	--color-bottle-fill-average: var(--color-palette-yellow);
+	--color-bottle-fill-low: var(--color-palette-red);
+	--color-bottle-fill-x-low: var(--color-palette-red);
+	--color-bottle-fill-x: var(--color-palette-brown-900);
+
+	/* Quiz feedback */
+	--color-quiz-correct: var(--color-palette-green);
+	--color-quiz-correct-background: var(--color-palette-green-alpha-10);
+	--color-quiz-correct-text: var(--color-palette-green-dark);
+	--color-quiz-incorrect: var(--color-palette-brown-200);
+	--color-quiz-incorrect-background: var(--color-palette-brown-400-alpha-10);
+	--color-quiz-key-text: var(--color-palette-white);
+}
+
+.theme--primary {
+	color-scheme: light;
 	background-color: var(--color-background-primary);
-	color: var(--color-text-secondary);
+	color: var(--color-text-primary);
 }

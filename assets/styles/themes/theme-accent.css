@@ -1,47 +1,136 @@
+/*
+ * Accent theme — the amber "label" band. Dark ink on a slightly deeper amber
+ * than the dark theme's accent color.
+ *
+ * Defines the complete token set (see theme-primary.css), so it looks identical
+ * whether it sits inside the light or dark theme, and nested themes fully replace it.
+ *
+ * Text contrast on amber-500:
+ *   tertiary (headings) 7.9   primary (body) 6.5   secondary 5.3   accent 6.2
+ *   muted 4.7   input text 6.5 / placeholder 4.9 (on input fill)
+ */
+
 .theme--accent {
-	--color-background-primary: var(--color-palette-brown-400);
-	--color-border-primary: var(--color-palette-cream-50-alpha-50);
-	--color-text-primary: var(--color-palette-cream-50-alpha-80);
-	--color-text-secondary: var(--color-palette-white);
-	--color-text-accent: var(--color-palette-white);
+	/* Backgrounds */
+	--color-background-primary: var(--color-palette-amber-500);
+	--color-background-secondary: var(--color-palette-ink-950-alpha-05);
+	--color-background-secondary-alt: var(--color-palette-ink-950-alpha-10);
+	--color-background-tertiary: var(--color-palette-cream-50-alpha-50);
+	--color-background-header: var(--color-palette-amber-500);
+	--color-background-tag: var(--color-palette-ink-950-alpha-10);
+	--color-background-catalog: var(--color-palette-amber-500);
+	--color-background-elevated: var(--color-palette-amber-500);
+
+	/* Overlays & elevation */
+	--color-overlay: rgba(28, 28, 22, 0.78);
+	--color-overlay-subtle: rgba(28, 28, 22, 0.6);
+	--shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.15);
+	--shadow-md: 0 0.5rem 1.5rem rgba(28, 28, 22, 0.25);
+	--shadow-lg: 0 1.5rem 4rem rgba(28, 28, 22, 0.3);
+
+	/* Media */
+	--image-blend-mode: multiply;
+	--color-background-hero-glow: var(--color-palette-transparent);
+
+	/* Text */
+	--color-text-primary: var(--color-palette-ink-950-alpha-85);   /* body copy */
+	--color-text-secondary: var(--color-palette-ink-950-alpha-75); /* alternate / supporting copy */
+	--color-text-tertiary: var(--color-palette-ink-950);           /* headings */
+	--color-text-accent: var(--color-palette-brown-500);
+	--color-text-disabled: var(--color-palette-ink-950-alpha-50);
+	--color-text-muted: var(--color-palette-ink-950-alpha-70);
+
+	/* Borders */
+	--color-border-primary: var(--color-palette-ink-950-alpha-25);
+	--color-border-secondary: var(--color-palette-ink-950-alpha-15);
+	--color-border-accent: var(--color-palette-ink-950);
+	--color-border-focus-visible: var(--color-palette-ink-950);
+
+	/* Links */
+	--color-link-default: var(--color-palette-brown-500);
+	--color-link-hover: var(--color-palette-ink-950);
 
 	/* Buttons - Primary */
-	--color-button-primary-background: var(--color-palette-cream-50-alpha-80);
-	--color-button-primary-background-hover: var(--color-palette-white);
-	--color-button-primary-background-active:  var(--color-palette-cream-50-alpha-80);
-	--color-button-primary-border: var(--color-palette-transparent);
-	--color-button-primary-border-hover: var(--color-palette-transparent);
-	--color-button-primary-border-active: var(--color-palette-transparent);
-	--color-button-primary-text: var(--color-palette-brown-400);
-	--color-button-primary-text-hover: var(--color-palette-brown-400);
-	--color-button-primary-text-active: var(--color-palette-brown-400);
+	--color-button-primary-background: var(--color-palette-ink-950);
+	--color-button-primary-background-hover: var(--color-palette-brown-500);
+	--color-button-primary-background-active: var(--color-palette-brown-500);
+	--color-button-primary-border: var(--color-palette-ink-950);
+	--color-button-primary-border-hover: var(--color-palette-brown-500);
+	--color-button-primary-border-active: var(--color-palette-brown-500);
+	--color-button-primary-text: var(--color-palette-amber-300);
+	--color-button-primary-text-hover: var(--color-palette-cream-50);
+	--color-button-primary-text-active: var(--color-palette-cream-50);
 
 	/* Buttons - Secondary */
 	--color-button-secondary-background: var(--color-palette-transparent);
-	--color-button-secondary-background-hover: var(--color-palette-white);
-	--color-button-secondary-background-active: var(--color-palette-cream-50-alpha-80);
-	--color-button-secondary-border: var(--color-palette-cream-50-alpha-80);
-	--color-button-secondary-border-hover: var(--color-palette-transparent);
-	--color-button-secondary-border-active: var(--color-palette-transparent);
-	--color-button-secondary-text: var(--color-palette-cream-50-alpha-80);
-	--color-button-secondary-text-hover: var(--color-palette-brown-400);
-	--color-button-secondary-text-active: var(--color-palette-brown-400);
+	--color-button-secondary-background-hover: var(--color-palette-ink-950);
+	--color-button-secondary-background-active: var(--color-palette-brown-500);
+	--color-button-secondary-border: var(--color-palette-ink-950);
+	--color-button-secondary-border-hover: var(--color-palette-ink-950);
+	--color-button-secondary-border-active: var(--color-palette-brown-500);
+	--color-button-secondary-text: var(--color-palette-ink-950);
+	--color-button-secondary-text-hover: var(--color-palette-amber-300);
+	--color-button-secondary-text-active: var(--color-palette-cream-50);
 
 	/* Buttons - Tertiary */
 	--color-button-tertiary-background: var(--color-palette-transparent);
 	--color-button-tertiary-background-hover: var(--color-palette-transparent);
 	--color-button-tertiary-background-active: var(--color-palette-transparent);
 	--color-button-tertiary-border: var(--color-palette-transparent);
-	--color-button-tertiary-border-hover: var(--color-palette-white);
-	--color-button-tertiary-border-active: var(--color-palette-white);
-	--color-button-tertiary-text: var(--color-palette-cream-50-alpha-80);
-	--color-button-tertiary-text-hover: var(--color-palette-white);
-	--color-button-tertiary-text-active: var(--color-palette-white);
+	--color-button-tertiary-border-hover: var(--color-palette-ink-950-alpha-50);
+	--color-button-tertiary-border-active: var(--color-palette-ink-950);
+	--color-button-tertiary-text: var(--color-palette-ink-950-alpha-85);
+	--color-button-tertiary-text-hover: var(--color-palette-ink-950);
+	--color-button-tertiary-text-active: var(--color-palette-ink-950);
 
+	/* Buttons - Destructive */
+	--color-button-destructive-background: var(--color-palette-brown-500);
+	--color-button-destructive-background-hover: var(--color-palette-brown-400);
+	--color-button-destructive-background-active: var(--color-palette-brown-500);
+	--color-button-destructive-border: var(--color-palette-brown-500);
+	--color-button-destructive-border-hover: var(--color-palette-brown-400);
+	--color-button-destructive-border-active: var(--color-palette-brown-500);
+	--color-button-destructive-text: var(--color-palette-white);
+	--color-button-destructive-text-hover: var(--color-palette-white);
+	--color-button-destructive-text-active: var(--color-palette-white);
+
+	/* Buttons - Icon Only */
+	--color-button-icon-only-background: var(--color-palette-transparent);
+	--color-button-icon-only-background-hover: var(--color-palette-ink-950);
+	--color-button-icon-only-background-active: var(--color-palette-transparent);
+	--color-button-icon-only-border: var(--color-palette-transparent);
+	--color-button-icon-only-border-hover: var(--color-palette-transparent);
+	--color-button-icon-only-border-active: var(--color-palette-transparent);
+	--color-button-icon-only-text: var(--color-palette-ink-950-alpha-85);
+	--color-button-icon-only-text-hover: var(--color-palette-amber-300);
+	--color-button-icon-only-text-active: var(--color-palette-brown-500);
+
+	/* Forms */
+	--color-form-input-background: var(--color-palette-ink-950-alpha-10);
+	--color-form-input-text: var(--color-palette-ink-950);
+	--color-form-input-placeholder: var(--color-palette-ink-950-alpha-80);
+
+	/* Bottle fill — dark icons on bright discs, as in the dark theme */
+	--color-bottle-fill-text: var(--color-palette-ink-950);
+	--color-bottle-fill-plenty: var(--color-palette-green-400);
+	--color-bottle-fill-average: var(--color-palette-yellow-300);
+	--color-bottle-fill-low: var(--color-palette-red-400);
+	--color-bottle-fill-x-low: var(--color-palette-red-400);
+	--color-bottle-fill-x: var(--color-palette-cream-50);
+
+	/* Quiz feedback */
+	--color-quiz-correct: var(--color-palette-green-900);
+	--color-quiz-correct-background: var(--color-palette-cream-50-alpha-35);
+	--color-quiz-correct-text: var(--color-palette-ink-950);
+	--color-quiz-incorrect: var(--color-palette-brown-500);
+	--color-quiz-incorrect-background: var(--color-palette-ink-950-alpha-10);
+	--color-quiz-key-text: var(--color-palette-cream-50);
+
+	color-scheme: light;
 	background-color: var(--color-background-primary);
 	color: var(--color-text-primary);
 }
 
 .theme--accent :where(strong, b) {
-	color: var(--color-text-secondary);
+	color: var(--color-text-tertiary);
 }

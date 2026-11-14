@@ -34,8 +34,3 @@
 		padding-left: 0;
 	}
 }
-
-.variety__desc-col,
-.variety__desc-col p {
-	color: var(--color-text-secondary);
-}

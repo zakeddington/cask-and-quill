@@ -1,0 +1,140 @@
+/*
+ * Dark theme — warm charred-oak blacks, parchment text, amber accents.
+ * Apply to <body> for the whole page, or to any element for a dark section.
+ *
+ * Defines the complete token set (see theme-primary.css), so it fully replaces
+ * any parent theme, and a nested .theme--primary / .theme--accent fully replaces it.
+ *
+ * Text contrast (WCAG 2.2) on ink-950 page / ink-850 panels:
+ *   tertiary (headings) 14.6 / 13.0   primary (body) 10.9 / 9.7   secondary 7.0 / 6.2
+ *   accent 9.5 / 8.4   muted 5.1 / 4.6   disabled 3.5 / 3.1 (large/inactive only)
+ *   primary button text 9.5   destructive button text 5.8 (hover 4.7)
+ */
+
+.theme--dark {
+	color-scheme: dark;
+
+	/* Backgrounds */
+	--color-background-primary: var(--color-palette-ink-950);
+	--color-background-secondary: var(--color-palette-cream-50-alpha-04);
+	--color-background-secondary-alt: var(--color-palette-cream-50-alpha-07);
+	--color-background-tertiary: var(--color-palette-cream-50-alpha-12);
+	--color-background-header: var(--color-palette-ink-900);
+	--color-background-tag: var(--color-palette-cream-50-alpha-07);
+	--color-background-catalog: var(--color-palette-ink-850);
+	--color-background-elevated: var(--color-palette-ink-850);
+
+	/* Overlays & elevation — shadows read weakly on dark, so they go deeper */
+	--color-overlay: rgba(0, 0, 0, 0.75);
+	--color-overlay-subtle: rgba(0, 0, 0, 0.6);
+	--shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+	--shadow-md: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
+	--shadow-lg: 0 1.5rem 4rem rgba(0, 0, 0, 0.6);
+
+	/* Media */
+	--image-blend-mode: normal;
+	--color-background-hero-glow: var(--color-palette-brown-800);
+
+	/* Text */
+	--color-text-primary: var(--color-palette-parchment-300);   /* body copy */
+	--color-text-secondary: var(--color-palette-parchment-500); /* alternate / supporting copy */
+	--color-text-tertiary: var(--color-palette-parchment-200);  /* headings */
+	--color-text-accent: var(--color-palette-amber-400);
+	--color-text-disabled: var(--color-palette-parchment-700);
+	--color-text-muted: var(--color-palette-parchment-600);
+
+	/* Borders */
+	--color-border-primary: var(--color-palette-cream-50-alpha-12);
+	--color-border-secondary: var(--color-palette-ink-800);
+	--color-border-accent: var(--color-palette-amber-400);
+	--color-border-focus-visible: var(--color-palette-amber-300);
+
+	/* Links */
+	--color-link-default: var(--color-palette-amber-400);
+	--color-link-hover: var(--color-palette-amber-300);
+
+	/* Buttons - Primary */
+	--color-button-primary-background: var(--color-palette-amber-400);
+	--color-button-primary-background-hover: var(--color-palette-amber-700);
+	--color-button-primary-background-active: var(--color-palette-parchment-100);
+	--color-button-primary-border: var(--color-palette-amber-400);
+	--color-button-primary-border-hover: var(--color-palette-amber-500);
+	--color-button-primary-border-active: var(--color-palette-parchment-100);
+	--color-button-primary-text: var(--color-palette-ink-950);
+	--color-button-primary-text-hover: var(--color-palette-ink-950);
+	--color-button-primary-text-active: var(--color-palette-ink-950);
+
+	/* Buttons - Secondary */
+	--color-button-secondary-background: var(--color-palette-transparent);
+	--color-button-secondary-background-hover: var(--color-palette-parchment-500);
+	--color-button-secondary-background-active: var(--color-palette-amber-400);
+	--color-button-secondary-border: var(--color-palette-parchment-500);
+	--color-button-secondary-border-hover: var(--color-palette-parchment-500);
+	--color-button-secondary-border-active: var(--color-palette-amber-400);
+	--color-button-secondary-text: var(--color-palette-parchment-100);
+	--color-button-secondary-text-hover: var(--color-palette-ink-950);
+	--color-button-secondary-text-active: var(--color-palette-ink-950);
+
+	/* Buttons - Tertiary */
+	--color-button-tertiary-background: var(--color-palette-transparent);
+	--color-button-tertiary-background-hover: var(--color-palette-transparent);
+	--color-button-tertiary-background-active: var(--color-palette-transparent);
+	--color-button-tertiary-border: var(--color-palette-transparent);
+	--color-button-tertiary-border-hover: var(--color-palette-amber-400-alpha-50);
+	--color-button-tertiary-border-active: var(--color-palette-amber-400);
+	--color-button-tertiary-text: var(--color-palette-parchment-300);
+	--color-button-tertiary-text-hover: var(--color-palette-amber-300);
+	--color-button-tertiary-text-active: var(--color-palette-amber-400);
+
+	/* Buttons - Destructive */
+	--color-button-destructive-background: var(--color-palette-rust-600);
+	--color-button-destructive-background-hover: var(--color-palette-rust-500);
+	--color-button-destructive-background-active: var(--color-palette-rust-600);
+	--color-button-destructive-border: var(--color-palette-rust-600);
+	--color-button-destructive-border-hover: var(--color-palette-rust-500);
+	--color-button-destructive-border-active: var(--color-palette-rust-600);
+	--color-button-destructive-text: var(--color-palette-white);
+	--color-button-destructive-text-hover: var(--color-palette-white);
+	--color-button-destructive-text-active: var(--color-palette-white);
+
+	/* Buttons - Icon Only */
+	--color-button-icon-only-background: var(--color-palette-transparent);
+	--color-button-icon-only-background-hover: var(--color-palette-ink-800);
+	--color-button-icon-only-background-active: var(--color-palette-transparent);
+	--color-button-icon-only-border: var(--color-palette-transparent);
+	--color-button-icon-only-border-hover: var(--color-palette-transparent);
+	--color-button-icon-only-border-active: var(--color-palette-transparent);
+	--color-button-icon-only-text: var(--color-palette-parchment-300);
+	--color-button-icon-only-text-hover: var(--color-palette-parchment-100);
+	--color-button-icon-only-text-active: var(--color-palette-amber-400);
+
+	/* Forms */
+	--color-form-input-background: var(--color-palette-cream-50-alpha-07);
+	--color-form-input-text: var(--color-palette-amber-400);
+	--color-form-input-placeholder: var(--color-palette-parchment-500);
+
+	/* Bottle fill — dark icons on bright discs */
+	--color-bottle-fill-text: var(--color-palette-ink-950);
+	--color-bottle-fill-plenty: var(--color-palette-green-400);
+	--color-bottle-fill-average: var(--color-palette-yellow-300);
+	--color-bottle-fill-low: var(--color-palette-red-400);
+	--color-bottle-fill-x-low: var(--color-palette-red-400);
+	--color-bottle-fill-x: var(--color-palette-parchment-300);
+
+	/* Quiz feedback */
+	--color-quiz-correct: var(--color-palette-green-400);
+	--color-quiz-correct-background: var(--color-palette-green-400-alpha-14);
+	--color-quiz-correct-text: var(--color-palette-green-300);
+	--color-quiz-incorrect: var(--color-palette-rust-300);
+	--color-quiz-incorrect-background: var(--color-palette-rust-300-alpha-12);
+	--color-quiz-key-text: var(--color-palette-ink-950);
+
+
+	background-color: var(--color-background-primary);
+	color: var(--color-text-primary);
+}
+
+/* Viewport scrollbars follow the root element's color-scheme */
+:root:has(> body.theme--dark) {
+	color-scheme: dark;
+}

@@ -27,7 +27,7 @@
 }
 
 .page-controls--sticky::after {
-	background: linear-gradient(to bottom, var(--color-background-primary) 0%, rgba(253, 249, 239, 0) 100%);
+	background: linear-gradient(to bottom, var(--color-background-primary) 0%, transparent 100%);
 	content: "";
 	height: 1rem;
 	left: 0;
