@@ -26,6 +26,10 @@
 	}
 }
 
+.region__header {
+	background: radial-gradient(at bottom left, var(--color-background-hero-glow) 0%, transparent 70%);
+}
+
 /* Container for title, description & legal content */
 .region__header-content {
 	display: flex;
