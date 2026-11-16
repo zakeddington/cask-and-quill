@@ -2,7 +2,7 @@
  * Accent theme — the amber "label" band. Dark ink on a slightly deeper amber
  * than the dark theme's accent color.
  *
- * Defines the complete token set (see theme-primary.css), so it looks identical
+ * Defines the complete token set (see theme-light.css), so it looks identical
  * whether it sits inside the light or dark theme, and nested themes fully replace it.
  *
  * Text contrast on amber-500:

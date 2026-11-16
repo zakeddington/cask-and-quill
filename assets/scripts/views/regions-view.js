@@ -239,7 +239,7 @@ export class RegionsView {
 				<h3 class="text-heading-md font-sans-serif tracking-wide uppercase line-height-normal">${escapeHtml(region.name)} Regions</h3>
 				<div class="sub-regions__map-container grid grid--align-center">
 					<div
-						class="sub-regions__map grid__col--12-md grid__col--6-lg theme--primary"
+						class="sub-regions__map grid__col--12-md grid__col--6-lg theme--light"
 						data-base-src="${escapeHtml(baseMapSrc)}"
 						data-initial-highlight-src="${escapeHtml(initialHighlightSrc)}"
 						id="${escapeHtml(mapId)}"

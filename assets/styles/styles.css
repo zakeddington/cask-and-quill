@@ -18,7 +18,7 @@
 /* Themes */
 /* --------------------------------------------------------------- */
 /* Complete themes — each defines every color token, so nesting fully replaces the parent */
-@import "themes/theme-primary.css" layer(themes);
+@import "themes/theme-light.css" layer(themes);
 @import "themes/theme-dark.css" layer(themes);
 @import "themes/theme-accent.css" layer(themes);
 

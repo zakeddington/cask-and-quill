@@ -1,14 +1,14 @@
 /*
  * Light theme — the site default.
- * Applied at :root, and re-applied by .theme--primary on any nested element.
+ * Applied at :root, and re-applied by .theme--light on any nested element.
  *
- * Every theme (primary, dark, accent) defines the COMPLETE set of color tokens,
+ * Every theme (light, dark, accent) defines the COMPLETE set of color tokens,
  * so a nested theme fully replaces its parent's values — nothing leaks through.
  * When adding a token, add it to all three files.
  */
 
 :root,
-.theme--primary {
+.theme--light {
 	/* Backgrounds */
 	--color-background-primary: var(--color-palette-cream-50);
 	--color-background-secondary: var(--color-palette-brown-700-alpha-05);
@@ -126,7 +126,7 @@
 	--color-quiz-key-text: var(--color-palette-white);
 }
 
-.theme--primary {
+.theme--light {
 	color-scheme: light;
 	background-color: var(--color-background-primary);
 	color: var(--color-text-primary);

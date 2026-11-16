@@ -2,8 +2,8 @@
  * Dark theme — warm charred-oak blacks, parchment text, amber accents.
  * Apply to <body> for the whole page, or to any element for a dark section.
  *
- * Defines the complete token set (see theme-primary.css), so it fully replaces
- * any parent theme, and a nested .theme--primary / .theme--accent fully replaces it.
+ * Defines the complete token set (see theme-light.css), so it fully replaces
+ * any parent theme, and a nested .theme--light / .theme--accent fully replaces it.
  *
  * Text contrast (WCAG 2.2) on ink-950 page / ink-850 panels:
  *   tertiary (headings) 14.6 / 13.0   primary (body) 10.9 / 9.7   secondary 7.0 / 6.2
