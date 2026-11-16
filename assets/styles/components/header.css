@@ -25,10 +25,17 @@
 }
 
 .nav__logo {
+	aspect-ratio: 4 / 1;
+	background: url('/assets/images/logo-light.webp') left center no-repeat;
+	background-size: 100% auto;
 	height: 2.5rem;
 
 	@media (min-width: 768px) {
 		height: 3.5rem;
+	}
+
+	.theme--dark & {
+		background-image: url('/assets/images/logo-dark.webp');
 	}
 }
 
