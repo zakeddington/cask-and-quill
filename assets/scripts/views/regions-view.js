@@ -145,7 +145,7 @@ export class RegionsView {
 	renderRegion(region) {
 		return `
 			<section class="region" id="${this.getRegionId(region)}">
-				<div class="region__header grid grid--align-center">
+				<div class="region__header grid grid--align-center theme--${this.getRegionId(region)}">
 					<div class="grid__col--12-md grid__col--3-lg">
 						${this.renderBottleImage(region.bottleImage, region.name)}
 					</div>
