@@ -1,5 +1,6 @@
 .story {
 	padding-bottom: var(--grid-gap);
+	position: relative;
 
 	@media (min-width: 1024px) {
 		align-items: center;
@@ -8,10 +9,28 @@
 	:last-child {
 		margin-bottom: 0;
 	}
+
+	&::after {
+		background: radial-gradient(at bottom left, var(--color-background-hero-glow) 0%, transparent 70%);
+		border-bottom: 1px solid var(--color-border-primary);
+		content: "";
+		display: block;
+		height: 100%;
+		position: absolute;
+		right: 50%;
+		top: 0;
+		transform: translateX(50%);
+		width: 100vw;
+		z-index: -1;
+	}
 }
 
 /* Even stories flip: content first, image second */
 .story:nth-child(even) {
+	&::after {
+		background: radial-gradient(at bottom right, var(--color-background-hero-glow) 0%, transparent 70%);
+	}
+
 	@media (min-width: 768px) {
 		.story__image-col {
 			order: 1;
