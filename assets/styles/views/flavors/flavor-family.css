@@ -24,7 +24,8 @@
 	--color-button-tertiary-text: var(--flavor-header-text);
 	--color-button-tertiary-text-hover: var(--flavor-header-text);
 	--color-button-tertiary-text-active: var(--flavor-header-text);
-	margin-bottom: 3rem;
+	background: radial-gradient(at bottom left, var(--color-background-hero-glow) 0%, transparent 70%);
+	padding-bottom: 3rem;
 }
 
 /* Column colors */
