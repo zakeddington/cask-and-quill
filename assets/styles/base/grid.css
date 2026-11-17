@@ -4,6 +4,10 @@
 	grid-template-columns: 1fr;
 }
 
+.grid--no-gap {
+	gap: 0;
+}
+
 .grid--align-center {
 	align-items: center;
 }

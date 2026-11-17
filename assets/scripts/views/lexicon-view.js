@@ -321,8 +321,15 @@ export class LexiconView {
 		const groupedTerms = this.getGroupedTerms(filteredTerms);
 		const sortedGroups = this.getSortedGroups(groupedTerms);
 
+		// Running index across all groups so term striping alternates page-wide.
+		let termIndex = 0;
+
 		this.el.results.innerHTML = filteredTerms.length
-			? sortedGroups.map(group => this.renderGroup(group, groupedTerms[group])).join('')
+			? sortedGroups.map(group => {
+				const html = this.renderGroup(group, groupedTerms[group], termIndex);
+				termIndex += groupedTerms[group].length;
+				return html;
+			}).join('')
 			: this.renderNoResults();
 		this.updateNav(this.state.selectedCategory ? [] : filteredTerms);
 
@@ -331,7 +338,7 @@ export class LexiconView {
 		}
 	}
 
-	renderGroup(group, terms) {
+	renderGroup(group, terms, startIndex = 0) {
 		const groupedItems = terms.sort((a, b) => a.name.localeCompare(b.name));
 		const sectionId = this.state.selectedCategory ? this.getCategoryId(group) : group;
 		const headingClass = this.state.selectedCategory
@@ -339,18 +346,20 @@ export class LexiconView {
 			: 'lexicon__section-title text-display-md grid__col--2-md';
 
 		return `
-			<section class="lexicon__section grid grid__col--full" id="${sectionId}">
+			<section class="lexicon__section grid grid--no-gap grid__col--full" id="${sectionId}">
 				<h2 class="${headingClass}">${escapeHtml(group)}</h2>
-				<div class="lexicon__term-group grid grid__col--8-md">
-					${groupedItems.map(term => this.renderTerm(term)).join('')}
+				<div class="lexicon__term-group grid grid--no-gap grid__col--10-md grid__col--8-lg">
+					${groupedItems.map((term, i) => this.renderTerm(term, startIndex + i)).join('')}
 				</div>
 			</section>
 		`;
 	}
 
-	renderTerm(term) {
+	renderTerm(term, index = 0) {
+		const altClass = index % 2 === 0 ? ' term--alt' : '';
+
 		return `
-			<article class="term grid__col--full" id="${term.id}">
+			<article class="term${altClass} grid__col--full" id="${term.id}">
 				<div class="term__heading">
 					<p class="text-label">${escapeHtml(term.category)}</p>
 					<h3>${escapeHtml(term.name)}</h3>

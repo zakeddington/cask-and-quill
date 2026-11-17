@@ -1,12 +1,17 @@
 .lexicon {
 	display: flex;
 	flex-direction: column;
-	gap: 3rem;
+	gap: var(--layout-lexicon-gap);
 }
 
 @media (min-width: 768px) {
 	.lexicon {
 		flex-direction: row;
+	}
+
+	/* Shift the glow left by half the nav + gap so it stays centered on the viewport */
+	.lexicon .hero::after {
+		right: calc(50% + (var(--layout-lexicon-nav-width) + var(--layout-lexicon-gap)) / 2);
 	}
 }
 

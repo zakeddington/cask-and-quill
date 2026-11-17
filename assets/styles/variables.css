@@ -118,6 +118,8 @@
 	--layout-header-height: 3.625rem;
 	--layout-header-offset: 4rem;
 	--layout-lexicon-controls-height: 8.5rem;
+	--layout-lexicon-gap: 3rem;
+	--layout-lexicon-nav-width: 2.5rem;
 	--layout-page-controls-margin-bottom: 3rem;
 	--layout-scroll-header-offset: calc(var(--layout-header-height) + var(--layout-header-offset));
 	--layout-scroll-header-lexicon-controls-offset: calc(var(--layout-header-height) + var(--layout-lexicon-controls-height) + var(--layout-page-controls-margin-bottom));

@@ -5,11 +5,13 @@
 @media (min-width: 768px) {
 	.lexicon-nav {
 		align-items: center;
+		background: var(--color-background-primary);
 		display: flex;
 		flex-direction: column;
 		height: calc(100vh - var(--layout-scroll-header-offset));
 		position: sticky;
 		top: var(--layout-scroll-header-offset);
+		width: var(--layout-lexicon-nav-width);
 	}
 }
 
@@ -19,7 +21,7 @@
 	flex-direction: column;
 	gap: 0.25rem;
 	overflow-y: auto;
-	padding: 0.25rem;
+	padding: 0.25rem 0.5rem;
 }
 
 .lexicon-nav__link {
