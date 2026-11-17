@@ -2,7 +2,7 @@
 	background: var(--color-background-secondary);
 	border: 1px solid var(--color-border-primary);
 	display: grid;
-	gap: 1rem;
+	gap: 3rem;
 	padding-bottom: 1rem;
 
 	@media (min-width: 1024px) {
@@ -107,7 +107,7 @@
 /* Desktop: two columns, with the source buttons on the same columns as their sub-filters */
 .quiz-setup__sources {
 	display: grid;
-	gap: 1rem;
+	gap: 3rem;
 
 	@media (min-width: 1024px) {
 		column-gap: var(--grid-gap);
@@ -138,7 +138,7 @@
 .quiz-setup__source-filters {
 	align-content: start;
 	display: grid;
-	gap: 1rem;
+	gap: 3rem;
 
 	@media (min-width: 1024px) {
 		gap: 2rem;
