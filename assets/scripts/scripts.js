@@ -1,6 +1,12 @@
 async function initApp() {
 	let isAdmin = false;
 
+	const elThemeSwitcher = document.getElementById('theme-switcher-root');
+	if (elThemeSwitcher) {
+		const { ThemeSwitcher } = await import('./components/theme-switcher.js');
+		new ThemeSwitcher(elThemeSwitcher).init();
+	}
+
 	if (document.getElementById('auth-root')) {
 		const { Auth } = await import('./components/auth.js');
 		const authRoot = document.getElementById('auth-root');

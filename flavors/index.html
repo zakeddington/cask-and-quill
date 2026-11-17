@@ -15,6 +15,11 @@
 	<link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
 <body class="flavors-view theme--dark">
+	<script>
+		try {
+			if (localStorage.getItem('cq-theme') === 'light') document.body.classList.replace('theme--dark', 'theme--light');
+		} catch {}
+	</script>
 	<header class="header">
 		<nav class="nav">
 			<a class="nav__logo" href="/">
@@ -28,7 +33,10 @@
 				<a id="flavors-btn" class="button button--tertiary is-active" href="/flavors/">Flavors</a>
 				<a id="catalog-btn" class="button button--tertiary" href="/catalog/">Catalog</a>
 			</div>
-			<div id="auth-root" class="auth"></div>
+			<div class="nav__actions">
+				<div id="theme-switcher-root" class="theme-switcher"></div>
+				<div id="auth-root" class="auth"></div>
+			</div>
 			<button id="nav-menu-btn" class="nav__menu-btn button button--icon-only" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
 				<svg class="svg-icon" aria-hidden="true" focusable="false"><use href="/assets/images/icon-sprite.svg#icon-list"></use></svg>
 			</button>

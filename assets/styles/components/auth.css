@@ -14,7 +14,7 @@
 	border: 2px solid var(--color-border-accent);
 	box-shadow: var(--shadow-md);
 	min-width: 10rem;
-	padding: 0.5rem;
+	padding: 0;
 	position: absolute;
 	right: 0;
 	top: calc(100% + 0.5rem);
@@ -23,7 +23,7 @@
 .auth__signout {
 	background-color: transparent;
 	border: 0;
-	color: var(--color-text-primary);
+	color: var(--color-form-input-placeholder);
 	cursor: pointer;
 	display: block;
 	font-family: var(--font-sans-serif);
@@ -33,11 +33,13 @@
 	padding: 0.5rem 0.75rem;
 	text-align: left;
 	text-transform: uppercase;
-	transition: color 0.2s ease;
 	width: 100%;
 
-	&:hover {
-		color: var(--color-text-accent);
+	&:hover,
+	&:focus-visible {
+		background-color: var(--color-form-input-background);
+		color: var(--color-form-input-text);
+		outline: none;
 	}
 }
 
