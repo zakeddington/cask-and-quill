@@ -1,5 +1,5 @@
 .catalog-detail {
-	background: var(--color-background-catalog);
+	background: radial-gradient(at bottom left, var(--color-background-hero-glow) 0%, transparent 70%);
 	border-top: 2px solid var(--color-border-accent);
 	display: grid;
 	gap: 1rem;
@@ -76,8 +76,7 @@
 }
 
 .catalog-detail__block .catalog-bottle__image img {
-	background: var(--color-background-catalog) url('/assets/images/catalog/_shadow.webp') center bottom no-repeat;
-	background-blend-mode: multiply;
+	background: url('/assets/images/catalog/_shadow-dark.webp') center bottom no-repeat;
 	background-size: 100% auto;
 	box-sizing: border-box;
 	height: 100%;
@@ -85,6 +84,10 @@
 
 	@media (max-width: 767px) {
 		width: 50%;
+	}
+
+	.theme--light & {
+		background-image: url('/assets/images/catalog/_shadow-light.webp');
 	}
 }
 
